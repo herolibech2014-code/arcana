@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarot - El Universo Responde</title>
+    <title>Arcana - El Universo Responde</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700&display=swap" rel="stylesheet">
@@ -13,8 +13,8 @@
         body {
             background-color: #0b0516;
             background-image: 
-                radial-gradient(at 50% 30%, rgba(88, 28, 135, 0.35) 0px, transparent 60%),
-                linear-gradient(140deg, #05020a 0%, #15062b 35%, #2a085c 75%, #030107 100%);
+                radial-gradient(at 50% 30%, rgba(91, 33, 182, 0.3) 0px, transparent 60%),
+                linear-gradient(140deg, #040209 0%, #120524 35%, #250652 75%, #020105 100%);
             color: #f3e8ff;
             font-family: 'Cinzel', serif;
             text-align: center;
@@ -62,7 +62,7 @@
             transition: all 0.3s;
         }
         .audio-ctrl:hover, .btn-volver:hover {
-            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
         }
         .lang-ctrl select {
             background: #05020a;
@@ -74,43 +74,98 @@
             font-size: 0.7rem;
         }
 
-        /* ALTAR DE IMAGEN REAL */
+        /* ALTAR PROGRAMADO: MANOS REALES, BOLA AMATISTA Y BASE DE BRONCE */
         .logo-area { 
             margin-top: 5px;
             display: flex;
             flex-direction: column;
             align-items: center;
         }
-        .altar-imagen-real {
-            width: 100%;
-            max-width: 320px;
-            height: 110px;
-            background-image: url('https://images.unsplash.com/photo-1572945281864-8fe6432f91f7?auto=format&fit=crop&q=80&w=400');
-            background-size: cover;
-            background-position: center;
-            border-radius: 8px;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3), inset 0 0 15px rgba(0,0,0,0.6);
-            border: 1px solid rgba(212,175,55,0.2);
+        
+        .altar-contenedor {
             position: relative;
-        }
-        .altar-imagen-real::before {
-            content: ''; position: absolute; top:0; left:0; width:100%; height:100%;
-            background: radial-gradient(circle, rgba(42,8,92,0.1) 0%, rgba(11,5,22,0.85) 90%);
+            width: 280px;
+            height: 110px;
+            margin: 0 auto;
+            background: rgba(12, 5, 26, 0.4);
             border-radius: 8px;
+            border: 1px solid rgba(139, 92, 246, 0.1);
         }
 
+        .bola-cristal {
+            position: absolute;
+            left: 105px; top: 12px;
+            width: 70px; height: 70px;
+            background: radial-gradient(circle at 35% 35%, #ffffff 0%, #c084fc 25%, #6d28d9 60%, #2e1065 100%);
+            border-radius: 50%;
+            box-shadow: 0 0 25px rgba(167, 139, 250, 0.6), inset -5px -5px 15px rgba(0,0,0,0.8);
+            z-index: 3;
+        }
+
+        .base-bronce {
+            position: absolute;
+            left: 110px; top: 78px;
+            width: 60px; height: 16px;
+            background: linear-gradient(180deg, #d4af37 0%, #aa841c 30%, #785c10 70%, #3d2e05 100%);
+            border-radius: 4px 4px 8px 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.6);
+            border-bottom: 2px solid #261d03;
+            z-index: 4;
+        }
+
+        .mano-ritual {
+            position: absolute;
+            width: 50px;
+            height: 65px;
+            border: 1.5px solid #d4af37;
+            opacity: 0.85;
+            z-index: 2;
+        }
+        .mano-izquierda {
+            left: 45px; top: 15px;
+            border-radius: 50% 100% 30% 60%;
+            transform: rotate(25deg);
+            border-right: none;
+            box-shadow: -2px -2px 6px rgba(212,175,55,0.2);
+        }
+        .mano-izquierda::after {
+            content: '🖐️'; position: absolute; left: 8px; top: 10px; color: #d4af37; font-size: 1.6rem; opacity: 0.25;
+        }
+        .mano-derecha {
+            right: 45px; top: 15px;
+            border-radius: 100% 50% 60% 30%;
+            transform: rotate(-25deg);
+            border-left: none;
+            box-shadow: 2px -2px 6px rgba(212,175,55,0.2);
+        }
+        .mano-derecha::after {
+            content: '🖐️'; position: absolute; right: 8px; top: 10px; color: #d4af37; font-size: 1.6rem; opacity: 0.25; transform: scaleX(-1);
+        }
+
+        /* IDENTIDAD VISUAL DE MARCA GLOBAL */
         h1.marca-titulo {
             font-family: 'Cinzel Decorative', serif;
-            color: #d4af37; font-size: 2.1rem; margin: 4px 0 0 0; letter-spacing: 4px;
+            color: #d4af37; font-size: 2.2rem; margin: 5px 0 0 0; letter-spacing: 5px;
             text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
         }
-        .lema { font-family: 'Cinzel Decorative', serif; color: #c084fc; font-size: 0.7rem; letter-spacing: 2px; margin-bottom: 2px; }
+        .lema { font-family: 'Cinzel', serif; font-weight: 700; color: #c084fc; font-size: 0.75rem; letter-spacing: 3px; margin-bottom: 4px; text-transform: uppercase; }
 
-        /* CONTROL DE VISTAS */
+        /* IDENTIFICADOR ESPECÍFICO DE CONSULTA */
+        .subtitulo-consulta {
+            font-family: 'Cinzel Decorative', serif;
+            color: #d4af37;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            margin: 5px 0;
+            text-transform: uppercase;
+            text-shadow: 0 0 5px rgba(212, 175, 55, 0.3);
+        }
+
+        /* VISTAS */
         .vista-seccion { display: none; flex-direction: column; gap: 8px; width: 100%; }
         .activa { display: flex; }
 
-        /* MENÚ INICIAL DIRECTO */
+        /* MENÚ INICIAL */
         .menu-contenedor { display: flex; flex-direction: column; gap: 12px; margin-top: 15px; }
         .menu-card {
             background: transparent; border: none; border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -124,7 +179,7 @@
         .card-desc { font-family: 'Cinzel', serif; font-size: 0.8rem; color: #c4b5fd; margin: 0; opacity: 0.8; }
 
         /* CONFIGURACIÓN */
-        .config-ritual-area { display: flex; flex-direction: column; gap: 12px; margin-top: 10px; }
+        .config-ritual-area { display: flex; flex-direction: column; gap: 12px; margin-top: 5px; }
         .selector-caja { text-align: left; border-bottom: 1px dashed rgba(167, 139, 250, 0.3); padding-bottom: 8px; }
         .selector-caja label { display: block; font-family: 'Cinzel Decorative', serif; font-size: 0.8rem; color: #c084fc; margin-bottom: 4px; }
         .selector-caja select {
@@ -138,7 +193,7 @@
         }
         .btn-magico:hover { background: rgba(42, 8, 92, 0.4); box-shadow: 0 0 15px rgba(212, 175, 55, 0.5); }
 
-        /* PAÑO GRILLA COMPACTA DE 78 CARTAS JUNTAS */
+        /* GRILLA FIJA DE 78 CARTAS */
         .paño-completo-fijo {
             display: grid;
             grid-template-columns: repeat(10, 1fr);
@@ -210,7 +265,7 @@
 </head>
 <body onclick="activarMusicaAlTocar()">
 
-    <audio id="musica-mistica" loop src="https://assets.mixkit.co/music/preview/mixkit-zen-meditation-healing-1244.mp3"></audio>
+    <audio id="musica-mistica" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3"></audio>
 
     <div class="app-container">
         
@@ -227,8 +282,13 @@
         </div>
 
         <div class="logo-area">
-            <div class="altar-imagen-real"></div>
-            <h1 class="marca-titulo">TAROT</h1>
+            <div class="altar-contenedor">
+                <div class="mano-ritual mano-izquierda"></div>
+                <div class="bola-cristal"></div>
+                <div class="base-bronce"></div>
+                <div class="mano-ritual mano-derecha"></div>
+            </div>
+            <h1 class="marca-titulo">ARCANA</h1>
             <div class="lema" id="txt-lema">El universo responde</div>
         </div>
 
@@ -254,6 +314,7 @@
         </div>
 
         <div id="pantalla-tarot-config" class="vista-seccion">
+            <div class="subtitulo-consulta">✦ Consulta de Tarot ✦</div>
             <div class="config-ritual-area">
                 <div class="selector-caja">
                     <label id="lbl-tema">Propósito de la consulta:</label>
@@ -288,11 +349,13 @@
         </div>
 
         <div id="pantalla-tarot-tablero" class="vista-seccion">
+            <div class="subtitulo-consulta">✦ Consulta de Tarot ✦</div>
             <p id="txt-instruccion" style="font-family:'Cinzel'; font-size:0.8rem; color:#c084fc; margin:0; letter-spacing:1px;">LA MESA ESTÁ SERVIDA. TOCA LAS CARTAS PARA TU LECTURA.</p>
             <div class="paño-completo-fijo" id="caja-paño-grilla"></div>
         </div>
 
         <div id="pantalla-tarot-resultado" class="vista-seccion">
+            <div class="subtitulo-consulta">✦ Consulta de Tarot ✦</div>
             <h3 id="txt-dictamen" style="color:#d4af37; margin:0; font-size:1.1rem; letter-spacing:1px; font-family:'Cinzel Decorative';">El Dictamen del Destino</h3>
             <div class="resultado-cartas" id="caja-cartas-reveladas"></div>
             <div class="caja-interpretacion" id="texto-interpretacion"></div>
@@ -309,7 +372,7 @@
             {es:"El Emperador", en:"The Emperor"}, {es:"El Hierofante", en:"The Hierophant"},
             {es:"Los Enamorados", en:"The Lovers"}, {es:"El Carro", en:"The Chariot"},
             {es:"La Justicia", en:"Justice"}, {es:"El Ermitaño", en:"The Hermit"},
-            {es:"La Rueda Fortuna", starten:"Wheel of Fortune"}, {es:"La Fuerza", en:"Strength"},
+            {es:"La Rueda Fortuna", en:"Wheel of Fortune"}, {es:"La Fuerza", en:"Strength"},
             {es:"El Colgado", en:"The Hanged Man"}, {es:"La Muerte", en:"Death"},
             {es:"La Templanza", en:"Temperance"}, {es:"El Diablo", en:"The Devil"},
             {es:"LA TORRE", en:"THE TOWER"}, {es:"La Estrella", en:"The Star"},
@@ -324,13 +387,12 @@
         let ritualEnProceso = false;
         let audioCtx = null;
         
-        // CONTROL DE MÚSICA ESTILO ENYA / DEVA PREMAL
         let trackMístico = document.getElementById('musica-mistica');
         let musicaIniciada = false;
 
         function activarMusicaAlTocar() {
             if (!musicaIniciada) {
-                trackMístico.volume = 0.25; // Nivel suave pero bien presente
+                trackMístico.volume = 0.20;
                 trackMístico.play().then(() => {
                     document.getElementById('btn-audio').innerText = "🎵 Música: ON";
                     musicaIniciada = true;
@@ -352,31 +414,40 @@
             }
         }
 
-        // CUENCO TIBETANO PROFUNDO (SÓLO CUANDO SE TOCA UNA CARTA)
+        /* CUENCO RESONANTE */
         function ejecutarTonoCuencoNativo() {
             try {
                 if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
                 if (audioCtx.state === 'suspended') audioCtx.resume();
                 
+                let gainNode = audioCtx.createGain();
                 let oscBase = audioCtx.createOscillator();
-                let oscArmonico = audioCtx.createOscillator();
-                let nodoGanancia = audioCtx.createGain();
-                
                 oscBase.type = 'sine';
-                oscBase.frequency.setValueAtTime(180, audioCtx.currentTime); // Tono más grave y ceremonial
+                oscBase.frequency.setValueAtTime(144, audioCtx.currentTime);
                 
+                let oscArmonico = audioCtx.createOscillator();
                 oscArmonico.type = 'sine';
-                oscArmonico.frequency.setValueAtTime(360, audioCtx.currentTime); 
+                oscArmonico.frequency.setValueAtTime(288, audioCtx.currentTime);
                 
-                nodoGanancia.gain.setValueAtTime(0.08, audioCtx.currentTime);
-                nodoGanancia.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.2); // Desvanecimiento suave
+                let oscVibrato = audioCtx.createOscillator();
+                let gainVibrato = audioCtx.createGain();
+                oscVibrato.frequency.setValueAtTime(6, audioCtx.currentTime);
+                gainVibrato.gain.setValueAtTime(4, audioCtx.currentTime);
                 
-                oscBase.connect(nodoGanancia);
-                oscArmonico.connect(nodoGanancia);
-                nodoGanancia.connect(audioCtx.destination);
+                oscVibrato.connect(gainVibrato);
+                gainVibrato.connect(oscBase.frequency);
+
+                gainNode.gain.setValueAtTime(0.09, audioCtx.currentTime);
+                gainNode.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 2.5); 
                 
-                oscBase.start(); oscArmonico.start();
-                oscBase.stop(audioCtx.currentTime + 2.3); oscArmonico.stop(audioCtx.currentTime + 2.3);
+                oscBase.connect(gainNode);
+                oscArmonico.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscBase.start(); oscArmonico.start(); oscVibrato.start();
+                oscBase.stop(audioCtx.currentTime + 2.6); 
+                oscArmonico.stop(audioCtx.currentTime + 2.6);
+                oscVibrato.stop(audioCtx.currentTime + 2.6);
             } catch(e){}
         }
 
