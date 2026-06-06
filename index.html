@@ -675,4 +675,21 @@
             es: { lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE" },
             en: { lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE" },
             pt: { lema: "O universo responde", ads: "ANÚNCIO RESERVADO GOOGLE ADSENSE" },
-            fr: {
+            fr: { lema: "L'univers répond", ads: "ESPACE PUBLICITAIRE GOOGLE ADSENSE" },
+            it: { lema: "L'universo risponde", ads: "SPAZIO PUBBLICITARIO GOOGLE ADSENSE" },
+            de: { lema: "Das Universum antwortet", ads: "WERBUNG RESERVIERT FÜR GOOGLE ADSENSE" }
+        };
+
+        function cambiarIdioma(lang) {
+            idiomaActual = lang;
+            if(!textosTraducidos[lang]) idiomaActual = 'es';
+            document.getElementById('selector-idioma').value = idiomaActual;
+            document.getElementById('txt-lema').innerText = textosTraducidos[idiomaActual].lema;
+            document.getElementById('txt-ads').innerText = textosTraducidos[idiomaActual].ads;
+        }
+
+        const devLang = (navigator.language || navigator.userLanguage).slice(0, 2);
+        cambiarIdioma(devLang);
+    </script>
+</body>
+</html>
