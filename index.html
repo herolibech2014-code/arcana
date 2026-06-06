@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arcana - El Universo Responde</title>
+    <style>
+        /* Estilo Místico: Violeta oscuro profundo, vetas de fondo y oro */
+        body {
+            background-color: #0b071e;
+            background-image: radial-gradient(rgba(45, 25, 85, 0.5) 1px, transparent 0),
+                              linear-gradient(135deg, #090514 0%, #170d33 50%, #090514 100%);
+            background-size: 4px 4px, 100% 100%;
+            color: #e3daf2;
+            font-family: 'Cinzel', 'Georgia', serif;
+            text-align: center;
+            padding: 10px;
+            margin: 0;
+            min-height: 100vh;
+        }
+        
+        /* Contenedor Principal (Formato de App) */
+        .app-container {
+            max-width: 480px;
+            margin: 0 auto;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        header h1 {
+            color: #d4af37;
+            font-size: 2.8rem;
+            letter-spacing: 4px;
+            margin: 20px 0 5px 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        .lema {
+            font-style: italic;
+            color: #bfaed6;
+            font-size: 1rem;
+            margin-bottom: 25px;
+            letter-spacing: 2px;
+        }
+
+        /* Controles de Sonido e Idioma superiores */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(26, 17, 54, 0.6);
+            border: 1px solid rgba(214, 175, 55, 0.2);
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin-bottom: 25px;
+        }
+
+        .audio-ctrl, .lang-ctrl select {
+            background: transparent;
+            border: none;
+            color: #d4af37;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-family: inherit;
+        }
+
+        .lang-ctrl select option {
+            background: #170d33;
+            color: #e3daf2;
+        }
+
+        /* Botones de los Módulos de Arcana */
+        .menu-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+        }
+
+        .modulo-card {
+            background: rgba(22, 14, 48, 0.85);
+            border: 1px solid #4a3375;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: left;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            overflow: hidden;
+        }
+
+        /* Efecto veteado sutil al pasar el mouse o tocar */
+        .modulo-card:hover {
+            border-color: #d4af37;
+            box-shadow: 0 0 20px rgba(138, 75, 175, 0.4);
+            transform: translateY(-2px);
+        }
+
+        .modulo-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(45deg, transparent, rgba(214, 175, 55, 0.05), transparent);
+            transform: translateX(-100%);
+            transition: 0.6s;
+        }
+
+        .modulo-card:hover::before {
+            transform: translateX(100%);
+        }
+
+        .modulo-titulo {
+            font-size: 1.3rem;
+            color: #fff;
+            margin: 0 0 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .modulo-desc {
+            font-size: 0.85rem;
+            color: #a694c9;
+            margin: 0;
+            line-height: 1.3;
+        }
+
+        /* Espacio para la Publicidad de Google AdSense */
+        .ads-container {
+            background: rgba(10, 6, 24, 0.9);
+            border: 1px dashed rgba(214, 175, 55, 0.3);
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 35px;
+            color: #5c4e78;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="top-bar">
+            <button class="audio-ctrl" onclick="controlarMusica()" id="btn-audio">
+                🎵 Ambientación: OFF
+            </button>
+            <div class="lang-ctrl">
+                <select id="selector-idioma" onchange="cambiarIdiomaManual(this.value)">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                    <option value="fr">Français</option>
+                    <option value="it">Italiano</option>
+                    <option value="de">Deutsch</option>
+                </select>
+            </div>
+        </div>
+
+        <header>
+            <h1>ARCANA</h1>
+            <div class="lema" id="txt-lema">El universo responde</div>
+        </header>
+
+        <main class="menu-grid">
+            
+            <div class="modulo-card" onclick="sonarCuenco(); alert('Abriendo Tarot...');">
+                <div class="modulo-titulo">🔮 <span id="m1-t">Tarot</span></div>
+                <div class="modulo-desc" id="m1-d">Tiradas completas, Sí/No, y selección de mazos ancestrales en varias filas.</div>
+            </div>
+
+            <div class="modulo-card" onclick="sonarCuenco(); alert('Abriendo Astrología...');">
+                <div class="modulo-titulo">🌌 <span id="m2-t">Astrología</span></div>
+                <div class="modulo-desc" id="m2-d">Tu carta natal precisa, tránsitos, compatibilidad y revolución solar.</div>
+            </div>
+
+            <div class="modulo-card" onclick="sonarCuenco(); alert('Abriendo Numerología...');">
+                <div class="modulo-titulo">🔢 <span id="m3-t">Numerología Avanzada</span></div>
+                <div class="modulo-desc" id="m3-d">Vibración de nombres, consonantes, vocales, compatibilidades y fechas futuras.</div>
+            </div>
+
+            <div class="modulo-card" onclick="sonarCuenco(); alert('Abriendo Oráculo...');">
+                <div class="modulo-titulo">🧠 <span id="m4-t">Oráculo IA Espiritual</span></div>
+                <div class="modulo-desc" id="m4-d">La gran combinación sagrada. Tu consulta uniendo astros, números y cartas.</div>
+            </div>
+
+        </main>
+
+        <div class="ads-container">
+            <p id="txt-ads">PUBLICIDAD RESERVADA - GOOGLE ADSENSE</p>
+        </div>
+
+    </div>
+
+    <audio id="musica-fondo" loop src="https://assets.mixkit.co/active_storage/sfx/2568/2568-84.wav"></audio>
+    <audio id="efecto-cuenco" src="https://assets.mixkit.co/active_storage/sfx/1647/1647-84.wav"></audio>
+
+    <script>
+        // Sistema de internacionalización automática (Detector de idioma del celular)
+        const textos = {
+            es: { lema: "El universo responde", m1t: "Tarot", m1d: "Tiradas completas, Sí/No, y selección de mazos ancestrales en varias filas.", m2t: "Astrología", m2d: "Tu carta natal precisa, tránsitos, compatibilidad y revolución solar.", m3t: "Numerología Avanzada", m3d: "Vibración de nombres, consonantes, vocales, compatibilidades y fechas futuras.", m4t: "Oráculo IA Espiritual", m4d: "La gran combinación sagrada. Tu consulta uniendo astros, números y cartas.", ads: "PUBLICIDAD RESERVADA - GOOGLE ADSENSE" },
+            en: { lema: "The universe answers", m1t: "Tarot", m1d: "Full spreads, Yes/No, and selection of ancestral decks in multiple rows.", m2t: "Astrology", m2d: "Your precise natal chart, transits, compatibility, and solar return.", m3t: "Advanced Numerology", m3d: "Name vibration, consonants, vowels, compatibility, and future dates.", m4t: "Spiritual AI Oracle", m4d: "The sacred combination. Your query merging stars, numbers, and cards.", ads: "RESERVED ADVERTISING - GOOGLE ADSENSE" },
+            pt: { lema: "O universo responde", m1t: "Tarot", m1d: "Leituras completas, Sim/Não, e seleção de baralhos ancestrais em várias linhas.", m2t: "Astrologia", m2d: "Seu mapa natal preciso, trânsitos, compatibilidade e retorno solar.", m3t: "Numerologia Avançada", m3d: "Vibração de nomes, consoantes, vogais, compatibilidade e datas futuras.", m4t: "Oráculo IA Espiritual", m4d: "A grande combinação sagrada. Sua consulta unindo astros, números e cartas.", ads: "ANÚNCIO RESERVADO - GOOGLE ADSENSE" },
+            fr: { lema: "L'univers répond", m1t: "Tarot", m1d: "Tirages complets, Oui/Non, et sélection de jeux ancestraux sur plusieurs rangées.", m2t: "Astrologie", m2d: "Votre carte du ciel précise, transits, compatibilité et révolution solaire.", m3t: "Numérologie Avancée", m3d: "Vibration des noms, consonnes, voyelles, compatibilité et dates futures.", m4t: "Oracle IA Spirituel", m4d: "La grande combinaison sacrée. Votre requête unissant astres, chiffres et cartes.", ads: "PUBLICITÉ RÉSERVÉE - GOOGLE ADSENSE" },
+            it: { lema: "L'universo risponde", m1t: "Tarot", m1d: "Letture complete, Sì/No, e selezione di mazzi ancestrali su più righe.", m2t: "Astrologia", m2d: "La tua carta natale precisa, transiti, compatibilità e ritorno solare.", m3t: "Numerologia Avanzata", m3d: "Vibrazione dei nomi, consonanti, vocali, compatibilità e date future.", m4t: "Oracolo IA Spirituale", m4d: "La grande combinazione sacra. La tua query che unisce astri, numeri e carte.", ads: "SPAZIO PUBBLICITARIO - GOOGLE ADSENSE" },
+            de: { lema: "Das Universum antwortet", m1t: "Tarot", m1d: "Vollständige Legungen, Ja/Nein, und Auswahl ahnenorientierter Decks in mehreren Reihen.", m2t: "Astrologie", m2d: "Ihr präzises Geburtshoroskop, Transite, Kompatibilität und Solarrendite.", m3t: "Fortgeschrittene Numerologie", m3d: "Namensvibration, Konsonanten, Vokale, Kompatibilität und zukünftige Daten.", m4t: "Spirituelles KI-Orakel", m4d: "Die heilige Kombination. Ihre Abfrage vereint Sterne, Zahlen und Karten.", ads: "WERBUNG RESERVIERT - GOOGLE ADSENSE" }
+        };
+
+        function aplicarIdioma(lang) {
+            if (!textos[lang]) lang = 'es';
+            document.getElementById('selector-idioma').value = lang;
+            document.getElementById('txt-lema').innerText = textos[lang].lema;
+            document.getElementById('m1-t').innerText = textos[lang].m1t;
+            document.getElementById('m1-d').innerText = textos[lang].m1d;
+            document.getElementById('m2-t').innerText = textos[lang].m2t;
+            document.getElementById('m2-d').innerText = textos[lang].m2d;
+            document.getElementById('m3-t').innerText = textos[lang].m3t;
+            document.getElementById('m3-d').innerText = textos[lang].m3d;
+            document.getElementById('m4-t').innerText = textos[lang].m4t;
+            document.getElementById('m4-d').innerText = textos[lang].m4d;
+            document.getElementById('txt-ads').innerText = textos[lang].ads;
+        }
+
+        // Detectar el idioma nativo del celular del usuario
+        const langUsuario = (navigator.language || navigator.userLanguage).slice(0, 2);
+        aplicarIdioma(langUsuario);
+
+        function cambiarIdiomaManual(val) {
+            aplicarIdioma(val);
+        }
+
+        // Controles de sonido para evitar penalizaciones del navegador
+        let musicaActiva = false;
+        function controlarMusica() {
+            const audio = document.getElementById('musica-fondo');
+            const btn = document.getElementById('btn-audio');
+            if(!musicaActiva) {
+                audio.play().catch(e => console.log("Esperando interacción..."));
+                btn.innerText = "🎵 Ambientación: ON";
+                musicaActiva = true;
+            } else {
+                audio.pause();
+                btn.innerText = "🎵 Ambientación: OFF";
+                musicaActiva = false;
+            }
+        }
+
+        function sonarCuenco() {
+            const cuenco = document.getElementById('efecto-cuenco');
+            cuenco.currentTime = 0;
+            cuenco.play().catch(e => console.log("Sonido bloqueado"));
+        }
+    </script>
+</body>
+</html>
