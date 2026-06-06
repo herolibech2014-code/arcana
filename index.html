@@ -6,18 +6,17 @@
     <title>Arcana - El Universo Responde</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Cinzel:wght@500;700&family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
-        /* ESTÉTICA ARCANA PREMIUM: VIOLETA OSCURO, GRANITO Y ORO */
+        /* ESTÉTICA ORGANIZACIÓN: GRANITO OSCURO, VIOLETA Y FLUIDEZ MÍSTICA */
         body {
             background-color: #06030f;
             background-image: 
-                radial-gradient(rgba(147, 51, 234, 0.2) 2px, transparent 40px),
-                linear-gradient(145deg, rgba(15, 6, 36, 0.95) 0%, rgba(31, 14, 69, 0.9) 40%, rgba(9, 4, 23, 0.98) 100%),
-                repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, rgba(255,255,255,0.01) 2px, transparent 2px, transparent 10px),
-                repeating-linear-gradient(-45deg, rgba(147, 51, 234, 0.03) 0px, rgba(147, 51, 234, 0.03) 3px, transparent 3px, transparent 15px);
-            background-size: 100% 100%, 100% 100%, 30px 30px, 40px 40px;
+                radial-gradient(rgba(147, 51, 234, 0.15) 2px, transparent 40px),
+                linear-gradient(145deg, rgba(11, 5, 26, 0.98) 0%, rgba(24, 11, 54, 0.95) 50%, rgba(7, 3, 18, 0.99) 100%),
+                repeating-linear-gradient(45deg, rgba(255,255,255,0.005) 0px, rgba(255,255,255,0.005) 2px, transparent 2px, transparent 10px);
+            background-size: 100% 100%, 100% 100%, 30px 30px;
             color: #ebdff7;
             font-family: 'Cinzel', serif;
             text-align: center;
@@ -26,178 +25,186 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow-x: hidden;
+            overflow: hidden; /* Evita desplazamientos raros de pantalla */
         }
 
         .app-container {
             width: 100%;
-            max-width: 460px;
-            min-height: 100vh;
-            padding: 20px;
+            max-width: 440px;
+            height: 100vh; /* Se clava al tamaño exacto de la pantalla */
+            padding: 15px;
             box-sizing: border-box;
-            background: radial-gradient(circle at top, rgba(88, 28, 135, 0.15) 0%, transparent 70%);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
         }
 
-        /* BARRA SUPERIOR */
+        /* BARRA SUPERIOR DISCRETA */
         .top-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 10px;
+            height: 35px;
+            z-index: 10;
         }
         .audio-ctrl, .btn-volver {
-            background: none;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 30px;
+            background: rgba(22, 13, 48, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 20px;
             color: #d4af37;
-            padding: 6px 14px;
+            padding: 5px 12px;
             cursor: pointer;
             font-size: 0.75rem;
             letter-spacing: 1px;
             font-family: 'Montserrat', sans-serif;
         }
         .lang-ctrl select {
-            background: rgba(15, 8, 38, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 8px;
+            background: rgba(15, 8, 38, 0.9);
+            border: 1px solid rgba(212, 175, 55, 0.25);
+            border-radius: 6px;
             color: #ebdff7;
-            padding: 5px 10px;
+            padding: 4px 8px;
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
-        /* IDENTITY */
-        .logo-wrapper { position: relative; width: 140px; height: 140px; margin: 0 auto; }
+        /* SECCIÓN LOGO */
+        .logo-area { margin: 5px 0; }
+        .logo-wrapper { position: relative; width: 100px; height: 100px; margin: 0 auto; }
         .manos-magicas {
             position: absolute; width: 100%; height: 100%; top: 0; left: 0;
-            border: 1px dashed rgba(168, 85, 247, 0.3); border-radius: 50%;
-            animation: girar 25s linear infinite;
+            border: 1px dashed rgba(168, 85, 247, 0.2); border-radius: 50%;
+            animation: girar 30s linear infinite;
         }
         .bola-cristal {
-            position: absolute; width: 85px; height: 85px; top: 27px; left: 27px;
-            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.9) 0%, rgba(59, 130, 246, 0.8) 40%, rgba(147, 51, 234, 0.9) 75%, #06030f 100%);
-            border-radius: 50%; box-shadow: 0 0 30px rgba(59, 130, 246, 0.5), 0 0 50px rgba(147, 51, 234, 0.3);
+            position: absolute; width: 60px; height: 60px; top: 20px; left: 20px;
+            background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8) 0%, rgba(59, 130, 246, 0.6) 40%, rgba(147, 51, 234, 0.7) 75%, #06030f 100%);
+            border-radius: 50%; box-shadow: 0 0 25px rgba(59, 130, 246, 0.4), 0 0 40px rgba(147, 51, 234, 0.2);
         }
         .soporte-bola {
-            position: absolute; width: 55px; height: 15px; bottom: 23px; left: 42px;
-            background: linear-gradient(90deg, #8a6f27 0%, #d4af37 50%, #8a6f27 100%); border-radius: 5px;
+            position: absolute; width: 40px; height: 10px; bottom: 16px; left: 30px;
+            background: linear-gradient(90deg, #8a6f27 0%, #d4af37 50%, #8a6f27 100%); border-radius: 3px;
         }
         h1.marca-titulo {
-            font-family: 'Cinzel Decorative', serif; color: #d4af37; font-size: 2.4rem; margin: 5px 0 0 0; letter-spacing: 2px;
+            font-family: 'Cinzel Decorative', serif; color: #d4af37; font-size: 2.1rem; margin: 2px 0 0 0; letter-spacing: 2px;
         }
-        .lema { color: #a78bfa; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 20px; }
+        .lema { color: #a78bfa; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; }
 
-        /* VISTAS */
-        .vista-seccion { display: none; flex-direction: column; gap: 15px; flex-grow: 1; animation: fadeIn 0.6s ease forwards; }
+        /* CONTROL DE VISTAS */
+        .vista-seccion { display: none; flex-direction: column; gap: 12px; flex-grow: 1; justify-content: center; animation: fadeIn 0.5s ease forwards; }
         .activa { display: flex; }
 
         /* VISTA 1: SPLASH */
         .btn-entrar {
             background: linear-gradient(135deg, #1e1145 0%, #3b1975 50%, #1e1145 100%);
-            border: 1px solid #d4af37; border-radius: 30px; color: #fff; padding: 15px 45px;
-            font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 2px; cursor: pointer; margin-top: 40px;
+            border: 1px solid #d4af37; border-radius: 30px; color: white; padding: 14px 40px;
+            font-family: 'Cinzel', serif; font-size: 1.1rem; letter-spacing: 2px; cursor: pointer; margin-top: 20px;
         }
 
-        /* VISTA 2: MENÚ */
+        /* VISTA 2: MENU */
         .menu-card {
-            background: linear-gradient(135deg, rgba(20, 11, 46, 0.9) 0%, rgba(11, 6, 26, 0.95) 100%);
-            border: 1px solid rgba(139, 92, 246, 0.25); border-radius: 12px; padding: 18px; text-align: left; cursor: pointer;
+            background: linear-gradient(135deg, rgba(20, 11, 46, 0.85) 0%, rgba(11, 6, 26, 0.9) 100%);
+            border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 15px; text-align: left; cursor: pointer;
         }
         .menu-card:hover { border-color: #d4af37; }
-        .card-titulo { font-size: 1.15rem; color: #fff; margin-bottom: 4px; }
-        .card-desc { font-family: 'Montserrat', sans-serif; font-size: 0.8rem; color: #b3a4cf; margin: 0; line-weight: 300; }
+        .card-titulo { font-size: 1.1rem; color: #fff; margin-bottom: 2px; }
+        .card-desc { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; color: #b3a4cf; margin: 0; font-weight: 300; }
 
-        /* VISTA 3: CONFIGURACIÓN TAROT (PASOS) */
+        /* VISTA 3: CONFIGURACIÓN TAROT */
         .selector-caja {
-            background: rgba(18, 10, 41, 0.6); border: 1px solid rgba(139, 92, 246, 0.2);
-            border-radius: 12px; padding: 15px; text-align: left;
+            background: rgba(18, 10, 41, 0.5); border: 1px solid rgba(139, 92, 246, 0.15);
+            border-radius: 10px; padding: 10px 14px; text-align: left;
         }
-        .selector-caja label { display: block; font-size: 0.9rem; color: #d4af37; margin-bottom: 8px; }
-        .selector-caja select, .selector-caja input {
-            width: 100%; background: #0c0721; border: 1px solid #4a3375; border-radius: 6px;
-            color: #fff; padding: 10px; font-family: 'Montserrat', sans-serif; box-sizing: border-box;
+        .selector-caja label { display: block; font-size: 0.8rem; color: #d4af37; margin-bottom: 4px; }
+        .selector-caja select {
+            width: 100%; background: #0c0721; border: 1px solid #4a3375; border-radius: 5px;
+            color: #fff; padding: 8px; font-family: 'Montserrat', sans-serif; font-size: 0.85rem;
         }
         .btn-magico {
             background: linear-gradient(90deg, #3b1975, #5b21b6); border: 1px solid #d4af37;
-            color: white; border-radius: 8px; padding: 12px; font-family: 'Cinzel', serif; cursor: pointer; letter-spacing: 1px;
+            color: white; border-radius: 8px; padding: 12px; font-family: 'Cinzel', serif; cursor: pointer; font-size: 0.95rem;
         }
 
-        /* PASO MÁXIMO: EL MAZO DESPLEGADO EN FILAS */
-        .contenedor-mazo {
+        /* VISTA 4: EL PAÑO REAL DEL TAROTISTA (TODO VISIBLE SIN SCROLL) */
+        .contenedor-mazo-fijo {
             display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 6px;
-            background: rgba(10, 5, 26, 0.8);
-            border: 1px solid rgba(212, 175, 55, 0.2);
-            border-radius: 12px;
-            padding: 12px;
-            margin-top: 10px;
-            max-height: 280px;
-            overflow-y: auto;
+            grid-template-columns: repeat(7, 1fr); /* 7 columnas para que entren perfecto */
+            gap: 4px;
+            background: rgba(10, 5, 26, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 10px;
+            padding: 8px;
+            margin: 0 auto;
+            width: 100%;
+            box-sizing: border-box;
         }
         .carta-tarot {
-            aspect-ratio: 2/3.4;
-            background: linear-gradient(135deg, #1b0f3a 0%, #0b051a 100%);
-            border: 1px solid #4d367c;
-            border-radius: 4px;
+            aspect-ratio: 2/3.3;
+            background: linear-gradient(135deg, #22144a 0%, #0a041a 100%);
+            border: 1px solid #4a3578;
+            border-radius: 3px;
             cursor: pointer;
             position: relative;
-            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        /* El dorso de la carta tiene un detalle dorado sutil */
         .carta-tarot::before {
-            content: '✨';
-            position: absolute; top: 35%; left: 25%; font-size: 0.7rem; opacity: 0.4;
+            content: '•';
+            position: absolute; top: 35%; left: 40%; color: rgba(214, 175, 55, 0.3); font-size: 0.8rem;
         }
-        .carta-tarot.seleccionada {
-            transform: translateY(-10px);
+        
+        /* RITUAL PAUSADO: La carta flota y brilla ANTES de darse vuelta */
+        .carta-tarot.ritualmente-seleccionada {
+            transform: translateY(-20px) scale(1.1);
             border-color: #d4af37;
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
-        }
-        
-        /* PANTALLA REVELACIÓN Y RESULTADO */
-        .resultado-cartas {
-            display: flex; justify-content: center; gap: 15px; margin: 15px 0;
-        }
-        .carta-revelada {
-            width: 80px; aspect-ratio: 2/3.4;
-            background: #170f33; border: 2px solid #d4af37; border-radius: 6px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            font-size: 0.7rem; color: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.7);
-            position: relative; padding: 5px; box-sizing: border-box;
-        }
-        .carta-revelada.invertida { transform: rotate(180deg); }
-        .carta-revelada .nombre-c { font-weight: bold; color: #d4af37; margin-top: 5px; text-shadow: 1px 1px 2px #000; }
-        
-        .caja-interpretacion {
-            background: rgba(15, 7, 31, 0.9); border: 1px solid #4a3375;
-            border-radius: 10px; padding: 15px; text-align: left;
-            font-family: 'Montserrat', sans-serif; font-size: 0.9rem; line-height: 1.5;
+            background: #311c6b;
+            box-shadow: 0 0 30px rgba(212, 175, 55, 0.7);
+            animation: resplandorRitual 2s ease-in-out;
         }
 
-        /* ADS BOX */
+        /* VISTA 5: RESULTADOS RITUALES */
+        .resultado-cartas { display: flex; justify-content: center; gap: 12px; margin: 10px 0; }
+        .carta-revelada {
+            width: 75px; aspect-ratio: 2/3.4;
+            background: #150e2e; border: 1px solid #d4af37; border-radius: 5px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            font-size: 0.65rem; color: #fff; position: relative; padding: 4px; box-sizing: border-box;
+            opacity: 0; animation: fadeInCarta 1s ease forwards;
+        }
+        .carta-revelada.invertida { transform: rotate(180deg); }
+        .carta-revelada .nombre-c { font-family: 'Cinzel Decorative', serif; font-weight: bold; color: #d4af37; margin-top: 4px; text-align: center; }
+        
+        .caja-interpretacion {
+            background: rgba(13, 6, 28, 0.95); border: 1px solid #4a3375;
+            border-radius: 8px; padding: 12px; text-align: left;
+            font-family: 'Montserrat', sans-serif; font-size: 0.85rem; line-height: 1.4;
+            max-height: 180px; overflow-y: auto;
+        }
+
+        /* ANUNCIOS DISCRETOS */
         .ads-box {
-            background: rgba(5, 3, 10, 0.8); border: 1px dashed rgba(212, 175, 55, 0.2);
-            padding: 10px; border-radius: 8px; color: #584d70; font-family: 'Montserrat', sans-serif; font-size: 0.7rem; margin-top: 20px;
+            background: rgba(5, 3, 10, 0.8); border: 1px dashed rgba(212, 175, 55, 0.15);
+            padding: 8px; border-radius: 6px; color: #4e4466; font-family: 'Montserrat', sans-serif; font-size: 0.65rem;
         }
 
         @keyframes girar { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes resplandorRitual {
+            0%, 100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.4); }
+            50% { box-shadow: 0 0 40px rgba(168, 85, 247, 0.8); }
+        }
+        @keyframes fadeInCarta { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
-<body onclick="forzarAudio()">
+<body onclick="activarFrecuenciaMistica()">
 
-    <audio id="musica-esoterica" loop src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+    <audio id="musica-esoterica" loop src="https://assets.mixkit.co/active_storage/sfx/123/123-84.wav"></audio>
     <audio id="sonido-cuenco" src="https://assets.mixkit.co/active_storage/sfx/1647/1647-84.wav"></audio>
 
     <div class="app-container">
         
         <div class="top-bar">
-            <button class="audio-ctrl" id="btn-audio" onclick="event.stopPropagation(); alternarMusica();">🔮 Audio: OFF</button>
+            <button class="audio-ctrl" id="btn-audio" onclick="event.stopPropagation(); alternarMusica();">🔮 Ambiente: OFF</button>
             <div id="zona-volver"></div>
             <div class="lang-ctrl">
                 <select id="selector-idioma" onchange="cambiarIdioma(this.value)">
@@ -221,7 +228,7 @@
         <div id="pantalla-menu" class="vista-seccion">
             <div class="menu-card" onclick="abrirTarotConfig()">
                 <div class="card-titulo" id="t1">🔮 Tarot</div>
-                <div class="card-desc" id="d1">Tiradas completas, Sí/No, y mazo desplegado en filas rituales.</div>
+                <div class="card-desc" id="d1">Tiradas completas, Sí/No, y paño místico visible sin necesidad de bajar.</div>
             </div>
             <div class="menu-card" onclick="alert('Próximamente...')">
                 <div class="card-titulo">🌌 Astrología</div>
@@ -254,7 +261,6 @@
                 <select id="tarot-tipo">
                     <option value="1">1 Carta (Respuesta Rápida)</option>
                     <option value="3" selected>3 Cartas (Pasado, Presente, Futuro)</option>
-                    <option value="celta">Cruz Celta (Compleja)</option>
                 </select>
             </div>
             <div class="selector-caja">
@@ -267,64 +273,52 @@
                     <option value="Gitano">Tarot Gitano</option>
                 </select>
             </div>
-            <button class="btn-magico" id="btn-mezclar" onclick="comenzarRitualTarot()">MEZCLAR Y DESPLEGAR MAZO</button>
+            <button class="btn-magico" id="btn-mezclar" onclick="comenzarRitualTarot()">DESPLEGAR MAZO COMPLETO</button>
         </div>
 
         <div id="pantalla-tarot-tablero" class="vista-seccion">
-            <p id="txt-instruccion" style="font-size:0.9rem; color:#a78bfa; margin:0;">El mazo ha sido mezclado. Elige tus cartas de las filas:</p>
-            <div class="contenedor-mazo" id="caja-mazo-filas"></div>
+            <p id="txt-instruccion" style="font-size:0.8rem; color:#a78bfa; margin:0;">El mazo se ha desplegado ante ti. Toca las cartas pausadamente:</p>
+            <div class="contenedor-mazo-fijo" id="caja-mazo-filas"></div>
         </div>
 
         <div id="pantalla-tarot-resultado" class="vista-seccion">
-            <h3 id="txt-dictamen" style="color:#d4af37; margin:0;">Tu Respuesta Sagrada</h3>
+            <h3 id="txt-dictamen" style="color:#d4af37; margin:0; font-size:1.1rem;">Tu Veredicto Cósmico</h3>
             <div class="resultado-cartas" id="caja-cartas-reveladas"></div>
             <div class="caja-interpretacion" id="texto-interpretacion"></div>
-            <button class="btn-magico" id="btn-otra" onclick="abrirTarotConfig()">REALIZAR OTRA CONSULTA</button>
+            <button class="btn-magico" id="btn-otra" onclick="abrirTarotConfig()" style="padding:8px; font-size:0.85rem;">NUEVA CONSULTA</button>
         </div>
 
         <div class="ads-box" id="txt-ads">ESPACIO RESERVADO PARA GOOGLE ADSENSE</div>
     </div>
 
     <script>
-        // Listado de cartas para simulación simbólica
+        // Listado de cartas tradicional purificado (sin emojis Arcade)
         const arcanosMayores = [
-            {es:"El Loco", en:"The Fool", pt:"O Louco", fr:"Le Mat", it:"Il Matto", de:"Der Narr", emoji:"🃏"},
-            {es:"El Mago", en:"The Magician", pt:"O Mago", fr:"Le Bateleur", it:"Il Bagatto", de:"Der Magier", emoji:"✨"},
-            {es:"La Sacerdotisa", en:"The High Priestess", pt:"A Sacerdotisa", fr:"La Papesse", it:"La Papessa", de:"Die Hohepriesterin", emoji:"🌙"},
-            {es:"La Emperatriz", en:"The Empress", pt:"A Imperatriz", fr:"L'Impératrice", it:"L'Imperatrice", de:"Die Kaiserin", emoji:"👑"},
-            {es:"El Emperador", en:"The Emperor", pt:"O Imperador", fr:"L'Empereur", it:"L'Imperatore", de:"Der Kaiser", emoji:"🏛️"},
-            {es:"El Hierofante", en:"The Hierophant", pt:"O Papa", fr:"Le Pape", it:"Il Papa", de:"Der Hierophant", emoji:"🙏"},
-            {es:"Los Enamorados", en:"The Lovers", pt:"Os Enamorados", fr:"L'Amoureux", it:"Gli Amanti", de:"Die Liebenden", emoji:"❤️"},
-            {es:"El Carro", en:"The Chariot", pt:"O Carro", fr:"Le Chariot", it:"Il Carro", de:"Der Wagen", emoji:"🛒"},
-            {es:"La Justicia", en:"Justice", pt:"A Justiça", fr:"La Justice", it:"La Giustizia", de:"Gerechtigkeit", emoji:"⚖️"},
-            {es:"El Ermitaño", en:"The Hermit", pt:"O Eremita", fr:"L'Ermite", it:"L'Eremita", de:"Der Einsiedler", emoji:"🕯️"},
-            {es:"La Rueda de la Fortuna", en:"Wheel of Fortune", pt:"A Roda da Fortuna", fr:"La Roue de Fortune", it:"Ruota della Fortuna", de:"Das Rad des Schicksals", emoji:"🎡"},
-            {es:"La Fuerza", en:"Strength", pt:"A Força", fr:"La Force", it:"La Forza", de:"Kraft", emoji:"🦁"},
-            {es:"El Colgado", en:"The Hanged Man", pt:"O Enforcado", fr:"Le Pendu", it:"L'Appeso", de:"Der Gehängte", emoji:"🙃"},
-            {es:"La Muerte", en:"Death", pt:"A Morte", fr:"La Mort", it:"La Morte", de:"Der Tod", emoji:"💀"},
-            {es:"La Templanza", en:"Temperance", pt:"A Temperança", fr:"La Tempérance", it:"La Temperanza", de:"Mäßigkeit", emoji:"🧪"},
-            {es:"El Diablo", en:"The Devil", pt:"O Diabo", fr:"Le Diable", it:"Il Diavolo", de:"Der Teufel", emoji:"🔥"},
-            {es:"La Torre", en:"The Tower", pt:"A Torre", fr:"La Maison Dieu", it:"La Torre", de:"Der Turm", emoji:"💥"},
-            {es:"La Estrella", en:"The Star", pt:"A Estrela", fr:"L'Étoile", it:"La Stella", de:"Der Stern", emoji:"⭐"},
-            {es:"La Luna", en:"The Moon", pt:"A Lua", fr:"La Lune", it:"La Luna", de:"Der Mond", emoji:"🌕"},
-            {es:"El Sol", en:"The Sun", pt:"O Sol", fr:"Le Soleil", it:"Il Sole", de:"Die Sonne", emoji:"☀️"},
-            {es:"El Juicio", en:"The Judgement", pt:"O Julgamento", fr:"Le Jugement", it:"Il Giudizio", de:"Gericht", emoji:"🎺"},
-            {es:"El Mundo", en:"The World", pt:"O Mundo", fr:"Le Monde", it:"Il Mondo", de:"Die Welt", emoji:"🌍"}
+            {es:"El Loco", en:"The Fool"}, {es:"El Mago", en:"The Magician"},
+            {es:"La Sacerdotisa", en:"The High Priestess"}, {es:"La Emperatriz", en:"The Empress"},
+            {es:"El Emperador", en:"The Emperor"}, {es:"El Hierofante", en:"The Hierophant"},
+            {es:"Los Enamorados", en:"The Lovers"}, {es:"El Carro", en:"The Chariot"},
+            {es:"La Justicia", en:"Justice"}, {es:"El Ermitaño", en:"The Hermit"},
+            {es:"La Rueda Fortuna", en:"Wheel of Fortune"}, {es:"La Fuerza", en:"Strength"},
+            {es:"El Colgado", en:"The Hanged Man"}, {es:"La Muerte", en:"Death"},
+            {es:"La Templanza", en:"Temperance"}, {es:"El Diablo", en:"The Devil"},
+            {es:"LA TORRE", en:"THE TOWER"}, {es:"La Estrella", en:"The Star"},
+            {es:"La Luna", en:"The Moon"}, {es:"El Sol", en:"The Sun"},
+            {es:"El Juicio", en:"The Judgement"}, {es:"El Mundo", en:"The World"}
         ];
 
         let idiomaActual = 'es';
         let cartasRequeridas = 3;
         let cartasSeleccionadasIndices = [];
         let mazoMezcladoConPosicion = [];
+        let ritualEnProceso = false;
 
         function cambiarVista(idVista) {
             document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
             document.getElementById(idVista).classList.add('activa');
-            
-            // Administrar botón de volver místico
             const zonaVolver = document.getElementById('zona-volver');
             if(idVista !== 'pantalla-splash' && idVista !== 'pantalla-menu') {
-                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">← Volver</button>`;
+                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">← Menu</button>`;
             } else {
                 zonaVolver.innerHTML = '';
             }
@@ -338,10 +332,10 @@
             const selectTipo = document.getElementById('tarot-tipo');
             if(tema === 'sino') {
                 cajaTirada.style.display = 'none';
-                selectTipo.innerHTML = `<option value="sino1">1 Carta (Respuesta Sí/No)</option><option value="sino2">2 Cartas (Sí/No + Por qué)</option>`;
+                selectTipo.innerHTML = `<option value="sino1">1 Carta (Respuesta SÍ / NO)</option><option value="sino2">2 Cartas (SÍ / NO + Por qué)</option>`;
             } else {
                 cajaTirada.style.display = 'block';
-                selectTipo.innerHTML = `<option value="1">1 Carta (Respuesta Rápida)</option><option value="3" selected>3 Cartas (Pasado, Presente, Futuro)</option><option value="celta">Cruz Celta (Compleja)</option>`;
+                selectTipo.innerHTML = `<option value="1">1 Carta (Respuesta Rápida)</option><option value="3" selected>3 Cartas (Pasado, Presente, Futuro)</option>`;
             }
         }
 
@@ -350,52 +344,53 @@
             const tipo = document.getElementById('tarot-tipo').value;
             if(tipo === '1' || tipo === 'sino1') cartasRequeridas = 1;
             else if(tipo === 'sino2') cartasRequeridas = 2;
-            else if(tipo === '3') cartasRequeridas = 3;
-            else cartasRequeridas = 5; // Cruz celta simplificada para esta fase
+            else cartasRequeridas = 3;
 
             cartasSeleccionadasIndices = [];
-            
-            // Generar mazo completo mezclado y definir orientación (Derecha o Invertida)
             mazoMezcladoConPosicion = [];
-            let indicesBase = Array.from({length: arcanosMayores.length}, (_, i) => i);
-            // Duplicamos para rellenar visualmente el tablero desplegado en filas
-            let mazoExtendido = [...indicesBase, ...indicesBase]; 
+            ritualEnProceso = false;
             
-            // Mezclado aleatorio real
-            mazoExtendido.sort(() => Math.random() - 0.5);
+            // Creamos un mazo exacto de 21 cartas para que calce perfecto en una grilla de 7x3 sin sobrar espacio
+            let arcanosReducidos = arcanosMayores.slice(0, 21);
+            arcanosReducidos.sort(() => Math.random() - 0.5);
             
-            mazoExtendido.forEach(idx => {
+            arcanosReducidos.forEach((carta, idx) => {
                 mazoMezcladoConPosicion.push({
-                    index: idx,
-                    invertida: Math.random() > 0.5 // 50% probabilidad de salir invertida
+                    original: carta,
+                    invertida: Math.random() > 0.5
                 });
             });
 
-            // Dibujar el mazo boca abajo en filas completas ocupando la pantalla
             const cajaMazo = document.getElementById('caja-mazo-filas');
             cajaMazo.innerHTML = '';
             
             mazoMezcladoConPosicion.forEach((item, indiceTablero) => {
                 let divCard = document.createElement('div');
                 divCard.className = 'carta-tarot';
-                divCard.onclick = () => seleccionarCartaDelTablero(indiceTablero, divCard);
+                divCard.onclick = () => iniciarRitualCarta(indiceTablero, divCard);
                 cajaMazo.appendChild(divCard);
             });
 
             cambiarVista('pantalla-tarot-tablero');
         }
 
-        function seleccionarCartaDelTablero(indiceTablero, elementoHTML) {
-            if(elementoHTML.classList.contains('seleccionada') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
+        // RITUAL PAUSADO: La carta flota y resplandece antes de seleccionarse
+        function iniciarRitualCarta(indiceTablero, elementoHTML) {
+            if(ritualEnProceso || elementoHTML.classList.contains('ritualmente-seleccionada') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
             
-            sonarCuenco();
-            elementoHTML.classList.add('seleccionada');
-            cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[indiceTablero]);
+            ritualEnProceso = true; // Bloquea toques rápidos
+            sonarCuenco(); // Cuenco profundo
+            elementoHTML.classList.add('ritualmente-seleccionada'); // Flota y brilla por 2s
 
-            // Si ya seleccionó la cantidad de cartas de la tirada, revelamos el veredicto
-            if(cartasSeleccionadasIndices.length === cartasRequeridas) {
-                setTimeout(revelarTiradaFinal, 900);
-            }
+            // Esperamos 2 segundos de ritual antes de confirmar la selección y pasar a lo siguiente
+            setTimeout(() => {
+                cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[indiceTablero]);
+                ritualEnProceso = false; // Desbloquea
+
+                if(cartasSeleccionadasIndices.length === cartasRequeridas) {
+                    setTimeout(revelarTiradaFinal, 800);
+                }
+            }, 2000); // 2 segundos de pausa mística
         }
 
         function revelarTiradaFinal() {
@@ -408,62 +403,61 @@
             let contadoresSi = 0;
 
             cartasSeleccionadasIndices.forEach((cartaData, i) => {
-                let cardObj = arcanosMayores[cartaData.index];
+                let cardObj = cartaData.original;
                 let nombreIdioma = cardObj[idiomaActual];
                 let estadoPosicion = cartaData.invertida ? (idiomaActual === 'es' ? " (Invertida)" : " (Reversed)") : "";
 
-                // Creamos el diseño de la carta dada vuelta sin rotarla físicamente de posición original
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
-                divC.innerHTML = `<div style="font-size:2rem;">${cardObj.emoji}</div><div class="nombre-c">${nombreIdioma}</div><div style="font-size:0.5rem; opacity:0.7;">${estadoPosicion}</div>`;
+                // Mostramos el nombre de la carta en grande, sin dibujos arcade molesto
+                divC.innerHTML = `<div class="nombre-c" style="font-size:0.9rem;">${nombreIdioma}</div>`;
                 cajaRevelada.appendChild(divC);
 
-                // Lógica de dictamen automático interpretativo
-                let esPositiva = (!cartaData.invertida && cartaData.index % 2 === 0);
+                let esPositiva = (!cartaData.invertida);
                 if (esPositiva) contadoresSi++;
 
                 parrafosInterpretacion += `<p><strong>✨ Carta ${i+1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
                 if(esSiNo) {
-                    parrafosInterpretacion += esPositiva ? "Aporta una vibración afirmativa, abriendo caminos hacia lo que consultas." : "Indica un bloqueo temporal o advertencia que requiere cautela en la decisión.";
+                    parrafosInterpretacion += esPositiva ? "La energía fluye de manera armónica, dándote luz verde y claridad absoluta para avanzar." : "Se advierte una resistencia o interferencia. El cosmos te sugiere detenerte y evaluar antes de actuar.";
                 } else {
-                    parrafosInterpretacion += `El cosmos te indica que esta energía representa un factor clave en tu destino actual. Trae consigo sabiduría oculta para tu evolución espiritual en este plano.`;
+                    parrafosInterpretacion += `Se manifiesta en tu plano para recordarte las fuerzas espirituales que moldean tu presente. Escucha la vibración de tu intuición interna.`;
                 }
                 parrafosInterpretacion += `</p>`;
             });
 
-            // Si es tirada de Sí/No, se genera la respuesta definitiva en la pantalla
             if(esSiNo) {
                 let respuestaDefinitiva = contadoresSi >= (cartasRequeridas / 2) ? "🔮 DICTAMEN: SÍ" : "🔮 DICTAMEN: NO";
-                parrafosInterpretacion = `<h3 style="color:#d4af37; text-align:center;">${respuestaDefinitiva}</h3>` + parrafosInterpretacion;
+                parrafosInterpretacion = `<h3 style="color:#d4af37; text-align:center; font-size:1.2rem; margin:5px 0;">${respuestaDefinitiva}</h3>` + parrafosInterpretacion;
             }
 
             cajaTexto.innerHTML = parrafosInterpretacion;
             cambiarVista('pantalla-tarot-resultado');
         }
 
-        // SISTEMA DE AUDIO Y NAVEGADORES
+        // CONTROL DE SONIDO ENVOLVENTE Y ETÉREO
         let audioPlay = false;
         const mAudio = document.getElementById('musica-esoterica');
         const mCuenco = document.getElementById('sonido-cuenco');
 
-        function forzarAudio() {
+        function activarFrecuenciaMistica() {
             if(!audioPlay) {
+                mAudio.volume = 0.25; // Súper tenue y ambiental
                 mAudio.play().then(() => {
-                    document.getElementById('btn-audio').innerText = "🔮 Audio: ON";
+                    document.getElementById('btn-audio').innerText = "🔮 Ambiente: ON";
                     audioPlay = true;
                 }).catch(() => {});
             }
         }
         function alternarMusica() {
             if (mAudio.paused) {
-                mAudio.play(); document.getElementById('btn-audio').innerText = "🔮 Audio: ON"; audioPlay = true;
+                mAudio.play(); document.getElementById('btn-audio').innerText = "🔮 Ambiente: ON"; audioPlay = true;
             } else {
-                mAudio.pause(); document.getElementById('btn-audio').innerText = "🔮 Audio: OFF";
+                mAudio.pause(); document.getElementById('btn-audio').innerText = "🔮 Ambiente: OFF";
             }
         }
-        function sonarCuenco() { mCuenco.currentTime = 0; mCuenco.play().catch(()=>{}); }
+        function sonarCuenco() { mCuenco.currentTime = 0; mCuenco.volume = 0.4; mCuenco.play().catch(()=>{}); }
 
-        // INTERNACIONALIZACIÓN
+        // DICCIONARIO INTERNACIONAL
         const textosTraducidos = {
             es: { lema: "El universo responde", entrar: "ENTRAR", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE" },
             en: { lema: "The universe answers", entrar: "ENTER", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE" },
