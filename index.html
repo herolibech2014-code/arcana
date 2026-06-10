@@ -41,38 +41,6 @@
             position: relative;
         }
 
-        /* PANTALLA DE BIENVENIDA OBLIGATORIA PARA DESBLOQUEAR AUDIO */
-        #pantalla-bienvenida {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: #04010a;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            gap: 30px;
-        }
-
-        .btn-entrar-altar {
-            background: rgba(15, 4, 35, 0.9);
-            border: 2px solid #d4af37;
-            border-radius: 8px;
-            color: #d4af37;
-            padding: 20px 40px;
-            cursor: pointer;
-            font-size: 1.6rem;
-            font-family: 'Cinzel Decorative', serif;
-            letter-spacing: 3px;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
-            transition: all 0.3s ease;
-        }
-        .btn-entrar-altar:hover {
-            box-shadow: 0 0 35px rgba(212, 175, 55, 0.7);
-            background: rgba(212, 175, 55, 0.15);
-            transform: scale(1.05);
-        }
-
         /* BARRA SUPERIOR */
         .top-bar {
             display: flex;
@@ -191,7 +159,7 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE ABANICOS DEL ALTAR */
+        /* CONTENEDOR DE ABANICOS */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
@@ -315,13 +283,8 @@
 </head>
 <body>
 
-    <audio id="audio-ambiente-real" loop src="musica-fondo.mp3"></audio>
+    <audio id="audio-ambiente-real" loop src="musica-fondo.MP3"></audio>
     <audio id="audio-cuenco-real" src="sonido-cuenco.mp3"></audio>
-
-    <div id="pantalla-bienvenida">
-        <h1 style="color:#d4af37; font-size: 2.5rem; letter-spacing: 4px; text-shadow: 0 0 15px rgba(212,212,55,0.3);">ARCANA</h1>
-        <button class="btn-entrar-altar" onclick="entrarAlAltarSeguro()">ENTRAR AL ALTAR</button>
-    </div>
 
     <div class="app-container" id="contenedor-global">
         
@@ -337,7 +300,7 @@
         </div>
 
         <div class="logo-area">
-            <img src="fondo-arcana.jpg" alt="Altar" class="imagen-icono-unica" onerror="this.style.display='none'">
+            <img src="fondo-arcana.jpg" alt="Logo" class="imagen-icono-unica" onerror="this.style.display='none'">
             <h1 class="marca-titulo">ARCANA</h1>
             <div class="lema" id="txt-lema">El universo responde</div>
         </div>
@@ -346,7 +309,7 @@
             <div class="menu-contenedor">
                 <div class="menu-card" onclick="abrirTarotConfig()">
                     <div class="card-titulo" id="t1">🔮 Tarot</div>
-                    <div class="card-desc" id="d1">Las 78 cartas desplegadas en su totalidad sobre el altar violeta.</div>
+                    <div class="card-desc" id="d1">Las 78 cartas desplegadas en su totalidad sobre el tapete violeta.</div>
                 </div>
                 <div class="menu-card" onclick="alert('Próximamente...')">
                     <div class="card-titulo">🌌 Astrología</div>
@@ -421,32 +384,33 @@
         
         let audioAmbiente = document.getElementById('audio-ambiente-real');
         let audioCuenco = document.getElementById('audio-cuenco-real');
+        let musicaEncendida = false;
 
-        // FUNCIÓN CLAVE: Desbloquea la música gracias al botón inicial
-        function entrarAlAltarSeguro() {
-            document.getElementById('pantalla-bienvenida').style.display = 'none';
-            
-            if (audioAmbiente) {
-                audioAmbiente.volume = 0.25;
-                audioAmbiente.play().catch(e => console.log("Reintento de audio programado"));
+        // Se activa con el primer clic real del usuario sin molestar
+        function asegurarMusicaDeFondo() {
+            if (!musicaEncendida && audioAmbiente) {
+                audioAmbiente.volume = 0.20;
+                audioAmbiente.play()
+                    .then(() => { musicaEncendida = true; })
+                    .catch(e => console.log("Esperando toque de usuario..."));
             }
-            sonarCuencoOriginal();
         }
 
         function sonarCuencoOriginal() {
+            asegurarMusicaDeFondo();
             if (audioCuenco) {
                 audioCuenco.currentTime = 0;
-                audioCuenco.volume = 0.5;
-                audioCuenco.play().catch(e => console.log("Sonido cuenco silenciado"));
+                audioCuenco.volume = 0.4;
+                audioCuenco.play().catch(e => console.log("Sonido cuenco listo"));
             }
         }
 
-        // MAZO DE 78 CARTAS TOTALMENTE SANEADO
+        // MAZO DE 78 CARTAS COMPLETO
         const mazoOficial78 = [
             {es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad."},
             {es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros."},
             {es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado."},
-            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación."},
+            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creation."},
             {es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control."},
             {es:"El Hierofante", en:"The Hierophant", significado:"Tradición, sabiduría, guía espiritual, estudios."},
             {es:"Los Enamorados", en:"The Lovers", significado:"Elecciones del corazón, armonía, dualidad, uniones."},
@@ -481,10 +445,10 @@
             {es:"Rey de Bastos", en:"King of Wands", significado:"Liderazgo absoluto, visión ejecutiva, inspiración."},
             {es:"As de Copas", en:"Ace of Cups", significado:"Amor puro desbordante, despertar emocional, intuición."},
             {es:"Dos de Copas", en:"Two of Cups", significado:"Conexión recíproca, romance, pactos, alma gemela."},
-            {es:"Tres de Copas", en:"Three of Cups", significado:"Brindis familiar, amistad verdadera, comunidad feliz."},
+            {es:"Tres de Copas", en:"Three of Cups", significado:"Brindis familiar, amistar verdadera, comunidad feliz."},
             {es:"Cuatro de Copas", en:"Four of Cups", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades."},
             {es:"Cinco de Copas", en:"Five of Cups", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío."},
-            {es:"Seis de Copas", en:"Six of Cups", grandmother:"Nostalgia sana, recuerdos de la infancia, reencuentros."},
+            {es:"Seis de Copas", en:"Six of Cups", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros."},
             {es:"Siete de Copas", en:"Seven of Cups", significado:"Fantasías, exceso de opciones, ilusiones engañosas."},
             {es:"Ocho de Copas", en:"Eight of Cups", significado:"Abandono voluntario de lo que ya no nutre el alma."},
             {es:"Nueve de Copas", en:"Nine of Cups", significado:"Deseo concedido, satisfacción personal, bienestar."},
@@ -519,7 +483,7 @@
             {es:"Diez de Oros", en:"Ten of Pentacles", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida."},
             {es:"Sota de Oros", en:"Page of Pentacles", significado:"Estudiante aplicado, nueva idea de negocio realista."},
             {es:"Caballero de Oros", en:"Knight of Pentacles", significado:"Avance lento pero seguro, constancia inquebrantable."},
-            {es:"Reina de Oros", en:"Queen of Pentacles", significado:"Nutrición terrenal, prosperity práctica, amor al hogar."},
+            {es:"Reina de Oros", en:"Queen of Pentacles", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar."},
             {es:"Rey de Oros", en:"King of Pentacles", significado:"Éxito financiero absoluto, dominio de la materia, seguridad."}
         ];
 
@@ -696,4 +660,3 @@
     </script>
 </body>
 </html>
-
