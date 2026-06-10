@@ -41,7 +41,7 @@
             position: relative;
         }
 
-        /* BARRA SUPERIOR LIMPIA SIN BOTON DE AUDIO TRABADO */
+        /* BARRA SUPERIOR */
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -125,7 +125,7 @@
         .vista-seccion { display: none; flex-direction: column; gap: 30px; width: 100%; }
         .activa { display: flex; }
 
-        /* MENU PRINCIPAL TOTALMENTE GIGANTE Y ESPACIADO */
+        /* MENU PRINCIPAL */
         .menu-contenedor { 
             display: flex; 
             flex-direction: column; 
@@ -164,7 +164,7 @@
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
-            gap: 80px; /* Mucho espacio vertical entre mazos */
+            gap: 90px;
             width: 100%;
             margin-top: 30px;
             padding-bottom: 80px;
@@ -172,7 +172,7 @@
         .abanico-fila {
             position: relative;
             width: 100%;
-            height: 240px; /* Más alto para soportar las cartas grandes */
+            height: 240px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -191,7 +191,7 @@
             border-radius: 12px;
         }
         
-        /* NAIPES GRANDES (Quietos al pasar el mouse por encima) */
+        /* NAIPES GRANDES */
         .carta-tarot-real {
             position: absolute;
             width: 120px;
@@ -212,12 +212,8 @@
             content: '✦'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
             color: rgba(212, 175, 55, 0.25); font-size: 1.6rem;
         }
-        .carta-tarot-real:hover {
-            border-color: #d4af37;
-            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
-        }
         
-        /* EFECTO DE ELECCIÓN CUANDO RECIBE EL CLICK */
+        /* EFECTO DE ELECCIÓN EXCLUSIVO AL CLICK */
         .carta-tarot-real.elegida-ritual {
             transform: translateY(-50px) scale(1.15) !important;
             z-index: 99 !important;
@@ -250,30 +246,20 @@
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
-        /* REGLAS RESPONSIVAS AGIGANTADAS PARA DISPOSITIVOS MÓVILES */
+        /* REGLAS RESPONSIVAS AGIGANTADAS PARA MÓVILES Y TABLETS */
         @media (max-width: 600px) {
             .app-container { padding: 15px; gap: 25px; }
             h1.marca-titulo { font-size: 2.8rem; letter-spacing: 4px; }
             .lema { font-size: 1.1rem; }
             .imagen-icono-unica { width: 110px; height: 110px; }
             
-            /* HOME EN CELULAR: Botones masivos para no errarle */
             .card-titulo { font-size: 2rem; }
             .card-desc { font-size: 1rem; }
             .menu-card { padding: 30px 15px; }
 
-            /* ABANICO EN CELULAR: Cartas grandes y arco estiradísimo para separar los bordes */
-            .carta-tarot-real { 
-                width: 90px; 
-                height: 155px; 
-            }
-            .abanico-fila { 
-                height: 180px; 
-                width: 100%;
-            }
-            .contenedor-altar-abanicos {
-                gap: 90px; /* Gran separación para que los dedos naveguen cómodos */
-            }
+            .carta-tarot-real { width: 90px; height: 155px; }
+            .abanico-fila { height: 180px; width: 100%; }
+            .contenedor-altar-abanicos { gap: 90px; }
 
             .instruccion-directa { font-size: 1.8rem; }
             .carta-revelada { width: 135px; height: 210px; }
@@ -282,7 +268,6 @@
         }
         
         @media (min-width: 601px) and (max-width: 900px) {
-            /* TABLETS */
             .carta-tarot-real { width: 105px; height: 180px; }
             .abanico-fila { height: 210px; }
             .card-titulo { font-size: 2.2rem; }
@@ -291,7 +276,10 @@
         @keyframes develaCarta { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
-<body>
+<body onclick="activarAudiosOriginales()">
+
+    <audio id="audio-ambiente-real" loop src="musica-fondo.mp3"></audio>
+    <audio id="audio-cuenco-real" src="sonido-cuenco.mp3"></audio>
 
     <div class="app-container" id="contenedor-global">
         
@@ -383,18 +371,95 @@
     </div>
 
     <script>
-        const arcanosMayores = [
-            {es:"El Loco", en:"The Fool"}, {es:"El Mago", en:"The Magician"},
-            {es:"La Sacerdotisa", en:"The High Priestess"}, {es:"La Emperatriz", en:"The Empress"},
-            {es:"El Emperador", en:"The Emperor"}, {es:"El Hierofante", en:"The Hierophant"},
-            {es:"Los Enamorados", en:"The Lovers"}, {es:"El Carro", en:"The Chariot"},
-            {es:"La Justicia", en:"Justice"}, {es:"El Ermitaño", en:"The Hermit"},
-            {es:"La Rueda Fortuna", en:"Wheel of Fortune"}, {es:"La Fuerza", en:"Strength"},
-            {es:"El Colgado", en:"The Hanged Man"}, {es:"La Muerte", en:"Death"},
-            {es:"La Templanza", en:"Temperance"}, {es:"El Diablo", en:"The Devil"},
-            {es:"LA TORRE", en:"THE TOWER"}, {es:"La Estrella", en:"The Star"},
-            {es:"La Luna", en:"The Moon"}, {es:"El Sol", en:"The Sun"},
-            {es:"El Juicio", en:"The Judgement"}, {es:"El Mundo", en:"The World"}
+        // EL MAZO REAL COMPLETO DE 78 CARTAS (22 Mayores + 56 Menores)
+        const mazoOficial78 = [
+            /* ARCANOS MAYORES (0 al 21) */
+            {es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad."},
+            {es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros."},
+            {es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado."},
+            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación."},
+            {es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control."},
+            {es:"El Hierofante", en:"The Hierophant", significado:"Tradición, sabiduría, guía espiritual, estudios."},
+            {es:"Los Enamorados", en:"The Lovers", significado:"Elecciones del corazón, armonía, dualidad, uniones."},
+            {es:"El Carro", en:"The Chariot", significado:"Determinación, victoria, control de fuerzas opuestas."},
+            {es:"La Justicia", en:"Justice", significado:"Verdad, causa y efecto, equilibrio de la balanza."},
+            {es:"El Ermitaño", en:"The Hermit", significado:"Introspección, retiro voluntario, luz interior."},
+            {es:"La Rueda de la Fortuna", en:"Wheel of Fortune", significado:"Cambios de destino, ciclos, golpes de suerte."},
+            {es:"La Fuerza", en:"Strength", significado:"Valor interno, compasión, domar las pasiones básicas."},
+            {es:"El Colgado", en:"The Hanged Man", significado:"Nueva perspectiva, pausa necesaria, sacrificio."},
+            {es:"La Muerte", en:"Death", significado:"Transformación profunda, finales que traen renacer."},
+            {es:"La Templanza", en:"Temperance", significado:"Alquimia, paciencia, moderación, balance emocional."},
+            {es:"El Diablo", en:"The Devil", significado:"Ataduras materiales, pasiones ocultas, sombras del ego."},
+            {es:"La Torre", en:"The Tower", significado:"Ruptura de estructuras falsas, revelación repentina."},
+            {es:"La Estrella", en:"The Star", significado:"Esperanza, sanación espiritual, renovación, fe."},
+            {es:"La Luna", en:"The Moon", significado:"Ilusiones, miedos escondidos, intuición profunda."},
+            {es:"El Sol", en:"The Sun", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante."},
+            {es:"El Juicio", en:"The Judgement", significado:"Llamado interno, absolución, despertar a tu verdad."},
+            {es:"El Mundo", en:"The World", significado:"Cierre de ciclos con éxito, plenitud, autorrealización."},
+            
+            /* BASTOS (Fuego - Acción) */
+            {es:"As de Bastos", en:"Ace of Wands", significado:"Chispa creativa, pasión inicial, nueva oportunidad."},
+            {es:"Dos de Bastos", en:"Two of Wands", significado:"Planificación a futuro, mirar horizontes, decisiones."},
+            {es:"Tres de Bastos", en:"Three of Wands", significado:"Expansión, barcos llegando, frutos del esfuerzo."},
+            {es:"Cuatro de Bastos", en:"Four of Wands", significado:"Celebración, hogar armónico, estabilidad lograda."},
+            {es:"Cinco de Bastos", en:"Five of Wands", significado:"Competencia, tensiones menores, caos creativo."},
+            {es:"Seis de Bastos", en:"Six of Wands", significado:"Reconocimiento público, victoria, aplausos merecidos."},
+            {es:"Siete de Bastos", en:"Seven of Wands", significado:"Defensa de tus principios, sostener tu posición firme."},
+            {es:"Ocho de Bastos", en:"Eight of Wands", significado:"Velocidad, noticias rápidas, movimiento sin freno."},
+            {es:"Nueve de Bastos", en:"Nine of Wands", significado:"Último esfuerzo, resiliencia, guardia en alto."},
+            {es:"Diez de Bastos", en:"Ten of Wands", significado:"Carga pesada, exceso de responsabilidades, agotamiento."},
+            {es:"Sota de Bastos", en:"Page of Wands", significado:"Mensajero entusiasta, ganas de explorar, aventura."},
+            {es:"Caballero de Bastos", en:"Knight of Wands", significado:"Acción impetuosa, mudanzas, avance apasionado."},
+            {es:"Reina de Bastos", en:"Queen of Wands", significado:"Magnetismo, confianza, fuego social y protector."},
+            {es:"Rey de Bastos", en:"King of Wands", significado:"Liderazgo absoluto, visión ejecutiva, inspiración."},
+
+            /* COPAS (Agua - Emoción) */
+            {es:"As de Copas", en:"Ace of Cups", significado:"Amor puro desbordante, despertar emocional, intuición."},
+            {es:"Dos de Copas", en:"Two of Cups", significado:"Conexión recíproca, romance, pactos, alma gemela."},
+            {es:"Tres de Copas", en:"Three of Cups", significado:"Brindis familiar, amistad verdadera, comunidad feliz."},
+            {es:"Cuatro de Copas", en:"Four of Cups", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades."},
+            {es:"Cinco de Copas", en:"Five of Cups", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío."},
+            {es:"Seis de Copas", en:"Six of Cups", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros."},
+            {es:"Siete de Copas", en:"Seven of Cups", significado:"Fantasías, exceso de opciones, ilusiones engañosas."},
+            {es:"Ocho de Copas", en:"Eight of Cups", significado:"Abandono voluntario de lo que ya no nutre el alma."},
+            {es:"Nueve de Copas", en:"Nine of Cups", significado:"Deseo concedido, satisfacción personal, bienestar."},
+            {es:"Diez de Copas", en:"Ten of Cups", significado:"Dicha familiar absoluta, amor consolidado, paz."},
+            {es:"Sota de Copas", en:"Page of Cups", significado:"Sensibilidad artística, noticias afectivas tiernas."},
+            {es:"Caballero de Copas", en:"Knight of Cups", significado:"El portador del romance, propuesta sincera, idealismo."},
+            {es:"Reina de Copas", en:"Queen of Cups", significado:"Empatía total, madre intuitiva, refugio emocional."},
+            {es:"Rey de Copas", en:"King of Cups", significado:"Maestría emocional, templanza ante las crisis."},
+
+            /* ESPADAS (Aire - Mente) */
+            {es:"As de Espadas", en:"Ace of Swords", significado:"Claridad mental destructiva, verdad cruda, gran avance."},
+            {es:"Dos de Espadas", en:"Two of Swords", significado:"Callejón sin salida mental, ojos vendados, indecisión."},
+            {es:"Tres de Espadas", en:"Three of Swords", significado:"Dolor en el corazón, traición asumida, herida liberadora."},
+            {es:"Cuatro de Espadas", en:"Four of Swords", significado:"Descanso mental obligatorio, meditación, tregua."},
+            {es:"Cinco de Espadas", en:"Five of Swords", significado:"Victoria pírrica, discusiones donde todos pierden."},
+            {es:"Seis de Espadas", en:"Six of Swords", significado:"Viaje hacia aguas más tranquilas, transición necesaria."},
+            {es:"Siete de Espadas", en:"Seven of Swords", significado:"Estrategia oculta, astucia, evitar la confrontación."},
+            {es:"Ocho de Espadas", en:"Eight of Swords", significado:"Prisión mental autoimpuesta, parálisis por miedo."},
+            {es:"Nueve de Espadas", en:"Nine of Swords", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente."},
+            {es:"Diez de Espadas", en:"Ten of Swords", significado:"Final absoluto del dolor, tocar fondo para renacer."},
+            {es:"Sota de Espadas", en:"Page of Swords", significado:"Vigilancia, mente analítica, verdades incómodas."},
+            {es:"Caballero de Espadas", en:"Knight of Swords",资讯:"Defensa feroz de ideas, verdades directas sin filtro."},
+            {es:"Reina de Espadas", en:"Queen of Swords", significado:"Independencia intelectual, discernimiento agudo, límites."},
+            {es:"Rey de Espadas", en:"King of Swords", significado:"Juicio justo y analítico, autoridad de la verdad."},
+
+            /* OROS (Tierra - Materia) */
+            {es:"As de Oros", en:"Ace of Pentacles", significado:"Semilla de abundancia, inicio financiero sólido, salud."},
+            {es:"Dos de Oros", en:"Two of Pentacles", significado:"Malabarismo financiero, adaptación a los cambios cotidianos."},
+            {es:"Tres de Oros", en:"Three of Pentacles", significado:"Trabajo en equipo, maestría artesanal, colaboración."},
+            {es:"Cuatro de Oros", en:"Four of Pentacles", significado:"Avaricia, apego al dinero por miedo a la carencia."},
+            {es:"Cinco de Oros", en:"Five of Pentacles", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana."},
+            {es:"Seis de Oros", en:"Six of Pentacles", significado:"Generosidad recíproca, dar y recibir de forma equilibrada."},
+            {es:"Siete de Oros", en:"Seven of Pentacles", significado:"Paciencia ante la cosecha, evaluar el crecimiento de tu siembra."},
+            {es:"Ocho de Oros", en:"Eight of Pentacles", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos."},
+            {es:"Nueve de Oros", en:"Nine of Pentacles", significado:"Independencia material, disfrutar los lujos logrados."},
+            {es:"Diez de Oros", en:"Ten of Pentacles", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida."},
+            {es:"Sota de Oros", en:"Page of Pentacles", significado:"Estudiante aplicado, nueva idea de negocio realista."},
+            {es:"Caballero de Oros", en:"Knight of Pentacles", significado:"Avance lento pero seguro, constancia inquebrantable."},
+            {es:"Reina de Oros", en:"Queen of Pentacles", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar."},
+            {es:"Rey de Oros", en:"King of Pentacles", significado:"Éxito financiero absoluto, dominio de la materia, seguridad."}
         ];
 
         let idiomaActual = 'es';
@@ -402,6 +467,28 @@
         let cartasSeleccionadasIndices = [];
         let mazoMezcladoConPosicion = [];
         let ritualEnProceso = false;
+        
+        let audioAmbiente = document.getElementById('audio-ambiente-real');
+        let audioCuenco = document.getElementById('audio-cuenco-real');
+        let audioIniciado = false;
+
+        // Activa el ambiente relajante real apenas toca cualquier lado
+        function activarAudiosOriginales() {
+            if (!audioIniciado) {
+                audioAmbiente.volume = 0.25;
+                audioAmbiente.play().catch(() => {});
+                audioIniciado = true;
+            }
+        }
+
+        // Toca el cuenco de verdad desde el archivo del servidor
+        function sonarCuencoOriginal() {
+            if (audioCuenco) {
+                audioCuenco.currentTime = 0;
+                audioCuenco.volume = 0.5;
+                audioCuenco.play().catch(() => {});
+            }
+        }
 
         function cambiarVista(idVista) {
             const contenedor = document.getElementById('contenedor-global');
@@ -422,8 +509,8 @@
             }
         }
 
-        function irAlMenu() { cambiarVista('pantalla-menu'); }
-        function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
+        function irAlMenu() { sonarCuencoOriginal(); cambiarVista('pantalla-menu'); }
+        function abrirTarotConfig() { sonarCuencoOriginal(); cambiarVista('pantalla-tarot-config'); }
 
         function ajustarTipoTirada(tema) {
             const cajaTirada = document.getElementById('caja-tipo-tirada');
@@ -438,6 +525,7 @@
         }
 
         function comenzarRitualTarot() {
+            sonarCuencoOriginal();
             const tipo = document.getElementById('tarot-tipo').value;
             cartasRequeridas = (tipo === '1' || tipo === 'sino1') ? 1 : 3;
 
@@ -448,19 +536,21 @@
             mazoMezcladoConPosicion = [];
             ritualEnProceso = false;
 
-            let mazo78 = [];
-            for(let i = 0; i < 78; i++) {
-                let arcano = arcanosMayores[i % arcanosMayores.length];
-                mazo78.push({ original: arcano, invertida: Math.random() > 0.45 });
-            }
-            mazo78.sort(() => Math.random() - 0.5);
-            mazoMezcladoConPosicion = mazo78;
+            // Clonamos e invertimos aleatoriamente las 78 cartas del mazo real
+            let mazo78Original = mazoOficial78.map(c => {
+                return { original: c, invertida: Math.random() > 0.45 };
+            });
+            
+            // Mezcla mística real
+            mazo78Original.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazo78Original;
 
             const contenedorAbanicos = document.getElementById('altar-abanicos-completo');
             contenedorAbanicos.innerHTML = '';
             
-            const totalFilas = 3;
-            const cartasPorFila = 10; // Menos cartas por mazo para obligar al abanico a estirarse más
+            // Repartimos las 78 cartas reales en 6 abanicos amplios de 13 cartas para que los dedos naveguen perfectos
+            const totalFilas = f = 6;
+            const cartasPorFila = 13; 
 
             for (let f = 0; f < totalFilas; f++) {
                 let divFila = document.createElement('div');
@@ -479,9 +569,8 @@
                     divCard.className = 'carta-tarot-real';
                     
                     let posRelativa = (i - inicioIdx) - (cartasPorFila - 1) / 2;
-                    
                     let esCelular = window.innerWidth < 600;
-                    // Estiramos drásticamente el abanico en los costados para separar los bordes superiores
+                    
                     let multiplicadorGiro = esCelular ? 6.5 : 4.0; 
                     let multiplicadorX = esCelular ? 24 : 36;    
 
@@ -505,6 +594,7 @@
             if(ritualEnProceso || elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
             
             ritualEnProceso = true; 
+            sonarCuencoOriginal(); 
             elementoHTML.classList.add('elegida-ritual'); 
 
             setTimeout(() => {
@@ -533,6 +623,7 @@
 
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
+                // Aquí se inyectará tu lógica de imágenes de cartas en el futuro
                 divC.innerHTML = `<div class="nombre-c">${nombreIdioma}</div>`;
                 cajaRevelada.appendChild(divC);
 
@@ -540,11 +631,7 @@
                 if (esPositiva) contadoresSi++;
 
                 parrafosInterpretacion += `<p><strong>✦ Arcano ${i+1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
-                if(esSiNo) {
-                    parrafosInterpretacion += esPositiva ? "La energía cósmica es favorable, manifestando una senda afirmativa." : "Las fuerzas sugieren introspección o freno. Recomiendan resguardo.";
-                } else {
-                    parrafosInterpretacion += `Su presencia devela las corrientes espirituales de tu situación actual. Medita en su mensaje.`;
-                }
+                parrafosInterpretacion += `<strong>Interpretación:</strong> ${cardObj.significado}`;
                 parrafosInterpretacion += `</p>`;
             });
 
