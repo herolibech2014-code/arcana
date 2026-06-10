@@ -41,6 +41,38 @@
             position: relative;
         }
 
+        /* PANTALLA DE BIENVENIDA OBLIGATORIA PARA DESBLOQUEAR AUDIO */
+        #pantalla-bienvenida {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            background: #04010a;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            gap: 30px;
+        }
+
+        .btn-entrar-altar {
+            background: rgba(15, 4, 35, 0.9);
+            border: 2px solid #d4af37;
+            border-radius: 8px;
+            color: #d4af37;
+            padding: 20px 40px;
+            cursor: pointer;
+            font-size: 1.6rem;
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 3px;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-entrar-altar:hover {
+            box-shadow: 0 0 35px rgba(212, 175, 55, 0.7);
+            background: rgba(212, 175, 55, 0.15);
+            transform: scale(1.05);
+        }
+
         /* BARRA SUPERIOR */
         .top-bar {
             display: flex;
@@ -75,7 +107,7 @@
             font-size: 1rem;
         }
 
-        /* CABECERA: UN SOLO ÍCONO CON PRESENCIA */
+        /* CABECERA */
         .logo-area { 
             margin-top: 15px;
             display: flex;
@@ -93,7 +125,6 @@
             box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
-        /* SE OCULTA LA CABECERA EN LAS CONSULTAS */
         .app-container.modo-consulta-activa .logo-area {
             display: none !important;
         }
@@ -170,7 +201,6 @@
             padding-bottom: 80px;
         }
         
-        /* Contenedor de cada mazo individual */
         .abanico-fila {
             position: relative;
             width: 100%;
@@ -215,7 +245,6 @@
             color: rgba(212, 175, 55, 0.25); font-size: 1.6rem;
         }
         
-        /* EFECTO DE ELECCIÓN EXCLUSIVO AL CLICK */
         .carta-tarot-real.elegida-ritual {
             transform: translateY(-50px) scale(1.15) !important;
             z-index: 99 !important;
@@ -248,10 +277,9 @@
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
-        /* REGLAS RESPONSIVAS AJUSTADAS PARA MÓVILES Y TABLETS */
+        /* RESPONSIVO AJUSTADO */
         @media (max-width: 600px) {
             body { overflow-x: auto; }
-            
             .app-container { padding: 15px; gap: 25px; }
             h1.marca-titulo { font-size: 2.8rem; letter-spacing: 4px; }
             .lema { font-size: 1.1rem; }
@@ -262,20 +290,11 @@
             .menu-card { padding: 30px 15px; }
 
             .carta-tarot-real { width: 90px; height: 155px; }
-            
-            .abanico-fila { 
-                height: 180px; 
-                width: 380px; 
-                margin: 0 auto;
-            }
+            .abanico-fila { height: 180px; width: 380px; margin: 0 auto; }
             
             .contenedor-altar-abanicos { 
-                gap: 90px; 
-                width: 100%;
-                overflow-x: auto; 
-                padding-left: 20px;
-                padding-right: 20px;
-                box-sizing: border-box;
+                gap: 90px; width: 100%; overflow-x: auto; 
+                padding-left: 20px; padding-right: 20px; box-sizing: border-box;
                 -webkit-overflow-scrolling: touch; 
             }
 
@@ -298,6 +317,11 @@
 
     <audio id="audio-ambiente-real" loop src="musica-fondo.mp3"></audio>
     <audio id="audio-cuenco-real" src="sonido-cuenco.mp3"></audio>
+
+    <div id="pantalla-bienvenida">
+        <h1 style="color:#d4af37; font-size: 2.5rem; letter-spacing: 4px; text-shadow: 0 0 15px rgba(212,212,55,0.3);">ARCANA</h1>
+        <button class="btn-entrar-altar" onclick="entrarAlAltarSeguro()">ENTRAR AL ALTAR</button>
+    </div>
 
     <div class="app-container" id="contenedor-global">
         
@@ -389,13 +413,40 @@
     </div>
 
     <script>
-        // EL MAZO REAL COMPLETO DE 78 CARTAS (22 Mayores + 56 Menores)
+        let idiomaActual = 'es';
+        let cartasRequeridas = 3;
+        let cartasSeleccionadasIndices = [];
+        let mazoMezcladoConPosicion = [];
+        let ritualEnProceso = false;
+        
+        let audioAmbiente = document.getElementById('audio-ambiente-real');
+        let audioCuenco = document.getElementById('audio-cuenco-real');
+
+        // FUNCIÓN CLAVE: Desbloquea la música gracias al botón inicial
+        function entrarAlAltarSeguro() {
+            document.getElementById('pantalla-bienvenida').style.display = 'none';
+            
+            if (audioAmbiente) {
+                audioAmbiente.volume = 0.25;
+                audioAmbiente.play().catch(e => console.log("Reintento de audio programado"));
+            }
+            sonarCuencoOriginal();
+        }
+
+        function sonarCuencoOriginal() {
+            if (audioCuenco) {
+                audioCuenco.currentTime = 0;
+                audioCuenco.volume = 0.5;
+                audioCuenco.play().catch(e => console.log("Sonido cuenco silenciado"));
+            }
+        }
+
+        // MAZO DE 78 CARTAS TOTALMENTE SANEADO
         const mazoOficial78 = [
-            /* ARCANOS MAYORES (0 al 21) */
             {es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad."},
             {es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros."},
             {es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado."},
-            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creation."},
+            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación."},
             {es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control."},
             {es:"El Hierofante", en:"The Hierophant", significado:"Tradición, sabiduría, guía espiritual, estudios."},
             {es:"Los Enamorados", en:"The Lovers", significado:"Elecciones del corazón, armonía, dualidad, uniones."},
@@ -414,8 +465,6 @@
             {es:"El Sol", en:"The Sun", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante."},
             {es:"El Juicio", en:"The Judgement", significado:"Llamado interno, absolución, despertar a tu verdad."},
             {es:"El Mundo", en:"The World", significado:"Cierre de ciclos con éxito, plenitud, autorrealización."},
-            
-            /* BASTOS (Fuego - Acción) */
             {es:"As de Bastos", en:"Ace of Wands", significado:"Chispa creativa, pasión inicial, nueva oportunidad."},
             {es:"Dos de Bastos", en:"Two of Wands", significado:"Planificación a futuro, mirar horizontes, decisiones."},
             {es:"Tres de Bastos", en:"Three of Wands", significado:"Expansión, barcos llegando, frutos del esfuerzo."},
@@ -430,14 +479,12 @@
             {es:"Caballero de Bastos", en:"Knight of Wands", significado:"Acción impetuosa, mudanzas, avance apasionado."},
             {es:"Reina de Bastos", en:"Queen of Wands", significado:"Magnetismo, confianza, fuego social y protector."},
             {es:"Rey de Bastos", en:"King of Wands", significado:"Liderazgo absoluto, visión ejecutiva, inspiración."},
-
-            /* COPAS (Agua - Emoción) */
             {es:"As de Copas", en:"Ace of Cups", significado:"Amor puro desbordante, despertar emocional, intuición."},
             {es:"Dos de Copas", en:"Two of Cups", significado:"Conexión recíproca, romance, pactos, alma gemela."},
             {es:"Tres de Copas", en:"Three of Cups", significado:"Brindis familiar, amistad verdadera, comunidad feliz."},
             {es:"Cuatro de Copas", en:"Four of Cups", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades."},
             {es:"Cinco de Copas", en:"Five of Cups", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío."},
-            {es:"Seis de Copas", en:"Six of Cups", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros."},
+            {es:"Seis de Copas", en:"Six of Cups", grandmother:"Nostalgia sana, recuerdos de la infancia, reencuentros."},
             {es:"Siete de Copas", en:"Seven of Cups", significado:"Fantasías, exceso de opciones, ilusiones engañosas."},
             {es:"Ocho de Copas", en:"Eight of Cups", significado:"Abandono voluntario de lo que ya no nutre el alma."},
             {es:"Nueve de Copas", en:"Nine of Cups", significado:"Deseo concedido, satisfacción personal, bienestar."},
@@ -446,8 +493,6 @@
             {es:"Caballero de Copas", en:"Knight of Cups", significado:"El portador del romance, propuesta sincera, idealismo."},
             {es:"Reina de Copas", en:"Queen of Cups", significado:"Empatía total, madre intuitiva, refugio emocional."},
             {es:"Rey de Copas", en:"King of Cups", significado:"Maestría emocional, templanza ante las crisis."},
-
-            /* ESPADAS (Aire - Mente) */
             {es:"As de Espadas", en:"Ace of Swords", significado:"Claridad mental destructiva, verdad cruda, gran avance."},
             {es:"Dos de Espadas", en:"Two of Swords", significado:"Callejón sin salida mental, ojos vendados, indecisión."},
             {es:"Tres de Espadas", en:"Three of Swords", significado:"Dolor en el corazón, traición asumida, herida liberadora."},
@@ -462,8 +507,6 @@
             {es:"Caballero de Espadas", en:"Knight of Swords", significado:"Defensa feroz de ideas, verdades directas sin filtro."},
             {es:"Reina de Espadas", en:"Queen of Swords", significado:"Independencia intelectual, discernimiento agudo, límites."},
             {es:"Rey de Espadas", en:"King of Swords", significado:"Juicio justo y analítico, autoridad de la verdad."},
-
-            /* OROS (Tierra - Materia) */
             {es:"As de Oros", en:"Ace of Pentacles", significado:"Semilla de abundancia, inicio financiero sólido, salud."},
             {es:"Dos de Oros", en:"Two of Pentacles", significado:"Malabarismo financiero, adaptación a los cambios cotidianos."},
             {es:"Tres de Oros", en:"Three of Pentacles", significado:"Trabajo en equipo, maestría artesanal, colaboración."},
@@ -476,48 +519,16 @@
             {es:"Diez de Oros", en:"Ten of Pentacles", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida."},
             {es:"Sota de Oros", en:"Page of Pentacles", significado:"Estudiante aplicado, nueva idea de negocio realista."},
             {es:"Caballero de Oros", en:"Knight of Pentacles", significado:"Avance lento pero seguro, constancia inquebrantable."},
-            {es:"Reina de Oros", en:"Queen of Pentacles", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar."},
+            {es:"Reina de Oros", en:"Queen of Pentacles", significado:"Nutrición terrenal, prosperity práctica, amor al hogar."},
             {es:"Rey de Oros", en:"King of Pentacles", significado:"Éxito financiero absoluto, dominio de la materia, seguridad."}
         ];
 
-        let idiomaActual = 'es';
-        let cartasRequeridas = 3;
-        let cartasSeleccionadasIndices = [];
-        let mazoMezcladoConPosicion = [];
-        let ritualEnProceso = false;
-        
-        let audioAmbiente = document.getElementById('audio-ambiente-real');
-        let audioCuenco = document.getElementById('audio-cuenco-real');
-        let audioIniciado = false;
-
-        // SISTEMA DE AUDIO SEGURO: Jamás frena las pantallas
-        function activarAudiosOriginales() {
-            if (!audioIniciado && audioAmbiente) {
-                audioIniciado = true;
-                audioAmbiente.volume = 0.25;
-                audioAmbiente.play().catch((e) => {
-                    console.log("Audio de fondo en espera de click fuerte");
-                    audioIniciado = false; // Reintenta después
-                });
-            }
-        }
-
-        function sonarCuencoOriginal() {
-            if (audioCuenco) {
-                audioCuenco.currentTime = 0;
-                audioCuenco.volume = 0.5;
-                audioCuenco.play().catch((e) => console.log("Cuenco bloqueado temporalmente"));
-            }
-        }
-
         function cambiarVista(idVista) {
-            const contenedor = document.getElementById('contenedor-global');
-            
-            // Oculta y muestra pantallas de forma limpia y directa
             document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
             const vistaObjetivo = document.getElementById(idVista);
             if(vistaObjetivo) vistaObjetivo.classList.add('activa');
             
+            const contenedor = document.getElementById('contenedor-global');
             if(idVista !== 'pantalla-menu') {
                 contenedor.classList.add('modo-consulta-activa');
             } else {
@@ -532,17 +543,8 @@
             }
         }
 
-        // Acciones directas que NO se traban si el audio falla
-        function irAlMenu() { 
-            sonarCuencoOriginal(); 
-            cambiarVista('pantalla-menu'); 
-        }
-        
-        function abrirTarotConfig() { 
-            activarAudiosOriginales();
-            sonarCuencoOriginal(); 
-            cambiarVista('pantalla-tarot-config'); 
-        }
+        function irAlMenu() { sonarCuencoOriginal(); cambiarVista('pantalla-menu'); }
+        function abrirTarotConfig() { sonarCuencoOriginal(); cambiarVista('pantalla-tarot-config'); }
 
         function ajustarTipoTirada(tema) {
             const cajaTirada = document.getElementById('caja-tipo-tirada');
@@ -557,10 +559,7 @@
         }
 
         function comenzarRitualTarot() {
-            // Aseguramos que la música empiece acá con la acción del botón grande
-            activarAudiosOriginales();
             sonarCuencoOriginal();
-            
             const tipo = document.getElementById('tarot-tipo').value;
             cartasRequeridas = (tipo === '1' || tipo === 'sino1') ? 1 : 3;
 
@@ -697,3 +696,4 @@
     </script>
 </body>
 </html>
+
