@@ -32,12 +32,12 @@
             width: 100%;
             max-width: 1200px;
             min-height: 100vh;
-            padding: 25px;
+            padding: 20px;
             box-sizing: border-box;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
-            gap: 35px;
+            gap: 25px;
             position: relative;
         }
 
@@ -111,12 +111,12 @@
             margin: 0; 
         }
 
-        /* INSTRUCCIONES GENERALES */
+        /* INSTRUCCIONES GENERALES RECORTE DE TAMAÑO */
         .instruccion-directa {
             color: #d4af37;
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             letter-spacing: 3px;
-            margin: 30px 0;
+            margin: 15px 0 5px 0;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
@@ -159,66 +159,53 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE ABANICOS */
+        /* CONTENEDOR DE ABANICOS COMPACTADO Y SEGURO */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
-            gap: 90px;
+            gap: 30px;
             width: 100%;
-            margin-top: 30px;
-            padding-bottom: 80px;
+            margin-top: 10px;
+            padding-bottom: 40px;
         }
         
         .abanico-fila {
             position: relative;
             width: 100%;
-            height: 240px;
+            height: 210px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
         }
-        .abanico-fila-titulo {
-            position: absolute;
-            left: 50%; top: -35px;
-            transform: translateX(-50%);
-            font-size: 1.1rem;
-            color: #d4af37;
-            letter-spacing: 3px;
-            z-index: 10;
-            background: #04010a;
-            padding: 4px 16px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-        }
         
-        /* NAIPES GRANDES */
+        /* NAIPES MEJOR ESTILIZADOS */
         .carta-tarot-real {
             position: absolute;
-            width: 120px;
-            height: 200px;
+            width: 110px;
+            height: 185px;
             background: linear-gradient(135deg, #220e45 0%, #06020c 100%);
             border: 2px solid #5b21b6;
             border-radius: 8px;
             cursor: pointer;
-            box-shadow: -6px 6px 18px rgba(0,0,0,0.85);
+            box-shadow: -4px 4px 12px rgba(0,0,0,0.8);
             transition: border-color 0.2s, box-shadow 0.2s;
             transform-origin: bottom center;
         }
         .carta-tarot-real::before {
             content: ''; position: absolute; top: 6px; left: 6px; right: 6px; bottom: 6px;
-            border: 1px solid rgba(212, 175, 55, 0.2); border-radius: 4px; pointer-events: none;
+            border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 4px; pointer-events: none;
         }
         .carta-tarot-real::after {
             content: '✦'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: rgba(212, 175, 55, 0.25); font-size: 1.6rem;
+            color: rgba(212, 175, 55, 0.2); font-size: 1.4rem;
         }
         
         .carta-tarot-real.elegida-ritual {
-            transform: translateY(-50px) scale(1.15) !important;
+            transform: translateY(-40px) scale(1.1) !important;
             z-index: 99 !important;
             border-color: #d4af37;
             background: #4c1d95;
-            box-shadow: 0 0 35px #d4af37;
+            box-shadow: 0 0 25px #d4af37;
         }
 
         /* REVELACIÓN FINAL */
@@ -245,10 +232,10 @@
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
-        /* RESPONSIVO AJUSTADO */
+        /* RESPONSIVO SEGURO SIN CORTES */
         @media (max-width: 600px) {
             body { overflow-x: auto; }
-            .app-container { padding: 15px; gap: 25px; }
+            .app-container { padding: 15px; gap: 20px; }
             h1.marca-titulo { font-size: 2.8rem; letter-spacing: 4px; }
             .lema { font-size: 1.1rem; }
             .imagen-icono-unica { width: 110px; height: 110px; }
@@ -257,24 +244,27 @@
             .card-desc { font-size: 1rem; }
             .menu-card { padding: 30px 15px; }
 
-            .carta-tarot-real { width: 90px; height: 155px; }
-            .abanico-fila { height: 180px; width: 380px; margin: 0 auto; }
+            /* Cartas y abanicos reducidos para evitar bordes rotos */
+            .carta-tarot-real { width: 80px; height: 140px; }
+            .abanico-fila { height: 155px; width: 340px; margin: 0 auto; }
             
             .contenedor-altar-abanicos { 
-                gap: 90px; width: 100%; overflow-x: auto; 
-                padding-left: 20px; padding-right: 20px; box-sizing: border-box;
+                gap: 25px; 
+                width: 100%; 
+                overflow-x: auto; 
+                padding-left: 10px; padding-right: 10px; box-sizing: border-box;
                 -webkit-overflow-scrolling: touch; 
             }
 
-            .instruccion-directa { font-size: 1.8rem; }
+            .instruccion-directa { font-size: 1.5rem; margin: 10px 0; }
             .carta-revelada { width: 135px; height: 210px; }
             .carta-revelada .nombre-c { font-size: 1.2rem; }
             .btn-volver { font-size: 1.2rem; width: 100%; box-sizing: border-box; }
         }
         
         @media (min-width: 601px) and (max-width: 900px) {
-            .carta-tarot-real { width: 105px; height: 180px; }
-            .abanico-fila { height: 210px; }
+            .carta-tarot-real { width: 95px; height: 165px; }
+            .abanico-fila { height: 185px; }
             .card-titulo { font-size: 2.2rem; }
         }
 
@@ -386,13 +376,12 @@
         let audioCuenco = document.getElementById('audio-cuenco-real');
         let musicaEncendida = false;
 
-        // Se activa con el primer clic real del usuario sin molestar
         function asegurarMusicaDeFondo() {
             if (!musicaEncendida && audioAmbiente) {
                 audioAmbiente.volume = 0.20;
                 audioAmbiente.play()
                     .then(() => { musicaEncendida = true; })
-                    .catch(e => console.log("Esperando toque de usuario..."));
+                    .catch(e => console.log("Audio esperando interacción..."));
             }
         }
 
@@ -401,16 +390,16 @@
             if (audioCuenco) {
                 audioCuenco.currentTime = 0;
                 audioCuenco.volume = 0.4;
-                audioCuenco.play().catch(e => console.log("Sonido cuenco listo"));
+                audioCuenco.play().catch(e => console.log("Sonido listo"));
             }
         }
 
-        // MAZO DE 78 CARTAS COMPLETO
+        // MAZO COMPLETO
         const mazoOficial78 = [
             {es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad."},
             {es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros."},
             {es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado."},
-            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creation."},
+            {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación."},
             {es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control."},
             {es:"El Hierofante", en:"The Hierophant", significado:"Tradición, sabiduría, guía espiritual, estudios."},
             {es:"Los Enamorados", en:"The Lovers", significado:"Elecciones del corazón, armonía, dualidad, uniones."},
@@ -550,11 +539,6 @@
             for (let f = 0; f < totalFilas; f++) {
                 let divFila = document.createElement('div');
                 divFila.className = 'abanico-fila';
-                
-                let divTituloFila = document.createElement('div');
-                divTituloFila.className = 'abanico-fila-titulo';
-                divTituloFila.innerText = `Mazo ${f + 1}`;
-                divFila.appendChild(divTituloFila);
 
                 let inicioIdx = f * cartasPorFila;
                 let finIdx = inicioIdx + cartasPorFila;
@@ -566,12 +550,13 @@
                     let posRelativa = (i - inicioIdx) - (cartasPorFila - 1) / 2;
                     let esCelular = window.innerWidth < 600;
                     
-                    let multiplicadorGiro = esCelular ? 5.0 : 4.0; 
-                    let multiplicadorX = esCelular ? 18 : 36;    
+                    // Modificado el ángulo y la dispersión para evitar cortes y que se vea simétrico
+                    let multiplicadorGiro = esCelular ? 3.5 : 4.0; 
+                    let multiplicadorX = esCelular ? 16 : 32;    
 
                     let rotacionGiro = posRelativa * multiplicadorGiro;
                     let traslacionX = posRelativa * multiplicadorX;
-                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.7 : 0.6);
+                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.5 : 0.6);
 
                     divCard.style.transform = `translateX(${traslacionX}px) translateY(${traslacionY}px) rotate(${rotacionGiro}deg)`;
                     divCard.style.zIndex = i - inicioIdx;
