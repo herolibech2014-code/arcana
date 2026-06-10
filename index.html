@@ -169,6 +169,8 @@
             margin-top: 30px;
             padding-bottom: 80px;
         }
+        
+        /* Contenedor de cada mazo individual */
         .abanico-fila {
             position: relative;
             width: 100%;
@@ -246,8 +248,11 @@
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
-        /* REGLAS RESPONSIVAS AGIGANTADAS PARA MÓVILES Y TABLETS */
+        /* REGLAS RESPONSIVAS AJUSTADAS PARA MÓVILES Y TABLETS */
         @media (max-width: 600px) {
+            /* Permitimos que el contenedor principal de abanicos deje arrastrar si algo se sale */
+            body { overflow-x: auto; }
+            
             .app-container { padding: 15px; gap: 25px; }
             h1.marca-titulo { font-size: 2.8rem; letter-spacing: 4px; }
             .lema { font-size: 1.1rem; }
@@ -258,8 +263,24 @@
             .menu-card { padding: 30px 15px; }
 
             .carta-tarot-real { width: 90px; height: 155px; }
-            .abanico-fila { height: 180px; width: 100%; }
-            .contenedor-altar-abanicos { gap: 90px; }
+            
+            /* Ajuste del mazo en celular para dar soporte al arrastre y que no se rompa */
+            .abanico-fila { 
+                height: 180px; 
+                width: 380px; /* Forzamos un ancho mínimo ideal en el celular */
+                margin: 0 auto;
+            }
+            
+            /* Permitimos deslizar el dedo si tu pantalla es muy angosta */
+            .contenedor-altar-abanicos { 
+                gap: 90px; 
+                width: 100%;
+                overflow-x: auto; 
+                padding-left: 20px;
+                padding-right: 20px;
+                box-sizing: border-box;
+                -webkit-overflow-scrolling: touch; /* Suavidad total al deslizar en iPhone/Android */
+            }
 
             .instruccion-directa { font-size: 1.8rem; }
             .carta-revelada { width: 135px; height: 210px; }
@@ -278,8 +299,8 @@
 </head>
 <body onclick="activarAudiosOriginales()">
 
-    <audio id="audio-ambiente-real" loop src="musica-fondo.MP3"></audio>
-<audio id="audio-cuenco-real" src="sonido-cuenco.mp3"></audio>
+    <audio id="audio-ambiente-real" loop src="musica-fondo.mp3"></audio>
+    <audio id="audio-cuenco-real" src="sonido-cuenco.mp3"></audio>
 
     <div class="app-container" id="contenedor-global">
         
@@ -375,7 +396,7 @@
         const mazoOficial78 = [
             /* ARCANOS MAYORES (0 al 21) */
             {es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad."},
-            {es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros."},
+            {es:"El Mago", en:"The Magician", significado:"Poder de manifestation, habilidad, recursos puros."},
             {es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado."},
             {es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación."},
             {es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control."},
@@ -411,7 +432,7 @@
             {es:"Sota de Bastos", en:"Page of Wands", significado:"Mensajero entusiasta, ganas de explorar, aventura."},
             {es:"Caballero de Bastos", en:"Knight of Wands", significado:"Acción impetuosa, mudanzas, avance apasionado."},
             {es:"Reina de Bastos", en:"Queen of Wands", significado:"Magnetismo, confianza, fuego social y protector."},
-            {es:"Rey de Bastos", en:"King of Wands", significado:"Liderazgo absoluto, visión ejecutiva, inspiración."},
+            {es:"Rey de Bastos", en:"King of Wands", significado:"Liderazgo absoluto, visión ejecutiva, integración."},
 
             /* COPAS (Agua - Emoción) */
             {es:"As de Copas", en:"Ace of Cups", significado:"Amor puro desbordante, despertar emocional, intuición."},
@@ -441,7 +462,7 @@
             {es:"Nueve de Espadas", en:"Nine of Swords", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente."},
             {es:"Diez de Espadas", en:"Ten of Swords", significado:"Final absoluto del dolor, tocar fondo para renacer."},
             {es:"Sota de Espadas", en:"Page of Swords", significado:"Vigilancia, mente analítica, verdades incómodas."},
-            {es:"Caballero de Espadas", en:"Knight of Swords",资讯:"Defensa feroz de ideas, verdades directas sin filtro."},
+            {es:"Caballero de Espadas", en:"Knight of Swords", significado:"Defensa feroz de ideas, verdades directas sin filtro."},
             {es:"Reina de Espadas", en:"Queen of Swords", significado:"Independencia intelectual, discernimiento agudo, límites."},
             {es:"Rey de Espadas", en:"King of Swords", significado:"Juicio justo y analítico, autoridad de la verdad."},
 
@@ -472,7 +493,6 @@
         let audioCuenco = document.getElementById('audio-cuenco-real');
         let audioIniciado = false;
 
-        // Activa el ambiente relajante real apenas toca cualquier lado
         function activarAudiosOriginales() {
             if (!audioIniciado) {
                 audioAmbiente.volume = 0.25;
@@ -481,7 +501,6 @@
             }
         }
 
-        // Toca el cuenco de verdad desde el archivo del servidor
         function sonarCuencoOriginal() {
             if (audioCuenco) {
                 audioCuenco.currentTime = 0;
@@ -536,20 +555,17 @@
             mazoMezcladoConPosicion = [];
             ritualEnProceso = false;
 
-            // Clonamos e invertimos aleatoriamente las 78 cartas del mazo real
             let mazo78Original = mazoOficial78.map(c => {
                 return { original: c, invertida: Math.random() > 0.45 };
             });
             
-            // Mezcla mística real
             mazo78Original.sort(() => Math.random() - 0.5);
             mazoMezcladoConPosicion = mazo78Original;
 
             const contenedorAbanicos = document.getElementById('altar-abanicos-completo');
             contenedorAbanicos.innerHTML = '';
             
-            // Repartimos las 78 cartas reales en 6 abanicos amplios de 13 cartas para que los dedos naveguen perfectos
-            const totalFilas = f = 6;
+            const totalFilas = 6;
             const cartasPorFila = 13; 
 
             for (let f = 0; f < totalFilas; f++) {
@@ -571,12 +587,13 @@
                     let posRelativa = (i - inicioIdx) - (cartasPorFila - 1) / 2;
                     let esCelular = window.innerWidth < 600;
                     
-                    let multiplicadorGiro = esCelular ? 6.5 : 4.0; 
-                    let multiplicadorX = esCelular ? 24 : 36;    
+                    // Modificamos levemente la apertura en celular para contener mejor las cartas
+                    let multiplicadorGiro = esCelular ? 5.0 : 4.0; 
+                    let multiplicadorX = esCelular ? 18 : 36;    
 
                     let rotacionGiro = posRelativa * multiplicadorGiro;
                     let traslacionX = posRelativa * multiplicadorX;
-                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.9 : 0.6);
+                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.7 : 0.6);
 
                     divCard.style.transform = `translateX(${traslacionX}px) translateY(${traslacionY}px) rotate(${rotacionGiro}deg)`;
                     divCard.style.zIndex = i - inicioIdx;
@@ -623,7 +640,6 @@
 
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
-                // Aquí se inyectará tu lógica de imágenes de cartas en el futuro
                 divC.innerHTML = `<div class="nombre-c">${nombreIdioma}</div>`;
                 cajaRevelada.appendChild(divC);
 
@@ -636,33 +652,4 @@
             });
 
             if(esSiNo) {
-                let respuestaDefinitiva = contadoresSi >= (cartasRequeridas / 2) ? "✦ DICTAMEN: SÍ ✦" : "✦ DICTAMEN: NO ✦";
-                parrafosInterpretacion = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuestaDefinitiva}</h3>` + parrafosInterpretacion;
-            }
-
-            cajaTexto.innerHTML = parrafosInterpretacion;
-            cambiarVista('pantalla-tarot-resultado');
-        }
-
-        const textosTraducidos = {
-            es: { lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE" },
-            en: { lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE" },
-            pt: { lema: "O universo responde", ads: "ANÚNCIO RESERVADO GOOGLE ADSENSE" },
-            fr: { lema: "L'univers répond", ads: "ESPACE PUBLICITAIRE GOOGLE ADSENSE" },
-            it: { lema: "L'universo risponde", ads: "SPAZIO PUBBLICITARIO GOOGLE ADSENSE" },
-            de: { lema: "Das Universum antwortet", ads: "WERBUNG RESERVIERT FÜR GOOGLE ADSENSE" }
-        };
-
-        function cambiarIdioma(lang) {
-            idiomaActual = lang;
-            if(!textosTraducidos[lang]) idiomaActual = 'es';
-            document.getElementById('selector-idioma').value = idiomaActual;
-            document.getElementById('txt-lema').innerText = textosTraducidos[idiomaActual].lema;
-            document.getElementById('txt-ads').innerText = textosTraducidos[idiomaActual].ads;
-        }
-
-        const devLang = (navigator.language || navigator.userLanguage).slice(0, 2);
-        cambiarIdioma(devLang);
-    </script>
-</body>
-</html>
+                let respuestaDefinitiva = contadoresSi >= (cartasRequeridas / 2) ? "✦ DICTAMEN: SÍ ✦" : "✦ DICTAMEN: NO
