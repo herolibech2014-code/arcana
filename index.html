@@ -1,4 +1,4 @@
-   <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -159,11 +159,11 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE ABANICOS COMPACTADO */
+        /* CONTENEDOR DE ABANICOS OPTIMIZADO (Cartas legibles y bien distribuidas) */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 20px;
             width: 100%;
             margin-top: 10px;
             padding-bottom: 40px;
@@ -172,7 +172,7 @@
         .abanico-fila {
             position: relative;
             width: 100%;
-            height: 140px;
+            height: 170px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -181,14 +181,14 @@
         /* NAIPES EN EL TABLERO */
         .carta-tarot-real {
             position: absolute;
-            width: 70px;
-            height: 120px;
+            width: 90px;
+            height: 150px;
             background: linear-gradient(135deg, #220e45 0%, #06020c 100%);
             border: 2px solid #5b21b6;
             border-radius: 6px;
             cursor: pointer;
             box-shadow: -3px 3px 8px rgba(0,0,0,0.8);
-            transition: border-color 0.2s, box-shadow 0.2s;
+            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
             transform-origin: bottom center;
         }
         .carta-tarot-real::before {
@@ -197,11 +197,15 @@
         }
         .carta-tarot-real::after {
             content: '✦'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: rgba(212, 175, 55, 0.2); font-size: 1.1rem;
+            color: rgba(212, 175, 55, 0.2); font-size: 1.3rem;
+        }
+        .carta-tarot-real:hover {
+            border-color: #a78bfa;
+            box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
         }
         
         .carta-tarot-real.elegida-ritual {
-            transform: translateY(-30px) scale(1.1) !important;
+            transform: translateY(-35px) scale(1.1) !important;
             z-index: 999 !important;
             border-color: #d4af37;
             background: #4c1d95;
@@ -212,7 +216,7 @@
         .resultado-cartas { display: flex; justify-content: center; gap: 25px; margin: 30px 0; flex-wrap: wrap; }
         
         .carta-revelada {
-            width: 160px; height: 285px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
+            width: 170px; height: 300px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
             padding: 8px; box-sizing: border-box; box-shadow: 0 12px 35px rgba(0,0,0,0.95);
             opacity: 0; animation: develaCarta 0.6s ease forwards;
@@ -221,7 +225,7 @@
         
         .wrapper-imagen-tarot {
             width: 100%;
-            height: 230px;
+            height: 245px;
             overflow: hidden;
             border-radius: 4px;
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -253,7 +257,7 @@
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
-        /* RESPONSIVO */
+        /* RESPONSIVO AJUSTADO */
         @media (max-width: 600px) {
             body { overflow-x: auto; }
             .app-container { padding: 15px; gap: 20px; }
@@ -265,15 +269,17 @@
             .card-desc { font-size: 1rem; }
             .menu-card { padding: 30px 15px; }
 
-            .carta-tarot-real { width: 55px; height: 95px; }
-            .abanico-fila { height: 105px; width: 320px; margin: 0 auto; }
+            /* Cartas más grandes y legibles en mobile */
+            .carta-tarot-real { width: 75px; height: 125px; }
+            .abanico-fila { height: 140px; width: 480px; margin: 0 auto; }
             
-            .contenedor-altar-abanicos { gap: 10px; width: 100%; overflow-x: auto; padding-left: 5px; padding-right: 5px; box-sizing: border-box; }
+            /* Permite desplazamiento lateral suave en el altar móvil sin romper la pantalla */
+            .contenedor-altar-abanicos { gap: 15px; width: 100%; overflow-x: auto; padding-left: 10px; padding-right: 10px; box-sizing: border-box; }
 
             .instruccion-directa { font-size: 1.5rem; margin: 10px 0; }
-            .carta-revelada { width: 125px; height: 235px; padding: 5px; }
-            .wrapper-imagen-tarot { height: 185px; }
-            .carta-revelada .nombre-c { font-size: 0.85rem; height: 30px; }
+            .carta-revelada { width: 140px; height: 250px; padding: 5px; }
+            .wrapper-imagen-tarot { height: 200px; }
+            .carta-revelada .nombre-c { font-size: 0.9rem; height: 30px; }
             .btn-volver { font-size: 1.2rem; width: 100%; box-sizing: border-box; }
         }
 
@@ -309,20 +315,20 @@
         <div id="pantalla-menu" class="vista-seccion activa">
             <div class="menu-contenedor">
                 <div class="menu-card" onclick="abrirTarotConfig()">
-                    <div class="card-titulo" id="t1">🔮 Tarot</div>
-                    <div class="card-desc" id="d1">Las 78 cartas desplegadas en su totalidad sobre el tapete violeta.</div>
+                    <div class="card-titulo" id="txt-menu-titulo-tarot">🔮 Tarot</div>
+                    <div class="card-desc" id="txt-menu-desc-tarot">Las 78 cartas desplegadas en su totalidad sobre el tapete violeta.</div>
                 </div>
                 <div class="menu-card" onclick="alert('Próximamente...')">
-                    <div class="card-titulo">🌌 Astrología</div>
-                    <div class="card-desc">Cálculo de tránsitos de tus astros y revolución solar.</div>
+                    <div class="card-titulo" id="txt-menu-titulo-astro">🌌 Astrología</div>
+                    <div class="card-desc" id="txt-menu-desc-astro">Cálculo de tránsitos de tus astros y revolución solar.</div>
                 </div>
                 <div class="menu-card" onclick="alert('Próximamente...')">
-                    <div class="card-titulo">🔢 Numerología</div>
-                    <div class="card-desc">Vibración oculta de nombres, esencias e hilos numéricos.</div>
+                    <div class="card-titulo" id="txt-menu-titulo-num">🔢 Numerología</div>
+                    <div class="card-desc" id="txt-menu-desc-num">Vibración oculta de nombres, esencias e hilos numéricos.</div>
                 </div>
                 <div class="menu-card" onclick="alert('Próximamente...')">
-                    <div class="card-titulo">🧠 Oráculo</div>
-                    <div class="card-desc">Consulta de conciencia unificada uniendo planos divinos.</div>
+                    <div class="card-titulo" id="txt-menu-titulo-orac">🧠 Oráculo</div>
+                    <div class="card-desc" id="txt-menu-desc-orac">Consulta de conciencia unificada uniendo planos divinos.</div>
                 </div>
             </div>
         </div>
@@ -332,20 +338,18 @@
                 <div class="selector-caja">
                     <label id="lbl-tema">Propósito de la consulta:</label>
                     <select id="tarot-tema" onchange="ajustarTipoTirada(this.value)">
-                        <option value="general">Energía General</option>
-                        <option value="amor">Amor & Vínculos</option>
-                        <option value="dinero">Abundancia & Destino</option>
-                        <option value="trabajo">Laboral & Caminos</option>
-                        <option value="espiritualidad">Evolución del Alma</option>
-                        <option value="sino">Pregunta Sagrada (SÍ / NO)</option>
+                        <option value="general" id="opt-t-general">Energía General</option>
+                        <option value="amor" id="opt-t-amor">Amor & Vínculos</option>
+                        <option value="dinero" id="opt-t-dinero">Abundancia & Destino</option>
+                        <option value="trabajo" id="opt-t-trabajo">Laboral & Caminos</option>
+                        <option value="espiritualidad" id="opt-t-esp">Evolución del Alma</option>
+                        <option value="sino" id="opt-t-sino">Pregunta Sagrada (SÍ / NO)</option>
                     </select>
                 </div>
                 <div class="selector-caja" id="caja-tipo-tirada">
                     <label id="lbl-tirada">Despliegue energético:</label>
                     <select id="tarot-tipo">
-                        <option value="1">Una Carta (Consejo Directo)</option>
-                        <option value="3" selected>Tres Cartas (Línea del Tiempo)</option>
-                    </select>
+                        </select>
                 </div>
                 <div class="selector-caja">
                     <label id="lbl-mazo">Línea del mazo:</label>
@@ -405,7 +409,7 @@
             }
         }
 
-        // MAZO DE 78 CARTAS COMPLETO
+        // MAZO DE 78 CARTAS COMPLETO CON TRADUCCIONES COMPLETAS
         const mazoOficial78 = [
             // ARCANOS MAYORES
             {id: 0, es:"El Loco", en:"The Fool", pt:"O Louco", fr:"Le Fou", it:"Il Matto", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", archivo: "m00.jpg"},
@@ -437,7 +441,7 @@
             {id: 24, es:"Tres de Bastos", en:"Three of Wands", pt:"Três de Paus", fr:"Trois de Bâton", it:"Tre di Bastoni", significado:"Expansión, frutos del esfuerzo, visión de crecimiento.", archivo: "w03.jpg"},
             {id: 25, es:"Cuatro de Bastos", en:"Four of Wands", pt:"Quatro de Paus", fr:"Quatre de Bâton", it:"Quattro di Bastoni", significado:"Celebración, hogar armónico, estabilidad lograda.", archivo: "w04.jpg"},
             {id: 26, es:"Cinco de Bastos", en:"Five of Wands", pt:"Cinco de Paus", fr:"Cinq de Bâton", it:"Cinque di Bastoni", significado:"Competencia, tensiones menores, desacuerdos.", archivo: "w05.jpg"},
-            {id: 27, es:"Seis de Bastos", en:"Six of Wands", pt:"Seis de Paus", fr:"Six de Bâton", it:"Sei di Bastoni", significado:"Reconocimiento público, victoria, aplausos merecidos.", archivo: "w06.jpg"},
+            {id: 27, es:"Seis de Bastos", en:"Six of Wands", pt:"Six de Paus", fr:"Six de Bâton", it:"Sei di Bastoni", significado:"Reconocimiento público, victoria, aplausos merecidos.", archivo: "w06.jpg"},
             {id: 28, es:"Siete de Bastos", en:"Seven of Wands", pt:"Sete de Paus", fr:"Sept de Bâton", it:"Sette di Bastoni", significado:"Defensa de tus principios, sostener tu posición firme.", archivo: "w07.jpg"},
             {id: 29, es:"Ocho de Bastos", en:"Eight of Wands", pt:"Oito de Paus", fr:"Huit de Bâton", it:"Otto di Bastoni", significado:"Velocidad, noticias rápidas, movimiento sin freno.", archivo: "w08.jpg"},
             {id: 30, es:"Nueve de Bastos", en:"Nine of Wands", pt:"Nove de Paus", fr:"Neuf de Bâton", it:"Nove di Bastoni", significado:"Último esfuerzo, resiliencia, guardia en alto.", archivo: "w09.jpg"},
@@ -484,7 +488,7 @@
             {id: 65, es:"Dos de Oros", en:"Two of Pentacles", pt:"Dois de Ouros", fr:"Deux de Denier", it:"Due di Denari", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", archivo: "p02.jpg"},
             {id: 66, es:"Tres de Oros", en:"Three of Pentacles", pt:"Três de Ouros", fr:"Trois de Denier", it:"Tre di Denari", significado:"Trabajo en equipo, maestría artesanal, colaboración.", archivo: "p03.jpg"},
             {id: 67, es:"Cuatro de Oros", en:"Four of Pentacles", pt:"Quatro de Ouros", fr:"Quatre de Denier", it:"Quattro di Denari", significado:"Avaricia, apego al dinero por miedo a la carencia.", archivo: "p04.jpg"},
-            {id: 68, es:"Cinco de Oros", en:"Five of Pentacles", pt:"Cinco de Ouros", fr:"Cinq de Denier", it:"Cinque di Denari", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", archivo: "p05.jpg"},
+            {id: 68, flex: "Cinco de Oros", es:"Cinco de Oros", en:"Five of Pentacles", pt:"Cinco de Ouros", fr:"Cinq de Denier", it:"Cinque di Denari", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", archivo: "p05.jpg"},
             {id: 69, es:"Seis de Oros", en:"Six of Pentacles", pt:"Seis de Ouros", fr:"Six de Denier", it:"Sei di Denari", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", archivo: "p06.jpg"},
             {id: 70, es:"Siete de Oros", en:"Seven of Pentacles", pt:"Sete de Ouros", fr:"Sept de Denier", it:"Sette di Denari", significado:"Paciencia ante la cosecha, evaluar el crecimiento de tu siembra.", archivo: "p07.jpg"},
             {id: 71, es:"Ocho de Oros", en:"Eight of Pentacles", pt:"Oito de Ouros", fr:"Huit de Denier", it:"Otto di Denari", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", archivo: "p08.jpg"},
@@ -510,7 +514,7 @@
 
             const zonaVolver = document.getElementById('zona-volver');
             if(idVista !== 'pantalla-menu') {
-                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">← Volver</button>`;
+                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">${textosTraducidos[idiomaActual].btnVolver}</button>`;
             } else {
                 zonaVolver.innerHTML = '';
             }
@@ -524,10 +528,13 @@
             const selectTipo = document.getElementById('tarot-tipo');
             if(tema === 'sino') {
                 cajaTirada.style.display = 'none';
-                selectTipo.innerHTML = `<option value="sino1">Una Carta (Respuesta SÍ / NO)</option>`;
+                selectTipo.innerHTML = `<option value="sino1">${textosTraducidos[idiomaActual].optSino}</option>`;
             } else {
                 cajaTirada.style.display = 'block';
-                selectTipo.innerHTML = `<option value="1">Una Carta (Consejo Directo)</option><option value="3" selected>Tres Cartas (Línea del Tiempo)</option>`;
+                selectTipo.innerHTML = `
+                    <option value="1">${textosTraducidos[idiomaActual].optUna}</option>
+                    <option value="3" selected>${textosTraducidos[idiomaActual].optTres}</option>
+                `;
             }
         }
 
@@ -536,8 +543,7 @@
             const tipo = document.getElementById('tarot-tipo').value;
             cartasRequeridas = (tipo === '1' || tipo === 'sino1') ? 1 : 3;
 
-            const txtInstruccion = document.getElementById('txt-instruccion-dinamica');
-            txtInstruccion.innerText = idiomaActual === 'es' ? (cartasRequeridas === 1 ? "Elige tu carta" : "Elige tus cartas") : "Choose your card(s)";
+            actualizarInstruccionTablero();
 
             cartasSeleccionadasIndices = [];
             mazoMezcladoConPosicion = [];
@@ -571,12 +577,12 @@
                     let posRelativa = (i - inicioIdx) - ((finIdx - inicioIdx) - 1) / 2;
                     let esCelular = window.innerWidth < 600;
                     
-                    let multiplicadorGiro = esCelular ? 3.0 : 3.5; 
-                    let multiplicadorX = esCelular ? 14 : 24;    
+                    let multiplicadorGiro = esCelular ? 3.5 : 3.8; 
+                    let multiplicadorX = esCelular ? 18 : 28;    
 
                     let rotacionGiro = posRelativa * multiplicadorGiro;
                     let traslacionX = posRelativa * multiplicadorX;
-                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.5 : 0.6);
+                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.6 : 0.8);
 
                     divCard.style.transform = `translateX(${traslacionX}px) translateY(${traslacionY}px) rotate(${rotacionGiro}deg)`;
                     divCard.style.zIndex = i - inicioIdx;
@@ -617,15 +623,22 @@
             let mazoElegido = document.getElementById('tarot-mazo').value;
             let contadoresSi = 0;
 
+            document.getElementById('txt-titulo-resultado').innerText = textosTraducidos[idiomaActual].tituloResultado;
+            document.getElementById('btn-otra').innerText = textosTraducidos[idiomaActual].btnNueva;
+
             cartasSeleccionadasIndices.forEach((cartaData, i) => {
                 let cardObj = cartaData.original;
                 let nombreIdioma = cardObj[idiomaActual] || cardObj['es'];
-                let estadoPosicion = cartaData.invertida ? " (Invertida)" : "";
+                
+                let etiquetaPosicion = "";
+                if(cartaData.invertida) {
+                    etiquetaPosicion = ` (${textosTraducidos[idiomaActual].txtInvertida})`;
+                }
 
-                // Selección dinámica de la ruta según el mazo elegido
+                // UNIFICACIÓN LOCAL COMPLETA DE IMÁGENES
                 let urlImagenFinal = "";
                 if(mazoElegido === 'Rider-Waite') {
-                    urlImagenFinal = `https://raw.githubusercontent.com/fdelmazo/tarot/master/src/assets/cards/${cardObj.archivo}`;
+                    urlImagenFinal = `imagenes/rider/${cardObj.archivo}`;
                 } else if(mazoElegido === 'Marsella') {
                     urlImagenFinal = `imagenes/marsella/${cardObj.archivo}`;
                 } else if(mazoElegido === 'Egipcio') {
@@ -640,50 +653,153 @@
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
                 divC.innerHTML = `
                     <div class="wrapper-imagen-tarot">
-                        <img src="${urlImagenFinal}" alt="${nombreIdioma}" crossorigin="anonymous">
+                        <img src="${urlImagenFinal}" alt="${nombreIdioma}">
                     </div>
-                    <div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>
+                    <div class="nombre-c">${nombreIdioma}${etiquetaPosicion}</div>
                 `;
                 cajaRevelada.appendChild(divC);
 
                 if (!cartaData.invertida) contadoresSi++;
 
-                parrafosInterpretacion += `<p><strong>✦ Arcano ${i+1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
-                parrafosInterpretacion += `<strong>Interpretación:</strong> ${cardObj.significado}`;
+                parrafosInterpretacion += `<p><strong>✦ ${textosTraducidos[idiomaActual].txtArcano} ${i+1}: ${nombreIdioma} ${etiquetaPosicion}</strong><br>`;
+                parrafosInterpretacion += `<strong>${textosTraducidos[idiomaActual].txtInterp}:</strong> ${cardObj.significado}`;
                 parrafosInterpretacion += `</p>`;
             });
 
             if(esSiNo) {
-                let respuestaDefinitiva = contadoresSi >= (cartasRequeridas / 2) ? "✦ DICTAMEN: SÍ ✦" : "✦ DICTAMEN: NO ✦";
-                parrafosInterpretacion = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuestaDefinitiva}</h3>` + parrafosInterpretacion;
+                let dictamenFinal = contadoresSi >= (cartasRequeridas / 2) ? textosTraducidos[idiomaActual].dictamenSi : textosTraducidos[idiomaActual].dictamenNo;
+                parrafosInterpretacion = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${dictamenFinal}</h3>` + parrafosInterpretacion;
             }
 
             cajaTexto.innerHTML = parrafosInterpretacion;
             cambiarVista('pantalla-tarot-resultado');
         }
 
+        function actualizarInstruccionTablero() {
+            const txtInstruccion = document.getElementById('txt-instruccion-dinamica');
+            if(txtInstruccion) {
+                txtInstruccion.innerText = cartasRequeridas === 1 ? textosTraducidos[idiomaActual].eligeUna : textosTraducidos[idiomaActual].eligeVarias;
+            }
+        }
+
+        // DICCIONARIO COMPLETO DE INTERFAZ TRADUCIDA (EVITA CRUCES DE IDIOMAS)
         const textosTraducidos = {
-            es: { lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE" },
-            en: { lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE" },
-            pt: { lema: "O universo responde", ads: "ESPAÇO RESERVADO PARA GOOGLE ADSENSE" },
-            fr: { lema: "L'univers répond", ads: "ESPACE RÉSERVÉ POUR GOOGLE ADSENSE" },
-            it: { lema: "L'universo risponde", ads: "SPAZIO RISERVATO PER GOOGLE ADSENSE" }
+            es: { 
+                lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE",
+                btnVolver: "← Volver", btnNueva: "NUEVA CONSULTA", btnConsulta: "IR A LA CONSULTA",
+                lblProp: "Propósito de la consulta:", lblDesp: "Despliegue energético:", lblMazo: "Línea del mazo:",
+                tGeneral: "Energía General", tAmor: "Amor & Vínculos", tDinero: "Abundancia & Destino", tTrabajo: "Laboral & Caminos", tEsp: "Evolución del Alma", tSino: "Pregunta Sagrada (SÍ / NO)",
+                optUna: "Una Carta (Consejo Directo)", optTres: "Tres Cartas (Línea del Tiempo)", optSino: "Una Carta (Respuesta SÍ / NO)",
+                eligeUna: "Elige tu carta", eligeVarias: "Elige tus cartas", tituloResultado: "El Dictamen del Destino",
+                txtArcano: "Arcano", txtInterp: "Interpretación", txtInvertida: "Invertida",
+                dictamenSi: "✦ DICTAMEN: SÍ ✦", dictamenNo: "✦ DICTAMEN: NO ✦",
+                m1: "🔮 Tarot", d1: "Las 78 cartas desplegadas en su totalidad sobre el tapete violeta.",
+                m2: "🌌 Astrología", d2: "Cálculo de tránsitos de tus astros y revolución solar.",
+                m3: "🔢 Numerología", d3: "Vibración oculta de nombres, esencias e hilos numéricos.",
+                m4: "🧠 Oráculo", d4: "Consulta de conciencia unificada uniendo planos divinos."
+            },
+            en: { 
+                lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE",
+                btnVolver: "← Back", btnNueva: "NEW READING", btnConsulta: "START READING",
+                lblProp: "Purpose of the reading:", lblDesp: "Energy spread:", lblMazo: "Deck style:",
+                tGeneral: "General Energy", tAmor: "Love & Relationships", tDinero: "Abundance & Destiny", tTrabajo: "Work & Career", tEsp: "Soul Evolution", tSino: "Sacred Question (YES / NO)",
+                optUna: "One Card (Direct Advice)", optTres: "Three Cards (Timeline)", optSino: "One Card (YES / NO Answer)",
+                eligeUna: "Choose your card", eligeVarias: "Choose your cards", tituloResultado: "The Decree of Destiny",
+                txtArcano: "Arcanum", txtInterp: "Interpretation", txtInvertida: "Inverted",
+                dictamenSi: "✦ DECREE: YES ✦", dictamenNo: "✦ DECREE: NO ✦",
+                m1: "🔮 Tarot", d1: "All 78 cards fully laid out on the velvet mat.",
+                m2: "🌌 Astrology", d2: "Calculation of your astral transits and solar return.",
+                m3: "🔢 Numerology", d3: "Hidden vibration of names, essences, and numerical threads.",
+                m4: "🧠 Oracle", d4: "Unified consciousness consultation joining divine planes."
+            },
+            pt: { 
+                lema: "O universo responde", ads: "ESPAÇO RESERVADO PARA GOOGLE ADSENSE",
+                btnVolver: "← Voltar", btnNueva: "NOVA CONSULTA", btnConsulta: "INICIAR CONSULTA",
+                lblProp: "Propósito da consulta:", lblDesp: "Distribuição energética:", lblMazo: "Estilo do baralho:",
+                tGeneral: "Energia Geral", tAmor: "Amor & Vínculos", tDinero: "Abundância & Destino", tTrabajo: "Trabalho & Caminhos", tEsp: "Evolução da Alma", tSino: "Pergunta Sagrada (SIM / NÃO)",
+                optUna: "Uma Carta (Conselho Direto)", optTres: "Três Cartas (Linha do Tempo)", optSino: "Uma Carta (Resposta SIM / NÃO)",
+                eligeUna: "Escolha sua carta", eligeVarias: "Escolha suas cartas", tituloResultado: "O Ditame do Destino",
+                txtArcano: "Arcano", txtInterp: "Interpretação", txtInvertida: "Invertida",
+                dictamenSi: "✦ VEREDITO: SIM ✦", dictamenNo: "✦ VEREDITO: NÃO ✦",
+                m1: "🔮 Tarot", d1: "As 78 cartas totalmente estendidas no tapete de veludo.",
+                m2: "🌌 Astrologia", d2: "Cálculo dos seus trânsitos astrais e retorno solar.",
+                m3: "🔢 Numerologia", d3: "Vibração oculta de nomes, essências e fios numéricos.",
+                m4: "🧠 Oráculo", d4: "Consulta de consciência unificada unindo planos divinos."
+            },
+            fr: { 
+                lema: "L'univers répond", ads: "ESPACE RÉSERVÉ POUR GOOGLE ADSENSE",
+                btnVolver: "← Retour", btnNueva: "NOUVELLE CONSULTATION", btnConsulta: "COMMENCER LE TIRAGE",
+                lblProp: "Objectif de la consultation :", lblDesp: "Configuration énergétique :", lblMazo: "Style de jeu :",
+                tGeneral: "Énergie Générale", tAmor: "Amour & Relations", tDinero: "Abondance & Destinée", tTrabajo: "Travail & Carrière", tEsp: "Évolution de l'Âme", tSino: "Question Sacrée (OUI / NON)",
+                optUna: "Une Carte (Conseil Direct)", optTres: "Trois Cartes (Ligne du Temps)", optSino: "Une Carte (Réponse OUI / NON)",
+                eligeUna: "Choisissez votre carte", eligeVarias: "Choisissez vos cartes", tituloResultado: "Le Verdict du Destin",
+                txtArcano: "Arcane", txtInterp: "Interprétation", txtInvertida: "Inversée",
+                dictamenSi: "✦ VERDICT : OUI ✦", dictamenNo: "✦ VERDICT : NON ✦",
+                m1: "🔮 Tarot", d1: "Les 78 cartes entièrement déployées sur le tapis de velours.",
+                m2: "🌌 Astrologie", d2: "Calcul de vos transits astrais et révolution solaire.",
+                m3: "🔢 Numérologie", d3: "Vibration cachée des noms, des essences et des fils numériques.",
+                m4: "🧠 Oracle", d4: "Consultation de conscience unifiée joignant les plans divins."
+            },
+            it: { 
+                lema: "L'universo risponde", ads: "SPAZIO RISERVATO PER GOOGLE ADSENSE",
+                btnVolver: "← Indietro", btnNueva: "NUOVA CONSULTA", btnConsulta: "INIZIA LA LETTURA",
+                lblProp: "Scopo della lettura:", lblDesp: "Disposizione energetica:", lblMazo: "Stile del mazzo:",
+                tGeneral: "Energia Generale", tAmor: "Amore & Legami", tDinero: "Abbondanza & Destino", tTrabajo: "Lavoro & Carriera", tEsp: "Evoluzione dell'Anima", tSino: "Domanda Sacra (SÌ / NO)",
+                optUna: "Una Carta (Consiglio Diretto)", optTres: "Tre Carte (Linea del Tempo)", optSino: "Una Carta (Risposta SÌ / NO)",
+                eligeUna: "Scegli la tua carta", eligeVarias: "Scegli le tue carte", tituloResultado: "Il Verdetto del Destino",
+                txtArcano: "Arcano", txtInterp: "Interpretazione", txtInvertida: "Capovolta",
+                dictamenSi: "✦ VERDETTO: SÌ ✦", dictamenNo: "✦ VERDETTO: NO ✦",
+                m1: "🔮 Tarot", d1: "Tutte le 78 carte completamente distese sul tappeto di velluto.",
+                m2: "🌌 Astrologia", d2: "Calcolo dei tuoi transiti astrali e rivoluzione solare.",
+                m3: "🔢 Numerologia", d3: "Vibrazione nascosta di nomi, essenze e fili numerici.",
+                m4: "🧠 Oracolo", d4: "Consultazione di coscienza unificata unendo piani divini."
+            }
         };
 
         function cambiarIdioma(lang) {
             idiomaActual = lang;
             if(!textosTraducidos[lang]) idiomaActual = 'es';
+            
+            const t = textosTraducidos[idiomaActual];
             document.getElementById('selector-idioma').value = idiomaActual;
-            document.getElementById('txt-lema').innerText = textosTraducidos[lang].lema;
-            document.getElementById('txt-ads').innerText = textosTraducidos[lang].ads;
+            document.getElementById('txt-lema').innerText = t.lema;
+            document.getElementById('txt-ads').innerText = t.ads;
+
+            // Tradución de textos fijos en el Menú Principal
+            document.getElementById('txt-menu-titulo-tarot').innerText = t.m1;
+            document.getElementById('txt-menu-desc-tarot').innerText = t.d1;
+            document.getElementById('txt-menu-titulo-astro').innerText = t.m2;
+            document.getElementById('txt-menu-desc-astro').innerText = t.d2;
+            document.getElementById('txt-menu-titulo-num').innerText = t.m3;
+            document.getElementById('txt-menu-desc-num').innerText = t.d3;
+            document.getElementById('txt-menu-titulo-orac').innerText = t.m4;
+            document.getElementById('txt-menu-desc-orac').innerText = t.d4;
+
+            // Etiquetas de la pantalla de configuración
+            document.getElementById('lbl-tema').innerText = t.lblProp;
+            document.getElementById('lbl-tirada').innerText = t.lblDesp;
+            document.getElementById('lbl-mazo').innerText = t.lblMazo;
+            document.getElementById('btn-mezclar').innerText = t.btnConsulta;
+
+            // Opciones del selector de propósitos
+            document.getElementById('opt-t-general').innerText = t.tGeneral;
+            document.getElementById('opt-t-amor').innerText = t.tAmor;
+            document.getElementById('opt-t-dinero').innerText = t.tDinero;
+            document.getElementById('opt-t-trabajo').innerText = t.tTrabajo;
+            document.getElementById('opt-t-esp').innerText = t.tEsp;
+            document.getElementById('opt-t-sino').innerText = t.tSino;
+
+            // Refrescar el tipo de tirada actual con el nuevo idioma
+            ajustarTipoTirada(document.getElementById('tarot-tema').value);
+            actualizarInstruccionTablero();
+
+            // Si hay un botón de volver activo en la barra superior, actualizarlo
+            const btnVolverActivo = document.querySelector('.top-bar .btn-volver');
+            if(btnVolverActivo) btnVolverActivo.innerText = t.btnVolver;
         }
 
         const devLang = (navigator.language || navigator.userLanguage).slice(0, 2);
         cambiarIdioma(devLang);
     </script>
 </body>
-</html>             
-        
-    
-        
-            
+</html>
