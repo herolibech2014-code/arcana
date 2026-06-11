@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+             <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -208,7 +208,7 @@
             box-shadow: 0 0 25px #d4af37;
         }
 
-        /* REVELACIÓN FINAL CON PLAN B (IMÁGENES EN RED) */
+        /* REVELACIÓN FINAL */
         .resultado-cartas { display: flex; justify-content: center; gap: 25px; margin: 30px 0; flex-wrap: wrap; }
         
         .carta-revelada {
@@ -233,7 +233,7 @@
             object-fit: cover;
             transition: transform 0.3s;
         }
-        /* Si la carta es invertida, rota la ilustración */
+        /* Rotación si sale invertida */
         .carta-revelada.invertida .wrapper-imagen-tarot img {
             transform: rotate(180deg);
         }
@@ -277,12 +277,6 @@
             .carta-revelada .nombre-c { font-size: 0.85rem; height: 30px; }
             .btn-volver { font-size: 1.2rem; width: 100%; box-sizing: border-box; }
         }
-        
-        @media (min-width: 601px) and (max-width: 900px) {
-            .carta-tarot-real { width: 95px; height: 165px; }
-            .abanico-fila { height: 185px; }
-            .card-titulo { font-size: 2.2rem; }
-        }
 
         @keyframes develaCarta { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
     </style>
@@ -299,8 +293,6 @@
             <div class="lang-ctrl">
                 <select id="selector-idioma" onchange="cambiarIdioma(this.value)">
                     <option value="es">Español</option> <option value="en">English</option>
-                    <option value="pt">Português</option> <option value="fr">Français</option>
-                    <option value="it">Italiano</option> <option value="de">Deutsch</option>
                 </select>
             </div>
         </div>
@@ -356,10 +348,6 @@
                     <label id="lbl-mazo">Línea del mazo:</label>
                     <select id="tarot-mazo">
                         <option value="Rider-Waite">Tarot Rider-Waite</option>
-                        <option value="Marsellés">Tarot de Marsella</option>
-                        <option value="Egipcio">Tarot Egipcio</option>
-                        <option value="Ángeles">Tarot Celestial</option>
-                        <option value="Gitano">Tarot Gitano</option>
                     </select>
                 </div>
             </div>
@@ -410,86 +398,30 @@
             }
         }
 
-        // MAZO COMPLETO CON IDENTIFICADORES DE POSICIÓN TRADICIONAL
+        // MAZO DE ARCANOS MAYORES CON ENLACES SEGUROS DE WIKIMEDIA (RIDER-WAITE)
         const mazoOficial78 = [
-            {id: 0, es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", num: "00"},
-            {id: 1, es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros.", num: "01"},
-            {id: 2, es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado.", num: "02"},
-            {id: 3, es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación.", num: "03"},
-            {id: 4, es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control.", num: "04"},
-            {id: 5, es:"El Hierofante", en:"The Hierophant", significado:"Tradición, sabiduría, guía espiritual, estudios.", num: "05"},
-            {id: 6, es:"Los Enamorados", en:"The Lovers", significado:"Elecciones del corazón, armonía, dualidad, uniones.", num: "06"},
-            {id: 7, es:"El Carro", en:"The Chariot", significado:"Determinación, victoria, control de fuerzas opuestas.", num: "07"},
-            {id: 8, es:"La Justicia", en:"Justice", significado:"Verdad, causa y efecto, equilibrio de la balanza.", num: "08"},
-            {id: 9, es:"El Ermitaño", en:"The Hermit", significado:"Introspección, retiro voluntario, luz interior.", num: "09"},
-            {id: 10, es:"La Rueda de la Fortuna", en:"Wheel of Fortune", significado:"Cambios de destino, ciclos, golpes de suerte.", num: "10"},
-            {id: 11, es:"La Fuerza", en:"Strength", significado:"Valor interno, compasión, domar las pasiones básicas.", num: "11"},
-            {id: 12, es:"El Colgado", en:"The Hanged Man", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", num: "12"},
-            {id: 13, es:"La Muerte", en:"Death", significado:"Transformación profunda, finales que traen renacer.", num: "13"},
-            {id: 14, es:"La Templanza", en:"Temperance", significado:"Alquimia, paciencia, moderación, balance emocional.", num: "14"},
-            {id: 15, es:"El Diablo", en:"The Devil", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", num: "15"},
-            {id: 16, es:"La Torre", en:"The Tower", significado:"Ruptura de estructuras falsas, revelación repentina.", num: "16"},
-            {id: 17, es:"La Estrella", en:"The Star", significado:"Esperanza, sanación espiritual, renovación, fe.", num: "17"},
-            {id: 18, es:"La Luna", en:"The Moon", significado:"Ilusiones, miedos escondidos, intuición profunda.", num: "18"},
-            {id: 19, es:"El Sol", en:"The Sun", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", num: "19"},
-            {id: 20, es:"El Juicio", en:"The Judgement", significado:"Llamado interno, absolución, despertar a tu verdad.", num: "20"},
-            {id: 21, es:"El Mundo", en:"The World", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", num: "21"},
-            {id: 22, es:"As de Bastos", en:"Ace of Wands", significado:"Chispa creativa, pasión inicial, nueva oportunidad.", num: "wands01"},
-            {id: 23, es:"Dos de Bastos", en:"Two of Wands", significado:"Planificación a futuro, mirar horizontes, decisiones.", num: "wands02"},
-            {id: 24, es:"Tres de Bastos", en:"Three of Wands", significado:"Expansión, barcos llegando, frutos del esfuerzo.", num: "wands03"},
-            {id: 25, es:"Cuatro de Bastos", en:"Four of Wands", significado:"Celebración, hogar armónico, estabilidad lograda.", num: "wands04"},
-            {id: 26, es:"Cinco de Bastos", en:"Five of Wands", significado:"Competencia, tensiones menores, caos creativo.", num: "wands05"},
-            {id: 27, es:"Seis de Bastos", en:"Six of Wands", significado:"Reconocimiento público, victoria, aplausos merecidos.", num: "wands06"},
-            {id: 28, es:"Siete de Bastos", en:"Seven of Wands", significado:"Defensa de tus principios, sostener tu posición firme.", num: "wands07"},
-            {id: 29, es:"Ocho de Bastos", en:"Eight of Wands", significado:"Velocidad, noticias rápidas, movimiento sin freno.", num: "wands08"},
-            {id: 30, es:"Nueve de Bastos", en:"Nine of Wands", significado:"Último esfuerzo, resiliencia, guardia en alto.", num: "wands09"},
-            {id: 31, es:"Diez de Bastos", en:"Ten of Wands", significado:"Carga pesada, exceso de responsabilidades, agotamiento.", num: "wands10"},
-            {id: 32, es:"Sota de Bastos", en:"Page of Wands", significado:"Mensajero entusiasta, ganas de explorar, aventura.", num: "wands11"},
-            {id: 33, es:"Caballero de Bastos", en:"Knight of Wands", significado:"Acción impetuosa, mudanzas, avance apasionado.", num: "wands12"},
-            {id: 34, es:"Reina de Bastos", en:"Queen of Wands", significado:"Magnetismo, confianza, fuego social y protector.", num: "wands13"},
-            {id: 35, es:"Rey de Bastos", en:"King of Wands", significado:"Liderazgo absoluto, visión ejecutiva, inspiración.", num: "wands14"},
-            {id: 36, es:"As de Copas", en:"Ace of Cups", significado:"Amor puro desbordante, despertar emocional, intuición.", num: "cups01"},
-            {id: 37, es:"Dos de Copas", en:"Two of Cups", significado:"Conexión recíproca, romance, pactos, alma gemela.", num: "cups02"},
-            {id: 38, es:"Tres de Copas", en:"Three of Cups", significado:"Brindis familiar, amistar verdadera, comunidad feliz.", num: "cups03"},
-            {id: 39, es:"Cuatro de Copas", en:"Four of Cups", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades.", num: "cups04"},
-            {id: 40, es:"Cinco de Copas", en:"Five of Cups", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío.", num: "cups05"},
-            {id: 41, es:"Seis de Copas", en:"Six of Cups", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros.", num: "cups06"},
-            {id: 42, es:"Siete de Copas", en:"Seven of Cups", significado:"Fantasías, exceso de opciones, ilusiones engañosas.", num: "cups07"},
-            {id: 43, es:"Ocho de Copas", en:"Eight of Cups", significado:"Abandono voluntario de lo que ya no nutre el alma.", num: "cups08"},
-            {id: 44, es:"Nueve de Copas", en:"Nine of Cups", significado:"Deseo concedido, satisfacción personal, bienestar.", num: "cups09"},
-            {id: 45, es:"Diez de Copas", en:"Ten of Cups", significado:"Dicha familiar absoluta, amor consolidado, paz.", num: "cups10"},
-            {id: 46, es:"Sota de Copas", en:"Page of Cups", significado:"Sensibilidad artística, noticias afectivas tiernas.", num: "cups11"},
-            {id: 47, es:"Caballero de Copas", en:"Knight of Cups", significado:"El portador del romance, propuesta sincera, idealismo.", num: "cups12"},
-            {id: 48, es:"Reina de Copas", en:"Queen of Cups", significado:"Empatía total, madre intuitiva, refugio emocional.", num: "cups13"},
-            {id: 49, es:"Rey de Copas", en:"King of Cups", significado:"Maestría emocional, templanza ante las crisis.", num: "cups14"},
-            {id: 50, es:"As de Espadas", en:"Ace of Swords", significado:"Claridad mental destructiva, verdad cruda, gran avance.", num: "swords01"},
-            {id: 51, es:"Dos de Espadas", en:"Two of Swords", significado:"Callejón sin salida mental, ojos vendados, indecisión.", num: "swords02"},
-            {id: 52, es:"Tres de Espadas", en:"Three of Swords", significado:"Dolor en el corazón, traición asumida, herida liberadora.", num: "swords03"},
-            {id: 53, es:"Cuatro de Espadas", en:"Four of Swords", significado:"Descanso mental obligatorio, meditación, tregua.", num: "swords04"},
-            {id: 54, es:"Cinco de Espadas", en:"Five of Swords", significado:"Victoria pírrica, discusiones donde todos pierden.", num: "swords05"},
-            {id: 55, es:"Seis de Espadas", en:"Six of Swords", significado:"Viaje hacia aguas más tranquilas, transición necesaria.", num: "swords06"},
-            {id: 56, es:"Siete de Espadas", en:"Seven of Swords", significado:"Estrategia oculta, astucia, evitar la confrontación.", num: "swords07"},
-            {id: 57, es:"Ocho de Espadas", en:"Eight of Swords", significado:"Prisión mental autoimpuesta, parálisis por miedo.", num: "swords08"},
-            {id: 58, es:"Nueve de Espadas", en:"Nine of Swords", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente.", num: "swords09"},
-            {id: 59, es:"Diez de Espadas", en:"Ten of Swords", significado:"Final absoluto del dolor, tocar fondo para renacer.", num: "swords10"},
-            {id: 60, es:"Sota de Espadas", en:"Page of Swords", significado:"Vigilancia, mente analítica, verdades incómodas.", num: "swords11"},
-            {id: 61, es:"Caballero de Espadas", en:"Knight of Swords", significado:"Defensa feroz de ideas, verdades directas sin filtro.", num: "swords12"},
-            {id: 62, es:"Reina de Espadas", en:"Queen of Swords", significado:"Independencia intelectual, discernimiento agudo, límites.", num: "swords13"},
-            {id: 63, es:"Rey de Espadas", en:"King of Swords", significado:"Juicio justo y analítico, autoridad de la verdad.", num: "swords14"},
-            {id: 64, es:"As de Oros", en:"Ace of Pentacles", significado:"Semilla de abundancia, inicio financiero sólido, salud.", num: "pents01"},
-            {id: 65, es:"Dos de Oros", en:"Two of Pentacles", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", num: "pents02"},
-            {id: 66, es:"Tres de Oros", en:"Three of Pentacles", significado:"Trabajo en equipo, maestría artesanal, colaboración.", num: "pents03"},
-            {id: 67, es:"Cuatro de Oros", en:"Four of Pentacles", significado:"Avaricia, apego al dinero por miedo a la carencia.", num: "pents04"},
-            {id: 68, es:"Cinco de Oros", en:"Five of Pentacles", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", num: "pents05"},
-            {id: 69, es:"Seis de Oros", en:"Six of Pentacles", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", num: "pents06"},
-            {id: 70, es:"Siete de Oros", en:"Seven of Pentacles", significado:"Paciencia ante la cosecha, evaluar el crecimiento de tu siembra.", num: "pents07"},
-            {id: 71, es:"Ocho de Oros", en:"Eight of Pentacles", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", num: "pents08"},
-            {id: 72, es:"Nueve de Oros", en:"Nine of Pentacles", significado:"Independencia material, disfrutar los lujos logrados.", num: "pents09"},
-            {id: 73, es:"Diez de Oros", en:"Ten of Pentacles", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", num: "pents10"},
-            {id: 74, es:"Sota de Oros", en:"Page of Pentacles", significado:"Estudiante aplicado, nueva idea de negocio realista.", num: "pents11"},
-            {id: 75, es:"Caballero de Oros", en:"Knight of Pentacles", significado:"Avance lento pero seguro, constancia inquebrantable.", num: "pents12"},
-            {id: 76, es:"Reina de Oros", en:"Queen of Pentacles", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar.", num: "pents13"},
-            {id: 77, es:"Rey de Oros", en:"King of Pentacles", significado:"Éxito financiero absoluto, dominio de la materia, seguridad.", num: "pents14"}
+            {id: 0, es:"El Loco", en:"The Fool", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", link: "https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg"},
+            {id: 1, es:"El Mago", en:"The Magician", significado:"Poder de manifestación, habilidad, recursos puros.", link: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"},
+            {id: 2, es:"La Sacerdotisa", en:"The High Priestess", significado:"Intuición, misterio, subconsciente sagrado.", link: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"},
+            {id: 3, es:"La Emperatriz", en:"The Empress", significado:"Abundancia, naturaleza, fertilidad, creación.", link: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg"},
+            {id: 4, es:"El Emperador", en:"The Emperor", significado:"Estructura, autoridad, bases firmes, control.", link: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"},
+            {id: 5, es:"El Hierofante", en:"The Hierophant", significado:"Tradición, sabiduría, guía espiritual, estudios.", link: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg"},
+            {id: 6, es:"Los Enamorados", en:"The Lovers", significado:"Elecciones del corazón, armonía, dualidad, uniones.", link: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg"},
+            {id: 7, es:"El Carro", en:"The Chariot", significado:"Determinación, victoria, control de fuerzas opuestas.", link: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg"},
+            {id: 8, es:"La Fuerza", en:"Strength", significado:"Valor interno, compasión, domar las pasiones básicas.", link: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg"},
+            {id: 9, es:"El Ermitaño", en:"The Hermit", significado:"Introspección, retiro voluntario, luz interior.", link: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg"},
+            {id: 10, es:"La Rueda de la Fortuna", en:"Wheel of Fortune", significado:"Cambios de destino, ciclos, golpes de suerte.", link: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg"},
+            {id: 11, es:"La Justicia", en:"Justice", significado:"Verdad, causa y efecto, equilibrio de la balanza.", link: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg"},
+            {id: 12, es:"El Colgado", en:"The Hanged Man", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", link: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg"},
+            {id: 13, es:"La Muerte", en:"Death", significado:"Transformación profunda, finales que traen renacer.", link: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg"},
+            {id: 14, es:"La Templanza", en:"Temperance", significado:"Alquimia, paciencia, moderación, balance emotional.", link: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg"},
+            {id: 15, es:"El Diablo", en:"The Devil", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", link: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg"},
+            {id: 16, es:"La Torre", en:"The Tower", significado:"Ruptura de estructuras falsas, revelación repentina.", link: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg"},
+            {id: 17, es:"La Estrella", en:"The Star", significado:"Esperanza, sanación espiritual, renovación, fe.", link: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg"},
+            {id: 18, es:"La Luna", en:"The Moon", significado:"Ilusiones, miedos escondidos, intuición profunda.", link: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg"},
+            {id: 19, es:"El Sol", en:"The Sun", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", link: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg"},
+            {id: 20, es:"El Juicio", en:"The Judgement", significado:"Llamado interno, absolución, despertar a tu verdad.", link: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg"},
+            {id: 21, es:"El Mundo", en:"The World", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", link: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg"}
         ];
 
         function cambiarVista(idVista) {
@@ -539,18 +471,18 @@
             mazoMezcladoConPosicion = [];
             ritualEnProceso = false;
 
-            let mazo78Original = mazoOficial78.map(c => {
+            let mazoOriginal = mazoOficial78.map(c => {
                 return { original: c, invertida: Math.random() > 0.45 };
             });
             
-            mazo78Original.sort(() => Math.random() - 0.5);
-            mazoMezcladoConPosicion = mazo78Original;
+            mazoOriginal.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazoOriginal;
 
             const contenedorAbanicos = document.getElementById('altar-abanicos-completo');
             contenedorAbanicos.innerHTML = '';
             
-            const totalFilas = 6;
-            const cartasPorFila = 13; 
+            const totalFilas = 3;
+            const cartasPorFila = 7; 
 
             for (let f = 0; f < totalFilas; f++) {
                 let divFila = document.createElement('div');
@@ -560,18 +492,20 @@
                 let finIdx = inicioIdx + cartasPorFila;
 
                 for (let i = inicioIdx; i < finIdx; i++) {
+                    if(!mazoMezcladoConPosicion[i]) break;
+
                     let divCard = document.createElement('div');
                     divCard.className = 'carta-tarot-real';
                     
                     let posRelativa = (i - inicioIdx) - (cartasPorFila - 1) / 2;
                     let esCelular = window.innerWidth < 600;
                     
-                    let multiplicadorGiro = esCelular ? 3.5 : 4.0; 
-                    let multiplicadorX = esCelular ? 16 : 32;    
+                    let multiplicadorGiro = esCelular ? 4.5 : 5.0; 
+                    let multiplicadorX = esCelular ? 22 : 40;    
 
                     let rotacionGiro = posRelativa * multiplicadorGiro;
                     let traslacionX = posRelativa * multiplicadorX;
-                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.5 : 0.6);
+                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.7 : 0.8);
 
                     divCard.style.transform = `translateX(${traslacionX}px) translateY(${traslacionY}px) rotate(${rotacionGiro}deg)`;
                     divCard.style.zIndex = i - inicioIdx;
@@ -609,25 +543,18 @@
             
             let parrafosInterpretacion = "";
             let esSiNo = document.getElementById('tarot-tema').value === 'sino';
-            let mazoElegido = document.getElementById('tarot-mazo').value;
             let contadoresSi = 0;
-
-            // PLAN B: Usamos un servidor público estable con el mazo Rider-Waite completo
-            let urlBaseMazo = "https://eklhad.github.io/tarot/cards/";
 
             cartasSeleccionadasIndices.forEach((cartaData, i) => {
                 let cardObj = cartaData.original;
                 let nombreIdioma = cardObj[idiomaActual];
                 let estadoPosicion = cartaData.invertida ? (idiomaActual === 'es' ? " (Invertida)" : " (Reversed)") : "";
 
-                // Creamos el enlace exacto a internet usando el identificador tradicional del mazo
-                let urlImagenFinal = `${urlBaseMazo}${cardObj.num}.jpg`;
-
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
                 divC.innerHTML = `
                     <div class="wrapper-imagen-tarot">
-                        <img src="${urlImagenFinal}" alt="${nombreIdioma}" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22150%22><rect width=%22100%25%22 height=%22100%25%22 fill=%22%231e1135%22/><text x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22 fill=%22%23d4af37%22 font-size=%2230%22>✦</text></svg>'">
+                        <img src="${cardObj.link}" alt="${nombreIdioma}" crossorigin="anonymous">
                     </div>
                     <div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>
                 `;
@@ -652,11 +579,7 @@
 
         const textosTraducidos = {
             es: { lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE" },
-            en: { lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE" },
-            pt: { lema: "O universo responde", ads: "ANÚNCIO RESERVADO GOOGLE ADSENSE" },
-            fr: { lema: "L'univers répond", ads: "ESPACE PUBLICITAIRE GOOGLE ADSENSE" },
-            it: { lema: "L'universo risponde", ads: "SPAZIO PUBBLICITARIO GOOGLE ADSENSE" },
-            de: { lema: "Das Universum antwortet", ads: "WERBUNG RESERVIERT FÜR GOOGLE ADSENSE" }
+            en: { lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE" }
         };
 
         function cambiarIdioma(lang) {
@@ -671,4 +594,4 @@
         cambiarIdioma(devLang);
     </script>
 </body>
-</html>                                              
+</html>                                         
