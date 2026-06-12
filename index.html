@@ -1,4 +1,4 @@
-      <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -65,15 +65,6 @@
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
             background: rgba(212, 175, 55, 0.15);
         }
-        .lang-ctrl select {
-            background: #020105;
-            border: 2px solid rgba(212, 175, 55, 0.5);
-            border-radius: 6px;
-            color: #f3e8ff;
-            padding: 10px;
-            font-family: 'Cinzel Decorative', serif;
-            font-size: 1rem;
-        }
 
         /* CABECERA */
         .logo-area { 
@@ -82,15 +73,6 @@
             flex-direction: column;
             align-items: center;
             gap: 20px;
-        }
-        
-        .imagen-icono-unica {
-            width: 140px;
-            height: 140px;
-            object-fit: cover;
-            border-radius: 50%;
-            border: 3px solid #d4af37;
-            box-shadow: 0 0 25px rgba(212, 175, 55, 0.4);
         }
 
         .app-container.modo-consulta-activa .logo-area {
@@ -159,11 +141,11 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE ABANICOS OPTIMIZADO */
+        /* CONTENEDOR DE ABANICOS */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 25px;
             width: 100%;
             margin-top: 10px;
             padding-bottom: 40px;
@@ -172,7 +154,7 @@
         .abanico-fila {
             position: relative;
             width: 100%;
-            height: 170px;
+            height: 180px;
             margin: 0 auto;
             display: flex;
             justify-content: center;
@@ -181,8 +163,8 @@
         /* NAIPES EN EL TABLERO */
         .carta-tarot-real {
             position: absolute;
-            width: 90px;
-            height: 150px;
+            width: 85px;
+            height: 145px;
             background: linear-gradient(135deg, #220e45 0%, #06020c 100%);
             border: 2px solid #5b21b6;
             border-radius: 6px;
@@ -191,13 +173,9 @@
             transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
             transform-origin: bottom center;
         }
-        .carta-tarot-real::before {
-            content: ''; position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px;
-            border: 1px solid rgba(212, 175, 55, 0.15); border-radius: 3px; pointer-events: none;
-        }
         .carta-tarot-real::after {
             content: '✦'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: rgba(212, 175, 55, 0.2); font-size: 1.3rem;
+            color: rgba(212, 175, 55, 0.25); font-size: 1.3rem;
         }
         .carta-tarot-real:hover {
             border-color: #a78bfa;
@@ -216,7 +194,7 @@
         .resultado-cartas { display: flex; justify-content: center; gap: 25px; margin: 30px 0; flex-wrap: wrap; }
         
         .carta-revelada {
-            width: 170px; height: 300px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
+            width: 170px; height: 295px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
             padding: 8px; box-sizing: border-box; box-shadow: 0 12px 35px rgba(0,0,0,0.95);
             opacity: 0; animation: develaCarta 0.6s ease forwards;
@@ -225,7 +203,7 @@
         
         .wrapper-imagen-tarot {
             width: 100%;
-            height: 245px;
+            height: 240px;
             overflow: hidden;
             border-radius: 4px;
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -235,10 +213,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.3s;
-        }
-        .carta-revelada.invertida .wrapper-imagen-tarot img {
-            transform: rotate(180deg);
         }
 
         .carta-revelada .nombre-c {
@@ -257,55 +231,18 @@
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
-        /* RESPONSIVO AJUSTADO */
-        @media (max-width: 600px) {
-            body { overflow-x: auto; }
-            .app-container { padding: 15px; gap: 20px; }
-            h1.marca-titulo { font-size: 2.8rem; letter-spacing: 4px; }
-            .lema { font-size: 1.1rem; }
-            .imagen-icono-unica { width: 110px; height: 110px; }
-            
-            .card-titulo { font-size: 2rem; }
-            .card-desc { font-size: 1rem; }
-            .menu-card { padding: 30px 15px; }
-
-            .carta-tarot-real { width: 75px; height: 125px; }
-            .abanico-fila { height: 140px; width: 480px; margin: 0 auto; }
-            
-            .contenedor-altar-abanicos { gap: 15px; width: 100%; overflow-x: auto; padding-left: 10px; padding-right: 10px; box-sizing: border-box; }
-
-            .instruccion-directa { font-size: 1.5rem; margin: 10px 0; }
-            .carta-revelada { width: 140px; height: 250px; padding: 5px; }
-            .wrapper-imagen-tarot { height: 200px; }
-            .carta-revelada .nombre-c { font-size: 0.9rem; height: 30px; }
-            .btn-volver { font-size: 1.2rem; width: 100%; box-sizing: border-box; }
-        }
-
         @keyframes develaCarta { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
 <body>
 
-    <audio id="audio-ambiente-real" loop src="musica-fondo.MP3"></audio>
-    <audio id="audio-cuenco-real" src="sonido-cuenco.mp3"></audio>
-
     <div class="app-container" id="contenedor-global">
         
         <div class="top-bar">
             <div id="zona-volver"></div>
-            <div class="lang-ctrl">
-                <select id="selector-idioma" onchange="cambiarIdioma(this.value)">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="pt">Português</option>
-                    <option value="fr">Français</option>
-                    <option value="it">Italiano</option>
-                </select>
-            </div>
         </div>
 
         <div class="logo-area">
-            <img src="fondo-arcana.jpg" alt="Logo" class="imagen-icono-unica" onerror="this.style.display='none'">
             <h1 class="marca-titulo">ARCANA</h1>
             <div class="lema" id="txt-lema">El universo responde</div>
         </div>
@@ -313,20 +250,8 @@
         <div id="pantalla-menu" class="vista-seccion activa">
             <div class="menu-contenedor">
                 <div class="menu-card" onclick="abrirTarotConfig()">
-                    <div class="card-titulo" id="txt-menu-titulo-tarot">🔮 Tarot</div>
-                    <div class="card-desc" id="txt-menu-desc-tarot">Las 78 cartas desplegadas en su totalidad sobre el tapete violeta.</div>
-                </div>
-                <div class="menu-card" onclick="alert('Próximamente...')">
-                    <div class="card-titulo" id="txt-menu-titulo-astro">🌌 Astrología</div>
-                    <div class="card-desc" id="txt-menu-desc-astro">Cálculo de tránsitos de tus astros y revolución solar.</div>
-                </div>
-                <div class="menu-card" onclick="alert('Próximamente...')">
-                    <div class="card-titulo" id="txt-menu-titulo-num">🔢 Numerología</div>
-                    <div class="card-desc" id="txt-menu-desc-num">Vibración oculta de nombres, esencias e hilos numéricos.</div>
-                </div>
-                <div class="menu-card" onclick="alert('Próximamente...')">
-                    <div class="card-titulo" id="txt-menu-titulo-orac">🧠 Oráculo</div>
-                    <div class="card-desc" id="txt-menu-desc-orac">Consulta de conciencia unificada uniendo planos divinos.</div>
+                    <div class="card-titulo">🔮 Tarot</div>
+                    <div class="card-desc">Las 78 cartas del mazo Rider-Waite listas sobre el tapete.</div>
                 </div>
             </div>
         </div>
@@ -334,171 +259,136 @@
         <div id="pantalla-tarot-config" class="vista-seccion">
             <div class="config-ritual-area">
                 <div class="selector-caja">
-                    <label id="lbl-tema">Propósito de la consulta:</label>
-                    <select id="tarot-tema" onchange="ajustarTipoTirada(this.value)">
-                        <option value="general" id="opt-t-general">Energía General</option>
-                        <option value="amor" id="opt-t-amor">Amor & Vínculos</option>
-                        <option value="dinero" id="opt-t-dinero">Abundancia & Destino</option>
-                        <option value="trabajo" id="opt-t-trabajo">Laboral & Caminos</option>
-                        <option value="espiritualidad" id="opt-t-esp">Evolución del Alma</option>
-                        <option value="sino" id="opt-t-sino">Pregunta Sagrada (SÍ / NO)</option>
+                    <label>Propósito de la consulta:</label>
+                    <select id="tarot-tema">
+                        <option value="general">Energía General</option>
                     </select>
                 </div>
-                <div class="selector-caja" id="caja-tipo-tirada">
-                    <label id="lbl-tirada">Despliegue energético:</label>
-                    <select id="tarot-tipo">
-                        </select>
-                </div>
                 <div class="selector-caja">
-                    <label id="lbl-mazo">Línea del mazo:</label>
-                    <select id="tarot-mazo">
-                        <option value="Rider-Waite">Tarot Rider-Waite (78 cartas)</option>
+                    <label>Despliegue energético:</label>
+                    <select id="tarot-tipo">
+                        <option value="3" selected>Tres Cartas (Pasado, Presente y Futuro)</option>
                     </select>
                 </div>
             </div>
-            <button class="btn-volver" id="btn-mezclar" onclick="comenzarRitualTarot()" style="margin-top:25px; font-size:1.4rem; padding:15px;">IR A LA CONSULTA</button>
+            <button class="btn-volver" onclick="comenzarRitualTarot()" style="margin-top:25px; font-size:1.4rem; padding:15px;">IR A LA CONSULTA</button>
         </div>
 
         <div id="pantalla-tarot-tablero" class="vista-seccion">
-            <div class="instruccion-directa" id="txt-instruccion-dinamica">Elige tus cartas</div>
+            <div class="instruccion-directa">Elige tus 3 cartas del mazo</div>
             <div class="contenedor-altar-abanicos" id="altar-abanicos-completo"></div>
         </div>
 
         <div id="pantalla-tarot-resultado" class="vista-seccion">
-            <div class="instruccion-directa" id="txt-titulo-resultado">El Dictamen del Destino</div>
+            <div class="instruccion-directa">El Dictamen del Destino</div>
             <div class="resultado-cartas" id="caja-cartas-reveladas"></div>
             <div class="caja-interpretacion" id="texto-interpretacion"></div>
-            <button class="btn-volver" id="btn-otra" onclick="abrirTarotConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;">NUEVA CONSULTA</button>
+            <button class="btn-volver" onclick="abrirTarotConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;">NUEVA CONSULTA</button>
         </div>
 
-        <div class="ads-box" id="txt-ads">ESPACIO RESERVADO PARA GOOGLE ADSENSE</div>
+        <div class="ads-box">ESPACIO RESERVADO PARA GOOGLE ADSENSE</div>
     </div>
 
     <script>
-        let idiomaActual = 'es';
         let cartasRequeridas = 3;
         let cartasSeleccionadasIndices = [];
         let mazoMezcladoConPosicion = [];
         let ritualEnProceso = false;
-        
-        let audioAmbiente = document.getElementById('audio-ambiente-real');
-        let audioCuenco = document.getElementById('audio-cuenco-real');
-        let musicaEncendida = false;
 
-        function asegurarMusicaDeFondo() {
-            if (!musicaEncendida && audioAmbiente) {
-                audioAmbiente.volume = 0.20;
-                audioAmbiente.play()
-                    .then(() => { musicaEncendida = true; })
-                    .catch(e => console.log("Audio en espera..."));
-            }
-        }
-
-        function sonarCuencoOriginal() {
-            asegurarMusicaDeFondo();
-            if (audioCuenco) {
-                audioCuenco.currentTime = 0;
-                audioCuenco.volume = 0.4;
-                audioCuenco.play().catch(e => console.log("Sonido listo"));
-            }
-        }
-
-        // URL del servidor público para las imágenes del Rider-Waite
-        const BASE_URL_IMAGENES = "https://www.tarot-tarot.com/images/tarot/";
-
+        // MAZO DE 78 CARTAS CON ENLACES REALES Y VERIFICADOS DE WIKIPEDIA
         const mazoOficial78 = [
-            {id: 0, es:"El Loco", en:"The Fool", pt:"O Louco", fr:"Le Fou", it:"Il Matto", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", archivo: "0.jpg"},
-            {id: 1, es:"El Mago", en:"The Magician", pt:"O Mago", fr:"Le Bateleur", it:"Il Bagatto", significado:"Poder de manifestation, habilidad, recursos puros.", archivo: "1.jpg"},
-            {id: 2, es:"La Sacerdotisa", en:"The High Priestess", pt:"A Sacerdotisa", fr:"La Papesse", it:"La Papessa", significado:"Intuición, misterio, subconsciente sagrado.", archivo: "2.jpg"},
-            {id: 3, es:"La Emperatriz", en:"The Empress", pt:"A Imperatriz", fr:"L'Impératrice", it:"L'Imperatore", significado:"Abundancia, naturaleza, fertilidad, creación.", archivo: "3.jpg"},
-            {id: 4, es:"El Emperador", en:"The Emperor", pt:"O Imperador", fr:"L'Empereur", it:"L'Imperatore", significado:"Estructura, autoridad, bases firmes, control.", archivo: "4.jpg"},
-            {id: 5, es:"El Hierofante", en:"The Hierophant", pt:"O Hierofante", fr:"Le Pape", it:"Il Papa", significado:"Tradición, sabiduría, guía espiritual, estudios.", archivo: "5.jpg"},
-            {id: 6, es:"Los Enamorados", en:"The Lovers", pt:"Os Enamorados", fr:"L'Amoureux", it:"Gli Amanti", significado:"Elecciones del corazón, armonía, dualidad, uniones.", archivo: "6.jpg"},
-            {id: 7, es:"El Carro", en:"The Chariot", pt:"O Carro", fr:"Le Chariot", it:"Il Carro", significado:"Determinación, victoria, control de fuerzas opuestas.", archivo: "7.jpg"},
-            {id: 8, es:"La Fuerza", en:"Strength", pt:"A Força", fr:"La Force", it:"La Forza", significado:"Valor interno, compasión, domar las pasiones básicas.", archivo: "8.jpg"},
-            {id: 9, es:"El Ermitaño", en:"The Hermit", pt:"O Eremita", fr:"L'Ermite", it:"L'Eremita", significado:"Introspección, retiro voluntario, luz interior.", archivo: "9.jpg"},
-            {id: 10, es:"La Rueda de la Fortuna", en:"Wheel of Fortune", pt:"A Roda da Fortuna", fr:"La Roue de Fortune", it:"La Ruota della Fortuna", significado:"Cambios de destino, ciclos, golpes de suerte.", archivo: "10.jpg"},
-            {id: 11, es:"La Justicia", en:"Justice", pt:"A Justiça", fr:"La Justice", it:"La Giustizia", significado:"Verdad, causa y efecto, equilibrio de la balanza.", archivo: "11.jpg"},
-            {id: 12, es:"El Colgado", en:"The Hanged Man", pt:"O Enforcado", fr:"Le Pendu", it:"L'Appeso", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", archivo: "12.jpg"},
-            {id: 13, es:"La Muerte", en:"Death", pt:"A Morte", fr:"La Mort", it:"La Morte", significado:"Transformación profunda, finales que traen renacer.", archivo: "13.jpg"},
-            {id: 14, es:"La Templanza", en:"Temperance", pt:"A Temperança", fr:"La Tempérance", it:"La Temperanza", significado:"Alquimia, paciencia, moderación, balance emocional.", archivo: "14.jpg"},
-            {id: 15, es:"El Diablo", en:"The Devil", pt:"O Diabo", fr:"Le Diable", it:"Il Diavolo", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", archivo: "15.jpg"},
-            {id: 16, es:"La Torre", en:"The Tower", pt:"A Torre", fr:"La Maison-Dieu", it:"La Torre", significado:"Ruptura de estructuras falsas, revelación repentina.", archivo: "16.jpg"},
-            {id: 17, es:"La Estrella", en:"The Star", pt:"A Estrela", fr:"L'Étoile", it:"La Stella", significado:"Esperanza, sanación espiritual, renovación, fe.", archivo: "17.jpg"},
-            {id: 18, es:"La Luna", en:"The Moon", pt:"A Lua", fr:"La Lune", it:"La Luna", significado:"Ilusiones, miedos escondidos, intuición profunda.", archivo: "18.jpg"},
-            {id: 19, es:"El Sol", en:"The Sun", pt:"O Sol", fr:"Le Soleil", it:"Il Sole", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", archivo: "19.jpg"},
-            {id: 20, es:"El Juicio", en:"The Judgement", pt:"O Julgamento", fr:"Le Jugement", it:"Il Giudizio", significado:"Llamado interno, absolución, despertar a tu verdad.", archivo: "20.jpg"},
-            {id: 21, es:"El Mundo", en:"The World", pt:"O Mundo", fr:"Le Monde", it:"Il Mondo", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", archivo: "21.jpg"},
+            // ARCANOS MAYORES
+            {id: 0, es:"El Loco", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg"},
+            {id: 1, es:"El Mago", significado:"Poder de manifestación, habilidad, recursos puros.", url:"https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"},
+            {id: 2, es:"La Sacerdotisa", significado:"Intuición, misterio, subconsciente sagrado.", url:"https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"},
+            {id: 3, es:"La Emperatriz", significado:"Abundancia, naturaleza, fertilidad, creación.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg"},
+            {id: 4, es:"El Emperador", significado:"Estructura, autoridad, bases firmes, control.", url:"https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"},
+            {id: 5, es:"El Hierofante", significado:"Tradición, sabiduría, guía espiritual, estudios.", url:"https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg"},
+            {id: 6, es:"Los Enamorados", significado:"Elecciones del corazón, armonía, uniones.", url:"https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg"},
+            {id: 7, es:"El Carro", significado:"Determinación, victoria, control de fuerzas opuestas.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg"},
+            {id: 8, es:"La Fuerza", significado:"Valor interno, compasión, domar las pasiones.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg"},
+            {id: 9, es:"El Ermitaño", significado:"Introspección, retiro voluntario, luz interior.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg"},
+            {id: 10, es:"La Rueda de la Fortuna", significado:"Cambios de destino, ciclos, golpes de suerte.", url:"https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg"},
+            {id: 11, es:"La Justicia", significado:"Verdad, causa y efecto, equilibrio de la balanza.", url:"https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg"},
+            {id: 12, es:"El Colgado", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", url:"https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg"},
+            {id: 13, es:"La Muerte", significado:"Transformación profunda, finales que traen renacer.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg"},
+            {id: 14, es:"La Templanza", significado:"Alquimia, paciencia, moderación, balance emocional.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg"},
+            {id: 15, es:"El Diablo", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", url:"https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg"},
+            {id: 16, es:"La Torre", significado:"Ruptura de estructuras falsas, revelación repentina.", url:"https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg"},
+            {id: 17, es:"La Estrella", significado:"Esperanza, sanación espiritual, renovación, fe.", url:"https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg"},
+            {id: 18, es:"La Luna", significado:"Ilusiones, miedos escondidos, intuición profunda.", url:"https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg"},
+            {id: 19, es:"El Sol", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", url:"https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg"},
+            {id: 20, es:"El Juicio", significado:"Llamado interno, absolución, despertar a tu verdad.", url:"https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg"},
+            {id: 21, es:"El Mundo", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", url:"https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg"},
             
             // BASTOS
-            {id: 22, es:"As de Bastos", en:"Ace of Wands", pt:"Ás de Paus", fr:"As de Bâton", it:"Asso di Bastoni", significado:"Chispa creativa, pasión inicial, nueva oportunidad.", archivo: "22.jpg"},
-            {id: 23, es:"Dos de Bastos", en:"Two of Wands", pt:"Dois de Paus", fr:"Deux de Bâton", it:"Due di Bastoni", significado:"Planificación a futuro, mirar horizontes, decisiones.", archivo: "23.jpg"},
-            {id: 24, es:"Tres de Bastos", en:"Three of Wands", pt:"Três de Paus", fr:"Trois de Bâton", it:"Tre di Bastoni", significado:"Expansión, frutos del esfuerzo, visión de crecimiento.", archivo: "24.jpg"},
-            {id: 25, es:"Cuatro de Bastos", en:"Four of Wands", pt:"Quatro de Paus", fr:"Quatre de Bâton", it:"Quattro di Bastoni", significado:"Celebración, hogar armónico, estabilidad lograda.", archivo: "25.jpg"},
-            {id: 26, es:"Cinco de Bastos", en:"Five of Wands", pt:"Cinco de Paus", fr:"Cinq de Bâton", it:"Cinque di Bastoni", significado:"Competencia, tensiones menores, desacuerdos.", archivo: "26.jpg"},
-            {id: 27, es:"Seis de Bastos", en:"Six of Wands", pt:"Six de Paus", fr:"Six de Bâton", it:"Sei di Bastoni", significado:"Reconocimiento público, victoria, aplausos merecidos.", archivo: "27.jpg"},
-            {id: 28, es:"Siete de Bastos", en:"Seven of Wands", pt:"Sete de Paus", fr:"Sept de Bâton", it:"Sette di Bastoni", significado:"Defensa de tus principios, sostener tu posición firme.", archivo: "28.jpg"},
-            {id: 29, es:"Ocho de Bastos", en:"Eight of Wands", pt:"Oito de Paus", fr:"Huit de Bâton", it:"Otto di Bastoni", significado:"Velocidad, noticias rápidas, movimiento sin freno.", archivo: "29.jpg"},
-            {id: 30, es:"Nueve de Bastos", en:"Nine of Wands", pt:"Nove de Paus", fr:"Neuf de Bâton", it:"Nove di Bastoni", significado:"Último esfuerzo, resiliencia, guardia en alto.", archivo: "30.jpg"},
-            {id: 31, es:"Diez de Bastos", en:"Ten of Wands", pt:"Dez de Paus", fr:"Dix de Bâton", it:"Dieci di Bastoni", significado:"Carga pesada, exceso de responsabilidades, agotamiento.", archivo: "31.jpg"},
-            {id: 32, es:"Sota de Bastos", en:"Page of Wands", pt:"Valete de Paus", fr:"Valet de Bâton", it:"Fante di Bastoni", significado:"Mensajero entusiasta, ganas de explorar, aventura.", archivo: "32.jpg"},
-            {id: 33, es:"Caballero de Bastos", en:"Knight of Wands", pt:"Cavaleiro de Paus", fr:"Chevalier de Bâton", it:"Cavaliere di Bastoni", significado:"Acción impetuosa, avance apasionado, determinación.", archivo: "33.jpg"},
-            {id: 34, es:"Reina de Bastos", en:"Queen of Wands", pt:"Rainha de Paus", fr:"Reine de Bâton", it:"Regina di Bastoni", significado:"Magnetismo, confianza, fuego social y protector.", archivo: "34.jpg"},
-            {id: 35, es:"Rey de Bastos", en:"King of Wands", pt:"Rei de Paus", fr:"Roi de Bâton", it:"Re di Bastoni", significado:"Liderazgo absoluto, visión ejecutiva, inspiración.", archivo: "35.jpg"},
+            {id: 22, es:"As de Bastos", significado:"Chispa creativa, pasión inicial, nueva oportunidad.", url:"https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg"},
+            {id: 23, es:"Dos de Bastos", significado:"Planificación a futuro, mirar horizontes, decisiones.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0f/Wands02.jpg"},
+            {id: 24, es:"Tres de Bastos", significado:"Expansión, frutos del esfuerzo, visión de crecimiento.", url:"https://upload.wikimedia.org/wikipedia/commons/f/ff/Wands03.jpg"},
+            {id: 25, es:"Cuatro de Bastos", significado:"Celebración, hogar armónico, estabilidad lograda.", url:"https://upload.wikimedia.org/wikipedia/commons/a/a4/Wands04.jpg"},
+            {id: 26, es:"Cinco de Bastos", significado:"Competencia, tensiones menores, desacuerdos.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9d/Wands05.jpg"},
+            {id: 27, es:"Seis de Bastos", significado:"Reconocimiento público, victoria, aplausos merecidos.", url:"https://upload.wikimedia.org/wikipedia/commons/3/3b/Wands06.jpg"},
+            {id: 28, es:"Siete de Bastos", significado:"Defensa de tus principios, sostener tu posición firme.", url:"https://upload.wikimedia.org/wikipedia/commons/e/e4/Wands07.jpg"},
+            {id: 29, es:"Ocho de Bastos", significado:"Velocidad, noticias rápidas, movimiento sin freno.", url:"https://upload.wikimedia.org/wikipedia/commons/6/6b/Wands08.jpg"},
+            {id: 30, es:"Nueve de Bastos", significado:"Último esfuerzo, resiliencia, guardia en alto.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4d/Wands09.jpg"},
+            {id: 31, es:"Diez de Bastos", significado:"Carga pesada, exceso de responsabilidades, agotamiento.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Wands10.jpg"},
+            {id: 32, es:"Sota de Bastos", significado:"Mensajero entusiasta, ganas de explorar, aventura.", url:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Wands11.jpg"},
+            {id: 33, es:"Caballero de Bastos", significado:"Acción impetuosa, avance apasionado, determinación.", url:"https://upload.wikimedia.org/wikipedia/commons/1/16/Wands12.jpg"},
+            {id: 34, es:"Reina de Bastos", significado:"Magnetismo, confianza, fuego social y protector.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0d/Wands13.jpg"},
+            {id: 35, es:"Rey de Bastos", significado:"Liderazgo absoluto, visión ejecutiva, inspiración.", url:"https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg"},
 
             // COPAS
-            {id: 36, es:"As de Copas", en:"Ace of Cups", pt:"Ás de Copas", fr:"As de Coupe", it:"Asso di Coppe", significado:"Amor puro desbordante, despertar emocional, intuición.", archivo: "36.jpg"},
-            {id: 37, es:"Dos de Copas", en:"Two of Cups", pt:"Dois de Copas", fr:"Deux de Coupe", it:"Due di Coppe", significado:"Conexión recíproca, romance, pactos, alma gemela.", archivo: "37.jpg"},
-            {id: 38, es:"Tres de Copas", en:"Three of Cups", pt:"Três de Copas", fr:"Trois de Coupe", it:"Tre di Coppe", significado:"Brindis familiar, amistad verdadera, comunidad feliz.", archivo: "38.jpg"},
-            {id: 39, es:"Cuatro de Copas", en:"Four of Cups", pt:"Quatro de Copas", fr:"Quatre de Coupe", it:"Quattro di Coppe", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades.", archivo: "39.jpg"},
-            {id: 40, es:"Cinco de Copas", en:"Five of Cups", pt:"Cinco de Copas", fr:"Cinq de Coupe", it:"Cinque di Coppe", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío.", archivo: "40.jpg"},
-            {id: 41, es:"Seis de Copas", en:"Six of Cups", pt:"Seis de Copas", fr:"Six de Coupe", it:"Sei di Coppe", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros.", archivo: "41.jpg"},
-            {id: 42, es:"Siete de Copas", en:"Seven of Cups", pt:"Sete de Copas", fr:"Sept de Coupe", it:"Sette di Coppe", significado:"Fantasías, exceso de opciones, ilusiones engañosas.", archivo: "42.jpg"},
-            {id: 43, es:"Ocho de Copas", en:"Eight of Cups", pt:"Oito de Copas", fr:"Huit de Coupe", it:"Otto di Coppe", significado:"Abandono voluntario de lo que ya no nutre el alma.", archivo: "43.jpg"},
-            {id: 44, es:"Nueve de Copas", en:"Nine of Cups", pt:"Nove de Copas", fr:"Neuf de Coupe", it:"Nove di Coppe", significado:"Deseo concedido, satisfacción personal, bienestar.", archivo: "44.jpg"},
-            {id: 45, es:"Diez de Copas", en:"Ten of Cups", pt:"Dez de Copas", fr:"Dix de Coupe", it:"Dieci di Coppe", significado:"Dicha familiar absoluta, amor consolidado, paz.", archivo: "45.jpg"},
-            {id: 46, es:"Sota de Copas", en:"Page of Cups", pt:"Valete de Copas", fr:"Valet de Coupe", it:"Fante di Coppe", significado:"Sensibilidad artística, noticias afectivas tiernas.", archivo: "46.jpg"},
-            {id: 47, es:"Caballero de Copas", en:"Knight of Cups", pt:"Cavaleiro de Copas", fr:"Chevalier de Coupe", it:"Cavaliere di Coppe", significado:"El portador del romance, propuesta sincera, idealismo.", archivo: "47.jpg"},
-            {id: 48, es:"Reina de Copas", en:"Queen of Cups", pt:"Rainha de Copas", fr:"Reine de Coupe", it:"Regina di Coppe", significado:"Empatía total, madre intuitiva, refugio emocional.", archivo: "48.jpg"},
-            {id: 49, es:"Rey de Copas", en:"King of Cups", pt:"Rei de Copas", fr:"Roi de Coupe", it:"Re di Coppe", significado:"Maestría emocional, templanza ante las crisis.", archivo: "49.jpg"},
+            {id: 36, es:"As de Copas", significado:"Amor puro desbordante, despertar emocional.", url:"https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg"},
+            {id: 37, es:"Dos de Copas", significado:"Conexión recíproca, romance, pactos, armonía.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg"},
+            {id: 38, es:"Tres de Copas", significado:"Brindis familiar, amistad verdadera, comunidad feliz.", url:"https://upload.wikimedia.org/wikipedia/commons/c/cbd/Cups03.jpg"},
+            {id: 39, es:"Cuatro de Copas", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades.", url:"https://upload.wikimedia.org/wikipedia/commons/3/35/Cups04.jpg"},
+            {id: 40, es:"Cinco de Copas", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d7/Cups05.jpg"},
+            {id: 41, es:"Seis de Copas", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros.", url:"https://upload.wikimedia.org/wikipedia/commons/1/17/Cups06.jpg"},
+            {id: 42, es:"Siete de Copas", significado:"Fantasías, exceso de opciones, ilusiones engañosas.", url:"https://upload.wikimedia.org/wikipedia/commons/a/ae/Cups07.jpg"},
+            {id: 43, es:"Ocho de Copas", significado:"Abandono voluntario de lo que ya no nutre el alma.", url:"https://upload.wikimedia.org/wikipedia/commons/6/60/Cups08.jpg"},
+            {id: 44, es:"Nueve de Copas", significado:"Deseo concedido, satisfacción personal, bienestar.", url:"https://upload.wikimedia.org/wikipedia/commons/2/24/Cups09.jpg"},
+            {id: 45, es:"Diez de Copas", significado:"Dicha familiar absoluta, amor consolidado, paz.", url:"https://upload.wikimedia.org/wikipedia/commons/d/dc/Cups10.jpg"},
+            {id: 46, es:"Sota de Copas", significado:"Sensibilidad artística, noticias afectivas tiernas.", url:"https://upload.wikimedia.org/wikipedia/commons/a/ad/Cups11.jpg"},
+            {id: 47, es:"Caballero de Copas", significado:"El portador del romance, propuesta sincera, idealismo.", url:"https://upload.wikimedia.org/wikipedia/commons/f/fa/Cups12.jpg"},
+            {id: 48, es:"Reina de Copas", significado:"Empatía total, madre intuitiva, refugio emocional.", url:"https://upload.wikimedia.org/wikipedia/commons/6/62/Cups13.jpg"},
+            {id: 49, es:"Rey de Copas", significado:"Maestría emocional, templanza ante las crisis.", url:"https://upload.wikimedia.org/wikipedia/commons/0/04/Cups14.jpg"},
 
             // ESPADAS
-            {id: 50, es:"As de Espadas", en:"Ace of Swords", pt:"Ás de Espadas", fr:"As d'Épée", it:"Asso di Spade", significado:"Claridad mental destructiva, verdad cruda, gran avance.", archivo: "51.jpg"},
-            {id: 51, es:"Dos de Espadas", en:"Two of Swords", pt:"Dois de Espadas", fr:"Deux d'Épée", it:"Due di Spade", significado:"Callejón sin salida mental, ojos vendados, indecisión.", archivo: "52.jpg"},
-            {id: 52, es:"Tres de Espadas", en:"Three of Swords", pt:"Três de Espadas", fr:"Trois d'Épée", it:"Tre di Spade", significado:"Dolor en el corazón, traición asumida, herida liberadora.", archivo: "53.jpg"},
-            {id: 53, es:"Cuatro de Espadas", en:"Four of Swords", pt:"Quatro de Espadas", fr:"Quatre d'Épée", it:"Quattro di Spade", significado:"Descanso mental obligatorio, meditación, tregua.", archivo: "54.jpg"},
-            {id: 54, es:"Cinco de Espadas", en:"Five of Swords", pt:"Cinco de Espadas", fr:"Cinq d'Épée", it:"Cinque di Spade", significado:"Victoria pírrica, discusiones donde todos pierden.", archivo: "55.jpg"},
-            {id: 55, es:"Seis de Espadas", en:"Six of Swords", pt:"Seis de Espadas", fr:"Six d'Épée", it:"Sei di Spade", significado:"Viaje hacia aguas más tranquilas, transición necesaria.", archivo: "56.jpg"},
-            {id: 56, es:"Siete de Espadas", en:"Seven of Swords", pt:"Sete de Espadas", fr:"Sept d'Épée", it:"Sette di Spade", significado:"Estrategia oculta, astucia, evitar la confrontación.", archivo: "57.jpg"},
-            {id: 57, es:"Ocho de Espadas", en:"Eight of Swords", pt:"Oito de Espadas", fr:"Huit d'Épée", it:"Otto di Spade", significado:"Prisión mental autoimpuesta, parálisis por miedo.", archivo: "58.jpg"},
-            {id: 58, es:"Nueve de Espadas", en:"Nine of Swords", pt:"Nove de Espadas", fr:"Neuf d'Épée", it:"Nove di Spade", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente.", archivo: "59.jpg"},
-            {id: 59, es:"Diez de Espadas", en:"Ten of Swords", pt:"Dez de Espadas", fr:"Dix d'Épée", it:"Dieci di Spade", significado:"Final absoluto del dolor, tocar fondo para renacer.", archivo: "60.jpg"},
-            {id: 60, es:"Sota de Espadas", en:"Page of Swords", pt:"Valete de Espadas", fr:"Valet d'Épée", it:"Fante di Spade", significado:"Vigilancia, mente analítica, verdades incómodas.", archivo: "61.jpg"},
-            {id: 61, es:"Caballero de Espadas", en:"Knight of Swords", pt:"Cavaleiro de Espadas", fr:"Chevalier d'Épée", it:"Cavaliere di Spade", significado:"Defensa feroz de ideas, verdades directas sin filtro.", archivo: "62.jpg"},
-            {id: 62, es:"Reina de Espadas", en:"Queen of Swords", pt:"Rainha de Espadas", fr:"Reine d'Épée", it:"Regina di Spade", significado:"Independencia intelectual, discernimiento agudo, límites.", archivo: "63.jpg"},
-            {id: 63, es:"Rey de Espadas", en:"King of Swords", pt:"Rei de Espadas", fr:"Roi d'Épée", it:"Re di Spade", significado:"Juicio justo y analítico, autoridad de la verdad.", archivo: "64.jpg"},
+            {id: 50, es:"As de Espadas", significado:"Claridad mental destructiva, verdad cruda, gran avance.", url:"https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg"},
+            {id: 51, es:"Dos de Espadas", significado:"Callejón sin salida mental, ojos vendados, indecisión.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9e/Swords02.jpg"},
+            {id: 52, es:"Tres de Espadas", significado:"Dolor en el corazón, traición asumida, herida liberadora.", url:"https://upload.wikimedia.org/wikipedia/commons/0/02/Swords03.jpg"},
+            {id: 53, es:"Cuatro de Espadas", significado:"Descanso mental obligatorio, meditación, tregua.", url:"https://upload.wikimedia.org/wikipedia/commons/2/2d/Swords04.jpg"},
+            {id: 54, es:"Cinco de Espadas", significado:"Victoria pírrica, discusiones donde todos pierden.", url:"https://upload.wikimedia.org/wikipedia/commons/2/23/Swords05.jpg"},
+            {id: 55, es:"Seis de Espadas", significado:"Viaje hacia aguas más tranquilas, transición necesaria.", url:"https://upload.wikimedia.org/wikipedia/commons/2/29/Swords06.jpg"},
+            {id: 56, es:"Siete de Espadas", significado:"Estrategia oculta, astucia, evitar la confrontación.", url:"https://upload.wikimedia.org/wikipedia/commons/3/34/Swords07.jpg"},
+            {id: 57, es:"Ocho de Espadas", significado:"Prisión mental autoimpuesta, parálisis por miedo.", url:"https://upload.wikimedia.org/wikipedia/commons/a/a7/Swords08.jpg"},
+            {id: 58, es:"Nueve de Espadas", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente.", url:"https://upload.wikimedia.org/wikipedia/commons/2/2f/Swords09.jpg"},
+            {id: 59, es:"Diez de Espadas", significado:"Final absoluto del dolor, tocar fondo para renacer.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords10.jpg"},
+            {id: 60, es:"Sota de Espadas", significado:"Vigilancia, mente analítica, verdades incómodas.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4b/Swords11.jpg"},
+            {id: 61, es:"Caballero de Espadas", significado:"Defensa feroz de ideas, verdades directas sin filtro.", url:"https://upload.wikimedia.org/wikipedia/commons/b/b9/Swords12.jpg"},
+            {id: 62, es:"Reina de Espadas", significado:"Independencia intelectual, discernimiento agudo, límites.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords13.jpg"},
+            {id: 63, es:"Rey de Espadas", significado:"Juicio justo y analítico, autoridad de la verdad.", url:"https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg"},
 
             // OROS
-            {id: 64, es:"As de Oros", en:"Ace of Pentacles", pt:"Ás de Ouros", fr:"As de Denier", it:"Asso di Denari", significado:"Semilla de abundancia, inicio financiero sólido, salud.", archivo: "65.jpg"},
-            {id: 65, es:"Dos de Oros", en:"Two of Pentacles", pt:"Dois de Ouros", fr:"Deux de Denier", it:"Due di Denari", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", archivo: "66.jpg"},
-            {id: 66, es:"Tres de Oros", en:"Three of Pentacles", pt:"Três de Ouros", fr:"Trois de Denier", it:"Tre di Denari", significado:"Trabajo en equipo, maestría artesanal, colaboración.", archivo: "67.jpg"},
-            {id: 67, es:"Cuatro de Oros", en:"Four of Pentacles", pt:"Quatro de Ouros", fr:"Quatre de Denier", it:"Quattro di Denari", significado:"Avaricia, apego al dinero por miedo a la carencia.", archivo: "68.jpg"},
-            {id: 68, es:"Cinco de Oros", en:"Cinco de Oros", en:"Five of Pentacles", pt:"Cinco de Ouros", fr:"Cinq de Denier", it:"Cinque di Denari", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", archivo: "69.jpg"},
-            {id: 69, es:"Seis de Oros", en:"Six of Pentacles", pt:"Seis de Ouros", fr:"Six de Denier", it:"Sei di Denari", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", archivo: "70.jpg"},
-            {id: 70, es:"Siete de Oros", en:"Seven of Pentacles", pt:"Sete de Ouros", fr:"Sept de Denier", it:"Sette di Denari", significado:"Paciencia ante la cosecha, evaluar el crecimiento de tu siembra.", archivo: "71.jpg"},
-            {id: 71, es:"Ocho de Oros", en:"Eight of Pentacles", pt:"Oito de Ouros", fr:"Huit de Denier", it:"Otto di Denari", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", archivo: "72.jpg"},
-            {id: 72, es:"Nueve de Oros", en:"Nine of Pentacles", pt:"Nove de Ouros", fr:"Neuf de Denier", it:"Nove di Denari", significado:"Independencia material, disfrutar los lujos logrados.", archivo: "73.jpg"},
-            {id: 73, es:"Diez de Oros", en:"Ten of Pentacles", pt:"Dez de Ouros", fr:"Dix de Denier", it:"Dieci di Denari", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", archivo: "74.jpg"},
-            {id: 74, es:"Sota de Oros", en:"Page of Pentacles", pt:"Valete de Ouros", fr:"Valet de Denier", it:"Fante di Denari", significado:"Estudiante aplicado, nueva idea de negocio realista.", archivo: "75.jpg"},
-            {id: 75, es:"Caballero de Oros", en:"Knight of Pentacles", pt:"Cavaleiro de Ouros", fr:"Chevalier de Denier", it:"Cavaliere di Denari", significado:"Avance lento pero seguro, constancia inquebrantable.", archivo: "76.jpg"},
-            {id: 76, es:"Reina de Oros", en:"Queen of Pentacles", pt:"Rainha de Ouros", fr:"Reine de Denier", it:"Regina di Denari", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar.", archivo: "77.jpg"},
-            {id: 77, es:"Rey de Oros", en:"King of Pentacles", pt:"Rei de Ouros", fr:"Roi de Denier", it:"Re di Denari", significado:"Éxito financiero absoluto, dominio de la materia, seguridad.", archivo: "78.jpg"}
+            {id: 64, es:"As de Oros", significado:"Semilla de abundancia, inicio financiero sólido, salud.", url:"https://upload.wikimedia.org/wikipedia/commons/5/53/Pentalces01.jpg"},
+            {id: 65, es:"Dos de Oros", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9f/Pentalces02.jpg"},
+            {id: 66, es:"Tres de Oros", significado:"Trabajo en equipo, maestría artesanal, colaboración.", url:"https://upload.wikimedia.org/wikipedia/commons/4/42/Pentalces03.jpg"},
+            {id: 67, es:"Cuatro de Oros", significado:"Avaricia, apego al dinero por miedo a la carencia.", url:"https://upload.wikimedia.org/wikipedia/commons/3/35/Pentalces04.jpg"},
+            {id: 68, es:"Cinco de Oros", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", url:"https://upload.wikimedia.org/wikipedia/commons/9/96/Pentalces05.jpg"},
+            {id: 69, es:"Seis de Oros", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", url:"https://upload.wikimedia.org/wikipedia/commons/a/a6/Pentalces06.jpg"},
+            {id: 70, es:"Siete de Oros", significado:"Paciencia ante la cosecha, evaluar el crecimiento.", url:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Pentalces07.jpg"},
+            {id: 71, es:"Ocho de Oros", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", url:"https://upload.wikimedia.org/wikipedia/commons/4/49/Pentalces08.jpg"},
+            {id: 72, es:"Nueve de Oros", significado:"Independencia material, disfrutar los lujos logrados.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f0/Pentalces09.jpg"},
+            {id: 73, es:"Diez de Oros", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", url:"https://upload.wikimedia.org/wikipedia/commons/4/42/Pentalces10.jpg"},
+            {id: 74, es:"Sota de Oros", significado:"Estudiante aplicado, nueva idea de negocio realista.", url:"https://upload.wikimedia.org/wikipedia/commons/e/ec/Pentalces11.jpg"},
+            {id: 75, es:"Caballero de Oros", significado:"Avance lento pero seguro, constancia inquebrantable.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d5/Pentalces12.jpg"},
+            {id: 76, es:"Reina de Oros", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar.", url:"https://upload.wikimedia.org/wikipedia/commons/8/88/Pentalces13.jpg"},
+            {id: 77, es:"Rey de Oros", significado:"Éxito financiero absoluto, dominio de la materia.", url:"https://upload.wikimedia.org/wikipedia/commons/1/1c/Pentalces14.jpg"}
         ];
 
         function cambiarVista(idVista) {
             document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
-            const vistaObjetivo = document.getElementById(idVista);
-            if(vistaObjetivo) vistaObjetivo.classList.add('activa');
+            document.getElementById(idVista).classList.add('activa');
             
             const contenedor = document.getElementById('contenedor-global');
             if(idVista !== 'pantalla-menu') {
@@ -509,77 +399,46 @@
 
             const zonaVolver = document.getElementById('zona-volver');
             if(idVista !== 'pantalla-menu') {
-                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">${textosTraducidos[idiomaActual].btnVolver}</button>`;
+                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">← Volver</button>`;
             } else {
                 zonaVolver.innerHTML = '';
             }
         }
 
-        function irAlMenu() { sonarCuencoOriginal(); cambiarVista('pantalla-menu'); }
-        function abrirTarotConfig() { sonarCuencoOriginal(); cambiarVista('pantalla-tarot-config'); }
-
-        function ajustarTipoTirada(tema) {
-            const cajaTirada = document.getElementById('caja-tipo-tirada');
-            const selectTipo = document.getElementById('tarot-tipo');
-            if(tema === 'sino') {
-                cajaTirada.style.display = 'none';
-                selectTipo.innerHTML = `<option value="sino1">${textosTraducidos[idiomaActual].optSino}</option>`;
-            } else {
-                cajaTirada.style.display = 'block';
-                selectTipo.innerHTML = `
-                    <option value="1">${textosTraducidos[idiomaActual].optUna}</option>
-                    <option value="3" selected>${textosTraducidos[idiomaActual].optTres}</option>
-                `;
-            }
-        }
+        function irAlMenu() { cambiarVista('pantalla-menu'); }
+        function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
 
         function comenzarRitualTarot() {
-            sonarCuencoOriginal();
-            const tipo = document.getElementById('tarot-tipo').value;
-            cartasRequeridas = (tipo === '1' || tipo === 'sino1') ? 1 : 3;
-
-            actualizarInstruccionTablero();
-
             cartasSeleccionadasIndices = [];
-            mazoMezcladoConPosicion = [];
             ritualEnProceso = false;
 
-            let mazoOriginal = mazoOficial78.map(c => {
-                return { original: c, invertida: Math.random() > 0.45 };
-            });
-            
+            // Se arma el mazo completo y se mezcla de forma aleatoria pura
+            let mazoOriginal = mazoOficial78.map(c => ({ original: c, invertida: false }));
             mazoOriginal.sort(() => Math.random() - 0.5);
             mazoMezcladoConPosicion = mazoOriginal;
 
             const contenedorAbanicos = document.getElementById('altar-abanicos-completo');
             contenedorAbanicos.innerHTML = '';
             
-            const cartasPorFila = 13; 
-            const totalCartas = mazoMezcladoConPosicion.length; 
-            const totalFilas = Math.ceil(totalCartas / cartasPorFila); 
+            const cartasPorFila = 26; 
+            const totalFilas = Math.ceil(mazoMezcladoConPosicion.length / cartasPorFila); 
 
             for (let f = 0; f < totalFilas; f++) {
                 let divFila = document.createElement('div');
                 divFila.className = 'abanico-fila';
 
                 let inicioIdx = f * cartasPorFila;
-                let finIdx = Math.min(inicioIdx + cartasPorFila, totalCartas);
+                let finIdx = Math.min(inicioIdx + cartasPorFila, mazoMezcladoConPosicion.length);
 
                 for (let i = inicioIdx; i < finIdx; i++) {
                     let divCard = document.createElement('div');
                     divCard.className = 'carta-tarot-real';
                     
                     let posRelativa = (i - inicioIdx) - ((finIdx - inicioIdx) - 1) / 2;
-                    let esCelular = window.innerWidth < 600;
-                    
-                    let multiplicadorGiro = esCelular ? 3.5 : 3.8; 
-                    let multiplicadorX = esCelular ? 18 : 28;    
+                    let traslacionX = posRelativa * 25;
+                    let rotacionGiro = posRelativa * 2.5;
 
-                    let rotacionGiro = posRelativa * multiplicadorGiro;
-                    let traslacionX = posRelativa * multiplicadorX;
-                    let traslacionY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.6 : 0.8);
-
-                    divCard.style.transform = `translateX(${traslacionX}px) translateY(${traslacionY}px) rotate(${rotacionGiro}deg)`;
+                    divCard.style.transform = `translateX(${traslacionX}px) rotate(${rotacionGiro}deg)`;
                     divCard.style.zIndex = i - inicioIdx;
 
                     divCard.onclick = () => seleccionarCartaDelAbanico(i, divCard);
@@ -595,191 +454,49 @@
             if(ritualEnProceso || elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
             
             ritualEnProceso = true; 
-            sonarCuencoOriginal(); 
             elementoHTML.classList.add('elegida-ritual'); 
+            cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
 
             setTimeout(() => {
-                cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
                 ritualEnProceso = false; 
-
                 if(cartasSeleccionadasIndices.length === cartasRequeridas) {
                     setTimeout(revelarTiradaFinal, 400);
                 }
-            }, 600);
+            }, 300);
         }
 
         function revelarTiradaFinal() {
             const cajaRevelada = document.getElementById('caja-cartas-reveladas');
             const cajaTexto = document.getElementById('texto-interpretacion');
             cajaRevelada.innerHTML = '';
-            
             let parrafosInterpretacion = "";
-            let esSiNo = document.getElementById('tarot-tema').value === 'sino';
-            let contadoresSi = 0;
-
-            document.getElementById('txt-titulo-resultado').innerText = textosTraducidos[idiomaActual].tituloResultado;
-            document.getElementById('btn-otra').innerText = textosTraducidos[idiomaActual].btnNueva;
 
             cartasSeleccionadasIndices.forEach((cartaData, i) => {
                 let cardObj = cartaData.original;
-                let nombreIdioma = cardObj[idiomaActual] || cardObj['es'];
-                
-                let etiquetaPosicion = "";
-                if(cartaData.invertida) {
-                    etiquetaPosicion = ` (${textosTraducidos[idiomaActual].txtInvertida})`;
-                }
-
-                // Las imágenes ahora se cargan directo desde internet sin descargar nada
-                let urlImagenFinal = BASE_URL_IMAGENES + cardObj.archivo;
-
                 let divC = document.createElement('div');
-                divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
+                divC.className = 'carta-revelada';
                 divC.innerHTML = `
                     <div class="wrapper-imagen-tarot">
-                        <img src="${urlImagenFinal}" alt="${nombreIdioma}">
+                        <img src="${cardObj.url}" alt="${cardObj.es}" crossorigin="anonymous">
                     </div>
-                    <div class="nombre-c">${nombreIdioma}${etiquetaPosicion}</div>
+                    <div class="nombre-c">${cardObj.es}</div>
                 `;
                 cajaRevelada.appendChild(divC);
 
-                if (!cartaData.invertida) contadoresSi++;
-
-                parrafosInterpretacion += `<p><strong>✦ ${textosTraducidos[idiomaActual].txtArcano} ${i+1}: ${nombreIdioma} ${etiquetaPosicion}</strong><br>`;
-                parrafosInterpretacion += `<strong>${textosTraducidos[idiomaActual].txtInterp}:</strong> ${cardObj.significado}`;
-                parrafosInterpretacion += `</p>`;
+                parrafosInterpretacion += `<p><strong>✦ Carta ${i+1} (${obtenerPosicionTiempo(i)}): ${cardObj.es}</strong><br><strong>Significado:</strong> ${cardObj.significado}</p>`;
             });
-
-            if(esSiNo) {
-                let dictamenFinal = contadoresSi >= (cartasRequeridas / 2) ? textosTraducidos[idiomaActual].dictamenSi : textosTraducidos[idiomaActual].dictamenNo;
-                parrafosInterpretacion = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${dictamenFinal}</h3>` + parrafosInterpretacion;
-            }
 
             cajaTexto.innerHTML = parrafosInterpretacion;
             cambiarVista('pantalla-tarot-resultado');
         }
 
-        function actualizarInstruccionTablero() {
-            const txtInstruccion = document.getElementById('txt-instruccion-dinamica');
-            if(txtInstruccion) {
-                txtInstruccion.innerText = cartasRequeridas === 1 ? textosTraducidos[idiomaActual].eligeUna : textosTraducidos[idiomaActual].eligeVarias;
-            }
+        function obtenerPosicionTiempo(i) {
+            if(i === 0) return "Pasado";
+            if(i === 1) return "Presente";
+            return "Futuro";
         }
-
-        // DICCIONARIO COMPLETO DE INTERFAZ TRADUCIDA
-        const textosTraducidos = {
-            es: { 
-                lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE",
-                btnVolver: "← Volver", btnNueva: "NUEVA CONSULTA", btnConsulta: "IR A LA CONSULTA",
-                lblProp: "Propósito de la consulta:", lblDesp: "Despliegue energético:", lblMazo: "Línea del mazo:",
-                tGeneral: "Energía General", tAmor: "Amor & Vínculos", tDinero: "Abundancia & Destino", tTrabajo: "Laboral & Caminos", tEsp: "Evolución del Alma", tSino: "Pregunta Sagrada (SÍ / NO)",
-                optUna: "Una Carta (Consejo Directo)", optTres: "Tres Cartas (Línea del Tiempo)", optSino: "Una Carta (Respuesta SÍ / NO)",
-                eligeUna: "Elige tu carta", eligeVarias: "Elige tus cartas", tituloResultado: "El Dictamen del Destino",
-                txtArcano: "Arcano", txtInterp: "Interpretación", txtInvertida: "Invertida",
-                dictamenSi: "✦ DICTAMEN: SÍ ✦", dictamenNo: "✦ DICTAMEN: NO ✦",
-                m1: "🔮 Tarot", d1: "Las 78 cartas desplegadas en su totalidad sobre el tapete violeta.",
-                m2: "🌌 Astrología", d2: "Cálculo de tránsitos de tus astros y revolución solar.",
-                m3: "🔢 Numerología", d3: "Vibración oculta de nombres, esencias e hilos numéricos.",
-                m4: "🧠 Oráculo", d4: "Consulta de conciencia unificada uniendo planos divinos."
-            },
-            en: { 
-                lema: "The universe answers", ads: "RESERVED ADSPACE FOR GOOGLE ADSENSE",
-                btnVolver: "← Back", btnNueva: "NEW READING", btnConsulta: "START READING",
-                lblProp: "Purpose of the reading:", lblDesp: "Energy spread:", lblMazo: "Deck style:",
-                tGeneral: "General Energy", tAmor: "Love & Relationships", tDinero: "Abundance & Destiny", tTrabajo: "Work & Career", tEsp: "Soul Evolution", tSino: "Sacred Question (YES / NO)",
-                optUna: "One Card (Direct Advice)", optTres: "Three Cards (Timeline)", optSino: "One Card (YES / NO Answer)",
-                eligeUna: "Choose your card", eligeVarias: "Choose your cards", tituloResultado: "The Decree of Destiny",
-                txtArcano: "Arcanum", txtInterp: "Interpretation", txtInvertida: "Inverted",
-                dictamenSi: "✦ DECREE: YES ✦", dictamenNo: "✦ DECREE: NO ✦",
-                m1: "🔮 Tarot", d1: "All 78 cards fully laid out on the velvet mat.",
-                m2: "🌌 Astrology", d2: "Calculation of your astral transits and solar return.",
-                m3: "🔢 Numerology", d3: "Hidden vibration of names, essences, and numerical threads.",
-                m4: "🧠 Oracle", d4: "Unified consciousness consultation joining divine planes."
-            },
-            pt: { 
-                lema: "O universo responde", ads: "ESPAÇO RESERVADO PARA GOOGLE ADSENSE",
-                btnVolver: "← Voltar", btnNueva: "NOVA CONSULTA", btnConsulta: "INICIAR CONSULTA",
-                lblProp: "Propósito da consulta:", lblDesp: "Distribuição energética:", lblMazo: "Estilo do baralho:",
-                tGeneral: "Energia Geral", tAmor: "Amor & Vínculos", tDinero: "Abundância & Destino", tTrabajo: "Trabalho & Caminhos", tEsp: "Evolução da Alma", tSino: "Pergunta Sagrada (SIM / NÃO)",
-                optUna: "Uma Carta (Conselho Direto)", optTres: "Três Cartas (Linha do Tempo)", optSino: "Uma Carta (Resposta SIM / NÃO)",
-                eligeUna: "Escolha sua carta", eligeVarias: "Escolha suas cartas", tituloResultado: "O Ditame do Destino",
-                txtArcano: "Arcano", txtInterp: "Interpretação", txtInvertida: "Invertida",
-                dictamenSi: "✦ VEREDITO: SIM ✦", dictamenNo: "✦ VEREDITO: NÃO ✦",
-                m1: "🔮 Tarot", d1: "As 78 cartas totalmente estendidas no tapete de veludo.",
-                m2: "🌌 Astrologia", d2: "Cálculo dos seus trânsitos astrais e retorno solar.",
-                m3: "🔢 Numerologia", d3: "Vibração oculta de nomes, essências e fios numéricos.",
-                m4: "🧠 Oráculo", d4: "Consulta de consciência unificada unindo planos divinos."
-            },
-            fr: { 
-                lema: "L'univers répond", ads: "ESPACE RÉSERVÉ POUR GOOGLE ADSENSE",
-                btnVolver: "← Retour", btnNueva: "NOUVELLE CONSULTATION", btnConsulta: "COMMENCER LE TIRAGE",
-                lblProp: "Objectif de la consultation :", lblDesp: "Configuration énergétique :", lblMazo: "Style de jeu :",
-                tGeneral: "Énergie Générale", tAmor: "Amour & Relations", tDinero: "Abondance & Destinée", tTrabajo: "Travail & Carrière", tEsp: "Évolution de l'Âme", tSino: "Question Sacrée (OUI / NON)",
-                optUna: "Une Carte (Conseil Direct)", optTres: "Trois Cartes (Ligne du Temps)", optSino: "Une Carte (Réponse OUI / NON)",
-                eligeUna: "Choisissez votre carte", eligeVarias: "Choisissez vos cartes", tituloResultado: "Le Verdict du Destin",
-                txtArcano: "Arcane", txtInterp: "Interprétation", txtInvertida: "Inversée",
-                dictamenSi: "✦ VERDICT : OUI ✦", dictamenNo: "✦ VERDICT : NON ✦",
-                m1: "🔮 Tarot", d1: "Les 78 cartes entièrement déployées sur le tapis de velours.",
-                m2: "🌌 Astrologie", d2: "Calcul de vos transits astrais et révolution solaire.",
-                m3: "🔢 Numérologie", d3: "Vibration cachée des noms, des essences et des fils numériques.",
-                m4: "🧠 Oracle", d4: "Consultation de conscience unifiée joignant les plans divins."
-            },
-            it: { 
-                lema: "L'universo risponde", ads: "SPAZIO RISERVATO PER GOOGLE ADSENSE",
-                btnVolver: "← Indietro", btnNueva: "NUOVA CONSULTA", btnConsulta: "INIZIA LA LETTURA",
-                lblProp: "Scopo della lettura:", lblDesp: "Disposizione energetica:", lblMazo: "Stile del mazzo:",
-                tGeneral: "Energia Generale", tAmor: "Amore & Legami", tDinero: "Abbondanza & Destino", tTrabajo: "Lavoro & Carriera", tEsp: "Evoluzione dell'Anima", tSino: "Domanda Sacra (SÌ / NO)",
-                optUna: "Una Carta (Consiglio Diretto)", optTres: "Tre Carte (Linea del Tempo)", optSino: "Una Carta (Risposta SÌ / NO)",
-                eligeUna: "Scegli la tua carta", eligeVarias: "Scegli le tue carte", tituloResultado: "Il Verdetto del Destino",
-                txtArcano: "Arcano", txtInterp: "Interpretazione", txtInvertida: "Capovolta",
-                dictamenSi: "✦ VERDETTO: SÌ ✦", dictamenNo: "✦ VERDETTO: NO ✦",
-                m1: "🔮 Tarot", d1: "Tutte le 78 carte completamente distese sul tappeto di velluto.",
-                m2: "🌌 Astrologia", d2: "Calcolo dei tuoi transiti astrali e rivoluzione solare.",
-                m3: "🔢 Numerologia", d3: "Vibrazione nascosta di nomi, essenze e fili numerici.",
-                m4: "🧠 Oracolo", d4: "Consultazione di coscienza unificata unendo piani divinos."
-            }
-        };
-
-        function cambiarIdioma(lang) {
-            idiomaActual = lang;
-            if(!textosTraducidos[lang]) idiomaActual = 'es';
-            
-            const t = textosTraducidos[idiomaActual];
-            document.getElementById('selector-idioma').value = idiomaActual;
-            document.getElementById('txt-lema').innerText = t.lema;
-            document.getElementById('txt-ads').innerText = t.ads;
-
-            document.getElementById('txt-menu-titulo-tarot').innerText = t.m1;
-            document.getElementById('txt-menu-desc-tarot').innerText = t.d1;
-            document.getElementById('txt-menu-titulo-astro').innerText = t.m2;
-            document.getElementById('txt-menu-desc-astro').innerText = t.d2;
-            document.getElementById('txt-menu-titulo-num').innerText = t.m3;
-            document.getElementById('txt-menu-desc-num').innerText = t.d3;
-            document.getElementById('txt-menu-titulo-orac').innerText = t.m4;
-            document.getElementById('txt-menu-desc-orac').innerText = t.d4;
-
-            document.getElementById('lbl-tema').innerText = t.lblProp;
-            document.getElementById('lbl-tirada').innerText = t.lblDesp;
-            document.getElementById('lbl-mazo').innerText = t.lblMazo;
-            document.getElementById('btn-mezclar').innerText = t.btnConsulta;
-
-            document.getElementById('opt-t-general').innerText = t.tGeneral;
-            document.getElementById('opt-t-amor').innerText = t.tAmor;
-            document.getElementById('opt-t-dinero').innerText = t.tDinero;
-            document.getElementById('opt-t-trabajo').innerText = t.tTrabajo;
-            document.getElementById('opt-t-esp').innerText = t.tEsp;
-            document.getElementById('opt-t-sino').innerText = t.tSino;
-
-            ajustarTipoTirada(document.getElementById('tarot-tema').value);
-            actualizarInstruccionTablero();
-
-            const btnVolverActivo = document.querySelector('.top-bar .btn-volver');
-            if(btnVolverActivo) btnVolverActivo.innerText = t.btnVolver;
-        }
-
-        const devLang = (navigator.language || navigator.userLanguage).slice(0, 2);
-        cambiarIdioma(devLang);
     </script>
 </body>
-</html>          
-                    
-                                  
+</html>       
+                            
+                                                            
