@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+      <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
@@ -159,7 +159,7 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE ABANICOS OPTIMIZADO (Cartas legibles y bien distribuidas) */
+        /* CONTENEDOR DE ABANICOS OPTIMIZADO */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
@@ -269,11 +269,9 @@
             .card-desc { font-size: 1rem; }
             .menu-card { padding: 30px 15px; }
 
-            /* Cartas más grandes y legibles en mobile */
             .carta-tarot-real { width: 75px; height: 125px; }
             .abanico-fila { height: 140px; width: 480px; margin: 0 auto; }
             
-            /* Permite desplazamiento lateral suave en el altar móvil sin romper la pantalla */
             .contenedor-altar-abanicos { gap: 15px; width: 100%; overflow-x: auto; padding-left: 10px; padding-right: 10px; box-sizing: border-box; }
 
             .instruccion-directa { font-size: 1.5rem; margin: 10px 0; }
@@ -355,10 +353,6 @@
                     <label id="lbl-mazo">Línea del mazo:</label>
                     <select id="tarot-mazo">
                         <option value="Rider-Waite">Tarot Rider-Waite (78 cartas)</option>
-                        <option value="Marsella">Tarot de Marsella</option>
-                        <option value="Egipcio">Tarot Egipcio</option>
-                        <option value="Mitico">Tarot Mítico</option>
-                        <option value="Crowley">Tarot Crowley (Thoth)</option>
                     </select>
                 </div>
             </div>
@@ -409,95 +403,96 @@
             }
         }
 
-        // MAZO DE 78 CARTAS COMPLETO CON TRADUCCIONES COMPLETAS
+        // URL del servidor público para las imágenes del Rider-Waite
+        const BASE_URL_IMAGENES = "https://www.tarot-tarot.com/images/tarot/";
+
         const mazoOficial78 = [
-            // ARCANOS MAYORES
-            {id: 0, es:"El Loco", en:"The Fool", pt:"O Louco", fr:"Le Fou", it:"Il Matto", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", archivo: "m00.jpg"},
-            {id: 1, es:"El Mago", en:"The Magician", pt:"O Mago", fr:"Le Bateleur", it:"Il Bagatto", significado:"Poder de manifestación, habilidad, recursos puros.", archivo: "m01.jpg"},
-            {id: 2, es:"La Sacerdotisa", en:"The High Priestess", pt:"A Sacerdotisa", fr:"La Papesse", it:"La Papessa", significado:"Intuición, misterio, subconsciente sagrado.", archivo: "m02.jpg"},
-            {id: 3, es:"La Emperatriz", en:"The Empress", pt:"A Imperatriz", fr:"L'Impératrice", it:"L'Imperatrice", significado:"Abundancia, naturaleza, fertilidad, creación.", archivo: "m03.jpg"},
-            {id: 4, es:"El Emperador", en:"The Emperor", pt:"O Imperador", fr:"L'Empereur", it:"L'Imperatore", significado:"Estructura, autoridad, bases firmes, control.", archivo: "m04.jpg"},
-            {id: 5, es:"El Hierofante", en:"The Hierophant", pt:"O Hierofante", fr:"Le Pape", it:"Il Papa", significado:"Tradición, sabiduría, guía espiritual, estudios.", archivo: "m05.jpg"},
-            {id: 6, es:"Los Enamorados", en:"The Lovers", pt:"Os Enamorados", fr:"L'Amoureux", it:"Gli Amanti", significado:"Elecciones del corazón, armonía, dualidad, uniones.", archivo: "m06.jpg"},
-            {id: 7, es:"El Carro", en:"The Chariot", pt:"O Carro", fr:"Le Chariot", it:"Il Carro", significado:"Determinación, victoria, control de fuerzas opuestas.", archivo: "m07.jpg"},
-            {id: 8, es:"La Fuerza", en:"Strength", pt:"A Força", fr:"La Force", it:"La Forza", significado:"Valor interno, compasión, domar las pasiones básicas.", archivo: "m08.jpg"},
-            {id: 9, es:"El Ermitaño", en:"The Hermit", pt:"O Eremita", fr:"L'Ermite", it:"L'Eremita", significado:"Introspección, retiro voluntario, luz interior.", archivo: "m09.jpg"},
-            {id: 10, es:"La Rueda de la Fortuna", en:"Wheel of Fortune", pt:"A Roda da Fortuna", fr:"La Roue de Fortune", it:"La Ruota della Fortuna", significado:"Cambios de destino, ciclos, golpes de suerte.", archivo: "m10.jpg"},
-            {id: 11, es:"La Justicia", en:"Justice", pt:"A Justiça", fr:"La Justice", it:"La Giustizia", significado:"Verdad, causa y efecto, equilibrio de la balanza.", archivo: "m11.jpg"},
-            {id: 12, es:"El Colgado", en:"The Hanged Man", pt:"O Enforcado", fr:"Le Pendu", it:"L'Appeso", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", archivo: "m12.jpg"},
-            {id: 13, es:"La Muerte", en:"Death", pt:"A Morte", fr:"La Mort", it:"La Morte", significado:"Transformación profunda, finales que traen renacer.", archivo: "m13.jpg"},
-            {id: 14, es:"La Templanza", en:"Temperance", pt:"A Temperança", fr:"La Tempérance", it:"La Temperanza", significado:"Alquimia, paciencia, moderación, balance emocional.", archivo: "m14.jpg"},
-            {id: 15, es:"El Diablo", en:"The Devil", pt:"O Diabo", fr:"Le Diable", it:"Il Diavolo", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", archivo: "m15.jpg"},
-            {id: 16, es:"La Torre", en:"The Tower", pt:"A Torre", fr:"La Maison-Dieu", it:"La Torre", significado:"Ruptura de estructuras falsas, revelación repentina.", archivo: "m16.jpg"},
-            {id: 17, es:"La Estrella", en:"The Star", pt:"A Estrela", fr:"L'Étoile", it:"La Stella", significado:"Esperanza, sanación espiritual, renovación, fe.", archivo: "m17.jpg"},
-            {id: 18, es:"La Luna", en:"The Moon", pt:"A Lua", fr:"La Lune", it:"La Luna", significado:"Ilusiones, miedos escondidos, intuición profunda.", archivo: "m18.jpg"},
-            {id: 19, es:"El Sol", en:"The Sun", pt:"O Sol", fr:"Le Soleil", it:"Il Sole", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", archivo: "m19.jpg"},
-            {id: 20, es:"El Juicio", en:"The Judgement", pt:"O Julgamento", fr:"Le Jugement", it:"Il Giudizio", significado:"Llamado interno, absolución, despertar a tu verdad.", archivo: "m20.jpg"},
-            {id: 21, es:"El Mundo", en:"The World", pt:"O Mundo", fr:"Le Monde", it:"Il Mondo", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", archivo: "m21.jpg"},
+            {id: 0, es:"El Loco", en:"The Fool", pt:"O Louco", fr:"Le Fou", it:"Il Matto", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", archivo: "0.jpg"},
+            {id: 1, es:"El Mago", en:"The Magician", pt:"O Mago", fr:"Le Bateleur", it:"Il Bagatto", significado:"Poder de manifestation, habilidad, recursos puros.", archivo: "1.jpg"},
+            {id: 2, es:"La Sacerdotisa", en:"The High Priestess", pt:"A Sacerdotisa", fr:"La Papesse", it:"La Papessa", significado:"Intuición, misterio, subconsciente sagrado.", archivo: "2.jpg"},
+            {id: 3, es:"La Emperatriz", en:"The Empress", pt:"A Imperatriz", fr:"L'Impératrice", it:"L'Imperatore", significado:"Abundancia, naturaleza, fertilidad, creación.", archivo: "3.jpg"},
+            {id: 4, es:"El Emperador", en:"The Emperor", pt:"O Imperador", fr:"L'Empereur", it:"L'Imperatore", significado:"Estructura, autoridad, bases firmes, control.", archivo: "4.jpg"},
+            {id: 5, es:"El Hierofante", en:"The Hierophant", pt:"O Hierofante", fr:"Le Pape", it:"Il Papa", significado:"Tradición, sabiduría, guía espiritual, estudios.", archivo: "5.jpg"},
+            {id: 6, es:"Los Enamorados", en:"The Lovers", pt:"Os Enamorados", fr:"L'Amoureux", it:"Gli Amanti", significado:"Elecciones del corazón, armonía, dualidad, uniones.", archivo: "6.jpg"},
+            {id: 7, es:"El Carro", en:"The Chariot", pt:"O Carro", fr:"Le Chariot", it:"Il Carro", significado:"Determinación, victoria, control de fuerzas opuestas.", archivo: "7.jpg"},
+            {id: 8, es:"La Fuerza", en:"Strength", pt:"A Força", fr:"La Force", it:"La Forza", significado:"Valor interno, compasión, domar las pasiones básicas.", archivo: "8.jpg"},
+            {id: 9, es:"El Ermitaño", en:"The Hermit", pt:"O Eremita", fr:"L'Ermite", it:"L'Eremita", significado:"Introspección, retiro voluntario, luz interior.", archivo: "9.jpg"},
+            {id: 10, es:"La Rueda de la Fortuna", en:"Wheel of Fortune", pt:"A Roda da Fortuna", fr:"La Roue de Fortune", it:"La Ruota della Fortuna", significado:"Cambios de destino, ciclos, golpes de suerte.", archivo: "10.jpg"},
+            {id: 11, es:"La Justicia", en:"Justice", pt:"A Justiça", fr:"La Justice", it:"La Giustizia", significado:"Verdad, causa y efecto, equilibrio de la balanza.", archivo: "11.jpg"},
+            {id: 12, es:"El Colgado", en:"The Hanged Man", pt:"O Enforcado", fr:"Le Pendu", it:"L'Appeso", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", archivo: "12.jpg"},
+            {id: 13, es:"La Muerte", en:"Death", pt:"A Morte", fr:"La Mort", it:"La Morte", significado:"Transformación profunda, finales que traen renacer.", archivo: "13.jpg"},
+            {id: 14, es:"La Templanza", en:"Temperance", pt:"A Temperança", fr:"La Tempérance", it:"La Temperanza", significado:"Alquimia, paciencia, moderación, balance emocional.", archivo: "14.jpg"},
+            {id: 15, es:"El Diablo", en:"The Devil", pt:"O Diabo", fr:"Le Diable", it:"Il Diavolo", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", archivo: "15.jpg"},
+            {id: 16, es:"La Torre", en:"The Tower", pt:"A Torre", fr:"La Maison-Dieu", it:"La Torre", significado:"Ruptura de estructuras falsas, revelación repentina.", archivo: "16.jpg"},
+            {id: 17, es:"La Estrella", en:"The Star", pt:"A Estrela", fr:"L'Étoile", it:"La Stella", significado:"Esperanza, sanación espiritual, renovación, fe.", archivo: "17.jpg"},
+            {id: 18, es:"La Luna", en:"The Moon", pt:"A Lua", fr:"La Lune", it:"La Luna", significado:"Ilusiones, miedos escondidos, intuición profunda.", archivo: "18.jpg"},
+            {id: 19, es:"El Sol", en:"The Sun", pt:"O Sol", fr:"Le Soleil", it:"Il Sole", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", archivo: "19.jpg"},
+            {id: 20, es:"El Juicio", en:"The Judgement", pt:"O Julgamento", fr:"Le Jugement", it:"Il Giudizio", significado:"Llamado interno, absolución, despertar a tu verdad.", archivo: "20.jpg"},
+            {id: 21, es:"El Mundo", en:"The World", pt:"O Mundo", fr:"Le Monde", it:"Il Mondo", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", archivo: "21.jpg"},
             
             // BASTOS
-            {id: 22, es:"As de Bastos", en:"Ace of Wands", pt:"Ás de Paus", fr:"As de Bâton", it:"Asso di Bastoni", significado:"Chispa creativa, pasión inicial, nueva oportunidad.", archivo: "w01.jpg"},
-            {id: 23, es:"Dos de Bastos", en:"Two of Wands", pt:"Dois de Paus", fr:"Deux de Bâton", it:"Due di Bastoni", significado:"Planificación a futuro, mirar horizontes, decisiones.", archivo: "w02.jpg"},
-            {id: 24, es:"Tres de Bastos", en:"Three of Wands", pt:"Três de Paus", fr:"Trois de Bâton", it:"Tre di Bastoni", significado:"Expansión, frutos del esfuerzo, visión de crecimiento.", archivo: "w03.jpg"},
-            {id: 25, es:"Cuatro de Bastos", en:"Four of Wands", pt:"Quatro de Paus", fr:"Quatre de Bâton", it:"Quattro di Bastoni", significado:"Celebración, hogar armónico, estabilidad lograda.", archivo: "w04.jpg"},
-            {id: 26, es:"Cinco de Bastos", en:"Five of Wands", pt:"Cinco de Paus", fr:"Cinq de Bâton", it:"Cinque di Bastoni", significado:"Competencia, tensiones menores, desacuerdos.", archivo: "w05.jpg"},
-            {id: 27, es:"Seis de Bastos", en:"Six of Wands", pt:"Six de Paus", fr:"Six de Bâton", it:"Sei di Bastoni", significado:"Reconocimiento público, victoria, aplausos merecidos.", archivo: "w06.jpg"},
-            {id: 28, es:"Siete de Bastos", en:"Seven of Wands", pt:"Sete de Paus", fr:"Sept de Bâton", it:"Sette di Bastoni", significado:"Defensa de tus principios, sostener tu posición firme.", archivo: "w07.jpg"},
-            {id: 29, es:"Ocho de Bastos", en:"Eight of Wands", pt:"Oito de Paus", fr:"Huit de Bâton", it:"Otto di Bastoni", significado:"Velocidad, noticias rápidas, movimiento sin freno.", archivo: "w08.jpg"},
-            {id: 30, es:"Nueve de Bastos", en:"Nine of Wands", pt:"Nove de Paus", fr:"Neuf de Bâton", it:"Nove di Bastoni", significado:"Último esfuerzo, resiliencia, guardia en alto.", archivo: "w09.jpg"},
-            {id: 31, es:"Diez de Bastos", en:"Ten of Wands", pt:"Dez de Paus", fr:"Dix de Bâton", it:"Dieci di Bastoni", significado:"Carga pesada, exceso de responsabilidades, agotamiento.", archivo: "w10.jpg"},
-            {id: 32, es:"Sota de Bastos", en:"Page of Wands", pt:"Valete de Paus", fr:"Valet de Bâton", it:"Fante di Bastoni", significado:"Mensajero entusiasta, ganas de explorar, aventura.", archivo: "w11.jpg"},
-            {id: 33, es:"Caballero de Bastos", en:"Knight of Wands", pt:"Cavaleiro de Paus", fr:"Chevalier de Bâton", it:"Cavaliere di Bastoni", significado:"Acción impetuosa, avance apasionado, determinación.", archivo: "w12.jpg"},
-            {id: 34, es:"Reina de Bastos", en:"Queen of Wands", pt:"Rainha de Paus", fr:"Reine de Bâton", it:"Regina di Bastoni", significado:"Magnetismo, confianza, fuego social y protector.", archivo: "w13.jpg"},
-            {id: 35, es:"Rey de Bastos", en:"King of Wands", pt:"Rei de Paus", fr:"Roi de Bâton", it:"Re di Bastoni", significado:"Liderazgo absoluto, visión ejecutiva, inspiración.", archivo: "w14.jpg"},
+            {id: 22, es:"As de Bastos", en:"Ace of Wands", pt:"Ás de Paus", fr:"As de Bâton", it:"Asso di Bastoni", significado:"Chispa creativa, pasión inicial, nueva oportunidad.", archivo: "22.jpg"},
+            {id: 23, es:"Dos de Bastos", en:"Two of Wands", pt:"Dois de Paus", fr:"Deux de Bâton", it:"Due di Bastoni", significado:"Planificación a futuro, mirar horizontes, decisiones.", archivo: "23.jpg"},
+            {id: 24, es:"Tres de Bastos", en:"Three of Wands", pt:"Três de Paus", fr:"Trois de Bâton", it:"Tre di Bastoni", significado:"Expansión, frutos del esfuerzo, visión de crecimiento.", archivo: "24.jpg"},
+            {id: 25, es:"Cuatro de Bastos", en:"Four of Wands", pt:"Quatro de Paus", fr:"Quatre de Bâton", it:"Quattro di Bastoni", significado:"Celebración, hogar armónico, estabilidad lograda.", archivo: "25.jpg"},
+            {id: 26, es:"Cinco de Bastos", en:"Five of Wands", pt:"Cinco de Paus", fr:"Cinq de Bâton", it:"Cinque di Bastoni", significado:"Competencia, tensiones menores, desacuerdos.", archivo: "26.jpg"},
+            {id: 27, es:"Seis de Bastos", en:"Six of Wands", pt:"Six de Paus", fr:"Six de Bâton", it:"Sei di Bastoni", significado:"Reconocimiento público, victoria, aplausos merecidos.", archivo: "27.jpg"},
+            {id: 28, es:"Siete de Bastos", en:"Seven of Wands", pt:"Sete de Paus", fr:"Sept de Bâton", it:"Sette di Bastoni", significado:"Defensa de tus principios, sostener tu posición firme.", archivo: "28.jpg"},
+            {id: 29, es:"Ocho de Bastos", en:"Eight of Wands", pt:"Oito de Paus", fr:"Huit de Bâton", it:"Otto di Bastoni", significado:"Velocidad, noticias rápidas, movimiento sin freno.", archivo: "29.jpg"},
+            {id: 30, es:"Nueve de Bastos", en:"Nine of Wands", pt:"Nove de Paus", fr:"Neuf de Bâton", it:"Nove di Bastoni", significado:"Último esfuerzo, resiliencia, guardia en alto.", archivo: "30.jpg"},
+            {id: 31, es:"Diez de Bastos", en:"Ten of Wands", pt:"Dez de Paus", fr:"Dix de Bâton", it:"Dieci di Bastoni", significado:"Carga pesada, exceso de responsabilidades, agotamiento.", archivo: "31.jpg"},
+            {id: 32, es:"Sota de Bastos", en:"Page of Wands", pt:"Valete de Paus", fr:"Valet de Bâton", it:"Fante di Bastoni", significado:"Mensajero entusiasta, ganas de explorar, aventura.", archivo: "32.jpg"},
+            {id: 33, es:"Caballero de Bastos", en:"Knight of Wands", pt:"Cavaleiro de Paus", fr:"Chevalier de Bâton", it:"Cavaliere di Bastoni", significado:"Acción impetuosa, avance apasionado, determinación.", archivo: "33.jpg"},
+            {id: 34, es:"Reina de Bastos", en:"Queen of Wands", pt:"Rainha de Paus", fr:"Reine de Bâton", it:"Regina di Bastoni", significado:"Magnetismo, confianza, fuego social y protector.", archivo: "34.jpg"},
+            {id: 35, es:"Rey de Bastos", en:"King of Wands", pt:"Rei de Paus", fr:"Roi de Bâton", it:"Re di Bastoni", significado:"Liderazgo absoluto, visión ejecutiva, inspiración.", archivo: "35.jpg"},
 
             // COPAS
-            {id: 36, es:"As de Copas", en:"Ace of Cups", pt:"Ás de Copas", fr:"As de Coupe", it:"Asso di Coppe", significado:"Amor puro desbordante, despertar emocional, intuición.", archivo: "c01.jpg"},
-            {id: 37, es:"Dos de Copas", en:"Two of Cups", pt:"Dois de Copas", fr:"Deux de Coupe", it:"Due di Coppe", significado:"Conexión recíproca, romance, pactos, alma gemela.", archivo: "c02.jpg"},
-            {id: 38, es:"Tres de Copas", en:"Three of Cups", pt:"Três de Copas", fr:"Trois de Coupe", it:"Tre di Coppe", significado:"Brindis familiar, amistad verdadera, comunidad feliz.", archivo: "c03.jpg"},
-            {id: 39, es:"Cuatro de Copas", en:"Four of Cups", pt:"Quatro de Copas", fr:"Quatre de Coupe", it:"Quattro di Coppe", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades.", archivo: "c04.jpg"},
-            {id: 40, es:"Cinco de Copas", en:"Five of Cups", pt:"Cinco de Copas", fr:"Cinq de Coupe", it:"Cinque di Coppe", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío.", archivo: "c05.jpg"},
-            {id: 41, es:"Seis de Copas", en:"Six of Cups", pt:"Seis de Copas", fr:"Six de Coupe", it:"Sei di Coppe", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros.", archivo: "c06.jpg"},
-            {id: 42, es:"Siete de Copas", en:"Seven of Cups", pt:"Sete de Copas", fr:"Sept de Coupe", it:"Sette di Coppe", significado:"Fantasías, exceso de opciones, ilusiones engañosas.", archivo: "c07.jpg"},
-            {id: 43, es:"Ocho de Copas", en:"Eight of Cups", pt:"Oito de Copas", fr:"Huit de Coupe", it:"Otto di Coppe", significado:"Abandono voluntario de lo que ya no nutre el alma.", archivo: "c08.jpg"},
-            {id: 44, es:"Nueve de Copas", en:"Nine of Cups", pt:"Nove de Copas", fr:"Neuf de Coupe", it:"Nove di Coppe", significado:"Deseo concedido, satisfacción personal, bienestar.", archivo: "c09.jpg"},
-            {id: 45, es:"Diez de Copas", en:"Ten of Cups", pt:"Dez de Copas", fr:"Dix de Coupe", it:"Dieci di Coppe", significado:"Dicha familiar absoluta, amor consolidado, paz.", archivo: "c10.jpg"},
-            {id: 46, es:"Sota de Copas", en:"Page of Cups", pt:"Valete de Copas", fr:"Valet de Coupe", it:"Fante di Coppe", significado:"Sensibilidad artística, noticias afectivas tiernas.", archivo: "c11.jpg"},
-            {id: 47, es:"Caballero de Copas", en:"Knight of Cups", pt:"Cavaleiro de Copas", fr:"Chevalier de Coupe", it:"Cavaliere di Coppe", significado:"El portador del romance, propuesta sincera, idealismo.", archivo: "c12.jpg"},
-            {id: 48, es:"Reina de Copas", en:"Queen of Cups", pt:"Rainha de Copas", fr:"Reine de Coupe", it:"Regina di Coppe", significado:"Empatía total, madre intuitiva, refugio emocional.", archivo: "c13.jpg"},
-            {id: 49, es:"Rey de Copas", en:"King of Cups", pt:"Rei de Copas", fr:"Roi de Coupe", it:"Re di Coppe", significado:"Maestría emocional, templanza ante las crisis.", archivo: "c14.jpg"},
+            {id: 36, es:"As de Copas", en:"Ace of Cups", pt:"Ás de Copas", fr:"As de Coupe", it:"Asso di Coppe", significado:"Amor puro desbordante, despertar emocional, intuición.", archivo: "36.jpg"},
+            {id: 37, es:"Dos de Copas", en:"Two of Cups", pt:"Dois de Copas", fr:"Deux de Coupe", it:"Due di Coppe", significado:"Conexión recíproca, romance, pactos, alma gemela.", archivo: "37.jpg"},
+            {id: 38, es:"Tres de Copas", en:"Three of Cups", pt:"Três de Copas", fr:"Trois de Coupe", it:"Tre di Coppe", significado:"Brindis familiar, amistad verdadera, comunidad feliz.", archivo: "38.jpg"},
+            {id: 39, es:"Cuatro de Copas", en:"Four of Cups", pt:"Quatro de Copas", fr:"Quatre de Coupe", it:"Quattro di Coppe", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades.", archivo: "39.jpg"},
+            {id: 40, es:"Cinco de Copas", en:"Five of Cups", pt:"Cinco de Copas", fr:"Cinq de Coupe", it:"Cinque di Coppe", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío.", archivo: "40.jpg"},
+            {id: 41, es:"Seis de Copas", en:"Six of Cups", pt:"Seis de Copas", fr:"Six de Coupe", it:"Sei di Coppe", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros.", archivo: "41.jpg"},
+            {id: 42, es:"Siete de Copas", en:"Seven of Cups", pt:"Sete de Copas", fr:"Sept de Coupe", it:"Sette di Coppe", significado:"Fantasías, exceso de opciones, ilusiones engañosas.", archivo: "42.jpg"},
+            {id: 43, es:"Ocho de Copas", en:"Eight of Cups", pt:"Oito de Copas", fr:"Huit de Coupe", it:"Otto di Coppe", significado:"Abandono voluntario de lo que ya no nutre el alma.", archivo: "43.jpg"},
+            {id: 44, es:"Nueve de Copas", en:"Nine of Cups", pt:"Nove de Copas", fr:"Neuf de Coupe", it:"Nove di Coppe", significado:"Deseo concedido, satisfacción personal, bienestar.", archivo: "44.jpg"},
+            {id: 45, es:"Diez de Copas", en:"Ten of Cups", pt:"Dez de Copas", fr:"Dix de Coupe", it:"Dieci di Coppe", significado:"Dicha familiar absoluta, amor consolidado, paz.", archivo: "45.jpg"},
+            {id: 46, es:"Sota de Copas", en:"Page of Cups", pt:"Valete de Copas", fr:"Valet de Coupe", it:"Fante di Coppe", significado:"Sensibilidad artística, noticias afectivas tiernas.", archivo: "46.jpg"},
+            {id: 47, es:"Caballero de Copas", en:"Knight of Cups", pt:"Cavaleiro de Copas", fr:"Chevalier de Coupe", it:"Cavaliere di Coppe", significado:"El portador del romance, propuesta sincera, idealismo.", archivo: "47.jpg"},
+            {id: 48, es:"Reina de Copas", en:"Queen of Cups", pt:"Rainha de Copas", fr:"Reine de Coupe", it:"Regina di Coppe", significado:"Empatía total, madre intuitiva, refugio emocional.", archivo: "48.jpg"},
+            {id: 49, es:"Rey de Copas", en:"King of Cups", pt:"Rei de Copas", fr:"Roi de Coupe", it:"Re di Coppe", significado:"Maestría emocional, templanza ante las crisis.", archivo: "49.jpg"},
 
             // ESPADAS
-            {id: 50, es:"As de Espadas", en:"Ace of Swords", pt:"Ás de Espadas", fr:"As d'Épée", it:"Asso di Spade", significado:"Claridad mental destructiva, verdad cruda, gran avance.", archivo: "s01.jpg"},
-            {id: 51, es:"Dos de Espadas", en:"Two of Swords", pt:"Dois de Espadas", fr:"Deux d'Épée", it:"Due di Spade", significado:"Callejón sin salida mental, ojos vendados, indecisión.", archivo: "s02.jpg"},
-            {id: 52, es:"Tres de Espadas", en:"Three of Swords", pt:"Três de Espadas", fr:"Trois d'Épée", it:"Tre di Spade", significado:"Dolor en el corazón, traición asumida, herida liberadora.", archivo: "s03.jpg"},
-            {id: 53, es:"Cuatro de Espadas", en:"Four of Swords", pt:"Quatro de Espadas", fr:"Quatre d'Épée", it:"Quattro di Spade", significado:"Descanso mental obligatorio, meditación, tregua.", archivo: "s04.jpg"},
-            {id: 54, es:"Cinco de Espadas", en:"Five of Swords", pt:"Cinco de Espadas", fr:"Cinq d'Épée", it:"Cinque di Spade", significado:"Victoria pírrica, discusiones donde todos pierden.", archivo: "s05.jpg"},
-            {id: 55, es:"Seis de Espadas", en:"Six of Swords", pt:"Seis de Espadas", fr:"Six d'Épée", it:"Sei di Spade", significado:"Viaje hacia aguas más tranquilas, transición necesaria.", archivo: "s06.jpg"},
-            {id: 56, es:"Siete de Espadas", en:"Seven of Swords", pt:"Sete de Espadas", fr:"Sept d'Épée", it:"Sette di Spade", significado:"Estrategia oculta, astucia, evitar la confrontación.", archivo: "s07.jpg"},
-            {id: 57, es:"Ocho de Espadas", en:"Eight of Swords", pt:"Oito de Espadas", fr:"Huit d'Épée", it:"Otto di Spade", significado:"Prisión mental autoimpuesta, parálisis por miedo.", archivo: "s08.jpg"},
-            {id: 58, es:"Nueve de Espadas", en:"Nine of Swords", pt:"Nove de Espadas", fr:"Neuf d'Épée", it:"Nove di Spade", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente.", archivo: "s09.jpg"},
-            {id: 59, es:"Diez de Espadas", en:"Ten of Swords", pt:"Dez de Espadas", fr:"Dix d'Épée", it:"Dieci di Spade", significado:"Final absoluto del dolor, tocar fondo para renacer.", archivo: "s10.jpg"},
-            {id: 60, es:"Sota de Espadas", en:"Page of Swords", pt:"Valete de Espadas", fr:"Valet d'Épée", it:"Fante di Spade", significado:"Vigilancia, mente analítica, verdades incómodas.", archivo: "s11.jpg"},
-            {id: 61, es:"Caballero de Espadas", en:"Knight of Swords", pt:"Cavaleiro de Espadas", fr:"Chevalier d'Épée", it:"Cavaliere di Spade", significado:"Defensa feroz de ideas, verdades directas sin filtro.", archivo: "s12.jpg"},
-            {id: 62, es:"Reina de Espadas", en:"Queen of Swords", pt:"Rainha de Espadas", fr:"Reine d'Épée", it:"Regina di Spade", significado:"Independencia intelectual, discernimiento agudo, límites.", archivo: "s13.jpg"},
-            {id: 63, es:"Rey de Espadas", en:"King of Swords", pt:"Rei de Espadas", fr:"Roi d'Épée", it:"Re di Spade", significado:"Juicio justo y analítico, autoridad de la verdad.", archivo: "s14.jpg"},
+            {id: 50, es:"As de Espadas", en:"Ace of Swords", pt:"Ás de Espadas", fr:"As d'Épée", it:"Asso di Spade", significado:"Claridad mental destructiva, verdad cruda, gran avance.", archivo: "51.jpg"},
+            {id: 51, es:"Dos de Espadas", en:"Two of Swords", pt:"Dois de Espadas", fr:"Deux d'Épée", it:"Due di Spade", significado:"Callejón sin salida mental, ojos vendados, indecisión.", archivo: "52.jpg"},
+            {id: 52, es:"Tres de Espadas", en:"Three of Swords", pt:"Três de Espadas", fr:"Trois d'Épée", it:"Tre di Spade", significado:"Dolor en el corazón, traición asumida, herida liberadora.", archivo: "53.jpg"},
+            {id: 53, es:"Cuatro de Espadas", en:"Four of Swords", pt:"Quatro de Espadas", fr:"Quatre d'Épée", it:"Quattro di Spade", significado:"Descanso mental obligatorio, meditación, tregua.", archivo: "54.jpg"},
+            {id: 54, es:"Cinco de Espadas", en:"Five of Swords", pt:"Cinco de Espadas", fr:"Cinq d'Épée", it:"Cinque di Spade", significado:"Victoria pírrica, discusiones donde todos pierden.", archivo: "55.jpg"},
+            {id: 55, es:"Seis de Espadas", en:"Six of Swords", pt:"Seis de Espadas", fr:"Six d'Épée", it:"Sei di Spade", significado:"Viaje hacia aguas más tranquilas, transición necesaria.", archivo: "56.jpg"},
+            {id: 56, es:"Siete de Espadas", en:"Seven of Swords", pt:"Sete de Espadas", fr:"Sept d'Épée", it:"Sette di Spade", significado:"Estrategia oculta, astucia, evitar la confrontación.", archivo: "57.jpg"},
+            {id: 57, es:"Ocho de Espadas", en:"Eight of Swords", pt:"Oito de Espadas", fr:"Huit d'Épée", it:"Otto di Spade", significado:"Prisión mental autoimpuesta, parálisis por miedo.", archivo: "58.jpg"},
+            {id: 58, es:"Nueve de Espadas", en:"Nine of Swords", pt:"Nove de Espadas", fr:"Neuf d'Épée", it:"Nove di Spade", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente.", archivo: "59.jpg"},
+            {id: 59, es:"Diez de Espadas", en:"Ten of Swords", pt:"Dez de Espadas", fr:"Dix d'Épée", it:"Dieci di Spade", significado:"Final absoluto del dolor, tocar fondo para renacer.", archivo: "60.jpg"},
+            {id: 60, es:"Sota de Espadas", en:"Page of Swords", pt:"Valete de Espadas", fr:"Valet d'Épée", it:"Fante di Spade", significado:"Vigilancia, mente analítica, verdades incómodas.", archivo: "61.jpg"},
+            {id: 61, es:"Caballero de Espadas", en:"Knight of Swords", pt:"Cavaleiro de Espadas", fr:"Chevalier d'Épée", it:"Cavaliere di Spade", significado:"Defensa feroz de ideas, verdades directas sin filtro.", archivo: "62.jpg"},
+            {id: 62, es:"Reina de Espadas", en:"Queen of Swords", pt:"Rainha de Espadas", fr:"Reine d'Épée", it:"Regina di Spade", significado:"Independencia intelectual, discernimiento agudo, límites.", archivo: "63.jpg"},
+            {id: 63, es:"Rey de Espadas", en:"King of Swords", pt:"Rei de Espadas", fr:"Roi d'Épée", it:"Re di Spade", significado:"Juicio justo y analítico, autoridad de la verdad.", archivo: "64.jpg"},
 
             // OROS
-            {id: 64, es:"As de Oros", en:"Ace of Pentacles", pt:"Ás de Ouros", fr:"As de Denier", it:"Asso di Denari", significado:"Semilla de abundancia, inicio financiero sólido, salud.", archivo: "p01.jpg"},
-            {id: 65, es:"Dos de Oros", en:"Two of Pentacles", pt:"Dois de Ouros", fr:"Deux de Denier", it:"Due di Denari", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", archivo: "p02.jpg"},
-            {id: 66, es:"Tres de Oros", en:"Three of Pentacles", pt:"Três de Ouros", fr:"Trois de Denier", it:"Tre di Denari", significado:"Trabajo en equipo, maestría artesanal, colaboración.", archivo: "p03.jpg"},
-            {id: 67, es:"Cuatro de Oros", en:"Four of Pentacles", pt:"Quatro de Ouros", fr:"Quatre de Denier", it:"Quattro di Denari", significado:"Avaricia, apego al dinero por miedo a la carencia.", archivo: "p04.jpg"},
-            {id: 68, flex: "Cinco de Oros", es:"Cinco de Oros", en:"Five of Pentacles", pt:"Cinco de Ouros", fr:"Cinq de Denier", it:"Cinque di Denari", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", archivo: "p05.jpg"},
-            {id: 69, es:"Seis de Oros", en:"Six of Pentacles", pt:"Seis de Ouros", fr:"Six de Denier", it:"Sei di Denari", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", archivo: "p06.jpg"},
-            {id: 70, es:"Siete de Oros", en:"Seven of Pentacles", pt:"Sete de Ouros", fr:"Sept de Denier", it:"Sette di Denari", significado:"Paciencia ante la cosecha, evaluar el crecimiento de tu siembra.", archivo: "p07.jpg"},
-            {id: 71, es:"Ocho de Oros", en:"Eight of Pentacles", pt:"Oito de Ouros", fr:"Huit de Denier", it:"Otto di Denari", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", archivo: "p08.jpg"},
-            {id: 72, es:"Nueve de Oros", en:"Nine of Pentacles", pt:"Nove de Ouros", fr:"Neuf de Denier", it:"Nove di Denari", significado:"Independencia material, disfrutar los lujos logrados.", archivo: "p09.jpg"},
-            {id: 73, es:"Diez de Oros", en:"Ten of Pentacles", pt:"Dez de Ouros", fr:"Dix de Denier", it:"Dieci di Denari", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", archivo: "p10.jpg"},
-            {id: 74, es:"Sota de Oros", en:"Page of Pentacles", pt:"Valete de Ouros", fr:"Valet de Denier", it:"Fante di Denari", significado:"Estudiante aplicado, nueva idea de negocio realista.", archivo: "p11.jpg"},
-            {id: 75, es:"Caballero de Oros", en:"Knight of Pentacles", pt:"Cavaleiro de Ouros", fr:"Chevalier de Denier", it:"Cavaliere di Denari", significado:"Avance lento pero seguro, constancia inquebrantable.", archivo: "p12.jpg"},
-            {id: 76, es:"Reina de Oros", en:"Queen of Pentacles", pt:"Rainha de Ouros", fr:"Reine de Denier", it:"Regina di Denari", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar.", archivo: "p13.jpg"},
-            {id: 77, es:"Rey de Oros", en:"King of Pentacles", pt:"Rei de Ouros", fr:"Roi de Denier", it:"Re di Denari", significado:"Éxito financiero absoluto, dominio de la materia, seguridad.", archivo: "p14.jpg"}
+            {id: 64, es:"As de Oros", en:"Ace of Pentacles", pt:"Ás de Ouros", fr:"As de Denier", it:"Asso di Denari", significado:"Semilla de abundancia, inicio financiero sólido, salud.", archivo: "65.jpg"},
+            {id: 65, es:"Dos de Oros", en:"Two of Pentacles", pt:"Dois de Ouros", fr:"Deux de Denier", it:"Due di Denari", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", archivo: "66.jpg"},
+            {id: 66, es:"Tres de Oros", en:"Three of Pentacles", pt:"Três de Ouros", fr:"Trois de Denier", it:"Tre di Denari", significado:"Trabajo en equipo, maestría artesanal, colaboración.", archivo: "67.jpg"},
+            {id: 67, es:"Cuatro de Oros", en:"Four of Pentacles", pt:"Quatro de Ouros", fr:"Quatre de Denier", it:"Quattro di Denari", significado:"Avaricia, apego al dinero por miedo a la carencia.", archivo: "68.jpg"},
+            {id: 68, es:"Cinco de Oros", en:"Cinco de Oros", en:"Five of Pentacles", pt:"Cinco de Ouros", fr:"Cinq de Denier", it:"Cinque di Denari", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", archivo: "69.jpg"},
+            {id: 69, es:"Seis de Oros", en:"Six of Pentacles", pt:"Seis de Ouros", fr:"Six de Denier", it:"Sei di Denari", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", archivo: "70.jpg"},
+            {id: 70, es:"Siete de Oros", en:"Seven of Pentacles", pt:"Sete de Ouros", fr:"Sept de Denier", it:"Sette di Denari", significado:"Paciencia ante la cosecha, evaluar el crecimiento de tu siembra.", archivo: "71.jpg"},
+            {id: 71, es:"Ocho de Oros", en:"Eight of Pentacles", pt:"Oito de Ouros", fr:"Huit de Denier", it:"Otto di Denari", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", archivo: "72.jpg"},
+            {id: 72, es:"Nueve de Oros", en:"Nine of Pentacles", pt:"Nove de Ouros", fr:"Neuf de Denier", it:"Nove di Denari", significado:"Independencia material, disfrutar los lujos logrados.", archivo: "73.jpg"},
+            {id: 73, es:"Diez de Oros", en:"Ten of Pentacles", pt:"Dez de Ouros", fr:"Dix de Denier", it:"Dieci di Denari", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", archivo: "74.jpg"},
+            {id: 74, es:"Sota de Oros", en:"Page of Pentacles", pt:"Valete de Ouros", fr:"Valet de Denier", it:"Fante di Denari", significado:"Estudiante aplicado, nueva idea de negocio realista.", archivo: "75.jpg"},
+            {id: 75, es:"Caballero de Oros", en:"Knight of Pentacles", pt:"Cavaleiro de Ouros", fr:"Chevalier de Denier", it:"Cavaliere di Denari", significado:"Avance lento pero seguro, constancia inquebrantable.", archivo: "76.jpg"},
+            {id: 76, es:"Reina de Oros", en:"Queen of Pentacles", pt:"Rainha de Ouros", fr:"Reine de Denier", it:"Regina di Denari", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar.", archivo: "77.jpg"},
+            {id: 77, es:"Rey de Oros", en:"King of Pentacles", pt:"Rei de Ouros", fr:"Roi de Denier", it:"Re di Denari", significado:"Éxito financiero absoluto, dominio de la materia, seguridad.", archivo: "78.jpg"}
         ];
 
         function cambiarVista(idVista) {
@@ -620,7 +615,6 @@
             
             let parrafosInterpretacion = "";
             let esSiNo = document.getElementById('tarot-tema').value === 'sino';
-            let mazoElegido = document.getElementById('tarot-mazo').value;
             let contadoresSi = 0;
 
             document.getElementById('txt-titulo-resultado').innerText = textosTraducidos[idiomaActual].tituloResultado;
@@ -635,19 +629,8 @@
                     etiquetaPosicion = ` (${textosTraducidos[idiomaActual].txtInvertida})`;
                 }
 
-                // UNIFICACIÓN LOCAL COMPLETA DE IMÁGENES
-                let urlImagenFinal = "";
-                if(mazoElegido === 'Rider-Waite') {
-                    urlImagenFinal = `imagenes/rider/${cardObj.archivo}`;
-                } else if(mazoElegido === 'Marsella') {
-                    urlImagenFinal = `imagenes/marsella/${cardObj.archivo}`;
-                } else if(mazoElegido === 'Egipcio') {
-                    urlImagenFinal = `imagenes/egipcio/${cardObj.archivo}`;
-                } else if(mazoElegido === 'Mitico') {
-                    urlImagenFinal = `imagenes/mitico/${cardObj.archivo}`;
-                } else if(mazoElegido === 'Crowley') {
-                    urlImagenFinal = `imagenes/crowley/${cardObj.archivo}`;
-                }
+                // Las imágenes ahora se cargan directo desde internet sin descargar nada
+                let urlImagenFinal = BASE_URL_IMAGENES + cardObj.archivo;
 
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
@@ -682,7 +665,7 @@
             }
         }
 
-        // DICCIONARIO COMPLETO DE INTERFAZ TRADUCIDA (EVITA CRUCES DE IDIOMAS)
+        // DICCIONARIO COMPLETO DE INTERFAZ TRADUCIDA
         const textosTraducidos = {
             es: { 
                 lema: "El universo responde", ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE",
@@ -752,7 +735,7 @@
                 m1: "🔮 Tarot", d1: "Tutte le 78 carte completamente distese sul tappeto di velluto.",
                 m2: "🌌 Astrologia", d2: "Calcolo dei tuoi transiti astrali e rivoluzione solare.",
                 m3: "🔢 Numerologia", d3: "Vibrazione nascosta di nomi, essenze e fili numerici.",
-                m4: "🧠 Oracolo", d4: "Consultazione di coscienza unificata unendo piani divini."
+                m4: "🧠 Oracolo", d4: "Consultazione di coscienza unificata unendo piani divinos."
             }
         };
 
@@ -765,7 +748,6 @@
             document.getElementById('txt-lema').innerText = t.lema;
             document.getElementById('txt-ads').innerText = t.ads;
 
-            // Tradución de textos fijos en el Menú Principal
             document.getElementById('txt-menu-titulo-tarot').innerText = t.m1;
             document.getElementById('txt-menu-desc-tarot').innerText = t.d1;
             document.getElementById('txt-menu-titulo-astro').innerText = t.m2;
@@ -775,13 +757,11 @@
             document.getElementById('txt-menu-titulo-orac').innerText = t.m4;
             document.getElementById('txt-menu-desc-orac').innerText = t.d4;
 
-            // Etiquetas de la pantalla de configuración
             document.getElementById('lbl-tema').innerText = t.lblProp;
             document.getElementById('lbl-tirada').innerText = t.lblDesp;
             document.getElementById('lbl-mazo').innerText = t.lblMazo;
             document.getElementById('btn-mezclar').innerText = t.btnConsulta;
 
-            // Opciones del selector de propósitos
             document.getElementById('opt-t-general').innerText = t.tGeneral;
             document.getElementById('opt-t-amor').innerText = t.tAmor;
             document.getElementById('opt-t-dinero').innerText = t.tDinero;
@@ -789,11 +769,9 @@
             document.getElementById('opt-t-esp').innerText = t.tEsp;
             document.getElementById('opt-t-sino').innerText = t.tSino;
 
-            // Refrescar el tipo de tirada actual con el nuevo idioma
             ajustarTipoTirada(document.getElementById('tarot-tema').value);
             actualizarInstruccionTablero();
 
-            // Si hay un botón de volver activo en la barra superior, actualizarlo
             const btnVolverActivo = document.querySelector('.top-bar .btn-volver');
             if(btnVolverActivo) btnVolverActivo.innerText = t.btnVolver;
         }
@@ -802,4 +780,6 @@
         cambiarIdioma(devLang);
     </script>
 </body>
-</html>
+</html>          
+                    
+                                  
