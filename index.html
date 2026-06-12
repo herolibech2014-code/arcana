@@ -46,7 +46,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            height: 50px;
+            min-height: 50px;
             z-index: 100;
         }
         .btn-volver {
@@ -141,53 +141,56 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE ABANICOS */
+        /* CONTENEDOR DE TANDAS DE ABANICOS REALES */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 40px;
             width: 100%;
             margin-top: 10px;
-            padding-bottom: 40px;
+            padding-bottom: 60px;
+            align-items: center;
         }
         
-        .abanico-fila {
+        .abanico-tanda-fila {
             position: relative;
             width: 100%;
+            max-width: 850px;
             height: 180px;
-            margin: 0 auto;
             display: flex;
             justify-content: center;
+            margin-bottom: 10px;
         }
         
-        /* NAIPES EN EL TABLERO */
+        /* NAIPES DISPUESTOS EN ABANICO (CÓMODOS PARA EL DEDO EN EL CELULAR) */
         .carta-tarot-real {
             position: absolute;
-            width: 85px;
-            height: 145px;
+            width: 80px;
+            height: 140px;
             background: linear-gradient(135deg, #220e45 0%, #06020c 100%);
             border: 2px solid #5b21b6;
             border-radius: 6px;
             cursor: pointer;
-            box-shadow: -3px 3px 8px rgba(0,0,0,0.8);
-            transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+            box-shadow: -3px 3px 8px rgba(0,0,0,0.7);
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
             transform-origin: bottom center;
         }
         .carta-tarot-real::after {
             content: '✦'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            color: rgba(212, 175, 55, 0.25); font-size: 1.3rem;
+            color: rgba(212, 175, 55, 0.25); font-size: 1.2rem;
         }
         .carta-tarot-real:hover {
             border-color: #a78bfa;
-            box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+            box-shadow: 0 0 12px rgba(167, 139, 250, 0.6);
         }
         
         .carta-tarot-real.elegida-ritual {
-            transform: translateY(-35px) scale(1.1) !important;
+            transform: translateY(-30px) scale(1.05) !important;
             z-index: 999 !important;
             border-color: #d4af37;
             background: #4c1d95;
             box-shadow: 0 0 20px #d4af37;
+            opacity: 0.5;
         }
 
         /* REVELACIÓN FINAL */
@@ -236,6 +239,9 @@
 </head>
 <body>
 
+    <audio id="audio-musica" loop autoplay src="https://assets.mixkit.co/music/preview/mixkit-mystical-wunderhorn-164.mp3"></audio>
+    <audio id="audio-cuenco" src="https://actions.google.com/sounds/v1/alarms/digital_watch_alarm_long.ogg"></audio>
+
     <div class="app-container" id="contenedor-global">
         
         <div class="top-bar">
@@ -249,9 +255,9 @@
 
         <div id="pantalla-menu" class="vista-seccion activa">
             <div class="menu-contenedor">
-                <div class="menu-card" onclick="abrirTarotConfig()">
-                    <div class="card-titulo">🔮 Tarot</div>
-                    <div class="card-desc">Las 78 cartas del mazo Rider-Waite listas sobre el tapete.</div>
+                <div class="menu-card" onclick="intentarActivarAudio(); abrirTarotConfig()">
+                    <div class="card-titulo">🔮 Tarot Rider-Waite</div>
+                    <div class="card-desc">Las 78 cartas dispuestas en abanicos sagrados para tu tirada.</div>
                 </div>
             </div>
         </div>
@@ -275,7 +281,7 @@
         </div>
 
         <div id="pantalla-tarot-tablero" class="vista-seccion">
-            <div class="instruccion-directa">Elige tus 3 cartas del mazo</div>
+            <div class="instruccion-directa" id="txt-contador-instruccion">Elige tus 3 cartas del mazo</div>
             <div class="contenedor-altar-abanicos" id="altar-abanicos-completo"></div>
         </div>
 
@@ -293,9 +299,8 @@
         let cartasRequeridas = 3;
         let cartasSeleccionadasIndices = [];
         let mazoMezcladoConPosicion = [];
-        let ritualEnProceso = false;
 
-        // MAZO DE 78 CARTAS CON ENLACES REALES Y VERIFICADOS DE WIKIPEDIA
+        // BASE DE DATOS TOTAL DE 78 CARTAS CON IMÁGENES REALES
         const mazoOficial78 = [
             // ARCANOS MAYORES
             {id: 0, es:"El Loco", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg"},
@@ -367,7 +372,7 @@
             {id: 60, es:"Sota de Espadas", significado:"Vigilancia, mente analítica, verdades incómodas.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4b/Swords11.jpg"},
             {id: 61, es:"Caballero de Espadas", significado:"Defensa feroz de ideas, verdades directas sin filtro.", url:"https://upload.wikimedia.org/wikipedia/commons/b/b9/Swords12.jpg"},
             {id: 62, es:"Reina de Espadas", significado:"Independencia intelectual, discernimiento agudo, límites.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords13.jpg"},
-            {id: 63, es:"Rey de Espadas", significado:"Juicio justo y analítico, autoridad de la verdad.", url:"https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg"},
+            {id: 63, Music: false, es:"Rey de Espadas", significado:"Juicio justo y analítico, autoridad de la verdad.", url:"https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg"},
 
             // OROS
             {id: 64, es:"As de Oros", significado:"Semilla de abundancia, inicio financiero sólido, salud.", url:"https://upload.wikimedia.org/wikipedia/commons/5/53/Pentalces01.jpg"},
@@ -380,123 +385,4 @@
             {id: 71, es:"Ocho de Oros", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", url:"https://upload.wikimedia.org/wikipedia/commons/4/49/Pentalces08.jpg"},
             {id: 72, es:"Nueve de Oros", significado:"Independencia material, disfrutar los lujos logrados.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f0/Pentalces09.jpg"},
             {id: 73, es:"Diez de Oros", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", url:"https://upload.wikimedia.org/wikipedia/commons/4/42/Pentalces10.jpg"},
-            {id: 74, es:"Sota de Oros", significado:"Estudiante aplicado, nueva idea de negocio realista.", url:"https://upload.wikimedia.org/wikipedia/commons/e/ec/Pentalces11.jpg"},
-            {id: 75, es:"Caballero de Oros", significado:"Avance lento pero seguro, constancia inquebrantable.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d5/Pentalces12.jpg"},
-            {id: 76, es:"Reina de Oros", significado:"Nutrición terrenal, prosperidad práctica, amor al hogar.", url:"https://upload.wikimedia.org/wikipedia/commons/8/88/Pentalces13.jpg"},
-            {id: 77, es:"Rey de Oros", significado:"Éxito financiero absoluto, dominio de la materia.", url:"https://upload.wikimedia.org/wikipedia/commons/1/1c/Pentalces14.jpg"}
-        ];
-
-        function cambiarVista(idVista) {
-            document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
-            document.getElementById(idVista).classList.add('activa');
-            
-            const contenedor = document.getElementById('contenedor-global');
-            if(idVista !== 'pantalla-menu') {
-                contenedor.classList.add('modo-consulta-activa');
-            } else {
-                contenedor.classList.remove('modo-consulta-activa');
-            }
-
-            const zonaVolver = document.getElementById('zona-volver');
-            if(idVista !== 'pantalla-menu') {
-                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">← Volver</button>`;
-            } else {
-                zonaVolver.innerHTML = '';
-            }
-        }
-
-        function irAlMenu() { cambiarVista('pantalla-menu'); }
-        function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
-
-        function comenzarRitualTarot() {
-            cartasSeleccionadasIndices = [];
-            ritualEnProceso = false;
-
-            // Se arma el mazo completo y se mezcla de forma aleatoria pura
-            let mazoOriginal = mazoOficial78.map(c => ({ original: c, invertida: false }));
-            mazoOriginal.sort(() => Math.random() - 0.5);
-            mazoMezcladoConPosicion = mazoOriginal;
-
-            const contenedorAbanicos = document.getElementById('altar-abanicos-completo');
-            contenedorAbanicos.innerHTML = '';
-            
-            const cartasPorFila = 26; 
-            const totalFilas = Math.ceil(mazoMezcladoConPosicion.length / cartasPorFila); 
-
-            for (let f = 0; f < totalFilas; f++) {
-                let divFila = document.createElement('div');
-                divFila.className = 'abanico-fila';
-
-                let inicioIdx = f * cartasPorFila;
-                let finIdx = Math.min(inicioIdx + cartasPorFila, mazoMezcladoConPosicion.length);
-
-                for (let i = inicioIdx; i < finIdx; i++) {
-                    let divCard = document.createElement('div');
-                    divCard.className = 'carta-tarot-real';
-                    
-                    let posRelativa = (i - inicioIdx) - ((finIdx - inicioIdx) - 1) / 2;
-                    let traslacionX = posRelativa * 25;
-                    let rotacionGiro = posRelativa * 2.5;
-
-                    divCard.style.transform = `translateX(${traslacionX}px) rotate(${rotacionGiro}deg)`;
-                    divCard.style.zIndex = i - inicioIdx;
-
-                    divCard.onclick = () => seleccionarCartaDelAbanico(i, divCard);
-                    divFila.appendChild(divCard);
-                }
-                contenedorAbanicos.appendChild(divFila);
-            }
-
-            cambiarVista('pantalla-tarot-tablero');
-        }
-
-        function seleccionarCartaDelAbanico(idx, elementoHTML) {
-            if(ritualEnProceso || elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
-            
-            ritualEnProceso = true; 
-            elementoHTML.classList.add('elegida-ritual'); 
-            cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
-
-            setTimeout(() => {
-                ritualEnProceso = false; 
-                if(cartasSeleccionadasIndices.length === cartasRequeridas) {
-                    setTimeout(revelarTiradaFinal, 400);
-                }
-            }, 300);
-        }
-
-        function revelarTiradaFinal() {
-            const cajaRevelada = document.getElementById('caja-cartas-reveladas');
-            const cajaTexto = document.getElementById('texto-interpretacion');
-            cajaRevelada.innerHTML = '';
-            let parrafosInterpretacion = "";
-
-            cartasSeleccionadasIndices.forEach((cartaData, i) => {
-                let cardObj = cartaData.original;
-                let divC = document.createElement('div');
-                divC.className = 'carta-revelada';
-                divC.innerHTML = `
-                    <div class="wrapper-imagen-tarot">
-                        <img src="${cardObj.url}" alt="${cardObj.es}" crossorigin="anonymous">
-                    </div>
-                    <div class="nombre-c">${cardObj.es}</div>
-                `;
-                cajaRevelada.appendChild(divC);
-
-                parrafosInterpretacion += `<p><strong>✦ Carta ${i+1} (${obtenerPosicionTiempo(i)}): ${cardObj.es}</strong><br><strong>Significado:</strong> ${cardObj.significado}</p>`;
-            });
-
-            cajaTexto.innerHTML = parrafosInterpretacion;
-            cambiarVista('pantalla-tarot-resultado');
-        }
-
-        function obtenerPosicionTiempo(i) {
-            if(i === 0) return "Pasado";
-            if(i === 1) return "Presente";
-            return "Futuro";
-        }
-    </script>
-</body>
-</html>       
-                            
-                                                            
+            {id: 74, es:"Sota de Oros", significado:"Estudiante aplicado, nueva idea de negocio
