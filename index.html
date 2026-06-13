@@ -77,7 +77,6 @@
             color: #fff; padding: 6px; font-family: 'Cinzel Decorative', serif; font-size: 0.85rem; outline: none; border-radius: 6px;
         }
 
-        /* ICONO ASIGNADO CON TU ARCHIVO LOCAL REAL */
         .icono-app-contenedor {
             width: 75px;
             height: 75px;
@@ -166,7 +165,6 @@
             color: #fff; padding: 14px; font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; outline: none; border-radius: 6px;
         }
 
-        /* FILAS Y ABANICOS RE-CALCULADOS PARA INTEGRIDAD EN MÓVILES */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
@@ -405,36 +403,176 @@
             }
         };
 
-        // MATRIZ COMPLETA DE SIGNIFICADOS PARA EVITAR CONTENIDO REPETIDO EN LAS 78 CARTAS
-        const palosTarot = ["Mayores", "Bastos", "Copas", "Espadas", "Oros"];
-        const nombresCartas78 = [];
-        const significadosDerecho78 = [];
-        const significadosInvertido78 = [];
+        // BASE DE DATOS COMPLETA ESCRITA DE PUNTO A PUNTO: LAS 78 CARTAS SIN EXCEPCIÓN
+        const nombresCartas78 = [
+            "El Loco", "El Mago", "La Sacerdotisa", "La Emperatriz", "El Emperador", "El Hierofante", "Los Enamorados", "El Carro", "La Fuerza", "El Ermitaño", "La Rueda de la Fortuna", "La Justicia", "El Colgado", "La Muerte", "La Templanza", "El Diablo", "La Torre", "La Estrella", "La Luna", "El Sol", "El Juicio", "El Mundo",
+            "As de Bastos", "Dos de Bastos", "Tres de Bastos", "Cuatro de Bastos", "Cinco de Bastos", "Seis de Bastos", "Siete de Bastos", "Ocho de Bastos", "Nueve de Bastos", "Diez de Bastos", "Sota de Bastos", "Caballero de Bastos", "Reina de Bastos", "Rey de Bastos",
+            "As de Copas", "Dos de Copas", "Tres de Copas", "Cuatro de Copas", "Cinco de Copas", "Seis de Copas", "Siete de Copas", "Ocho de Copas", "Nueve de Copas", "Diez de Copas", "Sota de Copas", "Caballero de Copas", "Reina de Copas", "Rey de Copas",
+            "As de Espadas", "Dos de Espadas", "Tres de Espadas", "Cuatro de Espadas", "Cinco de Espadas", "Seis de Espadas", "Siete de Espadas", "Ocho de Espadas", "Nueve de Espadas", "Diez de Espadas", "Sota de Espadas", "Caballero de Espadas", "Reina de Espadas", "Rey de Espadas",
+            "As de Oros", "Dos de Oros", "Tres de Oros", "Cuatro de Oros", "Cinco de Oros", "Seis de Oros", "Siete de Oros", "Ocho de Oros", "Nueve de Oros", "Diez de Oros", "Sota de Oros", "Caballero de Oros", "Reina de Oros", "Rey de Oros"
+        ];
 
-        // Lógica estructurada de llenado único por número y palo real
-        for (let i = 0; i < 78; i++) {
-            let paloIndex = Math.floor(i / 16);
-            let nombrePalo = palosTarot[paloIndex] || "Oros";
-            let numeroInterno = (i % 16) + 1;
-            
-            if (i < 22) {
-                nombresCartas78.push(`Arcano Mayor ${i}`);
-                significadosDerecho78.push(`Revelación espiritual crucial, destino activado y gran toma de conciencia en tu sendero.`);
-                significadosInvertido78.push(`Resistencia al cambio necesario, advertencia sobre ilusiones falsas o retraso karmático.`);
-            } else {
-                nombresCartas78.push(`${numeroInterno} de ${nombrePalo}`);
-                significadosDerecho78.push(`Fuerza práctica en el terreno cotidiano de las acciones, emociones o finanzas vinculadas a los ${nombrePalo}.`);
-                significadosInvertido78.push(`Bloqueo de energía menor, malentendidos pasajeros o exceso de control en asuntos de ${nombrePalo}.`);
-            }
-        }
+        const significadosDerecho78 = [
+            "Saltos de fe, comienzos puros, libertad absoluta y frescura de espíritu.",
+            "Manifestación consciente, herramientas listas y fuerza de voluntad enfocada.",
+            "Intuición profunda, misterios divinos, quietud y sabiduría silenciosa.",
+            "Abundancia material, creatividad en expansión, fertilidad y naturaleza viva.",
+            "Estructura firme, orden, autoridad justa, protección y estabilidad en la tierra.",
+            "Tradición, guía espiritual, educación, conformidad y valores compartidos.",
+            "Elecciones del corazón, alineación de valores, armonía y relaciones profundas.",
+            "Control, fuerza de voluntad, victoria, determinación y superación de obstáculos.",
+            "Coraje, fortaleza interior, compasión, paciencia y control de los impulsos.",
+            "Introspección, búsqueda de la verdad, guía interior y soledad constructiva.",
+            "Cambio inevitable, giros del destino, buena suerte y ciclos vitales.",
+            "Verdad, equidad, causa y efecto, rendición de cuentas y equilibrio legal.",
+            "Pausa necesaria, entrega, nueva perspectiva, sacrificio y dejar ir.",
+            "Fin de un ciclo, transformación profunda, transición y nuevos comienzos.",
+            "Equilibrio, moderación, paciencia, propósito y combinación de opuestos.",
+            "Ataduras, materialismo excesivo, adicciones, sombras y placeres ilusorios.",
+            "Revelación repentina, caos destructivo, quiebre de estructuras y liberación.",
+            "Esperanza, fe, rejuvenecimiento, espiritualidad y luz en el camino.",
+            "Ilusión, miedos ocultos, ansiedad, subconsciente y verdades a medias.",
+            "Claridad absoluta, éxito, vitalidad, alegría de vivir y celebración.",
+            "Absolución, llamado interno, renacimiento y evaluación del pasado.",
+            "Cumplimiento, integración, éxito total, viaje y cierre perfecto.",
+            "Inspiración nueva, potencial creativo, energía ardiente y entusiasmo.",
+            "Planificación, decisiones futuras, descubrimiento y dar los primeros pasos.",
+            "Expansión, mirar hacia el horizonte, previsión y proyectos en marcha.",
+            "Celebración, regreso al hogar, comunidad y bases sólidas y seguras.",
+            "Competencia, desacuerdos, tensión, rivalidad y conflicto de ideas.",
+            "Éxito público, victoria, reconocimiento, elogios y avance seguro.",
+            "Defensa, perseverancia, protección de lo ganado y resistencia firme.",
+            "Movimiento rápido, acción inmediata, viajes y noticias veloces.",
+            "Resiliencia, última línea de defensa, cautela y fuerza acumulada.",
+            "Carga pesada, exceso de responsabilidad, estrés y fatiga extrema.",
+            "Explorador de ideas, entusiasmo, mensajes apasionados y curiosidad.",
+            "Acción impulsiva, aventura, pasión desbordada y cambios rápidos.",
+            "Confianza, calidez, magnetismo personal, independencia y coraje.",
+            "Líder visionario y apasionado, fuente inagotable de fuego, coraje puro y magnetismo.",
+            "Amor puro, nuevos sentimientos volcados, intuición y desborde emocional.",
+            "Conexión mutua, atracción, sociedad, amor correspondido y tregua.",
+            "Amistad, celebración grupal, felicidad compartida y colaboración.",
+            "Apatía, descontento, meditación, oportunidades ignoradas y hastío.",
+            "Pérdida, lamento, decepción amorosa, dolor centrado en lo que se fue.",
+            "Nostalgia, recuerdos infantiles, inocencia y reencuentros del pasado.",
+            "Fantasías, elecciones múltiples, ilusiones y falta de foco real.",
+            "Abandono constructivo, alejamiento de lo que ya no sirve, búsqueda.",
+            "Satisfacción, deseos cumplidos, confort material y orgullo interior.",
+            "Felicidad duradera, armonía familiar, alineación emocional completa.",
+            "Mensajes emocionales, intuición naciente, sensibilidad y arte.",
+            "Romance idealizado, propuestas, seguir al corazón de forma abierta.",
+            "Empatía madura, contención emocional, intuición certera y calidez.",
+            "Control emocional, equilibrio de sentimientos, compasión y diplomacia.",
+            "Claridad mental decisiva, victoria de la verdad, corte radical.",
+            "Indecisión, callejón sin salida, emociones reprimidas, tregua mental.",
+            "Dolor profundo, separación, traición, corazón roto y luto.",
+            "Retiro, descanso necesario, recuperación del estrés, meditación.",
+            "Conflicto, derrota ajena, intereses egoístas, victoria vacía.",
+            "Transición necesaria, alejamiento del dolor, viaje hacia la calma.",
+            "Engaño, estrategia oculta, huida, robo de energía o secretos.",
+            "Restricción autoimpuesta, entrampamiento mental, parálisis por miedo.",
+            "Ansiedad extrema, pesadillas, culpa, desesperación e insomnio.",
+            "Final absoluto, traición consumada, tocar fondo, fin de un calvario.",
+            "Mentalidad alerta, perspicacia, curiosidad constructiva, verdades.",
+            "Defensa de ideales, avance directo, confrontación y mente veloz.",
+            "Juicio afilado, verdad sin filtro, independencia mental, lucidez.",
+            "Autoridad intelectual, control de las ideas, justicia recta y lógica.",
+            "Prosperidad naciente, oportunidad económica, salud y base material.",
+            "Malabarismo financiero, adaptabilidad, prioridades en cambio continuo.",
+            "Trabajo en equipo, colaboración constructiva, maestría y arquitectura.",
+            "Conservadurismo material, ahorro extremo, posesividad, miedo a perder.",
+            "Dificultad financiera, escasez, aislamiento, pérdida temporal.",
+            "Generosidad compartida, dar y recibir, equilibrio material, apoyo.",
+            "Paciencia, evaluación de la cosecha, inversión a largo plazo.",
+            "Dedicación, aprendizaje de un oficio, perfeccionamiento, detalle.",
+            "Frutos del esfuerzo, independencia económica, lujo y autosuficiencia.",
+            "Legado duradero, riqueza familiar, estabilidad total y tradición.",
+            "Estudiante aplicado, ideas prácticas, constancia y pies en la tierra.",
+            "Trabajo duro, rutina eficiente, lealtad incuestionable, servicio.",
+            "Seguridad material, generosidad práctica, nutrición y realismo.",
+            "Abundancia consolidada, maestría material, éxito financiero seguro."
+        ];
 
-        // Especificaciones exactas del mazo real asignadas de forma fija
-        nombresCartas78[0] = "El Loco"; significadosDerecho78[0] = "Saltos de fe, comienzos puros, libertad absoluta y frescura de espíritu."; significadosInvertido78[0] = "Irresponsabilidad flagrante, imprudencia peligrosa, dispersión y falta de rumbo real.";
-        nombresCartas78[1] = "El Mago"; significadosDerecho78[1] = "Manifestación consciente, herramientas listas y fuerza de voluntad enfocada."; significadosInvertido78[1] = "Manipulación sutil, engaño, talentos desperdiciados o falta de convicción práctica.";
-        nombresCartas78[2] = "La Sacerdotisa"; significadosDerecho78[2] = "Intuición profunda, misterios divinos, quietud y sabiduría silenciosa."; significadosInvertido78[2] = "Secretos dañinos que salen a la luz, desconexión intuitiva, superficialidad.";
-        nombresCartas78[3] = "La Emperatriz"; significadosDerecho78[3] = "Abundancia material, creatividad en expansión, fertility y naturaleza viva."; significadosInvertido78[3] = "Bloqueo creativo severo, dependencia emocional asfixiante o esterilidad.";
-        nombresCartas78[4] = "El Emperador"; significadosDerecho78[4] = "Estructura firme, orden, autoridad justa, protección y estabilidad en la tierra."; significadosInvertido78[4] = "Tiranía desmedida, rigidez mental absurdda, pérdida total de control o debilidad.";
-        nombresCartas78[22] = "Rey de Bastos"; significadosDerecho78[22] = "Líder visionario y apasionado, fuente inagotable de fuego, coraje puro y magnetismo."; significadosInvertido78[22] = "Impulsividad destructiva, tiranía arrogante, impaciencia severa y proyectos quemados.";
+        const significadosInvertido78 = [
+            "Irresponsabilidad flagrante, imprudencia peligrosa, dispersión y falta de rumbo real.",
+            "Manipulación sutil, engaño, talentos desperdiciados o falta de convicción práctica.",
+            "Secretos dañinos que salen a la luz, desconexión intuitiva, superficialidad.",
+            "Bloqueo creativo severo, dependencia emocional asfixiante o esterilidad.",
+            "Tiranía desmedida, rigidez mental absurda, pérdida total de control o debilidad.",
+            "Rebeldía, dogmatismo ciego, nuevas formas de pensar, rigidez obsoleta.",
+            "Desalineación, desarmonía interna, malas elecciones, conflicto vincular.",
+            "Falta de dirección, agresividad descontrolada, pérdida de impulso.",
+            "Debilidad, falta de control propio, inseguridad interior, crudeza.",
+            "Aislamiento dañino, rechazo a la ayuda, obsesión o desapego extremo.",
+            "Resistencia al cambio necesario, mala racha pasajera, repetición de errores.",
+            "Prejuicios, injusticia legal, falta de asunción de responsabilidades.",
+            "Egoísmo, parálisis innecesaria, resistencia al sacrificio obligatorio.",
+            "Miedo al cambio, estancamiento doloroso, resistencia a soltar.",
+            "Desequilibrio, excesos, falta de paciencia, choques de intereses.",
+            "Liberación de ataduras, superación de miedos, despertar espiritual.",
+            "Temor a la ruptura, catástrofe evitada por poco, reconstrucción secreta.",
+            "Falta de fe, desilusión, pesimismo, bloqueos creativos hondos.",
+            "Liberación de temores, confusión que se disipa, verdades expuestas.",
+            "Éxito demorado, egocentrismo, optimismo exagerado o falta de luz.",
+            "Dudas existenciales, rechazo al llamado, remordimientos sin cerrar.",
+            "Falta de cierre, estancamiento en metas finales, lecciones incompletas.",
+            "Energía desperdiciada, falsos comienzos, retrasos creativos graves.",
+            "Falta de planificación, estancamiento, indecisión que paraliza.",
+            "Retrasos en viajes, expectativas frustradas, falta de visión práctica.",
+            "Inestabilidad en el hogar, tensiones familiares, falta de apoyo.",
+            "Evitar el conflicto necesario, tregua forzada, desgaste de energía.",
+            "Falta de reconocimiento, caída del pedestal, traición o retrasos.",
+            "Agotamiento, rendición innecesaria, verse superado por las críticas.",
+            "Retrasos masivos, acción mal orientada, caos en la comunicación.",
+            "Defensas caídas, debilidad, testarudez destructiva, cansancio.",
+            "Agotamiento total, delegar responsabilidades, colapso por estrés.",
+            "Malas noticias, falta de dirección, indecisión o inmadurez.",
+            "Dispersión, impaciencia destructiva, proyectos que mueren rápido.",
+            "Inseguridad, celos desmedidos, manipulación, demandas excesivas.",
+            "Impulsividad destructiva, tiranía arrogante, impaciencia severa y proyectos quemados.",
+            "Bloqueo emocional, amor propio dañado, intuición reprimida.",
+            "Ruptura, desequilibrio en el dar y recibir, frialdad en la pareja.",
+            "Celebración arruinada, chismes, excesos nocivos en grupo.",
+            "Despertar del letargo, nueva motivación, salir del aislamiento.",
+            "Superación del dolor, mirar adelante, sanar heridas del corazón.",
+            "Anclaje en el pasado, melancolía destructiva, incapacidad de avanzar.",
+            "Desilusión cruda, claridad dolorosa, fin de fantasías infantiles.",
+            "Estancamiento por orgullo, rechazo a cambiar de rumbo vital.",
+            "Materialismo afectivo, complacencia vacía, insatisfacción íntima.",
+            "Conflictos domésticos, desconexión familiar, falsas apariencias.",
+            "Inmadurez afectiva, manipulación emocional, secretos descubiertos.",
+            "Corazón roto por falsas promesas, desencanto, huida afectiva.",
+            "Inestabilidad emocional, desconfianza infundada, frialdad calculadora.",
+            "Bloqueo mental por exceso de sentimientos, manipulación descarada.",
+            "Destrucción con saña, crueldad de pensamiento, verdades que matan.",
+            "Sobrecarga mental, indecisión extrema, mentiras que salen a la luz.",
+            "Sanación de heridas antiguas, perdón necesario, superación del luto.",
+            "Estancamiento, agotamiento crónico por no querer parar a tiempo.",
+            "Remordimiento, fin de una disputa inútil, heridas mal cerradas.",
+            "Equipaje emocional pesado, resistencia a cambiar de entorno.",
+            "Confesión, trampas descubiertas, regreso de lo robado, honestidad.",
+            "Liberación de miedos, acción recobrada, fin del autosabotaje.",
+            "Perspectiva recuperada, fin de la desesperación, superación del dolor.",
+            "Esperanza de resurgir, fin de un ciclo de dolor, aceptación total.",
+            "Cuchicheos a las espaldas, cinismo, falsas promesas, inmadurez.",
+            "Agresividad verbal, fanatismo ciego, decisiones apresuradas.",
+            "Amargura, malicia, críticas destructivas, frialdad cruel.",
+            "Tiranía intelectual, crueldad mental, manipulación de la ley.",
+            "Pérdida de dinero, malas inversiones, avaricia o codicia ciega.",
+            "Mala organización, gastos descontrolados, estrés por dinero.",
+            "Falta de ambición, mala calidad de trabajo, desorganización grupal.",
+            "Despilfarro, codicia, rigidez material, apego a lo inservible.",
+            "Recuperación financiera, salir del pozo, ayuda inesperada.",
+            "Explotación laboral, tacañería, desigualdad material patente.",
+            "Pérdidas por impaciencia, mala inversión del tiempo, pereza.",
+            "Falta de foco, perfeccionamiento trunco, esfuerzo malgastado.",
+            "Derroche, falsa autosuficiencia, pérdidas materiales por descuido.",
+            "Pérdidas hereditarias, crisis en la vejez, ruptura de tradiciones.",
+            "Falta de constancia, gastos absurdos, pereza intelectual.",
+            "Pereza extrema, estancamiento laboral, irresponsabilidad.",
+            "Celos materiales, posesividad, descuido de la salud o economía.",
+            "Avaricia destructiva, corrupción financiera, éxito vacío e inestable."
+        ];
 
         const datosVisualesMazos = {
             rider: { fondo: "#1e1b4b", texto: "#fbbf24", borde: "#d4af37", tag: "RIDER-WAITE" },
@@ -447,8 +585,8 @@
         const mazoMezcladoCompleto = [];
         for (let i = 0; i < 78; i++) {
             let polaridadCalculada = "si";
-            if (i === 16 || i === 9) polaridadCalculada = "no";
-            if (i === 0 || i === 12) polaridadCalculada = "neutral";
+            if (i === 16 || i === 9 || i === 13 || i === 15 || i === 54 || i === 59) polaridadCalculada = "no";
+            if (i === 0 || i === 12 || i === 51) polaridadCalculada = "neutral";
             mazoMezcladoCompleto.push({ id: i, polaridad: polaridadCalculada });
         }
 
@@ -533,7 +671,6 @@
             cambiarVista('pantalla-tarot-tablero');
         }
 
-        // CONTROL ESTRICTO DE MEDIDAS PARA RESPALDAR SECTOR IZQUIERDO CLICKABLE EN CELULARES
         function dibujarTableroAbanicos78() {
             const contenedorAltar = document.getElementById('altar-abanicos-contenedor');
             contenedorAltar.innerHTML = '';
@@ -609,7 +746,6 @@
             return { txt: "NEUTRAL", clase: "sino-neutral" };
         }
 
-        // UNIFICADOR DE SENTIDO COMPLETO DE LA TIRADA
         function generarInterpretacionUnificada(cartas) {
             if (cartas.length === 1) {
                 return "<div class=\"bloque-unificado\"><strong>Consejo del Oráculo Unificado:</strong> La carta elegida marca de forma contundente la respuesta directa a tu destino. No busques desvíos ni dobles lecturas; la energía del Arcano te pide atención inmediata en su punto de influjo puro.</div>";
