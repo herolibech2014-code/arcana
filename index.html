@@ -592,4 +592,162 @@
             let mazoOriginal = baseDeDatosTarot.map((c, index) => {
                 return { original: c, invertida: Math.random() < 0.35, idInstancia: index };
             });
-            maz
+            mazoOriginal.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazoOriginal;
+
+            dibujarTableroAbanicos78();
+            cambiarVista('pantalla-tarot-tablero');
+        }
+
+        // DIBUJA LAS 6 TANDAS DE ABANICOS REALES EN LA MISMA PÁGINA
+        function dibujarTableroAbanicos78() {
+            const contenedorAltar = document.getElementById('altar-abanicos-contenedor');
+            contenedorAltar.innerHTML = '';
+
+            const cartasPorTanda = 13; // 13 cartas por tanda para cubrir las 78 (13 * 6 = 78)
+            const totalTandas = 6;
+
+            for (let t = 0; t < totalTandas; t++) {
+                let filaAbanico = document.createElement('div');
+                filaAbanico.className = 'tanda-abanico-fila';
+
+                for (let i = 0; i < cartasPorTanda; i++) {
+                    let mazoIndex = (t * cartasPorTanda) + i;
+                    if (mazoIndex >= mazoMezcladoConPosicion.length) break;
+
+                    let cartaData = mazoMezcladoConPosicion[mazoIndex];
+                    let divCard = document.createElement('div');
+                    divCard.className = 'carta-tarot-abanico';
+                    divCard.innerHTML = '✦';
+
+                    // Cálculos matemáticos para la apertura del abanico real
+                    let indiceCentral = (cartasPorTanda - 1) / 2;
+                    let desfasaje = i - indiceCentral;
+                    
+                    let anguloRotacion = desfasaje * 3; // Grados de inclinación
+                    let desplazamientoX = desfasaje * 35; // Separación horizontal escalonada
+                    let desplazamientoY = Math.abs(desfasaje) * 3; // Efecto curva del abanico
+
+                    divCard.style.setProperty('--rotacion-propia', `${anguloRotacion}deg`);
+                    divCard.style.transform = `translate3d(${desplazamientoX}px, ${desplazamientoY}px, 0) rotate(${anguloRotacion}deg)`;
+                    divCard.style.zIndex = i;
+
+                    divCard.onclick = (evento) => {
+                        evento.stopPropagation();
+                        seleccionarCartaTableroDirecto(cartaData, divCard);
+                    };
+
+                    filaAbanico.appendChild(divCard);
+                }
+                contenedorAltar.appendChild(filaAbanico);
+            }
+        }
+
+        function seleccionarCartaTableroDirecto(carta, elementoHTML) {
+            if(elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
+            
+            sonarCuencoUnico(); 
+            elementoHTML.classList.add('elegida-ritual'); 
+            cartasSeleccionadasIndices.push(carta);
+
+            if(cartasSeleccionadasIndices.length === cartasRequeridas) {
+                setTimeout(() => revelarTiradaFinal(), 500);
+            }
+        }
+
+        function calcularResultadoSino(cartas) {
+            let puntosSino = 0; 
+
+            cartas.forEach(c => {
+                if (c.invertida) puntosSino--; 
+                else {
+                    if (c.original.polaridad === "si") puntosSino++;
+                    else if (c.original.polaridad === "no") puntosSino--;
+                }
+            });
+
+            if (cartas.length === 1) {
+                let unObj = cartas[0].original;
+                if (cartas[0].invertida) return { txt: "NO", clase: "sino-no" };
+                if (unObj.polaridad === "si") return { txt: "SÍ", clase: "sino-si" };
+                if (unObj.polaridad === "no") return { txt: "NO", clase: "sino-no" };
+                return { txt: "NEUTRAL / INDEFINIDO", clase: "sino-neutral" };
+            }
+
+            if (puntosSino > 0) return { txt: "SÍ", clase: "sino-si" };
+            if (puntosSino < 0) return { txt: "NO", clase: "sino-no" };
+            return { txt: "NEUTRAL / INDEFINIDO", clase: "sino-neutral" };
+        }
+
+        function revelarTiradaFinal() {
+            const t = traduccionesGlobales[idiomaActual];
+            const mazoElegido = document.getElementById('tarot-mazo-elegido').value;
+            const cajaRevelada = document.getElementById('caja-cartas-reveladas');
+            const cajaTexto = document.getElementById('texto-interpretacion');
+            const zonaCartel = document.getElementById('zona-cartel-sino');
+            
+            cajaRevelada.innerHTML = '';
+            zonaCartel.innerHTML = '';
+            
+            let desgloseSignificados = "";
+
+            if(modoLectura === "sino1" || modoLectura === "sino2") {
+                let balance = calcularResultadoSino(cartasSeleccionadasIndices);
+                zonaCartel.innerHTML = `<div class="cartel-sino ${balance.clase}">${t.respuesta} ${balance.txt}</div>`;
+            }
+
+            cartasSeleccionadasIndices.forEach((cartaData, index) => {
+                let cObj = cartaData.original;
+                let alReves = cartaData.invertida;
+
+                let nombreTraducido = diccionarioCartasYSignificados[idiomaActual].nombres[cObj.id] || "Card " + cObj.id;
+                let orientacionTexto = alReves ? t.alreves : t.derecho;
+                let orientacionClase = alReves ? "txt-alreves" : "txt-derecho";
+
+                let rutaImagen = cObj.img_rider;
+                if(mazoElegido === "marsella") rutaImagen = cObj.img_marsella;
+                if(mazoElegido === "egipcio") rutaImagen = cObj.img_egipcio;
+                if(mazoElegido === "thoth") rutaImagen = cObj.img_thoth;
+                if(mazoElegido === "mistico") rutaImagen = cObj.img_mistico;
+
+                let divC = document.createElement('div');
+                divC.className = `carta-revelada ${alReves ? 'es-invertida' : ''}`;
+                divC.innerHTML = `
+                    <div class="wrapper-imagen-tarot">
+                        <img src="${rutaImagen}" alt="${nombreTraducido}">
+                    </div>
+                    <div class="nombre-c">
+                        ${nombreTraducido}
+                        <span class="tag-orientacion ${orientacionClase}">${orientacionTexto}</span>
+                    </div>
+                `;
+                cajaRevelada.appendChild(divC);
+
+                let txtBase = alReves ? diccionarioCartasYSignificados[idiomaActual].invertido[cObj.id] : diccionarioCartasYSignificados[idiomaActual].derecho[cObj.id];
+                let tagPosicion = (modoLectura === "3") ? ` (${index===0?'Pasado':(index===1?'Presente':'Futuro')})` : "";
+                
+                desgloseSignificados += `<p><strong>✦ ${nombreTraducido}${tagPosicion}:</strong> ${txtBase}</p>`;
+            });
+
+            let bloqueConjunto = "";
+            if (cartasSeleccionadasIndices.length >= 2) {
+                let id1 = cartasSeleccionadasIndices[0].original.id;
+                let id2 = cartasSeleccionadasIndices[1].original.id;
+                if ((id1===1 && id2===2) || (id1===2 && id2===1)) {
+                    bloqueConjunto = diccionarioCartasYSignificados[idiomaActual].combinaciones.magoSacerdotisa || "";
+                }
+            }
+
+            cajaTexto.innerHTML = `
+                <h3>${t.tituloInterp}</h3>
+                ${bloqueConjunto}
+                <hr style="border:0; border-top:1px dashed rgba(212,175,55,0.3); margin:20px 0;">
+                <div>${desgloseSignificados}</div>
+            `;
+            cambiarVista('pantalla-tarot-resultado');
+        }
+        
+        actualizarTextosGlobales();
+    </script>
+</body>
+</html>
