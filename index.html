@@ -46,7 +46,9 @@
             align-items: center;
             min-height: 50px;
             z-index: 100;
+            position: relative;
         }
+        
         .btn-volver {
             background: rgba(15, 4, 35, 0.9);
             border: 2px solid rgba(212, 175, 55, 0.6);
@@ -62,6 +64,17 @@
         .btn-volver:hover {
             box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
             background: rgba(212, 175, 55, 0.15);
+        }
+
+        .selector-idioma-derecho {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 150px;
+        }
+        .selector-idioma-derecho select {
+            width: 100%; background: #070314; border: 2px solid rgba(212, 175, 55, 0.5);
+            color: #fff; padding: 8px; font-family: 'Cinzel Decorative', serif; font-size: 0.9rem; outline: none; border-radius: 6px;
         }
 
         .icono-app-contenedor {
@@ -115,31 +128,25 @@
         .vista-seccion { display: none; flex-direction: column; gap: 30px; width: 100%; }
         .activa { display: flex; }
 
-        .selector-idioma-inicio {
-            margin: 10px auto;
-            max-width: 300px;
-            text-align: center;
-        }
-        .selector-idioma-inicio select {
-            width: 100%; background: #070314; border: 2px solid rgba(212, 175, 55, 0.5);
-            color: #fff; padding: 12px; font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; outline: none; border-radius: 6px;
-        }
-
         .menu-contenedor { 
-            display: flex; 
-            flex-direction: column; 
+            display: grid; 
+            grid-template-columns: repeat(2, 1fr);
             gap: 25px; 
-            margin-top: 10px; 
-            max-width: 600px; 
+            margin-top: 20px; 
+            max-width: 800px; 
             margin-left: auto; 
             margin-right: auto; 
             width: 100%; 
         }
+        @media (max-width: 600px) {
+            .menu-contenedor { grid-template-columns: 1fr; }
+        }
+
         .menu-card {
             background: rgba(14, 5, 30, 0.85); 
             border: 2px solid rgba(212, 175, 55, 0.35); 
             border-bottom: 5px solid rgba(212, 175, 55, 0.6);
-            padding: 45px 20px; 
+            padding: 35px 15px; 
             text-align: center; 
             cursor: pointer; 
             transition: all 0.3s; 
@@ -147,7 +154,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.5);
         }
         .menu-card:hover { border-color: #d4af37; background: rgba(45, 12, 95, 0.45); transform: translateY(-3px); }
-        .card-titulo { font-size: 2.5rem; color: #d4af37; letter-spacing: 4px; }
+        .card-titulo { font-size: 1.8rem; color: #d4af37; letter-spacing: 3px; }
 
         .config-ritual-area { display: flex; flex-direction: column; gap: 25px; margin-top: 15px; max-width: 550px; margin-left: auto; margin-right: auto; width: 100%; }
         .selector-caja { text-align: left; border-bottom: 2px dashed rgba(212, 175, 55, 0.3); padding-bottom: 15px; }
@@ -158,38 +165,51 @@
         }
 
         .contenedor-altar-abanicos {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            position: relative;
+            height: 250px;
             width: 100%;
-            max-width: 1100px;
-            margin: 20px auto 60px auto;
-            justify-content: center;
-            align-items: center;
+            max-width: 600px;
+            margin: 50px auto;
         }
         
         .carta-tarot-real {
-            width: 65px;
-            height: 115px;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 90px;
+            height: 160px;
             background: linear-gradient(135deg, #1d0b3a 0%, #05020a 100%);
             border: 2px solid #4c1d95;
-            border-radius: 6px;
+            border-radius: 8px;
             cursor: pointer;
-            box-shadow: -3px 3px 8px rgba(0,0,0,0.7);
-            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+            box-shadow: -4px 4px 10px rgba(0,0,0,0.6);
+            transform-origin: bottom center;
+            transition: transform 0.3s, border-color 0.3s, bottom 0.3s;
+        }
+        .carta-tarot-real:hover {
+            bottom: 15px;
+            border-color: #d4af37;
+            z-index: 100 !important;
         }
         .carta-tarot-real::after {
             content: '✦'; display: flex; justify-content: center; align-items: center; height: 100%;
-            color: rgba(212, 175, 55, 0.25); font-size: 1rem;
+            color: rgba(212, 175, 55, 0.25); font-size: 1.3rem;
         }
         
         .carta-tarot-real.elegida-ritual {
-            transform: scale(0.9) !important;
             border-color: #d4af37;
             background: #3b0764;
             box-shadow: 0 0 15px #d4af37;
-            opacity: 0.3;
+            opacity: 0.1;
             pointer-events: none;
+        }
+
+        .controles-tandas {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            margin: 10px auto;
         }
 
         .resultado-cartas { display: flex; justify-content: center; gap: 25px; margin: 30px 0; flex-wrap: wrap; }
@@ -233,10 +253,20 @@
         .caja-interpretacion {
             background: rgba(5, 2, 12, 0.95); border: 2px solid rgba(212, 175, 55, 0.4);
             border-top: 5px solid #d4af37; border-radius: 6px;
-            padding: 25px; text-align: left; font-size: 1.2rem;
-            line-height: 1.8; max-width: 750px; margin: 0 auto; max-height: 350px; overflow-y: auto;
+            padding: 25px; text-align: left; font-size: 1.15rem;
+            line-height: 1.8; max-width: 750px; margin: 0 auto; max-height: 450px; overflow-y: auto;
+            font-family: 'Georgia', serif;
+            color: #fce7f3;
         }
-        .caja-interpretacion p { margin: 0 0 15px 0; }
+        .caja-interpretacion h3 { font-family: 'Cinzel Decorative', serif; color: #d4af37; text-align: center; margin-top: 0; font-size: 1.5rem; letter-spacing: 2px; }
+        .caja-interpretacion p { margin: 0 0 18px 0; text-align: justify; }
+        
+        .cartel-sino {
+            text-align: center; font-size: 2.2rem; font-family: 'Cinzel Decorative', serif; margin-bottom: 20px; padding: 10px; border-radius: 6px;
+        }
+        .sino-si { color: #34d399; text-shadow: 0 0 15px rgba(52, 211, 153, 0.6); border: 1px solid #34d399; background: rgba(52, 211, 153, 0.1); }
+        .sino-no { color: #f87171; text-shadow: 0 0 15px rgba(248, 113, 113, 0.6); border: 1px solid #f87171; background: rgba(248, 113, 113, 0.1); }
+        .sino-neutral { color: #c084fc; text-shadow: 0 0 15px rgba(192, 132, 252, 0.6); border: 1px solid #c084fc; background: rgba(192, 132, 252, 0.1); }
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
@@ -246,12 +276,21 @@
 <body>
 
     <audio id="audio-musica" loop autoplay src="musica-fondo.MP3"></audio>
-    <audio id="audio-cuenco" src="sound-cuenco.mp3"></audio>
+    <audio id="audio-cuenco" src="sonido-cuenco.mp3"></audio>
 
     <div class="app-container" id="contenedor-global">
         
         <div class="top-bar">
             <div id="zona-volver"></div>
+            <div class="selector-idioma-derecho" id="contenedor-idioma">
+                <select id="tarot-idioma" onchange="actualizarTextosGlobales()">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                    <option value="fr">Français</option>
+                    <option value="it">Italiano</option>
+                </select>
+            </div>
         </div>
 
         <div class="logo-area">
@@ -262,19 +301,26 @@
         </div>
 
         <div id="pantalla-menu" class="vista-seccion activa">
-            <div class="selector-idioma-inicio">
-                <select id="tarot-idioma" onchange="actualizarTextosGlobales()">
-                    <option value="es">Español</option>
-                    <option value="en">English</option>
-                    <option value="pt">Português</option>
-                    <option value="fr">Français</option>
-                    <option value="it">Italiano</option>
-                </select>
-            </div>
             <div class="menu-contenedor">
                 <div class="menu-card" onclick="intentarActivarAudio(); abrirTarotConfig()">
                     <div id="txt-menu-tarot" class="card-titulo">Tarot</div>
                 </div>
+                <div class="menu-card" onclick="abrirSeccionGenerica('Numerología')">
+                    <div id="txt-menu-num" class="card-titulo">Numerología</div>
+                </div>
+                <div class="menu-card" onclick="abrirSeccionGenerica('Astrología')">
+                    <div id="txt-menu-astro" class="card-titulo">Astrología</div>
+                </div>
+                <div class="menu-card" onclick="abrirSeccionGenerica('Consulta IA')">
+                    <div id="txt-menu-ia" class="card-titulo">Consulta IA Integral</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="pantalla-generica" class="vista-seccion">
+            <h2 id="titulo-generico" style="color: #d4af37; font-size: 2.5rem;"></h2>
+            <div class="caja-interpretacion">
+                <p>Contenido en integración con base de datos externa.</p>
             </div>
         </div>
 
@@ -285,17 +331,15 @@
                     <select id="tarot-mazo-elegido">
                         <option value="rider">Rider-Waite</option>
                         <option value="marsella">Marsella</option>
-                        <option value="egipcio">Egipcio</option>
-                        <option value="gitano">Gitano</option>
-                        <option value="celta">Celta</option>
                     </select>
                 </div>
                 <div class="selector-caja">
-                    <label id="lbl-cantidad">Cantidad de cartas:</label>
+                    <label id="lbl-cantidad">Tipo de lectura:</label>
                     <select id="tarot-tipo">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3" selected>3</option>
+                        <option value="sino1">Consulta Sí/No (1 Carta)</option>
+                        <option value="sino2">Consulta Sí/No (2 Cartas)</option>
+                        <option value="2">Lectura de 2 Cartas (Vínculo/Dilema)</option>
+                        <option value="3" selected>Lectura de 3 Cartas (Pasado/Presente/Futuro)</option>
                     </select>
                 </div>
             </div>
@@ -304,10 +348,18 @@
 
         <div id="pantalla-tarot-tablero" class="vista-seccion">
             <div class="instruccion-directa" id="txt-contador-instruccion"></div>
+            
             <div class="contenedor-altar-abanicos" id="altar-abanicos-completo"></div>
+            
+            <div class="controles-tandas">
+                <button class="btn-volver" onclick="cambiarTandaAbanico(-1)">← Anterior</button>
+                <span id="txt-tanda-indicador" style="color:#d4af37; font-size:1.2rem;">Tanda 1 / 4</span>
+                <button class="btn-volver" onclick="cambiarTandaAbanico(1)">Siguiente →</button>
+            </div>
         </div>
 
         <div id="pantalla-tarot-resultado" class="vista-seccion">
+            <div id="zona-cartel-sino"></div>
             <div class="resultado-cartas" id="caja-cartas-reveladas"></div>
             <div class="caja-interpretacion" id="texto-interpretacion"></div>
             <button class="btn-volver" id="btn-nueva" onclick="abrirTarotConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;">NUEVA CONSULTA</button>
@@ -317,110 +369,137 @@
     </div>
 
     <script>
+        let modoLectura = "3"; // "sino1", "sino2", "2", "3"
         let cartasRequeridas = 3;
         let cartasSeleccionadasIndices = [];
         let mazoMezcladoConPosicion = [];
+        let tandaActual = 0;
+        const cartasPorTanda = 20; 
 
-        // TRADUCCIONES COMPLETAS PARA LOS 5 IDIOMAS
         const textosIdiomas = {
-            es: { tituloMenu: "Tarot", eligeUna: "Elige tu carta", eligeVarias: "Elige tus cartas", derecho: "Derecha", alreves: "Invertida", nueva: "NUEVA CONSULTA", consultar: "CONSULTAR", mazo: "Mazo:", cantidad: "Cantidad de cartas:" },
-            en: { tituloMenu: "Tarot", eligeUna: "Choose your card", eligeVarias: "Choose your cards", derecho: "Upright", alreves: "Reversed", nueva: "NEW READING", consultar: "READ CARDS", mazo: "Deck:", cantidad: "Card Amount:" },
-            pt: { tituloMenu: "Tarot", eligeUna: "Escolha sua carta", eligeVarias: "Escolha suas cartas", derecho: "Direita", alreves: "Invertida", nueva: "NOVA CONSULTA", consultar: "CONSULTAR", mazo: "Baralho:", cantidad: "Quantidade de cartas:" },
-            fr: { tituloMenu: "Tarot", eligeUna: "Choisissez votre carte", eligeVarias: "Choisissez vos cartes", derecho: "Droit", alreves: "Inversée", nueva: "NOUVELLE CONSULTATION", consultar: "CONSULTER", mazo: "Jeu:", cantidad: "Nombre de cartes:" },
-            it: { tituloMenu: "Tarot", eligeUna: "Scegli la tua carta", eligeVarias: "Scegli le tue carte", derecho: "Dritto", alreves: "Capovolta", nueva: "NUOVA CONSULTA", consultar: "CONSULTA", mazo: "Mazzo:", cantidad: "Quantità di carte:" }
+            es: { tituloMenu: "Tarot", eligeUna: "Concentrate en tu pregunta y elige una carta", eligeVarias: "Elige tus cartas del altar", derecho: "Derecha", alreves: "Invertida", nueva: "NUEVA CONSULTA", consultar: "CONSULTAR", mazo: "Mazo:", cantidad: "Tipo de lectura:" }
         };
 
-        // BASE DE DATOS REAL CON LOS 78 ARCANOS EN LOS 5 IDIOMAS
         const baseDeDatosTarot = [];
         
+        const urlsImagenesRider = [
+            "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg"
+        ];
+
         const nombresArcanosMayores = [
-            {es:"El Loco", en:"The Fool", pt:"O Louco", fr:"Le Mat", it:"Il Matto"},
-            {es:"El Mago", en:"The Magician", pt:"O Mago", fr:"Le Bateleur", it:"Il Bagatto"},
-            {es:"La Sacerdotisa", en:"The High Priestess", pt:"A Sacerdotisa", fr:"La Papesse", it:"La Papessa"},
-            {es:"La Emperatriz", en:"The Empress", pt:"A Imperatriz", fr:"L'Impératrice", it:"L'Imperatrice"},
-            {es:"El Emperador", en:"The Emperor", pt:"O Imperador", fr:"Le Empereur", it:"L'Imperatore"},
-            {es:"El Hierofante", en:"The Hierophant", pt:"O Hierofante", fr:"Le Pape", it:"Il Papa"},
-            {es:"Los Enamorados", en:"The Lovers", pt:"Os Enamorados", fr:"L'Amoureux", it:"Gli Amanti"},
-            {es:"El Carro", en:"The Chariot", pt:"O Carro", fr:"Le Chariot", it:"Il Carro"},
-            {es:"La Fuerza", en:"Strength", pt:"A Força", fr:"La Force", it:"La Forza"},
-            {es:"El Ermitaño", en:"The Hermit", pt:"O Eremita", fr:"L'Ermite", it:"L'Eremita"},
-            {es:"La Rueda de la Fortuna", en:"The Wheel of Fortune", pt:"A Roda da Fortuna", fr:"La Roue de Fortune", it:"La Ruota della Fortuna"},
-            {es:"La Justicia", en:"Justice", pt:"A Justiça", fr:"La Justice", it:"La Giustizia"},
-            {es:"El Colgado", en:"The Hanged Man", pt:"O Enforcado", fr:"Le Pendu", it:"L'Appeso"},
-            {es:"La Muerte", en:"Death", pt:"A Morte", fr:"La Mort", it:"La Morte"},
-            {es:"La Templanza", en:"Temperance", pt:"A Templança", fr:"Tempérance", it:"La Temperanza"},
-            {es:"El Diablo", en:"The Devil", pt:"O Diabo", fr:"Le Diable", it:"Il Diavolo"},
-            {es:"La Torre", en:"The Tower", pt:"A Torre", fr:"La Maison Dieu", it:"La Torre"},
-            {es:"La Estrella", en:"The Star", pt:"A Estrela", fr:"L'Étoile", it:"La Stella"},
-            {es:"La Luna", en:"The Moon", pt:"A Lua", fr:"La Lune", it:"La Luna"},
-            {es:"El Sol", en:"The Sun", pt:"O Sol", fr:"Le Soleil", it:"Il Sole"},
-            {es:"El Juicio", en:"Judgement", pt:"O Julgamento", fr:"Le Jugement", it:"Il Giudizio"},
-            {es:"El Mundo", en:"The World", pt:"O Mundo", fr:"Le Monde", it:"Il Mondo"}
+            "El Loco", "El Mago", "La Sacerdotisa", "La Emperatriz", "El Emperador",
+            "El Hierofante", "Los Enamorados", "El Carro", "La Fuerza", "El Ermitaño",
+            "La Rueda de la Fortuna", "La Justicia", "El Colgado", "La Muerte", "La Templanza",
+            "El Diablo", "La Torre", "La Estrella", "La Luna", "El Sol", "El Juicio", "El Mundo"
         ];
+        
+        const polaridadSinoMayores = {
+            0: "neutral", 1: "si", 2: "si", 3: "si", 4: "si", 5: "si", 6: "si", 7: "si", 8: "si", 9: "neutral",
+            10: "si", 11: "neutral", 12: "no", 13: "no", 14: "si", 15: "no", 16: "no", 17: "si", 18: "no", 19: "si", 20: "si", 21: "si"
+        };
 
-        const palos = [
-            {es:"Bastos", en:"Wands", pt:"Paus", fr:"Bâton", it:"Bastoni"},
-            {es:"Copas", en:"Cups", pt:"Copas", fr:"Coupe", it:"Coppe"},
-            {es:"Espadas", en:"Swords", pt:"Espadas", fr:"Épée", it:"Spade"},
-            {es:"Oros", en:"Coins", pt:"Ouros", fr:"Denier", it:"Denari"}
-        ];
-
-        const cartasNumero = [
-            {es:"As de ", en:"Ace of ", pt:"Ás de ", fr:"As de ", it:"Asso di "},
-            {es:"2 de ", en:"2 of ", pt:"2 de ", fr:"2 de ", it:"2 di "},
-            {es:"3 de ", en:"3 of ", pt:"3 de ", fr:"3 de ", it:"3 di "},
-            {es:"4 de ", en:"4 of ", pt:"4 de ", fr:"4 de ", it:"4 di "},
-            {es:"5 de ", en:"5 of ", pt:"5 de ", fr:"5 de ", it:"5 di "},
-            {es:"6 de ", en:"6 of ", pt:"6 de ", fr:"6 de ", it:"6 di "},
-            {es:"7 de ", en:"7 of ", pt:"7 de ", fr:"7 de ", it:"7 di "},
-            {es:"8 de ", en:"8 of ", pt:"8 de ", fr:"8 de ", it:"8 di "},
-            {es:"9 de ", en:"9 of ", pt:"9 de ", fr:"9 de ", it:"9 di "},
-            {es:"10 de ", en:"10 of ", pt:"10 de ", fr:"10 de ", it:"10 di "},
-            {es:"Sota de ", en:"Page of ", pt:"Valete de ", fr:"Valet de ", it:"Fante di "},
-            {es:"Caballero de ", en:"Knight of ", pt:"Cavaleiro de ", fr:"Chevalier de ", it:"Cavaliere di "},
-            {es:"Reina de ", en:"Queen of ", pt:"Rainha de ", fr:"Reine de ", it:"Regina di "},
-            {es:"Rey de ", en:"King of ", pt:"Rei de ", fr:"Roi de ", it:"Re di "}
-        ];
+        const palos = ["Bastos", "Copas", "Espadas", "Oros"];
+        const cartasNumero = ["As de ", "2 de ", "3 de ", "4 de ", "5 de ", "6 de ", "7 de ", "8 de ", "9 de ", "10 de ", "Sota de ", "Caballero de ", "Reina de ", "Rey de "];
 
         let idCounter = 0;
-
-        // Cargar los 22 Arcanos Mayores con textos de interpretación multilingüe
-        nombresArcanosMayores.forEach(arcano => {
-            baseDeDatosTarot.push({
-                id: idCounter++,
-                nombres: arcano,
-                significados: {
-                    es: { derecho: "Energía equilibrada y un mensaje claro para tu camino.", reves: "Bloqueos temporales que requieren atención inmediata." },
-                    en: { derecho: "Balanced energy and a clear message for your path.", reves: "Temporary blocks requiring immediate attention." },
-                    pt: { derecho: "Energia equilibrada e uma mensagem clara para o seu caminho.", reves: "Bloqueios temporários que exigem atenção." },
-                    fr: { derecho: "Énergie équilibrée et un message clair pour votre chemin.", reves: "Blocages temporaires qui nécessitent une attention." },
-                    it: { derecho: "Energia equilibrata e un messaggio chiaro per il tuo cammino.", reves: "Blocchi temporanei che richiedono attenzione." }
-                }
+        
+        nombresArcanosMayores.forEach((arcano, idx) => {
+            baseDeDatosTarot.push({ 
+                id: idx, 
+                tipo: "mayor",
+                nombre: arcano,
+                polaridad: polaridadSinoMayores[idx],
+                imagenUrl: urlsImagenesRider[idx] || "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg"
             });
         });
-
-        // Cargar los 56 Arcanos Menores dinámicamente combinando números y palos
+        idCounter = 22;
+        
         palos.forEach(palo => {
+            let polaridadPalo = "si";
+            if (palo === "Espadas") polaridadPalo = "no";
+            if (palo === "Bastos") polaridadPalo = "neutral";
+
             cartasNumero.forEach(num => {
-                baseDeDatosTarot.push({
-                    id: idCounter++,
-                    nombres: {
-                        es: num.es + palo.es,
-                        en: num.en + palo.en,
-                        pt: num.pt + palo.pt,
-                        fr: num.fr + palo.fr,
-                        it: num.it + palo.it
-                    },
-                    significados: {
-                        es: { derecho: "Influencia práctica en tus decisiones diarias.", reves: "Falta de enfoque o retrasos en este aspecto." },
-                        en: { derecho: "Practical influence on your daily choices.", reves: "Lack of focus or delays in this aspect." },
-                        pt: { derecho: "Influência prática em suas decisões diárias.", reves: "Falta de foco ou atrasos neste aspecto." },
-                        fr: { derecho: "Influence pratique sur vos choix quotidiens.", reves: "Manque de concentration ou retards." },
-                        it: { derecho: "Influenza pratica sulle tue scelte quotidiane.", reves: "Mancanza di concentrazione o ritardi." }
-                    }
+                baseDeDatosTarot.push({ 
+                    id: idCounter++, 
+                    tipo: "menor",
+                    nombre: num + palo,
+                    polaridad: polaridadPalo,
+                    imagenUrl: "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg"
                 });
             });
         });
+
+        const significadosIndividuales = {
+            0: "El Loco representa saltos de fe, inicios caóticos y desapego. Invertido es irresponsabilidad y locura.",
+            1: "El Mago representa manifestación, herramientas listas y fuerza de voluntad. Invertido es engaño o potencial desperdiciado.",
+            2: "La Sacerdotisa es intuición pura, secretos guardados e introspección. Invertida es superficialidad o secretos revelados.",
+            3: "La Emperatriz es abundancia, fertility y creación material. Invertida es bloqueos creativos o codependencia.",
+            4: "El Emperador es estructura, autoridad y orden firme. Invertido es tiranía, rigidez o falta de control.",
+            5: "El Hierofante es tradición, estructuras sociales o guía espiritual. Invertido es rebeldía o dogmatismo.",
+            6: "Los Enamorados son elecciones del corazón, alineación y vínculos. Invertido es desarmonía o malas decisiones.",
+            7: "El Carro es avance firme, victoria y determinación. Invertido es falta de rumbo o agresión sin control.",
+            8: "La Fuerza es control interno, compasión y coraje templado. Invertida es debilidad o impulsividad bruta.",
+            9: "El Ermitaño es soledad buscada, sabiduría interior y faro espiritual. Invertido es aislamiento dañino o terquedad.",
+            10: "La Rueda de la Fortuna es destino dinámico, cambios inevitables de ciclo. Invertida es mala racha o resistencia al cambio.",
+            11: "La Justicia es equilibrio, karma, verdad y contratos legales. Invertida es injusticia o negación de la realidad.",
+            12: "El Colgado es sacrificio voluntario, nuevas perspectivas y pausa. Invertido es estancamiento o esfuerzo inútil.",
+            13: "La Muerte es corte definitivo, finales necesarios y transmutación. Invertida es miedo a soltar o resistencia.",
+            14: "La Templanza es alquimia, paciencia, sanación y moderación. Invertida es exceso o desequilibrio energético.",
+            15: "El Diablo es ataduras materiales, adicciones y deseos reprimidos. Invertido es liberación o purga profunda.",
+            16: "La Torre es colapso de estructuras falsas, revelación dolorosa pero liberadora. Invertida es crisis que se estira.",
+            17: "La Estrella es esperanza, guía divina, sanación profunda y fe. Invertida es desilusión o falta de rumbo.",
+            18: "La Luna es subconsciente, ilusiones, miedos ocultos y confusión. Invertida es secretos que salen a la luz.",
+            19: "El Sol es éxito, claridad total, vitalidad, verdad y alegría. Invertido es ego inflado o felicidad temporal.",
+            20: "El Juicio es llamado del alma, rendición de cuentas, absolución. Invertido es remordimiento o dudar del llamado.",
+            21: "El Mundo es realización absoluta, cierre de ciclos exitoso y plenitud. Invertido es metas incompletas."
+        };
+
+        function obtenerLecturaConjunta(cartas) {
+            if(cartas.length < 2) return "";
+            
+            let id1 = cartas[0].original.id;
+            let id2 = cartas[1].original.id;
+
+            if((id1===1 && id2===2) || (id1===2 && id2===1)) {
+                return "<p><strong>✦ Combinación Sagrada (El Mago + La Sacerdotisa):</strong> Las enseñanzas tradicionales marcan este encuentro como el equilibrio absoluto entre la acción consciente y el saber interno. Lo que estabas planeando en la mente necesita conectarse con tu intuición. Secretos importantes salen a la luz.</p>";
+            }
+            if(id1===0 || id2===16) {
+                return "<p><strong>✦ Combinación Crítica (El Loco + La Torre):</strong> Los libros advierten sobre pasos ciegos o decisiones impulsivas que llevan a un colapso inevitable de tus estructuras actuales. Cuidado con avanzar sin mirar el terreno.</p>";
+            }
+            if(id1===13 || id2===16) {
+                return "<p><strong>✦ Combinación de Transmutación (La Muerte + La Torre):</strong> Se produce un final drástico pero sumamente liberador. Las estructuras caen por la base para obligarte a renacer desde cero. No intentes sostener lo que ya murió.</p>";
+            }
+            if(id1===6 && id2===19) {
+                return "<p><strong>✦ Combinación del Coráculo (Los Enamorados + El Sol):</strong> augura una claridad absoluta en tus relaciones o elecciones afectivas. Alianza, éxito mutuo y consolidación de un camino verdadero.</p>";
+            }
+            if(id1===15 || id2===18) {
+                return "<p><strong>✦ Combinación de Sombras (El Diablo + La Luna):</strong> Advierte sobre un período de autoengaño profundo, miedos infundados o dependencias emocionales/materiales dañinas que nublan la visión real de los hechos.</p>";
+            }
+            
+            return "<p><strong>✦ Eje de Interacción Dinámica:</strong> Al cruzarse las cartas en el altar, la primera marca la raíz o el origen de tu estado actual, mientras que la segunda corta esa línea energética obligándote a resolver los bloqueos prácticos de la materia.</p>";
+        }
 
         function actualizarTextosGlobales() {
             const lang = document.getElementById('tarot-idioma').value;
@@ -432,14 +511,13 @@
         }
 
         function intentarActivarAudio() {
-            const musica = document.getElementById('audio-musica');
-            musica.play().catch(() => console.log("Audio esperando acción manual"));
+            document.getElementById('audio-musica').play().catch(() => {});
         }
 
         function sonarCuencoUnico() {
             const cuenco = document.getElementById('audio-cuenco');
             cuenco.currentTime = 0;
-            cuenco.play().catch(e => console.log("Audio bloqueado"));
+            cuenco.play().catch(() => {});
         }
 
         function cambiarVista(idVista) {
@@ -449,8 +527,10 @@
             const contenedor = document.getElementById('contenedor-global');
             if(idVista !== 'pantalla-menu') {
                 contenedor.classList.add('modo-consulta-activa');
+                document.getElementById('contenedor-idioma').style.display = 'none';
             } else {
                 contenedor.classList.remove('modo-consulta-activa');
+                document.getElementById('contenedor-idioma').style.display = 'block';
             }
 
             const zonaVolver = document.getElementById('zona-volver');
@@ -463,97 +543,180 @@
 
         function irAlMenu() { cambiarVista('pantalla-menu'); }
         function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
+        
+        function abrirSeccionGenerica(titulo) {
+            document.getElementById('titulo-generico').innerText = titulo;
+            cambiarVista('pantalla-generica');
+        }
 
         function comenzarRitualTarot() {
             intentarActivarAudio();
             cartasSeleccionadasIndices = [];
-            cartasRequeridas = parseInt(document.getElementById('tarot-tipo').value);
-            const lang = document.getElementById('tarot-idioma').value;
-
-            const txtInstruccion = document.getElementById('txt-contador-instruccion');
-            if (cartasRequeridas === 1) {
-                txtInstruccion.innerText = textosIdiomas[lang].eligeUna;
-            } else {
-                txtInstruccion.innerText = textosIdiomas[lang].eligeVarias;
-            }
+            tandaActual = 0;
             
-            let mazoOriginal = baseDeDatosTarot.map(c => {
-                let esInvertida = Math.random() < 0.5;
-                return { original: c, invertida: esInvertida };
+            modoLectura = document.getElementById('tarot-tipo').value;
+            if(modoLectura === "sino1") cartasRequeridas = 1;
+            else if(modoLectura === "sino2") cartasRequeridas = 2;
+            else cartasRequeridas = parseInt(modoLectura);
+            
+            const lang = document.getElementById('tarot-idioma').value;
+            document.getElementById('txt-contador-instruccion').innerText = (cartasRequeridas === 1) ? textosIdiomas[lang].eligeUna : textosIdiomas[lang].eligeVarias;
+            
+            let mazoOriginal = baseDeDatosTarot.map((c, index) => {
+                return { original: c, invertida: Math.random() < 0.35, idInstancia: index };
             });
             mazoOriginal.sort(() => Math.random() - 0.5);
             mazoMezcladoConPosicion = mazoOriginal;
 
+            dibujarTandaAbanico();
+            cambiarVista('pantalla-tarot-tablero');
+        }
+
+        function dibujarTandaAbanico() {
             const contenedorAltar = document.getElementById('altar-abanicos-completo');
             contenedorAltar.innerHTML = '';
 
-            // Se muestran físicamente las 78 cartas reales en el tablero
-            mazoMezcladoConPosicion.forEach((carta, i) => {
+            const inicio = tandaActual * cartasPorTanda;
+            const fin = Math.min(inicio + cartasPorTanda, mazoMezcladoConPosicion.length);
+            const cartasDeEstaTanda = mazoMezcladoConPosicion.slice(inicio, fin);
+
+            const totalCartasTanda = cartasDeEstaTanda.length;
+            const anguloTotal = 60; 
+            const pasoAngulo = totalCartasTanda > 1 ? anguloTotal / (totalCartasTanda - 1) : 0;
+            const anguloInicio = -anguloTotal / 2;
+
+            cartasDeEstaTanda.forEach((carta, i) => {
                 let divCard = document.createElement('div');
                 divCard.className = 'carta-tarot-real';
-                divCard.id = `carta-index-${i}`;
+                
+                if (cartasSeleccionadasIndices.some(c => c.idInstancia === carta.idInstancia)) {
+                    divCard.classList.add('elegida-ritual');
+                }
+
+                let calcAngulo = anguloInicio + (i * pasoAngulo);
+                let calcRadio = 180; 
+                let x = calcRadio * Math.sin(calcAngulo * Math.PI / 180);
+                let y = calcRadio * (1 - Math.cos(calcAngulo * Math.PI / 180));
+
+                divCard.style.transform = `translateX(calc(-50% + ${x}px)) translateY(${y}px) rotate(${calcAngulo}deg)`;
+                divCard.style.zIndex = i;
 
                 divCard.onclick = (evento) => {
                     evento.stopPropagation();
-                    seleccionarCartaDelAbanico(i);
+                    seleccionarCartaDelAbanico(carta, divCard);
                 };
                 
                 contenedorAltar.appendChild(divCard);
             });
 
-            cambiarVista('pantalla-tarot-tablero');
+            const totalTandas = Math.ceil(mazoMezcladoConPosicion.length / cartasPorTanda);
+            document.getElementById('txt-tanda-indicador').innerText = `Tanda ${tandaActual + 1} / ${totalTandas}`;
         }
 
-        function seleccionarCartaDelAbanico(idx) {
-            let elementoHTML = document.getElementById(`carta-index-${idx}`);
+        function cambiarTandaAbanico(direccion) {
+            const totalTandas = Math.ceil(mazoMezcladoConPosicion.length / cartasPorTanda);
+            tandaActual += direccion;
+            if (tandaActual < 0) tandaActual = totalTandas - 1;
+            if (tandaActual >= totalTandas) tandaActual = 0;
+            dibujarTandaAbanico();
+        }
+
+        function seleccionarCartaDelAbanico(carta, elementoHTML) {
             if(elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
             
             sonarCuencoUnico(); 
             elementoHTML.classList.add('elegida-ritual'); 
-            cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
+            cartasSeleccionadasIndices.push(carta);
 
             if(cartasSeleccionadasIndices.length === cartasRequeridas) {
                 setTimeout(() => revelarTiradaFinal(), 600);
             }
         }
 
+        function calcularResultadoSino(cartas) {
+            let puntosSino = 0; 
+            let totalNeutrales = 0;
+
+            cartas.forEach(c => {
+                if (c.invertida) {
+                    puntosSino--; 
+                } else {
+                    if (c.original.polaridad === "si") puntosSino++;
+                    else if (c.original.polaridad === "no") puntosSino--;
+                    else totalNeutrales++;
+                }
+            });
+
+            if (cartas.length === 1) {
+                let unObj = cartas[0].original;
+                if (cartas[0].invertida) return { txt: "NO", clase: "sino-no" };
+                if (unObj.polaridad === "si") return { txt: "SÍ", clase: "sino-si" };
+                if (unObj.polaridad === "no") return { txt: "NO", clase: "sino-no" };
+                return { txt: "NEUTRAL / INDEFINIDO", clase: "sino-neutral" };
+            }
+
+            // Para 2 cartas
+            if (puntosSino > 0) return { txt: "SÍ", clase: "sino-si" };
+            if (puntosSino < 0) return { txt: "NO", clase: "sino-no" };
+            return { txt: "NEUTRAL / INDEFINIDO", clase: "sino-neutral" };
+        }
+
         function revelarTiradaFinal() {
             const lang = document.getElementById('tarot-idioma').value;
-            const mazoElegido = document.getElementById('tarot-mazo-elegido').value;
             const cajaRevelada = document.getElementById('caja-cartas-reveladas');
             const cajaTexto = document.getElementById('texto-interpretacion');
-            cajaRevelada.innerHTML = '';
+            const zonaCartel = document.getElementById('zona-cartel-sino');
             
-            let parrafosInterpretacion = "";
+            cajaRevelada.innerHTML = '';
+            zonaCartel.innerHTML = '';
+            
+            let desgloseSignificados = "";
 
-            cartasSeleccionadasIndices.forEach((cartaData, i) => {
-                let cardObj = cartaData.original;
-                let estaAlReves = cartaData.invertida;
+            // EVALUACIÓN DE SÍ O NO ABIERTO (1 O 2 CARTAS SEGÚN SELECCIÓN)
+            if(modoLectura === "sino1" || modoLectura === "sino2") {
+                let balance = calcularResultadoSino(cartasSeleccionadasIndices);
+                zonaCartel.innerHTML = `<div class="cartel-sino ${balance.clase}">RESPUESTA: ${balance.txt}</div>`;
+            }
 
-                let orientacionTexto = estaAlReves ? textosIdiomas[lang].alreves : textosIdiomas[lang].derecho;
-                let orientacionClase = estaAlReves ? "txt-alreves" : "txt-derecho";
-                let significadoFinal = estaAlReves ? cardObj.significados[lang].reves : cardObj.significados[lang].derecho;
-                let nombreTraducido = cardObj.nombres[lang];
+            // Renderizado físico
+            cartasSeleccionadasIndices.forEach((cartaData, index) => {
+                let cObj = cartaData.original;
+                let alReves = cartaData.invertida;
+
+                let orientacionTexto = alReves ? textosIdiomas[lang].alreves : textosIdiomas[lang].derecho;
+                let orientacionClase = alReves ? "txt-alreves" : "txt-derecho";
 
                 let divC = document.createElement('div');
-                divC.className = `carta-revelada ${estaAlReves ? 'es-invertida' : ''}`;
-                
-                // Conecta de manera exacta con las carpetas de los 5 mazos
+                divC.className = `carta-revelada ${alReves ? 'es-invertida' : ''}`;
                 divC.innerHTML = `
                     <div class="wrapper-imagen-tarot">
-                        <img src="cartas/${mazoElegido}/${cardObj.id}.jpg" alt="${nombreTraducido}">
+                        <img src="${cObj.imagenUrl}" alt="${cObj.nombre}">
                     </div>
                     <div class="nombre-c">
-                        ${nombreTraducido}
+                        ${cObj.nombre}
                         <span class="tag-orientacion ${orientacionClase}">${orientacionTexto}</span>
                     </div>
                 `;
                 cajaRevelada.appendChild(divC);
 
-                parrafosInterpretacion += `<p><strong>✦ ${nombreTraducido} (${orientacionTexto}):</strong> ${significadoFinal}</p>`;
+                let txtBase = significadosIndividuales[cObj.id] || "Significado tradicional vinculado al plano elemental de la carta.";
+                let tagPosicion = (modoLectura === "3") ? ` (Posición ${index + 1}: ${(index===0?'Raíz/Pasado':(index===1?'Desafío/Presente':'Resultado/Futuro'))})` : "";
+                
+                desgloseSignificados += `<p><strong>✦ ${cObj.nombre}${tagPosicion}:</strong> ${txtBase}</p>`;
             });
 
-            cajaTexto.innerHTML = parrafosInterpretacion;
+            let bloqueConjunto = obtenerLecturaConjunta(cartasSeleccionadasIndices);
+
+            let htmlReporte = `
+                <h3>Interpretación del Oráculo</h3>
+                ${bloqueConjunto}
+                <hr style="border:0; border-top:1px dashed rgba(212,175,55,0.3); margin:20px 0;">
+                <div>
+                    ${desgloseSignificados}
+                </div>
+            `;
+
+            cajaTexto.innerHTML = htmlReporte;
             cambiarVista('pantalla-tarot-resultado');
         }
         
