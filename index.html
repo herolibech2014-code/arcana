@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcana</title>
+    <title>Arcana Oráculo</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -119,8 +119,8 @@
 
         .instruccion-directa {
             color: #d4af37;
-            font-size: 1.8rem;
-            letter-spacing: 3px;
+            font-size: 1.6rem;
+            letter-spacing: 2px;
             margin: 15px 0 5px 0;
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
@@ -164,42 +164,54 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* ALTAR TOTAL: LAS 78 CARTAS VISIBLES DE UNA VEZ */
-        .grid-altar-completo {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(85px, 1fr));
-            gap: 12px;
+        /* DISEÑO DE LAS 6 TANDAS DE ABANICOS EN LA MISMA PÁGINA */
+        .contenedor-altar-abanicos {
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
             max-width: 1100px;
-            margin: 20px auto;
+            margin: 40px auto;
             width: 100%;
-            padding: 10px;
-            box-sizing: border-box;
+            padding-bottom: 60px;
         }
-        
-        .carta-tarot-real {
-            width: 85px;
-            height: 150px;
-            background: linear-gradient(135deg, #1d0b3a 0%, #05020a 100%);
-            border: 2px solid #4c1d95;
-            border-radius: 6px;
-            cursor: pointer;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.5);
-            transition: all 0.2s;
+
+        .tanda-abanico-fila {
+            position: relative;
+            height: 160px;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            font-size: 1.2rem;
-            color: rgba(212, 175, 55, 0.3);
         }
-        .carta-tarot-real:hover {
+
+        .carta-tarot-abanico {
+            position: absolute;
+            width: 80px;
+            height: 145px;
+            background: linear-gradient(135deg, #16082c 0%, #05020a 100%);
+            border: 2px solid #3b1475;
+            border-radius: 6px;
+            cursor: pointer;
+            box-shadow: -4px 4px 10px rgba(0,0,0,0.7);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.1rem;
+            color: rgba(212, 175, 55, 0.3);
+            transform-origin: bottom center;
+        }
+        .carta-tarot-abanico:hover {
             border-color: #d4af37;
-            transform: translateY(-5px);
-            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.9);
+            z-index: 500 !important;
+            /* Al hacer hover se levanta un poco manteniendo su ángulo original */
+            transform: translate3d(0, -15px, 0) scale(1.05) rotate(var(--rotacion-propia)) !important;
         }
         
-        .carta-tarot-real.elegida-ritual {
+        .carta-tarot-abanico.elegida-ritual {
             border-color: #d4af37;
-            background: #3b0764;
+            background: #2e0654;
             box-shadow: 0 0 15px #d4af37;
             opacity: 0.15;
             pointer-events: none;
@@ -268,7 +280,7 @@
 </head>
 <body>
 
-    <audio id="audio-musica" loop autoplay src="musica-fondo.MP3"></audio>
+    <audio id="audio-musica" loop src="musica-fondo.MP3"></audio>
     <audio id="audio-cuenco" src="sonido-cuenco.mp3"></audio>
 
     <div class="app-container" id="contenedor-global">
@@ -288,7 +300,7 @@
 
         <div class="logo-area">
             <div class="icono-app-contenedor">
-                <img src="fondo-arcana.jpg" alt="Arcana Logo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg" alt="Arcana Logo">
             </div>
             <h1 class="marca-titulo">ARCANA</h1>
         </div>
@@ -344,7 +356,7 @@
 
         <div id="pantalla-tarot-tablero" class="vista-seccion">
             <div class="instruccion-directa" id="txt-contador-instruccion"></div>
-            <div class="grid-altar-completo" id="altar-cartas-todas"></div>
+            <div class="contenedor-altar-abanicos" id="altar-abanicos-contenedor"></div>
         </div>
 
         <div id="pantalla-tarot-resultado" class="vista-seccion">
@@ -364,7 +376,6 @@
         let mazoMezcladoConPosicion = [];
         let idiomaActual = "es";
 
-        // DICCIONARIOS ABSOLUTOS DE TRADUCCIÓN PARA TRADUCIR TODO EL SISTEMA
         const traduccionesGlobales = {
             es: {
                 tarot: "Tarot", numerologia: "Numerología", astrologia: "Astrología", ia: "Consulta IA Integral",
@@ -418,163 +429,94 @@
             }
         };
 
-        // MATRIZ COMPLETA DE SIGNIFICADOS TRADUCIDOS PARA LAS 78 CARTAS (INCLUYENDO ARCANOS MENORES COMO EL REY DE BASTOS)
         const diccionarioCartasYSignificados = {
             es: {
                 nombres: {
-                    0: "El Loco", 1: "El Mago", 2: "La Sacerdotisa", 3: "La Emperatriz", 4: "El Emperador", 5: "El Hierofante", 6: "Los Enamorados", 7: "El Carro", 8: "La Fuerza", 9: "El Ermitaño", 10: "La Rueda de la Fortuna", 11: "La Justicia", 12: "El Colgado", 13: "La Muerte", 14: "La Templanza", 15: "El Diablo", 16: "La Torre", 17: "La Estrella", 18: "La Luna", 19: "El Sol", 20: "El Juicio", 21: "El Mundo",
-                    22: "Rey de Bastos", 23: "Reina de Bastos", 24: "As de Bastos", 25: "As de Copas", 26: "Rey de Copas", 27: "As de Espadas", 28: "Rey de Espadas", 29: "As de Oros", 30: "Rey de Oros"
+                    0: "El Loco", 1: "El Mago", 2: "La Sacerdotisa", 3: "La Emperatriz", 4: "El Emperador", 22: "Rey de Bastos"
                 },
-                textos: {
-                    0: "El Loco: Saltos de fe, comienzos caóticos y libertad absoluta de espíritu.",
-                    1: "El Mago: Capacidad de manifestación material, fuerza de voluntad y enfoque total.",
-                    2: "La Sacerdotisa: Intuición pura, misterios por revelarse y sabiduría del silencio.",
-                    3: "La Emperatriz: Abundancia, fertilidad natural y procesos creativos en expansión.",
-                    4: "El Emperador: Estructura sólida, autoridad, control práctico y estabilidad.",
-                    5: "El Hierofante: Tradición, leyes morales, educación institucional o guía espiritual.",
-                    6: "Los Enamorados: Decisiones del corazón, alineación de valores y vínculos profundos.",
-                    7: "El Carro: Avance determinado, victoria por voluntad propia y control de opuestos.",
-                    8: "La Fuerza: Dominio interno de las pasiones, compasión y coraje templado.",
-                    9: "El Ermitaño: Retiro voluntario, búsqueda del faro interior y madurez espiritual.",
-                    10: "La Rueda de la Fortuna: Cambios drásticos de destino, ciclos universales en movimiento.",
-                    11: "La Justicia: Verdad objetiva, balances kármicos, firmas legales y honestidad.",
-                    12: "El Colgado: Pausa necesaria, sacrificio voluntario y cambio radical de perspectiva.",
-                    13: "La Muerte: Finales rotundos, transmutación inevitable, soltar lo viejo de raíz.",
-                    14: "La Templanza: Alquimia interior, paciencia activa, sanación y balance de energías.",
-                    15: "El Diablo: Ataduras de la materia, dependencias mundanas, pasiones desatadas.",
-                    16: "La Torre: Ruptura de estructuras falsas, iluminación dolorosa pero liberadora.",
-                    17: "La Estrella: Esperanza renovada, guía celestial, fe inquebrantable y paz interior.",
-                    18: "La Luna: Ilusiones engañosas, temores del subconsciente y secretos ocultos.",
-                    19: "El Sol: Éxito absoluto, claridad meridiana, vitalidad radiante y verdad expuesta.",
-                    20: "El Juicio: Despertar espiritual, rendición de cuentas definitiva y absolución del alma.",
-                    21: "El Mundo: Realización plena, coronación exitosa de procesos y cierres perfectos.",
-                    22: "Rey de Bastos: Líder apasionado, visión expansiva, coraje puro y fuego emprendedor.",
-                    23: "Reina de Bastos: Energía magnética, independencia feroz y calidez protectora.",
-                    24: "As de Bastos: Chispa inicial de pasión, inspiración pura y arranque de proyectos.",
-                    25: "As de Copas: Desborde emocional positivo, nacimiento de afectos puros o intuición.",
-                    26: "Rey de Copas: Equilibrio emocional, diplomacia del corazón y madurez afectiva.",
-                    27: "As de Espadas: Claridad mental cortante, victoria intelectual y verdades reveladas.",
-                    28: "Rey de Espadas: Juicio severo pero justo, intelecto brillante, autoridad y lógica pura.",
-                    29: "As de Oros: Semilla de riqueza material, salud física óptima y oportunidades reales.",
-                    30: "Rey de Oros: Abundancia consolidada, maestría en el mundo físico y estabilidad financiera."
+                derecho: {
+                    0: "El Loco (Al Derecho): Saltos de fe, comienzos puros, libertad absoluta y frescura de espíritu.",
+                    1: "El Mago (Al Derecho): Manifestación consciente, herramientas listas y fuerza de voluntad enfocada.",
+                    2: "La Sacerdotisa (Al Derecho): Intuición profunda, misterios divinos, quietud y sabiduría silenciosa.",
+                    3: "La Emperatriz (Al Derecho): Abundancia material, creatividad en expansión, fertilidad y naturaleza viva.",
+                    4: "El Emperador (Al Derecho): Estructura firme, orden, autoridad justa, protección y estabilidad en la tierra.",
+                    22: "Rey de Bastos (Al Derecho): Líder visionario y apasionado, fuente inagotable de fuego, coraje puro y magnetismo emprendedor."
+                },
+                invertido: {
+                    0: "El Loco (Invertido): Irresponsabilidad flagrante, imprudencia peligrosa, dispersión y falta de rumbo real.",
+                    1: "El Mago (Invertido): Manipulación sutil, engaño, talentos desperdiciados o falta de convicción práctica.",
+                    2: "La Sacerdotisa (Invertido): Secretos dañinos que salen a la luz, desconexión intuitiva, superficialidad.",
+                    3: "La Emperatriz (Invertido): Bloqueo creativo severo, dependencia emocional asfixiante o esterilidad.",
+                    4: "El Emperador (Invertido): Tiranía desmedida, rigidez mental absurda, pérdida total de control o debilidad.",
+                    22: "Rey de Bastos (Invertido): Impulsividad destructiva, tiranía arrogante, impaciencia severa y proyectos que se queman por exceso de ego."
                 },
                 combinaciones: {
-                    magoSacerdotisa: "<p><strong>✦ Combinación Sagrada (El Mago + La Sacerdotisa):</strong> Equilibrio perfecto entre acción y saber oculto. Secretos que se revelan con éxito.</p>",
-                    locoTorre: "<p><strong>✦ Combinación Crítica (El Loco + La Torre):</strong> Imprudencias graves que precipitan caídas estructurales inevitables.</p>"
+                    magoSacerdotisa: "<p><strong>✦ Combinación Sagrada Real (El Mago + La Sacerdotisa):</strong> Fusión de la acción directa con el saber interno oculto. El plan se materializa gracias a la intuición mística.</p>"
                 }
             },
             en: {
                 nombres: {
-                    0: "The Fool", 1: "The Magician", 2: "The High Priestess", 3: "The Empress", 4: "The Emperor", 5: "The Hierophant", 6: "The Lovers", 7: "The Chariot", 8: "Strength", 9: "The Hermit", 10: "Wheel of Fortune", 11: "Justice", 12: "The Hanged Man", 13: "Death", 14: "Temperance", 15: "The Devil", 16: "The Tower", 17: "The Star", 18: "The Moon", 19: "The Sun", 20: "Judgement", 21: "The World",
-                    22: "King of Wands", 23: "Queen of Wands", 24: "Ace of Wands", 25: "Ace of Cups", 26: "King of Cups", 27: "Ace of Swords", 28: "King of Swords", 29: "Ace of Pentacles", 30: "King of Pentacles"
+                    0: "The Fool", 1: "The Magician", 2: "The High Priestess", 3: "The Empress", 4: "The Emperor", 22: "King of Wands"
                 },
-                textos: {
-                    0: "The Fool: Leaps of faith, chaotic beginnings, and absolute freedom of spirit.",
-                    1: "The Magician: Power of manifestation, willpower, and total concentration.",
-                    2: "The High Priestess: Pure intuition, mysteries waiting to unfold, and silent wisdom.",
-                    3: "The Empress: Abundance, natural fertility, and expanding creative processes.",
-                    4: "The Emperor: Solid structure, authority, practical control, and stability.",
-                    5: "The Hierophant: Tradition, moral laws, institutional education, or spiritual guidance.",
-                    6: "The Lovers: Choices of the heart, alignment of values, and deep connections.",
-                    7: "The Chariot: Determined progress, victory through willpower, and control of opposites.",
-                    8: "Strength: Inner control of passions, compassion, and tempered courage.",
-                    9: "The Hermit: Voluntary retreat, searching for the inner light, and spiritual maturity.",
-                    10: "Wheel of Fortune: Drastic shifts of fate, moving universal cycles.",
-                    11: "Justice: Objective truth, karmic balances, legal contracts, and honesty.",
-                    12: "The Hanged Man: Necessary pause, voluntary sacrifice, and radical shift in perspective.",
-                    13: "Death: Clear endings, inevitable transmutation, completely letting go of the old.",
-                    14: "Temperance: Inner alchemy, active patience, healing, and balanced energy.",
-                    15: "The Devil: Material attachments, worldly dependencies, unleashed passions.",
-                    16: "The Tower: Sudden rupture of false structures, painful but liberating revelation.",
-                    17: "The Star: Renewed hope, heavenly guidance, unshakeable faith, and inner peace.",
-                    18: "The Moon: Deceptive illusions, subconscious fears, and hidden secrets.",
-                    19: "The Sun: Absolute success, absolute clarity, radiant vitality, and exposed truth.",
-                    20: "Judgement: Spiritual awakening, definitive accountability, and soul absolution.",
-                    21: "The World: Full realization, successful completion of processes, and perfect closures.",
-                    22: "King of Wands: Passionate leader, expansive vision, pure courage, and enterprising fire.",
-                    23: "Queen of Wands: Magnetic energy, fierce independence, and protective warmth.",
-                    24: "Ace of Wands: Initial spark of passion, pure inspiration, and project ignition.",
-                    25: "Ace of Cups: Positive emotional overflow, birth of pure affection or intuition.",
-                    26: "King of Cups: Emotional balance, heart diplomacy, and affective maturity.",
-                    27: "Ace of Swords: Sharp mental clarity, intellectual victory, and revealed truths.",
-                    28: "King of Swords: Severe but fair judgment, brilliant intellect, authority, and pure logic.",
-                    29: "Ace of Pentacles: Seed of material wealth, optimal physical health, and real opportunities.",
-                    30: "King of Pentacles: Consolidated abundance, mastery in the physical world, and financial stability."
+                derecho: {
+                    0: "The Fool (Upright): Leaps of faith, pure beginnings, absolute freedom, and fresh spirit.",
+                    1: "The Magician (Upright): Conscious manifestation, ready tools, and focused willpower.",
+                    2: "The High Priestess (Upright): Deep intuition, divine mysteries, stillness, and silent wisdom.",
+                    3: "The Empress (Upright): Material abundance, expanding creativity, fertility, and vibrant nature.",
+                    4: "The Emperor (Upright): Firm structure, order, just authority, protection, and earthly stability.",
+                    22: "King of Wands (Upright): Visionary and passionate leader, endless source of fire, pure courage, and entrepreneurial magnetism."
+                },
+                invertido: {
+                    0: "The Fool (Reversed): Flagrant irresponsibility, dangerous recklessness, and lack of real direction.",
+                    1: "The Magician (Reversed): Subtle manipulation, deception, wasted talents, or lack of practical conviction.",
+                    2: "The High Priestess (Reversed): Damaging secrets revealed, intuitive disconnect, or superficiality.",
+                    3: "The Empress (Reversed): Severe creative block, suffocating emotional dependency, or stagnation.",
+                    4: "The Emperor (Reversed): Excessive tyranny, absurd mental rigidity, total loss of control, or weakness.",
+                    22: "King of Wands (Reversed): Destructive impulsiveness, arrogant tyranny, severe impatience, and projects burned out by excessive ego."
                 },
                 combinaciones: {
-                    magoSacerdotisa: "<p><strong>✦ Sacred Combination (The Magician + The High Priestess):</strong> Perfect balance between action and occult knowledge.</p>",
-                    locoTorre: "<p><strong>✦ Critical Combination (The Fool + The Tower):</strong> Grave reckless acts that trigger structural collapse.</p>"
+                    magoSacerdotisa: "<p><strong>✦ Real Sacred Combination (The Magician + The High Priestess):</strong> Fusion of direct action with hidden inner knowledge.</p>"
                 }
-            },
-            pt: { nombres: {}, textos: {}, combinaciones: {} },
-            fr: { nombres: {}, textos: {}, combinaciones: {} },
-            it: { nombres: {}, textos: {}, combinaciones: {} }
+            }
         };
 
-        // Clonar estructuras básicas para idiomas faltantes de forma segura para evitar errores en producción
         ["pt", "fr", "it"].forEach(l => {
-            diccionarioCartasYSignificados[l].nombres = {...diccionarioCartasYSignificados.en.nombres};
-            diccionarioCartasYSignificados[l].textos = {...diccionarioCartasYSignificados.en.textos};
-            diccionarioCartasYSignificados[l].combinaciones = {...diccionarioCartasYSignificados.en.combinaciones};
+            diccionarioCartasYSignificados[l] = JSON.parse(JSON.stringify(diccionarioCartasYSignificados.en));
         });
 
-        // RELLENAR BASE DE DATOS DE LAS 78 CARTAS FISICAS COMPLETAS CON IMÁGENES ESTABLES Y POLARIDADES
         const baseDeDatosTarot = [];
         const urlsMazoMayores = [
             "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg",
             "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg",
             "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg",
             "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg",
-            "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg"
-        ];
-        
-        const polaridadesIniciales = [
-            "neutral", "si", "si", "si", "si", "si", "si", "si", "si", "neutral", "si", "neutral", "no", "no", "si", "no", "no", "si", "no", "si", "si", "si"
+            "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"
         ];
 
-        // Carga de Arcanos Mayores
-        for(let i=0; i<=21; i++) {
-            baseDeDatosTarot.push({ id: i, tipo: "mayor", polaridad: polaridadesIniciales[i], img: urlsMazoMayores[i] });
-        }
-        // Carga de Arcanos Menores seleccionados estructurales (incluye el Rey de Bastos id:22, etc.)
-        baseDeDatosTarot.push({ id: 22, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg" }); // Rey de Bastos Real
-        baseDeDatosTarot.push({ id: 23, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Wands13.jpg" }); // Reina de Bastos
-        baseDeDatosTarot.push({ id: 24, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg" }); // As de Bastos
-        baseDeDatosTarot.push({ id: 25, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg" });  // As de Copas
-        baseDeDatosTarot.push({ id: 26, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/0/04/Cups14.jpg" });  // Rey de Copas
-        baseDeDatosTarot.push({ id: 27, tipo: "menor", polaridad: "no", img: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg" }); // As de Espadas
-        baseDeDatosTarot.push({ id: 28, tipo: "menor", polaridad: "no", img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg" }); // Rey de Espadas
-        baseDeDatosTarot.push({ id: 29, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/PENTACLES01.jpg" }); // As de Oros
-        baseDeDatosTarot.push({ id: 30, tipo: "menor", polaridad: "si", img: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Pentacles14.jpg" }); // Rey de Oros
+        for(let i=0; i<78; i++) {
+            let polaridadCalculada = "si";
+            if(i === 0) polaridadCalculada = "neutral";
+            if(i === 16) polaridadCalculada = "no";
+            
+            baseDeDatosTarot.push({
+                id: i,
+                polaridad: polaridadCalculada,
+                img_rider: urlsMazoMayores[i] || "https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg",
+                img_marsella: "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg",
+                img_egipcio: "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg",
+                img_thoth: "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg",
+                img_mistico: "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg"
+            });
 
-        // Rellenar dinámicamente hasta las 78 cartas usando reversos nítidos para resguardar la consistencia visual total
-        for(let i=31; i<78; i++) {
-            baseDeDatosTarot.push({ id: i, tipo: "menor", polaridad: (i % 3 === 0) ? "si" : (i % 3 === 1 ? "no" : "neutral"), img: "https://upload.wikimedia.org/wikipedia/commons/5/54/Tarot_back_04.jpg" });
-            // Agregar nombres e interpretaciones dinámicas por defecto si no están en el mapa explícito
             ["es", "en", "pt", "fr", "it"].forEach(l => {
                 if(!diccionarioCartasYSignificados[l].nombres[i]) {
-                    diccionarioCartasYSignificados[l].nombres[i] = (l==="es"?"Arcano Menor N° ":"Minor Arcana N° ") + i;
-                    diccionarioCartasYSignificados[l].textos[i] = (l==="es"?"Fuerza elemental e influjo práctico en la materia mundana.":"Elemental power and practical influence in mundane matters.");
+                    diccionarioCartasYSignificados[l].nombres[i] = (l==="es"?"Arcano N° ":"Card N° ") + i;
+                    diccionarioCartasYSignificados[l].derecho[i] = (l==="es"?"Influjo constructivo y energía vital en desarrollo.":"Constructive influence and developing vital energy.");
+                    diccionarioCartasYSignificados[l].invertido[i] = (l==="es"?"Bloqueos prácticos, retrasos temporales o energía estancada.":"Practical blocks, temporary delays, or stagnant energy.");
                 }
             });
         }
+        baseDeDatosTarot[22].img_rider = "https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg";
 
         function cambiarIdiomaGlobal() {
             idiomaActual = document.getElementById('tarot-idioma').value;
@@ -591,7 +533,6 @@
             document.getElementById('lbl-cantidad').innerText = t.tipoLabel;
             document.getElementById('btn-comenzar').innerText = t.consultarBtn;
             document.getElementById('btn-nueva').innerText = t.nuevaBtn;
-
             document.getElementById('opt-sino1').innerText = t.optSino1;
             document.getElementById('opt-sino2').innerText = t.optSino2;
             document.getElementById('opt-l2').innerText = t.optL2;
@@ -648,7 +589,7 @@
             const t = traduccionesGlobales[idiomaActual];
             document.getElementById('txt-contador-instruccion').innerText = (cartasRequeridas === 1) ? t.eligeUna : t.eligeVarias;
             
-            // Mezclar todo el mazo completo de 78 cartas reales
             let mazoOriginal = baseDeDatosTarot.map((c, index) => {
-                return { original: c, invertida: Math.random() < 0.30, idInstancia: index };
+                return { original: c, invertida: Math.random() < 0.35, idInstancia: index };
             });
+            maz
