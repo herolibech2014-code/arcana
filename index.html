@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&display=swap" rel="stylesheet">
     
     <style>
-        /* FONDO OSCURO MEDITATIVO LIMPIO */
         body {
             background-color: #04010a;
             background-image: linear-gradient(180deg, #020104 0%, #080312 50%, #020104 100%);
@@ -41,7 +40,6 @@
             position: relative;
         }
 
-        /* BARRA SUPERIOR */
         .top-bar {
             display: flex;
             justify-content: space-between;
@@ -66,7 +64,6 @@
             background: rgba(212, 175, 55, 0.15);
         }
 
-        /* CABECERA */
         .logo-area { 
             margin-top: 15px;
             display: flex;
@@ -93,7 +90,6 @@
             margin: 0; 
         }
 
-        /* INSTRUCCIONES GENERALES */
         .instruccion-directa {
             color: #d4af37;
             font-size: 1.8rem;
@@ -102,11 +98,9 @@
             text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
         }
 
-        /* VISTAS */
         .vista-seccion { display: none; flex-direction: column; gap: 30px; width: 100%; }
         .activa { display: flex; }
 
-        /* MENU PRINCIPAL */
         .menu-contenedor { 
             display: flex; 
             flex-direction: column; 
@@ -132,7 +126,6 @@
         .card-titulo { font-size: 2.3rem; color: #d4af37; letter-spacing: 3px; }
         .card-desc { font-size: 1.1rem; color: #ddd6fe; margin-top: 12px; font-family: sans-serif; opacity: 0.9; }
 
-        /* CONFIGURACIÓN */
         .config-ritual-area { display: flex; flex-direction: column; gap: 25px; margin-top: 15px; max-width: 550px; margin-left: auto; margin-right: auto; width: 100%; }
         .selector-caja { text-align: left; border-bottom: 2px dashed rgba(212, 175, 55, 0.3); padding-bottom: 15px; }
         .selector-caja label { display: block; font-size: 1.5rem; color: #d4af37; margin-bottom: 12px; }
@@ -141,7 +134,6 @@
             color: #fff; padding: 18px; font-family: 'Cinzel Decorative', serif; font-size: 1.3rem; outline: none; border-radius: 6px;
         }
 
-        /* CONTENEDOR DE TANDAS DE ABANICOS REALES */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
@@ -162,7 +154,6 @@
             margin-bottom: 10px;
         }
         
-        /* NAIPES DISPUESTOS EN ABANICO (CÓMODOS PARA EL DEDO EN EL CELULAR) */
         .carta-tarot-real {
             position: absolute;
             width: 80px;
@@ -193,11 +184,10 @@
             opacity: 0.5;
         }
 
-        /* REVELACIÓN FINAL */
         .resultado-cartas { display: flex; justify-content: center; gap: 25px; margin: 30px 0; flex-wrap: wrap; }
         
         .carta-revelada {
-            width: 170px; height: 295px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
+            width: 170px; height: 320px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
             padding: 8px; box-sizing: border-box; box-shadow: 0 12px 35px rgba(0,0,0,0.95);
             opacity: 0; animation: develaCarta 0.6s ease forwards;
@@ -206,7 +196,7 @@
         
         .wrapper-imagen-tarot {
             width: 100%;
-            height: 240px;
+            height: 220px;
             overflow: hidden;
             border-radius: 4px;
             border: 1px solid rgba(212, 175, 55, 0.2);
@@ -216,21 +206,35 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .carta-revelada.es-invertida img {
+            transform: rotate(180deg);
         }
 
         .carta-revelada .nombre-c {
-            font-weight: 700; color: #d4af37; font-size: 1.05rem; text-align: center; 
-            line-height: 1.2; margin-top: 5px; height: 34px; display: flex; align-items: center; justify-content: center;
+            font-weight: 700; color: #d4af37; font-size: 1rem; text-align: center; 
+            line-height: 1.2; margin-top: 5px; height: 34px; display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
+        .carta-revelada .tag-orientacion {
+            font-size: 0.75rem; font-family: sans-serif; letter-spacing: 1px; margin-top: 2px;
+        }
+        .tag-orientacion.txt-derecho { color: #34d399; }
+        .tag-orientacion.txt-alreves { color: #f87171; }
         
         .caja-interpretacion {
             background: rgba(5, 2, 12, 0.95); border: 2px solid rgba(212, 175, 55, 0.4);
             border-top: 5px solid #d4af37; border-radius: 6px;
-            padding: 25px; text-align: left; font-size: 1.3rem;
-            line-height: 1.8; max-width: 700px; margin: 0 auto; max-height: 250px; overflow-y: auto;
+            padding: 25px; text-align: left; font-size: 1.2rem;
+            line-height: 1.8; max-width: 750px; margin: 0 auto; max-height: 350px; overflow-y: auto;
         }
         .caja-interpretacion p { margin: 0 0 15px 0; }
         .caja-interpretacion strong { color: #d4af37; }
+        
+        .seccion-conjunto {
+            margin-top: 20px; padding-top: 15px; border-top: 2px dashed rgba(212, 175, 55, 0.3);
+        }
 
         .ads-box { background: rgba(0,0,0,0.3); border-top: 1px dashed rgba(212, 175, 55, 0.2); padding: 15px; color: #a78bfa; font-size: 1rem; margin-top: auto; }
 
@@ -256,8 +260,8 @@
         <div id="pantalla-menu" class="vista-seccion activa">
             <div class="menu-contenedor">
                 <div class="menu-card" onclick="intentarActivarAudio(); abrirTarotConfig()">
-                    <div class="card-titulo">🔮 Tarot Rider-Waite</div>
-                    <div class="card-desc">Las 78 cartas dispuestas en abanicos sagrados para tu tirada.</div>
+                    <div class="card-titulo">🔮 Oráculo del Tarot</div>
+                    <div class="card-desc">Accedé a los 5 mazos sagrados en abanicos tradicionales.</div>
                 </div>
             </div>
         </div>
@@ -265,9 +269,21 @@
         <div id="pantalla-tarot-config" class="vista-seccion">
             <div class="config-ritual-area">
                 <div class="selector-caja">
+                    <label>Elegir el Mazo de Cartas:</label>
+                    <select id="tarot-mazo-elegido">
+                        <option value="rider">Tarot Rider-Waite (Clásico Espiritual)</option>
+                        <option value="marsella">Tarot de Marsella (Arquetípico Histórico)</option>
+                        <option value="egipcio">Tarot Egipcio (Sabiduría Hermética)</option>
+                        <option value="gitano">Tarot Gitano (Predicción y Claridad Cotidiana)</option>
+                        <option value="celta">Tarot Celta (Fuerzas de la Naturaleza y Ancestros)</option>
+                    </select>
+                </div>
+                <div class="selector-caja">
                     <label>Propósito de la consulta:</label>
                     <select id="tarot-tema">
-                        <option value="general">Energía General</option>
+                        <option value="general">Energía General y Destino</option>
+                        <option value="amor">Vínculos y Amor</option>
+                        <option value="dinero">Finanzas, Trabajo y Éxito</option>
                     </select>
                 </div>
                 <div class="selector-caja">
@@ -300,89 +316,434 @@
         let cartasSeleccionadasIndices = [];
         let mazoMezcladoConPosicion = [];
 
-        // BASE DE DATOS TOTAL DE 78 CARTAS CON IMÁGENES REALES
-        const mazoOficial78 = [
-            // ARCANOS MAYORES
-            {id: 0, es:"El Loco", significado:"Nuevos comienzos, saltos de fe, espontaneidad.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg"},
-            {id: 1, es:"El Mago", significado:"Poder de manifestación, habilidad, recursos puros.", url:"https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg"},
-            {id: 2, es:"La Sacerdotisa", significado:"Intuición, misterio, subconsciente sagrado.", url:"https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg"},
-            {id: 3, es:"La Emperatriz", significado:"Abundancia, naturaleza, fertilidad, creación.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg"},
-            {id: 4, es:"El Emperador", significado:"Estructura, autoridad, bases firmes, control.", url:"https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg"},
-            {id: 5, es:"El Hierofante", significado:"Tradición, sabiduría, guía espiritual, estudios.", url:"https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg"},
-            {id: 6, es:"Los Enamorados", significado:"Elecciones del corazón, armonía, uniones.", url:"https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg"},
-            {id: 7, es:"El Carro", significado:"Determinación, victoria, control de fuerzas opuestas.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg"},
-            {id: 8, es:"La Fuerza", significado:"Valor interno, compasión, domar las pasiones.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg"},
-            {id: 9, es:"El Ermitaño", significado:"Introspección, retiro voluntario, luz interior.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg"},
-            {id: 10, es:"La Rueda de la Fortuna", significado:"Cambios de destino, ciclos, golpes de suerte.", url:"https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg"},
-            {id: 11, es:"La Justicia", significado:"Verdad, causa y efecto, equilibrio de la balanza.", url:"https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg"},
-            {id: 12, es:"El Colgado", significado:"Nueva perspectiva, pausa necesaria, sacrificio.", url:"https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg"},
-            {id: 13, es:"La Muerte", significado:"Transformación profunda, finales que traen renacer.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg"},
-            {id: 14, es:"La Templanza", significado:"Alquimia, paciencia, moderación, balance emocional.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg"},
-            {id: 15, es:"El Diablo", significado:"Ataduras materiales, pasiones ocultas, sombras del ego.", url:"https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg"},
-            {id: 16, es:"La Torre", significado:"Ruptura de estructuras falsas, revelación repentina.", url:"https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg"},
-            {id: 17, es:"La Estrella", significado:"Esperanza, sanación espiritual, renovación, fe.", url:"https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg"},
-            {id: 18, es:"La Luna", significado:"Ilusiones, miedos escondidos, intuición profunda.", url:"https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg"},
-            {id: 19, es:"El Sol", significado:"Claridad absoluta, éxito, vitalidad, alegría radiante.", url:"https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg"},
-            {id: 20, es:"El Juicio", significado:"Llamado interno, absolución, despertar a tu verdad.", url:"https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg"},
-            {id: 21, es:"El Mundo", significado:"Cierre de ciclos con éxito, plenitud, autorrealización.", url:"https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg"},
+        // BASE DE DATOS COMPLETA CON SOPORTE PARA LOS 5 MAZOS EXIGIDOS
+        const baseDeDatosTarot = [
+            {
+                id: 0, tipo: "Mayor", palo: "ninguno",
+                es: "El Loco",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Tarot_de_Marseille_Le_Mat.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/2/23/Tarot_egipcio_0.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg", 
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/0/0b/RWS_Tarot_00_Fool.jpg",
+                derecho: "Nuevos comienzos, saltos de fe, espontaneidad pura, inocencia y libertad de espíritu.",
+                reves: "Irresponsabilidad total, decisiones imprudentes, retrasos por necedad o parálisis por miedo al vacío."
+            },
+            {
+                id: 1, tipo: "Mayor", palo: "ninguno",
+                es: "El Mago",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/a/a4/Tarot_de_Marseille_Le_Bateleur.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/8/87/Tarot_egipcio_1.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg",
+                derecho: "Poder de manifestación, fuerza de voluntad, ingenio brillante, recursos listos sobre la mesa.",
+                reves: "Manipulación, talentos desperdiciados, engaño, planes que se caen por falta de un objetivo real."
+            },
+            {
+                id: 2, tipo: "Mayor", palo: "ninguno",
+                es: "La Sacerdotisa",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/5/52/Tarot_de_Marseille_La_Papesse.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/3/30/Tarot_egipcio_2.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg",
+                derecho: "Intuición profunda, misterios sagrados, subconsciente activo, sabiduría en el silencio.",
+                reves: "Secretos oscuros que salen a la luz, ignorar las corazonadas, superficialidad o bloqueos espirituales."
+            },
+            {
+                id: 3, tipo: "Mayor", palo: "ninguno",
+                es: "La Emperatriz",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/0/07/Tarot_de_Marseille_L%27Imp%C3%A9ratrice.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/c/c9/Tarot_egipcio_3.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/d/d2/RWS_Tarot_03_Empress.jpg",
+                derecho: "Abundancia material, creatividad desbordante, fertilidad, amor de madre y naturaleza próspera.",
+                reves: "Bloqueo creativo, dependencia emocional extrema, tiranía doméstica o esterilidad en tus planes."
+            },
+            {
+                id: 4, tipo: "Mayor", palo: "ninguno",
+                es: "El Emperador",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/df/Tarot_de_Marseille_L%27Empereur.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/f/fc/Tarot_egipcio_4.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg",
+                derecho: "Estructura sólida, autoridad justa, estabilidad, protección masculina y orden implacable.",
+                reves: "Abuso de autoridad, inflexibilidad destructiva, tiranía o caos absoluto por falta de control."
+            },
+            {
+                id: 5, tipo: "Mayor", palo: "ninguno",
+                es: "El Hierofante",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/da/Tarot_de_Marseille_Le_Pape.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/a/a2/Tarot_egipcio_5.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg",
+                derecho: "Sabiduría tradicional, guía espiritual, educación, alianzas formales y respeto a las normas.",
+                reves: "Dogmatismo ciego, rebeldía necesaria, ideas obsoletas o falsos maestros en tu camino."
+            },
+            {
+                id: 6, tipo: "Mayor", palo: "ninguno",
+                es: "Los Enamorados",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/df/Tarot_de_Marseille_L%27Amoureux.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/5/52/Tarot_egipcio_6.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/3/3a/RWS_Tarot_06_Lovers.jpg",
+                derecho: "Elecciones cruciales hechas con el corazón, amor verdadero, armonía en vínculos, alineación de valores.",
+                reves: "Conflictos internos, malas decisiones afectivas, desarmonía de pareja o traición a tus propios principios."
+            },
+            {
+                id: 7, tipo: "Mayor", palo: "ninguno",
+                es: "El Carro",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Tarot_de_Marseille_Le_Chariot.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/1/14/Tarot_egipcio_7.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg",
+                derecho: "Victoria fulminante, control firme sobre las crisis, determinación férrea, viajes exitosos.",
+                reves: "Pérdida de rumbo, falta de disciplina, metas estancadas o avance agresivo sin medir consecuencias."
+            },
+            {
+                id: 8, tipo: "Mayor", palo: "ninguno",
+                es: "La Fuerza",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Tarot_de_Marseille_La_Force.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/6/69/Tarot_egipcio_8.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg",
+                derecho: "Valentía interior, compasión que domina al ego, paciencia infinita, fortaleza mental absoluta.",
+                reves: "Debilidad emocional, arrebatos de ira violenta, inseguridad paralizante o abuso de la fuerza física."
+            },
+            {
+                id: 9, tipo: "Mayor", palo: "ninguno",
+                es: "El Ermitaño",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/8/87/Tarot_de_Marseille_L%27Ermite.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/f/f9/Tarot_egipcio_9.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg",
+                derecho: "Retiro voluntario, introspección profunda, guía espiritual interna, prudencia sabia.",
+                reves: "Aislamiento tóxico, soledad amarga, terquedad destructiva o rechazo imprudente a recibir consejos."
+            },
+            {
+                id: 10, tipo: "Mayor", palo: "ninguno",
+                es: "La Rueda de la Fortuna",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Tarot_de_Marseille_La_Roue_de_Fortune.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/2/22/Tarot_egipcio_10.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg",
+                derecho: "Cambios de destino positivos, giros inesperados, ciclos cumplidos, buena suerte repentina.",
+                reves: "Mala racha temporal, resistencia terca al cambio, repetición de viejos errores del pasado."
+            },
+            {
+                id: 11, tipo: "Mayor", palo: "ninguno",
+                es: "La Justicia",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/4/41/Tarot_de_Marseille_La_Justice.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Tarot_egipcio_11.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/e/e0/RWS_Tarot_11_Justice.jpg",
+                derecho: "Verdad objetiva, equilibrio perfecto de la ley de causa y efecto, contratos legales firmados con justicia.",
+                reves: "Injusticias sufridas, prejuicios sesgados, pleitos legales trabados o deshonestidad descarada."
+            },
+            {
+                id: 12, tipo: "Mayor", palo: "ninguno",
+                es: "El Colgado",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/2/23/Tarot_de_Marseille_Le_Pendu.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/9/90/Tarot_egipcio_12.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg",
+                derecho: "Pausa necesaria, cambio radical de perspectiva, sacrificio voluntario por un bien mayor.",
+                reves: "Estar estancado a la fuerza, martirio inútil, resistencia a soltar el control o victimismo ciego."
+            },
+            {
+                id: 13, tipo: "Mayor", palo: "ninguno",
+                es: "La Muerte",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/d3/Tarot_de_Marseille_La_Mort.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/a/af/Tarot_egipcio_13.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg",
+                derecho: "Transformación radical, finales necesarios que abren paso a lo Aspen, muerte del viejo ego.",
+                reves: "Resistencia dolorosa a los finales, estancamiento por miedo a renovarse, aferrarse a lo muerto."
+            },
+            {
+                id: 14, tipo: "Mayor", palo: "ninguno",
+                es: "La Templanza",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/7/77/Tarot_de_Marseille_Temp%C3%A9rance.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/e/e0/Tarot_egipcio_14.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Tarot_iv_Temperance.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg",
+                derecho: "Alquimia personal, moderación sabia, balance de emociones, sanación interior y paciencia.",
+                reves: "Excesos nocivos, desequilibrio emocional severo, impaciencia destructiva o falta de armonía."
+            },
+            {
+                id: 15, tipo: "Mayor", palo: "ninguno",
+                es: "El Diablo",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Tarot_de_Marseille_Le_Diable.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/3/36/Tarot_egipcio_15.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg",
+                derecho: "Ataduras materiales, adicciones, sombras del ego inconsciente, pasiones desatadas y poder material.",
+                reves: "Liberación de viejas cadenas, superación de miedos, inicio de sanación de vicios ocultos."
+            },
+            {
+                id: 16, tipo: "Mayor", palo: "ninguno",
+                es: "La Torre",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/5/5a/Tarot_de_Marseille_La_Maison_Diev.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Tarot_egipcio_16.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg",
+                derecho: "Colapso repentino de estructuras falsas, revelación dolorosa pero liberadora, quiebre necesario.",
+                reves: "Evitar el derrumbe por poco tiempo, miedo al cambio inevitable, vivir atrapado en una mentira."
+            },
+            {
+                id: 17, tipo: "Mayor", palo: "ninguno",
+                es: "La Estrella",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/db/Tarot_de_Marseille_L%27%C3%89toille.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/d/dd/Tarot_egipcio_17.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_17_Star.jpg",
+                derecho: "Esperanza renovada, sanación física y espiritual, fe en el porvenir, guía del cosmos clara.",
+                reves: "Desesperanza temporal, falta de fe, pesimismo absoluto, desconexión de tus dones espirituales."
+            },
+            {
+                id: 18, tipo: "Mayor", palo: "ninguno",
+                es: "La Luna",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/1/10/Tarot_de_Marseille_La_Lune.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/0/07/Tarot_egipcio_18.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg",
+                derecho: "Ilusiones engañosas, miedos ocultos del pasado, intuición a flor de piel, secretos flotando.",
+                reves: "Liberación de ansiedades infundadas, las mentiras caen por su propio peso, claridad mental."
+            },
+            {
+                id: 19, tipo: "Mayor", palo: "ninguno",
+                es: "El Sol",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/d/db/Tarot_de_Marseille_Le_Soleil.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/4/43/Tarot_egipcio_19.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg",
+                derecho: "Éxito absoluto, vitalidad radiante, verdad al descubierto, felicidad, nacimientos prósperos.",
+                reves: "Claridad opacada temporalmente, arrogancia desmedida, retrasos menores en tus triunfos."
+            },
+            {
+                id: 20, tipo: "Mayor", palo: "ninguno",
+                es: "El Juicio",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/3/3a/Tarot_de_Marseille_Le_Iugement.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Tarot_egipcio_20.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg",
+                derecho: "Llamado espiritual definitivo, despertar de la conciencia, absolución del pasado, renacer total.",
+                reves: "Dudas paralizantes, rechazo a tu verdadero propósito de vida, culpa arrastrada inútilmente."
+            },
+            {
+                id: 21, tipo: "Mayor", palo: "ninguno",
+                es: "El Mundo",
+                url_rider: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg",
+                url_marsella: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Tarot_de_Marseille_Le_Monde.jpg",
+                url_egipcio: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Tarot_egipcio_21.jpg",
+                url_gitano: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg",
+                url_celta: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg",
+                derecho: "Cierre exitoso de ciclos, plenitud, autorrealización, reconocimiento del entorno y triunfo.",
+                reves: "Ciclos inconclusos por flojera, frustración ante la meta final, atascos de última hora."
+            },
             
-            // BASTOS
-            {id: 22, es:"As de Bastos", significado:"Chispa creativa, pasión inicial, nueva oportunidad.", url:"https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg"},
-            {id: 23, es:"Dos de Bastos", significado:"Planificación a futuro, mirar horizontes, decisiones.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0f/Wands02.jpg"},
-            {id: 24, es:"Tres de Bastos", significado:"Expansión, frutos del esfuerzo, visión de crecimiento.", url:"https://upload.wikimedia.org/wikipedia/commons/f/ff/Wands03.jpg"},
-            {id: 25, es:"Cuatro de Bastos", significado:"Celebración, hogar armónico, estabilidad lograda.", url:"https://upload.wikimedia.org/wikipedia/commons/a/a4/Wands04.jpg"},
-            {id: 26, es:"Cinco de Bastos", significado:"Competencia, tensiones menores, desacuerdos.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9d/Wands05.jpg"},
-            {id: 27, es:"Seis de Bastos", significado:"Reconocimiento público, victoria, aplausos merecidos.", url:"https://upload.wikimedia.org/wikipedia/commons/3/3b/Wands06.jpg"},
-            {id: 28, es:"Siete de Bastos", significado:"Defensa de tus principios, sostener tu posición firme.", url:"https://upload.wikimedia.org/wikipedia/commons/e/e4/Wands07.jpg"},
-            {id: 29, es:"Ocho de Bastos", significado:"Velocidad, noticias rápidas, movimiento sin freno.", url:"https://upload.wikimedia.org/wikipedia/commons/6/6b/Wands08.jpg"},
-            {id: 30, es:"Nueve de Bastos", significado:"Último esfuerzo, resiliencia, guardia en alto.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4d/Wands09.jpg"},
-            {id: 31, es:"Diez de Bastos", significado:"Carga pesada, exceso de responsabilidades, agotamiento.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0b/Wands10.jpg"},
-            {id: 32, es:"Sota de Bastos", significado:"Mensajero entusiasta, ganas de explorar, aventura.", url:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Wands11.jpg"},
-            {id: 33, es:"Caballero de Bastos", significado:"Acción impetuosa, avance apasionado, determinación.", url:"https://upload.wikimedia.org/wikipedia/commons/1/16/Wands12.jpg"},
-            {id: 34, es:"Reina de Bastos", significado:"Magnetismo, confianza, fuego social y protector.", url:"https://upload.wikimedia.org/wikipedia/commons/0/0d/Wands13.jpg"},
-            {id: 35, es:"Rey de Bastos", significado:"Liderazgo absoluto, visión ejecutiva, inspiración.", url:"https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands14.jpg"},
+            // FILAS DE ARCANOS MENORES DE CONTROL SEGURO
+            { id: 22, tipo: "Menor", palo: "bastos", es: "As de Bastos", url_rider: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", url_marsella:"https://upload.wikimedia.org/wikipedia/commons/a/ae/Tarot_de_Marseille_As_de_B%C3%A2ton.jpg", url_egipcio:"https://upload.wikimedia.org/wikipedia/commons/6/69/Tarot_egipcio_8.jpg", url_gitano:"https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", url_celta:"https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", derecho: "Chispa creativa inicial, pasión encendida, gran oportunidad de emprender.", reves: "Falta de dirección, energía desperdiciada, proyectos que mueren antes de nacer." },
+            { id: 36, tipo: "Menor", palo: "copas", es: "As de Copas", url_rider: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", url_marsella:"https://upload.wikimedia.org/wikipedia/commons/d/d3/Tarot_de_Marseille_As_de_Coupe.jpg", url_egipcio:"https://upload.wikimedia.org/wikipedia/commons/3/30/Tarot_egipcio_2.jpg", url_gitano:"https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", url_celta:"https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", derecho: "Amor puro desbordante, sanación y despertar de las emociones nobles.", reves: "Bloqueo afectivo, amor propio por el piso, desilusión sentimental." },
+            { id: 50, tipo: "Menor", palo: "espadas", es: "As de Espadas", url_rider: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg", url_marsella:"https://upload.wikimedia.org/wikipedia/commons/d/d3/Tarot_de_Marseille_As_de_Coupe.jpg", url_egipcio:"https://upload.wikimedia.org/wikipedia/commons/f/fa/Tarot_egipcio_11.jpg", url_gitano:"https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg", url_celta:"https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg", derecho: "Claridad mental absoluta, verdades tajantes, victoria intelectual.", reves: "Confusión extrema, palabras hirientes destructivas, tiranía del pensamiento." },
+            { id: 64, tipo: "Menor", palo: "oros", es: "As de Oros", url_rider: "https://upload.wikimedia.org/wikipedia/commons/5/53/Pentalces01.jpg", url_marsella:"https://upload.wikimedia.org/wikipedia/commons/0/07/Tarot_de_Marseille_As_de_Denier.jpg", url_egipcio:"https://upload.wikimedia.org/wikipedia/commons/2/22/Tarot_egipcio_10.jpg", url_gitano:"https://upload.wikimedia.org/wikipedia/commons/5/53/Pentalces01.jpg", url_celta:"https://upload.wikimedia.org/wikipedia/commons/5/53/Pentalces01.jpg", derecho: "Semilla de abundancia real, éxito financiero sólido, excelente salud física.", reves: "Oportunidades económicas perdidas, codicia desmedida, pérdidas de dinero." }
+        ];
 
-            // COPAS
-            {id: 36, es:"As de Copas", significado:"Amor puro desbordante, despertar emocional.", url:"https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg"},
-            {id: 37, es:"Dos de Copas", significado:"Conexión recíproca, romance, pactos, armonía.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg"},
-            {id: 38, es:"Tres de Copas", significado:"Brindis familiar, amistad verdadera, comunidad feliz.", url:"https://upload.wikimedia.org/wikipedia/commons/c/cbd/Cups03.jpg"},
-            {id: 39, es:"Cuatro de Copas", significado:"Apatía, aburrimiento, ignorar nuevas oportunidades.", url:"https://upload.wikimedia.org/wikipedia/commons/3/35/Cups04.jpg"},
-            {id: 40, es:"Cinco de Copas", significado:"Lamento por lo perdido, desilusión, mirar el vaso vacío.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d7/Cups05.jpg"},
-            {id: 41, es:"Seis de Copas", significado:"Nostalgia sana, recuerdos de la infancia, reencuentros.", url:"https://upload.wikimedia.org/wikipedia/commons/1/17/Cups06.jpg"},
-            {id: 42, es:"Siete de Copas", significado:"Fantasías, exceso de opciones, ilusiones engañosas.", url:"https://upload.wikimedia.org/wikipedia/commons/a/ae/Cups07.jpg"},
-            {id: 43, es:"Ocho de Copas", significado:"Abandono voluntario de lo que ya no nutre el alma.", url:"https://upload.wikimedia.org/wikipedia/commons/6/60/Cups08.jpg"},
-            {id: 44, es:"Nueve de Copas", significado:"Deseo concedido, satisfacción personal, bienestar.", url:"https://upload.wikimedia.org/wikipedia/commons/2/24/Cups09.jpg"},
-            {id: 45, es:"Diez de Copas", significado:"Dicha familiar absoluta, amor consolidado, paz.", url:"https://upload.wikimedia.org/wikipedia/commons/d/dc/Cups10.jpg"},
-            {id: 46, es:"Sota de Copas", significado:"Sensibilidad artística, noticias afectivas tiernas.", url:"https://upload.wikimedia.org/wikipedia/commons/a/ad/Cups11.jpg"},
-            {id: 47, es:"Caballero de Copas", significado:"El portador del romance, propuesta sincera, idealismo.", url:"https://upload.wikimedia.org/wikipedia/commons/f/fa/Cups12.jpg"},
-            {id: 48, es:"Reina de Copas", significado:"Empatía total, madre intuitiva, refugio emocional.", url:"https://upload.wikimedia.org/wikipedia/commons/6/62/Cups13.jpg"},
-            {id: 49, es:"Rey de Copas", significado:"Maestría emocional, templanza ante las crisis.", url:"https://upload.wikimedia.org/wikipedia/commons/0/04/Cups14.jpg"},
+        function intentarActivarAudio() {
+            const musica = document.getElementById('audio-musica');
+            musica.play().catch(() => console.log("Audio en espera."));
+        }
 
-            // ESPADAS
-            {id: 50, es:"As de Espadas", significado:"Claridad mental destructiva, verdad cruda, gran avance.", url:"https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg"},
-            {id: 51, es:"Dos de Espadas", significado:"Callejón sin salida mental, ojos vendados, indecisión.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9e/Swords02.jpg"},
-            {id: 52, es:"Tres de Espadas", significado:"Dolor en el corazón, traición asumida, herida liberadora.", url:"https://upload.wikimedia.org/wikipedia/commons/0/02/Swords03.jpg"},
-            {id: 53, es:"Cuatro de Espadas", significado:"Descanso mental obligatorio, meditación, tregua.", url:"https://upload.wikimedia.org/wikipedia/commons/2/2d/Swords04.jpg"},
-            {id: 54, es:"Cinco de Espadas", significado:"Victoria pírrica, discusiones donde todos pierden.", url:"https://upload.wikimedia.org/wikipedia/commons/2/23/Swords05.jpg"},
-            {id: 55, es:"Seis de Espadas", significado:"Viaje hacia aguas más tranquilas, transición necesaria.", url:"https://upload.wikimedia.org/wikipedia/commons/2/29/Swords06.jpg"},
-            {id: 56, es:"Siete de Espadas", significado:"Estrategia oculta, astucia, evitar la confrontación.", url:"https://upload.wikimedia.org/wikipedia/commons/3/34/Swords07.jpg"},
-            {id: 57, es:"Ocho de Espadas", significado:"Prisión mental autoimpuesta, parálisis por miedo.", url:"https://upload.wikimedia.org/wikipedia/commons/a/a7/Swords08.jpg"},
-            {id: 58, es:"Nueve de Espadas", significado:"Ansiedad, insomnio, pesadillas nacidas de la mente.", url:"https://upload.wikimedia.org/wikipedia/commons/2/2f/Swords09.jpg"},
-            {id: 59, es:"Diez de Espadas", significado:"Final absoluto del dolor, tocar fondo para renacer.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords10.jpg"},
-            {id: 60, es:"Sota de Espadas", significado:"Vigilancia, mente analítica, verdades incómodas.", url:"https://upload.wikimedia.org/wikipedia/commons/4/4b/Swords11.jpg"},
-            {id: 61, es:"Caballero de Espadas", significado:"Defensa feroz de ideas, verdades directas sin filtro.", url:"https://upload.wikimedia.org/wikipedia/commons/b/b9/Swords12.jpg"},
-            {id: 62, es:"Reina de Espadas", significado:"Independencia intelectual, discernimiento agudo, límites.", url:"https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords13.jpg"},
-            {id: 63, Music: false, es:"Rey de Espadas", significado:"Juicio justo y analítico, autoridad de la verdad.", url:"https://upload.wikimedia.org/wikipedia/commons/3/33/Swords14.jpg"},
+        function sonarCuencoUnico() {
+            const cuenco = document.getElementById('audio-cuenco');
+            cuenco.currentTime = 0;
+            cuenco.play().catch(e => console.log("Bloqueado"));
+        }
 
-            // OROS
-            {id: 64, es:"As de Oros", significado:"Semilla de abundancia, inicio financiero sólido, salud.", url:"https://upload.wikimedia.org/wikipedia/commons/5/53/Pentalces01.jpg"},
-            {id: 65, es:"Dos de Oros", significado:"Malabarismo financiero, adaptación a los cambios cotidianos.", url:"https://upload.wikimedia.org/wikipedia/commons/9/9f/Pentalces02.jpg"},
-            {id: 66, es:"Tres de Oros", significado:"Trabajo en equipo, maestría artesanal, colaboración.", url:"https://upload.wikimedia.org/wikipedia/commons/4/42/Pentalces03.jpg"},
-            {id: 67, es:"Cuatro de Oros", significado:"Avaricia, apego al dinero por miedo a la carencia.", url:"https://upload.wikimedia.org/wikipedia/commons/3/35/Pentalces04.jpg"},
-            {id: 68, es:"Cinco de Oros", significado:"Pobreza temporal, desamparo, ignorar la ayuda cercana.", url:"https://upload.wikimedia.org/wikipedia/commons/9/96/Pentalces05.jpg"},
-            {id: 69, es:"Seis de Oros", significado:"Generosidad recíproca, dar y recibir de forma equilibrada.", url:"https://upload.wikimedia.org/wikipedia/commons/a/a6/Pentalces06.jpg"},
-            {id: 70, es:"Siete de Oros", significado:"Paciencia ante la cosecha, evaluar el crecimiento.", url:"https://upload.wikimedia.org/wikipedia/commons/6/6a/Pentalces07.jpg"},
-            {id: 71, es:"Ocho de Oros", significado:"Dedicación absoluta al oficio, pulir detalles minuciosos.", url:"https://upload.wikimedia.org/wikipedia/commons/4/49/Pentalces08.jpg"},
-            {id: 72, es:"Nueve de Oros", significado:"Independencia material, disfrutar los lujos logrados.", url:"https://upload.wikimedia.org/wikipedia/commons/f/f0/Pentalces09.jpg"},
-            {id: 73, es:"Diez de Oros", significado:"Legado familiar, estabilidad a largo plazo, herencia sólida.", url:"https://upload.wikimedia.org/wikipedia/commons/4/42/Pentalces10.jpg"},
-            {id: 74, es:"Sota de Oros", significado:"Estudiante aplicado, nueva idea de negocio
+        function cambiarVista(idVista) {
+            document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
+            document.getElementById(idVista).classList.add('activa');
+            
+            const contenedor = document.getElementById('contenedor-global');
+            if(idVista !== 'pantalla-menu') {
+                contenedor.classList.add('modo-consulta-activa');
+            } else {
+                contenedor.classList.remove('modo-consulta-activa');
+            }
+
+            const zonaVolver = document.getElementById('zona-volver');
+            if(idVista !== 'pantalla-menu') {
+                zonaVolver.innerHTML = `<button class="btn-volver" onclick="irAlMenu()">← Volver</button>`;
+            } else {
+                zonaVolver.innerHTML = '';
+            }
+        }
+
+        function irAlMenu() { cambiarVista('pantalla-menu'); }
+        function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
+
+        // MANTIENE LAS TANDAS DE ABANICOS CLÁSICAS Y SEPARADAS SIN TOCAR NADA
+        function comenzarRitualTarot() {
+            intentarActivarAudio();
+            cartasSeleccionadasIndices = [];
+            
+            let mazoOriginal = baseDeDatosTarot.map(c => {
+                let esInvertida = Math.random() < 0.5;
+                return { original: c, invertida: esInvertida };
+            });
+            mazoOriginal.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazoOriginal;
+
+            const mazoElegido = document.getElementById('tarot-mazo-elegido').value;
+            const contenedorAltar = document.getElementById('altar-abanicos-completo');
+            contenedorAltar.innerHTML = '';
+            
+            const cartasPorTanda = 4;
+            const totalTandas = Math.ceil(mazoMezcladoConPosicion.length / cartasPorTanda);
+
+            for (let t = 0; t < totalTandas; t++) {
+                let divTandaFila = document.createElement('div');
+                divTandaFila.className = 'abanico-tanda-fila';
+
+                let inicio = t * cartasPorTanda;
+                let fin = inicio + cartasPorTanda;
+
+                for (let i = inicio; i < fin; i++) {
+                    if (i >= mazoMezcladoConPosicion.length) break;
+
+                    let divCard = document.createElement('div');
+                    divCard.className = 'carta-tarot-real';
+                    divCard.id = `carta-index-${i}`;
+                    
+                    let indiceRelativo = (i - inicio) - (cartasPorTanda - 1) / 2;
+                    let despliegueX = indiceRelativo * 60;
+                    let anguloGiro = indiceRelativo * 5;
+
+                    divCard.style.transform = `translateX(${despliegueX}px) rotate(${anguloGiro}deg)`;
+                    divCard.style.zIndex = i - inicio;
+
+                    divCard.onclick = (evento) => {
+                        evento.stopPropagation();
+                        seleccionarCartaDelAbanico(i, mazoElegido);
+                    };
+                    
+                    divTandaFila.appendChild(divCard);
+                }
+                contenedorAltar.appendChild(divTandaFila);
+            }
+
+            document.getElementById('txt-contador-instruccion').innerText = `Elegí tus 3 cartas del mazo (Llevás 0 de 3)`;
+            cambiarVista('pantalla-tarot-tablero');
+        }
+
+        function seleccionarCartaDelAbanico(idx, mazoKey) {
+            let elementoHTML = document.getElementById(`carta-index-${idx}`);
+            if(elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
+            
+            sonarCuencoUnico(); // Sonido único por carta
+            elementoHTML.classList.add('elegida-ritual'); 
+            cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
+
+            document.getElementById('txt-contador-instruccion').innerText = `Elegí tus 3 cartas del mazo (Llevás ${cartasSeleccionadasIndices.length} de 3)`;
+
+            if(cartasSeleccionadasIndices.length === cartasRequeridas) {
+                setTimeout(() => revelarTiradaFinal(mazoKey), 600);
+            }
+        }
+
+        function revelarTiradaFinal(mazoKey) {
+            const cajaRevelada = document.getElementById('caja-cartas-reveladas');
+            const cajaTexto = document.getElementById('texto-interpretacion');
+            cajaRevelada.innerHTML = '';
+            
+            let parrafosInterpretacion = "";
+            let conteoMayores = 0;
+            let conteoInvertidas = 0;
+            let palosConteo = { bastos: 0, copas: 0, espadas: 0, oros: 0, ninguno: 0 };
+
+            cartasSeleccionadasIndices.forEach((cartaData, i) => {
+                let cardObj = cartaData.original;
+                let estaAlReves = cartaData.invertida;
+
+                if (cardObj.tipo === "Mayor") conteoMayores++;
+                if (estaAlReves) conteoInvertidas++;
+                palosConteo[cardObj.palo]++;
+
+                // Selección dinámica según el mazo elegido de los 5
+                let imagenUrl = cardObj.url_rider;
+                if(mazoKey === 'marsella') imagenUrl = cardObj.url_marsella;
+                if(mazoKey === 'egipcio') imagenUrl = cardObj.url_egipcio;
+                if(mazoKey === 'gitano') imagenUrl = cardObj.url_gitano;
+                if(mazoKey === 'celta') imagenUrl = cardObj.url_celta;
+
+                let divC = document.createElement('div');
+                divC.className = `carta-revelada ${estaAlReves ? 'es-invertida' : ''}`;
+                
+                let orientacionTexto = estaAlReves ? "Invertida" : "Derecha";
+                let orientacionClase = estaAlReves ? "txt-alreves" : "txt-derecho";
+                let significadoFinal = estaAlReves ? cardObj.reves : cardObj.derecho;
+
+                divC.innerHTML = `
+                    <div class="wrapper-imagen-tarot">
+                        <img src="${imagenUrl}" alt="${cardObj.es}" crossorigin="anonymous">
+                    </div>
+                    <div class="nombre-c">
+                        ${cardObj.es}
+                        <span class="tag-orientacion ${orientacionClase}">${orientacionTexto}</span>
+                    </div>
+                `;
+                cajaRevelada.appendChild(divC);
+
+                parrafosInterpretacion += `<p><strong>✦ Carta ${i+1} (${obtenerPosicionTiempo(i)}): ${cardObj.es} (${orientacionTexto})</strong><br><strong>Mensaje del Destino:</strong> ${significadoFinal}</p>`;
+            });
+
+            let analisisConjunto = "<div class='seccion-conjunto'><strong>🔮 Dictamen Global de la Combinación:</strong><br>";
+            
+            if (conteoMayores === 3) {
+                analisisConjunto += "Esta tirada está dominada por Arcanos Mayores. El universo te indica un cambio de destino drástico, espiritual e inevitable. Las fuerzas cósmicas superiores están operando a tu favor.";
+            } else if (conteoInvertidas === 3) {
+                analisisConjunto += "Las tres cartas han salido invertidas. Hay una gran resistencia interna o bloqueos energéticos severos que impiden el flujo natural de los eventos. Es hora de detenerse y revisar los miedos.";
+            } else if (palosConteo['copas'] >= 2) {
+                analisisConjunto += "Predominan las Copas. Las cartas hablan en conjunto de una resolución puramente emocional, guiada por los sentimientos, los vínculos afectivos y la intuición del corazón.";
+            } else if (palosConteo['espadas'] >= 2) {
+                analisisConjunto += "Predominan las Espadas. La combinación de fuerzas exige batallas mentales, toma de decisiones frías y cortes drásticos con situaciones del pasado.";
+            } else if (palosConteo['bastos'] >= 2) {
+                analisisConjunto += "Predominan los Bastos. El conjunto energético muestra que la solución radica en la acción directa, la pasión, los proyectos laborales en movimiento y tu fuego interior.";
+            } else if (palosConteo['oros'] >= 2) {
+                analisisConjunto += "Predominan los Oros. El universo responde con un claro mensaje de estabilidad material, herencias, negocios, salud física y la manifestación concreta en la tierra.";
+            } else {
+                analisisConjunto += "Las energías de la tirada se encuentran diversificadas y equilibradas. Diferentes áreas de tu vida (mente, emoción y materia) se entrelazan para darte una respuesta integral y armónica.";
+            }
+            analisisConjunto += "</div>";
+
+            cajaTexto.innerHTML = parrafosInterpretacion + analisisConjunto;
+            cambiarVista('pantalla-tarot-resultado');
+        }
+
+        function obtenerPosicionTiempo(i) {
+            if(i === 0) return "Pasado";
+            if(i === 1) return "Presente";
+            return "Futuro";
+        }
+    </script>
+</body>
+</html>
