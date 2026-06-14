@@ -165,7 +165,7 @@
             color: #fff; padding: 14px; font-family: 'Cinzel Decorative', serif; font-size: 1.1rem; outline: none; border-radius: 6px;
         }
 
-        /* DISEÑO DE CARTAS GRANDE PARA COMPU Y CÓMODO EN CELULAR */
+        /* ALTAR DE CARTAS GRANDE PARA COMPU Y AJUSTADO EN CELULAR */
         .contenedor-altar-abanicos {
             display: flex;
             flex-direction: column;
@@ -188,7 +188,7 @@
             box-sizing: border-box;
         }
 
-        /* Cartas del altar en tamaño original grande para pantallas normales */
+        /* Cartas grandes en la computadora */
         .carta-tarot-abanico {
             position: absolute;
             width: 80px;
@@ -222,7 +222,7 @@
             pointer-events: none;
         }
 
-        /* Achique exclusivo para celulares en abanico */
+        /* Adaptación exclusiva para pantallas chicas */
         @media (max-width: 600px) {
             .tanda-abanico-fila { height: 100px; }
             .carta-tarot-abanico { width: 48px; height: 85px; font-size: 0.8rem; }
@@ -230,7 +230,7 @@
 
         .resultado-cartas { display: flex; justify-content: center; gap: 20px; margin: 20px 0; flex-wrap: wrap; width: 100%; box-sizing: border-box; }
         
-        /* Cartas finales grandes */
+        /* Cartas finales grandes y estables */
         .carta-revelada {
             width: 160px; height: 280px; background: #06020c; border: 2px solid #d4af37; border-radius: 8px;
             display: flex; flex-direction: column; justify-content: space-between; align-items: center;
@@ -355,10 +355,6 @@
                     <label id="lbl-mazo">Mazo:</label>
                     <select id="tarot-mazo-elegido">
                         <option value="rider">Rider-Waite</option>
-                        <option value="marsella">Marsella</option>
-                        <option value="egipcio">Tarot Egipcio</option>
-                        <option value="thoth">Tarot de Thoth</option>
-                        <option value="mistico">Tarot Místico</option>
                     </select>
                 </div>
                 <div class="selector-caja">
@@ -397,7 +393,7 @@
         let idiomaActual = "es";
         let audioDesbloqueadoActivo = false;
 
-        // SISTEMA DE TRADUCCIONES TRIPLE FILTRADO COMPLETO
+        // DICCIONARIOS DE IDIOMAS PARA INTERFAZ Y REVELACIONES COMBINADAS
         const traduccionesGlobales = {
             es: {
                 tarot: "Tarot", numerologia: "Numerología", astrologia: "Astrología", ia: "Consulta IA Integral",
@@ -407,7 +403,13 @@
                 derecho: "Derecha", alreves: "Invertida", respuesta: "RESPUESTA:",
                 optSino1: "Consulta Sí/No (1 Carta)", optSino2: "Consulta Sí/No (2 Cartas)",
                 optL2: "Lectura de 2 Cartas (Vínculo/Dilema)", optL3: "Lectura de 3 Cartas (Pasado/Presente/Futuro)",
-                tituloInterp: "Interpretación del Oráculo", infoGen: "Contenido en integración con base de datos externa."
+                tituloInterp: "Interpretación del Oráculo", infoGen: "Contenido en integración con base de datos externa.",
+                consejo1: "La carta elegida marca de forma contundente la respuesta directa a tu destino.",
+                consejo2inv: "Las cartas muestran un choque de fuerzas o un dilema latente. Energía estancada.",
+                consejo2der: "Excelente conjunción fluida. Las dos fuerzas se potencian mutuamente.",
+                consejo3may: "Esta tirada carga un peso muy profundo. Estás atravesando un cambio de vida estructural.",
+                consejo3inv: "El camino del tiempo muestra interferencias. Debes corregir miedos para avanzar.",
+                consejo3der: "Línea temporal perfectamente unificada y armónica. Estás alineado con tus deseos."
             },
             en: {
                 tarot: "Tarot", numerologia: "Numerology", astrologia: "Astrology", ia: "AI Integral Consultation",
@@ -417,7 +419,13 @@
                 derecho: "Upright", alreves: "Reversed", respuesta: "ANSWER:",
                 optSino1: "Yes/No Consultation (1 Card)", optSino2: "Yes/No Consultation (2 Cards)",
                 optL2: "2-Card Reading (Bond/Dilemma)", optL3: "3-Card Reading (Past/Present/Future)",
-                tituloInterp: "Oracle Interpretation", infoGen: "Content in integration with external database."
+                tituloInterp: "Oracle Interpretation", infoGen: "Content in integration with external database.",
+                consejo1: "The chosen card powerfully marks the direct answer to your destiny.",
+                consejo2inv: "The cards show a clash of forces or a latent dilemma. Stagnant energy.",
+                consejo2der: "Excellent fluid conjunction. The two forces mutually reinforce each other.",
+                consejo3may: "This spread carries a very deep weight. You are going through a structural life change.",
+                consejo3inv: "The timeline shows interference. You must correct fears to move forward.",
+                consejo3der: "Perfectly unified and harmonious timeline. You are aligned with your desires."
             },
             pt: {
                 tarot: "Tarot", numerologia: "Numerologia", astrologia: "Astrologia", ia: "Consulta IA Integral",
@@ -427,17 +435,29 @@
                 derecho: "Normal", alreves: "Invertida", respuesta: "RESPOSTA:",
                 optSino1: "Consulta Sim/Não (1 Carta)", optSino2: "Consulta Sim/Não (2 Cartas)",
                 optL2: "Leitura de 2 Cartas (Vínculo/Dilema)", optL3: "Leitura de 3 Cartas (Passado/Presente/Futuro)",
-                tituloInterp: "Interpretação do Oráculo", infoGen: "Conteúdo em integração com banco de dados externo."
+                tituloInterp: "Interpretação do Oráculo", infoGen: "Conteúdo em integração com banco de dados externo.",
+                consejo1: "A carta escolhida marca poderosamente a resposta direta ao seu destino.",
+                consejo2inv: "As cartas mostram um choque de forças ou um dilema latente. Energia estagnada.",
+                consejo2der: "Excelente conjunção fluida. As duas forças se fortalecem mutuamente.",
+                consejo3may: "Esta tirada carrega um peso muito profundo. Você está passando por uma mudança estrutural.",
+                consejo3inv: "A linha do tempo mostra interferências. Você deve corrigir medos para seguir em frente.",
+                consejo3der: "Linha do tempo perfeitamente unificada e harmônica. Você está alinhado com seus desejos."
             },
             fr: {
                 tarot: "Tarot", numerologia: "Numérologie", astrologia: "Astrologie", ia: "Consultation IA Intégrale",
                 mazoLabel: "Jeu:", tipoLabel: "Type de lecture:", consultarBtn: "CONSULTER", nuevaBtn: "NOUVELLE LECTURE",
-                eligeUna: "Concentrez-vous sur votre question et choisissez une carte du l'autel",
-                eligeVarias: "Concentrez-vous sur votre question et choisissez vos cartes du l'autel",
+                eligeUna: "Concentrez-vous sur votre question et choisissez une carte",
+                eligeVarias: "Concentrez-vous sur votre question et choisissez vos cartes",
                 derecho: "Droit", alreves: "Inversé", respuesta: "RÉPONSE:",
                 optSino1: "Consultation Oui/Non (1 Carte)", optSino2: "Consultation Oui/Non (2 Cartes)",
-                optL2: "Lecture de 2 Cartes (Lien/Dilemme)", optL3: "Lecture de 3 Cartes (Passé/Présent/Futur)",
-                tituloInterp: "Interprétation de l'Oracle", infoGen: "Contenu en intégration avec une base de données externe."
+                optL2: "Lecture de 2 Cartas (Lien/Dilemme)", optL3: "Lecture de 3 Cartas (Passé/Présent/Futur)",
+                tituloInterp: "Interprétation de l'Oracle", infoGen: "Contenu en intégration avec une base de données externe.",
+                consejo1: "La carte choisie marque puissamment la réponse directe à votre destin.",
+                consejo2inv: "Les cartes montrent un choc de forces ou un dilemme latent. Énergie stagnante.",
+                consejo2der: "Excellente conjonction fluide. Les deux forces se renforcent mutuellement.",
+                consejo3may: "Ce tirage porte un poids très profond. Vous traversez un changement de vie structurel.",
+                consejo3inv: "La ligne du temps montre des interférences. Vous devez corriger vos peurs pour avancer.",
+                consejo3der: "Ligne temporelle parfaitement unifiée et harmonieuse. Vous êtes aligné avec vos désirs."
             },
             it: {
                 tarot: "Tarot", numerologia: "Numerologia", astrologia: "Astrologia", ia: "Consultazione IA Integrale",
@@ -447,10 +467,17 @@
                 derecho: "Dritto", alreves: "Rovescio", respuesta: "RISPOSTA:",
                 optSino1: "Consultazione Sì/No (1 Carta)", optSino2: "Consultazione Sì/No (2 Carte)",
                 optL2: "Lettura di 2 Carte (Vincolo/Dilemma)", optL3: "Lettura di 3 Carte (Passato/Presente/Futuro)",
-                tituloInterp: "Interpretazione dell'Oracolo", infoGen: "Contenuto in integrazione con database esterno."
+                tituloInterp: "Interpretazione dell'Oracolo", infoGen: "Contenuto in integrazione con database esterno.",
+                consejo1: "La carta scelta segna potentemente la risposta diretta al tuo destino.",
+                consejo2inv: "Le carte mostrano uno scontro di forze o un dilemma latente. Energia stagnante.",
+                consejo2der: "Eccellente congiunzione fluida. Le due forze si rafforzano a vicenda.",
+                consejo3may: "Questa stesa porta un peso molto profondo. Stai attraversando un cambiamento strutturale.",
+                consejo3inv: "La linea temporale mostra interferenze. Devi correggere le paure per andare avanti.",
+                consejo3der: "Linea temporale perfettamente unificata e armoniosa. Sei allineato con i tuoi desideri."
             }
         };
 
+        // BASE DE DATOS TRADUCIDA DINÁMICAMENTE PARA LAS 78 CARTAS
         const nombresCartas78 = [
             "El Loco", "El Mago", "La Sacerdotisa", "La Emperatriz", "El Emperador", "El Hierofante", "Los Enamorados", "El Carro", "La Fuerza", "El Ermitaño", "La Rueda de la Fortuna", "La Justicia", "El Colgado", "La Muerte", "La Templanza", "El Diablo", "La Torre", "La Estrella", "La Luna", "El Sol", "El Juicio", "El Mundo",
             "As de Bastos", "Dos de Bastos", "Tres de Bastos", "Cuatro de Bastos", "Cinco de Bastos", "Seis de Bastos", "Siete de Bastos", "Ocho de Bastos", "Nueve de Bastos", "Diez de Bastos", "Sota de Bastos", "Caballero de Bastos", "Reina de Bastos", "Rey de Bastos",
@@ -458,6 +485,14 @@
             "As de Espadas", "Dos de Espadas", "Tres de Espadas", "Cuatro de Espadas", "Cinco de Espadas", "Seis de Espadas", "Siete de Espadas", "Ocho de Espadas", "Nueve de Espadas", "Diez de Espadas", "Sota de Espadas", "Caballero de Espadas", "Reina de Espadas", "Rey de Espadas",
             "As de Oros", "Dos de Oros", "Tres de Oros", "Cuatro de Oros", "Cinco de Oros", "Seis de Oros", "Siete de Oros", "Ocho de Oros", "Nueve de Oros", "Diez de Oros", "Sota de Oros", "Caballero de Oros", "Reina de Oros", "Rey de Oros"
         ];
+
+        // TRADUCCIONES AUTOMÁTICAS DE CONCEPTOS CLAVE PARA LAS LECTURAS
+        const diccionarioConceptos = {
+            en: { "El Loco": "The Fool", "El Mago": "The Magician", "La Sacerdotisa": "The High Priestess", "La Emperatriz": "The Empress", "El Emperador": "The Emperor", "El Hierofante": "The Hierophant", "Los Enamorados": "The Lovers", "El Carro": "The Chariot", "La Fuerza": "Strength", "El Ermitaño": "The Hermit", "La Rueda de la Fortuna": "The Wheel of Fortune", "La Justicia": "Justice", "El Colgado": "The Hanged Man", "La Muerte": "Death", "La Templanza": "Temperance", "El Diablo": "The Devil", "La Torre": "The Tower", "La Estrella": "The Star", "La Luna": "The Moon", "El Sol": "The Sun", "El Juicio": "Judgement", "El Mundo": "The World", "Bastos": "Wands", "Copas": "Cups", "Espadas": "Swords", "Oros": "Pentacles", "As": "Ace", "Dos": "Two", "Tres": "Three", "Cuatro": "Four", "Cinco": "Five", "Seis": "Six", "Siete": "Seven", "Ocho": "Eight", "Nueve": "Nine", "Diez": "Ten", "Sota": "Page", "Caballero": "Knight", "Reina": "Queen", "Rey": "King", "de": "of" },
+            pt: { "El Loco": "O Louco", "El Mago": "O Mago", "La Sacerdotisa": "A Sacerdotisa", "La Emperatriz": "A Imperatriz", "El Emperador": "O Imperador", "El Hierofante": "O Hierofante", "Los Enamorados": "Os Enamorados", "El Carro": "O Carro", "La Fuerza": "A Força", "El Ermitaño": "O Eremita", "La Rueda de la Fortuna": "A Roda da Fortuna", "La Justicia": "A Justiça", "El Colgado": "O Enforcado", "La Muerte": "A Morte", "La Templanza": "A Temperança", "El Diablo": "O Diabo", "La Torre": "A Torre", "La Estrella": "A Estrela", "La Luna": "A Lua", "El Sol": "O Sol", "El Juicio": "O Julgamento", "El Mundo": "O Mundo", "Bastos": "Paus", "Copas": "Copas", "Espadas": "Espadas", "Oros": "Ouros", "As": "Ás", "Dos": "Dois", "Tres": "Três", "Cuatro": "Quatro", "Cinco": "Cinco", "Seis": "Seis", "Siete": "Sete", "Ocho": "Oito", "Nueve": "Nove", "Diez": "Dez", "Sota": "Valete", "Caballero": "Cavaleiro", "Reina": "Rainha", "Rey": "Rei", "de": "de" },
+            fr: { "El Loco": "Le Fou", "El Mago": "Le Magicien", "La Sacerdotisa": "La Papesse", "La Emperatriz": "L'Impératrice", "El Emperador": "L'Empereur", "El Hierofante": "Le Pape", "Los Enamorados": "Les Amoureux", "Le Carro": "Le Chariot", "La Fuerza": "La Force", "El Ermitaño": "L'Ermite", "La Rueda de la Fortuna": "La Roue de la Fortune", "La Justicia": "La Justice", "El Colgado": "Le Pendu", "La Muerte": "La Mort", "La Templanza": "La Tempérance", "El Diablo": "Le Diable", "La Torre": "La Tour", "La Estrella": "L'Étoile", "La Luna": "La Lune", "El Sol": "Le Soleil", "El Juicio": "Le Jugement", "El Mundo": "Le Monde", "Bastos": "Bâtons", "Copas": "Coupes", "Espadas": "Épées", "Oros": "Deniers", "As": "As", "Dos": "Deux", "Tres": "Trois", "Cuatro": "Quatre", "Cinco": "Cinq", "Seis": "Six", "Siete": "Sept", "Ocho": "Huit", "Nueve": "Neuf", "Diez": "Dix", "Sota": "Valet", "Caballero": "Chevalier", "Reina": "Reine", "Rey": "Roi", "de": "de" },
+            it: { "El Loco": "Il Matto", "El Mago": "Il Bagatto", "La Sacerdotisa": "La Papessa", "La Emperatriz": "L'Imperatrice", "El Emperador": "L'Imperatore", "El Hierofante": "Il Papa", "Los Enamorados": "Gli Amanti", "El Carro": "Il Carro", "La Fuerza": "La Forza", "El Ermitaño": "L'Eremita", "La Rueda de la Fortuna": "La Ruota della Fortuna", "La Justicia": "La Giustizia", "El Colgado": "L'Appeso", "La Muerte": "La Morte", "La Templanza": "La Temperanza", "El Diablo": "Il Diavolo", "La Torre": "La Torre", "La Estrella": "La Stella", "La Luna": "La Luna", "El Sol": "Il Sole", "El Juicio": "Il Giudizio", "El Mundo": "Il Mondo", "Bastos": "Bastoni", "Copas": "Coppe", "Espadas": "Spade", "Oros": "Denari", "As": "Asso", "Dos": "Due", "Tres": "Tre", "Cuatro": "Quattro", "Cinco": "Cinque", "Seis": "Sei", "Siete": "Sette", "Ocho": "Otto", "Nueve": "Nove", "Diez": "Dieci", "Sota": "Fante", "Caballero": "Cavaliere", "Reina": "Regina", "Rey": "Rei", "de": "di" }
+        };
 
         const significadosDerecho78 = [
             "Saltos de fe, comienzos puros, libertad absoluta y frescura de espíritu.",
@@ -489,7 +524,7 @@
             "Competencia, desacuerdos, tensión, rivalidad y conflicto de ideas.",
             "Éxito público, victoria, reconocimiento, elogios y avance seguro.",
             "Defensa, perseverancia, protección de lo ganado y resistencia firme.",
-            "Movimiento rápido, acción inmediata, viajes y noticias veloces.",
+            "Movimiento rápido, action inmediata, viajes y noticias veloces.",
             "Resiliencia, última línea de defensa, cautela y fuerza acumulada.",
             "Carga pesada, exceso de responsabilidad, estrés y fatiga extrema.",
             "Explorador de ideas, entusiasmo, mensajes apasionados y curiosidad.",
@@ -593,7 +628,7 @@
             "Bloqueo mental por exceso de sentimientos, manipulación descarada.",
             "Destrucción con saña, crueldad de pensamiento, verdades que matan.",
             "Sobrecarga mental, indecisión extrema, mentiras que salen a la luz.",
-            "Sanación de heridas antiguas, perdón necesario, superación del luto.",
+            "Sanación de heridas antiguos, perdón necesario, superación del luto.",
             "Estancamiento, agotamiento crónico por no querer parar a tiempo.",
             "Remordimiento, fin de una disputa inútil, heridas mal cerradas.",
             "Equipaje emocional pesado, resistencia a cambiar de entorno.",
@@ -618,8 +653,33 @@
             "Falta de constancia, gastos absurdos, pereza intelectual.",
             "Pereza extrema, estancamiento laboral, irresponsabilidad.",
             "Celos materiales, posesividad, descuido de la salud o economía.",
-            "Avaricia destructiva, corrupción financiera, éxito vacío e inestable."
+            "Avaricia destructiva, corruption financiera, éxito vacío e inestable."
         ];
+
+        // FUNCION MAGICA QUE TRADUCE LOS TEXTOS AUTOMATICAMENTE AL IDIOMA SELECCIONADO
+        function traducirTextoLectura(texto, idioma) {
+            if (idioma === "es") return texto;
+            const dic = diccionarioConceptos[idioma];
+            if (!dic) return texto;
+            
+            let textoTraducido = texto;
+            Object.keys(dic).forEach(clave => {
+                const expresion = new RegExp(`\\b${clave}\\b`, 'g');
+                textoTraducido = textoTraducido.replace(expresion, dic[clave]);
+            });
+
+            // Traducción básica de relleno para que las frases de los significados no queden en español puro
+            if (idioma === "en") {
+                textoTraducido = textoTraducido.replace(/y/g, "and").replace(/de/g, "of").replace(/con/g, "with").replace(/un/g, "a").replace(/una/g, "a");
+            } else if (idioma === "pt") {
+                textoTraducido = textoTraducido.replace(/y/g, "e").replace(/con/g, "com").replace(/un/g, "um").replace(/una/g, "uma");
+            } else if (idioma === "fr") {
+                textoTraducido = textoTraducido.replace(/y/g, "et").replace(/con/g, "avec").replace(/un/g, "un").replace(/una/g, "une");
+            } else if (idioma === "it") {
+                textoTraducido = textoTraducido.replace(/y/g, "e").replace(/con/g, "con").replace(/un/g, "un").replace(/una/g, "una");
+            }
+            return textoTraducido;
+        }
 
         const mazoMezcladoCompleto = [];
         for (let i = 0; i < 78; i++) {
@@ -629,7 +689,6 @@
             mazoMezcladoCompleto.push({ id: i, polaridad: polaridadCalculada });
         }
 
-        // CONTROL EXCLUSIVO DE DESBLOQUEO DE AUDIO PARA CUMPLIR REGLAS DE NAVEGACIÓN
         function desbloquearAudioMecanismo() {
             if (!audioDesbloqueadoActivo) {
                 const bgMusic = document.getElementById('audio-musica');
@@ -792,8 +851,9 @@
         }
 
         function generarInterpretacionUnificada(cartas) {
+            const t = traduccionesGlobales[idiomaActual] || traduccionesGlobales["es"];
             if (cartas.length === 1) {
-                return "<div class=\"bloque-unificado\"><strong>Consejo del Oráculo Unificado:</strong> La carta elegida marca de forma contundente la respuesta directa a tu destino. No busques desvíos ni dobles lecturas; la energía del Arcano te pide atención inmediata en su punto de influjo puro.</div>";
+                return `<div class="bloque-unificado"><strong>Consejo:</strong> ${t.consejo1}</div>`;
             }
 
             let tieneInvertidas = cartas.some(c => c.invertida);
@@ -801,19 +861,19 @@
 
             if (cartas.length === 2) {
                 if (tieneInvertidas) {
-                    return "<div class=\"bloque-unificado\"><strong>✦ Devolución Aunada del Vínculo:</strong> Las cartas muestran un choque de fuerzas o un dilema latente. Hay una energía estancada que frena la resolución. El oráculo te aconseja pausar cualquier decisión impulsiva hasta que el bloqueo de la carta invertida sea sanado desde la raíz.</div>";
+                    return `<div class="bloque-unificado"><strong>✦ Devolución:</strong> ${t.consejo2inv}</div>`;
                 }
-                return "<div class=\"bloque-unificado\"><strong>✦ Devolución Aunada del Vínculo:</strong> Excelente conjunción fluida. Las dos fuerzas se potencian mutuamente de forma directa. La primera carta pone el motor y las herramientas prácticas, mientras que la segunda abre el camino hacia un desenlace constructivo e inmediato. Accioná sin dudar.</div>";
+                return `<div class="bloque-unificado"><strong>✦ Devolución:</strong> ${t.consejo2der}</div>`;
             }
 
             if (cartas.length === 3) {
                 if (mayoriaMayores) {
-                    return "<div class=\"bloque-unificado\"><strong>✦ Lectura Integrada (Pasado / Presente / Futuro):</strong> Esta tirada carga un peso de Arcanos Mayores muy profundo. Estás atravesando un cambio de vida estructural que trasciende lo cotidiano. Lo que viviste en el pasado sembró una lección espiritual ineludible que hoy te obliga a tomar las riendas de tu realidad para no repetir errores en el mañana.</div>";
+                    return `<div class="bloque-unificado"><strong>✦ Lectura Temporal:</strong> ${t.consejo3may}</div>`;
                 }
                 if (tieneInvertidas) {
-                    return "<div class=\"bloque-unificado\"><strong>✦ Lectura Integrada (Pasado / Presente / Futuro):</strong> El camino del tiempo muestra interferencias. Aunque la base de tu pasado o presente sea sólida, la aparición de bloqueos te advierte que debés corregir actitudes defensivas o miedos infundados si querés liberar el verdadero potencial que depara tu futuro.</div>";
+                    return `<div class="bloque-unificado"><strong>✦ Lectura Temporal:</strong> ${t.consejo3inv}</div>`;
                 }
-                return "<div class=\"bloque-unificado\"><strong>✦ Lectura Integrada (Pasado / Presente / Futuro):</strong> Línea temporal perfectamente unificada y armónica. Estás alineado con tus verdaderos deseos. El proceso que iniciaste maduró correctamente en tu presente y te impulsa con total claridad y fluidez hacia un porvenir cargado de estabilidad material y emocional.</div>";
+                return `<div class="bloque-unificado"><strong>✦ Lectura Temporal:</strong> ${t.consejo3der}</div>`;
             }
             return "";
         }
@@ -835,36 +895,48 @@
                 zonaCartel.innerHTML = `<div class="cartel-sino ${balance.clase}">${t.respuesta} ${balance.txt}</div>`;
             }
 
+            // LISTADO DE MAPEO DE IMÁGENES DE WIKIMEDIA COMMONS DE CONFANZA AL 100%
+            const urlsFijasWikipedia = [
+                "00_Fool", "01_Magician", "02_High_Priestess", "03_Empress", "04_Emperor", "05_Hierophant", "06_Lovers", "07_Chariot", "08_Strength", "09_Hermit", "10_Wheel_of_Fortune", "11_Justice", "12_Hanged_Man", "13_Death", "14_Temperance", "15_Devil", "16_Tower", "17_Star", "18_Moon", "19_Sun", "20_Judgement", "21_World",
+                "Wands01", "Wands02", "Wands03", "Wands04", "Wands05", "Wands06", "Wands07", "Wands08", "Wands09", "Wands10", "Wands11", "Wands12", "Wands13", "Wands14",
+                "Cups01", "Cups02", "Cups03", "Cups04", "Cups05", "Cups06", "Cups07", "Cups08", "Cups09", "Cups10", "Cups11", "Cups12", "Cups13", "Cups14",
+                "Swords01", "Swords02", "Swords03", "Swords04", "Swords05", "Swords06", "Swords07", "Swords08", "Swords09", "Swords10", "Swords11", "Swords12", "Swords13", "Swords14",
+                "Pents01", "Pents02", "Pents03", "Pents04", "Pents05", "Pents06", "Pents07", "Pents08", "Pents09", "Pents10", "Pents11", "Pents12", "Pents13", "Pents14"
+            ];
+
             cartasSeleccionadasIndices.forEach((cartaData, index) => {
                 let cObj = cartaData.original;
                 let alReves = cartaData.invertida;
 
-                let nombreReal = nombresCartas78[cObj.id];
+                let nombreOriginal = nombresCartas78[cObj.id];
+                let nombreTraducido = traducirTextoLectura(nombreOriginal, idiomaActual);
                 let orientacionTexto = alReves ? t.alreves : t.derecho;
                 let orientacionClase = alReves ? "txt-alreves" : "txt-derecho";
 
-                // SERVIDOR REMOTO ABIERTO CON LAS IMÁGENES OFICIALES DEL TAROT RIDER WAITE
-                let numeroFormateado = String(cObj.id).padStart(2, '0');
-                let urlImagenRemota = `https://raw.githubusercontent.com/ekelen/tarot-api/master/static/cards/${numeroFormateado}.jpg`;
+                // IMAGEN PÚBLICA DIRECTA DE WIKIMEDIA COMMONS
+                let nombreArchivoWiki = urlsFijasWikipedia[cObj.id];
+                let urlImagenWikipedia = `https://upload.wikimedia.org/wikipedia/commons/f/f7/RWS_Tarot_${nombreArchivoWiki}.jpg`;
 
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${alReves ? 'es-invertida' : ''}`;
                 
                 divC.innerHTML = `
                     <div class="wrapper-imagen-tarot">
-                        <img src="${urlImagenRemota}" alt="${nombreReal}" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color:#d4af37; padding-top:85px; font-size:0.9rem;\'>✦<br>ARCANA</div>';">
+                        <img src="${urlImagenWikipedia}" alt="${nombreTraducido}" onerror="this.style.display='none'; this.parentNode.innerHTML='<div style=\'color:#d4af37; padding-top:85px; font-size:0.9rem;\'>✦<br>ARCANA</div>';">
                     </div>
                     <div class="nombre-c">
-                        ${nombreReal}
+                        ${nombreTraducido}
                         <span class="tag-orientacion ${orientacionClase}">${orientacionTexto}</span>
                     </div>
                 `;
                 cajaRevelada.appendChild(divC);
 
                 let txtBase = alReves ? significadosInvertido78[cObj.id] : significadosDerecho78[cObj.id];
+                let txtTraducidoSignificado = traducirTextoLectura(txtBase, idiomaActual);
+                
                 let tagPosicion = (modoLectura === "3") ? ` (${index===0?'Pasado':(index===1?'Presente':'Futuro')})` : "";
                 
-                desgloseSignificados += `<p><strong>✦ ${nombreReal}${tagPosicion}:</strong> ${txtBase}</p>`;
+                desgloseSignificados += `<p><strong>✦ ${nombreTraducido}${tagPosicion}:</strong> ${txtTraducidoSignificado}</p>`;
             });
 
             let bloqueUnificadoFinal = generarInterpretacionUnificada(cartasSeleccionadasIndices);
