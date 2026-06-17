@@ -137,16 +137,6 @@
             animation: float 3s ease-in-out infinite;
         }
 
-        .mano-lateral {
-            position: absolute;
-            font-size: 2.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.5));
-        }
-        .mano-izquierda { left: -5px; transform: translateY(-50%) rotate(15deg) scaleX(-1); }
-        .mano-derecha { right: -5px; transform: translateY(-50%) rotate(-15deg); }
-
         @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
@@ -400,6 +390,12 @@
             text-align: center;
             line-height: 1.4;
         }
+        .carta-simbolo {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+        }
+
 
         .caja-interpretacion {
             background: rgba(5, 2, 12, 0.95);
@@ -464,7 +460,6 @@
             .lema { font-size: 1.1rem; }
             .icono-crystal { width: 140px; height: 140px; }
             .icono-crystal img { width: 110px; height: 110px; }
-            .mano-lateral { font-size: 1.8rem; }
             .card-titulo { font-size: 2rem; }
             .card-desc { font-size: 1rem; }
             .menu-card { padding: 30px 15px; }
@@ -474,6 +469,12 @@
             .instruccion-directa { font-size: 1.5rem; margin: 10px 0; }
             .carta-revelada { width: 135px; height: 210px; }
             .carta-revelada .nombre-c { font-size: 1.2rem; }
+        .carta-simbolo {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+        }
+
             .btn-volver { font-size: 1.2rem; width: 100%; }
             .num-grila { grid-template-columns: 1fr; }
         }
@@ -518,10 +519,7 @@
 
         <div class="logo-area">
             <div class="icono-crystal">
-                <img src="fondo-arcana.jpg" alt="Arcana Crystal Ball">
-                <span class="mano-lateral mano-izquierda">&#x1F91A;</span>
-                <span class="mano-lateral mano-derecha">&#x1F91A;</span>
-            </div>
+                <img src="fondo-arcana.jpg" alt="Arcana Crystal Ball"></div>
             <h1 class="marca-titulo">ARCANA</h1>
             <div class="lema" id="txt-lema">El universo responde</div>
         </div>
@@ -610,8 +608,8 @@
             <div class="instruccion-directa">&#x1F522; <span data-t="numTitulo">Numerología Personal</span></div>
             <div class="config-ritual-area">
                 <div class="selector-caja">
-                    <label data-t="lblNumNombre">Nombre completo:</label>
-                    <input type="text" id="num-nombre" data-t-placeholder="phNombre" placeholder="Tu nombre completo">
+                    <label data-t="lblNumNombre">Nombre y apellido:</label>
+                    <input type="text" id="num-nombre" data-t-placeholder="phNombre" placeholder="Tu nombre y apellido">
                 </div>
                 <div class="selector-caja">
                     <label data-t="lblNumFecha">Fecha de nacimiento:</label>
@@ -689,21 +687,37 @@
             <div class="instruccion-directa">&#x1F9E0; <span data-t="oraculoTitulo">Oráculo de Conciencia</span></div>
             <div class="config-ritual-area">
                 <div class="selector-caja">
-                    <label data-t="lblOrcNombre">Nombre completo:</label>
-                    <input type="text" id="orc-nombre" data-t-placeholder="phNombre" placeholder="Tu nombre completo">
+                    <label data-t="lblOrcNombre">Nombre y apellido:</label>
+                    <input type="text" id="orc-nombre" data-t-placeholder="phNombre" placeholder="Tu nombre y apellido">
                 </div>
                 <div class="selector-caja">
                     <label data-t="lblOrcFecha">Fecha de nacimiento:</label>
                     <input type="date" id="orc-fecha">
                 </div>
                 <div class="selector-caja">
-                    <label data-t="lblOrcHora">Hora de nacimiento (opcional):</label>
+                    <label data-t="lblOrcHora">Hora de nacimiento:</label>
                     <input type="time" id="orc-hora">
                 </div>
                 <div class="selector-caja">
-                    <label data-t="lblOrcPregunta">Tu pregunta al universo:</label>
-                    <input type="text" id="orc-pregunta" data-t-placeholder="phPregunta" placeholder="¿Qué deseas saber?">
+                    <label data-t="lblOrcLugar">Lugar de nacimiento:</label>
+                    <select id="orc-lugar">
+                        <option value="40.4,-3.7">Madrid, España</option>
+                        <option value="-34.6,-58.4">Buenos Aires, Argentina</option>
+                        <option value="19.4,-99.1">Ciudad de México</option>
+                        <option value="4.7,-74.1">Bogotá, Colombia</option>
+                        <option value="-12,-77">Lima, Perú</option>
+                        <option value="-33.4,-70.7">Santiago, Chile</option>
+                        <option value="48.9,2.35">París, Francia</option>
+                        <option value="41.9,12.5">Roma, Italia</option>
+                        <option value="51.5,-0.13">Londres, Reino Unido</option>
+                        <option value="40.7,-74">Nueva York, USA</option>
+                        <option value="34.1,-118.2">Los Ángeles, USA</option>
+                        <option value="-23.5,-46.6">São Paulo, Brasil</option>
+                        <option value="-3.7,-38.5">Fortaleza, Brasil</option>
+                        <option value="35.7,139.7">Tokio, Japón</option>
+                    </select>
                 </div>
+                
             </div>
             <button class="btn-volver" onclick="realizarConsultaOraculo()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnConsultarOraculo">CONSULTAR AL ORÁCULO</button>
         </div>
@@ -807,11 +821,14 @@
                 btnCalcularCarta: "CALCULAR CARTA NATAL", btnConsultarOraculo: "CONSULTAR AL ORÁCULO",
                 elegir: "Elige tus cartas", elegirUna: "Elige tu carta", dictamen: "El Dictamen del Destino",
                 invertida: " (Invertida)", interpretacion: "Interpretación",
+                sintesisTirada: "Lectura Conjunta",
+                sintesis3Cartas: "La secuencia de estas tres cartas traza un mensaje coherente: tu pasado ha preparado el terreno, tu presente te sitúa ante una encrucijada y tu futuro te invita a avanzar con confianza. Juntas, confirman que estás en un momento de transición significativa.",
+                sintesis1Carta: "Esta carta encapsula el mensaje esencial que necesitas escuchar ahora mismo. Medita sobre ella y permite que su sabiduría guíe tu próximo paso.",
                 si: "\u2726 DICTAMEN: SÍ \u2726", no: "\u2726 DICTAMEN: NO \u2726",
-                numTitulo: "Numerología Personal", lblNumNombre: "Nombre completo:", lblNumFecha: "Fecha de nacimiento:",
+                numTitulo: "Numerología Personal", lblNumNombre: "Nombre y apellido:", lblNumFecha: "Fecha de nacimiento:",
                 lblNumConsulta: "Tipo de consulta:", numPerfil: "Perfil Numerológico Completo",
                 numEnergia: "Energía del Día", numCompat: "Compatibilidad Numérica",
-                phNombre: "Tu nombre completo",
+                phNombre: "Tu nombre y apellido",
                 btnCalcular: "CALCULAR", numResTitulo: "Tu Perfil Numerológico",
                 caminoVida: "Camino de Vida", destino: "Número de Destino", alma: "Número del Alma", personalidad: "Personalidad",
                 energiaDia: "Energía del Día", numeroPersonalAno: "Número Personal del Año",
@@ -828,9 +845,8 @@
                 lunaDesc: "Tus emociones profundas y mundo interior.",
                 ascDesc: "Tu máscara exterior y primera impresión.",
                 oraculoTitulo: "Oráculo de Conciencia",
-                lblOrcNombre: "Nombre completo:", lblOrcFecha: "Fecha de nacimiento:",
-                lblOrcHora: "Hora de nacimiento (opcional):", lblOrcPregunta: "Tu pregunta al universo:",
-                phPregunta: "¿Qué deseas saber?",
+                lblOrcNombre: "Nombre y apellido:", lblOrcFecha: "Fecha de nacimiento:", lblOrcLugar: "Lugar de nacimiento:", phLugar: "Tu lugar de nacimiento",
+                lblOrcHora: "Hora de nacimiento:",
                 oraculoResTitulo: "\u2728 El Oráculo Ha Hablado \u2728",
                 elegirOraculo: "Elige tu carta del Oráculo",
                 cartasRevelan: "Las Cartas Revelan",
@@ -866,11 +882,14 @@
                 btnCalcularCarta: "CALCULATE BIRTH CHART", btnConsultarOraculo: "CONSULT THE ORACLE",
                 elegir: "Choose your cards", elegirUna: "Choose your card", dictamen: "The Verdict of Destiny",
                 invertida: " (Reversed)", interpretacion: "Interpretation",
+                sintesisTirada: "Combined Reading",
+                sintesis3Cartas: "The sequence of these three cards traces a coherent message: your past has laid the groundwork, your present places you at a crossroads, and your future invites you to move forward with confidence. Together, they confirm you are in a moment of significant transition.",
+                sintesis1Carta: "This card encapsulates the essential message you need to hear right now. Meditate on it and let its wisdom guide your next step.",
                 si: "\u2726 VERDICT: YES \u2726", no: "\u2726 VERDICT: NO \u2726",
-                numTitulo: "Personal Numerology", lblNumNombre: "Full name:", lblNumFecha: "Date of birth:",
+                numTitulo: "Personal Numerology", lblNumNombre: "First and last name:", lblNumFecha: "Date of birth:",
                 lblNumConsulta: "Type of reading:", numPerfil: "Complete Numerological Profile",
                 numEnergia: "Energy of the Day", numCompat: "Numeric Compatibility",
-                phNombre: "Your full name",
+                phNombre: "Your first and last name",
                 numResTitulo: "Your Numerological Profile",
                 caminoVida: "Life Path", destino: "Destiny Number", alma: "Soul Number", personalidad: "Personality",
                 energiaDia: "Energy of the Day", numeroPersonalAno: "Personal Year Number",
@@ -887,9 +906,8 @@
                 lunaDesc: "Your deep emotions and inner world.",
                 ascDesc: "Your outer mask and first impression.",
                 oraculoTitulo: "Oracle of Consciousness",
-                lblOrcNombre: "Full name:", lblOrcFecha: "Date of birth:",
-                lblOrcHora: "Time of birth (optional):", lblOrcPregunta: "Your question to the universe:",
-                phPregunta: "What do you wish to know?",
+                lblOrcNombre: "First and last name:", lblOrcFecha: "Date of birth:", lblOrcLugar: "Place of birth:", phLugar: "Your place of birth",
+                lblOrcHora: "Time of birth:",
                 oraculoResTitulo: "\u2728 The Oracle Has Spoken \u2728",
                 elegirOraculo: "Choose your Oracle card",
                 cartasRevelan: "The Cards Reveal",
@@ -925,11 +943,14 @@
                 btnCalcularCarta: "CALCULAR MAPA NATAL", btnConsultarOraculo: "CONSULTAR O ORÁCULO",
                 elegir: "Escolha suas cartas", elegirUna: "Escolha sua carta", dictamen: "O Decreto do Destino",
                 invertida: " (Invertida)", interpretacao: "Interpretação",
+                sintesisTirada: "Leitura Conjunta",
+                sintesis3Cartas: "A sequência destas três cartas traça uma mensagem coerente: seu passado preparou o terreno, seu presente o coloca numa encruzilhada, e seu futuro o convida a avançar com confiança. Juntas, confirmam que você está num momento de transição significativa.",
+                sintesis1Carta: "Esta carta encapsula a mensagem essencial que você precisa ouvir agora. Medite sobre ela e permita que sua sabedoria guie seu próximo passo.",
                 si: "\u2726 VEREDITO: SIM \u2726", no: "\u2726 VEREDITO: NÃO \u2726",
-                numTitulo: "Numerologia Pessoal", lblNumNombre: "Nome completo:", lblNumFecha: "Data de nascimento:",
+                numTitulo: "Numerologia Pessoal", lblNumNombre: "Nome e sobrenome:", lblNumFecha: "Data de nascimento:",
                 lblNumConsulta: "Tipo de consulta:", numPerfil: "Perfil Numerológico Completo",
                 numEnergia: "Energia do Dia", numCompat: "Compatibilidade Numérica",
-                phNombre: "Seu nome completo",
+                phNombre: "Seu nome e sobrenome",
                 numResTitulo: "Seu Perfil Numerológico",
                 caminoVida: "Caminho de Vida", destino: "Número de Destino", alma: "Número da Alma", personalidade: "Personalidade",
                 energiaDia: "Energia do Dia", numeroPersonalAno: "Número Pessoal do Ano",
@@ -946,9 +967,8 @@
                 lunaDesc: "Suas emoções profundas e mundo interior.",
                 ascDesc: "Sua máscara externa e primeira impressão.",
                 oraculoTitulo: "Oráculo de Consciência",
-                lblOrcNombre: "Nome completo:", lblOrcFecha: "Data de nascimento:",
-                lblOrcHora: "Hora de nascimento (opcional):", lblOrcPregunta: "Sua pergunta ao universo:",
-                phPregunta: "O que deseja saber?",
+                lblOrcNombre: "Nome e sobrenome:", lblOrcFecha: "Data de nascimento:", lblOrcLugar: "Local de nascimento:", phLugar: "Seu local de nascimento",
+                lblOrcHora: "Hora de nascimento:",
                 oraculoResTitulo: "\u2728 O Oráculo Falou \u2728",
                 elegirOraculo: "Escolha sua carta do Oráculo",
                 cartasRevelan: "As Cartas Revelam",
@@ -984,11 +1004,14 @@
                 btnCalcularCarta: "CALCULER THÈME NATAL", btnConsultarOraculo: "CONSULTER L'ORACLE",
                 elegir: "Choisissez vos cartes", elegirUna: "Choisissez votre carte", dictamen: "Le Décret du Destin",
                 invertida: " (Renversée)", interpretacao: "Interprétation",
+                sintesisTirada: "Lecture Combinée",
+                sintesis3Cartas: "La séquence de ces trois cartes trace un message cohérent : ton passé a préparé le terrain, ton présent te place à un carrefour, et ton futur t'invite à avancer avec confiance. Ensemble, elles confirment que tu es dans un moment de transition significative.",
+                sintesis1Carta: "Cette carte encapsule le message essentiel que tu dois entendre maintenant. Médite sur elle et laisse sa sagesse guider ton prochain pas.",
                 si: "\u2726 VERDICT: OUI \u2726", no: "\u2726 VERDICT: NON \u2726",
-                numTitulo: "Numérologie Personnelle", lblNumNombre: "Nom complet:", lblNumFecha: "Date de naissance:",
+                numTitulo: "Numérologie Personnelle", lblNumNombre: "Prénom et nom:", lblNumFecha: "Date de naissance:",
                 lblNumConsulta: "Type de consultation:", numPerfil: "Profil Numérologique Complet",
                 numEnergia: "Énergie du Jour", numCompat: "Compatibilité Numérique",
-                phNombre: "Ton nom complet",
+                phNombre: "Ton prénom et nom",
                 numResTitulo: "Ton Profil Numérologique",
                 caminoVida: "Chemin de Vie", destino: "Nombre de Destin", alma: "Nombre d'Âme", personalidad: "Personnalité",
                 energiaDia: "Énergie du Jour", numeroPersonalAno: "Nombre Personnel de l'Année",
@@ -1005,9 +1028,8 @@
                 lunaDesc: "Tes émotions profondes et monde intérieur.",
                 ascDesc: "Ton masque extérieur et première impression.",
                 oraculoTitulo: "Oracle de Conscience",
-                lblOrcNombre: "Nom complet:", lblOrcFecha: "Date de naissance:",
-                lblOrcHora: "Heure de naissance (optionnel):", lblOrcPregunta: "Ta question à l'univers:",
-                phPregunta: "Que souhaites-tu savoir?",
+                lblOrcNombre: "Prénom et nom:", lblOrcFecha: "Date de naissance:", lblOrcLugar: "Lieu de naissance:", phLugar: "Ton lieu de naissance",
+                lblOrcHora: "Heure de naissance:",
                 oraculoResTitulo: "\u2728 L'Oracle A Parlé \u2728",
                 elegirOraculo: "Choisis ta carte de l'Oracle",
                 cartasRevelan: "Les Cartes Révèlent",
@@ -1043,11 +1065,14 @@
                 btnCalcularCarta: "CALCOLA TEMA NATALE", btnConsultarOraculo: "CONSULTA L'ORACOLO",
                 elegir: "Scegli le tue carte", elegirUna: "Scegli la tua carta", dictamen: "Il Verdetto del Destino",
                 invertida: " (Rovesciata)", interpretacao: "Interpretazione",
+                sintesisTirada: "Lettura Combinata",
+                sintesis3Cartas: "La sequenza di queste tre carte traccia un messaggio coerente: il tuo passato ha preparato il terreno, il tuo presente ti pone a un bivio, e il tuo futuro ti invita ad avanzare con fiducia. Insieme, confermano che sei in un momento di transizione significativa.",
+                sintesis1Carta: "Questa carta racchiude il messaggio essenziale che devi sentire ora. Medita su di essa e lascia che la sua saggezza guidi il tuo prossimo passo.",
                 si: "\u2726 VERDETTO: SÌ \u2726", no: "\u2726 VERDETTO: NO \u2726",
-                numTitulo: "Numerologia Personale", lblNumNombre: "Nome completo:", lblNumFecha: "Data di nascita:",
+                numTitulo: "Numerologia Personale", lblNumNombre: "Nome e cognome:", lblNumFecha: "Data di nascita:",
                 lblNumConsulta: "Tipo di consultazione:", numPerfil: "Profilo Numerologico Completo",
                 numEnergia: "Energia del Giorno", numCompat: "Compatibilità Numerica",
-                phNombre: "Il tuo nome completo",
+                phNombre: "Il tuo nome e cognome",
                 numResTitulo: "Il Tuo Profilo Numerologico",
                 caminoVida: "Cammino di Vita", destino: "Numero del Destino", alma: "Numero dell'Anima", personalidad: "Personalità",
                 energiaDia: "Energia del Giorno", numeroPersonalAno: "Numero Personale dell'Anno",
@@ -1055,7 +1080,7 @@
                 tuCaminoVida: "Il Tuo Cammino di Vita", tuDestino: "Il Tuo Destino", tuAlmaAnhela: "La Tua Anima brama", tuPersonalidad: "La Tua Personalità proietta",
                 tuEnergiaDia: "Vibrazione del giorno",
                 astroTitulo: "Il Tuo Tema Natale", lblAstNombre: "Nome:", lblAstFecha: "Data di nascita:",
-                lblAstHora: "Ora di nascita:", lblAstLugar: "Luogo di nascita:", phNomeCorto: "Il tuo nome",
+                lblAstHora: "Ora di nascita:", lblAstLugar: "Luogo di nascita:", phNombreCorto: "Il tuo nome e cognome",
                 signoSolar: "Segno Solare", signoLunar: "Segno Lunare", ascendente: "Ascendente",
                 astroResTitulo: "Il Tuo Tema Astrale", perfilAstrologico: "Il Tuo Profilo Astrologico",
                 solEn: "Sole in", lunaEn: "Luna in", ascendenteTxt: "Ascendente", mercurioEn: "Mercurio in",
@@ -1064,9 +1089,8 @@
                 lunaDesc: "Le tue emozioni profonde e mondo interiore.",
                 ascDesc: "La tua maschera esterna e prima impressione.",
                 oraculoTitulo: "Oracolo di Coscienza",
-                lblOrcNombre: "Nome completo:", lblOrcFecha: "Data di nascita:",
-                lblOrcHora: "Ora di nascita (opzionale):", lblOrcPregunta: "La tua domanda all'universo:",
-                phPregunta: "Cosa desideri sapere?",
+                lblOrcNombre: "Nome e cognome:", lblOrcFecha: "Data di nascita:", lblOrcLugar: "Luogo di nascita:", phLugar: "Il tuo luogo di nascita",
+                lblOrcHora: "Ora di nascita:",
                 oraculoResTitulo: "\u2728 L'Oracolo Ha Parlato \u2728",
                 elegirOraculo: "Scegli la tua carta dell'Oracolo",
                 cartasRevelan: "Le Carte Rivelano",
@@ -1124,11 +1148,11 @@
                 : '';
         }
 
-        function irAlMenu() { sonarCuenco(); cambiarVista('pantalla-menu'); }
-        function abrirTarotConfig() { sonarCuenco(); cambiarVista('pantalla-tarot-config'); }
-        function abrirNumerologiaConfig() { sonarCuenco(); cambiarVista('pantalla-numerologia-config'); }
-        function abrirAstrologiaConfig() { sonarCuenco(); cambiarVista('pantalla-astrologia-config'); }
-        function abrirOraculoConfig() { sonarCuenco(); cambiarVista('pantalla-oraculo-config'); }
+        function irAlMenu() { cambiarVista('pantalla-menu'); }
+        function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
+        function abrirNumerologiaConfig() { cambiarVista('pantalla-numerologia-config'); }
+        function abrirAstrologiaConfig() { cambiarVista('pantalla-astrologia-config'); }
+        function abrirOraculoConfig() { cambiarVista('pantalla-oraculo-config'); }
 
         function ajustarTipoTirada(tema) {
             const cajaTirada = document.getElementById('caja-tipo-tirada');
@@ -1145,91 +1169,84 @@
         // ========================
         // MAZO COMPLETO 78 CARTAS
         // ========================
-        const mazoOficial78 = [
-            // Arcanos Mayores (22)
-            {es:"El Loco",en:"The Fool",fr:"Le Mat",it:"Il Matto",pt:"O Louco",significado:{es:"Nuevos comienzos, saltos de fe, espontaneidad.",en:"New beginnings, leaps of faith, spontaneity.",fr:"Nouveaux départs, sauts de foi, spontanéité.",it:"Nuovi inizi, salti di fede, spontaneità.",pt:"Novos começos, saltos de fé, espontaneidade."}},
-            {es:"El Mago",en:"The Magician",fr:"Le Bateleur",it:"Il Mago",pt:"O Mago",significado:{es:"Poder de manifestación, habilidad, recursos.",en:"Power of manifestation, skill, resources.",fr:"Pouvoir de manifestation, compétence, ressources.",it:"Potere di manifestazione, abilità, risorse.",pt:"Poder de manifestação, habilidade, recursos."}},
-            {es:"La Sacerdotisa",en:"The High Priestess",fr:"La Papesse",it:"La Papessa",pt:"A Sacerdotisa",significado:{es:"Intuición, misterio, subconsciente sagrado.",en:"Intuition, mystery, sacred subconscious.",fr:"Intuition, mystère, subconscient sacré.",it:"Intuizione, mistero, subconscio sacro.",pt:"Intuição, mistério, subconsciente sagrado."}},
-            {es:"La Emperatriz",en:"The Empress",fr:"L'Impératrice",it:"L'Imperatrice",pt:"A Imperatriz",significado:{es:"Abundancia, naturaleza, fertilidad, creación.",en:"Abundance, nature, fertility, creation.",fr:"Abondance, nature, fertilité, création.",it:"Abbondanza, natura, fertilità, creazione.",pt:"Abundância, natureza, fertilidade, criação."}},
-            {es:"El Emperador",en:"The Emperor",fr:"L'Empereur",it:"L'Imperatore",pt:"O Imperador",significado:{es:"Estructura, autoridad, bases firmes.",en:"Structure, authority, firm foundations.",fr:"Structure, autorité, fondations solides.",it:"Struttura, autorità, basi solide.",pt:"Estrutura, autoridade, bases firmes."}},
-            {es:"El Hierofante",en:"The Hierophant",fr:"Le Pape",it:"Il Papa",pt:"O Hierofante",significado:{es:"Tradición, sabiduría, guía espiritual.",en:"Tradition, wisdom, spiritual guidance.",fr:"Tradition, sagesse, guidance spirituelle.",it:"Tradizione, saggezza, guida spirituale.",pt:"Tradição, sabedoria, guia espiritual."}},
-            {es:"Los Enamorados",en:"The Lovers",fr:"L'Amoureux",it:"Gli Amanti",pt:"Os Enamorados",significado:{es:"Elecciones del corazón, armonía, uniones.",en:"Heart's choices, harmony, unions.",fr:"Choix du cœur, harmonie, unions.",it:"Scelte del cuore, armonia, unioni.",pt:"Escolhas do coração, harmonia, uniões."}},
-            {es:"El Carro",en:"The Chariot",fr:"Le Chariot",it:"Il Carro",pt:"O Carro",significado:{es:"Determinación, victoria, control de fuerzas.",en:"Determination, victory, control of forces.",fr:"Détermination, victoire, contrôle des forces.",it:"Determinazione, vittoria, controllo delle forze.",pt:"Determinação, vitória, controle de forças."}},
-            {es:"La Justicia",en:"Justice",fr:"La Justice",it:"La Giustizia",pt:"A Justiça",significado:{es:"Verdad, causa y efecto, equilibrio.",en:"Truth, cause and effect, balance.",fr:"Vérité, cause et effet, équilibre.",it:"Verità, causa ed effetto, equilibrio.",pt:"Verdade, causa e efeito, equilíbrio."}},
-            {es:"El Ermitaño",en:"The Hermit",fr:"L'Ermite",it:"L'Eremita",pt:"O Eremita",significado:{es:"Introspección, retiro voluntario, luz interior.",en:"Introspection, voluntary retreat, inner light.",fr:"Introspection, retraite volontaire, lumière intérieure.",it:"Introspezione, ritiro volontario, luce interiore.",pt:"Introspecção, retiro voluntário, luz interior."}},
-            {es:"La Rueda de la Fortuna",en:"Wheel of Fortune",fr:"La Roue de Fortune",it:"La Ruota della Fortuna",pt:"A Roda da Fortuna",significado:{es:"Cambios de destino, ciclos, giros del destino.",en:"Changes of destiny, cycles, turns of fate.",fr:"Changements de destin, cycles, tours du destin.",it:"Cambiamenti di destino, cicli, giri del destino.",pt:"Mudanças de destino, ciclos, voltas do destino."}},
-            {es:"La Fuerza",en:"Strength",fr:"La Force",it:"La Forza",pt:"A Força",significado:{es:"Valor interno, compasión, dominar pasiones.",en:"Inner courage, compassion, taming passions.",fr:"Courage intérieur, compassion, maîtriser les passions.",it:"Coraggio interiore, compassione, domare le passioni.",pt:"Coragem interior, compaixão, domar paixões."}},
-            {es:"El Colgado",en:"The Hanged Man",fr:"Le Pendu",it:"L'Appeso",pt:"O Enforcado",significado:{es:"Nueva perspectiva, pausa necesaria, sacrificio.",en:"New perspective, necessary pause, sacrifice.",fr:"Nouvelle perspective, pause nécessaire, sacrifice.",it:"Nuova prospettiva, pausa necessaria, sacrificio.",pt:"Nova perspectiva, pausa necessária, sacrifício."}},
-            {es:"La Muerte",en:"Death",fr:"La Mort",it:"La Morte",pt:"A Morte",significado:{es:"Transformación profunda, finales que traen renacer.",en:"Profound transformation, endings that bring rebirth.",fr:"Transformation profonde, fins qui apportent renaissance.",it:"Trasformazione profonda, fini che portano rinascita.",pt:"Transformação profunda, fins que trazem renascimento."}},
-            {es:"La Templanza",en:"Temperance",fr:"Tempérance",it:"La Temperanza",pt:"A Temperança",significado:{es:"Alquimia, paciencia, moderación, balance.",en:"Alchemy, patience, moderation, balance.",fr:"Alchimie, patience, modération, équilibre.",it:"Alchimia, pazienza, moderazione, equilibrio.",pt:"Alquimia, paciência, moderação, equilíbrio."}},
-            {es:"El Diablo",en:"The Devil",fr:"Le Diable",it:"Il Diavolo",pt:"O Diabo",significado:{es:"Ataduras materiales, pasiones ocultas, sombras.",en:"Material bonds, hidden passions, shadows.",fr:"Liens matériels, passions cachées, ombres.",it:"Legami materiali, passioni nascoste, ombre.",pt:"Laços materiais, paixões ocultas, sombras."}},
-            {es:"La Torre",en:"The Tower",fr:"La Maison Dieu",it:"La Torre",pt:"A Torre",significado:{es:"Ruptura de estructuras falsas, revelación repentina.",en:"Breaking of false structures, sudden revelation.",fr:"Rupture de fausses structures, révélation soudaine.",it:"Rottura di false strutture, rivelazione improvvisa.",pt:"Ruptura de estruturas falsas, revelação repentina."}},
-            {es:"La Estrella",en:"The Star",fr:"L'Étoile",it:"La Stella",pt:"A Estrela",significado:{es:"Esperanza, sanación espiritual, renovación.",en:"Hope, spiritual healing, renewal.",fr:"Espoir, guérison spirituelle, renouveau.",it:"Speranza, guarigione spirituale, rinnovamento.",pt:"Esperança, cura espiritual, renovação."}},
-            {es:"La Luna",en:"The Moon",fr:"La Lune",it:"La Luna",pt:"A Lua",significado:{es:"Ilusiones, miedos escondidos, intuición profunda.",en:"Illusions, hidden fears, deep intuition.",fr:"Illusions, peurs cachées, intuition profonde.",it:"Illusioni, paure nascoste, intuizione profonda.",pt:"Ilusões, medos ocultos, intuição profunda."}},
-            {es:"El Sol",en:"The Sun",fr:"Le Soleil",it:"Il Sole",pt:"O Sol",significado:{es:"Claridad absoluta, éxito, vitalidad, alegría.",en:"Absolute clarity, success, vitality, joy.",fr:"Clarté absolue, succès, vitalité, joie.",it:"Chiarezza assoluta, successo, vitalità, gioia.",pt:"Clareza absoluta, sucesso, vitalidade, alegria."}},
-            {es:"El Juicio",en:"Judgement",fr:"Le Jugement",it:"Il Giudizio",pt:"O Julgamento",significado:{es:"Llamado interno, absolución, despertar a tu verdad.",en:"Inner calling, absolution, awakening to your truth.",fr:"Appel intérieur, absolution, éveil à ta vérité.",it:"Chiamata interiore, assoluzione, risveglio alla tua verità.",pt:"Chamado interior, absolvição, despertar para sua verdade."}},
-            {es:"El Mundo",en:"The World",fr:"Le Monde",it:"Il Mondo",pt:"O Mundo",significado:{es:"Cierre de ciclos con éxito, plenitud.",en:"Successful cycle completion, fulfillment.",fr:"Fin de cycle réussie, plénitude.",it:"Chiusura di ciclo con successo, pienezza.",pt:"Fechamento de ciclo com sucesso, plenitude."}},
-            // Bastos (14)
-            {es:"As de Bastos",en:"Ace of Wands",fr:"As de Bâton",it:"Asso di Bastoni",pt:"Ás de Paus",significado:{es:"Chispa creativa, pasión inicial, nueva oportunidad.",en:"Creative spark, initial passion, new opportunity.",fr:"Étincelle créative, passion initiale, nouvelle opportunité.",it:"Scintilla creativa, passione iniziale, nuova opportunità.",pt:"Faísca criativa, paixão inicial, nova oportunidade."}},
-            {es:"Dos de Bastos",en:"Two of Wands",fr:"Deux de Bâton",it:"Due di Bastoni",pt:"Dois de Paus",significado:{es:"Planificación futura, mirar horizontes.",en:"Future planning, looking at horizons.",fr:"Planification future, regarder les horizons.",it:"Pianificazione futura, guardare gli orizzonti.",pt:"Planejamento futuro, olhar horizontes."}},
-            {es:"Tres de Bastos",en:"Three of Wands",fr:"Trois de Bâton",it:"Tre di Bastoni",pt:"Três de Paus",significado:{es:"Expansión, barcos llegando, frutos del esfuerzo.",en:"Expansion, ships arriving, fruits of effort.",fr:"Expansion, navires arrivants, fruits de l'effort.",it:"Espansione, navi in arrivo, frutti dello sforzo.",pt:"Expansão, navios chegando, frutos do esforço."}},
-            {es:"Cuatro de Bastos",en:"Four of Wands",fr:"Quatre de Bâton",it:"Quattro di Bastoni",pt:"Quatro de Paus",significado:{es:"Celebración, hogar armónico, estabilidad.",en:"Celebration, harmonious home, stability.",fr:"Célébration, foyer harmonieux, stabilité.",it:"Celebrazione, casa armoniosa, stabilità.",pt:"Celebração, lar harmonioso, estabilidade."}},
-            {es:"Cinco de Bastos",en:"Five of Wands",fr:"Cinq de Bâton",it:"Cinque di Bastoni",pt:"Cinco de Paus",significado:{es:"Competencia, tensiones menores, caos creativo.",en:"Competition, minor tensions, creative chaos.",fr:"Compétition, tensions mineures, chaos créatif.",it:"Competizione, tensioni minori, caos creativo.",pt:"Competição, tensões menores, caos criativo."}},
-            {es:"Seis de Bastos",en:"Six of Wands",fr:"Six de Bâton",it:"Sei di Bastoni",pt:"Seis de Paus",significado:{es:"Reconocimiento público, victoria, aplausos.",en:"Public recognition, victory, applause.",fr:"Reconnaissance publique, victoire, applaudissements.",it:"Riconoscimento pubblico, vittoria, applausi.",pt:"Reconhecimento público, vitória, aplausos."}},
-            {es:"Siete de Bastos",en:"Seven of Wands",fr:"Sept de Bâton",it:"Sette di Bastoni",pt:"Sete de Paus",significado:{es:"Defensa de principios, sostener posición.",en:"Defense of principles, standing your ground.",fr:"Défense des principes, tenir sa position.",it:"Difesa dei principi, mantenere la posizione.",pt:"Defesa de princípios, manter posição."}},
-            {es:"Ocho de Bastos",en:"Eight of Wands",fr:"Huit de Bâton",it:"Otto di Bastoni",pt:"Oito de Paus",significado:{es:"Velocidad, noticias rápidas, movimiento.",en:"Speed, rapid news, movement.",fr:"Vitesse, nouvelles rapides, mouvement.",it:"Velocità, notizie rapide, movimento.",pt:"Velocidade, notícias rápidas, movimento."}},
-            {es:"Nueve de Bastos",en:"Nine of Wands",fr:"Neuf de Bâton",it:"Nove di Bastoni",pt:"Nove de Paus",significado:{es:"Último esfuerzo, resiliencia, guardia en alto.",en:"Last effort, resilience, guard up.",fr:"Dernier effort, résilience, garde haute.",it:"Ultimo sforzo, resilienza, guardia alta.",pt:"Último esforço, resiliência, guarda alta."}},
-            {es:"Diez de Bastos",en:"Ten of Wands",fr:"Dix de Bâton",it:"Dieci di Bastoni",pt:"Dez de Paus",significado:{es:"Carga pesada, exceso de responsabilidades.",en:"Heavy load, excess of responsibilities.",fr:"Charge lourde, excès de responsabilités.",it:"Carico pesante, eccesso di responsabilità.",pt:"Carga pesada, excesso de responsabilidades."}},
-            {es:"Sota de Bastos",en:"Page of Wands",fr:"Valet de Bâton",it:"Fante di Bastoni",pt:"Valete de Paus",significado:{es:"Mensajero entusiasta, ganas de explorar.",en:"Enthusiastic messenger, desire to explore.",fr:"Messager enthousiaste, envie d'explorer.",it:"Messaggero entusiasta, voglia di esplorare.",pt:"Mensageiro entusiasmado, vontade de explorar."}},
-            {es:"Caballero de Bastos",en:"Knight of Wands",fr:"Cavalier de Bâton",it:"Cavaliere di Bastoni",pt:"Cavaleiro de Paus",significado:{es:"Acción impetuosa, mudanzas, avance apasionado.",en:"Impetuous action, moves, passionate advance.",fr:"Action impétueuse, déménagements, avance passionnée.",it:"Azione impulsiva, traslochi, avanzamento appassionato.",pt:"Ação impetuosa, mudanças, avanço apaixonado."}},
-            {es:"Reina de Bastos",en:"Queen of Wands",fr:"Reine de Bâton",it:"Regina di Bastoni",pt:"Rainha de Paus",significado:{es:"Magnetismo, confianza, fuego social.",en:"Magnetism, confidence, social fire.",fr:"Magnétisme, confiance, feu social.",it:"Magnetismo, fiducia, fuoco sociale.",pt:"Magnetismo, confiança, fogo social."}},
-            {es:"Rey de Bastos",en:"King of Wands",fr:"Roi de Bâton",it:"Re di Bastoni",pt:"Rei de Paus",significado:{es:"Liderazgo absoluto, visión ejecutiva.",en:"Absolute leadership, executive vision.",fr:"Leadership absolu, vision exécutive.",it:"Leadership assoluto, visione esecutiva.",pt:"Liderança absoluta, visão executiva."}},
-            // Copas (14)
-            {es:"As de Copas",en:"Ace of Cups",fr:"As de Coupe",it:"Asso di Coppe",pt:"Ás de Copas",significado:{es:"Amor puro desbordante, despertar emocional.",en:"Overflowing pure love, emotional awakening.",fr:"Amour pur débordant, éveil émotionnel.",it:"Amore puro traboccante, risveglio emotivo.",pt:"Amor puro transbordante, despertar emocional."}},
-            {es:"Dos de Copas",en:"Two of Cups",fr:"Deux de Coupe",it:"Due di Coppe",pt:"Dois de Copas",significado:{es:"Conexión recíproca, romance, alma gemela.",en:"Reciprocal connection, romance, soulmate.",fr:"Connexion réciproque, romance, âme sœur.",it:"Connessione reciproca, romanticismo, anima gemella.",pt:"Conexão recíproca, romance, alma gêmea."}},
-            {es:"Tres de Copas",en:"Three of Cups",fr:"Trois de Coupe",it:"Tre di Coppe",pt:"Três de Copas",significado:{es:"Brindis familiar, amistad verdadera.",en:"Family toast, true friendship.",fr:"Toast familial, véritable amitié.",it:"Brindisi familiare, vera amicizia.",pt:"Brinde familiar, amizade verdadeira."}},
-            {es:"Cuatro de Copas",en:"Four of Cups",fr:"Quatre de Coupe",it:"Quattro di Coppe",pt:"Quatro de Copas",significado:{es:"Apatía, aburrimiento, ignorar oportunidades.",en:"Apathy, boredom, ignoring opportunities.",fr:"Apathie, ennui, ignorer les opportunités.",it:"Apatia, noia, ignorare le opportunità.",pt:"Apatia, tédio, ignorar oportunidades."}},
-            {es:"Cinco de Copas",en:"Five of Cups",fr:"Cinq de Coupe",it:"Cinque di Coppe",pt:"Cinco de Copas",significado:{es:"Lamento por lo perdido, desilusión.",en:"Lament for what's lost, disillusionment.",fr:"Lamentation pour le perdu, désillusion.",it:"Lamento per ciò che è perso, disillusione.",pt:"Lamentação pelo perdido, desilusão."}},
-            {es:"Seis de Copas",en:"Six of Cups",fr:"Six de Coupe",it:"Sei di Coppe",pt:"Seis de Copas",significado:{es:"Nostalgia sana, recuerdos de infancia.",en:"Healthy nostalgia, childhood memories.",fr:"Nostalgie saine, souvenirs d'enfance.",it:"Nostalgia sana, ricordi d'infanzia.",pt:"Nostalgia saudável, memórias de infância."}},
-            {es:"Siete de Copas",en:"Seven of Cups",fr:"Sept de Coupe",it:"Sette di Coppe",pt:"Sete de Copas",significado:{es:"Fantasías, exceso de opciones, ilusiones.",en:"Fantasies, excess of options, illusions.",fr:"Fantaisies, excès d'options, illusions.",it:"Fantasie, eccesso di opzioni, illusioni.",pt:"Fantasias, excesso de opções, ilusões."}},
-            {es:"Ocho de Copas",en:"Eight of Cups",fr:"Huit de Coupe",it:"Otto di Coppe",pt:"Oito de Copas",significado:{es:"Abandono voluntario de lo que ya no nutre.",en:"Voluntary abandonment of what no longer nourishes.",fr:"Abandon volontaire de ce qui ne nourrit plus.",it:"Abbandono volontario di ciò che non nutre più.",pt:"Abandono voluntário do que não nutre mais."}},
-            {es:"Nueve de Copas",en:"Nine of Cups",fr:"Neuf de Coupe",it:"Nove di Coppe",pt:"Nove de Copas",significado:{es:"Deseo concedido, satisfacción personal.",en:"Wish granted, personal satisfaction.",fr:"Souhait exaucé, satisfaction personnelle.",it:"Desiderio esaudito, soddisfazione personale.",pt:"Desejo realizado, satisfação pessoal."}},
-            {es:"Diez de Copas",en:"Ten of Cups",fr:"Dix de Coupe",it:"Dieci di Coppe",pt:"Dez de Copas",significado:{es:"Dicha familiar absoluta, amor consolidado.",en:"Absolute family bliss, consolidated love.",fr:"Bonheur familial absolu, amour consolidé.",it:"Famiglia felice assoluta, amore consolidato.",pt:"Felicidade familiar absoluta, amor consolidado."}},
-            {es:"Sota de Copas",en:"Page of Cups",fr:"Valet de Coupe",it:"Fante di Coppe",pt:"Valete de Copas",significado:{es:"Sensibilidad artística, noticias afectivas.",en:"Artistic sensitivity, affective news.",fr:"Sensibilité artistique, nouvelles affectives.",it:"Sensibilità artistica, notizie affettive.",pt:"Sensibilidade artística, notícias afetivas."}},
-            {es:"Caballero de Copas",en:"Knight of Cups",fr:"Cavalier de Coupe",it:"Cavaliere di Coppe",pt:"Cavaleiro de Copas",significado:{es:"Portador del romance, propuesta sincera.",en:"Bearer of romance, sincere proposal.",fr:"Porteur de romance, proposition sincère.",it:"Portatore di romanticismo, proposta sincera.",pt:"Portador do romance, proposta sincera."}},
-            {es:"Reina de Copas",en:"Queen of Cups",fr:"Reine de Coupe",it:"Regina di Coppe",pt:"Rainha de Copas",significado:{es:"Empatía total, madre intuitiva, refugio.",en:"Total empathy, intuitive mother, refuge.",fr:"Empathie totale, mère intuitive, refuge.",it:"Empatia totale, madre intuitiva, rifugio.",pt:"Empatia total, mãe intuitiva, refúgio."}},
-            {es:"Rey de Copas",en:"King of Cups",fr:"Roi de Coupe",it:"Re di Coppe",pt:"Rei de Copas",significado:{es:"Maestría emocional, templanza ante crisis.",en:"Emotional mastery, temperance in crisis.",fr:"Maîtrise émotionnelle, tempérance en crise.",it:"Padronanza emotiva, temperanza in crisi.",pt:"Mestria emocional, temperança em crise."}},
-            // Espadas (14)
-            {es:"As de Espadas",en:"Ace of Swords",fr:"As d'Épée",it:"Asso di Spade",pt:"Ás de Espadas",significado:{es:"Claridad mental, verdad cruda, gran avance.",en:"Mental clarity, raw truth, major breakthrough.",fr:"Clarté mentale, vérité brute, grande percée.",it:"Chiarezza mentale, verità cruda, grande svolta.",pt:"Clareza mental, verdade crua, grande avanço."}},
-            {es:"Dos de Espadas",en:"Two of Swords",fr:"Deux d'Épée",it:"Due di Spade",pt:"Dois de Espadas",significado:{es:"Callejón sin salida mental, indecisión.",en:"Mental dead end, indecision.",fr:"Impasse mentale, indécision.",it:"Vicolo cieco mentale, indecisione.",pt:"Beco sem saída mental, indecisão."}},
-            {es:"Tres de Espadas",en:"Three of Swords",fr:"Trois d'Épée",it:"Tre di Spade",pt:"Três de Espadas",significado:{es:"Dolor del corazón, traición asumida.",en:"Heart pain, assumed betrayal.",fr:"Douleur du cœur, trahison assumée.",it:"Dolore del cuore, tradimento assunto.",pt:"Dor do coração, traição assumida."}},
-            {es:"Cuatro de Espadas",en:"Four of Swords",fr:"Quatre d'Épée",it:"Quattro di Spade",pt:"Quatro de Espadas",significado:{es:"Descanso mental obligatorio, meditación.",en:"Mandatory mental rest, meditation.",fr:"Repos mental obligatoire, méditation.",it:"Riposo mentale obbligatorio, meditazione.",pt:"Descanso mental obrigatório, meditação."}},
-            {es:"Cinco de Espadas",en:"Five of Swords",fr:"Cinq d'Épée",it:"Cinque di Spade",pt:"Cinco de Espadas",significado:{es:"Victoria pírrica, discusiones donde todos pierden.",en:"Pyrrhic victory, arguments where all lose.",fr:"Victoire à la Pyrrhus, disputes où tous perdent.",it:"Vittoria Pirrica, discussioni dove tutti perdono.",pt:"Vitória de Pirro, discussões onde todos perdem."}},
-            {es:"Seis de Espadas",en:"Six of Swords",fr:"Six d'Épée",it:"Sei di Spade",pt:"Seis de Espadas",significado:{es:"Viaje hacia aguas tranquilas, transición.",en:"Journey to calmer waters, transition.",fr:"Voyage vers des eaux calmes, transition.",it:"Viaggio verso acque più calme, transizione.",pt:"Jornada para águas mais calmas, transição."}},
-            {es:"Siete de Espadas",en:"Seven of Swords",fr:"Sept d'Épée",it:"Sette di Spade",pt:"Sete de Espadas",significado:{es:"Estrategia oculta, astucia, evitar confrontación.",en:"Hidden strategy, cunning, avoiding confrontation.",fr:"Stratégie cachée, ruse, éviter la confrontation.",it:"Strategia nascosta, astuzia, evitare confronto.",pt:"Estratégia oculta, astúcia, evitar confronto."}},
-            {es:"Ocho de Espadas",en:"Eight of Swords",fr:"Huit d'Épée",it:"Otto di Spade",pt:"Oito de Espadas",significado:{es:"Prisión mental autoimpuesta, parálisis.",en:"Self-imposed mental prison, paralysis.",fr:"Prison mentale auto-imposée, paralysie.",it:"Prigione mentale autoimposta, paralisi.",pt:"Prisão mental autoimposta, paralisia."}},
-            {es:"Nueve de Espadas",en:"Nine of Swords",fr:"Neuf d'Épée",it:"Nove di Spade",pt:"Nove de Espadas",significado:{es:"Ansiedad, insomnio, pesadillas.",en:"Anxiety, insomnia, nightmares.",fr:"Anxiété, insomnie, cauchemars.",it:"Ansia, insonnia, incubi.",pt:"Ansiedade, insônia, pesadelos."}},
-            {es:"Diez de Espadas",en:"Ten of Swords",fr:"Dix d'Épée",it:"Dieci di Spade",pt:"Dez de Espadas",significado:{es:"Final absoluto del dolor, tocar fondo.",en:"Absolute end of pain, hitting bottom.",fr:"Fin absolue de la douleur, toucher le fond.",it:"Fine assoluta del dolore, toccare il fondo.",pt:"Fim absoluto da dor, tocar fundo."}},
-            {es:"Sota de Espadas",en:"Page of Swords",fr:"Valet d'Épée",it:"Fante di Spade",pt:"Valete de Espadas",significado:{es:"Vigilancia, mente analítica, verdades incómodas.",en:"Vigilance, analytical mind, uncomfortable truths.",fr:"Vigilance, esprit analytique, vérités inconfortables.",it:"Vigilanza, mente analitica, verità scomode.",pt:"Vigilância, mente analítica, verdades incômodas."}},
-            {es:"Caballero de Espadas",en:"Knight of Swords",fr:"Cavalier d'Épée",it:"Cavaliere di Spade",pt:"Cavaleiro de Espadas",significado:{es:"Defensa feroz de ideas, verdades directas.",en:"Fierce defense of ideas, direct truths.",fr:"Défense féroce des idées, vérités directes.",it:"Difesa feroce delle idee, verità dirette.",pt:"Defesa feroz de ideias, verdades diretas."}},
-            {es:"Reina de Espadas",en:"Queen of Swords",fr:"Reine d'Épée",it:"Regina di Spade",pt:"Rainha de Espadas",significado:{es:"Independencia intelectual, discernimiento agudo.",en:"Intellectual independence, sharp discernment.",fr:"Indépendance intellectuelle, discernement aigu.",it:"Indipendenza intellettuale, discernimento acuto.",pt:"Independência intelectual, discernimento agudo."}},
-            {es:"Rey de Espadas",en:"King of Swords",fr:"Roi d'Épée",it:"Re di Spade",pt:"Rei de Espadas",significado:{es:"Juicio justo y analítico, autoridad de verdad.",en:"Fair and analytical judgment, truth authority.",fr:"Jugement juste et analytique, autorité de vérité.",it:"Giudizio giusto e analitico, autorità di verità.",pt:"Julgamento justo e analítico, autoridade de verdade."}},
-            // Oros (14)
-            {es:"As de Oros",en:"Ace of Pentacles",fr:"As de Denier",it:"Asso di Denari",pt:"Ás de Ouros",significado:{es:"Semilla de abundancia, inicio financiero sólido.",en:"Seed of abundance, solid financial start.",fr:"Graine d'abondance, début financier solide.",it:"Seme di abbondanza, inizio finanziario solido.",pt:"Semente de abundância, início financeiro sólido."}},
-            {es:"Dos de Oros",en:"Two of Pentacles",fr:"Deux de Denier",it:"Due di Denari",pt:"Dois de Ouros",significado:{es:"Malabarismo financiero, adaptación a cambios.",en:"Financial juggling, adaptation to changes.",fr:"Jonglerie financière, adaptation aux changements.",it:"Giocoleria finanziaria, adattamento ai cambiamenti.",pt:"Malabarismo financeiro, adaptação a mudanças."}},
-            {es:"Tres de Oros",en:"Three of Pentacles",fr:"Trois de Denier",it:"Tre di Denari",pt:"Três de Ouros",significado:{es:"Trabajo en equipo, maestría artesanal.",en:"Teamwork, craft mastery.",fr:"Travail d'équipe, maîtrise artisanale.",it:"Lavoro di squadra, maestria artigianale.",pt:"Trabalho em equipe, maestria artesanal."}},
-            {es:"Cuatro de Oros",en:"Four of Pentacles",fr:"Quatre de Denier",it:"Quattro di Denari",pt:"Quatro de Ouros",significado:{es:"Avaricia, apego al dinero por miedo.",en:"Avarice, attachment to money out of fear.",fr:"Avidité, attachement à l'argent par peur.",it:"Avarizia, attaccamento al denaro per paura.",pt:"Avareza, apego ao dinheiro por medo."}},
-            {es:"Cinco de Oros",en:"Five of Pentacles",fr:"Cinq de Denier",it:"Cinque di Denari",pt:"Cinco de Ouros",significado:{es:"Pobreza temporal, desamparo, ignorar ayuda.",en:"Temporary poverty, helplessness, ignoring help.",fr:"Pauvreté temporaire, impuissance, ignorer l'aide.",it:"Povertà temporanea, impotenza, ignorare l'aiuto.",pt:"Pobreza temporária, desamparo, ignorar ajuda."}},
-            {es:"Seis de Oros",en:"Six of Pentacles",fr:"Six de Denier",it:"Sei di Denari",pt:"Seis de Ouros",significado:{es:"Generosidad recíproca, dar y recibir equilibrado.",en:"Reciprocal generosity, balanced giving and receiving.",fr:"Générosité réciproque, donner et recevoir équilibré.",it:"Generosità reciproca, dare e ricevere equilibrato.",pt:"Generosidade recíproca, dar e receber equilibrado."}},
-            {es:"Siete de Oros",en:"Seven of Pentacles",fr:"Sept de Denier",it:"Sette di Denari",pt:"Sete de Ouros",significado:{es:"Paciencia ante la cosecha, evaluar crecimiento.",en:"Patience before harvest, evaluating growth.",fr:"Patience avant la récolte, évaluer la croissance.",it:"Pazienza prima del raccolto, valutare la crescita.",pt:"Paciência antes da colheita, avaliar crescimento."}},
-            {es:"Ocho de Oros",en:"Eight of Pentacles",fr:"Huit de Denier",it:"Otto di Denari",pt:"Oito de Ouros",significado:{es:"Dedicación absoluta al oficio, pulir detalles.",en:"Absolute dedication to craft, polishing details.",fr:"Dédication absolue au métier, polir les détails.",it:"Dedizione assoluta al mestiere, lucidare i dettagli.",pt:"Dedicação absoluta ao ofício, polir detalhes."}},
-            {es:"Nueve de Oros",en:"Nine of Pentacles",fr:"Neuf de Denier",it:"Nove di Denari",pt:"Nove de Ouros",significado:{es:"Independencia material, disfrutar lujos logrados.",en:"Material independence, enjoying achieved luxuries.",fr:"Indépendance matérielle, profiter des luxes atteints.",it:"Indipendenza materiale, godere dei lussi raggiunti.",pt:"Independência material, desfrutar luxos conquistados."}},
-            {es:"Diez de Oros",en:"Ten of Pentacles",fr:"Dix de Denier",it:"Dieci di Denari",pt:"Dez de Ouros",significado:{es:"Legado familiar, estabilidad a largo plazo.",en:"Family legacy, long-term stability.",fr:"Héritage familial, stabilité à long terme.",it:"Eredità familiare, stabilità a lungo termine.",pt:"Legado familiar, estabilidade a longo prazo."}},
-            {es:"Sota de Oros",en:"Page of Pentacles",fr:"Valet de Denier",it:"Fante di Denari",pt:"Valete de Ouros",significado:{es:"Estudiante aplicado, nueva idea de negocio.",en:"Applied student, new business idea.",fr:"Étudiant appliqué, nouvelle idée d'affaires.",it:"Studente applicato, nuova idea di business.",pt:"Estudante aplicado, nova ideia de negócio."}},
-            {es:"Caballero de Oros",en:"Knight of Pentacles",fr:"Cavalier de Denier",it:"Cavaliere di Denari",pt:"Cavaleiro de Ouros",significado:{es:"Avance lento pero seguro, constancia.",en:"Slow but steady advance, constancy.",fr:"Avance lent mais sûr, constance.",it:"Avanzamento lento ma sicuro, costanza.",pt:"Avanço lento mas seguro, constância."}},
-            {es:"Reina de Oros",en:"Queen of Pentacles",fr:"Reine de Denier",it:"Regina di Denari",pt:"Rainha de Ouros",significado:{es:"Nutrición terrenal, prosperidad práctica.",en:"Earthly nourishment, practical prosperity.",fr:"Nourriture terrestre, prospérité pratique.",it:"Nutrimento terreno, prosperità pratica.",pt:"Nutrição terrena, prosperidade prática."}},
-            {es:"Rey de Oros",en:"King of Pentacles",fr:"Roi de Denier",it:"Re di Denari",pt:"Rei de Ouros",significado:{es:"Éxito financiero absoluto, dominio de la materia.",en:"Absolute financial success, mastery of matter.",fr:"Succès financier absolu, maîtrise de la matière.",it:"Successo finanziario assoluto, padronanza della materia.",pt:"Sucesso financeiro absoluto, domínio da matéria."}}
-        ];
+        const mazoOficial78 = [{es:"El Loco",en:"The Fool",fr:"Le Mat",it:"Il Matto",pt:"O Louco",significado:{es:"Nuevos comienzos, saltos de fe, espontaneidad.",en:"New beginnings, leaps of faith, spontaneity.",fr:"Nouveaux départs, sauts de foi, spontanéité.",it:"Nuovi inizi, salti di fede, spontaneità.",pt:"Novos começos, saltos de fé, espontaneidade."},simbolo:"⟡"}
+            {es:"El Mago",en:"The Magician",fr:"Le Bateleur",it:"Il Mago",pt:"O Mago",significado:{es:"Poder de manifestación, habilidad, recursos.",en:"Power of manifestation, skill, resources.",fr:"Pouvoir de manifestation, compétence, ressources.",it:"Potere di manifestazione, abilità, risorse.",pt:"Poder de manifestação, habilidade, recursos."},simbolo:"∞"}
+            {es:"La Sacerdotisa",en:"The High Priestess",fr:"La Papesse",it:"La Papessa",pt:"A Sacerdotisa",significado:{es:"Intuición, misterio, subconsciente sagrado.",en:"Intuition, mystery, sacred subconscious.",fr:"Intuition, mystère, subconscient sacré.",it:"Intuizione, mistero, subconscio sacro.",pt:"Intuição, mistério, subconsciente sagrado."},simbolo:"☽"}
+            {es:"La Emperatriz",en:"The Empress",fr:"L'Impératrice",it:"L'Imperatrice",pt:"A Imperatriz",significado:{es:"Abundancia, naturaleza, fertilidad, creación.",en:"Abundance, nature, fertility, creation.",fr:"Abondance, nature, fertilité, création.",it:"Abbondanza, natura, fertilità, creazione.",pt:"Abundância, natureza, fertilidade, criação."},simbolo:"♁"}
+            {es:"El Emperador",en:"The Emperor",fr:"L'Empereur",it:"L'Imperatore",pt:"O Imperador",significado:{es:"Estructura, autoridad, bases firmes.",en:"Structure, authority, firm foundations.",fr:"Structure, autorité, fondations solides.",it:"Struttura, autorità, basi solide.",pt:"Estrutura, autoridade, bases firmes."},simbolo:"♔"}
+            {es:"El Hierofante",en:"The Hierophant",fr:"Le Pape",it:"Il Papa",pt:"O Hierofante",significado:{es:"Tradición, sabiduría, guía espiritual.",en:"Tradition, wisdom, spiritual guidance.",fr:"Tradition, sagesse, guidance spirituelle.",it:"Tradizione, saggezza, guida spirituale.",pt:"Tradição, sabedoria, guia espiritual."},simbolo:"✟"}
+            {es:"Los Enamorados",en:"The Lovers",fr:"L'Amoureux",it:"Gli Amanti",pt:"Os Enamorados",significado:{es:"Elecciones del corazón, armonía, uniones.",en:"Heart's choices, harmony, unions.",fr:"Choix du cœur, harmonie, unions.",it:"Scelte del cuore, armonia, unioni.",pt:"Escolhas do coração, harmonia, uniões."},simbolo:"❤"}
+            {es:"El Carro",en:"The Chariot",fr:"Le Chariot",it:"Il Carro",pt:"O Carro",significado:{es:"Determinación, victoria, control de fuerzas.",en:"Determination, victory, control of forces.",fr:"Détermination, victoire, contrôle des forces.",it:"Determinazione, vittoria, controllo delle forze.",pt:"Determinação, vitória, controle de forças."},simbolo:"⚔"}
+            {es:"La Justicia",en:"Justice",fr:"La Justice",it:"La Giustizia",pt:"A Justiça",significado:{es:"Verdad, causa y efecto, equilibrio.",en:"Truth, cause and effect, balance.",fr:"Vérité, cause et effet, équilibre.",it:"Verità, causa ed effetto, equilibrio.",pt:"Verdade, causa e efeito, equilíbrio."},simbolo:"⚖"}
+            {es:"El Ermitaño",en:"The Hermit",fr:"L'Ermite",it:"L'Eremita",pt:"O Eremita",significado:{es:"Introspección, retiro voluntario, luz interior.",en:"Introspection, voluntary retreat, inner light.",fr:"Introspection, retraite volontaire, lumière intérieure.",it:"Introspezione, ritiro volontario, luce interiore.",pt:"Introspecção, retiro voluntário, luz interior."},simbolo:"☄"}
+            {es:"La Rueda de la Fortuna",en:"Wheel of Fortune",fr:"La Roue de Fortune",it:"La Ruota della Fortuna",pt:"A Roda da Fortuna",significado:{es:"Cambios de destino, ciclos, giros del destino.",en:"Changes of destiny, cycles, turns of fate.",fr:"Changements de destin, cycles, tours du destin.",it:"Cambiamenti di destino, cicli, giri del destino.",pt:"Mudanças de destino, ciclos, voltas do destino."},simbolo:"☸"}
+            {es:"La Fuerza",en:"Strength",fr:"La Force",it:"La Forza",pt:"A Força",significado:{es:"Valor interno, compasión, dominar pasiones.",en:"Inner courage, compassion, taming passions.",fr:"Courage intérieur, compassion, maîtriser les passions.",it:"Coraggio interiore, compassione, domare le passioni.",pt:"Coragem interior, compaixão, domar paixões."},simbolo:"∞"}
+            {es:"El Colgado",en:"The Hanged Man",fr:"Le Pendu",it:"L'Appeso",pt:"O Enforcado",significado:{es:"Nueva perspectiva, pausa necesaria, sacrificio.",en:"New perspective, necessary pause, sacrifice.",fr:"Nouvelle perspective, pause nécessaire, sacrifice.",it:"Nuova prospettiva, pausa necessaria, sacrificio.",pt:"Nova perspectiva, pausa necessária, sacrifício."},simbolo:"☤"}
+            {es:"La Muerte",en:"Death",fr:"La Mort",it:"La Morte",pt:"A Morte",significado:{es:"Transformación profunda, finales que traen renacer.",en:"Profound transformation, endings that bring rebirth.",fr:"Transformation profonde, fins qui apportent renaissance.",it:"Trasformazione profonda, fini che portano rinascita.",pt:"Transformação profunda, fins que trazem renascimento."},simbolo:"☠"}
+            {es:"La Templanza",en:"Temperance",fr:"Tempérance",it:"La Temperanza",pt:"A Temperança",significado:{es:"Alquimia, paciencia, moderación, balance.",en:"Alchemy, patience, moderation, balance.",fr:"Alchimie, patience, modération, équilibre.",it:"Alchimia, pazienza, moderazione, equilibrio.",pt:"Alquimia, paciência, moderação, equilíbrio."},simbolo:"⚗"}
+            {es:"El Diablo",en:"The Devil",fr:"Le Diable",it:"Il Diavolo",pt:"O Diabo",significado:{es:"Ataduras materiales, pasiones ocultas, sombras.",en:"Material bonds, hidden passions, shadows.",fr:"Liens matériels, passions cachées, ombres.",it:"Legami materiali, passioni nascoste, ombre.",pt:"Laços materiais, paixões ocultas, sombras."},simbolo:"⛧"}
+            {es:"La Torre",en:"The Tower",fr:"La Maison Dieu",it:"La Torre",pt:"A Torre",significado:{es:"Ruptura de estructuras falsas, revelación repentina.",en:"Breaking of false structures, sudden revelation.",fr:"Rupture de fausses structures, révélation soudaine.",it:"Rottura di false strutture, rivelazione improvvisa.",pt:"Ruptura de estruturas falsas, revelação repentina."},simbolo:"⚡"}
+            {es:"La Estrella",en:"The Star",fr:"L'Étoile",it:"La Stella",pt:"A Estrela",significado:{es:"Esperanza, sanación espiritual, renovación.",en:"Hope, spiritual healing, renewal.",fr:"Espoir, guérison spirituelle, renouveau.",it:"Speranza, guarigione spirituale, rinnovamento.",pt:"Esperança, cura espiritual, renovação."},simbolo:"✦"}
+            {es:"La Luna",en:"The Moon",fr:"La Lune",it:"La Luna",pt:"A Lua",significado:{es:"Ilusiones, miedos escondidos, intuición profunda.",en:"Illusions, hidden fears, deep intuition.",fr:"Illusions, peurs cachées, intuition profonde.",it:"Illusioni, paure nascoste, intuizione profonda.",pt:"Ilusões, medos ocultos, intuição profunda."},simbolo:"☾"}
+            {es:"El Sol",en:"The Sun",fr:"Le Soleil",it:"Il Sole",pt:"O Sol",significado:{es:"Claridad absoluta, éxito, vitalidad, alegría.",en:"Absolute clarity, success, vitality, joy.",fr:"Clarté absolue, succès, vitalité, joie.",it:"Chiarezza assoluta, successo, vitalità, gioia.",pt:"Clareza absoluta, sucesso, vitalidade, alegria."},simbolo:"☀"}
+            {es:"El Juicio",en:"Judgement",fr:"Le Jugement",it:"Il Giudizio",pt:"O Julgamento",significado:{es:"Llamado interno, absolución, despertar a tu verdad.",en:"Inner calling, absolution, awakening to your truth.",fr:"Appel intérieur, absolution, éveil à ta vérité.",it:"Chiamata interiore, assoluzione, risveglio alla tua verità.",pt:"Chamado interior, absolvição, despertar para sua verdade."},simbolo:"♱"}
+            {es:"El Mundo",en:"The World",fr:"Le Monde",it:"Il Mondo",pt:"O Mundo",significado:{es:"Cierre de ciclos con éxito, plenitud.",en:"Successful cycle completion, fulfillment.",fr:"Fin de cycle réussie, plénitude.",it:"Chiusura di ciclo con successo, pienezza.",pt:"Fechamento de ciclo com sucesso, plenitude."},simbolo:"◉"}
+            {es:"As de Bastos",en:"Ace of Wands",fr:"As de Bâton",it:"Asso di Bastoni",pt:"Ás de Paus",significado:{es:"Chispa creativa, pasión inicial, nueva oportunidad.",en:"Creative spark, initial passion, new opportunity.",fr:"Étincelle créative, passion initiale, nouvelle opportunité.",it:"Scintilla creativa, passione iniziale, nuova opportunità.",pt:"Faísca criativa, paixão inicial, nova oportunidade."},simbolo:"B1"}
+            {es:"Dos de Bastos",en:"Two of Wands",fr:"Deux de Bâton",it:"Due di Bastoni",pt:"Dois de Paus",significado:{es:"Planificación futura, mirar horizontes.",en:"Future planning, looking at horizons.",fr:"Planification future, regarder les horizons.",it:"Pianificazione futura, guardare gli orizzonti.",pt:"Planejamento futuro, olhar horizontes."},simbolo:"B2"}
+            {es:"Tres de Bastos",en:"Three of Wands",fr:"Trois de Bâton",it:"Tre di Bastoni",pt:"Três de Paus",significado:{es:"Expansión, barcos llegando, frutos del esfuerzo.",en:"Expansion, ships arriving, fruits of effort.",fr:"Expansion, navires arrivants, fruits de l'effort.",it:"Espansione, navi in arrivo, frutti dello sforzo.",pt:"Expansão, navios chegando, frutos do esforço."},simbolo:"B3"}
+            {es:"Cuatro de Bastos",en:"Four of Wands",fr:"Quatre de Bâton",it:"Quattro di Bastoni",pt:"Quatro de Paus",significado:{es:"Celebración, hogar armónico, estabilidad.",en:"Celebration, harmonious home, stability.",fr:"Célébration, foyer harmonieux, stabilité.",it:"Celebrazione, casa armoniosa, stabilità.",pt:"Celebração, lar harmonioso, estabilidade."},simbolo:"B4"}
+            {es:"Cinco de Bastos",en:"Five of Wands",fr:"Cinq de Bâton",it:"Cinque di Bastoni",pt:"Cinco de Paus",significado:{es:"Competencia, tensiones menores, caos creativo.",en:"Competition, minor tensions, creative chaos.",fr:"Compétition, tensions mineures, chaos créatif.",it:"Competizione, tensioni minori, caos creativo.",pt:"Competição, tensões menores, caos criativo."},simbolo:"B5"}
+            {es:"Seis de Bastos",en:"Six of Wands",fr:"Six de Bâton",it:"Sei di Bastoni",pt:"Seis de Paus",significado:{es:"Reconocimiento público, victoria, aplausos.",en:"Public recognition, victory, applause.",fr:"Reconnaissance publique, victoire, applaudissements.",it:"Riconoscimento pubblico, vittoria, applausi.",pt:"Reconhecimento público, vitória, aplausos."},simbolo:"B6"}
+            {es:"Siete de Bastos",en:"Seven of Wands",fr:"Sept de Bâton",it:"Sette di Bastoni",pt:"Sete de Paus",significado:{es:"Defensa de principios, sostener posición.",en:"Defense of principles, standing your ground.",fr:"Défense des principes, tenir sa position.",it:"Difesa dei principi, mantenere la posizione.",pt:"Defesa de princípios, manter posição."},simbolo:"B7"}
+            {es:"Ocho de Bastos",en:"Eight of Wands",fr:"Huit de Bâton",it:"Otto di Bastoni",pt:"Oito de Paus",significado:{es:"Velocidad, noticias rápidas, movimiento.",en:"Speed, rapid news, movement.",fr:"Vitesse, nouvelles rapides, mouvement.",it:"Velocità, notizie rapide, movimento.",pt:"Velocidade, notícias rápidas, movimento."},simbolo:"B8"}
+            {es:"Nueve de Bastos",en:"Nine of Wands",fr:"Neuf de Bâton",it:"Nove di Bastoni",pt:"Nove de Paus",significado:{es:"Último esfuerzo, resiliencia, guardia en alto.",en:"Last effort, resilience, guard up.",fr:"Dernier effort, résilience, garde haute.",it:"Ultimo sforzo, resilienza, guardia alta.",pt:"Último esforço, resiliência, guarda alta."},simbolo:"B9"}
+            {es:"Diez de Bastos",en:"Ten of Wands",fr:"Dix de Bâton",it:"Dieci di Bastoni",pt:"Dez de Paus",significado:{es:"Carga pesada, exceso de responsabilidades.",en:"Heavy load, excess of responsibilities.",fr:"Charge lourde, excès de responsabilités.",it:"Carico pesante, eccesso di responsabilità.",pt:"Carga pesada, excesso de responsabilidades."},simbolo:"B10"}
+            {es:"Sota de Bastos",en:"Page of Wands",fr:"Valet de Bâton",it:"Fante di Bastoni",pt:"Valete de Paus",significado:{es:"Mensajero entusiasta, ganas de explorar.",en:"Enthusiastic messenger, desire to explore.",fr:"Messager enthousiaste, envie d'explorer.",it:"Messaggero entusiasta, voglia di esplorare.",pt:"Mensageiro entusiasmado, vontade de explorar."},simbolo:"BS"}
+            {es:"Caballero de Bastos",en:"Knight of Wands",fr:"Cavalier de Bâton",it:"Cavaliere di Bastoni",pt:"Cavaleiro de Paus",significado:{es:"Acción impetuosa, mudanzas, avance apasionado.",en:"Impetuous action, moves, passionate advance.",fr:"Action impétueuse, déménagements, avance passionnée.",it:"Azione impulsiva, traslochi, avanzamento appassionato.",pt:"Ação impetuosa, mudanças, avanço apaixonado."},simbolo:"BC"}
+            {es:"Reina de Bastos",en:"Queen of Wands",fr:"Reine de Bâton",it:"Regina di Bastoni",pt:"Rainha de Paus",significado:{es:"Magnetismo, confianza, fuego social.",en:"Magnetism, confidence, social fire.",fr:"Magnétisme, confiance, feu social.",it:"Magnetismo, fiducia, fuoco sociale.",pt:"Magnetismo, confiança, fogo social."},simbolo:"BR"}
+            {es:"Rey de Bastos",en:"King of Wands",fr:"Roi de Bâton",it:"Re di Bastoni",pt:"Rei de Paus",significado:{es:"Liderazgo absoluto, visión ejecutiva.",en:"Absolute leadership, executive vision.",fr:"Leadership absolu, vision exécutive.",it:"Leadership assoluto, visione esecutiva.",pt:"Liderança absoluta, visão executiva."},simbolo:"BK"}
+            {es:"As de Copas",en:"Ace of Cups",fr:"As de Coupe",it:"Asso di Coppe",pt:"Ás de Copas",significado:{es:"Amor puro desbordante, despertar emocional.",en:"Overflowing pure love, emotional awakening.",fr:"Amour pur débordant, éveil émotionnel.",it:"Amore puro traboccante, risveglio emotivo.",pt:"Amor puro transbordante, despertar emocional."},simbolo:"C1"}
+            {es:"Dos de Copas",en:"Two of Cups",fr:"Deux de Coupe",it:"Due di Coppe",pt:"Dois de Copas",significado:{es:"Conexión recíproca, romance, alma gemela.",en:"Reciprocal connection, romance, soulmate.",fr:"Connexion réciproque, romance, âme sœur.",it:"Connessione reciproca, romanticismo, anima gemella.",pt:"Conexão recíproca, romance, alma gêmea."},simbolo:"C2"}
+            {es:"Tres de Copas",en:"Three of Cups",fr:"Trois de Coupe",it:"Tre di Coppe",pt:"Três de Copas",significado:{es:"Brindis familiar, amistad verdadera.",en:"Family toast, true friendship.",fr:"Toast familial, véritable amitié.",it:"Brindisi familiare, vera amicizia.",pt:"Brinde familiar, amizade verdadeira."},simbolo:"C3"}
+            {es:"Cuatro de Copas",en:"Four of Cups",fr:"Quatre de Coupe",it:"Quattro di Coppe",pt:"Quatro de Copas",significado:{es:"Apatía, aburrimiento, ignorar oportunidades.",en:"Apathy, boredom, ignoring opportunities.",fr:"Apathie, ennui, ignorer les opportunités.",it:"Apatia, noia, ignorare le opportunità.",pt:"Apatia, tédio, ignorar oportunidades."},simbolo:"C4"}
+            {es:"Cinco de Copas",en:"Five of Cups",fr:"Cinq de Coupe",it:"Cinque di Coppe",pt:"Cinco de Copas",significado:{es:"Lamento por lo perdido, desilusión.",en:"Lament for what's lost, disillusionment.",fr:"Lamentation pour le perdu, désillusion.",it:"Lamento per ciò che è perso, disillusione.",pt:"Lamentação pelo perdido, desilusão."},simbolo:"C5"}
+            {es:"Seis de Copas",en:"Six of Cups",fr:"Six de Coupe",it:"Sei di Coppe",pt:"Seis de Copas",significado:{es:"Nostalgia sana, recuerdos de infancia.",en:"Healthy nostalgia, childhood memories.",fr:"Nostalgie saine, souvenirs d'enfance.",it:"Nostalgia sana, ricordi d'infanzia.",pt:"Nostalgia saudável, memórias de infância."},simbolo:"C6"}
+            {es:"Siete de Copas",en:"Seven of Cups",fr:"Sept de Coupe",it:"Sette di Coppe",pt:"Sete de Copas",significado:{es:"Fantasías, exceso de opciones, ilusiones.",en:"Fantasies, excess of options, illusions.",fr:"Fantaisies, excès d'options, illusions.",it:"Fantasie, eccesso di opzioni, illusioni.",pt:"Fantasias, excesso de opções, ilusões."},simbolo:"C7"}
+            {es:"Ocho de Copas",en:"Eight of Cups",fr:"Huit de Coupe",it:"Otto di Coppe",pt:"Oito de Copas",significado:{es:"Abandono voluntario de lo que ya no nutre.",en:"Voluntary abandonment of what no longer nourishes.",fr:"Abandon volontaire de ce qui ne nourrit plus.",it:"Abbandono volontario di ciò che non nutre più.",pt:"Abandono voluntário do que não nutre mais."},simbolo:"C8"}
+            {es:"Nueve de Copas",en:"Nine of Cups",fr:"Neuf de Coupe",it:"Nove di Coppe",pt:"Nove de Copas",significado:{es:"Deseo concedido, satisfacción personal.",en:"Wish granted, personal satisfaction.",fr:"Souhait exaucé, satisfaction personnelle.",it:"Desiderio esaudito, soddisfazione personale.",pt:"Desejo realizado, satisfação pessoal."},simbolo:"C9"}
+            {es:"Diez de Copas",en:"Ten of Cups",fr:"Dix de Coupe",it:"Dieci di Coppe",pt:"Dez de Copas",significado:{es:"Dicha familiar absoluta, amor consolidado.",en:"Absolute family bliss, consolidated love.",fr:"Bonheur familial absolu, amour consolidé.",it:"Famiglia felice assoluta, amore consolidato.",pt:"Felicidade familiar absoluta, amor consolidado."},simbolo:"C10"}
+            {es:"Sota de Copas",en:"Page of Cups",fr:"Valet de Coupe",it:"Fante di Coppe",pt:"Valete de Copas",significado:{es:"Sensibilidad artística, noticias afectivas.",en:"Artistic sensitivity, affective news.",fr:"Sensibilité artistique, nouvelles affectives.",it:"Sensibilità artistica, notizie affettive.",pt:"Sensibilidade artística, notícias afetivas."},simbolo:"CS"}
+            {es:"Caballero de Copas",en:"Knight of Cups",fr:"Cavalier de Coupe",it:"Cavaliere di Coppe",pt:"Cavaleiro de Copas",significado:{es:"Portador del romance, propuesta sincera.",en:"Bearer of romance, sincere proposal.",fr:"Porteur de romance, proposition sincère.",it:"Portatore di romanticismo, proposta sincera.",pt:"Portador do romance, proposta sincera."},simbolo:"CC"}
+            {es:"Reina de Copas",en:"Queen of Cups",fr:"Reine de Coupe",it:"Regina di Coppe",pt:"Rainha de Copas",significado:{es:"Empatía total, madre intuitiva, refugio.",en:"Total empathy, intuitive mother, refuge.",fr:"Empathie totale, mère intuitive, refuge.",it:"Empatia totale, madre intuitiva, rifugio.",pt:"Empatia total, mãe intuitiva, refúgio."},simbolo:"CR"}
+            {es:"Rey de Copas",en:"King of Cups",fr:"Roi de Coupe",it:"Re di Coppe",pt:"Rei de Copas",significado:{es:"Maestría emocional, templanza ante crisis.",en:"Emotional mastery, temperance in crisis.",fr:"Maîtrise émotionnelle, tempérance en crise.",it:"Padronanza emotiva, temperanza in crisi.",pt:"Mestria emocional, temperança em crise."},simbolo:"CK"}
+            {es:"As de Espadas",en:"Ace of Swords",fr:"As d'Épée",it:"Asso di Spade",pt:"Ás de Espadas",significado:{es:"Claridad mental, verdad cruda, gran avance.",en:"Mental clarity, raw truth, major breakthrough.",fr:"Clarté mentale, vérité brute, grande percée.",it:"Chiarezza mentale, verità cruda, grande svolta.",pt:"Clareza mental, verdade crua, grande avanço."},simbolo:"E1"}
+            {es:"Dos de Espadas",en:"Two of Swords",fr:"Deux d'Épée",it:"Due di Spade",pt:"Dois de Espadas",significado:{es:"Callejón sin salida mental, indecisión.",en:"Mental dead end, indecision.",fr:"Impasse mentale, indécision.",it:"Vicolo cieco mentale, indecisione.",pt:"Beco sem saída mental, indecisão."},simbolo:"E2"}
+            {es:"Tres de Espadas",en:"Three of Swords",fr:"Trois d'Épée",it:"Tre di Spade",pt:"Três de Espadas",significado:{es:"Dolor del corazón, traición asumida.",en:"Heart pain, assumed betrayal.",fr:"Douleur du cœur, trahison assumée.",it:"Dolore del cuore, tradimento assunto.",pt:"Dor do coração, traição assumida."},simbolo:"E3"}
+            {es:"Cuatro de Espadas",en:"Four of Swords",fr:"Quatre d'Épée",it:"Quattro di Spade",pt:"Quatro de Espadas",significado:{es:"Descanso mental obligatorio, meditación.",en:"Mandatory mental rest, meditation.",fr:"Repos mental obligatoire, méditation.",it:"Riposo mentale obbligatorio, meditazione.",pt:"Descanso mental obrigatório, meditação."},simbolo:"E4"}
+            {es:"Cinco de Espadas",en:"Five of Swords",fr:"Cinq d'Épée",it:"Cinque di Spade",pt:"Cinco de Espadas",significado:{es:"Victoria pírrica, discusiones donde todos pierden.",en:"Pyrrhic victory, arguments where all lose.",fr:"Victoire à la Pyrrhus, disputes où tous perdent.",it:"Vittoria Pirrica, discussioni dove tutti perdono.",pt:"Vitória de Pirro, discussões onde todos perdem."},simbolo:"E5"}
+            {es:"Seis de Espadas",en:"Six of Swords",fr:"Six d'Épée",it:"Sei di Spade",pt:"Seis de Espadas",significado:{es:"Viaje hacia aguas tranquilas, transición.",en:"Journey to calmer waters, transition.",fr:"Voyage vers des eaux calmes, transition.",it:"Viaggio verso acque più calme, transizione.",pt:"Jornada para águas mais calmas, transição."},simbolo:"E6"}
+            {es:"Siete de Espadas",en:"Seven of Swords",fr:"Sept d'Épée",it:"Sette di Spade",pt:"Sete de Espadas",significado:{es:"Estrategia oculta, astucia, evitar confrontación.",en:"Hidden strategy, cunning, avoiding confrontation.",fr:"Stratégie cachée, ruse, éviter la confrontation.",it:"Strategia nascosta, astuzia, evitare confronto.",pt:"Estratégia oculta, astúcia, evitar confronto."},simbolo:"E7"}
+            {es:"Ocho de Espadas",en:"Eight of Swords",fr:"Huit d'Épée",it:"Otto di Spade",pt:"Oito de Espadas",significado:{es:"Prisión mental autoimpuesta, parálisis.",en:"Self-imposed mental prison, paralysis.",fr:"Prison mentale auto-imposée, paralysie.",it:"Prigione mentale autoimposta, paralisi.",pt:"Prisão mental autoimposta, paralisia."},simbolo:"E8"}
+            {es:"Nueve de Espadas",en:"Nine of Swords",fr:"Neuf d'Épée",it:"Nove di Spade",pt:"Nove de Espadas",significado:{es:"Ansiedad, insomnio, pesadillas.",en:"Anxiety, insomnia, nightmares.",fr:"Anxiété, insomnie, cauchemars.",it:"Ansia, insonnia, incubi.",pt:"Ansiedade, insônia, pesadelos."},simbolo:"E9"}
+            {es:"Diez de Espadas",en:"Ten of Swords",fr:"Dix d'Épée",it:"Dieci di Spade",pt:"Dez de Espadas",significado:{es:"Final absoluto del dolor, tocar fondo.",en:"Absolute end of pain, hitting bottom.",fr:"Fin absolue de la douleur, toucher le fond.",it:"Fine assoluta del dolore, toccare il fondo.",pt:"Fim absoluto da dor, tocar fundo."},simbolo:"E10"}
+            {es:"Sota de Espadas",en:"Page of Swords",fr:"Valet d'Épée",it:"Fante di Spade",pt:"Valete de Espadas",significado:{es:"Vigilancia, mente analítica, verdades incómodas.",en:"Vigilance, analytical mind, uncomfortable truths.",fr:"Vigilance, esprit analytique, vérités inconfortables.",it:"Vigilanza, mente analitica, verità scomode.",pt:"Vigilância, mente analítica, verdades incômodas."},simbolo:"ES"}
+            {es:"Caballero de Espadas",en:"Knight of Swords",fr:"Cavalier d'Épée",it:"Cavaliere di Spade",pt:"Cavaleiro de Espadas",significado:{es:"Defensa feroz de ideas, verdades directas.",en:"Fierce defense of ideas, direct truths.",fr:"Défense féroce des idées, vérités directes.",it:"Difesa feroce delle idee, verità dirette.",pt:"Defesa feroz de ideias, verdades diretas."},simbolo:"EC"}
+            {es:"Reina de Espadas",en:"Queen of Swords",fr:"Reine d'Épée",it:"Regina di Spade",pt:"Rainha de Espadas",significado:{es:"Independencia intelectual, discernimiento agudo.",en:"Intellectual independence, sharp discernment.",fr:"Indépendance intellectuelle, discernement aigu.",it:"Indipendenza intellettuale, discernimento acuto.",pt:"Independência intelectual, discernimento agudo."},simbolo:"ER"}
+            {es:"Rey de Espadas",en:"King of Swords",fr:"Roi d'Épée",it:"Re di Spade",pt:"Rei de Espadas",significado:{es:"Juicio justo y analítico, autoridad de verdad.",en:"Fair and analytical judgment, truth authority.",fr:"Jugement juste et analytique, autorité de vérité.",it:"Giudizio giusto e analitico, autorità di verità.",pt:"Julgamento justo e analítico, autoridade de verdade."},simbolo:"EK"}
+            {es:"As de Oros",en:"Ace of Pentacles",fr:"As de Denier",it:"Asso di Denari",pt:"Ás de Ouros",significado:{es:"Semilla de abundancia, inicio financiero sólido.",en:"Seed of abundance, solid financial start.",fr:"Graine d'abondance, début financier solide.",it:"Seme di abbondanza, inizio finanziario solido.",pt:"Semente de abundância, início financeiro sólido."},simbolo:"O1"}
+            {es:"Dos de Oros",en:"Two of Pentacles",fr:"Deux de Denier",it:"Due di Denari",pt:"Dois de Ouros",significado:{es:"Malabarismo financiero, adaptación a cambios.",en:"Financial juggling, adaptation to changes.",fr:"Jonglerie financière, adaptation aux changements.",it:"Giocoleria finanziaria, adattamento ai cambiamenti.",pt:"Malabarismo financeiro, adaptação a mudanças."},simbolo:"O2"}
+            {es:"Tres de Oros",en:"Three of Pentacles",fr:"Trois de Denier",it:"Tre di Denari",pt:"Três de Ouros",significado:{es:"Trabajo en equipo, maestría artesanal.",en:"Teamwork, craft mastery.",fr:"Travail d'équipe, maîtrise artisanale.",it:"Lavoro di squadra, maestria artigianale.",pt:"Trabalho em equipe, maestria artesanal."},simbolo:"O3"}
+            {es:"Cuatro de Oros",en:"Four of Pentacles",fr:"Quatre de Denier",it:"Quattro di Denari",pt:"Quatro de Ouros",significado:{es:"Avaricia, apego al dinero por miedo.",en:"Avarice, attachment to money out of fear.",fr:"Avidité, attachement à l'argent par peur.",it:"Avarizia, attaccamento al denaro per paura.",pt:"Avareza, apego ao dinheiro por medo."},simbolo:"O4"}
+            {es:"Cinco de Oros",en:"Five of Pentacles",fr:"Cinq de Denier",it:"Cinque di Denari",pt:"Cinco de Ouros",significado:{es:"Pobreza temporal, desamparo, ignorar ayuda.",en:"Temporary poverty, helplessness, ignoring help.",fr:"Pauvreté temporaire, impuissance, ignorer l'aide.",it:"Povertà temporanea, impotenza, ignorare l'aiuto.",pt:"Pobreza temporária, desamparo, ignorar ajuda."},simbolo:"O5"}
+            {es:"Seis de Oros",en:"Six of Pentacles",fr:"Six de Denier",it:"Sei di Denari",pt:"Seis de Ouros",significado:{es:"Generosidad recíproca, dar y recibir equilibrado.",en:"Reciprocal generosity, balanced giving and receiving.",fr:"Générosité réciproque, donner et recevoir équilibré.",it:"Generosità reciproca, dare e ricevere equilibrato.",pt:"Generosidade recíproca, dar e receber equilibrado."},simbolo:"O6"}
+            {es:"Siete de Oros",en:"Seven of Pentacles",fr:"Sept de Denier",it:"Sette di Denari",pt:"Sete de Ouros",significado:{es:"Paciencia ante la cosecha, evaluar crecimiento.",en:"Patience before harvest, evaluating growth.",fr:"Patience avant la récolte, évaluer la croissance.",it:"Pazienza prima del raccolto, valutare la crescita.",pt:"Paciência antes da colheita, avaliar crescimento."},simbolo:"O7"}
+            {es:"Ocho de Oros",en:"Eight of Pentacles",fr:"Huit de Denier",it:"Otto di Denari",pt:"Oito de Ouros",significado:{es:"Dedicación absoluta al oficio, pulir detalles.",en:"Absolute dedication to craft, polishing details.",fr:"Dédication absolue au métier, polir les détails.",it:"Dedizione assoluta al mestiere, lucidare i dettagli.",pt:"Dedicação absoluta ao ofício, polir detalhes."},simbolo:"O8"}
+            {es:"Nueve de Oros",en:"Nine of Pentacles",fr:"Neuf de Denier",it:"Nove di Denari",pt:"Nove de Ouros",significado:{es:"Independencia material, disfrutar lujos logrados.",en:"Material independence, enjoying achieved luxuries.",fr:"Indépendance matérielle, profiter des luxes atteints.",it:"Indipendenza materiale, godere dei lussi raggiunti.",pt:"Independência material, desfrutar luxos conquistados."},simbolo:"O9"}
+            {es:"Diez de Oros",en:"Ten of Pentacles",fr:"Dix de Denier",it:"Dieci di Denari",pt:"Dez de Ouros",significado:{es:"Legado familiar, estabilidad a largo plazo.",en:"Family legacy, long-term stability.",fr:"Héritage familial, stabilité à long terme.",it:"Eredità familiare, stabilità a lungo termine.",pt:"Legado familiar, estabilidade a longo prazo."},simbolo:"O10"}
+            {es:"Sota de Oros",en:"Page of Pentacles",fr:"Valet de Denier",it:"Fante di Denari",pt:"Valete de Ouros",significado:{es:"Estudiante aplicado, nueva idea de negocio.",en:"Applied student, new business idea.",fr:"Étudiant appliqué, nouvelle idée d'affaires.",it:"Studente applicato, nuova idea di business.",pt:"Estudante aplicado, nova ideia de negócio."},simbolo:"OS"}
+            {es:"Caballero de Oros",en:"Knight of Pentacles",fr:"Cavalier de Denier",it:"Cavaliere di Denari",pt:"Cavaleiro de Ouros",significado:{es:"Avance lento pero seguro, constancia.",en:"Slow but steady advance, constancy.",fr:"Avance lent mais sûr, constance.",it:"Avanzamento lento ma sicuro, costanza.",pt:"Avanço lento mas seguro, constância."},simbolo:"OC"}
+            {es:"Reina de Oros",en:"Queen of Pentacles",fr:"Reine de Denier",it:"Regina di Denari",pt:"Rainha de Ouros",significado:{es:"Nutrición terrenal, prosperidad práctica.",en:"Earthly nourishment, practical prosperity.",fr:"Nourriture terrestre, prospérité pratique.",it:"Nutrimento terreno, prosperità pratica.",pt:"Nutrição terrena, prosperidade prática."},simbolo:"OR"}
+            {es:"Rey de Oros",en:"King of Pentacles",fr:"Roi de Denier",it:"Re di Denari",pt:"Rei de Ouros",significado:{es:"Éxito financiero absoluto, dominio de la materia.",en:"Absolute financial success, mastery of matter.",fr:"Succès financier absolu, maîtrise de la matière.",it:"Successo finanziario assoluto, padronanza della materia.",pt:"Sucesso financeiro absoluto, domínio da matéria."},simbolo:"OK"}];
 
         // ========================
         // TAROT RITUAL
@@ -1318,7 +1335,14 @@
                 let divC = document.createElement('div');
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
                 divC.style.animationDelay = `${i * 0.2}s`;
-                divC.innerHTML = `<div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>`;
+                
+                // Add symbol if it exists
+                let simboloHTML = '';
+                if (cardObj.simbolo) {
+                    simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
+                }
+                
+                divC.innerHTML = simboloHTML + `<div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>`;
                 cajaRevelada.appendChild(divC);
 
                 if (!cartaData.invertida) contadoresSi++;
@@ -1331,6 +1355,13 @@
             if (esSiNo) {
                 let respuesta = contadoresSi >= (cartasRequeridas / 2) ? t('si') : t('no');
                 parrafos = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuesta}</h3>` + parrafos;
+            }
+
+            // Combined reading synthesis
+            if (cartasRequeridas === 3) {
+                parrafos += `<h3>${t('sintesisTirada')}</h3><p>${t('sintesis3Cartas')}</p>`;
+            } else if (cartasRequeridas === 1 && !esSiNo) {
+                parrafos += `<h3>${t('sintesisTirada')}</h3><p>${t('sintesis1Carta')}</p>`;
             }
 
             cajaTexto.innerHTML = parrafos;
@@ -1530,13 +1561,22 @@
         }
 
         function calcularSignoPorFecha(mes, dia) {
-            const limites = [
-                [1,20,0],[2,19,1],[3,21,2],[4,20,3],[5,21,4],[6,21,5],
-                [7,23,6],[8,23,7],[9,23,8],[10,23,9],[11,22,10],[12,22,11]
+            const rangos = [
+                {m:1,d1:1,d2:19,s:9},{m:1,d1:20,d2:31,s:10},
+                {m:2,d1:1,d2:18,s:10},{m:2,d1:19,d2:29,s:11},
+                {m:3,d1:1,d2:20,s:11},{m:3,d1:21,d2:31,s:0},
+                {m:4,d1:1,d2:19,s:0},{m:4,d1:20,d2:30,s:1},
+                {m:5,d1:1,d2:20,s:1},{m:5,d1:21,d2:31,s:2},
+                {m:6,d1:1,d2:20,s:2},{m:6,d1:21,d2:30,s:3},
+                {m:7,d1:1,d2:22,s:3},{m:7,d1:23,d2:31,s:4},
+                {m:8,d1:1,d2:22,s:4},{m:8,d1:23,d2:31,s:5},
+                {m:9,d1:1,d2:22,s:5},{m:9,d1:23,d2:30,s:6},
+                {m:10,d1:1,d2:22,s:6},{m:10,d1:23,d2:31,s:7},
+                {m:11,d1:1,d2:21,s:7},{m:11,d1:22,d2:30,s:8},
+                {m:12,d1:1,d2:21,s:8},{m:12,d1:22,d2:31,s:9}
             ];
-            for (const [m, d, idx] of limites) {
-                if (mes === m && dia < d) return signosZodiaco[(idx + 11) % 12];
-                if (mes === m && dia >= d) return signosZodiaco[idx];
+            for (const r of rangos) {
+                if (mes === r.m && dia >= r.d1 && dia <= r.d2) return signosZodiaco[r.s];
             }
             return signosZodiaco[0];
         }
@@ -1559,17 +1599,16 @@
         // ORÁCULO - Consulta Unificada
         // ========================
         function realizarConsultaOraculo() {
-            sonarCuenco();
             const nombre = document.getElementById('orc-nombre').value;
             const fecha = document.getElementById('orc-fecha').value;
             const hora = document.getElementById('orc-hora').value;
-            const pregunta = document.getElementById('orc-pregunta').value;
+            const lugar = document.getElementById('orc-lugar').value;
 
-            if (!nombre || !fecha) { alert(t('completaCampos')); return; }
+            if (!nombre || !fecha || !hora || !lugar) { alert(t('completaCampos')); return; }
 
             // Store oracle data for use after card selection
             window._oraculoData = {
-                nombre, fecha, hora, pregunta,
+                nombre, fecha, hora, lugar,
                 numeros: calcularNumerosNombre(nombre),
                 fechaNums: calcularNumerosFecha(fecha),
                 energiaDia: calcularEnergiaDelDia(),
@@ -1646,7 +1685,14 @@
 
             const divC = document.createElement('div');
             divC.className = `carta-revelada ${oraculoCartaSeleccionada.invertida ? 'invertida' : ''}`;
-            divC.innerHTML = `<div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>`;
+
+            // Add symbol if it exists
+            let simboloHTML = '';
+            if (cardObj.simbolo) {
+                simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
+            }
+
+            divC.innerHTML = simboloHTML + `<div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>`;
             cartasDiv.appendChild(divC);
 
             // Generate unified interpretation
