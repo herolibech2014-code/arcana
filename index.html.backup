@@ -454,20 +454,20 @@
 
         /* RESPONSIVO */
         @media (max-width: 600px) {
-            body { overflow-x: hidden; }
+            body { overflow-x: auto; }
             .app-container { padding: 15px; gap: 20px; }
-            h1.marca-titulo { font-size: 3rem; letter-spacing: 6px; }
+            h1.marca-titulo { font-size: 2.8rem; letter-spacing: 6px; }
             .lema { font-size: 1.1rem; }
             .icono-crystal { width: 140px; height: 140px; }
             .icono-crystal img { width: 110px; height: 110px; }
-            .card-titulo { font-size: 2.2rem; }
-            .card-desc { font-size: 1.05rem; }
-            .menu-card { padding: 30px 20px; }
-            .carta-tarot-real { width: 90px; height: 155px; }
-            .abanico-fila { height: 170px; width: 360px; margin: 0 auto; }
+            .card-titulo { font-size: 2rem; }
+            .card-desc { font-size: 1rem; }
+            .menu-card { padding: 30px 15px; }
+            .carta-tarot-real { width: 80px; height: 140px; }
+            .abanico-fila { height: 155px; width: 340px; margin: 0 auto; }
             .contenedor-altar-abanicos { gap: 25px; overflow-x: auto; padding: 10px; }
-            .instruccion-directa { font-size: 1.6rem; margin: 10px 0; }
-            .carta-revelada { width: 145px; height: 225px; }
+            .instruccion-directa { font-size: 1.5rem; margin: 10px 0; }
+            .carta-revelada { width: 135px; height: 210px; }
             .carta-revelada .nombre-c { font-size: 1.2rem; }
         .carta-simbolo {
             font-size: 2.5rem;
@@ -499,7 +499,7 @@
 </head>
 <body>
 
-    <audio id="audio-ambiente" preload="auto" loop src="musica-fondo.MP3"></audio>
+    <audio id="audio-ambiente" loop src="musica-fondo.MP3"></audio>
     <audio id="audio-cuenco" src="sonido-cuenco.mp3"></audio>
 
     <div class="app-container" id="contenedor-global">
@@ -608,8 +608,8 @@
             <div class="instruccion-directa">&#x1F522; <span data-t="numTitulo">Numerología Personal</span></div>
             <div class="config-ritual-area">
                 <div class="selector-caja">
-                    <label data-t="lblNumNombre">Nombres y apellidos:</label>
-                    <input type="text" id="num-nombre" data-t-placeholder="phNombre" placeholder="Tus nombres y apellidos">
+                    <label data-t="lblNumNombre">Nombre y apellido:</label>
+                    <input type="text" id="num-nombre" data-t-placeholder="phNombre" placeholder="Tu nombre y apellido">
                 </div>
                 <div class="selector-caja">
                     <label data-t="lblNumFecha">Fecha de nacimiento:</label>
@@ -622,15 +622,6 @@
                         <option value="energia" data-t="numEnergia">Energía del Día</option>
                         <option value="compatibilidad" data-t="numCompat">Compatibilidad Numérica</option>
                     </select>
-                </div>
-            
-                <div class="selector-caja" id="caja-persona2" style="display:none;">
-                    <label data-t="lblNumNombre2">Nombres y apellidos de la otra persona:</label>
-                    <input type="text" id="num-nombre2" data-t-placeholder="phNombre2" placeholder="Nombres y apellidos de la otra persona">
-                </div>
-                <div class="selector-caja" id="caja-fecha2" style="display:none;">
-                    <label data-t="lblNumFecha2">Fecha de nacimiento de la otra persona:</label>
-                    <input type="date" id="num-fecha2">
                 </div>
             </div>
             <button class="btn-volver" onclick="calcularNumerologia()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnCalcular">CALCULAR</button>
@@ -693,11 +684,11 @@
 
         <!-- ORACULO CONFIG -->
         <div id="pantalla-oraculo-config" class="vista-seccion">
-            <div class="instruccion-directa">&#x1F9E0; <span data-t="oraculoTitulo">Oráculo</span></div>
+            <div class="instruccion-directa">&#x1F9E0; <span data-t="oraculoTitulo">Oráculo de Conciencia</span></div>
             <div class="config-ritual-area">
                 <div class="selector-caja">
-                    <label data-t="lblOrcNombre">Nombres y apellidos:</label>
-                    <input type="text" id="orc-nombre" data-t-placeholder="phNombre" placeholder="Tus nombres y apellidos">
+                    <label data-t="lblOrcNombre">Nombre y apellido:</label>
+                    <input type="text" id="orc-nombre" data-t-placeholder="phNombre" placeholder="Tu nombre y apellido">
                 </div>
                 <div class="selector-caja">
                     <label data-t="lblOrcFecha">Fecha de nacimiento:</label>
@@ -834,10 +825,10 @@
                 sintesis3Cartas: "La secuencia de estas tres cartas traza un mensaje coherente: tu pasado ha preparado el terreno, tu presente te sitúa ante una encrucijada y tu futuro te invita a avanzar con confianza. Juntas, confirman que estás en un momento de transición significativa.",
                 sintesis1Carta: "Esta carta encapsula el mensaje esencial que necesitas escuchar ahora mismo. Medita sobre ella y permite que su sabiduría guíe tu próximo paso.",
                 si: "\u2726 DICTAMEN: SÍ \u2726", no: "\u2726 DICTAMEN: NO \u2726",
-                numTitulo: "Numerología Personal", lblNumNombre: "Nombres y apellidos:", lblNumFecha: "Fecha de nacimiento:",
+                numTitulo: "Numerología Personal", lblNumNombre: "Nombre y apellido:", lblNumFecha: "Fecha de nacimiento:",
                 lblNumConsulta: "Tipo de consulta:", numPerfil: "Perfil Numerológico Completo",
                 numEnergia: "Energía del Día", numCompat: "Compatibilidad Numérica",
-                phNombre: "Tus nombres y apellidos",
+                phNombre: "Tu nombre y apellido",
                 btnCalcular: "CALCULAR", numResTitulo: "Tu Perfil Numerológico",
                 caminoVida: "Camino de Vida", destino: "Número de Destino", alma: "Número del Alma", personalidad: "Personalidad",
                 energiaDia: "Energía del Día", numeroPersonalAno: "Número Personal del Año",
@@ -850,12 +841,11 @@
                 astroResTitulo: "Tu Carta Astral", perfilAstrologico: "Tu Perfil Astrológico",
                 solEn: "Sol en", lunaEn: "Luna en", ascendenteTxt: "Ascendente", mercurioEn: "Mercurio en",
                 venusEn: "Venus en", marteEn: "Marte en",
-                jupiterEn: "Júpiter en", saturnoEn: "Saturno en", uranoEn: "Urano en", neptunoEn: "Neptuno en", plutonEn: "Plutón en",
                 solDesc: "Tu identidad central, cómo brillas en el mundo.",
                 lunaDesc: "Tus emociones profundas y mundo interior.",
                 ascDesc: "Tu máscara exterior y primera impresión.",
-                oraculoTitulo: "Oráculo",
-                lblOrcNombre: "Nombres y apellidos:", lblOrcFecha: "Fecha de nacimiento:", lblOrcLugar: "Lugar de nacimiento:", phLugar: "Tu lugar de nacimiento",
+                oraculoTitulo: "Oráculo de Conciencia",
+                lblOrcNombre: "Nombre y apellido:", lblOrcFecha: "Fecha de nacimiento:", lblOrcLugar: "Lugar de nacimiento:", phLugar: "Tu lugar de nacimiento",
                 lblOrcHora: "Hora de nacimiento:",
                 oraculoResTitulo: "\u2728 El Oráculo Ha Hablado \u2728",
                 elegirOraculo: "Elige tu carta del Oráculo",
@@ -896,10 +886,10 @@
                 sintesis3Cartas: "The sequence of these three cards traces a coherent message: your past has laid the groundwork, your present places you at a crossroads, and your future invites you to move forward with confidence. Together, they confirm you are in a moment of significant transition.",
                 sintesis1Carta: "This card encapsulates the essential message you need to hear right now. Meditate on it and let its wisdom guide your next step.",
                 si: "\u2726 VERDICT: YES \u2726", no: "\u2726 VERDICT: NO \u2726",
-                numTitulo: "Personal Numerology", lblNumNombre: "First and last names:", lblNumFecha: "Date of birth:",
+                numTitulo: "Personal Numerology", lblNumNombre: "First and last name:", lblNumFecha: "Date of birth:",
                 lblNumConsulta: "Type of reading:", numPerfil: "Complete Numerological Profile",
                 numEnergia: "Energy of the Day", numCompat: "Numeric Compatibility",
-                phNombre: "Your first and last names",
+                phNombre: "Your first and last name",
                 numResTitulo: "Your Numerological Profile",
                 caminoVida: "Life Path", destino: "Destiny Number", alma: "Soul Number", personalidad: "Personality",
                 energiaDia: "Energy of the Day", numeroPersonalAno: "Personal Year Number",
@@ -912,12 +902,11 @@
                 astroResTitulo: "Your Birth Chart", perfilAstrologico: "Your Astrological Profile",
                 solEn: "Sun in", lunaEn: "Moon in", ascendenteTxt: "Rising", mercurioEn: "Mercury in",
                 venusEn: "Venus in", marteEn: "Mars in",
-                jupiterEn: "Jupiter in", saturnoEn: "Saturn in", uranoEn: "Uranus in", neptunoEn: "Neptune in", plutonEn: "Pluto in",
                 solDesc: "Your core identity, how you shine in the world.",
                 lunaDesc: "Your deep emotions and inner world.",
                 ascDesc: "Your outer mask and first impression.",
-                oraculoTitulo: "Oracle",
-                lblOrcNombre: "First and last names:", lblOrcFecha: "Date of birth:", lblOrcLugar: "Place of birth:", phLugar: "Your place of birth",
+                oraculoTitulo: "Oracle of Consciousness",
+                lblOrcNombre: "First and last name:", lblOrcFecha: "Date of birth:", lblOrcLugar: "Place of birth:", phLugar: "Your place of birth",
                 lblOrcHora: "Time of birth:",
                 oraculoResTitulo: "\u2728 The Oracle Has Spoken \u2728",
                 elegirOraculo: "Choose your Oracle card",
@@ -958,10 +947,10 @@
                 sintesis3Cartas: "A sequência destas três cartas traça uma mensagem coerente: seu passado preparou o terreno, seu presente o coloca numa encruzilhada, e seu futuro o convida a avançar com confiança. Juntas, confirmam que você está num momento de transição significativa.",
                 sintesis1Carta: "Esta carta encapsula a mensagem essencial que você precisa ouvir agora. Medite sobre ela e permita que sua sabedoria guie seu próximo passo.",
                 si: "\u2726 VEREDITO: SIM \u2726", no: "\u2726 VEREDITO: NÃO \u2726",
-                numTitulo: "Numerologia Pessoal", lblNumNombre: "Nomes e sobrenomes:", lblNumFecha: "Data de nascimento:",
+                numTitulo: "Numerologia Pessoal", lblNumNombre: "Nome e sobrenome:", lblNumFecha: "Data de nascimento:",
                 lblNumConsulta: "Tipo de consulta:", numPerfil: "Perfil Numerológico Completo",
                 numEnergia: "Energia do Dia", numCompat: "Compatibilidade Numérica",
-                phNombre: "Seus nomes e sobrenomes",
+                phNombre: "Seu nome e sobrenome",
                 numResTitulo: "Seu Perfil Numerológico",
                 caminoVida: "Caminho de Vida", destino: "Número de Destino", alma: "Número da Alma", personalidade: "Personalidade",
                 energiaDia: "Energia do Dia", numeroPersonalAno: "Número Pessoal do Ano",
@@ -974,12 +963,11 @@
                 astroResTitulo: "Seu Mapa Astral", perfilAstrologico: "Seu Perfil Astrológico",
                 solEn: "Sol em", lunaEn: "Lua em", ascendenteTxt: "Ascendente", mercurioEn: "Mercúrio em",
                 venusEn: "Vênus em", marteEn: "Marte em",
-                jupiterEn: "Júpiter em", saturnoEn: "Saturno em", uranoEn: "Urano em", neptunoEn: "Netuno em", plutonEn: "Plutão em",
                 solDesc: "Sua identidade central, como você brilha no mundo.",
                 lunaDesc: "Suas emoções profundas e mundo interior.",
                 ascDesc: "Sua máscara externa e primeira impressão.",
-                oraculoTitulo: "Oráculo",
-                lblOrcNombre: "Nomes e sobrenomes:", lblOrcFecha: "Data de nascimento:", lblOrcLugar: "Local de nascimento:", phLugar: "Seu local de nascimento",
+                oraculoTitulo: "Oráculo de Consciência",
+                lblOrcNombre: "Nome e sobrenome:", lblOrcFecha: "Data de nascimento:", lblOrcLugar: "Local de nascimento:", phLugar: "Seu local de nascimento",
                 lblOrcHora: "Hora de nascimento:",
                 oraculoResTitulo: "\u2728 O Oráculo Falou \u2728",
                 elegirOraculo: "Escolha sua carta do Oráculo",
@@ -1020,10 +1008,10 @@
                 sintesis3Cartas: "La séquence de ces trois cartes trace un message cohérent : ton passé a préparé le terrain, ton présent te place à un carrefour, et ton futur t'invite à avancer avec confiance. Ensemble, elles confirment que tu es dans un moment de transition significative.",
                 sintesis1Carta: "Cette carte encapsule le message essentiel que tu dois entendre maintenant. Médite sur elle et laisse sa sagesse guider ton prochain pas.",
                 si: "\u2726 VERDICT: OUI \u2726", no: "\u2726 VERDICT: NON \u2726",
-                numTitulo: "Numérologie Personnelle", lblNumNombre: "Prénoms et noms:", lblNumFecha: "Date de naissance:",
+                numTitulo: "Numérologie Personnelle", lblNumNombre: "Prénom et nom:", lblNumFecha: "Date de naissance:",
                 lblNumConsulta: "Type de consultation:", numPerfil: "Profil Numérologique Complet",
                 numEnergia: "Énergie du Jour", numCompat: "Compatibilité Numérique",
-                phNombre: "Tes prénoms et noms",
+                phNombre: "Ton prénom et nom",
                 numResTitulo: "Ton Profil Numérologique",
                 caminoVida: "Chemin de Vie", destino: "Nombre de Destin", alma: "Nombre d'Âme", personalidad: "Personnalité",
                 energiaDia: "Énergie du Jour", numeroPersonalAno: "Nombre Personnel de l'Année",
@@ -1036,12 +1024,11 @@
                 astroResTitulo: "Ton Thème Astral", perfilAstrologico: "Ton Profil Astrologique",
                 solEn: "Soleil en", lunaEn: "Lune en", ascendenteTxt: "Ascendant", mercurioEn: "Mercure en",
                 venusEn: "Vénus en", marteEn: "Mars en",
-                jupiterEn: "Jupiter en", saturnoEn: "Saturne en", uranoEn: "Uranus en", neptunoEn: "Neptune en", plutonEn: "Pluton en",
                 solDesc: "Ton identité centrale, comment tu brilles dans le monde.",
                 lunaDesc: "Tes émotions profondes et monde intérieur.",
                 ascDesc: "Ton masque extérieur et première impression.",
-                oraculoTitulo: "Oracle",
-                lblOrcNombre: "Prénoms et noms:", lblOrcFecha: "Date de naissance:", lblOrcLugar: "Lieu de naissance:", phLugar: "Ton lieu de naissance",
+                oraculoTitulo: "Oracle de Conscience",
+                lblOrcNombre: "Prénom et nom:", lblOrcFecha: "Date de naissance:", lblOrcLugar: "Lieu de naissance:", phLugar: "Ton lieu de naissance",
                 lblOrcHora: "Heure de naissance:",
                 oraculoResTitulo: "\u2728 L'Oracle A Parlé \u2728",
                 elegirOraculo: "Choisis ta carte de l'Oracle",
@@ -1082,10 +1069,10 @@
                 sintesis3Cartas: "La sequenza di queste tre carte traccia un messaggio coerente: il tuo passato ha preparato il terreno, il tuo presente ti pone a un bivio, e il tuo futuro ti invita ad avanzare con fiducia. Insieme, confermano che sei in un momento di transizione significativa.",
                 sintesis1Carta: "Questa carta racchiude il messaggio essenziale che devi sentire ora. Medita su di essa e lascia che la sua saggezza guidi il tuo prossimo passo.",
                 si: "\u2726 VERDETTO: SÌ \u2726", no: "\u2726 VERDETTO: NO \u2726",
-                numTitulo: "Numerologia Personale", lblNumNombre: "Nomi e cognomi:", lblNumFecha: "Data di nascita:",
+                numTitulo: "Numerologia Personale", lblNumNombre: "Nome e cognome:", lblNumFecha: "Data di nascita:",
                 lblNumConsulta: "Tipo di consultazione:", numPerfil: "Profilo Numerologico Completo",
                 numEnergia: "Energia del Giorno", numCompat: "Compatibilità Numerica",
-                phNombre: "I tuoi nomi e cognomi",
+                phNombre: "Il tuo nome e cognome",
                 numResTitulo: "Il Tuo Profilo Numerologico",
                 caminoVida: "Cammino di Vita", destino: "Numero del Destino", alma: "Numero dell'Anima", personalidad: "Personalità",
                 energiaDia: "Energia del Giorno", numeroPersonalAno: "Numero Personale dell'Anno",
@@ -1098,12 +1085,11 @@
                 astroResTitulo: "Il Tuo Tema Astrale", perfilAstrologico: "Il Tuo Profilo Astrologico",
                 solEn: "Sole in", lunaEn: "Luna in", ascendenteTxt: "Ascendente", mercurioEn: "Mercurio in",
                 venusEn: "Venere in", marteEn: "Marte in",
-                jupiterEn: "Giove in", saturnoEn: "Saturno in", uranoEn: "Urano in", neptunoEn: "Nettuno in", plutonEn: "Plutone in",
                 solDesc: "La tua identità centrale, come risplendi nel mondo.",
                 lunaDesc: "Le tue emozioni profonde e mondo interiore.",
                 ascDesc: "La tua maschera esterna e prima impressione.",
-                oraculoTitulo: "Oracolo",
-                lblOrcNombre: "Nomi e cognomi:", lblOrcFecha: "Data di nascita:", lblOrcLugar: "Luogo di nascita:", phLugar: "Il tuo luogo di nascita",
+                oraculoTitulo: "Oracolo di Coscienza",
+                lblOrcNombre: "Nome e cognome:", lblOrcFecha: "Data di nascita:", lblOrcLugar: "Luogo di nascita:", phLugar: "Il tuo luogo di nascita",
                 lblOrcHora: "Ora di nascita:",
                 oraculoResTitulo: "\u2728 L'Oracolo Ha Parlato \u2728",
                 elegirOraculo: "Scegli la tua carta dell'Oracolo",
@@ -1539,11 +1525,6 @@
             agregarResultadoAstrologico(resultadosDiv, '\u263F', datosCarta.mercurio.nombre[idiomaActual], 'Mercury', t('mercurioDesc'));
             agregarResultadoAstrologico(resultadosDiv, '\u2640', datosCarta.venus.nombre[idiomaActual], 'Venus', t('venusDesc'));
             agregarResultadoAstrologico(resultadosDiv, '\u2642', datosCarta.marte.nombre[idiomaActual], 'Mars', t('marteDesc'));
-            agregarResultadoAstrologico(resultadosDiv, '\u2643', datosCarta.jupiter.nombre[idiomaActual], 'Jupiter', t('jupiterDesc'));
-            agregarResultadoAstrologico(resultadosDiv, '\u2644', datosCarta.saturno.nombre[idiomaActual], 'Saturn', t('saturnoDesc'));
-            agregarResultadoAstrologico(resultadosDiv, '\u2645', datosCarta.urano.nombre[idiomaActual], 'Uranus', t('uranoDesc'));
-            agregarResultadoAstrologico(resultadosDiv, '\u2646', datosCarta.neptuno.nombre[idiomaActual], 'Neptune', t('neptunoDesc'));
-            agregarResultadoAstrologico(resultadosDiv, '\u2647', datosCarta.pluton.nombre[idiomaActual], 'Pluto', t('plutonDesc'));
 
             document.getElementById('ast-interpretacion').innerHTML = generarInterpretacionAstral(datosCarta);
             cambiarVista('pantalla-astrologia-resultado');
@@ -1556,51 +1537,27 @@
             contenedor.appendChild(div);
         }
 
-        function calcularSignosCartaNatal(fecha, hora) {
-            const signosZodiaco = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+        function calcularSignosCartaNatal(fecha) {
             const mes = fecha.getMonth() + 1;
             const dia = fecha.getDate();
-            const hora_num = hora || 12;
-            
-            // Solar sign
+            const hora = fecha.getHours();
+
             const signoSolar = calcularSignoPorFecha(mes, dia);
-            const solarIdx = signosZodiaco.findIndex(s => s === signoSolar.split(' ')[0] || s.toLowerCase().includes(signoSolar.toLowerCase()));
-            const solarIdxFinal = solarIdx >= 0 ? solarIdx : 0;
-            
-            // Moon sign: improved using day of year
-            const dayOfYear = Math.floor((fecha - new Date(fecha.getFullYear(), 0, 0)) / 86400000);
-            const moonSignIdx = Math.floor((dayOfYear * 13.37 + Math.floor(fecha.getFullYear() % 19) * 7) % 12);
-            
-            // Rising sign: approximate based on hour (each 2 hours = 1 sign)
-            const hourOffset = Math.floor((hora_num + 6) / 2);
-            const ascIdx = (solarIdxFinal + hourOffset) % 12;
-            
-            // Inner planets
-            const mercurio = signosZodiaco[(solarIdxFinal + (mes % 2 === 0 ? 0 : 1)) % 12];
-            const venus = signosZodiaco[(solarIdxFinal + 2 + (mes % 3)) % 12];
-            const marte = signosZodiaco[(solarIdxFinal + 5 + Math.floor(dia / 10)) % 12];
-            
-            // Outer planets (long-term cycles, using safe modulo)
-            const sm = (n) => ((n % 12) + 12) % 12;
-            const jupiter = signosZodiaco[sm(fecha.getFullYear() + 5)];
-            const saturno = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1920) / 2.5 + 5))];
-            const urano = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1927) / 7 + 7))];
-            const neptuno = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1860) / 14 + 8))];
-            const pluton = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1882) / 20 + 9))];
-            
-            return {
-                signoSolar: signoSolar,
-                signoLunar: signosZodiaco[moonSignIdx],
-                ascendente: signosZodiaco[ascIdx],
-                mercurio: mercurio,
-                venus: venus,
-                marte: marte,
-                jupiter: jupiter,
-                saturno: saturno,
-                urano: urano,
-                neptuno: neptuno,
-                pluton: pluton
-            };
+            const solarIdx = signosZodiaco.findIndex(s => s.nombre.es === signoSolar.nombre.es);
+
+            // Moon sign approximation
+            const signoLunar = signosZodiaco[(Math.floor(dia / 2.5) + mes) % 12];
+
+            // Rising sign approximation based on hour
+            const ascIdx = (solarIdx + Math.floor(hora / 2)) % 12;
+            const ascendente = signosZodiaco[ascIdx];
+
+            // Inner planets approximations
+            const mercurio = signosZodiaco[(solarIdx + Math.floor((mes) / 3)) % 12];
+            const venus = signosZodiaco[(solarIdx + Math.floor((mes + 4) / 3)) % 12];
+            const marte = signosZodiaco[(solarIdx + Math.floor((mes + 8) / 3)) % 12];
+
+            return { signoSolar, signoLunar, ascendente, mercurio, venus, marte };
         }
 
         function calcularSignoPorFecha(mes, dia) {
@@ -1635,12 +1592,7 @@
             <p><strong>\u2B06\uFE0F ${t('ascendenteTxt')} ${datosCarta.ascendente.nombre[idiomaActual]}:</strong> ${t('ascDesc')}</p>
             <p><strong>\u263F ${t('mercurioEn')} ${datosCarta.mercurio.nombre[idiomaActual]}:</strong> ${t('mercurioDesc')}</p>
             <p><strong>\u2640 ${t('venusEn')} ${datosCarta.venus.nombre[idiomaActual]}:</strong> ${t('venusDesc')}</p>
-            <p><strong>\u2642 ${t('marteEn')} ${datosCarta.marte.nombre[idiomaActual]}:</strong> ${t('marteDesc')}</p>
-            <p><strong>\u2643 ${t('jupiterEn')} ${datosCarta.jupiter.nombre[idiomaActual]}:</strong> ${t('jupiterDesc')}</p>
-            <p><strong>\u2644 ${t('saturnoEn')} ${datosCarta.saturno.nombre[idiomaActual]}:</strong> ${t('saturnoDesc')}</p>
-            <p><strong>\u2645 ${t('uranoEn')} ${datosCarta.urano.nombre[idiomaActual]}:</strong> ${t('uranoDesc')}</p>
-            <p><strong>\u2646 ${t('neptunoEn')} ${datosCarta.neptuno.nombre[idiomaActual]}:</strong> ${t('neptunoDesc')}</p>
-            <p><strong>\u2647 ${t('plutonEn')} ${datosCarta.pluton.nombre[idiomaActual]}:</strong> ${t('plutonDesc')}</p>`;
+            <p><strong>\u2642 ${t('marteEn')} ${datosCarta.marte.nombre[idiomaActual]}:</strong> ${t('marteDesc')}</p>`;
         }
 
         // ========================
