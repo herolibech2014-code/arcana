@@ -24,6 +24,28 @@
     <meta name="twitter:title" content="Arcana - El Universo Responde">
     <meta name="twitter:description" content="Consultas místicas de Tarot, Astrología, Numerología y Oráculo.">
 
+    <!-- Structured Data JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Arcana",
+        "description": "Portal místico para consultas de Tarot, Astrología, Numerología y Oráculo",
+        "url": "https://arcana-lecturas.com",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Any",
+        "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "USD"
+        },
+        "author": {
+            "@type": "Organization",
+            "name": "Arcana"
+        }
+    }
+    </script>
+
     <!-- Favicon using the logo -->
     <link rel="icon" href="fondo-arcana.jpg">
 
@@ -600,6 +622,11 @@
             <div class="instruccion-directa" id="txt-titulo-resultado">El Dictamen del Destino</div>
             <div class="resultado-cartas" id="caja-cartas-reveladas"></div>
             <div class="caja-interpretacion" id="texto-interpretacion"></div>
+            <!-- ADSENSE: After tarot results -->
+            <div class="ads-box">
+                <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                <span data-t="ads">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+            </div>
             <button class="btn-volver" onclick="abrirTarotConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
 
@@ -641,6 +668,11 @@
             <div class="instruccion-directa" data-t="numResTitulo">Tu Perfil Numerológico</div>
             <div class="num-grila" id="num-resultados"></div>
             <div class="caja-interpretacion" id="num-interpretacion" style="margin-top:25px;"></div>
+            <!-- ADSENSE: After numerology results -->
+            <div class="ads-box">
+                <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                <span data-t="ads">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+            </div>
             <button class="btn-volver" onclick="abrirNumerologiaConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
 
@@ -688,6 +720,11 @@
             <div class="instruccion-directa">&#x1F30C; <span data-t="astroResTitulo">Tu Carta Astral</span></div>
             <div class="num-grila" id="ast-resultados"></div>
             <div class="caja-interpretacion" id="ast-interpretacion" style="margin-top:25px;"></div>
+            <!-- ADSENSE: After astrology results -->
+            <div class="ads-box">
+                <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                <span data-t="ads">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+            </div>
             <button class="btn-volver" onclick="abrirAstrologiaConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
 
@@ -742,6 +779,11 @@
             <div class="instruccion-directa" data-t="oraculoResTitulo">&#x1F52E; El Oráculo Ha Hablado</div>
             <div class="resultado-cartas" id="orc-cartas"></div>
             <div class="caja-interpretacion" id="orc-interpretacion"></div>
+            <!-- ADSENSE: After oracle results -->
+            <div class="ads-box">
+                <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                <span data-t="ads">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+            </div>
             <button class="btn-volver" onclick="abrirOraculoConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
 
