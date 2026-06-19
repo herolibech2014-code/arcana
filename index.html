@@ -1460,6 +1460,7 @@
 
         function calcularNumerologia() {
             sonarCuenco();
+            const tipo = document.getElementById('num-tipo').value;
             const nombre = document.getElementById('num-nombre').value;
             const fecha = document.getElementById('num-fecha').value;
 
@@ -1472,12 +1473,32 @@
             const resultadosDiv = document.getElementById('num-resultados');
             resultadosDiv.innerHTML = '';
 
-            agregarResultadoNumerico(resultadosDiv, fechaNums.caminoVida, t('caminoVida'), obtenerSignificadoNumero(fechaNums.caminoVida));
-            agregarResultadoNumerico(resultadosDiv, numeros.destino, t('destino'), obtenerSignificadoNumero(numeros.destino));
-            agregarResultadoNumerico(resultadosDiv, numeros.alma, t('alma'), obtenerSignificadoNumero(numeros.alma));
-            agregarResultadoNumerico(resultadosDiv, numeros.personalidad, t('personalidad'), obtenerSignificadoNumero(numeros.personalidad));
-            agregarResultadoNumerico(resultadosDiv, fechaNums.numeroPersonalAno, t('numeroPersonalAno'), obtenerSignificadoNumero(fechaNums.numeroPersonalAno));
-            agregarResultadoNumerico(resultadosDiv, energiaDia, t('energiaDia'), obtenerSignificadoNumero(energiaDia));
+            if (tipo === 'compatibilidad') {
+                const nombre2 = document.getElementById('num-nombre2').value;
+                const fecha2 = document.getElementById('num-fecha2').value;
+                if (!nombre2 || !fecha2) { alert(t('completaCampos')); return; }
+
+                const numeros2 = calcularNumerosNombre(nombre2);
+                const fechaNums2 = calcularNumerosFecha(fecha2);
+
+                // Person 1 results
+                agregarResultadoNumerico(resultadosDiv, fechaNums.caminoVida, t('tuCaminoVida') + ' (1)', obtenerSignificadoNumero(fechaNums.caminoVida));
+                agregarResultadoNumerico(resultadosDiv, numeros.destino, t('destino') + ' (1)', obtenerSignificadoNumero(numeros.destino));
+                // Person 2 results
+                agregarResultadoNumerico(resultadosDiv, fechaNums2.caminoVida, t('tuCaminoVida') + ' (2)', obtenerSignificadoNumero(fechaNums2.caminoVida));
+                agregarResultadoNumerico(resultadosDiv, numeros2.destino, t('destino') + ' (2)', obtenerSignificadoNumero(numeros2.destino));
+                // Compatibility
+                const compatNum = Math.abs(numeros.destino - numeros2.destino) || 9;
+                const compatibilidadTexto = obtenerSignificadoNumero(compatNum);
+                agregarResultadoNumerico(resultadosDiv, compatNum, t('numCompat'), compatibilidadTexto);
+            } else {
+                agregarResultadoNumerico(resultadosDiv, fechaNums.caminoVida, t('caminoVida'), obtenerSignificadoNumero(fechaNums.caminoVida));
+                agregarResultadoNumerico(resultadosDiv, numeros.destino, t('destino'), obtenerSignificadoNumero(numeros.destino));
+                agregarResultadoNumerico(resultadosDiv, numeros.alma, t('alma'), obtenerSignificadoNumero(numeros.alma));
+                agregarResultadoNumerico(resultadosDiv, numeros.personalidad, t('personalidad'), obtenerSignificadoNumero(numeros.personalidad));
+                agregarResultadoNumerico(resultadosDiv, fechaNums.numeroPersonalAno, t('numeroPersonalAno'), obtenerSignificadoNumero(fechaNums.numeroPersonalAno));
+                agregarResultadoNumerico(resultadosDiv, energiaDia, t('energiaDia'), obtenerSignificadoNumero(energiaDia));
+            }
 
             const interpretacionDiv = document.getElementById('num-interpretacion');
             interpretacionDiv.innerHTML = generarInterpretacionNumerologica(numeros, fechaNums, energiaDia);
@@ -1528,7 +1549,7 @@
             if (!fecha || !nombre) { alert(t('completaCampos')); return; }
 
             const fechaObj = new Date(fecha + 'T' + (hora || '12:00'));
-            const datosCarta = calcularSignosCartaNatal(fechaObj);
+            const datosCarta = calcularSignosCartaNatal(fechaObj, hora || 12);
 
             const resultadosDiv = document.getElementById('ast-resultados');
             resultadosDiv.innerHTML = '';
@@ -1557,49 +1578,49 @@
         }
 
         function calcularSignosCartaNatal(fecha, hora) {
-            const signosZodiaco = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
             const mes = fecha.getMonth() + 1;
             const dia = fecha.getDate();
-            const hora_num = hora || 12;
-            
-            // Solar sign
+            const hora_num = parseInt(hora) || 12;
+
+            // Solar sign - use the global signosZodiaco with {nombre, elemento} objects
             const signoSolar = calcularSignoPorFecha(mes, dia);
-            const solarIdx = signosZodiaco.findIndex(s => s === signoSolar.split(' ')[0] || s.toLowerCase().includes(signoSolar.toLowerCase()));
+            const solarIdx = signosZodiaco.findIndex(s => s.nombre.es === signoSolar.nombre.es);
             const solarIdxFinal = solarIdx >= 0 ? solarIdx : 0;
-            
+
             // Moon sign: improved using day of year
             const dayOfYear = Math.floor((fecha - new Date(fecha.getFullYear(), 0, 0)) / 86400000);
             const moonSignIdx = Math.floor((dayOfYear * 13.37 + Math.floor(fecha.getFullYear() % 19) * 7) % 12);
-            
+            const safeMoonIdx = ((moonSignIdx % 12) + 12) % 12;
+
             // Rising sign: approximate based on hour (each 2 hours = 1 sign)
             const hourOffset = Math.floor((hora_num + 6) / 2);
-            const ascIdx = (solarIdxFinal + hourOffset) % 12;
-            
-            // Inner planets
-            const mercurio = signosZodiaco[(solarIdxFinal + (mes % 2 === 0 ? 0 : 1)) % 12];
-            const venus = signosZodiaco[(solarIdxFinal + 2 + (mes % 3)) % 12];
-            const marte = signosZodiaco[(solarIdxFinal + 5 + Math.floor(dia / 10)) % 12];
-            
+            const ascIdx = ((solarIdxFinal + hourOffset) % 12 + 12) % 12;
+
+            // Inner planets - relative to Sun's position
+            const mercurioIdx = ((solarIdxFinal + (mes % 2 === 0 ? 0 : 1)) % 12 + 12) % 12;
+            const venusIdx = ((solarIdxFinal + 2 + (mes % 3)) % 12 + 12) % 12;
+            const marteIdx = ((solarIdxFinal + 5 + Math.floor(dia / 10)) % 12 + 12) % 12;
+
             // Outer planets (long-term cycles, using safe modulo)
             const sm = (n) => ((n % 12) + 12) % 12;
-            const jupiter = signosZodiaco[sm(fecha.getFullYear() + 5)];
-            const saturno = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1920) / 2.5 + 5))];
-            const urano = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1927) / 7 + 7))];
-            const neptuno = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1860) / 14 + 8))];
-            const pluton = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1882) / 20 + 9))];
-            
+            const jupiterIdx = sm(fecha.getFullYear() + 5);
+            const saturnoIdx = sm(Math.floor((fecha.getFullYear() - 1920) / 2.5 + 5));
+            const uranoIdx = sm(Math.floor((fecha.getFullYear() - 1927) / 7 + 7));
+            const neptunoIdx = sm(Math.floor((fecha.getFullYear() - 1860) / 14 + 8));
+            const plutonIdx = sm(Math.floor((fecha.getFullYear() - 1882) / 20 + 9));
+
             return {
-                signoSolar: signoSolar,
-                signoLunar: signosZodiaco[moonSignIdx],
+                signoSolar: signosZodiaco[solarIdxFinal],
+                signoLunar: signosZodiaco[safeMoonIdx],
                 ascendente: signosZodiaco[ascIdx],
-                mercurio: mercurio,
-                venus: venus,
-                marte: marte,
-                jupiter: jupiter,
-                saturno: saturno,
-                urano: urano,
-                neptuno: neptuno,
-                pluton: pluton
+                mercurio: signosZodiaco[mercurioIdx],
+                venus: signosZodiaco[venusIdx],
+                marte: signosZodiaco[marteIdx],
+                jupiter: signosZodiaco[jupiterIdx],
+                saturno: signosZodiaco[saturnoIdx],
+                urano: signosZodiaco[uranoIdx],
+                neptuno: signosZodiaco[neptunoIdx],
+                pluton: signosZodiaco[plutonIdx]
             };
         }
 
@@ -1660,7 +1681,7 @@
                 numeros: calcularNumerosNombre(nombre),
                 fechaNums: calcularNumerosFecha(fecha),
                 energiaDia: calcularEnergiaDelDia(),
-                datosCarta: calcularSignosCartaNatal(new Date(fecha + 'T' + (hora || '12:00')))
+                datosCarta: calcularSignosCartaNatal(new Date(fecha + 'T' + (hora || '12:00')), parseInt(hora) || 12)
             };
 
             // Build a mini card fan for the oracle (client chooses 1 card)
@@ -1835,6 +1856,13 @@
         // ========================
         const devLang = (navigator.language || navigator.userLanguage || '').slice(0, 2);
         cambiarIdioma(T[devLang] ? devLang : 'es');
+
+        // Numerology compatibility toggle
+        document.getElementById('num-tipo').addEventListener('change', function() {
+            const isCompat = this.value === 'compatibilidad';
+            document.getElementById('caja-persona2').style.display = isCompat ? 'block' : 'none';
+            document.getElementById('caja-fecha2').style.display = isCompat ? 'block' : 'none';
+        });
 
         document.body.addEventListener('click', function() { asegurarMusicaDeFondo(); }, { once: true });
     </script>
