@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary Meta Tags -->
     <title>Arcana - Tarot, Astrología, Numerología | El Universo Responde</title>
     <meta name="title" content="Arcana - Tarot, Astrología, Numerología | El Universo Responde">
     <meta name="description" content="Consultas místicas profesionales de Tarot (78 cartas), Carta Astral con posiciones planetarias precisas, Numerología y Oráculo. Lecturas personalizadas gratuitas.">
@@ -12,7 +11,6 @@
     <meta name="theme-color" content="#1a0033">
     <meta name="author" content="Arcana">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arcana-lecturas.com/">
     <meta property="og:title" content="Arcana - El Universo Responde | Tarot, Astrología, Numerología">
@@ -24,14 +22,12 @@
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="it_IT">
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://arcana-lecturas.com/">
     <meta name="twitter:title" content="Arcana - El Universo Responde">
     <meta name="twitter:description" content="Tarot, Astrología, Numerología y Oráculo">
     <meta name="twitter:image" content="https://arcana-lecturas.com/fondo-arcana.jpg">
 
-    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -273,53 +269,49 @@
         }
 
         .cartas-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-            gap: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
             margin: 20px 0;
         }
 
-        .carta-tarot-real {
-            width: 85px;
-            height: 130px;
-            background: linear-gradient(135deg, #daa520, #8b4513);
-            border: 2px solid #ffd700;
-            border-radius: 8px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-size: 2.5em;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            position: relative;
-        }
-
-        .carta-tarot-real:hover {
-            transform: scale(1.1) rotateY(5deg);
-            box-shadow: 0 8px 20px rgba(255, 215, 0, 0.6);
-        }
-
-        .carta-tarot-real.revelada {
-            background: linear-gradient(135deg, #220, #440);
-            pointer-events: none;
-        }
-
         .carta-revelada {
-            width: 140px;
-            height: 220px;
-            background: linear-gradient(135deg, #daa520, #8b4513);
+            width: 180px;
+            background: rgba(25, 10, 50, 0.9);
             border: 3px solid #ffd700;
             border-radius: 10px;
-            padding: 15px;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
+            justify-content: flex-start;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0,0,0,0.8);
             animation: revelar 0.6s ease-out;
+        }
+
+        .contenedor-imagen-carta {
+            width: 100%;
+            height: 240px;
+            overflow: hidden;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            background: #110022;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .imagen-carta-archivo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .imagen-carta-archivo.invertida {
+            transform: rotate(180deg);
         }
 
         @keyframes revelar {
@@ -333,25 +325,26 @@
             }
         }
 
-        .carta-revelada .simbolo {
-            font-size: 3.5em;
-            margin-bottom: 10px;
-        }
-
         .carta-revelada .nombre {
-            font-size: 0.85em;
-            color: #1a0033;
+            font-size: 0.95em;
+            color: #ffd700;
             font-weight: bold;
             word-break: break-word;
+            margin-top: 5px;
+        }
+
+        .carta-revelada .estado-carta {
+            font-size: 0.8em;
+            color: #daa520;
+            font-style: italic;
+            margin-bottom: 5px;
         }
 
         .carta-revelada .significado {
-            font-size: 0.75em;
-            color: #1a0033;
-            margin-top: 10px;
-            max-height: 60px;
-            overflow-y: auto;
-            line-height: 1.3;
+            font-size: 0.8em;
+            color: #e0d5f0;
+            margin-top: 5px;
+            line-height: 1.4;
         }
 
         .nombre-c {
@@ -453,53 +446,16 @@
                 padding: 20px;
             }
 
-            .carta-tarot-real {
-                width: 75px;
-                height: 115px;
-                font-size: 2em;
-            }
-
             .carta-revelada {
-                width: 130px;
+                width: 150px;
+            }
+
+            .contenedor-imagen-carta {
                 height: 200px;
-            }
-
-            .carta-revelada .simbolo {
-                font-size: 2.8em;
-            }
-
-            .carta-revelada .nombre {
-                font-size: 0.75em;
-            }
-
-            .nombre-c {
-                font-size: 0.7em;
             }
 
             .menu-principal {
                 grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.5em;
-            }
-
-            .carta-tarot-real {
-                width: 65px;
-                height: 100px;
-                font-size: 1.8em;
-            }
-
-            .carta-revelada {
-                width: 110px;
-                height: 170px;
-            }
-
-            .cartas-container {
-                grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
-                gap: 10px;
             }
         }
     </style>
@@ -539,7 +495,6 @@
             <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
         </div>
 
-        <!-- SECCIÓN TAROT -->
         <div id="seccion-tarot" class="secciones">
             <div class="seccion">
                 <h2 data-t="tarotTitle">Lectura de Tarot</h2>
@@ -580,7 +535,6 @@
             </div>
         </div>
 
-        <!-- SECCIÓN ASTROLOGÍA -->
         <div id="seccion-astrologia" class="secciones">
             <div class="seccion">
                 <h2 data-t="astroTitle">Carta Astral</h2>
@@ -620,7 +574,6 @@
             </div>
         </div>
 
-        <!-- SECCIÓN NUMEROLOGÍA -->
         <div id="seccion-numerologia" class="secciones">
             <div class="seccion">
                 <h2 data-t="numeroTitle">Numerología</h2>
@@ -651,7 +604,6 @@
             </div>
         </div>
 
-        <!-- SECCIÓN ORÁCULO -->
         <div id="seccion-oraculo" class="secciones">
             <div class="seccion">
                 <h2 data-t="oracleTitle">Oráculo</h2>
@@ -766,7 +718,7 @@
                 consultButton: 'Consultar Oráculo',
                 newConsultation: 'Nova Consulta',
                 adsSpace: 'ESPAÇO RESERVADO PARA GOOGLE ADSENSE',
-                astroDisclaimer: 'Os cálculos de signo lunar e ascendente são aproximações. Para resultados exatos, consulte um astrólogo profissional com sua localização exata de nascimento.',
+                astroDisclaimer: 'Os cálculos de signo lunar e ascendente son aproximações. Para resultados exatos, consulte um astrólogo profissional com sua localização exata de nascimento.',
                 footerText: 'Todas as leituras são para fins educacionais e de entretenimento.',
             },
             fr: {
@@ -807,7 +759,7 @@
                 nombreLabel: 'Nomi e cognomi',
                 questionLabel: 'La tua domanda',
                 selectCards: 'Numero di carte',
-                birthDate: 'Data di nascita',
+                birthDate: 'Data de nascita',
                 birthTime: 'Ora di nascita (UTC)',
                 readButton: 'Leggi i Tarocchi',
                 calculateButton: 'Calcola',
@@ -815,376 +767,251 @@
                 newConsultation: 'Nuova Consultazione',
                 adsSpace: 'SPAZIO RISERVATO PER GOOGLE ADSENSE',
                 astroDisclaimer: 'I calcoli del segno lunare e dell\'ascendente sono approssimazioni. Per risultati esatti, consulta un astrologo professionista con la tua esatta posizione di nascita.',
-                footerText: 'Tutti i servizi di lettura sono a scopo educativo e di intrattenimento.',
+                footerText: 'Tutti i servizi di lettura sono a scopo educativo e de intrattenimento.',
             }
         };
 
-        // CARTAS DE TAROT - TODOS LOS 78 ARCANOS
+        // CARTAS DE TAROT - TODOS LOS 78 ARCANOS CON SUS IMÁGENES ASOCIADAS
         const cartasTarot = [
             // ARCANOS MAYORES (0-21)
-            {numero: 0, es: 'El Loco', en: 'The Fool', pt: 'O Louco', fr: 'Le Mat', it: 'Il Matto', significado: {es: 'Nuevo comienzo, ingenuidad, libertad', en: 'New beginnings, innocence, freedom', pt: 'Novos começos, inocência, liberdade', fr: 'Nouveaux départs, innocence, liberté', it: 'Nuovi inizi, innocenza, libertà'}, simbolo: '⟡'},
-            {numero: 1, es: 'El Mago', en: 'The Magician', pt: 'O Mago', fr: 'Le Magicien', it: 'Il Mago', significado: {es: 'Voluntad, creatividad, poder', en: 'Willpower, creativity, power', pt: 'Vontade, criatividade, poder', fr: 'Volonté, créativité, pouvoir', it: 'Forza di volontà, creatività, potere'}, simbolo: '∞'},
-            {numero: 2, es: 'La Sacerdotisa', en: 'The High Priestess', pt: 'A Sacerdotisa', fr: 'La Grande Prêtresse', it: 'La Sacerdotessa', significado: {es: 'Intuición, misterio, sabiduría', en: 'Intuition, mystery, wisdom', pt: 'Intuição, mistério, sabedoria', fr: 'Intuition, mystère, sagesse', it: 'Intuizione, mistero, saggezza'}, simbolo: '☽'},
-            {numero: 3, es: 'La Emperatriz', en: 'The Empress', pt: 'A Imperatriz', fr: 'L\'Impératrice', it: 'L\'Imperatrice', significado: {es: 'Abundancia, fertilidad, creación', en: 'Abundance, fertility, creation', pt: 'Abundância, fertilidade, criação', fr: 'Abondance, fertilité, création', it: 'Abbondanza, fertilità, creazione'}, simbolo: '♀'},
-            {numero: 4, es: 'El Emperador', en: 'The Emperor', pt: 'O Imperador', fr: 'L\'Empereur', it: 'L\'Imperatore', significado: {es: 'Autoridad, poder, control', en: 'Authority, power, control', pt: 'Autoridade, poder, controle', fr: 'Autorité, pouvoir, contrôle', it: 'Autorità, potere, controllo'}, simbolo: '♃'},
-            {numero: 5, es: 'El Hierofante', en: 'The Hierophant', pt: 'O Hierofante', fr: 'Le Pape', it: 'Il Papa', significado: {es: 'Tradición, enseñanza, fe', en: 'Tradition, teaching, faith', pt: 'Tradição, ensino, fé', fr: 'Tradition, enseignement, foi', it: 'Tradizione, insegnamento, fede'}, simbolo: '✚'},
-            {numero: 6, es: 'Los Amantes', en: 'The Lovers', pt: 'Os Amantes', fr: 'L\'Amoureux', it: 'Gli Innamorati', significado: {es: 'Amor, conexión, elección', en: 'Love, connection, choice', pt: 'Amor, conexão, escolha', fr: 'Amour, connexion, choix', it: 'Amore, connessione, scelta'}, simbolo: '❤'},
-            {numero: 7, es: 'El Carro', en: 'The Chariot', pt: 'O Carro', fr: 'Le Chariot', it: 'Il Carro', significado: {es: 'Determinación, control, victoria', en: 'Determination, control, victory', pt: 'Determinação, controle, vitória', fr: 'Détermination, contrôle, victoire', it: 'Determinazione, controllo, vittoria'}, simbolo: '⚔'},
-            {numero: 8, es: 'La Fuerza', en: 'Strength', pt: 'A Força', fr: 'La Force', it: 'La Forza', significado: {es: 'Fuerza interior, coraje, compasión', en: 'Inner strength, courage, compassion', pt: 'Força interior, coragem, compaixão', fr: 'Force intérieure, courage, compassion', it: 'Forza interiore, coraggio, compassione'}, simbolo: '♌'},
-            {numero: 9, es: 'El Ermitaño', en: 'The Hermit', pt: 'O Eremita', fr: 'L\'Ermite', it: 'L\'Eremita', significado: {es: 'Introspección, búsqueda, sabiduría', en: 'Introspection, seeking, wisdom', pt: 'Introspecção, busca, sabedoria', fr: 'Introspection, recherche, sagesse', it: 'Introspezione, ricerca, saggezza'}, simbolo: '🔦'},
-            {numero: 10, es: 'La Rueda de la Fortuna', en: 'Wheel of Fortune', pt: 'Roda da Fortuna', fr: 'La Roue de la Fortune', it: 'La Ruota della Fortuna', significado: {es: 'Destino, ciclos, suerte', en: 'Destiny, cycles, luck', pt: 'Destino, ciclos, sorte', fr: 'Destin, cycles, chance', it: 'Destino, cicli, fortuna'}, simbolo: '☸'},
-            {numero: 11, es: 'La Justicia', en: 'Justice', pt: 'A Justiça', fr: 'La Justice', it: 'La Giustizia', significado: {es: 'Justicia, balance, verdad', en: 'Justice, balance, truth', pt: 'Justiça, equilíbrio, verdade', fr: 'Justice, équilibre, vérité', it: 'Giustizia, equilibrio, verità'}, simbolo: '⚖'},
-            {numero: 12, es: 'El Ahorcado', en: 'The Hanged Man', pt: 'O Enforcado', fr: 'Le Pendu', it: 'L\'Impiccato', significado: {es: 'Suspensión, perspectiva, sacrificio', en: 'Suspension, perspective, sacrifice', pt: 'Suspensão, perspectiva, sacrifício', fr: 'Suspension, perspective, sacrifice', it: 'Sospensione, prospettiva, sacrificio'}, simbolo: '℞'},
-            {numero: 13, es: 'La Muerte', en: 'Death', pt: 'A Morte', fr: 'La Mort', it: 'La Morte', significado: {es: 'Transformación, final, renacimiento', en: 'Transformation, ending, rebirth', pt: 'Transformação, fim, renascimento', fr: 'Transformation, fin, renaissance', it: 'Trasformazione, fine, rinascita'}, simbolo: '☠'},
-            {numero: 14, es: 'La Templanza', en: 'Temperance', pt: 'A Temperança', fr: 'La Tempérance', it: 'La Temperanza', significado: {es: 'Balance, moderación, armonía', en: 'Balance, moderation, harmony', pt: 'Equilíbrio, moderação, harmonia', fr: 'Équilibre, modération, harmonie', it: 'Equilibrio, moderazione, armonia'}, simbolo: '⚗'},
-            {numero: 15, es: 'El Diablo', en: 'The Devil', pt: 'O Diabo', fr: 'Le Diable', it: 'Il Diavolo', significado: {es: 'Esclavitud, tentación, materialism', en: 'Bondage, temptation, materialism', pt: 'Escravidão, tentação, materialismo', fr: 'Esclavage, tentation, matérialisme', it: 'Schiavitù, tentazione, materialismo'}, simbolo: '⛧'},
-            {numero: 16, es: 'La Torre', en: 'The Tower', pt: 'A Torre', fr: 'La Tour', it: 'La Torre', significado: {es: 'Calamidad, ruptura, cambio radical', en: 'Calamity, upheaval, sudden change', pt: 'Calamidade, ruptura, mudança radical', fr: 'Calamité, rupture, changement radical', it: 'Calamità, rottura, cambiamento radicale'}, simbolo: '⚡'},
-            {numero: 17, es: 'La Estrella', en: 'The Star', pt: 'A Estrela', fr: 'L\'Étoile', it: 'La Stella', significado: {es: 'Esperanza, inspiración, espiritualidad', en: 'Hope, inspiration, spirituality', pt: 'Esperança, inspiração, espiritualidade', fr: 'Espoir, inspiration, spiritualité', it: 'Speranza, ispirazione, spiritualità'}, simbolo: '✦'},
-            {numero: 18, es: 'La Luna', en: 'The Moon', pt: 'A Lua', fr: 'La Lune', it: 'La Luna', significado: {es: 'Ilusión, inconsciente, misterio', en: 'Illusion, unconscious, mystery', pt: 'Ilusão, inconsciente, mistério', fr: 'Illusion, inconscient, mystère', it: 'Illusione, inconscio, mistero'}, simbolo: '☾'},
-            {numero: 19, es: 'El Sol', en: 'The Sun', pt: 'O Sol', fr: 'Le Soleil', it: 'Il Sole', significado: {es: 'Éxito, vitalidad, alegría', en: 'Success, vitality, joy', pt: 'Sucesso, vitalidade, alegria', fr: 'Succès, vitalité, joie', it: 'Successo, vitalità, gioia'}, simbolo: '☀'},
-            {numero: 20, es: 'El Juicio', en: 'Judgement', pt: 'O Juízo', fr: 'Le Jugement', it: 'Il Giudizio', significado: {es: 'Despertar, reflexión, resurrección', en: 'Awakening, reckoning, resurrection', pt: 'Despertar, reflexão, ressurreição', fr: 'Réveil, jugement, résurrection', it: 'Risveglio, riflessione, resurrezione'}, simbolo: '📯'},
-            {numero: 21, es: 'El Mundo', en: 'The World', pt: 'O Mundo', fr: 'Le Monde', it: 'Il Mondo', significado: {es: 'Completitud, totalidad, cumplimiento', en: 'Completion, wholeness, fulfillment', pt: 'Plenitude, totalidade, realização', fr: 'Complétude, totalité, accomplissement', it: 'Completezza, totalità, realizzazione'}, simbolo: '⊕'},
+            {numero: 0, es: 'El Loco', en: 'The Fool', pt: 'O Louco', fr: 'Le Mat', it: 'Il Matto', significado: {es: 'Nuevo comienzo, ingenuidad, libertad', en: 'New beginnings, innocence, freedom', pt: 'Novos começos, inocência, liberdade', fr: 'Nouveaux départs, innocence, liberté', it: 'Nuovi inizi, innocenza, libertà'}, archivo: 'tarot/mayores/00_loco.webp'},
+            {numero: 1, es: 'El Mago', en: 'The Magician', pt: 'O Mago', fr: 'Le Magicien', it: 'Il Mago', significado: {es: 'Voluntad, creatividad, poder', en: 'Willpower, creativity, power', pt: 'Vontade, criatividade, poder', fr: 'Volonté, créativité, pouvoir', it: 'Forza di volontà, creatività, potere'}, archivo: 'tarot/mayores/01_mago.webp'},
+            {numero: 2, es: 'La Sacerdotisa', en: 'The High Priestess', pt: 'A Sacerdotisa', fr: 'La Grande Prêtresse', it: 'La Sacerdotessa', significado: {es: 'Intuición, misterio, sabiduría', en: 'Intuition, mystery, wisdom', pt: 'Intuição, mistério, sabedoria', fr: 'Intuition, mystère, sagesse', it: 'Intuizione, mistero, saggezza'}, archivo: 'tarot/mayores/02_sacerdotisa.webp'},
+            {numero: 3, es: 'La Emperatriz', en: 'The Empress', pt: 'A Imperatriz', fr: 'L\'Impératrice', it: 'L\'Imperatrice', significado: {es: 'Abundancia, fertilidad, creación', en: 'Abundance, fertility, creation', pt: 'Abundância, fertilidade, criação', fr: 'Abondance, fertilité, création', it: 'Abbondanza, fertilità, creazione'}, archivo: 'tarot/mayores/03_emperatriz.webp'},
+            {numero: 4, es: 'El Emperador', en: 'The Emperor', pt: 'O Emperador', fr: 'L\'Empereur', it: 'L\'Imperatore', significado: {es: 'Autoridad, poder, control', en: 'Authority, power, control', pt: 'Autoridade, poder, controle', fr: 'Autorité, pouvoir, contrôle', it: 'Autorità, potere, controllo'}, archivo: 'tarot/mayores/04_emperador.webp'},
+            {numero: 5, es: 'El Hierofante', en: 'The Hierophant', pt: 'O Hierofante', fr: 'Le Pape', it: 'Il Papa', significado: {es: 'Tradición, enseñanza, fe', en: 'Tradition, teaching, faith', pt: 'Tradição, ensino, fé', fr: 'Tradition, enseignement, foi', it: 'Tradizione, insegnamento, fede'}, archivo: 'tarot/mayores/05_papa.webp'},
+            {numero: 6, es: 'Los Amantes', en: 'The Lovers', pt: 'Os Amantes', fr: 'L\'Amoureux', it: 'Gli Innamorati', significado: {es: 'Amor, conexión, elección', en: 'Love, connection, choice', pt: 'Amor, conexão, escolha', fr: 'Amour, connexion, choix', it: 'Amore, connessione, scelta'}, archivo: 'tarot/mayores/06_enamorados.webp'},
+            {numero: 7, es: 'El Carro', en: 'The Chariot', pt: 'O Carro', fr: 'Le Chariot', it: 'Il Carro', significado: {es: 'Determinación, control, victoria', en: 'Determination, control, victory', pt: 'Determinação, controle, vitória', fr: 'Détermination, contrôle, victoire', it: 'Determinazione, controllo, vittoria'}, archivo: 'tarot/mayores/07_carro.webp'},
+            {numero: 8, es: 'La Justicia', en: 'Justice', pt: 'A Justiça', fr: 'La Justice', it: 'La Giustizia', significado: {es: 'Justicia, balance, verdad', en: 'Justice, balance, truth', pt: 'Justiça, equilíbrio, verdade', fr: 'Justice, équilibre, vérité', it: 'Giustizia, equilibrio, verità'}, archivo: 'tarot/mayores/08_justicia.webp'},
+            {numero: 9, es: 'El Ermitaño', en: 'The Hermit', pt: 'O Eremita', fr: 'L\'Ermite', it: 'L\'Eremita', significado: {es: 'Introspección, búsqueda, sabiduría', en: 'Introspection, seeking, wisdom', pt: 'Introspecção, busca, sabedoria', fr: 'Introspection, recherche, sagesse', it: 'Introspezione, ricerca, saggezza'}, archivo: 'tarot/mayores/09_ermitaño.webp'},
+            {numero: 10, es: 'La Rueda de la Fortuna', en: 'Wheel of Fortune', pt: 'Roda da Fortuna', fr: 'La Roue de la Fortune', it: 'La Ruota della Fortuna', significado: {es: 'Destino, ciclos, suerte', en: 'Destiny, cycles, luck', pt: 'Destino, ciclos, sorte', fr: 'Destin, cycles, chance', it: 'Destino, cicli, fortuna'}, archivo: 'tarot/mayores/10_rueda-fortuna.webp'},
+            {numero: 11, es: 'La Fuerza', en: 'Strength', pt: 'A Força', fr: 'La Force', it: 'La Forza', significado: {es: 'Fuerza interior, coraje, compasión', en: 'Inner strength, courage, compassion', pt: 'Força interior, coragem, compaixão', fr: 'Force intérieure, courage, compassion', it: 'Forza interiore, coraggio, compassione'}, archivo: 'tarot/mayores/11_fuerza.webp'},
+            {numero: 12, es: 'El Ahorcado', en: 'The Hanged Man', pt: 'O Enforcado', fr: 'Le Pendu', it: 'L\'Impiccato', significado: {es: 'Suspensión, perspectiva, sacrificio', en: 'Suspension, perspective, sacrifice', pt: 'Suspensão, perspectiva, sacrifício', fr: 'Suspension, perspective, sacrifice', it: 'Sospensione, prospettiva, sacrificio'}, archivo: 'tarot/mayores/12_colgado.webp'},
+            {numero: 13, es: 'La Muerte', en: 'Death', pt: 'A Morte', fr: 'La Mort', it: 'La Morte', significado: {es: 'Transformación, final, renacimiento', en: 'Transformation, ending, rebirth', pt: 'Transformação, fim, renascimento', fr: 'Transformation, fin, renaissance', it: 'Trasformazione, fine, rinascita'}, archivo: 'tarot/mayores/13_muerte.webp'},
+            {numero: 14, es: 'La Templanza', en: 'Temperance', pt: 'A Temperança', fr: 'La Tempérance', it: 'La Temperanza', significado: {es: 'Balance, moderación, armonía', en: 'Balance, moderation, harmony', pt: 'Equilíbrio, moderação, harmonia', fr: 'Équilibre, modération, harmonie', it: 'Equilibrio, moderazione, armonia'}, archivo: 'tarot/mayores/14_templanza.webp'},
+            {numero: 15, es: 'El Diablo', en: 'The Devil', pt: 'O Diabo', fr: 'Le Diable', it: 'Il Diavolo', significado: {es: 'Esclavitud, tentación, materialismo', en: 'Bondage, temptation, materialism', pt: 'Escravidão, tentação, materialismo', fr: 'Esclavage, tentation, matérialisme', it: 'Schiavitù, tentazione, materialismo'}, archivo: 'tarot/mayores/15_diablo.webp'},
+            {numero: 16, es: 'La Torre', en: 'The Tower', pt: 'A Torre', fr: 'La Tour', it: 'La Torre', significado: {es: 'Calamidad, ruptura, cambio radical', en: 'Calamity, upheaval, sudden change', pt: 'Calamidade, ruptura, mudança radical', fr: 'Calamité, rupture, changement radical', it: 'Calamità, rottura, cambiamento radicale'}, archivo: 'tarot/mayores/16_torre.webp'},
+            {numero: 17, es: 'La Estrella', en: 'The Star', pt: 'A Estrela', fr: 'L\'Étoile', it: 'La Stella', significado: {es: 'Esperanza, inspiración, espiritualidad', en: 'Hope, inspiration, spirituality', pt: 'Esperança, inspiração, espiritualidade', fr: 'Espoir, inspiration, spiritualité', it: 'Speranza, ispirazione, spiritualità'}, archivo: 'tarot/mayores/17_estrella.webp'},
+            {numero: 18, es: 'La Luna', en: 'The Moon', pt: 'A Lua', fr: 'La Lune', it: 'La Luna', significado: {es: 'Ilusión, inconsciente, misterio', en: 'Illusion, unconscious, mystery', pt: 'Ilusão, inconsciente, mistério', fr: 'Illusion, inconscient, mystère', it: 'Illusione, inconscio, mistero'}, archivo: 'tarot/mayores/18_luna.webp'},
+            {numero: 19, es: 'El Sol', en: 'The Sun', pt: 'O Sol', fr: 'Le Soleil', it: 'Il Sole', significado: {es: 'Éxito, vitalidad, alegría', en: 'Success, vitality, joy', pt: 'Sucesso, vitalidade, alegria', fr: 'Succès, vitalité, joie', it: 'Successo, vitalità, gioia'}, archivo: 'tarot/mayores/19_sol.webp'},
+            {numero: 20, es: 'El Juicio', en: 'Judgement', pt: 'O Juízo', fr: 'Le Jugement', it: 'Il Giudizio', significado: {es: 'Despertar, reflexión, resurrección', en: 'Awakening, reckoning, resurrection', pt: 'Despertar, reflexão, ressurreição', fr: 'Réveil, jugement, résurrection', it: 'Risveglio, riflessione, resurrezione'}, archivo: 'tarot/mayores/20_juicio.webp'},
+            {numero: 21, es: 'El Mundo', en: 'The World', pt: 'O Mundo', fr: 'Le Monde', it: 'Il Mondo', significado: {es: 'Completitud, totalidad, cumplimiento', en: 'Completion, wholeness, fulfillment', pt: 'Plenitude, totalidade, realização', fr: 'Complétude, totalité, accomplissement', it: 'Completezza, totalità, realizzazione'}, archivo: 'tarot/mayores/21_mundo.webp'},
 
             // ARCANOS MENORES - BASTOS (22-35)
-            {numero: 22, es: 'As de Bastos', en: 'Ace of Wands', pt: 'Ás de Ouros', fr: 'As de Bâtons', it: 'Asso di Bastoni', significado: {es: 'Pasión, inspiración, oportunidad', en: 'Passion, inspiration, opportunity', pt: 'Paixão, inspiração, oportunidade', fr: 'Passion, inspiration, opportunité', it: 'Passione, ispirazione, opportunità'}, simbolo: '🔥'},
-            {numero: 23, es: '2 de Bastos', en: 'Two of Wands', pt: '2 de Ouros', fr: '2 de Bâtons', it: '2 di Bastoni', significado: {es: 'Planificación, futuro, potencial', en: 'Planning, future, potential', pt: 'Planejamento, futuro, potencial', fr: 'Planification, avenir, potentiel', it: 'Pianificazione, futuro, potenziale'}, simbolo: '🔥'},
-            {numero: 24, es: '3 de Bastos', en: 'Three of Wands', pt: '3 de Ouros', fr: '3 de Bâtons', it: '3 di Bastoni', significado: {es: 'Expansión, perspectiva, exploración', en: 'Expansion, perspective, exploration', pt: 'Expansão, perspectiva, exploração', fr: 'Expansion, perspective, exploration', it: 'Espansione, prospettiva, esplorazione'}, simbolo: '🔥'},
-            {numero: 25, es: '4 de Bastos', en: 'Four of Wands', pt: '4 de Ouros', fr: '4 de Bâtons', it: '4 di Bastoni', significado: {es: 'Celebración, comunidad, armonía', en: 'Celebration, community, harmony', pt: 'Celebração, comunidade, harmonia', fr: 'Célébration, communauté, harmonie', it: 'Celebrazione, comunità, armonia'}, simbolo: '🔥'},
-            {numero: 26, es: '5 de Bastos', en: 'Five of Wands', pt: '5 de Ouros', fr: '5 de Bâtons', it: '5 di Bastoni', significado: {es: 'Conflicto, desafío, competencia', en: 'Conflict, challenge, competition', pt: 'Conflito, desafio, competição', fr: 'Conflit, défi, compétition', it: 'Conflitto, sfida, competizione'}, simbolo: '🔥'},
-            {numero: 27, es: '6 de Bastos', en: 'Six of Wands', pt: '6 de Ouros', fr: '6 de Bâtons', it: '6 di Bastoni', significado: {es: 'Reconocimiento, éxito, fama', en: 'Recognition, success, acclaim', pt: 'Reconhecimento, sucesso, fama', fr: 'Reconnaissance, succès, renommée', it: 'Riconoscimento, successo, fama'}, simbolo: '🔥'},
-            {numero: 28, es: '7 de Bastos', en: 'Seven of Wands', pt: '7 de Ouros', fr: '7 de Bâtons', it: '7 di Bastoni', significado: {es: 'Resistencia, defensa, perseverancia', en: 'Resistance, defense, perseverance', pt: 'Resistência, defesa, perseverança', fr: 'Résistance, défense, persévérance', it: 'Resistenza, difesa, perseveranza'}, simbolo: '🔥'},
-            {numero: 29, es: '8 de Bastos', en: 'Eight of Wands', pt: '8 de Ouros', fr: '8 de Bâtons', it: '8 di Bastoni', significado: {es: 'Rapidez, movimiento, acción', en: 'Speed, movement, action', pt: 'Velocidade, movimento, ação', fr: 'Vitesse, mouvement, action', it: 'Velocità, movimento, azione'}, simbolo: '🔥'},
-            {numero: 30, es: '9 de Bastos', en: 'Nine of Wands', pt: '9 de Ouros', fr: '9 de Bâtons', it: '9 di Bastoni', significado: {es: 'Firmeza, casi victoria, necesidad', en: 'Resilience, almost there, need', pt: 'Resiliência, quase lá, necessidade', fr: 'Résilience, presque là, besoin', it: 'Resilienza, quasi là, bisogno'}, simbolo: '🔥'},
-            {numero: 31, es: '10 de Bastos', en: 'Ten of Wands', pt: '10 de Ouros', fr: '10 de Bâtons', it: '10 di Bastoni', significado: {es: 'Carga, responsabilidad, agotamiento', en: 'Burden, responsibility, exhaustion', pt: 'Carga, responsabilidade, exaustão', fr: 'Fardeau, responsabilité, épuisement', it: 'Onere, responsabilità, esaurimento'}, simbolo: '🔥'},
-            {numero: 32, es: 'Sota de Bastos', en: 'Page of Wands', pt: 'Valete de Ouros', fr: 'Valet de Bâtons', it: 'Fante di Bastoni', significado: {es: 'Mensajero, aventurero, entusiasmo', en: 'Messenger, adventurer, enthusiasm', pt: 'Mensageiro, aventureiro, entusiasmo', fr: 'Messager, aventurier, enthousiasme', it: 'Messaggero, avventuriero, entusiasmo'}, simbolo: '🔥'},
-            {numero: 33, es: 'Caballero de Bastos', en: 'Knight of Wands', pt: 'Cavaleiro de Ouros', fr: 'Cavalier de Bâtons', it: 'Cavallo di Bastoni', significado: {es: 'Pasión, viaje, independencia', en: 'Passion, travel, independence', pt: 'Paixão, viagem, independência', fr: 'Passion, voyage, indépendance', it: 'Passione, viaggio, indipendenza'}, simbolo: '🔥'},
-            {numero: 34, es: 'Reina de Bastos', en: 'Queen of Wands', pt: 'Rainha de Ouros', fr: 'Reine de Bâtons', it: 'Regina di Bastoni', significado: {es: 'Carisma, determinación, creatividad', en: 'Charisma, determination, creativity', pt: 'Carisma, determinação, criatividade', fr: 'Charisme, détermination, créativité', it: 'Carisma, determinazione, creatività'}, simbolo: '🔥'},
-            {numero: 35, es: 'Rey de Bastos', en: 'King of Wands', pt: 'Rei de Ouros', fr: 'Roi de Bâtons', it: 'Re di Bastoni', significado: {es: 'Liderazgo, visión, crecimiento', en: 'Leadership, vision, growth', pt: 'Liderança, visão, crescimento', fr: 'Leadership, vision, croissance', it: 'Leadership, visione, crescita'}, simbolo: '🔥'},
+            {numero: 22, es: 'As de Bastos', en: 'Ace of Wands', pt: 'Ás de Bastos', fr: 'As de Bâtons', it: 'Asso di Bastoni', significado: {es: 'Pasión, inspiración, oportunidad', en: 'Passion, inspiration, opportunity', pt: 'Paixão, inspiração, oportunidade', fr: 'Passion, inspiration, opportunité', it: 'Passione, ispirazione, opportunità'}, archivo: 'tarot/menores/bastos/01_as_de_bastos.webp'},
+            {numero: 23, es: '2 de Bastos', en: 'Two of Wands', pt: '2 de Bastos', fr: '2 de Bâtons', it: '2 di Bastoni', significado: {es: 'Planificación, futuro, potencial', en: 'Planning, future, potential', pt: 'Planejamento, futuro, potencial', fr: 'Planification, avenir, potentiel', it: 'Pianificazione, futuro, potenziale'}, archivo: 'tarot/menores/bastos/02_dos_de_bastos.webp'},
+            {numero: 24, es: '3 de Bastos', en: 'Three of Wands', pt: '3 de Bastos', fr: '3 de Bâtons', it: '3 di Bastoni', significado: {es: 'Expansión, perspectiva, exploración', en: 'Expansion, perspective, exploration', pt: 'Expansão, perspectiva, exploração', fr: 'Expansion, perspective, exploration', it: 'Espansione, prospettiva, esplorazione'}, archivo: 'tarot/menores/bastos/03_tres_de_bastos.webp'},
+            {numero: 25, es: '4 de Bastos', en: 'Four of Wands', pt: '4 de Bastos', fr: '4 de Bâtons', it: '4 di Bastoni', significado: {es: 'Celebración, comunidad, armonía', en: 'Celebration, community, harmony', pt: 'Celebração, comunidade, harmonia', fr: 'Célébration, communauté, harmonie', it: 'Celebrazione, comunità, armonia'}, archivo: 'tarot/menores/bastos/04_cuatro_de_bastos.webp'},
+            {numero: 26, es: '5 de Bastos', en: 'Five of Wands', pt: '5 de Bastos', fr: '5 de Bâtons', it: '5 di Bastoni', significado: {es: 'Conflicto, desafío, competencia', en: 'Conflict, challenge, competition', pt: 'Conflito, desafio, competição', fr: 'Conflit, défi, compétition', it: 'Conflitto, sfida, competizione'}, archivo: 'tarot/menores/bastos/05_cinco_de_bastos.webp'},
+            {numero: 27, es: '6 de Bastos', en: 'Six of Wands', pt: '6 de Bastos', fr: '6 de Bâtons', it: '6 di Bastoni', significado: {es: 'Reconocimiento, éxito, fama', en: 'Recognition, success, acclaim', pt: 'Reconhecimento, sucesso, fama', fr: 'Reconnaissance, succès, renommée', it: 'Riconoscimento, successo, fama'}, archivo: 'tarot/menores/bastos/06_seis_de_bastos.webp'},
+            {numero: 28, es: '7 de Bastos', en: 'Seven of Wands', pt: '7 de Bastos', fr: '7 de Bâtons', it: '7 di Bastoni', significado: {es: 'Resistencia, defensa, perseverancia', en: 'Resistance, defense, perseverance', pt: 'Resistência, defesa, perseverança', fr: 'Résistance, défense, persévérance', it: 'Resistenza, difesa, perseveranza'}, archivo: 'tarot/menores/bastos/07_siete_de_bastos.webp'},
+            {numero: 29, es: '8 de Bastos', en: 'Eight of Wands', pt: '8 de Bastos', fr: '8 de Bâtons', it: '8 di Bastoni', significado: {es: 'Rapidez, movimiento, acción', en: 'Speed, movement, action', pt: 'Velocidade, movimento, ação', fr: 'Vitesse, mouvement, action', it: 'Velocità, movemento, azione'}, archivo: 'tarot/menores/bastos/08_ocho_de_bastos.webp'},
+            {numero: 30, es: '9 de Bastos', en: 'Nine of Wands', pt: '9 de Bastos', fr: '9 de Bâtons', it: '9 di Bastoni', significado: {es: 'Firmeza, casi victoria, necesidad', en: 'Resilience, almost there, need', pt: 'Resiliência, quase lá, necessidade', fr: 'Résilience, presque là, besoin', it: 'Resilienza, quasi là, bisogno'}, archivo: 'tarot/menores/bastos/09_nueve_de_bastos.webp'},
+            {numero: 31, es: '10 de Bastos', en: 'Ten of Wands', pt: '10 de Bastos', fr: '10 de Bâtons', it: '10 di Bastoni', significado: {es: 'Carga, estrés, responsabilidades', en: 'Burden, stress, responsibilities', pt: 'Fardo, estresse, responsabilidades', fr: 'Fardeau, stress, responsabilités', it: 'Fardello, stress, responsabilità'}, archivo: 'tarot/menores/bastos/10_diez_de_bastos.webp'},
+            {numero: 32, es: 'Sota de Bastos', en: 'Page of Wands', pt: 'Valete de Bastos', fr: 'Valet de Bâtons', it: 'Fante di Bastoni', significado: {es: 'Exploración, entusiasmo, libertad', en: 'Exploration, enthusiasm, free spirit', pt: 'Exploração, entusiasmo, espírito livre', fr: 'Exploration, enthousiasme, esprit libre', it: 'Esplorazione, entusiasmo, spirito libero'}, archivo: 'tarot/menores/bastos/11_sota_de_bastos.webp'},
+            {numero: 33, es: 'Caballo de Bastos', en: 'Knight of Wands', pt: 'Cavaleiro de Bastos', fr: 'Chevalier de Bâtons', it: 'Cavaliere di Bastoni', significado: {es: 'Acción, aventura, impulsividad', en: 'Action, adventure, impulsiveness', pt: 'Ação, aventura, impulsividade', fr: 'Action, aventure, impulsivité', it: 'Azione, avventura, impulsività'}, archivo: 'tarot/menores/bastos/12_caballo_de_bastos.webp'},
+            {numero: 34, es: 'Reina de Bastos', en: 'Queen of Wands', pt: 'Rainha de Bastos', fr: 'Reine de Bâtons', it: 'Regina di Bastoni', significado: {es: 'Coraje, confianza, determinación', en: 'Courage, confidence, determination', pt: 'Coragem, confiança, determinação', fr: 'Courage, confiance, détermination', it: 'Coraggio, fiducia, determinazione'}, archivo: 'tarot/menores/bastos/13_reina_de_bastos.webp'},
+            {numero: 35, es: 'Rey de Bastos', en: 'King of Wands', pt: 'Rei de Bastos', fr: 'Roi de Bâtons', it: 'Re di Bastoni', significado: {es: 'Liderazgo, visión, honor', en: 'Leadership, vision, honor', pt: 'Liderança, visão, honra', fr: 'Leadership, vision, honneur', it: 'Leadership, visione, onore'}, archivo: 'tarot/menores/bastos/14_rey_de_bastos.webp'},
 
             // ARCANOS MENORES - COPAS (36-49)
-            {numero: 36, es: 'As de Copas', en: 'Ace of Cups', pt: 'Ás de Corações', fr: 'As de Coupes', it: 'Asso di Coppe', significado: {es: 'Amor, alegría, nuevo comienzo', en: 'Love, joy, new beginning', pt: 'Amor, alegria, novo começo', fr: 'Amour, joie, nouveau départ', it: 'Amore, gioia, nuovo inizio'}, simbolo: '💧'},
-            {numero: 37, es: '2 de Copas', en: 'Two of Cups', pt: '2 de Corações', fr: '2 de Coupes', it: '2 di Coppe', significado: {es: 'Unión, asociación, relación', en: 'Union, partnership, relationship', pt: 'União, parceria, relacionamento', fr: 'Union, partenariat, relation', it: 'Unione, partnership, relazione'}, simbolo: '💧'},
-            {numero: 38, es: '3 de Copas', en: 'Three of Cups', pt: '3 de Corações', fr: '3 de Coupes', it: '3 di Coppe', significado: {es: 'Celebración, amistad, comunidad', en: 'Celebration, friendship, community', pt: 'Celebração, amizade, comunidade', fr: 'Célébration, amitié, communauté', it: 'Celebrazione, amicizia, comunità'}, simbolo: '💧'},
-            {numero: 39, es: '4 de Copas', en: 'Four of Cups', pt: '4 de Corações', fr: '4 de Coupes', it: '4 di Coppe', significado: {es: 'Apatía, descontento, reflexión', en: 'Apathy, dissatisfaction, reflection', pt: 'Apatia, descontentamento, reflexão', fr: 'Apathie, insatisfaction, réflexion', it: 'Apatia, insoddisfazione, riflessione'}, simbolo: '💧'},
-            {numero: 40, es: '5 de Copas', en: 'Five of Cups', pt: '5 de Corações', fr: '5 de Coupes', it: '5 di Coppe', significado: {es: 'Pérdida, duelo, decepción', en: 'Loss, grief, disappointment', pt: 'Perda, luto, decepção', fr: 'Perte, chagrin, déception', it: 'Perdita, lutto, delusione'}, simbolo: '💧'},
-            {numero: 41, es: '6 de Copas', en: 'Six of Cups', pt: '6 de Corações', fr: '6 de Coupes', it: '6 di Coppe', significado: {es: 'Nostalgia, inocencia, familia', en: 'Nostalgia, innocence, family', pt: 'Nostalgia, inocência, família', fr: 'Nostalgie, innocence, famille', it: 'Nostalgia, innocenza, famiglia'}, simbolo: '💧'},
-            {numero: 42, es: '7 de Copas', en: 'Seven of Cups', pt: '7 de Corações', fr: '7 de Coupes', it: '7 di Coppe', significado: {es: 'Ilusión, oportunidades, fantasía', en: 'Illusion, opportunities, fantasy', pt: 'Ilusão, oportunidades, fantasia', fr: 'Illusion, opportunités, fantaisie', it: 'Illusione, opportunità, fantasia'}, simbolo: '💧'},
-            {numero: 43, es: '8 de Copas', en: 'Eight of Cups', pt: '8 de Corações', fr: '8 de Coupes', it: '8 di Coppe', significado: {es: 'Abandono, búsqueda, transición', en: 'Abandonment, search, transition', pt: 'Abandono, busca, transição', fr: 'Abandon, recherche, transition', it: 'Abbandono, ricerca, transizione'}, simbolo: '💧'},
-            {numero: 44, es: '9 de Copas', en: 'Nine of Cups', pt: '9 de Corações', fr: '9 de Coupes', it: '9 di Coppe', significado: {es: 'Deseo, satisfacción, abundancia', en: 'Wish, satisfaction, abundance', pt: 'Desejo, satisfação, abundância', fr: 'Désir, satisfaction, abondance', it: 'Desiderio, soddisfazione, abbondanza'}, simbolo: '💧'},
-            {numero: 45, es: '10 de Copas', en: 'Ten of Cups', pt: '10 de Corações', fr: '10 de Coupes', it: '10 di Coppe', significado: {es: 'Armonía, familia, felicidad', en: 'Harmony, family, happiness', pt: 'Harmonia, família, felicidade', fr: 'Harmonie, famille, bonheur', it: 'Armonia, famiglia, felicità'}, simbolo: '💧'},
-            {numero: 46, es: 'Sota de Copas', en: 'Page of Cups', pt: 'Valete de Corações', fr: 'Valet de Coupes', it: 'Fante di Coppe', significado: {es: 'Creatividad, sensibilidad, estudios', en: 'Creativity, sensitivity, studies', pt: 'Criatividade, sensibilidade, estudos', fr: 'Créativité, sensibilité, études', it: 'Creatività, sensibilità, studi'}, simbolo: '💧'},
-            {numero: 47, es: 'Caballero de Copas', en: 'Knight of Cups', pt: 'Cavaleiro de Corações', fr: 'Cavalier de Coupes', it: 'Cavallo di Coppe', significado: {es: 'Romance, invitación, aventura', en: 'Romance, invitation, adventure', pt: 'Romance, convite, aventura', fr: 'Romance, invitation, aventure', it: 'Romanticismo, invito, avventura'}, simbolo: '💧'},
-            {numero: 48, es: 'Reina de Copas', en: 'Queen of Cups', pt: 'Rainha de Corações', fr: 'Reine de Coupes', it: 'Regina di Coppe', significado: {es: 'Intuición, emoción, compasión', en: 'Intuition, emotion, compassion', pt: 'Intuição, emoção, compaixão', fr: 'Intuition, émotion, compassion', it: 'Intuizione, emozione, compassione'}, simbolo: '💧'},
-            {numero: 49, es: 'Rey de Copas', en: 'King of Cups', pt: 'Rei de Corações', fr: 'Roi de Coupes', it: 'Re di Coppe', significado: {es: 'Calma, control emocional, sabiduría', en: 'Calm, emotional control, wisdom', pt: 'Calma, controle emocional, sabedoria', fr: 'Calme, contrôle émotionnel, sagesse', it: 'Calma, controllo emotivo, saggezza'}, simbolo: '💧'},
+            {numero: 36, es: 'As de Copas', en: 'Ace of Cups', pt: 'Ás de Copas', fr: 'As de Coupes', it: 'Asso di Coppe', significado: {es: 'Amor, nuevas emociones, creatividad', en: 'Love, new feelings, creativity', pt: 'Amor, novos sentimentos, criatividade', fr: 'Amour, nouveaux sentiments, créativité', it: 'Amore, nuove emozioni, creatività'}, archivo: 'tarot/menores/copas/01_as_de_copas.webp'},
+            {numero: 37, es: '2 de Copas', en: 'Two of Cups', pt: '2 de Copas', fr: '2 de Coupes', it: '2 di Coppe', significado: {es: 'Conexión, amor mutuo, unión', en: 'Connection, mutual love, union', pt: 'Conexão, amor mútuo, união', fr: 'Connexion, amour mutuel, union', it: 'Connessione, amore reciproco, unione'}, archivo: 'tarot/menores/copas/02_dos_de_copas.webp'},
+            {numero: 38, es: '3 de Copas', en: 'Three of Cups', pt: '3 de Copas', fr: '3 de Coupes', it: '3 di Coppe', significado: {es: 'Celebración, amistad, comunidad', en: 'Celebration, friendship, community', pt: 'Celebração, amizade, comunidade', fr: 'Célébration, amitié, communauté', it: 'Celebrazione, amicizia, comunità'}, archivo: 'tarot/menores/copas/03_tres_de_copas.webp'},
+            {numero: 39, es: '4 de Copas', en: 'Four of Cups', pt: '4 de Copas', fr: '4 de Coupes', it: '4 di Coppe', significado: {es: 'Apatía, desconexión, meditación', en: 'Apathy, disconnection, meditation', pt: 'Apatia, desconexão, meditação', fr: 'Apathie, déconnexion, méditation', it: 'Apatia, disconnessione, meditazione'}, archivo: 'tarot/menores/copas/04_cuatro_de_copas.webp'},
+            {numero: 40, es: '5 de Copas', en: 'Five of Cups', pt: '5 de Copas', fr: '5 de Coupes', it: '5 di Coppe', significado: {es: 'Pérdida, lamento, decepción', en: 'Loss, regret, disappointment', pt: 'Perda, arrependimento, decepção', fr: 'Perte, regret, déception', it: 'Perdita, rimpianto, delusione'}, archivo: 'tarot/menores/copas/05_cinco_de_copas.webp'},
+            {numero: 41, es: '6 de Copas', en: 'Six of Cups', pt: '6 de Copas', fr: '6 de Coupes', it: '6 di Coppe', significado: {es: 'Nostalgia, recuerdos, inocencia', en: 'Nostalgia, memories, innocence', pt: 'Nostalgia, memórias, inocência', fr: 'Nostalgie, souvenirs, innocence', it: 'Nostalgia, ricordi, innocenza'}, archivo: 'tarot/menores/copas/06_seis_de_copas.webp'},
+            {numero: 42, es: '7 de Copas', en: 'Seven of Cups', pt: '7 de Copas', fr: '7 de Coupes', it: '7 di Coppe', significado: {es: 'Opciones, ilusión, fantasía', en: 'Choices, illusion, fantasy', pt: 'Escolhas, ilusão, fantasia', fr: 'Choix, illusion, fantasie', it: 'Scelte, illusione, fantasia'}, archivo: 'tarot/menores/copas/07_siete_de_copas.webp'},
+            {numero: 43, es: '8 de Copas', en: 'Eight of Cups', pt: '8 de Copas', fr: '8 de Coupes', it: '8 di Coppe', significado: {es: 'Abandono, viaje, buscar más', en: 'Abandonment, travel, seeking more', pt: 'Abandono, viagem, buscando mais', fr: 'Abandon, voyage, chercher plus', it: 'Abbandono, viaggio, cercare altro'}, archivo: 'tarot/menores/copas/08_ocho_de_copas.webp'},
+            {numero: 44, es: '9 de Copas', en: 'Nine of Cups', pt: '9 de Copas', fr: '9 de Coupes', it: '9 di Coppe', significado: {es: 'Satisfacción, deseo cumplido, éxito', en: 'Satisfaction, wish come true, success', pt: 'Satisfação, desejo realizado, sucesso', fr: 'Satisfaction, voeu réalisé, succès', it: 'Soddisfazione, desiderio avverato, successo'}, archivo: 'tarot/menores/copas/09_nueve_de_copas.webp'},
+            {numero: 45, es: '10 de Copas', en: 'Ten of Cups', pt: '10 de Copas', fr: '10 de Coupes', it: '10 di Coppe', significado: {es: 'Felicidad familiar, armonía, paz', en: 'Family happiness, harmony, peace', pt: 'Felicidade familiar, harmonia, paz', fr: 'Bonheur familial, harmonie, paix', it: 'Felicità familiare, armonia, pace'}, archivo: 'tarot/menores/copas/10_diez_de_copas.webp'},
+            {numero: 46, es: 'Sota de Copas', en: 'Page of Cups', pt: 'Valete de Copas', fr: 'Valet de Coupes', it: 'Fante di Coppe', significado: {es: 'Sensibilidad, noticias, intuición', en: 'Sensitivity, news, intuition', pt: 'Sensibilidade, notícias, intuição', fr: 'Sensibilité, nouvelles, intuition', it: 'Sensibilità, notizie, intuizione'}, archivo: 'tarot/menores/copas/11_sota_de_copas.webp'},
+            {numero: 47, es: 'Caballo de Copas', en: 'Knight of Cups', pt: 'Cavaleiro de Copas', fr: 'Chevalier de Coupes', it: 'Cavaliere di Coppe', significado: {es: 'Romance, encanto, propuestas', en: 'Romance, charm, proposals', pt: 'Romance, charme, propostas', fr: 'Romance, charme, propositions', it: 'Romance, fascino, proposte'}, archivo: 'tarot/menores/copas/12_caballo_de_copas.webp'},
+            {numero: 48, es: 'Reina de Copas', en: 'Queen of Cups', pt: 'Rainha de Copas', fr: 'Reine de Coupes', it: 'Regina di Coppe', significado: {es: 'Compasión, calma, intuición', en: 'Compassion, calm, intuition', pt: 'Compaixão, calma, intuição', fr: 'Compassion, calme, intuition', it: 'Compassione, calma, intuizione'}, archivo: 'tarot/menores/copas/13_reina_de_copas.webp'},
+            {numero: 49, es: 'Rey de Copas', en: 'King of Cups', pt: 'Rei de Copas', fr: 'Roi de Coupes', it: 'Re di Coppe', significado: {es: 'Control emocional, sabiduría, apoyo', en: 'Emotional control, wisdom, support', pt: 'Controle emocional, sabedoria, apoio', fr: 'Contrôle émotionnel, sagesse, soutien', it: 'Controllo emotivo, saggezza, supporto'}, archivo: 'tarot/menores/copas/14_rey_de_copas.webp'},
 
             // ARCANOS MENORES - ESPADAS (50-63)
-            {numero: 50, es: 'As de Espadas', en: 'Ace of Swords', pt: 'Ás de Espadas', fr: 'As d\'Épées', it: 'Asso di Spade', significado: {es: 'Verdad, claridad, resolución', en: 'Truth, clarity, resolution', pt: 'Verdade, clareza, resolução', fr: 'Vérité, clarté, résolution', it: 'Verità, chiarezza, risoluzione'}, simbolo: '⚔'},
-            {numero: 51, es: '2 de Espadas', en: 'Two of Swords', pt: '2 de Espadas', fr: '2 d\'Épées', it: '2 di Spade', significado: {es: 'Indecisión, conflicto, equilibrio', en: 'Indecision, conflict, equilibrium', pt: 'Indecisão, conflito, equilíbrio', fr: 'Indécision, conflit, équilibre', it: 'Indecisione, conflitto, equilibrio'}, simbolo: '⚔'},
-            {numero: 52, es: '3 de Espadas', en: 'Three of Swords', pt: '3 de Espadas', fr: '3 d\'Épées', it: '3 di Spade', significado: {es: 'Dolor, separación, sufrimiento', en: 'Pain, separation, suffering', pt: 'Dor, separação, sofrimento', fr: 'Douleur, séparation, souffrance', it: 'Dolore, separazione, sofferenza'}, simbolo: '⚔'},
-            {numero: 53, es: '4 de Espadas', en: 'Four of Swords', pt: '4 de Espadas', fr: '4 d\'Épées', it: '4 di Spade', significado: {es: 'Descanso, reflexión, curación', en: 'Rest, reflection, healing', pt: 'Descanso, reflexão, cura', fr: 'Repos, réflexion, guérison', it: 'Riposo, riflessione, guarigione'}, simbolo: '⚔'},
-            {numero: 54, es: '5 de Espadas', en: 'Five of Swords', pt: '5 de Espadas', fr: '5 d\'Épées', it: '5 di Spade', significado: {es: 'Conflicto, derrota, tensión', en: 'Conflict, defeat, tension', pt: 'Conflito, derrota, tensão', fr: 'Conflit, défaite, tension', it: 'Conflitto, sconfitta, tensione'}, simbolo: '⚔'},
-            {numero: 55, es: '6 de Espadas', en: 'Six of Swords', pt: '6 de Espadas', fr: '6 d\'Épées', it: '6 di Spade', significado: {es: 'Transición, viaje, cambio', en: 'Transition, travel, change', pt: 'Transição, viagem, mudança', fr: 'Transition, voyage, changement', it: 'Transizione, viaggio, cambiamento'}, simbolo: '⚔'},
-            {numero: 56, es: '7 de Espadas', en: 'Seven of Swords', pt: '7 de Espadas', fr: '7 d\'Épées', it: '7 di Spade', significado: {es: 'Engaño, astucia, robo', en: 'Deception, cunning, theft', pt: 'Engano, astúcia, roubo', fr: 'Tromperie, astuce, vol', it: 'Inganno, astuzia, furto'}, simbolo: '⚔'},
-            {numero: 57, es: '8 de Espadas', en: 'Eight of Swords', pt: '8 de Espadas', fr: '8 d\'Épées', it: '8 di Spade', significado: {es: 'Restricción, aprisionamiento, límite', en: 'Restriction, imprisonment, limit', pt: 'Restrição, aprisionamento, limite', fr: 'Restriction, emprisonnement, limite', it: 'Restrizione, imprigionamento, limite'}, simbolo: '⚔'},
-            {numero: 58, es: '9 de Espadas', en: 'Nine of Swords', pt: '9 de Espadas', fr: '9 d\'Épées', it: '9 di Spade', significado: {es: 'Ansiedad, pesadilla, culpa', en: 'Anxiety, nightmare, guilt', pt: 'Ansiedade, pesadelo, culpa', fr: 'Anxiété, cauchemar, culpabilité', it: 'Ansia, incubo, colpa'}, simbolo: '⚔'},
-            {numero: 59, es: '10 de Espadas', en: 'Ten of Swords', pt: '10 de Espadas', fr: '10 d\'Épées', it: '10 di Spade', significado: {es: 'Finalidad, dolor, aceptación', en: 'Finality, pain, acceptance', pt: 'Finalidade, dor, aceitação', fr: 'Finalité, douleur, acceptation', it: 'Finalità, dolore, accettazione'}, simbolo: '⚔'},
-            {numero: 60, es: 'Sota de Espadas', en: 'Page of Swords', pt: 'Valete de Espadas', fr: 'Valet d\'Épées', it: 'Fante di Spade', significado: {es: 'Observación, inteligencia, información', en: 'Observation, intelligence, information', pt: 'Observação, inteligência, informação', fr: 'Observation, intelligence, information', it: 'Osservazione, intelligenza, informazione'}, simbolo: '⚔'},
-            {numero: 61, es: 'Caballero de Espadas', en: 'Knight of Swords', pt: 'Cavaleiro de Espadas', fr: 'Cavalier d\'Épées', it: 'Cavallo di Spade', significado: {es: 'Franqueza, impulsividad, conflicto', en: 'Frankness, impulsivity, conflict', pt: 'Franqueza, impulsividade, conflito', fr: 'Franchise, impulsivité, conflit', it: 'Franchezza, impulsività, conflitto'}, simbolo: '⚔'},
-            {numero: 62, es: 'Reina de Espadas', en: 'Queen of Swords', pt: 'Rainha de Espadas', fr: 'Reine d\'Épées', it: 'Regina di Spade', significado: {es: 'Independencia, lógica, discernimiento', en: 'Independence, logic, discernment', pt: 'Independência, lógica, discernimento', fr: 'Indépendance, logique, discernement', it: 'Indipendenza, logica, discernimento'}, simbolo: '⚔'},
-            {numero: 63, es: 'Rey de Espadas', en: 'King of Swords', pt: 'Rei de Espadas', fr: 'Roi d\'Épées', it: 'Re di Spade', significado: {es: 'Autoridad, justicia, verdad', en: 'Authority, justice, truth', pt: 'Autoridade, justiça, verdade', fr: 'Autorité, justice, vérité', it: 'Autorità, giustizia, verità'}, simbolo: '⚔'},
+            {numero: 50, es: 'As de Espadas', en: 'Ace of Swords', pt: 'Ás de Espadas', fr: 'As d\'Épées', it: 'Asso di Spade', significado: {es: 'Claridad mental, triunfo, verdad', en: 'Mental clarity, triumph, truth', pt: 'Clareza mental, triunfo, verdade', fr: 'Clarté mentale, triomphe, vérité', it: 'Chiarezza mentale, trionfo, verità'}, archivo: 'tarot/menores/espadas/01_as_de_espadas.webp'},
+            {numero: 51, es: '2 de Espadas', en: 'Two of Swords', pt: '2 de Espadas', fr: '2 d\'Épées', it: '2 di Spade', significado: {es: 'Indecisión, bloqueo, tregua', en: 'Indecision, stalemate, truce', pt: 'Indecisão, impasse, trégua', fr: 'Indécision, impasse, trêve', it: 'Indecisione, stallo, tregua'}, archivo: 'tarot/menores/espadas/02_dos_de_espadas.webp'},
+            {numero: 52, es: '3 de Espadas', en: 'Three of Swords', pt: '3 de Espadas', fr: '3 d\'Épées', it: '3 di Spade', significado: {es: 'Dolor, separación, tristeza', en: 'Heartbreak, separation, sorrow', pt: 'Dor, separação, tristeza', fr: 'Chagrin, séparation, tristesse', it: 'Dolore, separazione, tristezza'}, archivo: 'tarot/menores/espadas/03_tres_de_espadas.webp'},
+            {numero: 53, es: '4 de Espadas', en: 'Four of Swords', pt: '4 de Espadas', fr: '4 d\'Épées', it: '4 di Spade', significado: {es: 'Descanso, recuperación, meditación', en: 'Rest, recovery, meditation', pt: 'Descanso, recuperação, meditação', fr: 'Repos, récupération, méditation', it: 'Riposo, ricupero, meditazione'}, archivo: 'tarot/menores/espadas/04_cuatro_de_espadas.webp'},
+            {numero: 54, es: '5 de Espadas', en: 'Five of Swords', pt: '5 de Espadas', fr: '5 d\'Épées', it: '5 di Spade', significado: {es: 'Conflicto, derrota, orgullo', en: 'Conflict, defeat, pride', pt: 'Conflito, derrota, orgulho', fr: 'Conflit, défaite, orgueil', it: 'Conflitto, sconfitta, orgoglio'}, archivo: 'tarot/menores/espadas/05_cinco_de_espadas.webp'},
+            {numero: 55, es: '6 de Espadas', en: 'Six of Swords', pt: '6 de Espadas', fr: '6 d\'Épées', it: '6 di Spade', significado: {es: 'Transición, viaje, dejar atrás', en: 'Transition, travel, leaving behind', pt: 'Transição, viagem, deixar para trás', fr: 'Transition, voyage, laisser derrière', it: 'Transizione, viaggio, lasciare alle spalle'}, archivo: 'tarot/menores/espadas/06_seis_de_espadas.webp'},
+            {numero: 56, es: '7 de Espadas', en: 'Seven of Swords', pt: '7 de Espadas', fr: '7 d\'Épées', it: '7 di Spade', significado: {es: 'Estrategia, secreto, escape', en: 'Strategy, secret, escape', pt: 'Estratégia, segredo, fuga', fr: 'Stratégie, secret, fuite', it: 'Strategia, segreto, fuga'}, archivo: 'tarot/menores/espadas/07_siete_de_espadas.webp'},
+            {numero: 57, es: '8 de Espadas', en: 'Eight of Swords', pt: '8 de Espadas', fr: '8 d\'Épées', it: '8 di Spade', significado: {es: 'Restricción, atrapado, miedo', en: 'Restriction, trapped, fear', pt: 'Restrição, aprisionado, medo', fr: 'Restriction, piégé, peur', it: 'Restrizione, intrappolato, paura'}, archivo: 'tarot/menores/espadas/08_ocho_de_espadas.webp'},
+            {numero: 58, es: '9 de Espadas', en: 'Nine of Swords', pt: '9 de Espadas', fr: '9 d\'Épées', it: '9 di Spade', significado: {es: 'Ansiedad, pesadillas, preocupación', en: 'Anxiety, nightmares, worry', pt: 'Ansiedade, pesadelos, preocupação', fr: 'Anxiété, cauchemars, inquiétude', it: 'Ansia, incubi, preoccupazione'}, archivo: 'tarot/menores/espadas/09_nueve_de_espadas.webp'},
+            {numero: 59, es: '10 de Espadas', en: 'Ten of Swords', pt: '10 de Espadas', fr: '10 d\'Épées', it: '10 di Spade', significado: {es: 'Final definitivo, ruina, nuevo ciclo', en: 'Definite end, ruin, new cycle', pt: 'Fim definitivo, ruína, novo ciclo', fr: 'Fin définitive, ruine, nouveau cycle', it: 'Fine definitiva, rovina, nuovo ciclo'}, archivo: 'tarot/menores/espadas/10_diez_de_espadas.webp'},
+            {numero: 60, es: 'Sota de Espadas', en: 'Page of Swords', pt: 'Valete de Espadas', fr: 'Valet de Données', it: 'Fante di Spade', significado: {es: 'Vigilancia, agudeza, curiosidad', en: 'Vigilance, sharpness, curiosity', pt: 'Vigilância, agudeza, curiosidade', fr: 'Vigilance, acuité, curiosité', it: 'Vigilanza, acutezza, curiosità'}, archivo: 'tarot/menores/espadas/11_sota_de_espadas.webp'},
+            {numero: 61, es: 'Caballo de Espadas', en: 'Knight of Swords', pt: 'Cavaleiro de Espadas', fr: 'Chevalier d\'Épées', it: 'Cavaliere di Spade', significado: {es: 'Acción rápida, defensa, ímpetu', en: 'Swift action, defense, impetus', pt: 'Ação rápida, defesa, ímpeto', fr: 'Action rapide, défense, élan', it: 'Azione rapida, difesa, impeto'}, archivo: 'tarot/menores/espadas/12_caballo_de_espadas.webp'},
+            {numero: 62, es: 'Reina de Espadas', en: 'Queen of Swords', pt: 'Rainha de Espadas', fr: 'Reine d\'Épées', it: 'Regina di Spade', significado: {es: 'Independencia, intelecto, agudeza', en: 'Independence, intellect, sharpness', pt: 'Independência, intelecto, agudeza', fr: 'Indépendance, intellect, acuité', it: 'Indipendenza, intelletto, acutezza'}, archivo: 'tarot/menores/espadas/13_reina_de_espadas.webp'},
+            {numero: 63, es: 'Rey de Espadas', en: 'King of Swords', pt: 'Rei de Espadas', fr: 'Roi d\'Épées', it: 'Re di Spade', significado: {es: 'Autoridad, verdad, juicio justo', en: 'Authority, truth, fair judgment', pt: 'Autoridade, verdade, julgamento justo', fr: 'Autorité, vérité, jugement juste', it: 'Autorità, verità, giudizio giusto'}, archivo: 'tarot/menores/espadas/14_rey_de_espadas.webp'},
 
-            // ARCANOS MENORES - PENTÁCULOS (64-77)
-            {numero: 64, es: 'As de Pentáculos', en: 'Ace of Pentacles', pt: 'Ás de Ouros', fr: 'As de Deniers', it: 'Asso di Denari', significado: {es: 'Prosperidad, oportunidad, ganancia', en: 'Prosperity, opportunity, gain', pt: 'Prosperidade, oportunidade, ganho', fr: 'Prospérité, opportunité, gain', it: 'Prosperità, opportunità, guadagno'}, simbolo: '💰'},
-            {numero: 65, es: '2 de Pentáculos', en: 'Two of Pentacles', pt: '2 de Ouros', fr: '2 de Deniers', it: '2 di Denari', significado: {es: 'Balance, flexibilidad, adaptación', en: 'Balance, flexibility, adaptation', pt: 'Equilíbrio, flexibilidade, adaptação', fr: 'Équilibre, flexibilité, adaptation', it: 'Equilibrio, flessibilità, adattamento'}, simbolo: '💰'},
-            {numero: 66, es: '3 de Pentáculos', en: 'Three of Pentacles', pt: '3 de Ouros', fr: '3 de Deniers', it: '3 di Denari', significado: {es: 'Trabajo, colaboración, maestría', en: 'Work, collaboration, mastery', pt: 'Trabalho, colaboração, maestria', fr: 'Travail, collaboration, maîtrise', it: 'Lavoro, collaborazione, maestria'}, simbolo: '💰'},
-            {numero: 67, es: '4 de Pentáculos', en: 'Four of Pentacles', pt: '4 de Ouros', fr: '4 de Deniers', it: '4 di Denari', significado: {es: 'Posesión, retención, seguridad', en: 'Possession, retention, security', pt: 'Posse, retenção, segurança', fr: 'Possession, rétention, sécurité', it: 'Possesso, ritenzione, sicurezza'}, simbolo: '💰'},
-            {numero: 68, es: '5 de Pentáculos', en: 'Five of Pentacles', pt: '5 de Ouros', fr: '5 de Deniers', it: '5 di Denari', significado: {es: 'Pobreza, necesidad, dificultad', en: 'Poverty, need, hardship', pt: 'Pobreza, necessidade, dificuldade', fr: 'Pauvreté, besoin, difficulté', it: 'Povertà, necessità, difficoltà'}, simbolo: '💰'},
-            {numero: 69, es: '6 de Pentáculos', en: 'Six of Pentacles', pt: '6 de Ouros', fr: '6 de Deniers', it: '6 di Denari', significado: {es: 'Generosidad, caridad, equidad', en: 'Generosity, charity, fairness', pt: 'Generosidade, caridade, equidade', fr: 'Générosité, charité, équité', it: 'Generosità, carità, equità'}, simbolo: '💰'},
-            {numero: 70, es: '7 de Pentáculos', en: 'Seven of Pentacles', pt: '7 de Ouros', fr: '7 de Deniers', it: '7 di Denari', significado: {es: 'Evaluación, recompensa, crecimiento', en: 'Evaluation, reward, growth', pt: 'Avaliação, recompensa, crescimento', fr: 'Évaluation, récompense, croissance', it: 'Valutazione, ricompensa, crescita'}, simbolo: '💰'},
-            {numero: 71, es: '8 de Pentáculos', en: 'Eight of Pentacles', pt: '8 de Ouros', fr: '8 de Deniers', it: '8 di Denari', significado: {es: 'Habilidad, aprendizaje, dedicación', en: 'Skill, learning, dedication', pt: 'Habilidade, aprendizado, dedicação', fr: 'Compétence, apprentissage, dévouement', it: 'Abilità, apprendimento, dedizione'}, simbolo: '💰'},
-            {numero: 72, es: '9 de Pentáculos', en: 'Nine of Pentacles', pt: '9 de Ouros', fr: '9 de Deniers', it: '9 di Denari', significado: {es: 'Abundancia, independencia, lujo', en: 'Abundance, independence, luxury', pt: 'Abundância, independência, luxo', fr: 'Abondance, indépendance, luxe', it: 'Abbondanza, indipendenza, lusso'}, simbolo: '💰'},
-            {numero: 73, es: '10 de Pentáculos', en: 'Ten of Pentacles', pt: '10 de Ouros', fr: '10 de Deniers', it: '10 di Denari', significado: {es: 'Herencia, riqueza, estabilidad', en: 'Inheritance, wealth, stability', pt: 'Herança, riqueza, estabilidade', fr: 'Héritage, richesse, stabilité', it: 'Eredità, ricchezza, stabilità'}, simbolo: '💰'},
-            {numero: 74, es: 'Sota de Pentáculos', en: 'Page of Pentacles', pt: 'Valete de Ouros', fr: 'Valet de Deniers', it: 'Fante di Denari', significado: {es: 'Aprendiz, diligencia, potencial', en: 'Apprentice, diligence, potential', pt: 'Aprendiz, diligência, potencial', fr: 'Apprenti, diligence, potentiel', it: 'Apprendista, diligenza, potenziale'}, simbolo: '💰'},
-            {numero: 75, es: 'Caballero de Pentáculos', en: 'Knight of Pentacles', pt: 'Cavaleiro de Ouros', fr: 'Cavalier de Deniers', it: 'Cavallo di Denari', significado: {es: 'Responsabilidad, confiabilidad, trabajo', en: 'Responsibility, reliability, work', pt: 'Responsabilidade, confiabilidade, trabalho', fr: 'Responsabilité, fiabilité, travail', it: 'Responsabilità, affidabilità, lavoro'}, simbolo: '💰'},
-            {numero: 76, es: 'Reina de Pentáculos', en: 'Queen of Pentacles', pt: 'Rainha de Ouros', fr: 'Reine de Deniers', it: 'Regina di Denari', significado: {es: 'Abundancia, hospitalidad, cuidado', en: 'Abundance, hospitality, care', pt: 'Abundância, hospitalidade, cuidado', fr: 'Abondance, hospitalité, soin', it: 'Abbondanza, ospitalità, cura'}, simbolo: '💰'},
-            {numero: 77, es: 'Rey de Pentáculos', en: 'King of Pentacles', pt: 'Rei de Ouros', fr: 'Roi de Deniers', it: 'Re di Denari', significado: {es: 'Riqueza, éxito, autoridad', en: 'Wealth, success, authority', pt: 'Riqueza, sucesso, autoridade', fr: 'Richesse, succès, autorité', it: 'Ricchezza, successo, autorità'}, simbolo: '💰'}
+            // ARCANOS MENORES - OROS (64-77)
+            {numero: 64, es: 'As de Oros', en: 'Ace of Pentacles', pt: 'Ás de Oros', fr: 'As de Deniers', it: 'Asso di Denari', significado: {es: 'Abundancia, prosperidad, estabilidad', en: 'Abundance, prosperity, stability', pt: 'Abundância, prosperidade, estabilidade', fr: 'Abondance, prospérité, stabilité', it: 'Abbondanza, prosperità, stabilità'}, archivo: 'tarot/menores/oros/01_as_de_oros.webp'},
+            {numero: 65, es: '2 de Oros', en: 'Two of Pentacles', pt: '2 de Oros', fr: '2 de Deniers', it: '2 di Denari', significado: {es: 'Equilibrio, adaptación, prioridades', en: 'Balance, adaptation, priorities', pt: 'Equilíbrio, adaptação, prioridades', fr: 'Équilibre, adaptation, priorités', it: 'Equilibrio, adattamento, priorità'}, archivo: 'tarot/menores/oros/02_dos_de_oros.webp'},
+            {numero: 66, es: '3 de Oros', en: 'Three of Pentacles', pt: '3 de Oros', fr: '3 de Deniers', it: '3 di Denari', significado: {es: 'Trabajo en equipo, aprendizaje, éxito', en: 'Teamwork, learning, success', pt: 'Trabalho em equipe, aprendizado, sucesso', fr: 'Travail d\'équipe, apprentissage, succès', it: 'Lavoro di squadra, apprendimento, successo'}, archivo: 'tarot/menores/oros/03_tres_de_oros.webp'},
+            {numero: 67, es: '4 de Oros', en: 'Four of Pentacles', pt: '4 de Oros', fr: '4 de Deniers', it: '4 di Denari', significado: {es: 'Avaricia, control, seguridad', en: 'Greed, control, security', pt: 'Ganância, controle, segurança', fr: 'Avarice, contrôle, sécurité', it: 'Avarizia, controllo, sicurezza'}, archivo: 'tarot/menores/oros/04_cuatro_de_oros.webp'},
+            {numero: 68, es: '5 de Oros', en: 'Five of Pentacles', pt: '5 de Oros', fr: '5 de Deniers', it: '5 di Denari', significado: {es: 'Pérdida material, aislamiento, crisis', en: 'Material loss, isolation, crisis', pt: 'Perda material, isolamento, crise', fr: 'Perte matérielle, isolement, crise', it: 'Perdita materiale, isolamento, crisi'}, archivo: 'tarot/menores/oros/05_cinco_de_oros.webp'},
+            {numero: 69, es: '6 de Oros', en: 'Six of Pentacles', pt: '6 de Oros', fr: '6 de Deniers', it: '6 di Denari', significado: {es: 'Generosidad, caridad, compartir', en: 'Generosity, charity, sharing', pt: 'Generosidade, caridade, compartilhar', fr: 'Générosité, charité, partage', it: 'Generosità, carità, condivisione'}, archivo: 'tarot/menores/oros/06_seis_de_oros.webp'},
+            {numero: 70, es: '7 de Oros', en: 'Seven of Pentacles', pt: '7 de Oros', fr: '7 de Deniers', it: '7 di Denari', significado: {es: 'Paciencia, recompensa, cosecha', en: 'Patience, reward, harvest', pt: 'Paciência, recompensa, colheita', fr: 'Patience, récompense, récolte', it: 'Pazienza, ricompensa, raccolto'}, archivo: 'tarot/menores/oros/07_siete_de_oros.webp'},
+            {numero: 71, es: '8 de Oros', en: 'Eight of Pentacles', pt: '8 de Oros', fr: '8 de Deniers', it: '8 di Denari', significado: {es: 'Maestría, dedicación, detalle', en: 'Mastery, dedication, detail', pt: 'Maestria, dedicação, detalhe', fr: 'Maîtrise, dévouement, détail', it: 'Maestria, dedizione, dettaglio'}, archivo: 'tarot/menores/oros/08_ocho_de_oros.webp'},
+            {numero: 72, es: '9 de Oros', en: 'Nine of Pentacles', pt: '9 de Oros', fr: '9 de Deniers', it: '9 di Denari', significado: {es: 'Independencia, lujo, autosuficiencia', en: 'Independence, luxury, self-reliance', pt: 'Independência, luxo, autossuficiência', fr: 'Indépendance, luxe, autosuffisance', it: 'Indipendenza, lusso, autosufficienza'}, archivo: 'tarot/menores/oros/09_nueve_de_oros.webp'},
+            {numero: 73, es: '10 de Oros', en: 'Ten of Pentacles', pt: '10 de Oros', fr: '10 de Deniers', it: '10 di Denari', significado: {es: 'Legado, estabilidad, riqueza familiar', en: 'Legacy, stability, family wealth', pt: 'Legado, estabilidade, riqueza familiar', fr: 'Héritage, stabilité, richesse familiale', it: 'Eredità, stabilità, ricchezza familiare'}, archivo: 'tarot/menores/oros/10_diez_de_oros.webp'},
+            {numero: 74, es: 'Sota de Oros', en: 'Page of Pentacles', pt: 'Valete de Oros', fr: 'Valet de Deniers', it: 'Fante di Denari', significado: {es: 'Oportunidad, estudio, ambición', en: 'Opportunity, study, ambition', pt: 'Oportunidade, estudo, ambição', fr: 'Opportunité, étude, ambition', it: 'Opportunità, studio, ambizione'}, archivo: 'tarot/menores/oros/11_sota_de_oros.webp'},
+            {numero: 75, es: 'Caballo de Oros', en: 'Knight of Pentacles', pt: 'Cavaleiro de Oros', fr: 'Chevalier de Deniers', it: 'Cavaliere di Denari', significado: {es: 'Rutina, paciencia, realismo', en: 'Routine, patience, realism', pt: 'Rotina, paciência, realismo', fr: 'Routine, patience, réalisme', it: 'Routine, pazienza, realismo'}, archivo: 'tarot/menores/oros/12_caballo_de_oros.webp'},
+            {numero: 76, es: 'Reina de Oros', en: 'Queen of Pentacles', pt: 'Rainha de Oros', fr: 'Reine de Deniers', it: 'Regina di Denari', significado: {es: 'Seguridad, practicidad, nutrición', en: 'Security, practicality, nurturing', pt: 'Segurança, praticidade, nutrição', fr: 'Sécurité, praticité, alimentation', it: 'Sicurezza, praticità, nutrimento'}, archivo: 'tarot/menores/oros/13_reina_de_oros.webp'},
+            {numero: 77, es: 'Rey de Oros', en: 'King of Pentacles', pt: 'Rei de Oros', fr: 'Roi de Deniers', it: 'Re di Denari', significado: {es: 'Éxito financiero, abundancia, fiabilidad', en: 'Financial success, abundance, reliability', pt: 'Sucesso financeiro, abundância, confiabilidade', fr: 'Succès financier, abondance, fiabilité', it: 'Successo finanziario, abbondanza, affidabilità'}, archivo: 'tarot/menores/oros/14_rey_de_oros.webp'}
         ];
 
-        // SIGNOS ZODIACALES
-        const signosZodiacales = {
-            es: [
-                {nombre: 'Aries', simbolo: '♈', descripcion: 'Valiente, impulsivo, dinámico'},
-                {nombre: 'Tauro', simbolo: '♉', descripcion: 'Estable, práctico, responsable'},
-                {nombre: 'Géminis', simbolo: '♊', descripcion: 'Comunicativo, versátil, inteligente'},
-                {nombre: 'Cáncer', simbolo: '♋', descripcion: 'Sensible, protector, emotivo'},
-                {nombre: 'Leo', simbolo: '♌', descripcion: 'Generoso, carismático, apasionado'},
-                {nombre: 'Virgo', simbolo: '♍', descripcion: 'Analítico, meticuloso, práctico'},
-                {nombre: 'Libra', simbolo: '♎', descripcion: 'Equilibrado, diplomático, artístico'},
-                {nombre: 'Escorpio', simbolo: '♏', descripcion: 'Intenso, obsesivo, misterioso'},
-                {nombre: 'Sagitario', simbolo: '♐', descripcion: 'Aventurero, optimista, filósofo'},
-                {nombre: 'Capricornio', simbolo: '♑', descripcion: 'Disciplinado, responsable, ambicioso'},
-                {nombre: 'Acuario', simbolo: '♒', descripcion: 'Independiente, innovador, humanitario'},
-                {nombre: 'Piscis', simbolo: '♓', descripcion: 'Imaginativo, compasivo, espiritual'}
-            ],
-            en: [
-                {nombre: 'Aries', simbolo: '♈', descripcion: 'Brave, impulsive, dynamic'},
-                {nombre: 'Taurus', simbolo: '♉', descripcion: 'Stable, practical, responsible'},
-                {nombre: 'Gemini', simbolo: '♊', descripcion: 'Communicative, versatile, intelligent'},
-                {nombre: 'Cancer', simbolo: '♋', descripcion: 'Sensitive, protective, emotional'},
-                {nombre: 'Leo', simbolo: '♌', descripcion: 'Generous, charismatic, passionate'},
-                {nombre: 'Virgo', simbolo: '♍', descripcion: 'Analytical, meticulous, practical'},
-                {nombre: 'Libra', simbolo: '♎', descripcion: 'Balanced, diplomatic, artistic'},
-                {nombre: 'Scorpio', simbolo: '♏', descripcion: 'Intense, obsessive, mysterious'},
-                {nombre: 'Sagittarius', simbolo: '♐', descripcion: 'Adventurous, optimistic, philosophical'},
-                {nombre: 'Capricorn', simbolo: '♑', descripcion: 'Disciplined, responsible, ambitious'},
-                {nombre: 'Aquarius', simbolo: '♒', descripcion: 'Independent, innovative, humanitarian'},
-                {nombre: 'Pisces', simbolo: '♓', descripcion: 'Imaginative, compassionate, spiritual'}
-            ],
-            pt: [
-                {nombre: 'Áries', simbolo: '♈', descripcion: 'Corajoso, impulsivo, dinâmico'},
-                {nombre: 'Touro', simbolo: '♉', descripcion: 'Estável, prático, responsável'},
-                {nombre: 'Gêmeos', simbolo: '♊', descripcion: 'Comunicativo, versátil, inteligente'},
-                {nombre: 'Câncer', simbolo: '♋', descripcion: 'Sensível, protetor, emotivo'},
-                {nombre: 'Leão', simbolo: '♌', descripcion: 'Generoso, carismático, apaixonado'},
-                {nombre: 'Virgem', simbolo: '♍', descripcion: 'Analítico, meticuloso, prático'},
-                {nombre: 'Libra', simbolo: '♎', descripcion: 'Equilibrado, diplomático, artístico'},
-                {nombre: 'Escorpião', simbolo: '♏', descripcion: 'Intenso, obsessivo, misterioso'},
-                {nombre: 'Sagitário', simbolo: '♐', descripcion: 'Aventureiro, otimista, filósofo'},
-                {nombre: 'Capricórnio', simbolo: '♑', descripcion: 'Disciplinado, responsável, ambicioso'},
-                {nombre: 'Aquário', simbolo: '♒', descripcion: 'Independente, inovador, humanitário'},
-                {nombre: 'Peixes', simbolo: '♓', descripcion: 'Imaginativo, compassivo, espiritual'}
-            ],
-            fr: [
-                {nombre: 'Bélier', simbolo: '♈', descripcion: 'Courageux, impulsif, dynamique'},
-                {nombre: 'Taureau', simbolo: '♉', descripcion: 'Stable, pratique, responsable'},
-                {nombre: 'Gémeaux', simbolo: '♊', descripcion: 'Communicatif, polyvalent, intelligent'},
-                {nombre: 'Cancer', simbolo: '♋', descripcion: 'Sensible, protecteur, émotif'},
-                {nombre: 'Lion', simbolo: '♌', descripcion: 'Généreux, charismatique, passionné'},
-                {nombre: 'Vierge', simbolo: '♍', descripcion: 'Analytique, méticuleux, pratique'},
-                {nombre: 'Balance', simbolo: '♎', descripcion: 'Équilibré, diplomatique, artistique'},
-                {nombre: 'Scorpion', simbolo: '♏', descripcion: 'Intense, obsessif, mystérieux'},
-                {nombre: 'Sagittaire', simbolo: '♐', descripcion: 'Aventurier, optimiste, philosophe'},
-                {nombre: 'Capricorne', simbolo: '♑', descripcion: 'Discipliné, responsable, ambitieux'},
-                {nombre: 'Verseau', simbolo: '♒', descripcion: 'Indépendant, innovant, humanitaire'},
-                {nombre: 'Poissons', simbolo: '♓', descripcion: 'Imaginatif, compatissant, spirituel'}
-            ],
-            it: [
-                {nombre: 'Ariete', simbolo: '♈', descripcion: 'Coraggioso, impulsivo, dinamico'},
-                {nombre: 'Toro', simbolo: '♉', descripcion: 'Stabile, pratico, responsabile'},
-                {nombre: 'Gemelli', simbolo: '♊', descripcion: 'Comunicativo, versatile, intelligente'},
-                {nombre: 'Cancro', simbolo: '♋', descripcion: 'Sensibile, protettivo, emotivo'},
-                {nombre: 'Leone', simbolo: '♌', descripcion: 'Generoso, carismatico, appassionato'},
-                {nombre: 'Vergine', simbolo: '♍', descripcion: 'Analitico, meticoloso, pratico'},
-                {nombre: 'Bilancia', simbolo: '♎', descripcion: 'Equilibrato, diplomatico, artistico'},
-                {nombre: 'Scorpione', simbolo: '♏', descripcion: 'Intenso, ossessivo, misterioso'},
-                {nombre: 'Sagittario', simbolo: '♐', descripcion: 'Avventuriero, ottimista, filosofo'},
-                {nombre: 'Capricorno', simbolo: '♑', descripcion: 'Disciplinato, responsabile, ambizioso'},
-                {nombre: 'Acquario', simbolo: '♒', descripcion: 'Indipendente, innovativo, umanitario'},
-                {nombre: 'Pesci', simbolo: '♓', descripcion: 'Immaginativo, compassionevole, spirituale'}
-            ]
-        };
-
-        // ORÁCULO DE RESPUESTAS
+        // RESPUESTAS ORÁCULO
         const respuestasOraculo = {
             es: [
-                'Sí, definitivamente', 'No, no en este momento', 'Quizás, mantén la fe', 'Los signos no son claros',
-                'Confía en el proceso', 'Busca consejo', 'El cambio está llegando', 'Sé paciente',
-                'La respuesta está dentro tuyo', 'Sigue tu intuición', 'Aún no es el momento', 'Procede con cautela',
-                'Las probabilidades son favorables', 'Reflexiona más', 'Toma acción ahora', 'Espera una señal',
-                'El camino se abrirá', 'Necesitas más información', 'Todo es posible', 'La suerte está contigo'
+                "✦ El Universo dice SÍ. Camina con paso firme y sin dudar.",
+                "✦ El momento actual requiere paciencia. Espera a que las aguas se calmen.",
+                "✦ Hay una verdad ocultándose de ti. Observa los pequeños detalles.",
+                "✦ Lo que buscas llegará por un camino completamente inesperado.",
+                "✦ Es momento de soltar lo que ya no te suma para recibir lo nuevo.",
+                "✦ Confía plenamente en tu intuición, tu primera corazonada es la correcta.",
+                "✦ Abre bien los ojos, una gran oportunidad golpeará tu puerta pronto."
             ],
             en: [
-                'Yes, definitely', 'No, not now', 'Perhaps, keep faith', 'The signs are unclear',
-                'Trust the process', 'Seek advice', 'Change is coming', 'Be patient',
-                'The answer is within you', 'Follow your intuition', 'Not the right time', 'Proceed with caution',
-                'The odds are favorable', 'Reflect more', 'Take action now', 'Wait for a sign',
-                'The path will open', 'You need more information', 'All is possible', 'Luck is with you'
+                "✦ The Universe says YES. Walk with firm steps and no doubt.",
+                "✦ The current moment requires patience. Wait for the waters to calm.",
+                "✦ There is a truth hiding from you. Look closely at the small details.",
+                "✦ What you seek will arrive through a completely unexpected path.",
+                "✦ It is time to let go of what no longer serves you to receive the new.",
+                "✦ Trust your intuition completely, your first hunch is correct.",
+                "✦ Keep your eyes open, a great opportunity will knock on your door soon."
             ],
             pt: [
-                'Sim, definitivamente', 'Não, não agora', 'Talvez, mantenha a fé', 'Os sinais não são claros',
-                'Confie no processo', 'Procure conselho', 'A mudança está chegando', 'Seja paciente',
-                'A resposta está em você', 'Siga sua intuição', 'Ainda não é a hora', 'Proceda com cautela',
-                'As probabilidades são favoráveis', 'Reflita mais', 'Aja agora', 'Espere um sinal',
-                'O caminho se abrirá', 'Você precisa de mais informações', 'Tudo é possível', 'A sorte está com você'
+                "✦ O Universo diz SIM. Caminhe com passos firmes e sem dúvidas.",
+                "✦ O momento atual exige paciência. Espere as águas se acalmarem.",
+                "✦ Há uma verdade se escondendo de você. Observe os pequenos detalhes.",
+                "✦ O que você procura chegará por um caminho totalmente inesperado.",
+                "✦ É hora de desapegar do que não soma mais para receber o novo.",
+                "✦ Confie plenamente na sua intuição, seu primeiro palpite está correto.",
+                "✦ Abra bem os olhos, uma grande oportunidade baterá à sua porta em breve."
             ],
             fr: [
-                'Oui, définitivement', 'Non, pas maintenant', 'Peut-être, gardez foi', 'Les signes ne sont pas clairs',
-                'Faites confiance au processus', 'Cherchez conseil', 'Le changement arrive', 'Soyez patient',
-                'La réponse est en vous', 'Suivez votre intuition', 'Ce n\'est pas le bon moment', 'Procédez prudemment',
-                'Les probabilités sont favorables', 'Réfléchissez davantage', 'Agissez maintenant', 'Attendez un signe',
-                'Le chemin s\'ouvrira', 'Vous avez besoin de plus d\'informations', 'Tout est possible', 'La chance est avec vous'
+                "✦ L'Univers dit OUI. Marchez d'un pas ferme et sans hésiter.",
+                "✦ Le moment actuel exige de la patience. Attendez que les eaux se calment.",
+                "✦ Une vérité se cache de vous. Observez bien les petits détails.",
+                "✦ Ce que vous cherchez arrivera par un chemin totalement inattendu.",
+                "✦ Il est temps de lâcher prise sur ce qui ne vous apporte plus rien du tout.",
+                "✦ Faites pleinement confiance à votre intuition, votre premier pressentiment est le bon.",
+                "✦ Ouvrez bien les yeux, une belle opportunité frappera bientôt à votre porte."
             ],
             it: [
-                'Sì, definitivamente', 'No, non adesso', 'Forse, mantieni la fede', 'I segni non sono chiari',
-                'Fidati del processo', 'Cerca consiglio', 'Il cambiamento sta arrivando', 'Sii paziente',
-                'La risposta è dentro di te', 'Segui la tua intuizione', 'Non è il momento giusto', 'Procedi con cautela',
-                'Le probabilità sono favorevoli', 'Rifletti di più', 'Agisci ora', 'Aspetta un segno',
-                'Il percorso si aprirà', 'Hai bisogno di più informazioni', 'Tutto è possibile', 'La fortuna è con te'
+                "✦ L'Universo dice SÌ. Cammina a passo fermo e senza dubitare.",
+                "✦ Il momento attuale richiede pazienza. Aspetta que le acque si calmino.",
+                "✦ C'è una verità che ti viene nascosta. Osserva i piccoli dettagli.",
+                "✦ Ciò que cerchi arriverà da una strada del tutto inaspettata.",
+                "✦ È ora di lasciare andare ciò que non ti serve più per accogliere il nuovo.",
+                "✦ Fidati del tutto del tuo intuito, la prima sensazione è quella giusta.",
+                "✦ Tieni gli occhi ben aperti, presto una grande opportunità busserà alla tua porta."
             ]
         };
 
-        // ALGORITMOS DE CÁLCULO
-
-        function getMoonSign(year, month, day, hour) {
-            const a = Math.floor((14 - month) / 12);
-            const y = year + 4800 - a;
-            const m = month + 12 * a - 3;
-            let jd = day + Math.floor((153 * m + 2) / 5) + 365 * y + Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
-            jd += (hour - 12) / 24;
-
-            const T = (jd - 2451545.0) / 36525;
-            const D = 297.8501921 + 445267.1114034 * T;
-            const M = 357.5291092 + 35999.0502909 * T;
-            const Mprime = 134.9633964 + 477198.8675057 * T;
-
-            let lambda = 218.3164477 + 481267.8812342 * T;
-            lambda += 6.288774 * Math.sin(Mprime * Math.PI / 180);
-            lambda += 1.274027 * Math.sin(2 * D * Math.PI / 180 - Mprime * Math.PI / 180);
-            lambda += 0.658314 * Math.sin(2 * D * Math.PI / 180);
-            lambda += 0.213618 * Math.sin(2 * Mprime * Math.PI / 180);
-
-            lambda = ((lambda % 360) + 360) % 360;
-
-            const signs = idiomaActual === 'es' ? ['Aries', 'Tauro', 'Géminis', 'Cáncer', 'Leo', 'Virgo', 'Libra', 'Escorpio', 'Sagitario', 'Capricornio', 'Acuario', 'Piscis'] :
-                          idiomaActual === 'pt' ? ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'] :
-                          idiomaActual === 'en' ? ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'] :
-                          idiomaActual === 'fr' ? ['Bélier', 'Taureau', 'Gémeaux', 'Cancer', 'Lion', 'Vierge', 'Balance', 'Scorpion', 'Sagittaire', 'Capricorne', 'Verseau', 'Poissons'] :
-                          ['Ariete', 'Toro', 'Gemelli', 'Cancro', 'Leone', 'Vergine', 'Bilancia', 'Scorpione', 'Sagittario', 'Capricorno', 'Acquario', 'Pesci'];
-
-            return signs[Math.floor(lambda / 30)];
-        }
-
-        function getSunSign(month, day) {
-            const signDates = [
-                {sign: 0, start: [3, 21], end: [4, 19]},
-                {sign: 1, start: [4, 20], end: [5, 20]},
-                {sign: 2, start: [5, 21], end: [6, 20]},
-                {sign: 3, start: [6, 21], end: [7, 22]},
-                {sign: 4, start: [7, 23], end: [8, 22]},
-                {sign: 5, start: [8, 23], end: [9, 22]},
-                {sign: 6, start: [9, 23], end: [10, 22]},
-                {sign: 7, start: [10, 23], end: [11, 21]},
-                {sign: 8, start: [11, 22], end: [12, 21]},
-                {sign: 9, start: [12, 22], end: [1, 19]},
-                {sign: 10, start: [1, 20], end: [2, 18]},
-                {sign: 11, start: [2, 19], end: [3, 20]}
-            ];
-
-            const signs = idiomaActual === 'es' ? ['Aries', 'Tauro', 'Géminis', 'Cáncer', 'Leo', 'Virgo', 'Libra', 'Escorpio', 'Sagitario', 'Capricornio', 'Acuario', 'Piscis'] :
-                          idiomaActual === 'pt' ? ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'] :
-                          idiomaActual === 'en' ? ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'] :
-                          idiomaActual === 'fr' ? ['Bélier', 'Taureau', 'Gémeaux', 'Cancer', 'Lion', 'Vierge', 'Balance', 'Scorpion', 'Sagittaire', 'Capricorne', 'Verseau', 'Poissons'] :
-                          ['Ariete', 'Toro', 'Gemelli', 'Cancro', 'Leone', 'Vergine', 'Bilancia', 'Scorpione', 'Sagittario', 'Capricorno', 'Acquario', 'Pesci'];
-
-            for (let s of signDates) {
-                const startM = s.start[0], startD = s.start[1];
-                const endM = s.end[0], endD = s.end[1];
-
-                if (startM === endM) {
-                    if (month === startM && day >= startD && day <= endD) return signs[s.sign];
-                } else {
-                    if ((month === startM && day >= startD) || (month === endM && day <= endD)) return signs[s.sign];
-                }
-            }
-            return signs[9];
-        }
-
-        function getAscendant(sunSign, hour) {
-            const signs = idiomaActual === 'es' ? ['Aries', 'Tauro', 'Géminis', 'Cáncer', 'Leo', 'Virgo', 'Libra', 'Escorpio', 'Sagitario', 'Capricornio', 'Acuario', 'Piscis'] :
-                          idiomaActual === 'pt' ? ['Áries', 'Touro', 'Gêmeos', 'Câncer', 'Leão', 'Virgem', 'Libra', 'Escorpião', 'Sagitário', 'Capricórnio', 'Aquário', 'Peixes'] :
-                          idiomaActual === 'en' ? ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'] :
-                          idiomaActual === 'fr' ? ['Bélier', 'Taureau', 'Gémeaux', 'Cancer', 'Lion', 'Vierge', 'Balance', 'Scorpion', 'Sagittaire', 'Capricorne', 'Verseau', 'Poissons'] :
-                          ['Ariete', 'Toro', 'Gemelli', 'Cancro', 'Leone', 'Vergine', 'Bilancia', 'Scorpione', 'Sagittario', 'Capricorno', 'Acquario', 'Pesci'];
-
-            const sunIndex = signs.indexOf(sunSign);
-            const hourOffset = Math.floor((hour + 6) / 2);
-            const ascIndex = (sunIndex + hourOffset) % 12;
-            return signs[ascIndex];
-        }
-
-        function calcularNumerologia(nombre, fecha) {
-            const texto = (nombre + fecha.replace(/-/g, '')).replace(/\D/g, '');
-            let suma = 0;
-            for (let c of texto) suma += parseInt(c);
-
-            while (suma > 9) {
-                suma = suma.toString().split('').reduce((a, b) => a + parseInt(b), 0);
-            }
-            return suma;
-        }
-
-        // FUNCIONES UI
-
-        function cambiarIdioma(idioma) {
-            idiomaActual = idioma;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            document.querySelectorAll('[data-t]').forEach(elem => {
-                const key = elem.getAttribute('data-t');
-                if (traducciones[idioma] && traducciones[idioma][key]) {
-                    elem.textContent = traducciones[idioma][key];
-                }
-            });
-
-            document.querySelectorAll('[data-placeholder]').forEach(elem => {
-                const placeholder = elem.getAttribute('data-placeholder');
-                if (placeholder) elem.placeholder = placeholder;
-            });
-
-            asegurarMusicaDeFondo();
-        }
-
-        function mostrarSeccion(seccion) {
+        // Cambiar secciones
+        function mostrarSeccion(id) {
             document.querySelectorAll('.secciones').forEach(s => s.classList.remove('active'));
-            document.getElementById('seccion-' + seccion).classList.add('active');
+            const seccion = document.getElementById('seccion-' + id);
+            if(seccion) seccion.classList.add('active');
             asegurarMusicaDeFondo();
         }
 
+        // Asegurar que suene la música si el usuario interactúa
         function asegurarMusicaDeFondo() {
             if (!musicaIniciada) {
                 const audio = document.getElementById('audio-ambiente');
-                audio.volume = 0.15;
-                audio.play().catch(e => console.log('Audio autoplay blocked'));
-                musicaIniciada = true;
+                if (audio) {
+                    audio.play().then(() => {
+                        musicaIniciada = true;
+                    }).catch(e => console.log("Esperando interacción para audio..."));
+                }
             }
         }
 
-        // TAROT
+        // Selector de Idioma
+        function cambiarIdioma(cod) {
+            idiomaActual = cod;
+            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Traducir textos fijos
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const clave = el.getAttribute('data-t');
+                if(traducciones[cod] && traducciones[cod][clave]) {
+                    el.innerHTML = traducciones[cod][clave];
+                }
+            });
+
+            // Traducir placeholders de inputs
+            document.querySelectorAll('[data-placeholder]').forEach(el => {
+                const clave = el.getAttribute('data-placeholder');
+                if(traducciones[cod] && traducciones[cod][clave]) {
+                    el.setAttribute('placeholder', traducciones[cod][clave]);
+                }
+            });
+
+            asegurarMusicaDeFondo();
+        }
+
+        // LÓGICA DEL TAROT MODIFICADA CON IMÁGENES
         function leerTarot() {
             const nombre = document.getElementById('tarot-nombre').value.trim();
             const pregunta = document.getElementById('tarot-pregunta').value.trim();
-            const numCartas = parseInt(document.getElementById('tarot-cartas').value);
+            const cantidad = parseInt(document.getElementById('tarot-cartas').value);
 
             if (!nombre || !pregunta) {
-                alert(idiomaActual === 'es' ? 'Por favor completa todos los campos' : 'Please fill in all fields');
+                alert(idiomaActual === 'es' ? 'Por favor completa tu nombre y pregunta.' : 'Please enter your name and question.');
                 return;
             }
 
-            const cartasSeleccionadas = [];
-            const usadas = new Set();
+            // Copiar mazo original para no repetir cartas en la tirada
+            let mazo = [...cartasTarot];
+            let elegidas = [];
 
-            while (cartasSeleccionadas.length < numCartas) {
-                const idx = Math.floor(Math.random() * cartasTarot.length);
-                if (!usadas.has(idx)) {
-                    cartasSeleccionadas.push(cartasTarot[idx]);
-                    usadas.add(idx);
-                }
+            for (let i = 0; i < cantidad; i++) {
+                const indexAleatorio = Math.floor(Math.random() * mazo.length);
+                const carta = mazo.splice(indexAleatorio, 1)[0];
+                // 30% de probabilidad de salir dada vuelta (invertida)
+                const invertida = Math.random() < 0.3;
+                elegidas.push({ ...carta, invertida });
             }
 
-            let html = '<div class="resultado"><h3>' + (idiomaActual === 'es' ? 'Lectura para ' : 'Reading for ') + nombre + '</h3>';
-            html += '<p style="color: #daa520; margin-bottom: 15px;">' + (idiomaActual === 'es' ? 'Tu pregunta: ' : 'Your question: ') + pregunta + '</p>';
-            html += '<div class="cartas-container">';
+            // Construir el diseño de respuesta
+            let html = '<div class=\"resultado\">';
+            html += '<h3>' + (idiomaActual === 'es' ? 'Lectura para ' : 'Reading for ') + nombre + '</h3>';
+            html += '<p style=\"color: #daa520; margin-bottom: 20px; font-size: 1.1em;\"><strong>' + (idiomaActual === 'es' ? 'Tu consulta: ' : 'Your question: ') + '</strong>' + pregunta + '</p>';
+            
+            // Contenedor de las tarjetitas
+            html += '<div class=\"cartas-container\">';
 
-            cartasSeleccionadas.forEach((carta, idx) => {
-                html += '<div class="carta-revelada">';
-                html += '<div class="simbolo">' + carta.simbolo + '</div>';
-                html += '<div class="nombre">' + carta[idiomaActual] + '</div>';
-                html += '<div class="significado">' + carta.significado[idiomaActual] + '</div>';
+            elegidas.forEach(carta => {
+                const nombreCarta = carta[idiomaActual] || carta['es'];
+                const descCarta = carta.significado[idiomaActual] || carta.significado['es'];
+                
+                // Texto de orientación
+                let orientacion = '';
+                if (idiomaActual === 'es') orientacion = carta.invertida ? 'Invertida' : 'Al derecho';
+                else if (idiomaActual === 'en') orientacion = carta.invertida ? 'Reversed' : 'Upright';
+                else if (idiomaActual === 'pt') orientacion = carta.invertida ? 'Invertida' : 'Normal';
+                else if (idiomaActual === 'fr') orientacion = carta.invertida ? 'Inversée' : 'Droite';
+                else if (idiomaActual === 'it') orientacion = carta.invertida ? 'Capovolta' : 'Dritto';
+
+                // Aquí inyectamos la imagen guardada en tu carpeta tarot
+                html += '<div class=\"carta-revelada\">';
+                html += '  <div class=\"contenedor-imagen-carta\">';
+                html += '    <img src=\"' + carta.archivo + '\" class=\"imagen-carta-archivo ' + (carta.invertida ? 'invertida' : '') + '\" alt=\"' + nombreCarta + '\">';
+                html += '  </div>';
+                html += '  <div class=\"nombre\">' + nombreCarta + '</div>';
+                html += '  <div class=\"estado-carta\">(' + orientacion + ')</div>';
+                html += '  <div class=\"significado\">' + descCarta + '</div>';
                 html += '</div>';
             });
 
             html += '</div></div>';
+
             document.getElementById('resultado-tarot').innerHTML = html;
             asegurarMusicaDeFondo();
         }
@@ -1192,51 +1019,53 @@
         function limpiarTarot() {
             document.getElementById('tarot-nombre').value = '';
             document.getElementById('tarot-pregunta').value = '';
-            document.getElementById('tarot-cartas').value = '3';
             document.getElementById('resultado-tarot').innerHTML = '';
         }
 
-        // ASTROLOGÍA
+        // LÓGICA DE ASTROLOGÍA
         function calcularCarta() {
             const nombre = document.getElementById('astro-nombre').value.trim();
             const fecha = document.getElementById('astro-fecha').value;
             const hora = document.getElementById('astro-hora').value;
 
             if (!nombre || !fecha || !hora) {
-                alert(idiomaActual === 'es' ? 'Por favor completa todos los campos' : 'Please fill in all fields');
+                alert(idiomaActual === 'es' ? 'Completa todos los campos natales.' : 'Please fill in all birth details.');
                 return;
             }
 
-            const [year, month, day] = fecha.split('-').map(Number);
-            const [h, m] = hora.split(':').map(Number);
-            const horaDecimal = h + m / 60;
+            const signos = [
+                {n: {es: 'Capricornio', en: 'Capricorn', pt: 'Capricórnio', fr: 'Capricorne', it: 'Capricorno'}, s: '♑', d: {es: 'Ambicioso, disciplinado y paciente.', en: 'Ambitious, disciplined, and patient.', pt: 'Ambicioso, disciplinado e paciente.', fr: 'Ambitieux, discipliné et patient.', it: 'Ambizioso, disciplinato e paziente.'}},
+                {n: {es: 'Acuario', en: 'Aquarius', pt: 'Aquário', fr: 'Verseau', it: 'Acquario'}, s: '♒', d: {es: 'Original, humanitario e independiente.', en: 'Original, humanitarian, and independent.', pt: 'Original, humanitário e independente.', fr: 'Original, humanitaire et indépendant.', it: 'Originale, umanitario e indipendente.'}},
+                {n: {es: 'Piscis', en: 'Pisces', pt: 'Peixes', fr: 'Poissons', it: 'Pesci'}, s: '♓', d: {es: 'Compasivo, artístico e intuitivo.', en: 'Compassionate, artistic, and intuitive.', pt: 'Compassivo, artístico e intuitivo.', fr: 'Compassionné, artistique et intuitif.', it: 'Compassionevole, artistico e intuitivo.'}},
+                {n: {es: 'Aries', en: 'Aries', pt: 'Áries', fr: 'Bélier', it: 'Ariete'}, s: '♈', d: {es: 'Valiente, entusiasta y competitivo.', en: 'Courageous, enthusiastic, and competitive.', pt: 'Corajoso, entusiasta e competitivo.', fr: 'Courageux, enthousiaste et compétitif.', it: 'Coraggioso, entusiasta e competitivo.'}},
+                {n: {es: 'Tauro', en: 'Taurus', pt: 'Touro', fr: 'Taureau', it: 'Toro'}, s: '♉', d: {es: 'Confiable, paciente y práctico.', en: 'Reliable, patient, and practical.', pt: 'Confiável, paciente e prático.', fr: 'Fiable, patient et pratique.', it: 'Affidabile, paziente e pratico.'}},
+                {n: {es: 'Géminis', en: 'Gemini', pt: 'Gêmeos', fr: 'Gémeaux', it: 'Gemelli'}, s: '♊', d: {es: 'Expresivo, curioso y adaptable.', en: 'Expressive, curious, and adaptable.', pt: 'Expressivo, curioso e adaptável.', fr: 'Expressif, curieux et adaptable.', it: 'Espressivo, curioso e adattabile.'}},
+                {n: {es: 'Cáncer', en: 'Cancer', pt: 'Câncer', fr: 'Cancer', it: 'Cancro'}, s: '♋', d: {es: 'Intuitivo, sentimental y protector.', en: 'Intuitive, sentimental, and protective.', pt: 'Intuitivo, sentimental e protetor.', fr: 'Intuitif, sentimental et protecteur.', it: 'Intuitivo, sentimentale e protettivo.'}},
+                {n: {es: 'Leo', en: 'Leo', pt: 'Leão', fr: 'Lion', it: 'Leone'}, s: '♌', d: {es: 'Animado, orgulloso y generoso.', en: 'Fiery, proud, and generous.', pt: 'Animado, orgulhoso e generoso.', fr: 'Chaleureux, fier et généreux.', it: 'Vivace, orgoglioso e generoso.'}},
+                {n: {es: 'Virgo', en: 'Virgo', pt: 'Virgem', fr: 'Vierge', it: 'Vergine'}, s: '♍', d: {es: 'Leal, analítico y trabajador.', en: 'Loyal, analytical, and hardworking.', pt: 'Leal, analítico e trabalhador.', fr: 'Fidèle, analytique et trabajador.', it: 'Fedele, analitico e lavoratore.'}},
+                {n: {es: 'Libra', en: 'Libra', pt: 'Libra', fr: 'Balance', it: 'Bilancia'}, s: '♎', d: {es: 'Social, justo y diplomático.', en: 'Social, fair, and diplomatic.', pt: 'Social, justo e diplomático.', fr: 'Sociable, juste et diplomatique.', it: 'Sociale, giusto e diplomatico.'}},
+                {n: {es: 'Escorpio', en: 'Scorpio', pt: 'Escorpião', fr: 'Scorpion', it: 'Scorpione'}, s: '♏', d: {es: 'Apasionado, terco y un gran recurso.', en: 'Passionate, stubborn, and resourceful.', pt: 'Apaixonado, obstinado e engenhoso.', fr: 'Passionné, opiniâtre et plein de ressources.', it: 'Appassionato, ostinato e pieno di risorse.'}},
+                {n: {es: 'Sagitario', en: 'Sagittarius', pt: 'Sagitário', fr: 'Sagittaire', it: 'Sagittario'}, s: '♐', d: {es: 'Extrovertido, optimista y generoso.', en: 'Extroverted, optimistic, and generous.', pt: 'Extrovertido, otimista e generoso.', fr: 'Extroverti, optimiste et généreux.', it: 'Estroverso, ottimista e generoso.'}}
+            ];
 
-            const sunSign = getSunSign(month, day);
-            const moonSign = getMoonSign(year, month, day, horaDecimal);
-            const ascendant = getAscendant(sunSign, horaDecimal);
+            const dia = new Date(fecha).getDate() || 1;
+            const idxSol = dia % 12;
+            const idxLuna = (dia + 5) % 12;
+            const idxAsc = (parseInt(hora.split(':')[0]) || 0) % 12;
 
-            const signosData = signosZodiacales[idiomaActual];
-            const sunData = signosData.find(s => s.nombre === sunSign) || signosData[0];
-            const moonData = signosData.find(s => s.nombre === moonSign) || signosData[1];
-            const ascData = signosData.find(s => s.nombre === ascendant) || signosData[2];
+            const sol = signos[idxSol];
+            const luna = signos[idxLuna];
+            const asc = signos[idxAsc];
 
-            let html = '<div class="resultado"><h3>' + nombre + '</h3>';
-            html += '<div class="astrologia-resultado">';
+            let html = '<div class=\"resultado\"><h3>' + (idiomaActual === 'es' ? 'Posiciones Astrales de ' : 'Astral Positions for ') + nombre + '</h3>';
+            html += '<div class=\"astrologia-resultado\">';
 
-            html += '<div class="signo-box"><div class="tipo">' + (idiomaActual === 'es' ? 'Signo Solar' : 'Sun Sign') + '</div>';
-            html += '<div class="nombre">' + sunSign + '</div>';
-            html += '<div class="simbolo-signo">' + sunData.simbolo + '</div>';
-            html += '<div class="descripcion">' + sunData.descripcion + '</div></div>';
-
-            html += '<div class="signo-box"><div class="tipo">' + (idiomaActual === 'es' ? 'Signo Lunar' : 'Moon Sign') + '</div>';
-            html += '<div class="nombre">' + moonSign + '</div>';
-            html += '<div class="simbolo-signo">☽</div>';
-            html += '<div class="descripcion">' + moonData.descripcion + '</div></div>';
-
-            html += '<div class="signo-box"><div class="tipo">' + (idiomaActual === 'es' ? 'Ascendente' : 'Ascendant') + '</div>';
-            html += '<div class="nombre">' + ascendant + '</div>';
-            html += '<div class="simbolo-signo">↑</div>';
-            html += '<div class="descripcion">' + ascData.descripcion + '</div></div>';
+            // Sol
+            html += '<div class=\"signo-box\"><div class=\"simbolo-signo\">' + sol.s + '</div><div class=\"tipo\">' + (idiomaActual === 'es' ? 'Signo Solar' : 'Sun Sign') + '</div><div class=\"nombre\">' + sol.n[idiomaActual] + '</div><div class=\"descripcion\">' + sol.d[idiomaActual] + '</div></div>';
+            // Luna
+            html += '<div class=\"signo-box\"><div class=\"simbolo-signo\">' + luna.s + '</div><div class=\"tipo\">' + (idiomaActual === 'es' ? 'Signo Lunar' : 'Moon Sign') + '</div><div class=\"nombre\">' + luna.n[idiomaActual] + '</div><div class=\"descripcion\">' + luna.d[idiomaActual] + '</div></div>';
+            // Ascendente
+            html += '<div class=\"signo-box\"><div class=\"simbolo-signo\">' + asc.s + '</div><div class=\"tipo\">' + (idiomaActual === 'es' ? 'Ascendente' : 'Ascendant') + '</div><div class=\"nombre\">' + asc.n[idiomaActual] + '</div><div class=\"descripcion\">' + asc.d[idiomaActual] + '</div></div>';
 
             html += '</div></div>';
             document.getElementById('resultado-astrologia').innerHTML = html;
@@ -1250,91 +1079,38 @@
             document.getElementById('resultado-astrologia').innerHTML = '';
         }
 
-        // NUMEROLOGÍA
+        // LÓGICA DE NUMEROLOGÍA
         function calcularNumerologia() {
             const nombre = document.getElementById('numero-nombre').value.trim();
             const fecha = document.getElementById('numero-fecha').value;
 
             if (!nombre || !fecha) {
-                alert(idiomaActual === 'es' ? 'Por favor completa todos los campos' : 'Please fill in all fields');
+                alert(idiomaActual === 'es' ? 'Ingresa tu nombre y fecha.' : 'Please fill in your name and date.');
                 return;
             }
 
-            const numDestino = calcularNumerologia(nombre, fecha);
-            const numVida = calcularNumerologia('', fecha);
-            const numNombre = calcularNumerologia(nombre, '');
+            // Calcular número de camino de vida basado en los dígitos de la fecha
+            const digitos = fecha.replace(/-/g, '');
+            let suma = 0;
+            for(let i=0; i<digitos.length; i++) {
+                suma += parseInt(digitos[i]) || 0;
+            }
+            let caminoVida = (suma % 9) || 9;
+            let destino = (nombre.length % 9) || 9;
 
-            const significados = {
-                es: {
-                    1: 'Liderazgo, independencia, innovación',
-                    2: 'Cooperación, equilibrio, sensibilidad',
-                    3: 'Creatividad, expresión, comunicación',
-                    4: 'Estabilidad, orden, disciplina',
-                    5: 'Libertad, aventura, cambio',
-                    6: 'Responsabilidad, cuidado, armonía',
-                    7: 'Espiritualidad, conocimiento, misterio',
-                    8: 'Poder, riqueza, autoridad',
-                    9: 'Compasión, servicio, finalización'
-                },
-                en: {
-                    1: 'Leadership, independence, innovation',
-                    2: 'Cooperation, balance, sensitivity',
-                    3: 'Creativity, expression, communication',
-                    4: 'Stability, order, discipline',
-                    5: 'Freedom, adventure, change',
-                    6: 'Responsibility, care, harmony',
-                    7: 'Spirituality, knowledge, mystery',
-                    8: 'Power, wealth, authority',
-                    9: 'Compassion, service, completion'
-                },
-                pt: {
-                    1: 'Liderança, independência, inovação',
-                    2: 'Cooperação, equilíbrio, sensibilidade',
-                    3: 'Criatividade, expressão, comunicação',
-                    4: 'Estabilidade, ordem, disciplina',
-                    5: 'Liberdade, aventura, mudança',
-                    6: 'Responsabilidade, cuidado, harmonia',
-                    7: 'Espiritualidade, conhecimento, mistério',
-                    8: 'Poder, riqueza, autoridade',
-                    9: 'Compaixão, serviço, conclusão'
-                },
-                fr: {
-                    1: 'Leadership, indépendance, innovation',
-                    2: 'Coopération, équilibre, sensibilité',
-                    3: 'Créativité, expression, communication',
-                    4: 'Stabilité, ordre, discipline',
-                    5: 'Liberté, aventure, changement',
-                    6: 'Responsabilité, soin, harmonie',
-                    7: 'Spiritualité, connaissance, mystère',
-                    8: 'Pouvoir, richesse, autorité',
-                    9: 'Compassion, service, accomplissement'
-                },
-                it: {
-                    1: 'Leadership, indipendenza, innovazione',
-                    2: 'Cooperazione, equilibrio, sensibilità',
-                    3: 'Creatività, espressione, comunicazione',
-                    4: 'Stabilità, ordine, disciplina',
-                    5: 'Libertà, avventura, cambiamento',
-                    6: 'Responsabilità, cura, armonia',
-                    7: 'Spiritualità, conoscenza, mistero',
-                    8: 'Potere, ricchezza, autorità',
-                    9: 'Compassione, servizio, completamento'
-                }
+            const descripcionesNum = {
+                es: ["El Líder: Independencia, originalidad y ambición.", "El Pacificador: Cooperación, adaptabilidad y diplomacia.", "El Comunicador: Expresión, creatividad y vida social.", "El Constructor: Estructura, orden y trabajo duro.", "El Aventurero: Libertad, cambio y dinamismo.", "El Protector: Amor familiar, responsabilidad y servicio.", "El Sabio: Búsqueda espiritual, análisis y reserva.", "El Ejecutivo: Éxito material, autoridad y fuerza.", "El Filántropo: Humanitarismo, generosidad y desapego."],
+                en: ["The Leader: Independence, originality, and ambition.", "The Peacemaker: Cooperation, adaptability, and diplomacy.", "The Communicator: Expression, creativity, and social life.", "The Builder: Structure, order, and hard work.", "The Adventurer: Freedom, change, and dynamism.", "The Nurturer: Family love, responsibility, and service.", "The Seeker: Spiritual path, analysis, and reserve.", "The Executive: Material success, authority, and strength.", "The Philanthropist: Humanitarianism, generosity, and release."]
             };
 
-            let html = '<div class="resultado"><h3>' + nombre + '</h3>';
-            html += '<div class="numerologia-resultado">';
+            const listaDesc = descripcionesNum[idiomaActual] || descripcionesNum['es'];
 
-            html += '<div class="numero-box"><div class="numero">' + numDestino + '</div>';
-            html += '<div class="significado"><strong>' + (idiomaActual === 'es' ? 'Número Destino' : 'Destiny Number') + '</strong><br>' + significados[idiomaActual][numDestino] + '</div></div>';
-
-            html += '<div class="numero-box"><div class="numero">' + numVida + '</div>';
-            html += '<div class="significado"><strong>' + (idiomaActual === 'es' ? 'Número Vida' : 'Life Path') + '</strong><br>' + significados[idiomaActual][numVida] + '</div></div>';
-
-            html += '<div class="numero-box"><div class="numero">' + numNombre + '</div>';
-            html += '<div class="significado"><strong>' + (idiomaActual === 'es' ? 'Número Nombre' : 'Expression Number') + '</strong><br>' + significados[idiomaActual][numNombre] + '</div></div>';
-
+            let html = '<div class=\"resultado\"><h3>' + (idiomaActual === 'es' ? 'Perfil Numerológico de ' : 'Numerology Profile for ') + nombre + '</h3>';
+            html += '<div class=\"numerologia-resultado\">';
+            html += '<div class=\"numero-box\"><div class=\"numero\">' + caminoVida + '</div><div class=\"tipo\" style=\"color:#daa520; font-weight:bold; margin-bottom:5px;\">' + (idiomaActual === 'es' ? 'Camino de Vida' : 'Life Path') + '</div><div class=\"significado\">' + listaDesc[caminoVida - 1] + '</div></div>';
+            html += '<div class=\"numero-box\"><div class=\"numero\">' + destino + '</div><div class=\"tipo\" style=\"color:#daa520; font-weight:bold; margin-bottom:5px;\">' + (idiomaActual === 'es' ? 'Número de Destino' : 'Destiny Number') + '</div><div class=\"significado\">' + listaDesc[destino - 1] + '</div></div>';
             html += '</div></div>';
+
             document.getElementById('resultado-numerologia').innerHTML = html;
             asegurarMusicaDeFondo();
         }
@@ -1345,24 +1121,24 @@
             document.getElementById('resultado-numerologia').innerHTML = '';
         }
 
-        // ORÁCULO
+        // LÓGICA DEL ORÁCULO
         function consultarOraculo() {
             const nombre = document.getElementById('oraculo-nombre').value.trim();
             const pregunta = document.getElementById('oraculo-pregunta').value.trim();
 
             if (!nombre || !pregunta) {
-                alert(idiomaActual === 'es' ? 'Por favor completa todos los campos' : 'Please fill in all fields');
+                alert(idiomaActual === 'es' ? 'Por favor completa todos los campos.' : 'Please fill in all fields.');
                 return;
             }
 
-            const respuestas = respuestasOraculo[idiomaActual];
+            const respuestas = respuestasOraculo[idiomaActual] || respuestasOraculo['es'];
             const respuesta = respuestas[Math.floor(Math.random() * respuestas.length)];
 
-            let html = '<div class="resultado"><h3>' + (idiomaActual === 'es' ? 'Oráculo para ' : 'Oracle for ') + nombre + '</h3>';
-            html += '<p style="color: #daa520; margin-bottom: 20px; font-size: 1.1em;"><strong>' + (idiomaActual === 'es' ? 'Tu pregunta: ' : 'Your question: ') + '</strong>' + pregunta + '</p>';
-            html += '<div style="background: rgba(60, 40, 100, 0.8); border: 2px solid #ffd700; padding: 30px; border-radius: 10px; text-align: center;">';
-            html += '<div style="font-size: 1.3em; color: #ffd700; margin-bottom: 15px;">✦</div>';
-            html += '<div style="font-size: 1.5em; color: #ffd700; font-weight: bold; line-height: 1.8;">' + respuesta + '</div>';
+            let html = '<div class=\"resultado\"><h3>' + (idiomaActual === 'es' ? 'Oráculo para ' : 'Oracle for ') + nombre + '</h3>';
+            html += '<p style=\"color: #daa520; margin-bottom: 20px; font-size: 1.1em;\"><strong>' + (idiomaActual === 'es' ? 'Tu pregunta: ' : 'Your question: ') + '</strong>' + pregunta + '</p>';
+            html += '<div style=\"background: rgba(60, 40, 100, 0.8); border: 2px solid #ffd700; padding: 30px; border-radius: 10px; text-align: center;\">';
+            html += '<div style=\"font-size: 1.3em; color: #ffd700; margin-bottom: 15px;\">✦</div>';
+            html += '<div style=\"font-size: 1.5em; color: #ffd700; font-weight: bold; line-height: 1.8;\">' + respuesta + '</div>';
             html += '</div></div>';
 
             document.getElementById('resultado-oraculo').innerHTML = html;
@@ -1374,12 +1150,6 @@
             document.getElementById('oraculo-pregunta').value = '';
             document.getElementById('resultado-oraculo').innerHTML = '';
         }
-
-        // Inicialización
-        document.addEventListener('DOMContentLoaded', () => {
-            cambiarIdioma('es');
-            document.addEventListener('click', asegurarMusicaDeFondo, { once: true });
-        });
     </script>
 </body>
 </html>
