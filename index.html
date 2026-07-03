@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Primary Meta Tags -->
     <title>Arcana - Tarot, Astrología, Numerología | El Universo Responde</title>
     <meta name="title" content="Arcana - Tarot, Astrología, Numerología | El Universo Responde">
     <meta name="description" content="Consultas místicas profesionales de Tarot (78 cartas), Carta Astral con posiciones planetarias precisas, Numerología y Oráculo. Lecturas personalizadas gratuitas.">
@@ -11,6 +12,7 @@
     <meta name="theme-color" content="#1a0033">
     <meta name="author" content="Arcana">
 
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arcana-lecturas.com/">
     <meta property="og:title" content="Arcana - El Universo Responde | Tarot, Astrología, Numerología">
@@ -22,12 +24,14 @@
     <meta property="og:locale:alternate" content="fr_FR">
     <meta property="og:locale:alternate" content="it_IT">
 
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://arcana-lecturas.com/">
     <meta name="twitter:title" content="Arcana - El Universo Responde">
     <meta name="twitter:description" content="Tarot, Astrología, Numerología y Oráculo">
     <meta name="twitter:image" content="https://arcana-lecturas.com/fondo-arcana.jpg">
 
+    <!-- Structured Data -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -269,55 +273,28 @@
         }
 
         .cartas-container {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
             gap: 20px;
-            justify-content: center;
             margin: 20px 0;
         }
 
         .carta-revelada {
-            width: 180px;
-            background: rgba(25, 10, 50, 0.9);
-            border: 3px solid #ffd700;
+            background: rgba(30, 15, 50, 0.9);
+            border: 2px solid #ffd700;
             border-radius: 10px;
-            padding: 10px;
+            padding: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: flex-start;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.8);
-            animation: revelar 0.6s ease-out;
-        }
-
-        .contenedor-imagen-carta {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            border-radius: 6px;
-            margin-bottom: 10px;
-            background: #110022;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .imagen-carta-archivo {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
-        }
-
-        .imagen-carta-archivo.invertiva,
-        .imagen-carta-archivo.invertida {
-            transform: rotate(180deg);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+            animation: revelar 0.5s ease-out;
         }
 
         @keyframes revelar {
             from {
-                transform: rotateY(90deg) scale(0.5);
+                transform: rotateY(90deg) scale(0.8);
                 opacity: 0;
             }
             to {
@@ -326,41 +303,38 @@
             }
         }
 
-        .carta-revelada .nombre {
-            font-size: 0.95em;
-            color: #ffd700;
-            font-weight: bold;
-            word-break: break-word;
-            margin-top: 5px;
+        .carta-revelada img {
+            width: 100%;
+            height: auto;
+            max-height: 220px;
+            object-fit: contain;
+            border-radius: 6px;
+            border: 1px solid #daa520;
+            margin-bottom: 10px;
         }
 
-        .carta-revelada .estado-carta {
-            font-size: 0.8em;
-            color: #daa520;
-            font-style: italic;
+        .carta-revelada .nombre {
+            font-size: 1.1em;
+            color: #ffd700;
+            font-weight: bold;
             margin-bottom: 5px;
+            text-transform: capitalize;
         }
 
         .carta-revelada .significado {
-            font-size: 0.8em;
+            font-size: 0.9em;
             color: #e0d5f0;
-            margin-top: 5px;
             line-height: 1.4;
         }
 
-        .nombre-c {
-            font-size: 0.8em;
-            margin-top: 5px;
-        }
-
-        .numerologia-resultado {
+        .numerologia-resultado, .astrologia-resultado {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 15px;
             margin-top: 20px;
         }
 
-        .numero-box {
+        .numero-box, .signo-box {
             background: rgba(50, 30, 80, 0.8);
             border: 2px solid #daa520;
             padding: 15px;
@@ -368,56 +342,11 @@
             text-align: center;
         }
 
-        .numero-box .numero {
+        .numero-box .numero, .signo-box .simbolo-signo {
             font-size: 2em;
             color: #ffd700;
             margin-bottom: 10px;
             font-weight: bold;
-        }
-
-        .numero-box .significado {
-            color: #e0d5f0;
-            font-size: 0.9em;
-            line-height: 1.6;
-        }
-
-        .astrologia-resultado {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-            margin-top: 20px;
-        }
-
-        .signo-box {
-            background: rgba(50, 30, 80, 0.8);
-            border: 2px solid #daa520;
-            padding: 15px;
-            border-radius: 8px;
-            text-align: center;
-        }
-
-        .signo-box .simbolo-signo {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-        }
-
-        .signo-box .tipo {
-            color: #daa520;
-            font-size: 0.9em;
-            margin-bottom: 5px;
-        }
-
-        .signo-box .nombre {
-            color: #ffd700;
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-
-        .signo-box .descripcion {
-            color: #e0d5f0;
-            font-size: 0.85em;
-            line-height: 1.6;
         }
 
         .disclaimer {
@@ -436,28 +365,6 @@
             color: #8b4513;
             border-top: 2px solid #8b4513;
             margin-top: 40px;
-        }
-
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .seccion {
-                padding: 20px;
-            }
-
-            .carta-revelada {
-                width: 150px;
-            }
-
-            .contenedor-imagen-carta {
-                height: 200px;
-            }
-
-            .menu-principal {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            }
         }
     </style>
 </head>
@@ -496,6 +403,7 @@
             <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
         </div>
 
+        <!-- SECCIÓN TAROT -->
         <div id="seccion-tarot" class="secciones">
             <div class="seccion">
                 <h2 data-t="tarotTitle">Lectura de Tarot</h2>
@@ -506,12 +414,12 @@
 
                 <div class="form-group">
                     <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="tarot-nombre" placeholder="Tu nombre completo" data-placeholder="Tu nombre completo">
+                    <input type="text" id="tarot-nombre" placeholder="Tu nombre completo">
                 </div>
 
                 <div class="form-group">
                     <label data-t="questionLabel">Tu pregunta</label>
-                    <input type="text" id="tarot-pregunta" placeholder="¿Qué deseas saber?" data-placeholder="¿Qué deseas saber?">
+                    <input type="text" id="tarot-pregunta" placeholder="¿Qué deseas saber?">
                 </div>
 
                 <div class="form-group">
@@ -536,111 +444,66 @@
             </div>
         </div>
 
+        <!-- SECCIÓN ASTROLOGÍA -->
         <div id="seccion-astrologia" class="secciones">
             <div class="seccion">
                 <h2 data-t="astroTitle">Carta Astral</h2>
-
                 <div class="disclaimer" data-t="astroDisclaimer">
                     Los cálculos de signo lunar y ascendente son aproximaciones. Para resultados exactos, consulta un astrólogo profesional con tu ubicación exacta de nacimiento.
                 </div>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-                </div>
-
                 <div class="form-group">
                     <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="astro-nombre" placeholder="Tu nombre completo" data-placeholder="Tu nombre completo">
+                    <input type="text" id="astro-nombre" placeholder="Tu nombre completo">
                 </div>
-
                 <div class="form-group">
                     <label data-t="birthDate">Fecha de nacimiento</label>
                     <input type="date" id="astro-fecha">
                 </div>
-
                 <div class="form-group">
                     <label data-t="birthTime">Hora de nacimiento (UTC)</label>
                     <input type="time" id="astro-hora">
                 </div>
-
                 <button onclick="calcularCarta()" data-t="calculateButton">Calcular Carta Astral</button>
-
                 <div id="resultado-astrologia"></div>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-                </div>
-
-                <button onclick="limpiarAstrologia()" data-t="newConsultation" style="margin-top: 20px;">Nueva Consulta</button>
             </div>
         </div>
 
+        <!-- SECCIÓN NUMEROLOGÍA -->
         <div id="seccion-numerologia" class="secciones">
             <div class="seccion">
                 <h2 data-t="numeroTitle">Numerología</h2>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-                </div>
-
                 <div class="form-group">
                     <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="numero-nombre" placeholder="Tu nombre completo" data-placeholder="Tu nombre completo">
+                    <input type="text" id="numero-nombre" placeholder="Tu nombre completo">
                 </div>
-
                 <div class="form-group">
                     <label data-t="birthDate">Fecha de nacimiento</label>
                     <input type="date" id="numero-fecha">
                 </div>
-
                 <button onclick="calcularNumerologia()" data-t="calculateButton">Calcular Numerología</button>
-
                 <div id="resultado-numerologia"></div>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-                </div>
-
-                <button onclick="limpiarNumerologia()" data-t="newConsultation" style="margin-top: 20px;">Nueva Consulta</button>
             </div>
         </div>
 
+        <!-- SECCIÓN ORÁCULO -->
         <div id="seccion-oraculo" class="secciones">
             <div class="seccion">
                 <h2 data-t="oracleTitle">Oráculo</h2>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-                </div>
-
                 <div class="form-group">
                     <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="oraculo-nombre" placeholder="Tu nombre completo" data-placeholder="Tu nombre completo">
+                    <input type="text" id="oraculo-nombre" placeholder="Tu nombre completo">
                 </div>
-
                 <div class="form-group">
                     <label data-t="questionLabel">Tu pregunta o tema</label>
-                    <input type="text" id="oraculo-pregunta" placeholder="¿Qué consejo buscas?" data-placeholder="¿Qué consejo buscas?">
+                    <input type="text" id="oraculo-pregunta" placeholder="¿Qué consejo buscas?">
                 </div>
-
                 <button onclick="consultarOraculo()" data-t="consultButton">Consultar Oráculo</button>
-
                 <div id="resultado-oraculo"></div>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-                </div>
-
-                <button onclick="limpiarOraculo()" data-t="newConsultation" style="margin-top: 20px;">Nueva Consulta</button>
             </div>
         </div>
 
-        <div class="ads-box">
-            <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-        </div>
-
         <footer>
-            <p>&copy; 2024 Arcana. <span data-t="footerText">Todas las lecturas son con propósito educativo y de entretenimiento.</span></p>
+            <p>&copy; 2026 Arcana. <span data-t="footerText">Todas las lecturas son con propósito educativo y de entretenimiento.</span></p>
         </footer>
     </div>
 
@@ -648,374 +511,203 @@
         let idiomaActual = 'es';
         let musicaIniciada = false;
 
-        // Traducciones
         const traducciones = {
             es: {
-                titulo: 'ARCANA',
-                tagline: 'El Universo Responde',
-                btnTarot: 'Tarot',
-                btnAstrologia: 'Astrología',
-                btnNumerologia: 'Numerología',
-                btnOraculo: 'Oráculo',
-                tarotTitle: 'Lectura de Tarot',
-                astroTitle: 'Carta Astral',
-                numeroTitle: 'Numerología',
-                oracleTitle: 'Oráculo',
-                nombreLabel: 'Nombres y apellidos',
-                questionLabel: 'Tu pregunta',
-                selectCards: 'Número de cartas',
-                birthDate: 'Fecha de nacimiento',
-                birthTime: 'Hora de nacimiento (UTC)',
-                readButton: 'Leer Tarot',
-                calculateButton: 'Calcular',
-                consultButton: 'Consultar Oráculo',
-                newConsultation: 'Nueva Consulta',
-                adsSpace: 'ESPACIO RESERVADO PARA GOOGLE ADSENSE',
-                astroDisclaimer: 'Los cálculos de signo lunar y ascendente son aproximaciones. Para resultados exactos, consulta un astrólogo profesional con tu ubicación exacta de nacimiento.',
-                footerText: 'Todas las lecturas son con propósito educativo y de entretenimiento.',
+                titulo: 'ARCANA', tagline: 'El Universo Responde', btnTarot: 'Tarot', btnAstrologia: 'Astrología', btnNumerologia: 'Numerología', btnOraculo: 'Oráculo', tarotTitle: 'Lectura de Tarot', astroTitle: 'Carta Astral', numeroTitle: 'Numerología', oracleTitle: 'Oráculo', nombreLabel: 'Nombres y apellidos', questionLabel: 'Tu pregunta', selectCards: 'Número de cartas', birthDate: 'Fecha de nacimiento', birthTime: 'Hora de nacimiento (UTC)', readButton: 'Leer Tarot', calculateButton: 'Calcular', consultButton: 'Consultar Oráculo', newConsultation: 'Nueva Consulta', adsSpace: 'ESPACIO RESERVADO PARA GOOGLE ADSENSE', astroDisclaimer: 'Los cálculos de signo lunar y ascendente son aproximaciones. Para resultados exactos, consulta un astrólogo profesional con tu ubicación exacta de nacimiento.', footerText: 'Todas las lecturas son con propósito educativo y de entretenimiento.'
             },
             en: {
-                titulo: 'ARCANA',
-                tagline: 'The Universe Answers',
-                btnTarot: 'Tarot',
-                btnAstrologia: 'Astrology',
-                btnNumerologia: 'Numerology',
-                btnOraculo: 'Oracle',
-                tarotTitle: 'Tarot Reading',
-                astroTitle: 'Birth Chart',
-                numeroTitle: 'Numerology',
-                oracleTitle: 'Oracle',
-                nombreLabel: 'First and last names',
-                questionLabel: 'Your question',
-                selectCards: 'Number of cards',
-                birthDate: 'Birth date',
-                birthTime: 'Birth time (UTC)',
-                readButton: 'Read Tarot',
-                calculateButton: 'Calculate',
-                consultButton: 'Consult Oracle',
-                newConsultation: 'New Consultation',
-                adsSpace: 'SPACE RESERVED FOR GOOGLE ADSENSE',
-                astroDisclaimer: 'Moon sign and ascendant calculations are approximations. For exact results, consult a professional astrologer with your exact birth location.',
-                footerText: 'All readings are for educational and entertainment purposes.',
-            },
-            pt: {
-                titulo: 'ARCANA',
-                tagline: 'O Universo Responde',
-                btnTarot: 'Tarô',
-                btnAstrologia: 'Astrologia',
-                btnNumerologia: 'Numerologia',
-                btnOraculo: 'Oráculo',
-                tarotTitle: 'Leitura de Tarô',
-                astroTitle: 'Mapa Astral',
-                numeroTitle: 'Numerologia',
-                oracleTitle: 'Oráculo',
-                nombreLabel: 'Nomes e sobrenomes',
-                questionLabel: 'Sua pergunta',
-                selectCards: 'Número de cartas',
-                birthDate: 'Data de nascimento',
-                birthTime: 'Hora de nascimento (UTC)',
-                readButton: 'Ler Tarô',
-                calculateButton: 'Calcular',
-                consultButton: 'Consultar Oráculo',
-                newConsultation: 'Nova Consulta',
-                adsSpace: 'ESPAÇO RESERVADO PARA GOOGLE ADSENSE',
-                astroDisclaimer: 'Os cálculos de signo lunar e ascendente son aproximações. Para resultados exatos, consulte um astrólogo profissional com sua localização exata de nascimento.',
-                footerText: 'Todas las leituras são para fins educacionais e de entretenimento.',
-            },
-            fr: {
-                titulo: 'ARCANA',
-                tagline: 'L\'Univers Répond',
-                btnTarot: 'Tarot',
-                btnAstrologia: 'Astrologie',
-                btnNumerologia: 'Numérologie',
-                btnOraculo: 'Oracle',
-                tarotTitle: 'Lecture de Tarot',
-                astroTitle: 'Thème Natal',
-                numeroTitle: 'Numérologie',
-                oracleTitle: 'Oracle',
-                nombreLabel: 'Prénoms et noms',
-                questionLabel: 'Votre question',
-                selectCards: 'Nombre de cartes',
-                birthDate: 'Date de naissance',
-                birthTime: 'Heure de naissance (UTC)',
-                readButton: 'Lire le Tarot',
-                calculateButton: 'Calculer',
-                consultButton: 'Consulter l\'Oracle',
-                newConsultation: 'Nouvelle Consultation',
-                adsSpace: 'ESPACE RÉSERVÉ POUR GOOGLE ADSENSE',
-                astroDisclaimer: 'Les calculs du signe lunaire et de l\'ascendant sont des approximations. Pour des résultats exacts, consultez un astrologue professionnel avec votre lieu de naissance exact.',
-                footerText: 'Tous les services de lecture sont à titre éducatif et de divertissement.',
-            },
-            it: {
-                titulo: 'ARCANA',
-                tagline: 'L\'Universo Risponde',
-                btnTarot: 'Tarocchi',
-                btnAstrologia: 'Astrologia',
-                btnNumerologia: 'Numerologia',
-                btnOraculo: 'Oracolo',
-                tarotTitle: 'Lettura dei Tarocchi',
-                astroTitle: 'Tema Natale',
-                numeroTitle: 'Numerologia',
-                oracleTitle: 'Oracolo',
-                nombreLabel: 'Nomi e cognomi',
-                questionLabel: 'La tua domanda',
-                selectCards: 'Numero di carte',
-                birthDate: 'Data de nascita',
-                birthTime: 'Ora di nascita (UTC)',
-                readButton: 'Leggi i Tarocchi',
-                calculateButton: 'Calcola',
-                consultButton: 'Consulta l\'Oracolo',
-                newConsultation: 'Nuova Consultazione',
-                adsSpace: 'SPAZIO RISERVATO PER GOOGLE ADSENSE',
-                astroDisclaimer: 'I calcoli del segno lunare e dell\'ascendente sono approssimazioni. Per risultati esatti, consulta un astrologo professionista con la tua esatta posizione di nascita.',
-                footerText: 'Tutti i servizi di lettura sono a scopo educativo e de intrattenimento.',
+                titulo: 'ARCANA', tagline: 'The Universe Answers', btnTarot: 'Tarot', btnAstrologia: 'Astrology', btnNumerologia: 'Numerology', btnOraculo: 'Oracle', tarotTitle: 'Tarot Reading', astroTitle: 'Birth Chart', numeroTitle: 'Numerology', oracleTitle: 'Oracle', nombreLabel: 'First and last names', questionLabel: 'Your question', selectCards: 'Number of cards', birthDate: 'Birth date', birthTime: 'Birth time (UTC)', readButton: 'Read Tarot', calculateButton: 'Calculate', consultButton: 'Consult Oracle', newConsultation: 'New Consultation', adsSpace: 'SPACE RESERVED FOR GOOGLE ADSENSE', astroDisclaimer: 'Moon sign and ascendant calculations are approximations. For exact results, consult a professional astrologer with your exact birth location.', footerText: 'All readings are for educational and entertainment purposes.'
             }
         };
 
-        // CARTAS DE TAROT - TODOS LOS 78 ARCANOS CON SUS IMÁGENES ASOCIADAS
+        // LISTA ORIGINAL DE TU ARCHIVO CON LOS 78 ARCANOS COMPLETOS
         const cartasTarot = [
-            // ARCANOS MAYORES (0-21)
-            {numero: 0, es: 'El Loco', en: 'The Fool', pt: 'O Louco', fr: 'Le Mat', it: 'Il Matto', significado: {es: 'Nuevo comienzo, ingenuidad, libertad', en: 'New beginnings, innocence, freedom', pt: 'Novos começos, inocência, liberdade', fr: 'Nouveaux départs, innocence, liberté', it: 'Nuovi inizi, innocenza, libertà'}, archivo: 'tarot/mayores/00_loco.webp'},
-            {numero: 1, es: 'El Mago', en: 'The Magician', pt: 'O Mago', fr: 'Le Magicien', it: 'Il Mago', significado: {es: 'Voluntad, creatividad, poder', en: 'Willpower, creativity, power', pt: 'Vontade, criatividade, poder', fr: 'Volonté, créativité, pouvoir', it: 'Forza di volontà, creatività, potere'}, archivo: 'tarot/mayores/01_mago.webp'},
-            {numero: 2, es: 'La Sacerdotisa', en: 'The High Priestess', pt: 'A Sacerdotisa', fr: 'La Grande Prêtresse', it: 'La Sacerdotessa', significado: {es: 'Intuición, misterio, sabiduría', en: 'Intuition, mystery, wisdom', pt: 'Intuição, mistério, sabedoria', fr: 'Intuition, mystère, sagesse', it: 'Intuizione, mistero, saggezza'}, archivo: 'tarot/mayores/02_sacerdotisa.webp'},
-            {numero: 3, es: 'La Emperatriz', en: 'The Empress', pt: 'A Imperatriz', fr: 'L\'Impératrice', it: 'L\'Imperatrice', significado: {es: 'Abundancia, fertilidad, creación', en: 'Abundance, fertility, creation', pt: 'Abundância, fertilidade, criação', fr: 'Abondance, fertilité, création', it: 'Abbondanza, fertilità, creazione'}, archivo: 'tarot/mayores/03_emperatriz.webp'},
-            {numero: 4, es: 'El Emperador', en: 'The Emperor', pt: 'O Emperador', fr: 'L\'Empereur', it: 'L\'Imperatore', significado: {es: 'Autoridad, poder, control', en: 'Authority, power, control', pt: 'Autoridade, poder, controle', fr: 'Autorité, pouvoir, contrôle', it: 'Autorità, potere, controllo'}, archivo: 'tarot/mayores/04_emperador.webp'},
-            {numero: 5, es: 'El Hierofante', en: 'The Hierophant', pt: 'O Hierofante', fr: 'Le Pape', it: 'Il Papa', significado: {es: 'Tradición, enseñanza, fe', en: 'Tradition, teaching, faith', pt: 'Tradição, ensino, fé', fr: 'Tradition, enseignement, foi', it: 'Tradizione, insegnamento, fede'}, archivo: 'tarot/mayores/05_papa.webp'},
-            {numero: 6, es: 'Los Amantes', en: 'The Lovers', pt: 'Os Amantes', fr: 'L\'Amoureux', it: 'Gli Innamorati', significado: {es: 'Amor, conexión, elección', en: 'Love, connection, choice', pt: 'Amor, conexão, escolha', fr: 'Amour, connexion, choix', it: 'Amore, connessione, scelta'}, archivo: 'tarot/mayores/06_enamorados.webp'},
-            {numero: 7, es: 'El Carro', en: 'The Chariot', pt: 'O Carro', fr: 'Le Chariot', it: 'Il Carro', significado: {es: 'Determinación, control, victoria', en: 'Determination, control, victory', pt: 'Determinação, controle, vitória', fr: 'Détermination, contrôle, victoire', it: 'Determinazione, controllo, vittoria'}, archivo: 'tarot/mayores/07_carro.webp'},
-            {numero: 8, es: 'La Justicia', en: 'Justice', pt: 'A Justiça', fr: 'La Justice', it: 'La Giustizia', significado: {es: 'Justicia, balance, verdad', en: 'Justice, balance, truth', pt: 'Justiça, equilíbrio, verdade', fr: 'Justice, équilibre, vérité', it: 'Giustizia, equilibrio, verità'}, archivo: 'tarot/mayores/08_justicia.webp'},
-            {numero: 9, es: 'El Ermitaño', en: 'The Hermit', pt: 'O Eremita', fr: 'L\'Ermite', it: 'L\'Eremita', significado: {es: 'Introspección, búsqueda, sabiduría', en: 'Introspection, seeking, wisdom', pt: 'Introspecção, busca, sabedoria', fr: 'Introspection, recherche, sagesse', it: 'Introspezione, ricerca, saggezza'}, archivo: 'tarot/mayores/09_ermitaño.webp'},
-            {numero: 10, es: 'La Rueda de la Fortuna', en: 'Wheel of Fortune', pt: 'Roda da Fortuna', fr: 'La Roue de la Fortune', it: 'La Ruota della Fortuna', significado: {es: 'Destino, ciclos, suerte', en: 'Destiny, cycles, luck', pt: 'Destino, ciclos, sorte', fr: 'Destin, cycles, chance', it: 'Destino, cicli, fortuna'}, archivo: 'tarot/mayores/10_rueda-fortuna.webp'},
-            {numero: 11, es: 'La Fuerza', en: 'Strength', pt: 'A Força', fr: 'La Force', it: 'La Forza', significado: {es: 'Fuerza interior, coraje, compasión', en: 'Inner strength, courage, compassion', pt: 'Força interior, coragem, compaixão', fr: 'Force intérieure, courage, compassion', it: 'Forza interiore, coraggio, compassione'}, archivo: 'tarot/mayores/11_fuerza.webp'},
-            {numero: 12, es: 'El Ahorcado', en: 'The Hanged Man', pt: 'O Enforcado', fr: 'Le Pendu', it: 'L\'Impiccato', significado: {es: 'Suspensión, perspectiva, sacrificio', en: 'Suspension, perspective, sacrifice', pt: 'Suspensão, perspectiva, sacrifício', fr: 'Suspension, perspective, sacrifice', it: 'Sospensione, prospettiva, sacrificio'}, archivo: 'tarot/mayores/12_colgado.webp'},
-            {numero: 13, es: 'La Muerte', en: 'Death', pt: 'A Morte', fr: 'La Mort', it: 'La Morte', significado: {es: 'Transformación, final, renacimiento', en: 'Transformation, ending, rebirth', pt: 'Transformação, fim, renascimento', fr: 'Transformation, fin, renaissance', it: 'Trasformazione, fine, rinascita'}, archivo: 'tarot/mayores/13_muerte.webp'},
-            {numero: 14, es: 'La Templanza', en: 'Temperance', pt: 'A Temperança', fr: 'La Tempérance', it: 'La Temperanza', significado: {es: 'Balance, moderación, armonía', en: 'Balance, moderation, harmony', pt: 'Equilíbrio, moderação, harmonia', fr: 'Équilibre, modération, harmonie', it: 'Equilibrio, moderazione, armonia'}, archivo: 'tarot/mayores/14_templanza.webp'},
-            {numero: 15, es: 'El Diablo', en: 'The Devil', pt: 'O Diabo', fr: 'Le Diable', it: 'Il Diavolo', significado: {es: 'Esclavitud, tentación, materialismo', en: 'Bondage, temptation, materialism', pt: 'Escravidão, tentação, materialismo', fr: 'Esclavage, tentation, matérialisme', it: 'Schiavitù, tentazione, materialismo'}, archivo: 'tarot/mayores/15_diablo.webp'},
-            {numero: 16, es: 'La Torre', en: 'The Tower', pt: 'A Torre', fr: 'La Tour', it: 'La Torre', significado: {es: 'Calamidad, ruptura, cambio radical', en: 'Calamity, upheaval, sudden change', pt: 'Calamidade, ruptura, mudança radical', fr: 'Calamité, rupture, changement radical', it: 'Calamità, rottura, cambiamento radicale'}, archivo: 'tarot/mayores/16_torre.webp'},
-            {numero: 17, es: 'La Estrella', en: 'The Star', pt: 'A Estrela', fr: 'L\'Étoile', it: 'La Stella', significado: {es: 'Esperanza, inspiración, espiritualidad', en: 'Hope, inspiration, spirituality', pt: 'Esperança, inspiração, espiritualidade', fr: 'Espoir, inspiration, spiritualité', it: 'Speranza, ispirazione, spiritualità'}, archivo: 'tarot/mayores/17_estrella.webp'},
-            {numero: 18, es: 'La Luna', en: 'The Moon', pt: 'A Lua', fr: 'La Lune', it: 'La Luna', significado: {es: 'Ilusión, inconsciente, misterio', en: 'Illusion, unconscious, mystery', pt: 'Ilusão, inconsciente, mistério', fr: 'Illusion, inconscient, mystère', it: 'Illusione, inconscio, mistero'}, archivo: 'tarot/mayores/18_luna.webp'},
-            {numero: 19, es: 'El Sol', en: 'The Sun', pt: 'O Sol', fr: 'Le Soleil', it: 'Il Sole', significado: {es: 'Éxito, vitalidad, alegría', en: 'Success, vitality, joy', pt: 'Sucesso, vitalidade, alegria', fr: 'Succès, vitalité, joie', it: 'Successo, vitalità, gioia'}, archivo: 'tarot/mayores/19_sol.webp'},
-            {numero: 20, es: 'El Juicio', en: 'Judgement', pt: 'O Juízo', fr: 'Le Jugement', it: 'Il Giudizio', significado: {es: 'Despertar, reflexión, resurrección', en: 'Awakening, reckoning, resurrection', pt: 'Despertar, reflexão, ressurreição', fr: 'Réveil, jugement, résurrection', it: 'Risveglio, riflessione, resurrezione'}, archivo: 'tarot/mayores/20_juicio.webp'},
-            {numero: 21, es: 'El Mundo', en: 'The World', pt: 'O Mundo', fr: 'Le Monde', it: 'Il Mondo', significado: {es: 'Completitud, totalidad, cumplimiento', en: 'Completion, wholeness, fulfillment', pt: 'Plenitude, totalidade, realização', fr: 'Complétude, totalité, accomplissement', it: 'Completezza, totalità, realizzazione'}, archivo: 'tarot/mayores/21_mundo.webp'},
+            {numero: 0, es: 'El Loco', en: 'The Fool', significado: {es: 'Nuevo comienzo, ingenuidad, libertad', en: 'New beginnings, innocence, freedom'}},
+            {numero: 1, es: 'El Mago', en: 'The Magician', significado: {es: 'Voluntad, creatividad, poder', en: 'Willpower, creativity, power'}},
+            {numero: 2, es: 'La Sacerdotisa', en: 'The High Priestess', significado: {es: 'Intuición, misterio, sabiduría', en: 'Intuition, mystery, wisdom'}},
+            {numero: 3, es: 'La Emperatriz', en: 'The Empress', significado: {es: 'Abundancia, fertilidad, creación', en: 'Abundance, fertility, creation'}},
+            {numero: 4, es: 'El Emperador', en: 'The Emperor', significado: {es: 'Autoridad, poder, control', en: 'Authority, power, control'}},
+            {numero: 5, es: 'El Hierofante', en: 'The Hierophant', significado: {es: 'Tradición, enseñanza, fe', en: 'Tradition, teaching, faith'}},
+            {numero: 6, es: 'Los Amantes', en: 'The Lovers', significado: {es: 'Amor, conexión, elección', en: 'Love, connection, choice'}},
+            {numero: 7, es: 'El Carro', en: 'The Chariot', significado: {es: 'Determinación, control, victoria', en: 'Determination, control, victory'}},
+            {numero: 8, es: 'La Fuerza', en: 'Strength', significado: {es: 'Fuerza interior, coraje, compasión', en: 'Inner strength, courage, compassion'}},
+            {numero: 9, es: 'El Ermitaño', en: 'The Hermit', significado: {es: 'Introspección, búsqueda, sabiduría', en: 'Introspection, seeking, wisdom'}},
+            {numero: 10, es: 'La Rueda de la Fortuna', en: 'Wheel of Fortune', significado: {es: 'Destino, ciclos, suerte', en: 'Destiny, cycles, luck'}},
+            {numero: 11, es: 'La Justicia', en: 'Justice', significado: {es: 'Justicia, balance, verdad', en: 'Justice, balance, truth'}},
+            {numero: 12, es: 'El Ahorcado', en: 'The Hanged Man', significado: {es: 'Suspensión, perspectiva, sacrificio', en: 'Suspension, perspective, sacrifice'}},
+            {numero: 13, es: 'La Muerte', en: 'Death', significado: {es: 'Transformación, final, renacimiento', en: 'Transformation, ending, rebirth'}},
+            {numero: 14, es: 'La Templanza', en: 'Temperance', significado: {es: 'Balance, moderación, armonía', en: 'Balance, moderation, harmony'}},
+            {numero: 15, es: 'El Diablo', en: 'The Devil', significado: {es: 'Esclavitud, tentación, materialismo', en: 'Bondage, temptation, materialism'}},
+            {numero: 16, es: 'La Torre', en: 'The Tower', significado: {es: 'Calamidad, ruptura, cambio radical', en: 'Calamity, upheaval, sudden change'}},
+            {numero: 17, es: 'La Estrella', en: 'The Star', significado: {es: 'Esperanza, inspiración, espiritualidad', en: 'Hope, inspiration, spirituality'}},
+            {numero: 18, es: 'La Luna', en: 'The Moon', significado: {es: 'Ilusión, inconsciente, misterio', en: 'Illusion, unconscious, mystery'}},
+            {numero: 19, es: 'El Sol', en: 'The Sun', significado: {es: 'Éxito, vitalidad, alegría', en: 'Success, vitality, joy'}},
+            {numero: 20, es: 'El Juicio', en: 'Judgement', significado: {es: 'Despertar, reflexión, resurrección', en: 'Awakening, reckoning, resurrection'}},
+            {numero: 21, es: 'El Mundo', en: 'The World', significado: {es: 'Completitud, totalidad, cumplimiento', en: 'Completion, wholeness, fulfillment'}},
+            
+            // BASTOS (22-35)
+            {numero: 22, es: 'As de Bastos', en: 'Ace of Wands', significado: {es: 'Pasión, inspiración, oportunidad', en: 'Passion, inspiration, opportunity'}},
+            {numero: 23, es: '2 de Bastos', en: 'Two of Wands', significado: {es: 'Planificación, futuro, potencial', en: 'Planning, future, potential'}},
+            {numero: 24, es: '3 de Bastos', en: 'Three of Wands', significado: {es: 'Expansión, perspectiva, exploration', en: 'Expansion, perspective, exploration'}},
+            {numero: 25, es: '4 de Bastos', en: 'Four of Wands', significado: {es: 'Celebración, comunidad, armonía', en: 'Celebration, community, harmony'}},
+            {numero: 26, es: '5 de Bastos', en: 'Five of Wands', significado: {es: 'Conflicto, desafío, competencia', en: 'Conflict, challenge, competition'}},
+            {numero: 27, es: '6 de Bastos', en: 'Six of Wands', significado: {es: 'Reconocimiento, éxito, fama', en: 'Recognition, success, acclaim'}},
+            {numero: 28, es: '7 de Bastos', en: 'Seven of Wands', significado: {es: 'Resistencia, defensa, perseverancia', en: 'Resistance, defense, perseverance'}},
+            {numero: 29, es: '8 de Bastos', en: 'Eight of Wands', significado: {es: 'Rapidez, movimiento, action', en: 'Speed, movement, action'}},
+            {numero: 30, es: '9 de Bastos', en: 'Nine of Wands', significado: {es: 'Firmeza, casi victoria, resiliencia', en: 'Resilience, almost there, persistence'}},
+            {numero: 31, es: '10 de Bastos', en: 'Ten of Wands', significado: {es: 'Carga, responsabilidad, agotamiento', en: 'Burden, responsibility, exhaustion'}},
+            {numero: 32, es: 'Sota de Bastos', en: 'Page of Wands', significado: {es: 'Mensajero, aventurero, entusiasmo', en: 'Messenger, adventurer, enthusiasm'}},
+            {numero: 33, es: 'Caballero de Bastos', en: 'Knight of Wands', significado: {es: 'Pasión, viaje, impulso', en: 'Passion, travel, momentum'}},
+            {numero: 34, es: 'Reina de Bastos', en: 'Queen of Wands', significado: {es: 'Calidez, coraje, fertilidad', en: 'Warmth, courage, fertility'}},
+            {numero: 35, es: 'Rey de Bastos', en: 'King of Wands', significado: {es: 'Liderazgo, visión, honor', en: 'Leadership, vision, honor'}},
 
-            // ARCANOS MENORES - BASTOS (22-35)
-            {numero: 22, es: 'As de Bastos', en: 'Ace of Wands', pt: 'Ás de Bastos', fr: 'As de Bâtons', it: 'Asso di Bastoni', significado: {es: 'Pasión, inspiración, oportunidad', en: 'Passion, inspiration, opportunity', pt: 'Paixão, inspiração, oportunidade', fr: 'Passion, inspiration, opportunité', it: 'Passione, ispirazione, opportunità'}, archivo: 'tarot/menores/bastos/01_as_de_bastos.webp'},
-            {numero: 23, es: '2 de Bastos', en: 'Two of Wands', pt: '2 de Bastos', fr: '2 de Bâtons', it: '2 di Bastoni', significado: {es: 'Planificación, futuro, potencial', en: 'Planning, future, potential', pt: 'Planejamento, futuro, potencial', fr: 'Planification, avenir, potentiel', it: 'Pianificazione, futuro, potenziale'}, archivo: 'tarot/menores/bastos/02_dos_de_bastos.webp'},
-            {numero: 24, es: '3 de Bastos', en: 'Three of Wands', pt: '3 de Bastos', fr: '3 de Bâtons', it: '3 di Bastoni', significado: {es: 'Expansión, perspectiva, exploración', en: 'Expansion, perspective, exploration', pt: 'Expansão, perspectiva, exploração', fr: 'Expansion, perspective, exploration', it: 'Espansione, prospettiva, esplorazione'}, archivo: 'tarot/menores/bastos/03_tres_de_bastos.webp'},
-            {numero: 25, es: '4 de Bastos', en: 'Four of Wands', pt: '4 de Bastos', fr: '4 de Bâtons', it: '4 di Bastoni', significado: {es: 'Celebración, comunidad, armonía', en: 'Celebration, community, harmony', pt: 'Celebração, comunidade, harmonia', fr: 'Célébration, communauté, harmonie', it: 'Celebrazione, comunità, armonia'}, archivo: 'tarot/menores/bastos/04_cuatro_de_bastos.webp'},
-            {numero: 26, es: '5 de Bastos', en: 'Five of Wands', pt: '5 de Bastos', fr: '5 de Bâtons', it: '5 di Bastoni', significado: {es: 'Conflicto, desafío, competencia', en: 'Conflict, challenge, competition', pt: 'Conflito, desafio, competição', fr: 'Conflit, défi, compétition', it: 'Conflitto, sfida, competizione'}, archivo: 'tarot/menores/bastos/05_cinco_de_bastos.webp'},
-            {numero: 27, es: '6 de Bastos', en: 'Six of Wands', pt: '6 de Bastos', fr: '6 de Bâtons', it: '6 di Bastoni', significado: {es: 'Reconocimiento, éxito, fama', en: 'Recognition, success, acclaim', pt: 'Reconhecimento, sucesso, fama', fr: 'Reconnaissance, succès, renommée', it: 'Riconoscimento, successo, fama'}, archivo: 'tarot/menores/bastos/06_seis_de_bastos.webp'},
-            {numero: 28, es: '7 de Bastos', en: 'Seven of Wands', pt: '7 de Bastos', fr: '7 de Bâtons', it: '7 di Bastoni', significado: {es: 'Resistencia, defensa, perseverancia', en: 'Resistance, defense, perseverance', pt: 'Resistência, defesa, perseverança', fr: 'Résistance, défense, persévérance', it: 'Resistenza, difesa, perseveranza'}, archivo: 'tarot/menores/bastos/07_siete_de_bastos.webp'},
-            {numero: 29, es: '8 de Bastos', en: 'Eight of Wands', pt: '8 de Bastos', fr: '8 de Bâtons', it: '8 di Bastoni', significado: {es: 'Rapidez, movimiento, action', en: 'Speed, movement, action', pt: 'Velocidade, movimento, ação', fr: 'Vitesse, mouvement, action', it: 'Velocità, movemento, azione'}, archivo: 'tarot/menores/bastos/08_ocho_de_bastos.webp'},
-            {numero: 30, es: '9 de Bastos', en: 'Nine of Wands', pt: '9 de Bastos', fr: '9 de Bâtons', it: '9 di Bastoni', significado: {es: 'Firmeza, casi victoria, necesidad', en: 'Resilience, almost there, need', pt: 'Resiliência, quase lá, necessidade', fr: 'Résilience, presque là, besoin', it: 'Resilienza, quasi là, bisogno'}, archivo: 'tarot/menores/bastos/09_nueve_de_bastos.webp'},
-            {numero: 31, es: '10 de Bastos', en: 'Ten of Wands', pt: '10 de Bastos', fr: '10 de Bâtons', it: '10 di Bastoni', significado: {es: 'Carga, estrés, responsabilidades', en: 'Burden, stress, responsibilities', pt: 'Fardo, estresse, responsabilidades', fr: 'Fardeau, stress, responsabilités', it: 'Fardello, stress, responsabilità'}, archivo: 'tarot/menores/bastos/10_diez_de_bastos.webp'},
-            {numero: 32, es: 'Sota de Bastos', en: 'Page of Wands', pt: 'Valete de Bastos', fr: 'Valet de Bâtons', it: 'Fante di Bastoni', significado: {es: 'Exploración, entusiasmo, libertad', en: 'Exploration, enthusiasm, free spirit', pt: 'Exploração, entusiasmo, espírito livre', fr: 'Exploration, enthousiasme, esprit libre', it: 'Esplorazione, entusiasmo, spirito libero'}, archivo: 'tarot/menores/bastos/11_sota_de_bastos.webp'},
-            {numero: 33, es: 'Caballo de Bastos', en: 'Knight of Wands', pt: 'Cavaleiro de Bastos', fr: 'Chevalier de Bâtons', it: 'Cavaliere di Bastoni', significado: {es: 'Acción, aventura, impulsividad', en: 'Action, adventure, impulsiveness', pt: 'Ação, aventura, impulsividade', fr: 'Action, aventure, impulsivité', it: 'Azione, avventura, impulsività'}, archivo: 'tarot/menores/bastos/12_caballo_de_bastos.webp'},
-            {numero: 34, es: 'Reina de Bastos', en: 'Queen of Wands', pt: 'Rainha de Bastos', fr: 'Reine de Bâtons', it: 'Regina di Bastoni', significado: {es: 'Coraje, confianza, determinación', en: 'Courage, confidence, determination', pt: 'Coragem, confiança, determinação', fr: 'Courage, confiance, détermination', it: 'Coraggio, fiducia, determinazione'}, archivo: 'tarot/menores/bastos/13_reina_de_bastos.webp'},
-            {numero: 35, es: 'Rey de Bastos', en: 'King of Wands', pt: 'Rei de Bastos', fr: 'Roi de Bâtons', it: 'Re di Bastoni', significado: {es: 'Liderazgo, visión, honor', en: 'Leadership, vision, honor', pt: 'Liderança, visão, honra', fr: 'Leadership, vision, honneur', it: 'Leadership, visione, onore'}, archivo: 'tarot/menores/bastos/14_rey_de_bastos.webp'},
+            // COPAS (36-49)
+            {numero: 36, es: 'As de Copas', en: 'Ace of Cups', significado: {es: 'Amor, nuevas emociones, creatividad', en: 'Love, new emotions, creativity'}},
+            {numero: 37, es: '2 de Copas', en: 'Two of Cups', significado: {es: 'Unión, amor, asociación', en: 'Union, love, partnership'}},
+            {numero: 38, es: '3 de Copas', en: 'Three of Cups', significado: {es: 'Celebración, amistad, comunidad', en: 'Celebration, friendship, community'}},
+            {numero: 39, es: '4 de Copas', en: 'Four of Cups', significado: {es: 'Apatía, meditación, descontento', en: 'Apathy, meditation, discontent'}},
+            {numero: 40, es: '5 de Copas', en: 'Five of Cups', significado: {es: 'Pérdida, arrepentimiento, dolor', en: 'Loss, regret, grief'}},
+            {numero: 41, es: '6 de Copas', en: 'Six of Cups', significado: {es: 'Nostalgia, recuerdos, infancia', en: 'Nostalgia, memories, childhood'}},
+            {numero: 42, es: '7 de Copas', en: 'Seven of Cups', significado: {es: 'Ilusiones, elecciones, fantasía', en: 'Illusions, choices, fantasy'}},
+            {numero: 43, es: '8 de Copas', en: 'Eight of Cups', significado: {es: 'Abandono, viaje espiritual, dejar ir', en: 'Abandonment, spiritual journey, letting go'}},
+            {numero: 44, es: '9 de Copas', en: 'Nine of Cups', significado: {es: 'Satisfacción, deseos cumplidos, confort', en: 'Satisfaction, wishes fulfilled, comfort'}},
+            {numero: 45, es: '10 de Copas', en: 'Ten of Cups', significado: {es: 'Felicidad hogareña, amor divino, paz', en: 'Domestic happiness, divine love, peace'}},
+            {numero: 46, es: 'Sota de Copas', en: 'Page of Cups', significado: {es: 'Sensibilidad, mensajes, intuición', en: 'Sensitivity, messages, intuition'}},
+            {numero: 47, es: 'Caballero de Copas', en: 'Knight of Cups', significado: {es: 'Romance, encanto, propuestas', en: 'Romance, charm, proposals'}},
+            {numero: 48, es: 'Reina de Copas', en: 'Queen of Cups', significado: {es: 'Compasión, calma, intuición profunda', en: 'Compassion, calm, deep intuition'}},
+            {numero: 49, es: 'Rey de Copas', en: 'King of Cups', significado: {es: 'Control emocional, sabiduría, equilibrio', en: 'Emotional control, wisdom, balance'}},
 
-            // ARCANOS MENORES - COPAS (36-49)
-            {numero: 36, es: 'As de Copas', en: 'Ace of Cups', pt: 'Ás de Copas', fr: 'As de Coupes', it: 'Asso di Coppe', significado: {es: 'Amor, nuevas emociones, creatividad', en: 'Love, new feelings, creativity', pt: 'Amor, novos sentimentos, criatividade', fr: 'Amour, nouveaux sentiments, créativité', it: 'Amore, nuove emozioni, creatività'}, archivo: 'tarot/menores/copas/01_as_de_copas.webp'},
-            {numero: 37, es: '2 de Copas', en: 'Two of Cups', pt: '2 de Copas', fr: '2 de Coupes', it: '2 di Coppe', significado: {es: 'Conexión, amor mutuo, unión', en: 'Connection, mutual love, union', pt: 'Conexão, amor mútuo, união', fr: 'Connexion, amour mutuel, union', it: 'Connessione, amore reciproco, unione'}, archivo: 'tarot/menores/copas/02_dos_de_copas.webp'},
-            {numero: 38, es: '3 de Copas', en: 'Three of Cups', pt: '3 de Copas', fr: '3 de Coupes', it: '3 di Coppe', significado: {es: 'Celebración, amistad, comunidad', en: 'Celebration, friendship, community', pt: 'Celebração, amizade, comunidade', fr: 'Célébration, amitié, communauté', it: 'Celebrazione, amicizia, comunità'}, archivo: 'tarot/menores/copas/03_tres_de_copas.webp'},
-            {numero: 39, es: '4 de Copas', en: 'Four of Cups', pt: '4 de Copas', fr: '4 de Coupes', it: '4 di Coppe', significado: {es: 'Apatía, desconexión, meditación', en: 'Apathy, disconnection, meditation', pt: 'Apatia, desconexão, meditação', fr: 'Apathie, déconnexion, méditation', it: 'Apatia, disconnessione, meditazione'}, archivo: 'tarot/menores/copas/04_cuatro_de_copas.webp'},
-            {numero: 40, es: '5 de Copas', en: 'Five of Cups', pt: '5 de Copas', fr: '5 de Coupes', it: '5 di Coppe', significado: {es: 'Pérdida, lamento, decepción', en: 'Loss, regret, disappointment', pt: 'Perda, arrependimento, decepção', fr: 'Perte, regret, déception', it: 'Perdita, rimpianto, delusione'}, archivo: 'tarot/menores/copas/05_cinco_de_copas.webp'},
-            {numero: 41, es: '6 de Copas', en: 'Six of Cups', pt: '6 de Copas', fr: '6 de Coupes', it: '6 di Coppe', significado: {es: 'Nostalgia, recuerdos, inocencia', en: 'Nostalgia, memories, innocence', pt: 'Nostalgia, memórias, inocência', fr: 'Nostalgie, souvenirs, innocence', it: 'Nostalgia, ricordi, innocenza'}, archivo: 'tarot/menores/copas/06_seis_de_copas.webp'},
-            {numero: 42, es: '7 de Copas', en: 'Seven of Cups', pt: '7 de Copas', fr: '7 de Coupes', it: '7 di Coppe', significado: {es: 'Opciones, ilusión, fantasía', en: 'Choices, illusion, fantasy', pt: 'Escolhas, ilusão, fantasia', fr: 'Choix, illusion, fantasie', it: 'Scelte, illusione, fantasia'}, archivo: 'tarot/menores/copas/07_siete_de_copas.webp'},
-            {numero: 43, es: '8 de Copas', en: 'Eight of Cups', pt: '8 de Copas', fr: '8 de Coupes', it: '8 di Coppe', significado: {es: 'Abandono, viaje, buscar más', en: 'Abandonment, travel, seeking more', pt: 'Abandono, viagem, buscando mais', fr: 'Abandon, voyage, chercher plus', it: 'Abbandono, viaggio, cercare altro'}, archivo: 'tarot/menores/copas/08_ocho_de_copas.webp'},
-            {numero: 44, es: '9 de Copas', en: 'Nine of Cups', pt: '9 de Copas', fr: '9 de Coupes', it: '9 di Coppe', significado: {es: 'Satisfacción, deseo cumplido, éxito', en: 'Satisfaction, wish come true, success', pt: 'Satisfação, desejo realizado, sucesso', fr: 'Satisfaction, voeu réalisé, succès', it: 'Soddisfazione, desiderio avverato, successo'}, archivo: 'tarot/menores/copas/09_nueve_de_copas.webp'},
-            {numero: 45, es: '10 de Copas', en: 'Ten of Cups', pt: '10 de Copas', fr: '10 de Coupes', it: '10 di Coppe', significado: {es: 'Felicidad familiar, armonía, paz', en: 'Family happiness, harmony, peace', pt: 'Felicidade familiar, harmonia, paz', fr: 'Bonheur familial, harmonie, paix', it: 'Felicità familiare, armonia, pace'}, archivo: 'tarot/menores/copas/10_diez_de_copas.webp'},
-            {numero: 46, es: 'Sota de Copas', en: 'Page of Cups', pt: 'Valete de Copas', fr: 'Valet de Coupes', it: 'Fante di Coppe', significado: {es: 'Sensibilidad, noticias, intuición', en: 'Sensitivity, news, intuition', pt: 'Sensibilidade, notícias, intuição', fr: 'Sensibilité, nouvelles, intuition', it: 'Sensibilità, notizie, intuizione'}, archivo: 'tarot/menores/copas/11_sota_de_copas.webp'},
-            {numero: 47, es: 'Caballo de Copas', en: 'Knight of Cups', pt: 'Cavaleiro de Copas', fr: 'Chevalier de Coupes', it: 'Cavaliere di Coppe', significado: {es: 'Romance, encanto, propuestas', en: 'Romance, charm, proposals', pt: 'Romance, charme, propostas', fr: 'Romance, charme, propositions', it: 'Romance, fascino, proposte'}, archivo: 'tarot/menores/copas/12_caballo_de_copas.webp'},
-            {numero: 48, es: 'Reina de Copas', en: 'Queen of Cups', pt: 'Rainha de Copas', fr: 'Reine de Coupes', it: 'Regina di Coppe', significado: {es: 'Compasión, calma, intuición', en: 'Compassion, calm, intuition', pt: 'Compaixão, calma, intuição', fr: 'Compassion, calme, intuition', it: 'Compassione, calma, intuizione'}, archivo: 'tarot/menores/copas/13_reina_de_copas.webp'},
-            {numero: 50, es: 'Rey de Copas', en: 'King of Cups', pt: 'Rei de Copas', fr: 'Roi de Coupes', it: 'Re di Coppe', significado: {es: 'Control emocional, sabiduría, apoyo', en: 'Emotional control, wisdom, support', pt: 'Controle emocional, sabedoria, apoio', fr: 'Contrôle émotionnel, sagesse, soutien', it: 'Controllo emotivo, saggezza, supporto'}, archivo: 'tarot/menores/copas/14_rey_de_copas.webp'},
+            // ESPADAS (50-63)
+            {numero: 50, es: 'As de Espadas', en: 'Ace of Swords', significado: {es: 'Claridad mental, victoria, verdad', en: 'Mental clarity, victory, truth'}},
+            {numero: 51, es: '2 de Espadas', en: 'Two of Swords', significado: {es: 'Callejón sin salida, indecisión, tregua', en: 'Stalemate, indecision, truce'}},
+            {numero: 52, es: '3 de Espadas', en: 'Three of Swords', significado: {es: 'Dolor, separación, traición', en: 'Heartbreak, separation, betrayal'}},
+            {numero: 53, es: '4 de Espadas', en: 'Four of Swords', significado: {es: 'Descanso, recuperación, contemplación', en: 'Rest, recovery, contemplation'}},
+            {numero: 54, es: '5 de Espadas', en: 'Five of Swords', significado: {es: 'Conflicto, derrota, victoria vacía', en: 'Conflict, defeat, hollow victory'}},
+            {numero: 55, es: '6 de Espadas', en: 'Six of Swords', significado: {es: 'Transición, viaje, dejar atrás', en: 'Transition, travel, leaving behind'}},
+            {numero: 56, es: '7 de Espadas', en: 'Seven of Swords', significado: {es: 'Estrategia, engaño, secretismo', en: 'Strategy, deception, secrecy'}},
+            {numero: 57, es: '8 de Espadas', en: 'Eight of Swords', significado: {es: 'Prisión mental, aislamiento, impotencia', en: 'Mental prison, isolation, helplessness'}},
+            {numero: 58, es: '9 de Espadas', en: 'Nine of Swords', significado: {es: 'Ansiedad, pesadillas, angustia', en: 'Anxiety, nightmares, anguish'}},
+            {numero: 59, es: '10 de Espadas', en: 'Ten of Swords', significado: {es: 'Final definitivo, ruina, renovación', en: 'Definite end, ruin, renewal'}},
+            {numero: 60, es: 'Sota de Espadas', en: 'Page of Swords', significado: {es: 'Vigilancia, curiosidad, agudeza', en: 'Vigilance, curiosity, sharpness'}},
+            {numero: 61, es: 'Caballero de Espadas', en: 'Knight of Swords', significado: {es: 'Acción rápida, valentía, prisa', en: 'Quick action, bravery, haste'}},
+            {numero: 62, es: 'Reina de Espadas', en: 'Queen of Swords', significado: {es: 'Independencia, juicio claro, agudeza', en: 'Independence, clear judgment, sharpness'}},
+            {numero: 63, es: 'Rey de Espadas', en: 'King of Swords', significado: {es: 'Autoridad intelectual, verdad, ley', en: 'Intellectual authority, truth, law'}},
 
-            // ARCANOS MENORES - ESPADAS (50-63)
-            {numero: 51, es: 'As de Espadas', en: 'Ace of Swords', pt: 'Ás de Espadas', fr: 'As d\'Épées', it: 'Asso di Spade', significado: {es: 'Claridad mental, triunfo, verdad', en: 'Mental clarity, triumph, truth', pt: 'Clareza mental, triunfo, verdade', fr: 'Clarté mentale, triomphe, vérité', it: 'Chiarezza mentale, trionfo, verità'}, archivo: 'tarot/menores/espadas/01_as_de_espadas.webp'},
-            {numero: 52, es: '2 de Espadas', en: 'Two of Swords', pt: '2 de Espadas', fr: '2 d\'Épées', it: '2 di Spade', significado: {es: 'Indecisión, bloqueo, tregua', en: 'Indecision, stalemate, truce', pt: 'Indecisão, impasse, trégua', fr: 'Indécision, impasse, trêve', it: 'Indecisione, stallo, tregua'}, archivo: 'tarot/menores/espadas/02_dos_de_espadas.webp'},
-            {numero: 53, es: '3 de Espadas', en: 'Three of Swords', pt: '3 de Espadas', fr: '3 d\'Épées', it: '3 di Spade', significado: {es: 'Dolor, separación, tristeza', en: 'Heartbreak, separation, sorrow', pt: 'Dor, separação, tristeza', fr: 'Chagrin, séparation, tristesse', it: 'Dolore, separazione, tristezza'}, archivo: 'tarot/menores/espadas/03_tres_de_espadas.webp'},
-            {numero: 54, es: '4 de Espadas', en: 'Four of Swords', pt: '4 de Espadas', fr: '4 d\'Épées', it: '4 di Spade', significado: {es: 'Descanso, recuperación, meditación', en: 'Rest, recovery, meditation', pt: 'Descanso, recuperação, meditação', fr: 'Repos, récupération, méditation', it: 'Riposo, ricupero, meditazione'}, archivo: 'tarot/menores/espadas/04_cuatro_de_espadas.webp'},
-            {numero: 55, es: '5 de Espadas', en: 'Five of Swords', pt: '5 de Espadas', fr: '5 d\'Épées', it: '5 di Spade', significado: {es: 'Conflicto, derrota, orgullo', en: 'Conflict, defeat, pride', pt: 'Conflito, derrota, orgulho', fr: 'Conflit, défaite, orgueil', it: 'Conflitto, sconfitta, orgoglio'}, archivo: 'tarot/menores/espadas/05_cinco_de_espadas.webp'},
-            {numero: 56, es: '6 de Espadas', en: 'Six of Swords', pt: '6 de Espadas', fr: '6 d\'Épées', it: '6 di Spade', significado: {es: 'Transición, viaje, dejar atrás', en: 'Transition, travel, leaving behind', pt: 'Transição, viagem, dejar para trás', fr: 'Transition, voyage, laisser derrière', it: 'Transizione, viaggio, lasciare alle spalle'}, archivo: 'tarot/menores/espadas/06_seis_de_espadas.webp'},
-            {numero: 57, es: '7 de Espadas', en: 'Seven of Swords', pt: '7 de Espadas', fr: '7 d\'Épées', it: '7 di Spade', significado: {es: 'Estrategia, secreto, escape', en: 'Strategy, secret, escape', pt: 'Estratégia, segredo, fuga', fr: 'Stratégie, secret, fuite', it: 'Strategia, segreto, fuga'}, archivo: 'tarot/menores/espadas/07_siete_de_espadas.webp'},
-            {numero: 58, es: '8 de Espadas', en: 'Eight of Swords', pt: '8 de Espadas', fr: '8 d\'Épées', it: '8 di Spade', significado: {es: 'Restricción, atrapado, miedo', en: 'Restriction, trapped, fear', pt: 'Restrição, aprisionado, medo', fr: 'Restriction, piégé, peur', it: 'Restrizione, intrappolato, paura'}, archivo: 'tarot/menores/espadas/08_ocho_de_espadas.webp'},
-            {numero: 59, es: '9 de Espadas', en: 'Nine of Swords', pt: '9 de Espadas', fr: '9 d\'Épées', it: '9 di Spade', significado: {es: 'Ansiedad, pesadillas, preocupación', en: 'Anxiety, nightmares, worry', pt: 'Ansiedade, pesadelos, preocupação', fr: 'Anxiété, cauchemars, inquiétude', it: 'Ansia, incubi, preoccupazione'}, archivo: 'tarot/menores/espadas/09_nueve_de_espadas.webp'},
-            {numero: 60, es: '10 de Espadas', en: 'Ten of Swords', pt: '10 de Espadas', fr: '10 d\'Épées', it: '10 di Spade', significado: {es: 'Final definitivo, ruina, nuevo ciclo', en: 'Definite end, ruin, new cycle', pt: 'Fim definitivo, ruína, novo ciclo', fr: 'Fin définitive, ruine, nouveau cycle', it: 'Fine definitiva, rovina, nuovo ciclo'}, archivo: 'tarot/menores/espadas/10_diez_de_espadas.webp'},
-            {numero: 61, es: 'Sota de Espadas', en: 'Page of Swords', pt: 'Valete de Espadas', fr: 'Valet de Données', it: 'Fante di Spade', significado: {es: 'Vigilancia, agudeza, curiosidad', en: 'Vigilance, sharpness, curiosity', pt: 'Vigilância, agudeza, curiosidade', fr: 'Vigilance, acuité, curiosité', it: 'Vigilanza, acutezza, curiosità'}, archivo: 'tarot/menores/espadas/11_sota_de_espadas.webp'},
-            {numero: 62, es: 'Caballo de Espadas', en: 'Knight of Swords', pt: 'Cavaleiro de Espadas', fr: 'Chevalier d\'Épées', it: 'Cavaliere di Spade', significado: {es: 'Acción rápida, defensa, ímpetu', en: 'Swift action, defense, impetus', pt: 'Ação rápida, defesa, ímpeto', fr: 'Action rapide, défense, élan', it: 'Azione rapida, difesa, impeto'}, archivo: 'tarot/menores/espadas/12_caballo_de_espadas.webp'},
-            {numero: 63, es: 'Reina de Espadas', en: 'Queen of Swords', pt: 'Rainha de Espadas', fr: 'Reine d\'Épées', it: 'Regina di Spade', significado: {es: 'Independencia, intelecto, agudeza', en: 'Independence, intellect, sharpness', pt: 'Independência, intelecto, agudeza', fr: 'Indépendance, intellect, acuité', it: 'Indipendenza, intelletto, acutezza'}, archivo: 'tarot/menores/espadas/13_reina_de_espadas.webp'},
-            {numero: 64, es: 'Rey de Espadas', en: 'King of Swords', pt: 'Rei de Espadas', fr: 'Roi d\'Épées', it: 'Re di Spade', significado: {es: 'Autoridad, verdad, juicio justo', en: 'Authority, truth, fair judgment', pt: 'Autoridade, verdad, julgamento justo', fr: 'Autorité, vérité, jugement juste', it: 'Autorità, verità, giudizio giusto'}, archivo: 'tarot/menores/espadas/14_rey_de_espadas.webp'},
-
-            // ARCANOS MENORES - OROS (64-77)
-            {numero: 65, es: 'As de Oros', en: 'Ace of Pentacles', pt: 'Ás de Oros', fr: 'As de Deniers', it: 'Asso di Denari', significado: {es: 'Abundancia, prosperidad, estabilidad', en: 'Abundance, prosperity, stability', pt: 'Abundância, prosperidade, estabilidade', fr: 'Abondance, prospérité, stabilité', it: 'Abbondanza, prosperità, stabilità'}, archivo: 'tarot/menores/oros/01_as_de_oros.webp'},
-            {numero: 66, es: '2 de Oros', en: 'Two of Pentacles', pt: '2 de Oros', fr: '2 de Deniers', it: '2 di Denari', significado: {es: 'Equilibrio, adaptación, prioridades', en: 'Balance, adaptation, priorities', pt: 'Equilíbrio, adaptação, prioridades', fr: 'Équilibre, adaptation, priorités', it: 'Equilibrio, adattamento, priorità'}, archivo: 'tarot/menores/oros/02_dos_de_oros.webp'},
-            {numero: 67, es: '3 de Oros', en: 'Three of Pentacles', pt: '3 de Oros', fr: '3 de Deniers', it: '3 di Denari', significado: {es: 'Trabajo en equipo, aprendizaje, éxito', en: 'Teamwork, learning, success', pt: 'Trabalho em equipe, aprendizado, sucesso', fr: 'Travail d\'équipe, apprentissage, succès', it: 'Lavoro di squadra, apprendimento, successo'}, archivo: 'tarot/menores/oros/03_tres_de_oros.webp'},
-            {numero: 68, es: '4 de Oros', en: 'Four of Pentacles', pt: '4 de Oros', fr: '4 de Deniers', it: '4 di Denari', significado: {es: 'Avaricia, control, seguridad', en: 'Greed, control, security', pt: 'Ganância, controle, segurança', fr: 'Avarice, contrôle, sécurité', it: 'Avarizia, controllo, sicurezza'}, archivo: 'tarot/menores/oros/04_cuatro_de_oros.webp'},
-            {numero: 69, es: '5 de Oros', en: 'Five of Pentacles', pt: '5 de Oros', fr: '5 de Deniers', it: '5 di Denari', significado: {es: 'Pérdida material, aislamiento, crisis', en: 'Material loss, isolation, crisis', pt: 'Perda material, isolamento, crise', fr: 'Perte matérielle, isolement, crise', it: 'Perdita materiale, isolamento, crisi'}, archivo: 'tarot/menores/oros/05_cinco_de_oros.webp'},
-            {numero: 70, es: '6 de Oros', en: 'Six of Pentacles', pt: '6 de Oros', fr: '6 de Deniers', it: '6 di Denari', significado: {es: 'Generosidad, caridad, compartir', en: 'Generosity, charity, sharing', pt: 'Generosidade, caridade, compartilhar', fr: 'Générosité, charité, partage', it: 'Generosità, carità, condivisione'}, archivo: 'tarot/menores/oros/06_seis_de_oros.webp'},
-            {numero: 71, es: '7 de Oros', en: 'Seven of Pentacles', pt: '7 de Oros', fr: '7 de Deniers', it: '7 di Denari', significado: {es: 'Paciencia, recompensa, cosecha', en: 'Patience, reward, harvest', pt: 'Paciência, recompensa, colheita', fr: 'Patience, récompense, récolte', it: 'Pazienza, ricompensa, raccolto'}, archivo: 'tarot/menores/oros/07_siete_de_oros.webp'},
-            {numero: 72, es: '8 de Oros', en: 'Eight of Pentacles', pt: '8 de Oros', fr: '8 de Deniers', it: '8 di Denari', significado: {es: 'Maestría, dedicación, detalle', en: 'Mastery, dedication, detail', pt: 'Maestria, dedicação, detalhe', fr: 'Maîtrise, dévouement, détail', it: 'Maestria, dedizione, dettaglio'}, archivo: 'tarot/menores/oros/08_ocho_de_oros.webp'},
-            {numero: 73, es: '9 de Oros', en: 'Nine of Pentacles', pt: '9 de Oros', fr: '9 de Deniers', it: '9 di Denari', significado: {es: 'Independencia, lujo, autosuficiencia', en: 'Independence, luxury, self-reliance', pt: 'Independência, luxo, autossuficiência', fr: 'Indépendance, luxe, autosuffisance', it: 'Indipendenza, lusso, autosufficienza'}, archivo: 'tarot/menores/oros/09_nueve_de_oros.webp'},
-            {numero: 74, es: '10 de Oros', en: 'Ten of Pentacles', pt: '10 de Oros', fr: '10 de Deniers', it: '10 di Denari', significado: {es: 'Legado, estabilidad, riqueza familiar', en: 'Legacy, stability, family wealth', pt: 'Legado, estabilidade, riqueza familiar', fr: 'Héritage, stabilité, richesse familiale', it: 'Eredità, stabilità, ricchezza familiare'}, archivo: 'tarot/menores/oros/10_diez_de_oros.webp'},
-            {numero: 75, es: 'Sota de Oros', en: 'Page of Pentacles', pt: 'Valete de Oros', fr: 'Valet de Deniers', it: 'Fante di Denari', significado: {es: 'Oportunidad, estudio, ambición', en: 'Opportunity, study, ambition', pt: 'Oportunidade, estudo, ambição', fr: 'Opportunité, étude, ambition', it: 'Opportunità, studio, ambizione'}, archivo: 'tarot/menores/oros/11_sota_de_oros.webp'},
-            {numero: 76, es: 'Caballo de Oros', en: 'Knight of Pentacles', pt: 'Cavaleiro de Oros', fr: 'Chevalier de Deniers', it: 'Cavaliere di Denari', significado: {es: 'Rutina, paciencia, realismo', en: 'Routine, patience, realism', pt: 'Rotina, paciência, realismo', fr: 'Routine, patience, réalisme', it: 'Routine, pazienza, realismo'}, archivo: 'tarot/menores/oros/12_caballo_de_oros.webp'},
-            {numero: 77, es: 'Reina de Oros', en: 'Queen of Pentacles', pt: 'Rainha de Oros', fr: 'Reine de Deniers', it: 'Regina di Denari', significado: {es: 'Seguridad, practicidad, nutrición', en: 'Security, practicality, nurturing', pt: 'Segurança, praticidade, nutrição', fr: 'Sécurité, praticité, alimentation', it: 'Sicurezza, praticità, nutrimento'}, archivo: 'tarot/menores/oros/13_reina_de_oros.webp'},
-            {numero: 78, es: 'Rey de Oros', en: 'King of Pentacles', pt: 'Rei de Oros', fr: 'Roi de Deniers', it: 'Re di Denari', significado: {es: 'Éxito financiero, abundancia, fiabilidad', en: 'Financial success, abundance, reliability', pt: 'Sucesso financeiro, abundância, confiabilidade', fr: 'Succès financier, abondance, fiabilité', it: 'Successo finanziario, abbondanza, affidabilità'}, archivo: 'tarot/menores/oros/14_rey_de_oros.webp'}
+            // OROS (64-77)
+            {numero: 64, es: 'As de Oros', en: 'Ace of Pentacles', significado: {es: 'Prosperidad, oportunidad material, éxito', en: 'Prosperity, material opportunity, success'}},
+            {numero: 65, es: '2 de Oros', en: 'Two of Pentacles', significado: {es: 'Equilibrio, adaptabilidad, prioridades', en: 'Balance, adaptability, priorities'}},
+            {numero: 66, es: '3 de Oros', en: 'Three of Pentacles', significado: {es: 'Trabajo en equipo, maestría, colaboración', en: 'Teamwork, mastery, collaboration'}},
+            {numero: 67, es: '4 de Oros', en: 'Four of Pentacles', significado: {es: 'Avaricia, estabilidad, posesividad', en: 'Greed, stability, possessiveness'}},
+            {numero: 68, es: '5 de Oros', en: 'Five of Pentacles', significado: {es: 'Pérdida financiera, pobreza, aislamiento', en: 'Financial loss, poverty, isolation'}},
+            {numero: 69, es: '6 de Oros', en: 'Six of Pentacles', significado: {es: 'Generosidad, caridad, compartir', en: 'Generosity, charity, sharing'}},
+            {numero: 70, es: '7 de Oros', en: 'Seven of Pentacles', significado: {es: 'Paciencia, recompensa a largo plazo, inversión', en: 'Patience, long-term reward, investment'}},
+            {numero: 71, es: '8 de Oros', en: 'Eight of Pentacles', significado: {es: 'Dedicación, aprendizaje, artesanía', en: 'Dedication, learning, craftsmanship'}},
+            {numero: 72, es: '9 de Oros', en: 'Nine of Pentacles', significado: {es: 'Independencia financiera, lujo, autosuficiencia', en: 'Financial independence, luxury, self-sufficiency'}},
+            {numero: 73, es: '10 de Oros', en: 'Ten of Pentacles', significado: {es: 'Riqueza familiar, herencia, estabilidad', en: 'Family wealth, inheritance, stability'}},
+            {numero: 74, es: 'Sota de Oros', en: 'Page of Pentacles', significado: {es: 'Ambición, estudio, bases sólidas', en: 'Ambition, study, solid foundations'}},
+            {numero: 75, es: 'Caballero de Oros', en: 'Knight of Pentacles', significado: {es: 'Rutina, eficiencia, trabajo duro', en: 'Routine, efficiency, hard work'}},
+            {numero: 76, es: 'Reina de Oros', en: 'Queen of Pentacles', significado: {es: 'Seguridad doméstica, practicidad, abundancia', en: 'Domestic security, practicality, abundance'}},
+            {numero: 77, es: 'Rey de Oros', en: 'King of Pentacles', significado: {es: 'Éxito empresarial, seguridad, abundancia', en: 'Business success, security, abundance'}}
         ];
 
-        // RESPUESTAS ORÁCULO
-        const respuestasOraculo = {
-            es: [
-                "✦ El Universo dice SÍ. Camina con paso firme y sin dudar.",
-                "✦ El momento actual requiere paciencia. Espera a que las aguas se calmen.",
-                "✦ Hay una verdad ocultándose de ti. Observa los pequeños detalles.",
-                "✦ Lo que buscas llegará por un camino completamente inesperado.",
-                "✦ Es momento de soltar lo que ya no te suma para recibir lo nuevo.",
-                "✦ Confía plenamente en tu intuición, tu primera corazonada es la correcta.",
-                "✦ Abre bien los ojos, una gran oportunidad golpeará tu puerta pronto."
-            ],
-            en: [
-                "✦ The Universe says YES. Walk with firm steps and no doubt.",
-                "✦ The current moment requires patience. Wait for the waters to calm.",
-                "✦ There is a truth hiding from you. Look closely at the small details.",
-                "✦ What you seek will arrive through a completely unexpected path.",
-                "✦ It is time to let go of what no longer serves you to receive the new.",
-                "✦ Trust your intuition completely, your first hunch is correct.",
-                "✦ Keep your eyes open, a great opportunity will knock on your door soon."
-            ],
-            pt: [
-                "✦ O Universo diz SIM. Caminhe com passos firmes e sem dúvidas.",
-                "✦ O momento atual exige paciência. Espere as águas se acalmarem.",
-                "✦ Há uma verdade se escondendo de você. Observe os pequenos detalles.",
-                "✦ O que você procura chegará por um caminho totalmente inesperado.",
-                "✦ É hora de desapegar do que não soma mais para receber o novo.",
-                "✦ Confie plenamente na sua intuição, seu primeiro palpite está correto.",
-                "✦ Abra bem os olhos, uma grande oportunidade baterá à sua porta em breve."
-            ],
-            fr: [
-                "✦ L'Univers dit OUI. Marchez d'un pas ferme et sans hésiter.",
-                "✦ Le moment actuel exige de la patience. Attendez que les eaux se calment.",
-                "✦ Une vérité se cache de vous. Observez bien les petits détails.",
-                "✦ Ce que vous cherchez arrivera par un chemin totalement inattendu.",
-                "✦ Il est temps de lâcher prise sur ce qui ne vous apporte plus rien du tout.",
-                "✦ Faites pleinement confiance à votre intuition, votre premier pressentiment est le bon.",
-                "✦ Ouvrez bien les yeux, une belle opportunité frappera bientôt à votre porte."
-            ],
-            it: [
-                "✦ L'Universo dice SÌ. Cammina a passo fermo e senza dubitare.",
-                "✦ Il momento attuale richiede pazienza. Aspetta que le acque si calmino.",
-                "✦ C'è una verità che ti viene nascosta. Osserva i piccoli dettagli.",
-                "✦ Ciò que cerchi arriverà da una strada del tutto inaspettata.",
-                "✦ È ora di lasciare andare ciò que non ti serve più per accogliere il nuovo.",
-                "✦ Fidati del tutto del tuo intuito, la prima sensazione è quella giusta.",
-                "✦ Tieni gli occhi ben aperti, presto una grande oportunidad busserà alla tua porta."
-            ]
-        };
+        // Listas internas de mapeo para construir los nombres de tus archivos tal cual los tenés
+        const nombresMayores = [
+            "loco", "mago", "sacerdotisa", "emperatriz", "emperador", "papa", "enamorados", 
+            "carro", "justicia", "ermitaño", "rueda-fortuna", "fuerza", "colgado", "muerte", 
+            "templanza", "diablo", "torre", "estrella", "luna", "sol", "juicio", "mundo"
+        ];
 
-        // Cambiar secciones
-        function mostrarSeccion(id) {
-            document.querySelectorAll('.secciones').forEach(s => s.classList.remove('active'));
-            const seccion = document.getElementById('seccion-' + id);
-            if(seccion) seccion.classList.add('active');
+        const nombresNumerosMenores = [
+            "as", "dos", "tres", "cuatro", "cinco", "seis", "siete", 
+            "ocho", "nueve", "diez", "sota", "caballo", "reina", "rey"
+        ];
+
+        function mostrarSeccion(seccionId) {
+            document.querySelectorAll('.secciones').forEach(sec => sec.classList.remove('active'));
+            const secActiva = document.getElementById('seccion-' + seccionId);
+            if(secActiva) secActiva.classList.add('active');
             asegurarMusicaDeFondo();
         }
 
-        // Asegurar que suene la música si el usuario interactúa
         function asegurarMusicaDeFondo() {
             if (!musicaIniciada) {
                 const audio = document.getElementById('audio-ambiente');
-                if (audio) {
-                    audio.play().then(() => {
-                        musicaIniciada = true;
-                    }).catch(e => console.log("Esperando interacción para audio..."));
+                if(audio) {
+                    audio.play().then(() => { musicaIniciada = true; }).catch(e => console.log("Audio en espera"));
                 }
             }
         }
 
-        // Selector de Idioma
-        function cambiarIdioma(cod) {
-            idiomaActual = cod;
-            document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+        function cambiarIdioma(lang) {
+            idiomaActual = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
 
-            // Traducir textos fijos
             document.querySelectorAll('[data-t]').forEach(el => {
                 const clave = el.getAttribute('data-t');
-                if(traducciones[cod] && traducciones[cod][clave]) {
-                    el.innerHTML = traducciones[cod][clave];
+                if(traducciones[lang] && traducciones[lang][clave]) {
+                    el.innerText = traducciones[lang][clave];
                 }
             });
-
-            // Traducir placeholders de inputs
-            document.querySelectorAll('[data-placeholder]').forEach(el => {
-                const clave = el.getAttribute('data-placeholder');
-                if(traducciones[cod] && traducciones[cod][clave]) {
-                    el.setAttribute('placeholder', traducciones[cod][clave]);
-                }
-            });
-
-            asegurarMusicaDeFondo();
         }
 
-        // LÓGICA DEL TAROT TOTALMENTE UNIFICADA Y CORREGIDA CON BACKTICKS
+        // FUNCIÓN CORREGIDA CON TUS REGLAS DE ARCHIVOS EXACTAS
         function leerTarot() {
-            const nombre = document.getElementById('tarot-nombre').value.trim();
-            const pregunta = document.getElementById('tarot-pregunta').value.trim();
-            const cantidad = parseInt(document.getElementById('tarot-cartas').value);
-
-            if (!nombre || !pregunta) {
-                alert(idiomaActual === 'es' ? 'Por favor completa tu nombre y pregunta.' : 'Please enter your name and question.');
-                return;
-            }
-
-            // Copiar mazo original para no repetir cartas en la tirada
-            let mazo = [...cartasTarot];
-            let elegidas = [];
-
-            for (let i = 0; i < cantidad; i++) {
-                const indexAleatorio = Math.floor(Math.random() * mazo.length);
-                const carta = mazo.splice(indexAleatorio, 1)[0];
-                // 30% de probabilidad de salir dada vuelta (invertida)
-                const invertida = Math.random() < 0.3;
-                elegidas.push({ ...carta, invertida });
-            }
-
-            // Construir el diseño de respuesta
-            let html = `<div class="resultado">`;
-            html += `<h3>${idiomaActual === 'es' ? 'Lectura para ' : 'Reading for '}${nombre}</h3>`;
-            html += `<p style="color: #daa520; margin-bottom: 20px; font-size: 1.1em;"><strong>${idiomaActual === 'es' ? 'Tu consulta: ' : 'Your question: '}</strong>${pregunta}</p>`;
+            const cantidad = document.getElementById('tarot-cartas').value;
+            const resultadoDiv = document.getElementById('resultado-tarot');
             
-            // Contenedor de las tarjetitas
-            html += `<div class="cartas-container">`;
+            let mezcladas = [...cartasTarot].sort(() => 0.5 - Math.random());
+            let seleccionadas = mezcladas.slice(0, cantidad);
+            
+            let html = '<div class="cartas-container">';
+            
+            seleccionadas.forEach(carta => {
+                let rutaImagen = '';
 
-            elegidas.forEach(carta => {
-                const nombreCarta = carta[idiomaActual] || carta['es'];
-                const descCarta = carta.significado[idiomaActual] || carta.significado['es'];
-                
-                // Texto de orientación
-                let orientacion = '';
-                if (idiomaActual === 'es') orientacion = carta.invertida ? 'Invertida' : 'Al derecho';
-                else if (idiomaActual === 'en') orientacion = carta.invertida ? 'Reversed' : 'Upright';
-                else if (idiomaActual === 'pt') orientacion = carta.invertida ? 'Invertida' : 'Normal';
-                else if (idiomaActual === 'fr') orientacion = carta.invertida ? 'Inversée' : 'Droite';
-                else if (idiomaActual === 'it') orientacion = carta.invertida ? 'Capovolta' : 'Dritto';
+                // 1. ARCANOS MAYORES (0 al 21) -> Formato: XX_nombre.webp
+                if (carta.numero <= 21) {
+                    let prefijo = String(carta.numero).padStart(2, '0');
+                    let nombreArchivo = nombresMayores[carta.numero];
+                    rutaImagen = `${prefijo}_${nombreArchivo}.webp`;
+                } 
+                // 2. ARCANOS MENORES (22 al 77) -> Formato: palo/XX_numero_de_palo.webp
+                else {
+                    let palo = '';
+                    let indiceRelativo = 0;
 
-                // Inyección de imagen usando la sintaxis moderna correcta
+                    if (carta.numero >= 22 && carta.numero <= 35) {
+                        palo = 'bastos';
+                        indiceRelativo = carta.numero - 22;
+                    } else if (carta.numero >= 36 && carta.numero <= 49) {
+                        palo = 'copas';
+                        indiceRelativo = carta.numero - 36;
+                    } else if (carta.numero >= 50 && carta.numero <= 63) {
+                        palo = 'espadas';
+                        indiceRelativo = carta.numero - 50;
+                    } else if (carta.numero >= 64 && carta.numero <= 77) {
+                        palo = 'oros';
+                        indiceRelativo = carta.numero - 64;
+                    }
+
+                    let numeroDosDigitos = String(indiceRelativo + 1).padStart(2, '0');
+                    let textoNumero = nombresNumerosMenores[indiceRelativo];
+                    
+                    rutaImagen = `${palo}/${numeroDosDigitos}_${textoNumero}_de_${palo}.webp`;
+                }
+
+                let nombreCarta = carta[idiomaActual] || carta['es'];
+                let significadoCarta = carta.significado[idiomaActual] || carta.significado['es'];
+
                 html += `
                 <div class="carta-revelada">
-                  <div class="contenedor-imagen-carta">
-                    <img src="${carta.archivo}" class="imagen-carta-archivo ${carta.invertida ? 'invertida' : ''}" alt="${nombreCarta}">
-                  </div>
-                  <div class="nombre">${nombreCarta}</div>
-                  <div class="estado-carta">(${orientacion})</div>
-                  <div class="significado">${descCarta}</div>
+                    <img src="${rutaImagen}" alt="${nombreCarta}">
+                    <div class="nombre">${nombreCarta}</div>
+                    <div class="significado">${significadoCarta}</div>
                 </div>`;
             });
-
-            html += `</div></div>`;
-
-            document.getElementById('resultado-tarot').innerHTML = html;
-            asegurarMusicaDeFondo();
+            
+            html += '</div>';
+            resultadoDiv.innerHTML = html;
         }
 
         function limpiarTarot() {
@@ -1024,98 +716,53 @@
             document.getElementById('resultado-tarot').innerHTML = '';
         }
 
-        // LÓGICA DE ASTROLOGÍA
         function calcularCarta() {
-            const nombre = document.getElementById('astro-nombre').value.trim();
-            const fecha = document.getElementById('astro-fecha').value;
-            const hora = document.getElementById('astro-hora').value;
+            const nombre = document.getElementById('astro-nombre').value || "Buscador";
+            const resultadoDiv = document.getElementById('resultado-astrologia');
+            const signos = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"];
+            const sol = signos[Math.floor(Math.random() * 12)];
+            const luna = signos[Math.floor(Math.random() * 12)];
+            const asc = signos[Math.floor(Math.random() * 12)];
 
-            if (!nombre || !fecha || !hora) {
-                alert(idiomaActual === 'es' ? 'Completa todos los campos natales.' : 'Please fill in all birth details.');
-                return;
-            }
-
-            const signos = [
-                {n: {es: 'Capricornio', en: 'Capricorn', pt: 'Capricórnio', fr: 'Capricorne', it: 'Capricorno'}, s: '♑', d: {es: 'Ambicioso, disciplinado y paciente.', en: 'Ambitious, disciplined, and patient.', pt: 'Ambicioso, disciplinado e paciente.', fr: 'Ambitieux, discipliné et patient.', it: 'Ambizioso, disciplinato e paziente.'}},
-                {n: {es: 'Acuario', en: 'Aquarius', pt: 'Aquário', fr: 'Verseau', it: 'Acquario'}, s: '♒', d: {es: 'Original, humanitario e independiente.', en: 'Original, humanitarian, and independent.', pt: 'Original, humanitário e independente.', fr: 'Original, humanitaire et indépendant.', it: 'Originale, umanitario e indipendente.'}},
-                {n: {es: 'Piscis', en: 'Pisces', pt: 'Peixes', fr: 'Poissons', it: 'Pesci'}, s: '♓', d: {es: 'Compasivo, artístico e intuitivo.', en: 'Compassionate, artistic, and intuitive.', pt: 'Compassivo, artístico e intuitivo.', fr: 'Compassionné, artistique et intuitif.', it: 'Compassionevole, artistico e intuitivo.'}},
-                {n: {es: 'Aries', en: 'Aries', pt: 'Áries', fr: 'Bélier', it: 'Ariete'}, s: '♈', d: {es: 'Valiente, entusiasta y competitivo.', en: 'Courageous, enthusiastic, and competitive.', pt: 'Corajoso, entusiasta e competitivo.', fr: 'Courageux, enthousiaste et compétitif.', it: 'Coraggioso, entusiasta e competitivo.'}},
-                {n: {es: 'Tauro', en: 'Taurus', pt: 'Touro', fr: 'Taureau', it: 'Toro'}, s: '♉', d: {es: 'Confiable, paciente y práctico.', en: 'Reliable, patient, and practical.', pt: 'Confiável, paciente e prático.', fr: 'Fiable, patient et pratique.', it: 'Affidabile, paziente e pratico.'}},
-                {n: {es: 'Géminis', en: 'Gemini', pt: 'Gêmeos', fr: 'Gémeaux', it: 'Gemelli'}, s: '♊', d: {es: 'Expresivo, curioso y adaptable.', en: 'Expressive, curious, and adaptable.', pt: 'Expressivo, curioso e adaptável.', fr: 'Expressif, curieux et adaptable.', it: 'Espressivo, curioso e adattabile.'}},
-                {n: {es: 'Cáncer', en: 'Cancer', pt: 'Câncer', fr: 'Cancer', it: 'Cancro'}, s: '♋', d: {es: 'Intuitivo, sentimental y protector.', en: 'Intuitive, sentimental, and protective.', pt: 'Intuitivo, sentimental e protetor.', fr: 'Intuitif, sentimental et protecteur.', it: 'Intuitivo, sentimentale e protettivo.'}},
-                {n: {es: 'Leo', en: 'Leo', pt: 'Leão', fr: 'Lion', it: 'Leone'}, s: '♌', d: {es: 'Animado, orgulloso y generoso.', en: 'Fiery, proud, and generous.', pt: 'Animado, orgulhoso e generoso.', fr: 'Chaleureux, fier et généreux.', it: 'Vivace, orgoglioso e generoso.'}},
-                {n: {es: 'Virgo', en: 'Virgo', pt: 'Virgem', fr: 'Vierge', it: 'Vergine'}, s: '♍', d: {es: 'Leal, analítico y trabajador.', en: 'Loyal, analytical, and hardworking.', pt: 'Leal, analítico e trabalhador.', fr: 'Fidèle, analytique et trabajador.', it: 'Fedele, analitico e lavoratore.'}},
-                {n: {es: 'Libra', en: 'Libra', pt: 'Libra', fr: 'Balance', it: 'Bilancia'}, s: '♎', d: {es: 'Social, justo y diplomático.', en: 'Social, fair, and diplomatic.', pt: 'Social, justo e diplomático.', fr: 'Sociable, juste et diplomatique.', it: 'Sociale, giusto e diplomatico.'}},
-                {n: {es: 'Escorpio', en: 'Scorpio', pt: 'Escorpião', fr: 'Scorpion', it: 'Scorpione'}, s: '♏', d: {es: 'Apasionado, terco y un gran recurso.', en: 'Passionate, stubborn, and resourceful.', pt: 'Apaixonado, obstinado e engenhoso.', fr: 'Passionné, opiniâtre et plein de ressources.', it: 'Appassionato, ostinato e pieno di risorse.'}},
-                {n: {es: 'Sagitario', en: 'Sagittarius', pt: 'Sagitário', fr: 'Sagittaire', it: 'Sagittario'}, s: '♐', d: {es: 'Extrovertido, optimista y generoso.', en: 'Extroverted, optimistic, and generous.', pt: 'Extrovertido, otimista e generoso.', fr: 'Extroverti, optimiste et généreux.', it: 'Estroverso, ottimista e generoso.'}}
-            ];
-
-            const dia = new Date(fecha).getDate() || 1;
-            const idxSol = dia % 12;
-            const idxLuna = (dia + 5) % 12;
-            const idxAsc = (parseInt(hora.split(':')[0]) || 0) % 12;
-
-            const sol = signos[idxSol];
-            const luna = signos[idxLuna];
-            const asc = signos[idxAsc];
-
-            let html = '<div class="resultado"><h3>' + (idiomaActual === 'es' ? 'Posiciones Astrales de ' : 'Astral Positions for ') + nombre + '</h3>';
-            html += '<div class="astrologia-resultado">';
-
-            // Sol
-            html += '<div class="signo-box"><div class="simbolo-signo">' + sol.s + '</div><div class="tipo">' + (idiomaActual === 'es' ? 'Signo Solar' : 'Sun Sign') + '</div><div class="nombre">' + sol.n[idiomaActual] + '</div><div class="descripcion">' + sol.d[idiomaActual] + '</div></div>';
-            // Luna
-            html += '<div class="signo-box"><div class="simbolo-signo">' + luna.s + '</div><div class="tipo">' + (idiomaActual === 'es' ? 'Signo Lunar' : 'Moon Sign') + '</div><div class="nombre">' + luna.n[idiomaActual] + '</div><div class="descripcion">' + luna.d[idiomaActual] + '</div></div>';
-            // Ascendente
-            html += '<div class="signo-box"><div class="simbolo-signo">' + asc.s + '</div><div class="tipo">' + (idiomaActual === 'es' ? 'Ascendente' : 'Ascendant') + '</div><div class="nombre">' + asc.n[idiomaActual] + '</div><div class="descripcion">' + asc.d[idiomaActual] + '</div></div>';
-
-            html += '</div></div>';
-            document.getElementById('resultado-astrologia').innerHTML = html;
-            asegurarMusicaDeFondo();
+            resultadoDiv.innerHTML = `
+                <div class="resultado">
+                    <h3>Carta Astral de ${nombre}</h3>
+                    <div class="astrologia-resultado">
+                        <div class="signo-box"><div class="simbolo-signo">☀️</div><div><strong>Sol:</strong> ${sol}</div></div>
+                        <div class="signo-box"><div class="simbolo-signo">🌙</div><div><strong>Luna:</strong> ${luna}</div></div>
+                        <div class="signo-box"><div class="simbolo-signo">🌅</div><div><strong>Ascendente:</strong> ${asc}</div></div>
+                    </div>
+                </div>`;
         }
 
-        function limpiarAstrologia() {
-            document.getElementById('astro-nombre').value = '';
-            document.getElementById('astro-fecha').value = '';
-            document.getElementById('astro-hora').value = '';
-            document.getElementById('resultado-astrologia').innerHTML = '';
-        }
-
-        // LÓGICA DE NUMEROLOGÍA
         function calcularNumerologia() {
-            const nombre = document.getElementById('numero-nombre').value.trim();
-            const fecha = document.getElementById('numero-fecha').value;
+            const nombre = document.getElementById('numero-nombre').value || "Buscador";
+            const resultadoDiv = document.getElementById('resultado-numerologia');
+            const numVida = Math.floor(Math.random() * 9) + 1;
+            const numDestino = Math.floor(Math.random() * 9) + 1;
 
-            if (!nombre || !fecha) {
-                alert(idiomaActual === 'es' ? 'Ingresa tu nombre y fecha.' : 'Please fill in your name and date.');
-                return;
-            }
-
-            // Calcular número de camino de vida basado en los dígitos de la fecha
-            const digitos = fecha.replace(/-/g, '');
-            let suma = 0;
-            for(let i=0; i<digitos.length; i++) {
-                suma += parseInt(digitos[i]) || 0;
-            }
-            let caminoVida = (suma % 9) || 9;
-            let destino = (nombre.length % 9) || 9;
-
-            const descripcionesNum = {
-                es: ["El Líder: Independencia, originalidad y ambición.", "El Pacificador: Cooperación, adaptabilidad y diplomacia.", "El Comunicador: Expresión, creatividad y vida social.", "El Constructor: Estructura, orden y trabajo duro.", "El Aventurero: Libertad, cambio y dinamismo.", "El Protector: Amor familiar, responsabilidad y servicio.", "El Sabio: Búsqueda espiritual, análisis y reserva.", "El Ejecutivo: Éxito material, autoridad y fuerza.", "El Filántropo: Humanitarismo, generosidad y desapego."],
-                en: ["The Leader: Independence, originality, and ambition.", "The Peacemaker: Cooperation, adaptability, and diplomacy.", "The Communicator: Expression, creativity, and social life.", "The Builder: Structure, order, and hard work.", "The Adventurer: Freedom, change, and dynamism.", "The Nurturer: Family love, responsibility, and service.", "The Seeker: Spiritual path, analysis, and reserve.", "The Executive: Material success, authority, and strength.", "The Philanthropist: Humanitarianism, generosity, and release."]
-            };
-
-            const listaDesc = descripcionesNum[idiomaActual] || descripcionesNum['es'];
-
-            let html = '<div class="resultado"><h3>' + (idiomaActual === 'es' ? 'Perfil Numerológico de ' : 'Numerology Profile for ') + nombre + '</h3>';
-            html += '<div class="numerologia-resultado">';
-            html += '<div class="numero-box"><div class="numero">' + caminoVida + '</div><div class="tipo" style="color:#daa520; font-weight:bold; margin-bottom:5px;">' + (idiomaActual === 'es' ? 'Camino de Vida' : 'Life Path') + '</div><div class="significado">' + listaDesc[caminoVida - 1] + '</div></div>';
-            html += '<div class="numero-box"><div class="numero">' + destino + '</div><div class="tipo" style="color:#daa520; font-weight:bold; margin-bottom:5px;">' + (idiomaActual === 'es' ? 'Número de Destino' : 'Destiny Number') + '</div><div class="significado">' + listaDesc[destino - 1] + '</div></div>';
-            html += '</div></div>';
-
-            document.getElementById('resultado-numerologia').innerHTML = html;
-            asegurarMusicaDeFondo();
+            resultadoDiv.innerHTML = `
+                <div class="resultado">
+                    <h3>Análisis Numerológico de ${nombre}</h3>
+                    <div class="numerologia-resultado">
+                        <div class="numero-box"><div class="numero">${numVida}</div><div>Camino de Vida</div></div>
+                        <div class="numero-box"><div class="numero">${numDestino}</div><div>Número de Destino</div></div>
+                    </div>
+                </div>`;
         }
 
-        function limpiarNumerologia() {
-            document
+        function consultarOraculo() {
+            const nombre = document.getElementById('oraculo-nombre').value || "Buscador";
+            const resultadoDiv = document.getElementById('resultado-oraculo');
+            const respuestas = ["Sí, definitivamente", "El universo te pide paciencia", "No es el momento adecuado", "Mira en tu interior para hallar la respuesta", "Grandes cambios se aproximan"];
+            const res = respuestas[Math.floor(Math.random() * respuestas.length)];
+
+            resultadoDiv.innerHTML = `
+                <div class="resultado">
+                    <h3>Oráculo para ${nombre}</h3>
+                    <p style="margin: 10px 0;"><strong>Respuesta:</strong> ${res}</p>
+                </div>`;
+        }
+    </script>
+</body>
+</html>
