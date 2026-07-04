@@ -4,765 +4,1839 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary Meta Tags -->
-    <title>Arcana - Tarot, Astrología, Numerología | El Universo Responde</title>
-    <meta name="title" content="Arcana - Tarot, Astrología, Numerología | El Universo Responde">
-    <meta name="description" content="Consultas místicas profesionales de Tarot (78 cartas), Carta Astral con posiciones planetarias precisas, Numerología y Oráculo. Lecturas personalizadas gratuitas.">
-    <meta name="keywords" content="tarot, lectura de tarot, carta astral, signo lunar, ascendente, numerología, oráculo, astrología, cartas de tarot, Rider Waite, arcanos mayores, arcanos menores, camino de vida, destino">
-    <meta name="theme-color" content="#1a0033">
+    <!-- SEO Meta Tags -->
+    <title>Arcana - Lecturas de Tarot, Astrología y Numerología | El Universo Responde</title>
+    <meta name="description" content="Arcana: Tu portal místico para consultas de Tarot, Astrología, Numerología y Oráculo. Lecturas personalizadas gratuitas con las 78 cartas del Tarot, carta astral y vibraciones numéricas.">
+    <meta name="keywords" content="tarot, astrology, numerology, oracle, reading, cartas tarot, carta astral, numerología, oráculo, videncia, espiritualidad, meditación, tarot gratis, free tarot reading">
     <meta name="author" content="Arcana">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://arcana-lecturas.com/">
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://arcana-lecturas.com/">
-    <meta property="og:title" content="Arcana - El Universo Responde | Tarot, Astrología, Numerología">
-    <meta property="og:description" content="Consultas místicas profesionales. Tarot de 78 cartas, Carta Astral astronómicamente precisa, Numerología y Oráculo.">
-    <meta property="og:image" content="https://arcana-lecturas.com/fondo-arcana.jpg">
-    <meta property="og:locale" content="es_ES">
-    <meta property="og:locale:alternate" content="en_US">
-    <meta property="og:locale:alternate" content="pt_BR">
-    <meta property="og:locale:alternate" content="fr_FR">
-    <meta property="og:locale:alternate" content="it_IT">
+    <meta property="og:title" content="Arcana - El Universo Responde">
+    <meta property="og:description" content="Consultas místicas de Tarot, Astrología, Numerología y Oráculo. Lecturas gratuitas y personalizadas.">
+    <meta property="og:image" content="fondo-arcana.jpg">
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://arcana-lecturas.com/">
     <meta name="twitter:title" content="Arcana - El Universo Responde">
-    <meta name="twitter:description" content="Tarot, Astrología, Numerología y Oráculo">
-    <meta name="twitter:image" content="https://arcana-lecturas.com/fondo-arcana.jpg">
+    <meta name="twitter:description" content="Consultas místicas de Tarot, Astrología, Numerología y Oráculo.">
 
-    <!-- Structured Data -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebApplication",
-      "name": "Arcana",
-      "description": "Aplicación de consultas místicas: Tarot, Astrología, Numerología, Oráculo",
-      "url": "https://arcana-lecturas.com",
-      "applicationCategory": "LifestyleApplication",
-      "operatingSystem": "Any",
-      "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
-      "author": {"@type": "Organization", "name": "Arcana"},
-      "inLanguage": ["es", "en", "pt", "fr", "it"]
-    }
-    </script>
+    <!-- Favicon using the logo -->
+    <link rel="icon" href="fondo-arcana.jpg">
 
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Service",
-      "serviceType": "Tarot Reading",
-      "name": "Lectura de Tarot Arcana",
-      "description": "Lecturas de Tarot profesionales con las 78 cartas del mazo Rider-Waite"
-    }
-    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <!-- Google AdSense - Replace ca-pub-XXXXXXXXXXXXXXXX with your actual publisher ID -->
+    <!-- <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script> -->
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --oro: #d4af37;
+            --oro-claro: #f0d875;
+            --violeta: #7c3aed;
+            --violeta-oscuro: #2d1b69;
+            --negro: #04010a;
+            --gris-oscuro: #140a28;
+            --crema: #f3e8ff;
+            --crema-suave: #ddd6fe;
         }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'Georgia', 'Garamond', serif;
-            background: linear-gradient(135deg, #0a0015 0%, #1a0033 50%, #0f001f 100%);
-            background-attachment: fixed;
-            color: #e0d5f0;
+            background-color: var(--negro);
+            background-image: linear-gradient(180deg, #020104 0%, #080312 50%, #020104 100%);
+            color: var(--crema);
+            font-family: 'Cinzel Decorative', serif;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
             overflow-x: hidden;
+            -webkit-user-select: none;
+            user-select: none;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 20px 0;
-            border-bottom: 2px solid #8b4513;
-        }
-
-        .logo {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background: radial-gradient(circle, #ff6b6b, #8b4513);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 40px;
-            box-shadow: 0 0 30px rgba(139, 69, 19, 0.8);
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-            background: linear-gradient(45deg, #ffd700, #c9a961, #8b4513);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-
-        .tagline {
-            font-size: 1.2em;
-            color: #b8a5d1;
-            font-style: italic;
-            margin-bottom: 15px;
-        }
-
-        .language-selector {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .lang-btn {
-            background: rgba(139, 69, 19, 0.6);
-            color: #e0d5f0;
-            border: 1px solid #8b4513;
-            padding: 8px 12px;
-            margin: 5px;
-            cursor: pointer;
-            border-radius: 4px;
-            font-size: 0.9em;
-            transition: all 0.3s;
-        }
-
-        .lang-btn:hover,
-        .lang-btn.active {
-            background: #8b4513;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
-        }
-
-        .ads-box {
-            background: rgba(30, 20, 60, 0.8);
-            border: 2px solid #8b4513;
-            border-radius: 8px;
-            padding: 15px;
-            margin: 15px 0;
-            text-align: center;
-            color: #8b4513;
-            font-size: 0.9em;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .menu-principal {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .menu-btn {
-            background: linear-gradient(135deg, #8b4513, #a0522d);
-            border: 2px solid #daa520;
-            color: #ffd700;
-            padding: 20px;
-            border-radius: 10px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-            font-weight: bold;
-        }
-
-        .menu-btn:hover {
-            background: linear-gradient(135deg, #a0522d, #8b4513);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-            transform: scale(1.05);
-        }
-
-        .secciones {
-            display: none;
-        }
-
-        .secciones.active {
-            display: block;
-        }
-
-        .seccion {
-            background: rgba(20, 10, 40, 0.9);
-            border: 2px solid #8b4513;
-            border-radius: 10px;
-            padding: 30px;
-            margin-bottom: 30px;
-        }
-
-        .seccion h2 {
-            color: #ffd700;
-            margin-bottom: 20px;
-            font-size: 2em;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
-        }
-
-        .form-group {
-            margin-bottom: 15px;
-        }
-
-        label {
-            display: block;
-            color: #daa520;
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-
-        input[type="text"],
-        input[type="date"],
-        input[type="time"],
-        select {
+        .app-container {
             width: 100%;
-            padding: 10px;
-            background: rgba(50, 30, 80, 0.8);
-            border: 1px solid #8b4513;
-            color: #e0d5f0;
-            border-radius: 5px;
-            font-family: inherit;
+            max-width: 1200px;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            position: relative;
         }
 
-        input::placeholder {
-            color: #8b4513;
+        /* TOP BAR */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 50px;
+            z-index: 100;
         }
 
-        button {
-            background: linear-gradient(135deg, #ffd700, #daa520);
-            color: #000;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 5px;
-            font-size: 1em;
+        .btn-volver {
+            background: rgba(15, 4, 35, 0.9);
+            border: 2px solid rgba(212, 175, 55, 0.6);
+            border-radius: 6px;
+            color: var(--oro);
+            padding: 10px 20px;
             cursor: pointer;
-            font-weight: bold;
+            font-size: 1.1rem;
+            font-family: 'Cinzel Decorative', serif;
+            letter-spacing: 1px;
             transition: all 0.3s;
         }
-
-        button:hover {
-            background: linear-gradient(135deg, #daa520, #ffd700);
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.8);
-            transform: scale(1.05);
+        .btn-volver:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            background: rgba(212, 175, 55, 0.15);
         }
 
-        button:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .lang-ctrl select {
+            background: #020105;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            border-radius: 6px;
+            color: var(--crema);
+            padding: 10px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1rem;
         }
 
-        .resultado {
-            background: rgba(40, 20, 80, 0.95);
-            border: 2px solid #daa520;
-            border-radius: 10px;
-            padding: 20px;
-            margin-top: 20px;
-        }
-
-        .resultado h3 {
-            color: #ffd700;
-            margin-bottom: 15px;
-        }
-
-        .resultado-contenido {
-            color: #e0d5f0;
-            line-height: 1.8;
-            font-size: 1.05em;
-        }
-
-        .cartas-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-
-        .carta-revelada {
-            background: rgba(30, 15, 50, 0.9);
-            border: 2px solid #ffd700;
-            border-radius: 10px;
-            padding: 15px;
+        /* LOGO AREA */
+        .logo-area {
+            margin-top: 15px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.6);
-            animation: revelar 0.5s ease-out;
+            gap: 20px;
         }
 
-        @keyframes revelar {
-            from {
-                transform: rotateY(90deg) scale(0.8);
-                opacity: 0;
-            }
-            to {
-                transform: rotateY(0deg) scale(1);
-                opacity: 1;
-            }
+        .icono-crystal {
+            width: 180px;
+            height: 180px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
-        .carta-revelada img {
-            width: 100%;
-            height: auto;
-            max-height: 220px;
+        .icono-crystal img {
+            width: 140px;
+            height: 140px;
             object-fit: contain;
+            border-radius: 50%;
+            filter: drop-shadow(0 0 30px rgba(124, 58, 237, 0.8));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .app-container.modo-consulta-activa .logo-area { display: none !important; }
+
+        h1.marca-titulo {
+            color: var(--oro);
+            font-size: 4.5rem;
+            letter-spacing: 12px;
+            font-weight: 900;
+            text-shadow: 0 0 30px rgba(212, 175, 55, 0.6), 0 0 60px rgba(124, 58, 237, 0.4);
+        }
+
+        .lema {
+            color: #c4b5fd;
+            font-size: 1.4rem;
+            letter-spacing: 6px;
+        }
+
+        /* INSTRUCCIONES */
+        .instruccion-directa {
+            color: var(--oro);
+            font-size: 1.8rem;
+            letter-spacing: 3px;
+            margin: 15px 0 5px 0;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+        }
+
+        /* VISTAS */
+        .vista-seccion {
+            display: none;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+        }
+        .activa { display: flex; }
+
+        /* MENU PRINCIPAL */
+        .menu-contenedor {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 20px;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .menu-card {
+            background: rgba(14, 5, 30, 0.85);
+            border: 2px solid rgba(212, 175, 55, 0.35);
+            border-bottom: 5px solid rgba(212, 175, 55, 0.6);
+            padding: 35px 25px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+        }
+        .menu-card:hover {
+            border-color: var(--oro);
+            background: rgba(45, 12, 95, 0.45);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.3);
+        }
+
+        .card-titulo {
+            font-size: 2.4rem;
+            color: var(--oro);
+            letter-spacing: 4px;
+        }
+        .card-desc {
+            font-size: 1.1rem;
+            color: var(--crema-suave);
+            margin-top: 12px;
+            font-family: sans-serif;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        /* FORMULARIOS */
+        .config-ritual-area {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin-top: 15px;
+            max-width: 550px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
+
+        .selector-caja {
+            text-align: left;
+            border-bottom: 2px dashed rgba(212, 175, 55, 0.3);
+            padding-bottom: 20px;
+        }
+        .selector-caja label {
+            display: block;
+            font-size: 1.4rem;
+            color: var(--oro);
+            margin-bottom: 12px;
+        }
+        .selector-caja select,
+        .selector-caja input {
+            width: 100%;
+            background: #070314;
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            color: #fff;
+            padding: 15px;
+            font-family: 'Cinzel Decorative', serif;
+            font-size: 1.2rem;
+            outline: none;
             border-radius: 6px;
-            border: 1px solid #daa520;
-            margin-bottom: 10px;
+        }
+        .selector-caja select:focus,
+        .selector-caja input:focus {
+            border-color: var(--oro);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
         }
 
-        .carta-revelada .nombre {
-            font-size: 1.1em;
-            color: #ffd700;
-            font-weight: bold;
-            margin-bottom: 5px;
-            text-transform: capitalize;
+        /* NUMEROLOGIA */
+        .num-carta {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--oro) 0%, #b87a00 100%);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2.5rem;
+            color: #04010a;
+            font-weight: 900;
+            box-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            margin: 0 auto;
         }
 
-        .carta-revelada .significado {
-            font-size: 0.9em;
-            color: #e0d5f0;
-            line-height: 1.4;
-        }
-
-        .numerologia-resultado, .astrologia-resultado {
+        .num-grila {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
             margin-top: 20px;
         }
 
-        .numero-box, .signo-box {
-            background: rgba(50, 30, 80, 0.8);
-            border: 2px solid #daa520;
+        .num-item {
+            background: rgba(14, 5, 30, 0.85);
+            border: 2px solid rgba(212, 175, 55, 0.35);
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+        }
+        .num-item h3 {
+            color: var(--oro);
+            margin: 15px 0 10px 0;
+            font-size: 1.3rem;
+        }
+        .num-item p {
+            color: #c4b5fd;
+            font-size: 1rem;
+            line-height: 1.6;
+            font-family: sans-serif;
+        }
+
+        /* TAROT ABANICOS */
+        .contenedor-altar-abanicos {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            width: 100%;
+            margin-top: 10px;
+            padding-bottom: 40px;
+        }
+
+        .abanico-fila {
+            position: relative;
+            width: 100%;
+            height: 210px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+        }
+
+        .carta-tarot-real {
+            position: absolute;
+            width: 110px;
+            height: 185px;
+            background: linear-gradient(135deg, #220e45 0%, #06020c 100%);
+            border: 2px solid #5b21b6;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: -4px 4px 12px rgba(0,0,0,0.8);
+            transition: border-color 0.2s, box-shadow 0.2s;
+            transform-origin: bottom center;
+        }
+        .carta-tarot-real::before {
+            content: '';
+            position: absolute;
+            top: 6px; left: 6px; right: 6px; bottom: 6px;
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 4px;
+            pointer-events: none;
+        }
+        .carta-tarot-real::after {
+            content: '\2726';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(212, 175, 55, 0.2);
+            font-size: 1.4rem;
+        }
+        .carta-tarot-real.elegida-ritual {
+            transform: translateY(-40px) scale(1.1) !important;
+            z-index: 99 !important;
+            border-color: var(--oro);
+            background: #4c1d95;
+            box-shadow: 0 0 30px var(--oro);
+        }
+
+        /* RESULTADO CARTAS */
+        .resultado-cartas {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .carta-revelada {
+            width: 160px;
+            height: 260px;
+            background: #06020c;
+            border: 2px solid var(--oro);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             padding: 15px;
+            box-shadow: 0 12px 35px rgba(0,0,0,0.95);
+            opacity: 0;
+            animation: develaCarta 0.6s ease forwards;
+        }
+        .carta-revelada.invertida { transform: rotate(180deg); }
+        .carta-revelada .nombre-c {
+            font-weight: 700;
+            color: var(--oro);
+            font-size: 1.4rem;
+            text-align: center;
+            line-height: 1.4;
+        }
+        .carta-simbolo {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
+        }
+
+
+        .caja-interpretacion {
+            background: rgba(5, 2, 12, 0.95);
+            border: 2px solid rgba(212, 175, 55, 0.4);
+            border-top: 5px solid var(--oro);
+            border-radius: 8px;
+            padding: 25px;
+            text-align: left;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            max-width: 800px;
+            margin: 0 auto;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: sans-serif;
+        }
+        .caja-interpretacion p { margin: 0 0 15px 0; }
+        .caja-interpretacion strong { color: var(--oro); }
+        .caja-interpretacion h3 { color: var(--oro); margin: 20px 0 10px 0; font-size: 1.4rem; }
+
+        /* ADSENSE */
+        .ads-box {
+            background: rgba(0,0,0,0.4);
+            border: 1px dashed rgba(212, 175, 55, 0.3);
+            padding: 30px;
+            color: #a78bfa;
+            font-size: 1rem;
+            margin-top: auto;
             border-radius: 8px;
             text-align: center;
         }
 
-        .numero-box .numero, .signo-box .simbolo-signo {
-            font-size: 2em;
-            color: #ffd700;
-            margin-bottom: 10px;
-            font-weight: bold;
+        /* MUSICA TOGGLE */
+        .btn-musica {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(14, 5, 30, 0.9);
+            border: 2px solid rgba(212, 175, 55, 0.5);
+            color: var(--oro);
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 200;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .btn-musica:hover {
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+        }
+        .btn-musica.silenciado { opacity: 0.5; }
+
+        /* RESPONSIVO */
+        @media (max-width: 600px) {
+            body { overflow-x: hidden; }
+            .app-container { padding: 15px; gap: 20px; }
+            h1.marca-titulo { font-size: 3rem; letter-spacing: 6px; }
+            .lema { font-size: 1.1rem; }
+            .icono-crystal { width: 140px; height: 140px; }
+            .icono-crystal img { width: 110px; height: 110px; }
+            .card-titulo { font-size: 2.2rem; }
+            .card-desc { font-size: 1.05rem; }
+            .menu-card { padding: 30px 20px; }
+            .carta-tarot-real { width: 90px; height: 155px; }
+            .abanico-fila { height: 170px; width: 360px; margin: 0 auto; }
+            .contenedor-altar-abanicos { gap: 25px; overflow-x: auto; padding: 10px; }
+            .instruccion-directa { font-size: 1.6rem; margin: 10px 0; }
+            .carta-revelada { width: 145px; height: 225px; }
+            .carta-revelada .nombre-c { font-size: 1.2rem; }
+        .carta-simbolo {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 0 8px rgba(212, 175, 55, 0.5));
         }
 
-        .disclaimer {
-            background: rgba(40, 20, 80, 0.8);
-            border-left: 4px solid #ff6b6b;
-            padding: 15px;
-            margin: 20px 0;
-            color: #e0d5f0;
-            font-size: 0.9em;
-            border-radius: 4px;
+            .btn-volver { font-size: 1.2rem; width: 100%; }
+            .num-grila { grid-template-columns: 1fr; }
         }
 
-        footer {
-            text-align: center;
-            padding: 20px;
-            color: #8b4513;
-            border-top: 2px solid #8b4513;
-            margin-top: 40px;
+        @media (min-width: 601px) and (max-width: 900px) {
+            .carta-tarot-real { width: 95px; height: 165px; }
+            .abanico-fila { height: 185px; }
+            .card-titulo { font-size: 2.2rem; }
         }
+
+        @keyframes develaCarta {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .loading { animation: pulse 1.5s infinite; }
     </style>
 </head>
 <body>
-    <audio id="audio-ambiente" preload="auto" loop crossorigin="anonymous">
-        <source src="sonido-cuenco.mp3" type="audio/mpeg">
-    </audio>
 
-    <div class="container">
-        <header>
-            <div class="logo">✦</div>
-            <h1 data-t="titulo">ARCANA</h1>
-            <p class="tagline" data-t="tagline">El Universo Responde</p>
+    <audio id="audio-ambiente" preload="auto" loop src="musica-fondo.MP3"></audio>
+    <audio id="audio-cuenco" src="sonido-cuenco.mp3"></audio>
 
-            <div class="language-selector">
-                <button class="lang-btn active" onclick="cambiarIdioma('es')">Español</button>
-                <button class="lang-btn" onclick="cambiarIdioma('en')">English</button>
-                <button class="lang-btn" onclick="cambiarIdioma('pt')">Português</button>
-                <button class="lang-btn" onclick="cambiarIdioma('fr')">Français</button>
-                <button class="lang-btn" onclick="cambiarIdioma('it')">Italiano</button>
+    <div class="app-container" id="contenedor-global">
+
+        <div class="top-bar">
+            <div id="zona-volver"></div>
+            <div class="lang-ctrl">
+                <select id="selector-idioma" onchange="cambiarIdioma(this.value)">
+                    <option value="es">Español</option>
+                    <option value="en">English</option>
+                    <option value="pt">Português</option>
+                    <option value="fr">Français</option>
+                    <option value="it">Italiano</option>
+                </select>
             </div>
-
-            <div class="ads-box">
-                <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
-            </div>
-        </header>
-
-        <div class="menu-principal">
-            <button class="menu-btn" onclick="mostrarSeccion('tarot')" data-t="btnTarot">Tarot</button>
-            <button class="menu-btn" onclick="mostrarSeccion('astrologia')" data-t="btnAstrologia">Astrología</button>
-            <button class="menu-btn" onclick="mostrarSeccion('numerologia')" data-t="btnNumerologia">Numerología</button>
-            <button class="menu-btn" onclick="mostrarSeccion('oraculo')" data-t="btnOraculo">Oráculo</button>
         </div>
 
-        <div class="ads-box">
-            <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+        <div class="logo-area">
+            <div class="icono-crystal">
+                <img src="fondo-arcana.jpg" alt="Arcana Crystal Ball"></div>
+            <h1 class="marca-titulo">ARCANA</h1>
+            <div class="lema" id="txt-lema">El universo responde</div>
         </div>
 
-        <!-- SECCIÓN TAROT -->
-        <div id="seccion-tarot" class="secciones">
-            <div class="seccion">
-                <h2 data-t="tarotTitle">Lectura de Tarot</h2>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+        <!-- MENU PRINCIPAL -->
+        <div id="pantalla-menu" class="vista-seccion activa">
+            <div class="menu-contenedor">
+                <div class="menu-card" onclick="abrirTarotConfig()">
+                    <div class="card-titulo">&#x1F52E; <span data-t="menuTarot">Tarot</span></div>
+                    <div class="card-desc" data-t="menuTarotDesc">Las 78 cartas desplegadas. Revela tu pasado, presente y futuro.</div>
                 </div>
-
-                <div class="form-group">
-                    <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="tarot-nombre" placeholder="Tu nombre completo">
+                <div class="menu-card" onclick="abrirAstrologiaConfig()">
+                    <div class="card-titulo">&#x1F30C; <span data-t="menuAstro">Astrología</span></div>
+                    <div class="card-desc" data-t="menuAstroDesc">Tu carta natal, tránsitos planetarios y revolución solar.</div>
                 </div>
-
-                <div class="form-group">
-                    <label data-t="questionLabel">Tu pregunta</label>
-                    <input type="text" id="tarot-pregunta" placeholder="¿Qué deseas saber?">
+                <div class="menu-card" onclick="abrirNumerologiaConfig()">
+                    <div class="card-titulo">&#x1F522; <span data-t="menuNum">Numerología</span></div>
+                    <div class="card-desc" data-t="menuNumDesc">Vibración oculta de tu nombre y fecha de nacimiento.</div>
                 </div>
+                <div class="menu-card" onclick="abrirOraculoConfig()">
+                    <div class="card-titulo">&#x1F9E0; <span data-t="menuOraculo">Oráculo</span></div>
+                    <div class="card-desc" data-t="menuOraculoDesc">Consulta unificada: numerología, astrología y tarot juntos.</div>
+                </div>
+            </div>
 
-                <div class="form-group">
-                    <label data-t="selectCards">Número de cartas</label>
-                    <select id="tarot-cartas">
-                        <option value="1">1 - Guidance</option>
-                        <option value="3" selected>3 - Past, Present, Future</option>
-                        <option value="5">5 - Celtic Cross</option>
-                        <option value="7">7 - Week Ahead</option>
+            <!-- ADSENSE: Bottom of main menu -->
+            <div class="ads-box" id="txt-ads">
+                <!-- Google AdSense ad unit - replace with your actual ad code -->
+                <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-XXXXXXXXXXXXXXXX" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins> -->
+                <!-- <script>(adsbygoogle = window.adsbygoogle || []).push({});</script> -->
+                ESPACIO RESERVADO PARA GOOGLE ADSENSE
+            </div>
+        </div>
+
+        <!-- TAROT CONFIG -->
+        <div id="pantalla-tarot-config" class="vista-seccion">
+            <div class="instruccion-directa" data-t="tarotTitulo">&#x1F52E; Tarot</div>
+            <div class="config-ritual-area">
+                <div class="selector-caja">
+                    <label data-t="lblTema">Propósito de la consulta:</label>
+                    <select id="tarot-tema" onchange="ajustarTipoTirada(this.value)">
+                        <option value="general" data-t="temaGeneral">Energía General</option>
+                        <option value="amor" data-t="temaAmor">Amor & Vínculos</option>
+                        <option value="dinero" data-t="temaDinero">Abundancia & Destino</option>
+                        <option value="trabajo" data-t="temaTrabajo">Laboral & Caminos</option>
+                        <option value="espiritualidad" data-t="temaEspiritual">Evolución del Alma</option>
+                        <option value="sino" data-t="temaSino">Pregunta Sagrada (SÍ / NO)</option>
                     </select>
                 </div>
-
-                <button onclick="leerTarot()" data-t="readButton">Leer Tarot</button>
-
-                <div id="resultado-tarot"></div>
-
-                <div class="ads-box">
-                    <span data-t="adsSpace">ESPACIO RESERVADO PARA GOOGLE ADSENSE</span>
+                <div class="selector-caja" id="caja-tipo-tirada">
+                    <label data-t="lblTirada">Despliegue energético:</label>
+                    <select id="tarot-tipo">
+                        <option value="1" data-t="tirada1">Una Carta (Consejo Directo)</option>
+                        <option value="3" selected data-t="tirada3">Tres Cartas (Línea del Tiempo)</option>
+                    </select>
                 </div>
-
-                <button onclick="limpiarTarot()" data-t="newConsultation" style="margin-top: 20px;">Nueva Consulta</button>
+                <div class="selector-caja">
+                    <label data-t="lblMazo">Línea del mazo:</label>
+                    <select id="tarot-mazo">
+                        <option value="Rider-Waite">Tarot Rider-Waite</option>
+                        <option value="Marsellés">Tarot de Marsella</option>
+                        <option value="Egipcio">Tarot Egipcio</option>
+                        <option value="Celestial">Tarot Celestial</option>
+                    </select>
+                </div>
             </div>
+            <button class="btn-volver" onclick="comenzarRitualTarot()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnConsultar">IR A LA CONSULTA</button>
         </div>
 
-        <!-- SECCIÓN ASTROLOGÍA -->
-        <div id="seccion-astrologia" class="secciones">
-            <div class="seccion">
-                <h2 data-t="astroTitle">Carta Astral</h2>
-                <div class="disclaimer" data-t="astroDisclaimer">
-                    Los cálculos de signo lunar y ascendente son aproximaciones. Para resultados exactos, consulta un astrólogo profesional con tu ubicación exacta de nacimiento.
-                </div>
-                <div class="form-group">
-                    <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="astro-nombre" placeholder="Tu nombre completo">
-                </div>
-                <div class="form-group">
-                    <label data-t="birthDate">Fecha de nacimiento</label>
-                    <input type="date" id="astro-fecha">
-                </div>
-                <div class="form-group">
-                    <label data-t="birthTime">Hora de nacimiento (UTC)</label>
-                    <input type="time" id="astro-hora">
-                </div>
-                <button onclick="calcularCarta()" data-t="calculateButton">Calcular Carta Astral</button>
-                <div id="resultado-astrologia"></div>
-            </div>
+        <!-- TAROT TABLERO -->
+        <div id="pantalla-tarot-tablero" class="vista-seccion">
+            <div class="instruccion-directa" id="txt-instruccion-dinamica">Elige tus cartas</div>
+            <div class="contenedor-altar-abanicos" id="altar-abanicos-completo"></div>
         </div>
 
-        <!-- SECCIÓN NUMEROLOGÍA -->
-        <div id="seccion-numerologia" class="secciones">
-            <div class="seccion">
-                <h2 data-t="numeroTitle">Numerología</h2>
-                <div class="form-group">
-                    <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="numero-nombre" placeholder="Tu nombre completo">
-                </div>
-                <div class="form-group">
-                    <label data-t="birthDate">Fecha de nacimiento</label>
-                    <input type="date" id="numero-fecha">
-                </div>
-                <button onclick="calcularNumerologia()" data-t="calculateButton">Calcular Numerología</button>
-                <div id="resultado-numerologia"></div>
-            </div>
+        <!-- TAROT RESULTADO -->
+        <div id="pantalla-tarot-resultado" class="vista-seccion">
+            <div class="instruccion-directa" id="txt-titulo-resultado">El Dictamen del Destino</div>
+            <div class="resultado-cartas" id="caja-cartas-reveladas"></div>
+            <div class="caja-interpretacion" id="texto-interpretacion"></div>
+            <button class="btn-volver" onclick="abrirTarotConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
 
-        <!-- SECCIÓN ORÁCULO -->
-        <div id="seccion-oraculo" class="secciones">
-            <div class="seccion">
-                <h2 data-t="oracleTitle">Oráculo</h2>
-                <div class="form-group">
-                    <label data-t="nombreLabel">Nombres y apellidos</label>
-                    <input type="text" id="oraculo-nombre" placeholder="Tu nombre completo">
+        <!-- NUMEROLOGIA CONFIG -->
+        <div id="pantalla-numerologia-config" class="vista-seccion">
+            <div class="instruccion-directa">&#x1F522; <span data-t="numTitulo">Numerología Personal</span></div>
+            <div class="config-ritual-area">
+                <div class="selector-caja">
+                    <label data-t="lblNumNombre">Nombres y apellidos:</label>
+                    <input type="text" id="num-nombre" data-t-placeholder="phNombre" placeholder="Tus nombres y apellidos">
                 </div>
-                <div class="form-group">
-                    <label data-t="questionLabel">Tu pregunta o tema</label>
-                    <input type="text" id="oraculo-pregunta" placeholder="¿Qué consejo buscas?">
+                <div class="selector-caja">
+                    <label data-t="lblNumFecha">Fecha de nacimiento:</label>
+                    <input type="date" id="num-fecha">
                 </div>
-                <button onclick="consultarOraculo()" data-t="consultButton">Consultar Oráculo</button>
-                <div id="resultado-oraculo"></div>
+                <div class="selector-caja">
+                    <label data-t="lblNumConsulta">Tipo de consulta:</label>
+                    <select id="num-tipo">
+                        <option value="perfil" data-t="numPerfil">Perfil Numerológico Completo</option>
+                        <option value="energia" data-t="numEnergia">Energía del Día</option>
+                        <option value="compatibilidad" data-t="numCompat">Compatibilidad Numérica</option>
+                    </select>
+                </div>
+            
+                <div class="selector-caja" id="caja-persona2" style="display:none;">
+                    <label data-t="lblNumNombre2">Nombres y apellidos de la otra persona:</label>
+                    <input type="text" id="num-nombre2" data-t-placeholder="phNombre2" placeholder="Nombres y apellidos de la otra persona">
+                </div>
+                <div class="selector-caja" id="caja-fecha2" style="display:none;">
+                    <label data-t="lblNumFecha2">Fecha de nacimiento de la otra persona:</label>
+                    <input type="date" id="num-fecha2">
+                </div>
             </div>
+            <button class="btn-volver" onclick="calcularNumerologia()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnCalcular">CALCULAR</button>
         </div>
 
-        <footer>
-            <p>&copy; 2026 Arcana. <span data-t="footerText">Todas las lecturas son con propósito educativo y de entretenimiento.</span></p>
-        </footer>
+        <!-- NUMEROLOGIA RESULTADO -->
+        <div id="pantalla-numerologia-resultado" class="vista-seccion">
+            <div class="instruccion-directa" data-t="numResTitulo">Tu Perfil Numerológico</div>
+            <div class="num-grila" id="num-resultados"></div>
+            <div class="caja-interpretacion" id="num-interpretacion" style="margin-top:25px;"></div>
+            <button class="btn-volver" onclick="abrirNumerologiaConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
+        </div>
+
+        <!-- ASTROLOGIA CONFIG -->
+        <div id="pantalla-astrologia-config" class="vista-seccion">
+            <div class="instruccion-directa">&#x1F30C; <span data-t="astroTitulo">Tu Carta Natal</span></div>
+            <div class="config-ritual-area">
+                <div class="selector-caja">
+                    <label data-t="lblAstNombre">Nombre:</label>
+                    <input type="text" id="ast-nombre" data-t-placeholder="phNombreCorto" placeholder="Tu nombre">
+                </div>
+                <div class="selector-caja">
+                    <label data-t="lblAstFecha">Fecha de nacimiento:</label>
+                    <input type="date" id="ast-fecha">
+                </div>
+                <div class="selector-caja">
+                    <label data-t="lblAstHora">Hora de nacimiento:</label>
+                    <input type="time" id="ast-hora">
+                </div>
+                <div class="selector-caja">
+                    <label data-t="lblAstLugar">Lugar de nacimiento:</label>
+                    <select id="ast-lugar">
+                        <option value="40.4,-3.7">Madrid, España</option>
+                        <option value="-34.6,-58.4">Buenos Aires, Argentina</option>
+                        <option value="19.4,-99.1">Ciudad de México</option>
+                        <option value="4.7,-74.1">Bogotá, Colombia</option>
+                        <option value="-12,-77">Lima, Perú</option>
+                        <option value="-33.4,-70.7">Santiago, Chile</option>
+                        <option value="48.9,2.35">París, Francia</option>
+                        <option value="41.9,12.5">Roma, Italia</option>
+                        <option value="51.5,-0.13">Londres, Reino Unido</option>
+                        <option value="40.7,-74">Nueva York, USA</option>
+                        <option value="34.1,-118.2">Los Ángeles, USA</option>
+                        <option value="-23.5,-46.6">São Paulo, Brasil</option>
+                        <option value="-3.7,-38.5">Fortaleza, Brasil</option>
+                        <option value="35.7,139.7">Tokio, Japón</option>
+                    </select>
+                </div>
+            </div>
+            <button class="btn-volver" onclick="calcularCartaNatal()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnCalcularCarta">CALCULAR CARTA NATAL</button>
+        </div>
+
+        <!-- ASTROLOGIA RESULTADO -->
+        <div id="pantalla-astrologia-resultado" class="vista-seccion">
+            <div class="instruccion-directa">&#x1F30C; <span data-t="astroResTitulo">Tu Carta Astral</span></div>
+            <div class="num-grila" id="ast-resultados"></div>
+            <div class="caja-interpretacion" id="ast-interpretacion" style="margin-top:25px;"></div>
+            <button class="btn-volver" onclick="abrirAstrologiaConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
+        </div>
+
+        <!-- ORACULO CONFIG -->
+        <div id="pantalla-oraculo-config" class="vista-seccion">
+            <div class="instruccion-directa">&#x1F9E0; <span data-t="oraculoTitulo">Oráculo</span></div>
+            <div class="config-ritual-area">
+                <div class="selector-caja">
+                    <label data-t="lblOrcNombre">Nombres y apellidos:</label>
+                    <input type="text" id="orc-nombre" data-t-placeholder="phNombre" placeholder="Tus nombres y apellidos">
+                </div>
+                <div class="selector-caja">
+                    <label data-t="lblOrcFecha">Fecha de nacimiento:</label>
+                    <input type="date" id="orc-fecha">
+                </div>
+                <div class="selector-caja">
+                    <label data-t="lblOrcHora">Hora de nacimiento:</label>
+                    <input type="time" id="orc-hora">
+                </div>
+                <div class="selector-caja">
+                    <label data-t="lblOrcLugar">Lugar de nacimiento:</label>
+                    <select id="orc-lugar">
+                        <option value="40.4,-3.7">Madrid, España</option>
+                        <option value="-34.6,-58.4">Buenos Aires, Argentina</option>
+                        <option value="19.4,-99.1">Ciudad de México</option>
+                        <option value="4.7,-74.1">Bogotá, Colombia</option>
+                        <option value="-12,-77">Lima, Perú</option>
+                        <option value="-33.4,-70.7">Santiago, Chile</option>
+                        <option value="48.9,2.35">París, Francia</option>
+                        <option value="41.9,12.5">Roma, Italia</option>
+                        <option value="51.5,-0.13">Londres, Reino Unido</option>
+                        <option value="40.7,-74">Nueva York, USA</option>
+                        <option value="34.1,-118.2">Los Ángeles, USA</option>
+                        <option value="-23.5,-46.6">São Paulo, Brasil</option>
+                        <option value="-3.7,-38.5">Fortaleza, Brasil</option>
+                        <option value="35.7,139.7">Tokio, Japón</option>
+                    </select>
+                </div>
+                
+            </div>
+            <button class="btn-volver" onclick="realizarConsultaOraculo()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnConsultarOraculo">CONSULTAR AL ORÁCULO</button>
+        </div>
+
+        <!-- ORACULO TABLERO (card selection) -->
+        <div id="pantalla-oraculo-tablero" class="vista-seccion">
+            <div class="instruccion-directa" id="txt-oraculo-instruccion">Elige tu carta del Oráculo</div>
+            <div class="contenedor-altar-abanicos" id="altar-oraculo-abanicos"></div>
+        </div>
+
+        <!-- ORACULO RESULTADO -->
+        <div id="pantalla-oraculo-resultado" class="vista-seccion">
+            <div class="instruccion-directa" data-t="oraculoResTitulo">&#x1F52E; El Oráculo Ha Hablado</div>
+            <div class="resultado-cartas" id="orc-cartas"></div>
+            <div class="caja-interpretacion" id="orc-interpretacion"></div>
+            <button class="btn-volver" onclick="abrirOraculoConfig()" style="padding:15px; font-size:1.3rem; margin-top:25px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
+        </div>
+
     </div>
 
-    <script>
-        let idiomaActual = 'es';
-        let musicaIniciada = false;
+    <!-- MUSIC TOGGLE BUTTON -->
+    <button class="btn-musica silenciado" id="btn-musica-toggle" onclick="toggleMusica()">&#x1F507;</button>
 
-        const traducciones = {
+    <script>
+        // ========================
+        // VARIABLES GLOBALES
+        // ========================
+        let idiomaActual = 'es';
+        let cartasRequeridas = 3;
+        let cartasSeleccionadasIndices = [];
+        let mazoMezcladoConPosicion = [];
+        let ritualEnProceso = false;
+        let oraculoCartaSeleccionada = null;
+
+        const audioAmbiente = document.getElementById('audio-ambiente');
+        const audioCuenco = document.getElementById('audio-cuenco');
+        let musicaEncendida = false;
+
+        // ========================
+        // AUDIO
+        // ========================
+        function asegurarMusicaDeFondo() {
+            if (!musicaEncendida && audioAmbiente) {
+                audioAmbiente.volume = 0.15;
+                audioAmbiente.play()
+                    .then(() => {
+                        musicaEncendida = true;
+                        actualizarBtnMusica();
+                    })
+                    .catch(() => {});
+            }
+        }
+
+        function toggleMusica() {
+            if (musicaEncendida) {
+                audioAmbiente.pause();
+                musicaEncendida = false;
+            } else {
+                audioAmbiente.volume = 0.15;
+                audioAmbiente.play()
+                    .then(() => { musicaEncendida = true; })
+                    .catch(() => {});
+            }
+            actualizarBtnMusica();
+        }
+
+        function actualizarBtnMusica() {
+            const btn = document.getElementById('btn-musica-toggle');
+            btn.innerHTML = musicaEncendida ? '&#x1F50A;' : '&#x1F507;';
+            btn.classList.toggle('silenciado', !musicaEncendida);
+        }
+
+        function sonarCuenco() {
+            asegurarMusicaDeFondo();
+            if (audioCuenco) {
+                audioCuenco.currentTime = 0;
+                audioCuenco.volume = 0.35;
+                audioCuenco.play().catch(() => {});
+            }
+        }
+
+        // ========================
+        // TRADUCCIONES COMPLETAS
+        // ========================
+        const T = {
             es: {
-                titulo: 'ARCANA', tagline: 'El Universo Responde', btnTarot: 'Tarot', btnAstrologia: 'Astrología', btnNumerologia: 'Numerología', btnOraculo: 'Oráculo', tarotTitle: 'Lectura de Tarot', astroTitle: 'Carta Astral', numeroTitle: 'Numerología', oracleTitle: 'Oráculo', nombreLabel: 'Nombres y apellidos', questionLabel: 'Tu pregunta', selectCards: 'Número de cartas', birthDate: 'Fecha de nacimiento', birthTime: 'Hora de nacimiento (UTC)', readButton: 'Leer Tarot', calculateButton: 'Calcular', consultButton: 'Consultar Oráculo', newConsultation: 'Nueva Consulta', adsSpace: 'ESPACIO RESERVADO PARA GOOGLE ADSENSE', astroDisclaimer: 'Los cálculos de signo lunar y ascendente son aproximaciones. Para resultados exactos, consulta un astrólogo profesional con tu ubicación exacta de nacimiento.', footerText: 'Todas las lecturas son con propósito educativo y de entretenimiento.'
+                lema: "El universo responde",
+                ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE",
+                volver: "\u2190 Volver",
+                menuTarot: "Tarot", menuTarotDesc: "Las 78 cartas desplegadas. Revela tu pasado, presente y futuro.",
+                menuAstro: "Astrología", menuAstroDesc: "Tu carta natal, tránsitos planetarios y revolución solar.",
+                menuNum: "Numerología", menuNumDesc: "Vibración oculta de tu nombre y fecha de nacimiento.",
+                menuOraculo: "Oráculo", menuOraculoDesc: "Consulta unificada: numerología, astrología y tarot juntos.",
+                tarotTitulo: "\u2728 Tarot",
+                lblTema: "Propósito de la consulta:", temaGeneral: "Energía General", temaAmor: "Amor & Vínculos",
+                temaDinero: "Abundancia & Destino", temaTrabajo: "Laboral & Caminos", temaEspiritual: "Evolución del Alma",
+                temaSino: "Pregunta Sagrada (SÍ / NO)",
+                lblTirada: "Despliegue energético:", tirada1: "Una Carta (Consejo Directo)", tirada3: "Tres Cartas (Línea del Tiempo)",
+                lblMazo: "Línea del mazo:",
+                btnConsultar: "IR A LA CONSULTA", btnNuevaConsulta: "NUEVA CONSULTA", btnCalcular: "CALCULAR",
+                btnCalcularCarta: "CALCULAR CARTA NATAL", btnConsultarOraculo: "CONSULTAR AL ORÁCULO",
+                elegir: "Elige tus cartas", elegirUna: "Elige tu carta", dictamen: "El Dictamen del Destino",
+                invertida: " (Invertida)", interpretacion: "Interpretación",
+                sintesisTirada: "Lectura Conjunta",
+                sintesis3Cartas: "La secuencia de estas tres cartas traza un mensaje coherente: tu pasado ha preparado el terreno, tu presente te sitúa ante una encrucijada y tu futuro te invita a avanzar con confianza. Juntas, confirman que estás en un momento de transición significativa.",
+                sintesis1Carta: "Esta carta encapsula el mensaje esencial que necesitas escuchar ahora mismo. Medita sobre ella y permite que su sabiduría guíe tu próximo paso.",
+                si: "\u2726 DICTAMEN: SÍ \u2726", no: "\u2726 DICTAMEN: NO \u2726",
+                numTitulo: "Numerología Personal", lblNumNombre: "Nombres y apellidos:", lblNumFecha: "Fecha de nacimiento:",
+                lblNumConsulta: "Tipo de consulta:", numPerfil: "Perfil Numerológico Completo",
+                numEnergia: "Energía del Día", numCompat: "Compatibilidad Numérica",
+                phNombre: "Tus nombres y apellidos",
+                btnCalcular: "CALCULAR", numResTitulo: "Tu Perfil Numerológico",
+                caminoVida: "Camino de Vida", destino: "Número de Destino", alma: "Número del Alma", personalidad: "Personalidad",
+                energiaDia: "Energía del Día", numeroPersonalAno: "Número Personal del Año",
+                interpPersonal: "Interpretación Personal",
+                tuCaminoVida: "Tu Camino de Vida", tuDestino: "Tu Destino", tuAlmaAnhela: "Tu Alma anhela", tuPersonalidad: "Tu Personalidad proyecta",
+                tuEnergiaDia: "Vibración del día de hoy",
+                astroTitulo: "Tu Carta Natal", lblAstNombre: "Nombre:", lblAstFecha: "Fecha de nacimiento:",
+                lblAstHora: "Hora de nacimiento:", lblAstLugar: "Lugar de nacimiento:", phNombreCorto: "Tu nombre",
+                signoSolar: "Signo Solar", signoLunar: "Signo Lunar", ascendente: "Ascendente",
+                astroResTitulo: "Tu Carta Astral", perfilAstrologico: "Tu Perfil Astrológico",
+                solEn: "Sol en", lunaEn: "Luna en", ascendenteTxt: "Ascendente", mercurioEn: "Mercurio en",
+                venusEn: "Venus en", marteEn: "Marte en",
+                jupiterEn: "Júpiter en", saturnoEn: "Saturno en", uranoEn: "Urano en", neptunoEn: "Neptuno en", plutonEn: "Plutón en",
+                solDesc: "Tu identidad central, cómo brillas en el mundo.",
+                lunaDesc: "Tus emociones profundas y mundo interior.",
+                ascDesc: "Tu máscara exterior y primera impresión.",
+                oraculoTitulo: "Oráculo",
+                lblOrcNombre: "Nombres y apellidos:", lblOrcFecha: "Fecha de nacimiento:", lblOrcLugar: "Lugar de nacimiento:", phLugar: "Tu lugar de nacimiento",
+                lblOrcHora: "Hora de nacimiento:",
+                oraculoResTitulo: "\u2728 El Oráculo Ha Hablado \u2728",
+                elegirOraculo: "Elige tu carta del Oráculo",
+                cartasRevelan: "Las Cartas Revelan",
+                vibracionNumerica: "Vibración Numérica",
+                influenciasCelestiales: "Influencias Celestiales",
+                sintesisOraculo: "Síntesis del Oráculo",
+                pasado: "Pasado", presente: "Presente", futuro: "Futuro",
+                sintesisTexto: "Las cartas del tarot, tus números y las estrellas se alinean para mostrarte un camino. Medita sobre estos mensajes y permíteles guiar tu intuición. El universo siempre responde a quien pregunta con el corazón abierto.",
+                mensajeOraculo: "Mensaje del Oráculo para ti",
+                completaCampos: "Por favor completa todos los campos requeridos",
+                fuego: "Pasión, energía y creatividad.", tierra: "Práctica, estabilidad y constancia.",
+                aire: "Intelecto, comunicación y libertad.", agua: "Intuición, emoción y sensibilidad.",
+                mercurioDesc: "Tu comunicación y pensamiento.", venusDesc: "Tu amor y valores.", marteDesc: "Tu energía y acción.",
+                jupiterDesc: "Tu expansión y suerte.", saturnoDesc: "Tu karma y disciplina.",
+                uranoDesc: "Tu originalidad y cambios.", neptunoDesc: "Tu espiritualidad y sueños.",
+                plutonDesc: "Tu transformación profunda."
             },
             en: {
-                titulo: 'ARCANA', tagline: 'The Universe Answers', btnTarot: 'Tarot', btnAstrologia: 'Astrology', btnNumerologia: 'Numerology', btnOraculo: 'Oracle', tarotTitle: 'Tarot Reading', astroTitle: 'Birth Chart', numeroTitle: 'Numerology', oracleTitle: 'Oracle', nombreLabel: 'First and last names', questionLabel: 'Your question', selectCards: 'Number of cards', birthDate: 'Birth date', birthTime: 'Birth time (UTC)', readButton: 'Read Tarot', calculateButton: 'Calculate', consultButton: 'Consult Oracle', newConsultation: 'New Consultation', adsSpace: 'SPACE RESERVED FOR GOOGLE ADSENSE', astroDisclaimer: 'Moon sign and ascendant calculations are approximations. For exact results, consult a professional astrologer with your exact birth location.', footerText: 'All readings are for educational and entertainment purposes.'
+                lema: "The universe answers",
+                ads: "RESERVED SPACE FOR GOOGLE ADSENSE",
+                volver: "\u2190 Back",
+                menuTarot: "Tarot", menuTarotDesc: "The 78 cards laid out. Reveal your past, present and future.",
+                menuAstro: "Astrology", menuAstroDesc: "Your birth chart, planetary transits and solar revolution.",
+                menuNum: "Numerology", menuNumDesc: "Hidden vibration of your name and date of birth.",
+                menuOraculo: "Oracle", menuOraculoDesc: "Unified reading: numerology, astrology and tarot combined.",
+                tarotTitulo: "\u2728 Tarot",
+                lblTema: "Purpose of the reading:", temaGeneral: "General Energy", temaAmor: "Love & Bonds",
+                temaDinero: "Abundance & Destiny", temaTrabajo: "Career & Paths", temaEspiritual: "Soul Evolution",
+                temaSino: "Sacred Question (YES / NO)",
+                lblTirada: "Energy spread:", tirada1: "One Card (Direct Advice)", tirada3: "Three Cards (Timeline)",
+                lblMazo: "Deck line:",
+                btnConsultar: "GO TO READING", btnNuevaConsulta: "NEW READING", btnCalcular: "CALCULATE",
+                btnCalcularCarta: "CALCULATE BIRTH CHART", btnConsultarOraculo: "CONSULT THE ORACLE",
+                elegir: "Choose your cards", elegirUna: "Choose your card", dictamen: "The Verdict of Destiny",
+                invertida: " (Reversed)", interpretacion: "Interpretation",
+                sintesisTirada: "Combined Reading",
+                sintesis3Cartas: "The sequence of these three cards traces a coherent message: your past has laid the groundwork, your present places you at a crossroads, and your future invites you to move forward with confidence. Together, they confirm you are in a moment of significant transition.",
+                sintesis1Carta: "This card encapsulates the essential message you need to hear right now. Meditate on it and let its wisdom guide your next step.",
+                si: "\u2726 VERDICT: YES \u2726", no: "\u2726 VERDICT: NO \u2726",
+                numTitulo: "Personal Numerology", lblNumNombre: "First and last names:", lblNumFecha: "Date of birth:",
+                lblNumConsulta: "Type of reading:", numPerfil: "Complete Numerological Profile",
+                numEnergia: "Energy of the Day", numCompat: "Numeric Compatibility",
+                phNombre: "Your first and last names",
+                numResTitulo: "Your Numerological Profile",
+                caminoVida: "Life Path", destino: "Destiny Number", alma: "Soul Number", personalidad: "Personality",
+                energiaDia: "Energy of the Day", numeroPersonalAno: "Personal Year Number",
+                interpPersonal: "Personal Interpretation",
+                tuCaminoVida: "Your Life Path", tuDestino: "Your Destiny", tuAlmaAnhela: "Your Soul craves", tuPersonalidad: "Your Personality projects",
+                tuEnergiaDia: "Today's vibration",
+                astroTitulo: "Your Birth Chart", lblAstNombre: "Name:", lblAstFecha: "Date of birth:",
+                lblAstHora: "Time of birth:", lblAstLugar: "Place of birth:", phNombreCorto: "Your name",
+                signoSolar: "Sun Sign", signoLunar: "Moon Sign", ascendente: "Rising Sign",
+                astroResTitulo: "Your Birth Chart", perfilAstrologico: "Your Astrological Profile",
+                solEn: "Sun in", lunaEn: "Moon in", ascendenteTxt: "Rising", mercurioEn: "Mercury in",
+                venusEn: "Venus in", marteEn: "Mars in",
+                jupiterEn: "Jupiter in", saturnoEn: "Saturn in", uranoEn: "Uranus in", neptunoEn: "Neptune in", plutonEn: "Pluto in",
+                solDesc: "Your core identity, how you shine in the world.",
+                lunaDesc: "Your deep emotions and inner world.",
+                ascDesc: "Your outer mask and first impression.",
+                oraculoTitulo: "Oracle",
+                lblOrcNombre: "First and last names:", lblOrcFecha: "Date of birth:", lblOrcLugar: "Place of birth:", phLugar: "Your place of birth",
+                lblOrcHora: "Time of birth:",
+                oraculoResTitulo: "\u2728 The Oracle Has Spoken \u2728",
+                elegirOraculo: "Choose your Oracle card",
+                cartasRevelan: "The Cards Reveal",
+                vibracionNumerica: "Numeric Vibration",
+                influenciasCelestiales: "Celestial Influences",
+                sintesisOraculo: "Oracle Synthesis",
+                pasado: "Past", presente: "Present", futuro: "Future",
+                sintesisTexto: "The tarot cards, your numbers, and the stars align to show you a path. Meditate on these messages and let them guide your intuition. The universe always answers those who ask with an open heart.",
+                mensajeOraculo: "The Oracle's message for you",
+                completaCampos: "Please complete all required fields",
+                fuego: "Passion, energy and creativity.", tierra: "Practicality, stability and constancy.",
+                aire: "Intellect, communication and freedom.", agua: "Intuition, emotion and sensitivity.",
+                mercurioDesc: "Your communication and thinking.", venusDesc: "Your love and values.", marteDesc: "Your energy and action.",
+                jupiterDesc: "Your expansion and luck.", saturnoDesc: "Your karma and discipline.",
+                uranoDesc: "Your originality and changes.", neptunoDesc: "Your spirituality and dreams.",
+                plutonDesc: "Your deep transformation."
+            },
+            pt: {
+                lema: "O universo responde",
+                ads: "ESPAÇO RESERVADO PARA GOOGLE ADSENSE",
+                volver: "\u2190 Voltar",
+                menuTarot: "Tarot", menuTarotDesc: "As 78 cartas desdobradas. Revele seu passado, presente e futuro.",
+                menuAstro: "Astrologia", menuAstroDesc: "Seu mapa natal, trânsitos planetários e revolução solar.",
+                menuNum: "Numerologia", menuNumDesc: "Vibração oculta do seu nome e data de nascimento.",
+                menuOraculo: "Oráculo", menuOraculoDesc: "Consulta unificada: numerologia, astrologia e tarot juntos.",
+                tarotTitulo: "\u2728 Tarot",
+                lblTema: "Propósito da consulta:", temaGeneral: "Energia Geral", temaAmor: "Amor & Vínculos",
+                temaDinero: "Abundância & Destino", temaTrabajo: "Carreira & Caminhos", temaEspiritual: "Evolução da Alma",
+                temaSino: "Pergunta Sagrada (SIM / NÃO)",
+                lblTirada: "Desdobramento energético:", tirada1: "Uma Carta (Conselho Direto)", tirada3: "Três Cartas (Linha do Tempo)",
+                lblMazo: "Linha do baralho:",
+                btnConsultar: "IR À CONSULTA", btnNuevaConsulta: "NOVA CONSULTA", btnCalcular: "CALCULAR",
+                btnCalcularCarta: "CALCULAR MAPA NATAL", btnConsultarOraculo: "CONSULTAR O ORÁCULO",
+                elegir: "Escolha suas cartas", elegirUna: "Escolha sua carta", dictamen: "O Decreto do Destino",
+                invertida: " (Invertida)", interpretacao: "Interpretação",
+                sintesisTirada: "Leitura Conjunta",
+                sintesis3Cartas: "A sequência destas três cartas traça uma mensagem coerente: seu passado preparou o terreno, seu presente o coloca numa encruzilhada, e seu futuro o convida a avançar com confiança. Juntas, confirmam que você está num momento de transição significativa.",
+                sintesis1Carta: "Esta carta encapsula a mensagem essencial que você precisa ouvir agora. Medite sobre ela e permita que sua sabedoria guie seu próximo passo.",
+                si: "\u2726 VEREDITO: SIM \u2726", no: "\u2726 VEREDITO: NÃO \u2726",
+                numTitulo: "Numerologia Pessoal", lblNumNombre: "Nomes e sobrenomes:", lblNumFecha: "Data de nascimento:",
+                lblNumConsulta: "Tipo de consulta:", numPerfil: "Perfil Numerológico Completo",
+                numEnergia: "Energia do Dia", numCompat: "Compatibilidade Numérica",
+                phNombre: "Seus nomes e sobrenomes",
+                numResTitulo: "Seu Perfil Numerológico",
+                caminoVida: "Caminho de Vida", destino: "Número de Destino", alma: "Número da Alma", personalidade: "Personalidade",
+                energiaDia: "Energia do Dia", numeroPersonalAno: "Número Pessoal do Ano",
+                interpPersonal: "Interpretação Pessoal",
+                tuCaminoVida: "Seu Caminho de Vida", tuDestino: "Seu Destino", tuAlmaAnhela: "Sua Alma anseia", tuPersonalidad: "Sua Personalidade projeta",
+                tuEnergiaDia: "Vibração do dia de hoje",
+                astroTitulo: "Seu Mapa Natal", lblAstNombre: "Nome:", lblAstFecha: "Data de nascimento:",
+                lblAstHora: "Hora de nascimento:", lblAstLugar: "Local de nascimento:", phNombreCorto: "Seu nome",
+                signoSolar: "Signo Solar", signoLunar: "Signo Lunar", ascendente: "Ascendente",
+                astroResTitulo: "Seu Mapa Astral", perfilAstrologico: "Seu Perfil Astrológico",
+                solEn: "Sol em", lunaEn: "Lua em", ascendenteTxt: "Ascendente", mercurioEn: "Mercúrio em",
+                venusEn: "Vênus em", marteEn: "Marte em",
+                jupiterEn: "Júpiter em", saturnoEn: "Saturno em", uranoEn: "Urano em", neptunoEn: "Netuno em", plutonEn: "Plutão em",
+                solDesc: "Sua identidade central, como você brilha no mundo.",
+                lunaDesc: "Suas emoções profundas e mundo interior.",
+                ascDesc: "Sua máscara externa e primeira impressão.",
+                oraculoTitulo: "Oráculo",
+                lblOrcNombre: "Nomes e sobrenomes:", lblOrcFecha: "Data de nascimento:", lblOrcLugar: "Local de nascimento:", phLugar: "Seu local de nascimento",
+                lblOrcHora: "Hora de nascimento:",
+                oraculoResTitulo: "\u2728 O Oráculo Falou \u2728",
+                elegirOraculo: "Escolha sua carta do Oráculo",
+                cartasRevelan: "As Cartas Revelam",
+                vibracionNumerica: "Vibração Numérica",
+                influenciasCelestiales: "Influências Celestiais",
+                sintesisOraculo: "Síntese do Oráculo",
+                pasado: "Passado", presente: "Presente", futuro: "Futuro",
+                sintesisTexto: "As cartas do tarô, seus números e as estrelas se alinham para mostrar um caminho. Medite sobre estas mensagens e deixe-as guiar sua intuição. O universo sempre responde a quem pergunta com o coração aberto.",
+                mensagemOraculo: "Mensagem do Oráculo para você",
+                completaCampos: "Por favor complete todos os campos necessários",
+                fuego: "Paixão, energia e criatividade.", tierra: "Praticidade, estabilidade e constância.",
+                aire: "Intelecto, comunicação e liberdade.", agua: "Intuição, emoção e sensibilidade.",
+                mercurioDesc: "Sua comunicação e pensamento.", venusDesc: "Seu amor e valores.", marteDesc: "Sua energia e ação.",
+                jupiterDesc: "Sua expansão e sorte.", saturnoDesc: "Seu karma e disciplina.",
+                uranoDesc: "Sua originalidade e mudanças.", neptunoDesc: "Sua espiritualidade e sonhos.",
+                plutonDesc: "Sua transformação profunda."
+            },
+            fr: {
+                lema: "L'univers répond",
+                ads: "ESPACE RÉSERVÉ POUR GOOGLE ADSENSE",
+                volver: "\u2190 Retour",
+                menuTarot: "Tarot", menuTarotDesc: "Les 78 cartes déployées. Révèle ton passé, présent et futur.",
+                menuAstro: "Astrologie", menuAstroDesc: "Ton thème natal, transits planétaires et révolution solaire.",
+                menuNum: "Numérologie", menuNumDesc: "Vibration cachée de ton nom et date de naissance.",
+                menuOraculo: "Oracle", menuOraculoDesc: "Consultation unifiée : numérologie, astrologie et tarot réunis.",
+                tarotTitulo: "\u2728 Tarot",
+                lblTema: "But de la consultation:", temaGeneral: "Énergie Générale", temaAmor: "Amour & Liens",
+                temaDinero: "Abondance & Destin", temaTrabajo: "Carrière & Chemins", temaEspiritual: "Évolution de l'Âme",
+                temaSino: "Question Sacrée (OUI / NON)",
+                lblTirada: "Déploiement énergétique:", tirada1: "Une Carte (Conseil Direct)", tirada3: "Trois Cartes (Ligne du Temps)",
+                lblMazo: "Ligne du jeu:",
+                btnConsultar: "ALLER À LA CONSULTATION", btnNuevaConsulta: "NOUVELLE LECTURE", btnCalcular: "CALCULER",
+                btnCalcularCarta: "CALCULER THÈME NATAL", btnConsultarOraculo: "CONSULTER L'ORACLE",
+                elegir: "Choisissez vos cartes", elegirUna: "Choisissez votre carte", dictamen: "Le Décret du Destin",
+                invertida: " (Renversée)", interpretacao: "Interprétation",
+                sintesisTirada: "Lecture Combinée",
+                sintesis3Cartas: "La séquence de ces trois cartes trace un message cohérent : ton passé a préparé le terrain, ton présent te place à un carrefour, et ton futur t'invite à avancer avec confiance. Ensemble, elles confirment que tu es dans un moment de transition significative.",
+                sintesis1Carta: "Cette carte encapsule le message essentiel que tu dois entendre maintenant. Médite sur elle et laisse sa sagesse guider ton prochain pas.",
+                si: "\u2726 VERDICT: OUI \u2726", no: "\u2726 VERDICT: NON \u2726",
+                numTitulo: "Numérologie Personnelle", lblNumNombre: "Prénoms et noms:", lblNumFecha: "Date de naissance:",
+                lblNumConsulta: "Type de consultation:", numPerfil: "Profil Numérologique Complet",
+                numEnergia: "Énergie du Jour", numCompat: "Compatibilité Numérique",
+                phNombre: "Tes prénoms et noms",
+                numResTitulo: "Ton Profil Numérologique",
+                caminoVida: "Chemin de Vie", destino: "Nombre de Destin", alma: "Nombre d'Âme", personalidad: "Personnalité",
+                energiaDia: "Énergie du Jour", numeroPersonalAno: "Nombre Personnel de l'Année",
+                interpPersonal: "Interprétation Personnelle",
+                tuCaminoVida: "Ton Chemin de Vie", tuDestino: "Ton Destin", tuAlmaAnhela: "Ton Âme désire", tuPersonalidad: "Ta Personnalité projette",
+                tuEnergiaDia: "Vibration du jour",
+                astroTitulo: "Ton Thème Natal", lblAstNombre: "Nom:", lblAstFecha: "Date de naissance:",
+                lblAstHora: "Heure de naissance:", lblAstLugar: "Lieu de naissance:", phNombreCorto: "Ton nom",
+                signoSolar: "Signe Solaire", signoLunar: "Signe Lunaire", ascendente: "Ascendant",
+                astroResTitulo: "Ton Thème Astral", perfilAstrologico: "Ton Profil Astrologique",
+                solEn: "Soleil en", lunaEn: "Lune en", ascendenteTxt: "Ascendant", mercurioEn: "Mercure en",
+                venusEn: "Vénus en", marteEn: "Mars en",
+                jupiterEn: "Jupiter en", saturnoEn: "Saturne en", uranoEn: "Uranus en", neptunoEn: "Neptune en", plutonEn: "Pluton en",
+                solDesc: "Ton identité centrale, comment tu brilles dans le monde.",
+                lunaDesc: "Tes émotions profondes et monde intérieur.",
+                ascDesc: "Ton masque extérieur et première impression.",
+                oraculoTitulo: "Oracle",
+                lblOrcNombre: "Prénoms et noms:", lblOrcFecha: "Date de naissance:", lblOrcLugar: "Lieu de naissance:", phLugar: "Ton lieu de naissance",
+                lblOrcHora: "Heure de naissance:",
+                oraculoResTitulo: "\u2728 L'Oracle A Parlé \u2728",
+                elegirOraculo: "Choisis ta carte de l'Oracle",
+                cartasRevelan: "Les Cartes Révèlent",
+                vibracionNumerica: "Vibration Numérique",
+                influenciasCelestiales: "Influences Célestes",
+                sintesisOraculo: "Synthèse de l'Oracle",
+                pasado: "Passé", presente: "Présent", futuro: "Futur",
+                sintesisTexto: "Les cartes du tarot, tes nombres et les étoiles s'alignent pour te montrer un chemin. Médite sur ces messages et laisse-les guider ton intuition. L'univers répond toujours à ceux qui demandent avec un cœur ouvert.",
+                messageOraculo: "Message de l'Oracle pour toi",
+                completaCampos: "Veuillez compléter tous les champs requis",
+                fuego: "Passion, énergie et créativité.", tierra: "Praticité, stabilité et constance.",
+                aire: "Intellect, communication et liberté.", agua: "Intuition, émotion et sensibilité.",
+                mercurioDesc: "Ta communication et pensée.", venusDesc: "Ton amour et valeurs.", marteDesc: "Ton énergie et action.",
+                jupiterDesc: "Ton expansion et chance.", saturnoDesc: "Ton karma et discipline.",
+                uranoDesc: "Ton originalité et changements.", neptunoDesc: "Ta spiritualité et rêves.",
+                plutonDesc: "Ta transformation profonde."
+            },
+            it: {
+                lema: "L'universo risponde",
+                ads: "SPAZIO PUBBLICITARIO GOOGLE ADSENSE",
+                volver: "\u2190 Indietro",
+                menuTarot: "Tarot", menuTarotDesc: "Le 78 carte dispiegate. Rivela il tuo passato, presente e futuro.",
+                menuAstro: "Astrologia", menuAstroDesc: "Il tuo tema natale, transiti planetari e rivoluzione solare.",
+                menuNum: "Numerologia", menuNumDesc: "Vibrazione nascosta del tuo nome e data di nascita.",
+                menuOraculo: "Oracolo", menuOraculoDesc: "Consultazione unificata: numerologia, astrologia e tarot insieme.",
+                tarotTitulo: "\u2728 Tarot",
+                lblTema: "Scopo della consultazione:", temaGeneral: "Energia Generale", temaAmor: "Amore & Legami",
+                temaDinero: "Abbondanza & Destino", temaTrabajo: "Carriera & Percorsi", temaEspiritual: "Evoluzione dell'Anima",
+                temaSino: "Domanda Sacra (SÌ / NO)",
+                lblTirada: "Dispiegamento energetico:", tirada1: "Una Carta (Consiglio Diretto)", tirada3: "Tre Carte (Linea del Tempo)",
+                lblMazo: "Linea del mazzo:",
+                btnConsultar: "VAI ALLA CONSULTAZIONE", btnNuevaConsulta: "NUOVA CONSULTA", btnCalcular: "CALCOLA",
+                btnCalcularCarta: "CALCOLA TEMA NATALE", btnConsultarOraculo: "CONSULTA L'ORACOLO",
+                elegir: "Scegli le tue carte", elegirUna: "Scegli la tua carta", dictamen: "Il Verdetto del Destino",
+                invertida: " (Rovesciata)", interpretacao: "Interpretazione",
+                sintesisTirada: "Lettura Combinata",
+                sintesis3Cartas: "La sequenza di queste tre carte traccia un messaggio coerente: il tuo passato ha preparato il terreno, il tuo presente ti pone a un bivio, e il tuo futuro ti invita ad avanzare con fiducia. Insieme, confermano che sei in un momento di transizione significativa.",
+                sintesis1Carta: "Questa carta racchiude il messaggio essenziale che devi sentire ora. Medita su di essa e lascia che la sua saggezza guidi il tuo prossimo passo.",
+                si: "\u2726 VERDETTO: SÌ \u2726", no: "\u2726 VERDETTO: NO \u2726",
+                numTitulo: "Numerologia Personale", lblNumNombre: "Nomi e cognomi:", lblNumFecha: "Data di nascita:",
+                lblNumConsulta: "Tipo di consultazione:", numPerfil: "Profilo Numerologico Completo",
+                numEnergia: "Energia del Giorno", numCompat: "Compatibilità Numerica",
+                phNombre: "I tuoi nomi e cognomi",
+                numResTitulo: "Il Tuo Profilo Numerologico",
+                caminoVida: "Cammino di Vita", destino: "Numero del Destino", alma: "Numero dell'Anima", personalidad: "Personalità",
+                energiaDia: "Energia del Giorno", numeroPersonalAno: "Numero Personale dell'Anno",
+                interpPersonal: "Interpretazione Personale",
+                tuCaminoVida: "Il Tuo Cammino di Vita", tuDestino: "Il Tuo Destino", tuAlmaAnhela: "La Tua Anima brama", tuPersonalidad: "La Tua Personalità proietta",
+                tuEnergiaDia: "Vibrazione del giorno",
+                astroTitulo: "Il Tuo Tema Natale", lblAstNombre: "Nome:", lblAstFecha: "Data di nascita:",
+                lblAstHora: "Ora di nascita:", lblAstLugar: "Luogo di nascita:", phNombreCorto: "Il tuo nome e cognome",
+                signoSolar: "Segno Solare", signoLunar: "Segno Lunare", ascendente: "Ascendente",
+                astroResTitulo: "Il Tuo Tema Astrale", perfilAstrologico: "Il Tuo Profilo Astrologico",
+                solEn: "Sole in", lunaEn: "Luna in", ascendenteTxt: "Ascendente", mercurioEn: "Mercurio in",
+                venusEn: "Venere in", marteEn: "Marte in",
+                jupiterEn: "Giove in", saturnoEn: "Saturno in", uranoEn: "Urano in", neptunoEn: "Nettuno in", plutonEn: "Plutone in",
+                solDesc: "La tua identità centrale, come risplendi nel mondo.",
+                lunaDesc: "Le tue emozioni profonde e mondo interiore.",
+                ascDesc: "La tua maschera esterna e prima impressione.",
+                oraculoTitulo: "Oracolo",
+                lblOrcNombre: "Nomi e cognomi:", lblOrcFecha: "Data di nascita:", lblOrcLugar: "Luogo di nascita:", phLugar: "Il tuo luogo di nascita",
+                lblOrcHora: "Ora di nascita:",
+                oraculoResTitulo: "\u2728 L'Oracolo Ha Parlato \u2728",
+                elegirOraculo: "Scegli la tua carta dell'Oracolo",
+                cartasRevelan: "Le Carte Rivelano",
+                vibracionNumerica: "Vibrazione Numerica",
+                influenciasCelestiales: "Influenze Celesti",
+                sintesisOraculo: "Sintesi dell'Oracolo",
+                pasado: "Passato", presente: "Presente", futuro: "Futuro",
+                sintesisTexto: "Le carte dei tarocchi, i tuoi numeri e le stelle si allineano per mostrarti un cammino. Medita su questi messaggi e lasciali guidare la tua intuizione. L'universo risponde sempre a chi chiede con il cuore aperto.",
+                messaggioOracolo: "Messaggio dell'Oracolo per te",
+                completaCampos: "Per favore compila tutti i campi richiesti",
+                fuego: "Passione, energia e creatività.", tierra: "Praticità, stabilità e costanza.",
+                aire: "Intelletto, comunicazione e libertà.", agua: "Intuizione, emozione e sensibilità.",
+                mercurioDesc: "La tua comunicazione e pensiero.", venusDesc: "Il tuo amore e valori.", marteDesc: "La tua energia e azione.",
+                jupiterDesc: "La tua espansione e fortuna.", saturnoDesc: "Il tuo karma e disciplina.",
+                uranoDesc: "La tua originalità e cambiamenti.", neptunoDesc: "La tua spiritualità e sogni.",
+                plutonDesc: "La tua profonda trasformazione."
             }
         };
 
-        // LISTA ORIGINAL DE TU ARCHIVO CON LOS 78 ARCANOS COMPLETOS
-        const cartasTarot = [
-            {numero: 0, es: 'El Loco', en: 'The Fool', significado: {es: 'Nuevo comienzo, ingenuidad, libertad', en: 'New beginnings, innocence, freedom'}},
-            {numero: 1, es: 'El Mago', en: 'The Magician', significado: {es: 'Voluntad, creatividad, poder', en: 'Willpower, creativity, power'}},
-            {numero: 2, es: 'La Sacerdotisa', en: 'The High Priestess', significado: {es: 'Intuición, misterio, sabiduría', en: 'Intuition, mystery, wisdom'}},
-            {numero: 3, es: 'La Emperatriz', en: 'The Empress', significado: {es: 'Abundancia, fertilidad, creación', en: 'Abundance, fertility, creation'}},
-            {numero: 4, es: 'El Emperador', en: 'The Emperor', significado: {es: 'Autoridad, poder, control', en: 'Authority, power, control'}},
-            {numero: 5, es: 'El Hierofante', en: 'The Hierophant', significado: {es: 'Tradición, enseñanza, fe', en: 'Tradition, teaching, faith'}},
-            {numero: 6, es: 'Los Amantes', en: 'The Lovers', significado: {es: 'Amor, conexión, elección', en: 'Love, connection, choice'}},
-            {numero: 7, es: 'El Carro', en: 'The Chariot', significado: {es: 'Determinación, control, victoria', en: 'Determination, control, victory'}},
-            {numero: 8, es: 'La Fuerza', en: 'Strength', significado: {es: 'Fuerza interior, coraje, compasión', en: 'Inner strength, courage, compassion'}},
-            {numero: 9, es: 'El Ermitaño', en: 'The Hermit', significado: {es: 'Introspección, búsqueda, sabiduría', en: 'Introspection, seeking, wisdom'}},
-            {numero: 10, es: 'La Rueda de la Fortuna', en: 'Wheel of Fortune', significado: {es: 'Destino, ciclos, suerte', en: 'Destiny, cycles, luck'}},
-            {numero: 11, es: 'La Justicia', en: 'Justice', significado: {es: 'Justicia, balance, verdad', en: 'Justice, balance, truth'}},
-            {numero: 12, es: 'El Ahorcado', en: 'The Hanged Man', significado: {es: 'Suspensión, perspectiva, sacrificio', en: 'Suspension, perspective, sacrifice'}},
-            {numero: 13, es: 'La Muerte', en: 'Death', significado: {es: 'Transformación, final, renacimiento', en: 'Transformation, ending, rebirth'}},
-            {numero: 14, es: 'La Templanza', en: 'Temperance', significado: {es: 'Balance, moderación, armonía', en: 'Balance, moderation, harmony'}},
-            {numero: 15, es: 'El Diablo', en: 'The Devil', significado: {es: 'Esclavitud, tentación, materialismo', en: 'Bondage, temptation, materialism'}},
-            {numero: 16, es: 'La Torre', en: 'The Tower', significado: {es: 'Calamidad, ruptura, cambio radical', en: 'Calamity, upheaval, sudden change'}},
-            {numero: 17, es: 'La Estrella', en: 'The Star', significado: {es: 'Esperanza, inspiración, espiritualidad', en: 'Hope, inspiration, spirituality'}},
-            {numero: 18, es: 'La Luna', en: 'The Moon', significado: {es: 'Ilusión, inconsciente, misterio', en: 'Illusion, unconscious, mystery'}},
-            {numero: 19, es: 'El Sol', en: 'The Sun', significado: {es: 'Éxito, vitalidad, alegría', en: 'Success, vitality, joy'}},
-            {numero: 20, es: 'El Juicio', en: 'Judgement', significado: {es: 'Despertar, reflexión, resurrección', en: 'Awakening, reckoning, resurrection'}},
-            {numero: 21, es: 'El Mundo', en: 'The World', significado: {es: 'Completitud, totalidad, cumplimiento', en: 'Completion, wholeness, fulfillment'}},
-            
-            // BASTOS (22-35)
-            {numero: 22, es: 'As de Bastos', en: 'Ace of Wands', significado: {es: 'Pasión, inspiración, oportunidad', en: 'Passion, inspiration, opportunity'}},
-            {numero: 23, es: '2 de Bastos', en: 'Two of Wands', significado: {es: 'Planificación, futuro, potencial', en: 'Planning, future, potential'}},
-            {numero: 24, es: '3 de Bastos', en: 'Three of Wands', significado: {es: 'Expansión, perspectiva, exploration', en: 'Expansion, perspective, exploration'}},
-            {numero: 25, es: '4 de Bastos', en: 'Four of Wands', significado: {es: 'Celebración, comunidad, armonía', en: 'Celebration, community, harmony'}},
-            {numero: 26, es: '5 de Bastos', en: 'Five of Wands', significado: {es: 'Conflicto, desafío, competencia', en: 'Conflict, challenge, competition'}},
-            {numero: 27, es: '6 de Bastos', en: 'Six of Wands', significado: {es: 'Reconocimiento, éxito, fama', en: 'Recognition, success, acclaim'}},
-            {numero: 28, es: '7 de Bastos', en: 'Seven of Wands', significado: {es: 'Resistencia, defensa, perseverancia', en: 'Resistance, defense, perseverance'}},
-            {numero: 29, es: '8 de Bastos', en: 'Eight of Wands', significado: {es: 'Rapidez, movimiento, action', en: 'Speed, movement, action'}},
-            {numero: 30, es: '9 de Bastos', en: 'Nine of Wands', significado: {es: 'Firmeza, casi victoria, resiliencia', en: 'Resilience, almost there, persistence'}},
-            {numero: 31, es: '10 de Bastos', en: 'Ten of Wands', significado: {es: 'Carga, responsabilidad, agotamiento', en: 'Burden, responsibility, exhaustion'}},
-            {numero: 32, es: 'Sota de Bastos', en: 'Page of Wands', significado: {es: 'Mensajero, aventurero, entusiasmo', en: 'Messenger, adventurer, enthusiasm'}},
-            {numero: 33, es: 'Caballero de Bastos', en: 'Knight of Wands', significado: {es: 'Pasión, viaje, impulso', en: 'Passion, travel, momentum'}},
-            {numero: 34, es: 'Reina de Bastos', en: 'Queen of Wands', significado: {es: 'Calidez, coraje, fertilidad', en: 'Warmth, courage, fertility'}},
-            {numero: 35, es: 'Rey de Bastos', en: 'King of Wands', significado: {es: 'Liderazgo, visión, honor', en: 'Leadership, vision, honor'}},
+        function t(key) { return (T[idiomaActual] && T[idiomaActual][key]) || (T.es[key]) || key; }
 
-            // COPAS (36-49)
-            {numero: 36, es: 'As de Copas', en: 'Ace of Cups', significado: {es: 'Amor, nuevas emociones, creatividad', en: 'Love, new emotions, creativity'}},
-            {numero: 37, es: '2 de Copas', en: 'Two of Cups', significado: {es: 'Unión, amor, asociación', en: 'Union, love, partnership'}},
-            {numero: 38, es: '3 de Copas', en: 'Three of Cups', significado: {es: 'Celebración, amistad, comunidad', en: 'Celebration, friendship, community'}},
-            {numero: 39, es: '4 de Copas', en: 'Four of Cups', significado: {es: 'Apatía, meditación, descontento', en: 'Apathy, meditation, discontent'}},
-            {numero: 40, es: '5 de Copas', en: 'Five of Cups', significado: {es: 'Pérdida, arrepentimiento, dolor', en: 'Loss, regret, grief'}},
-            {numero: 41, es: '6 de Copas', en: 'Six of Cups', significado: {es: 'Nostalgia, recuerdos, infancia', en: 'Nostalgia, memories, childhood'}},
-            {numero: 42, es: '7 de Copas', en: 'Seven of Cups', significado: {es: 'Ilusiones, elecciones, fantasía', en: 'Illusions, choices, fantasy'}},
-            {numero: 43, es: '8 de Copas', en: 'Eight of Cups', significado: {es: 'Abandono, viaje espiritual, dejar ir', en: 'Abandonment, spiritual journey, letting go'}},
-            {numero: 44, es: '9 de Copas', en: 'Nine of Cups', significado: {es: 'Satisfacción, deseos cumplidos, confort', en: 'Satisfaction, wishes fulfilled, comfort'}},
-            {numero: 45, es: '10 de Copas', en: 'Ten of Cups', significado: {es: 'Felicidad hogareña, amor divino, paz', en: 'Domestic happiness, divine love, peace'}},
-            {numero: 46, es: 'Sota de Copas', en: 'Page of Cups', significado: {es: 'Sensibilidad, mensajes, intuición', en: 'Sensitivity, messages, intuition'}},
-            {numero: 47, es: 'Caballero de Copas', en: 'Knight of Cups', significado: {es: 'Romance, encanto, propuestas', en: 'Romance, charm, proposals'}},
-            {numero: 48, es: 'Reina de Copas', en: 'Queen of Cups', significado: {es: 'Compasión, calma, intuición profunda', en: 'Compassion, calm, deep intuition'}},
-            {numero: 49, es: 'Rey de Copas', en: 'King of Cups', significado: {es: 'Control emocional, sabiduría, equilibrio', en: 'Emotional control, wisdom, balance'}},
-
-            // ESPADAS (50-63)
-            {numero: 50, es: 'As de Espadas', en: 'Ace of Swords', significado: {es: 'Claridad mental, victoria, verdad', en: 'Mental clarity, victory, truth'}},
-            {numero: 51, es: '2 de Espadas', en: 'Two of Swords', significado: {es: 'Callejón sin salida, indecisión, tregua', en: 'Stalemate, indecision, truce'}},
-            {numero: 52, es: '3 de Espadas', en: 'Three of Swords', significado: {es: 'Dolor, separación, traición', en: 'Heartbreak, separation, betrayal'}},
-            {numero: 53, es: '4 de Espadas', en: 'Four of Swords', significado: {es: 'Descanso, recuperación, contemplación', en: 'Rest, recovery, contemplation'}},
-            {numero: 54, es: '5 de Espadas', en: 'Five of Swords', significado: {es: 'Conflicto, derrota, victoria vacía', en: 'Conflict, defeat, hollow victory'}},
-            {numero: 55, es: '6 de Espadas', en: 'Six of Swords', significado: {es: 'Transición, viaje, dejar atrás', en: 'Transition, travel, leaving behind'}},
-            {numero: 56, es: '7 de Espadas', en: 'Seven of Swords', significado: {es: 'Estrategia, engaño, secretismo', en: 'Strategy, deception, secrecy'}},
-            {numero: 57, es: '8 de Espadas', en: 'Eight of Swords', significado: {es: 'Prisión mental, aislamiento, impotencia', en: 'Mental prison, isolation, helplessness'}},
-            {numero: 58, es: '9 de Espadas', en: 'Nine of Swords', significado: {es: 'Ansiedad, pesadillas, angustia', en: 'Anxiety, nightmares, anguish'}},
-            {numero: 59, es: '10 de Espadas', en: 'Ten of Swords', significado: {es: 'Final definitivo, ruina, renovación', en: 'Definite end, ruin, renewal'}},
-            {numero: 60, es: 'Sota de Espadas', en: 'Page of Swords', significado: {es: 'Vigilancia, curiosidad, agudeza', en: 'Vigilance, curiosity, sharpness'}},
-            {numero: 61, es: 'Caballero de Espadas', en: 'Knight of Swords', significado: {es: 'Acción rápida, valentía, prisa', en: 'Quick action, bravery, haste'}},
-            {numero: 62, es: 'Reina de Espadas', en: 'Queen of Swords', significado: {es: 'Independencia, juicio claro, agudeza', en: 'Independence, clear judgment, sharpness'}},
-            {numero: 63, es: 'Rey de Espadas', en: 'King of Swords', significado: {es: 'Autoridad intelectual, verdad, ley', en: 'Intellectual authority, truth, law'}},
-
-            // OROS (64-77)
-            {numero: 64, es: 'As de Oros', en: 'Ace of Pentacles', significado: {es: 'Prosperidad, oportunidad material, éxito', en: 'Prosperity, material opportunity, success'}},
-            {numero: 65, es: '2 de Oros', en: 'Two of Pentacles', significado: {es: 'Equilibrio, adaptabilidad, prioridades', en: 'Balance, adaptability, priorities'}},
-            {numero: 66, es: '3 de Oros', en: 'Three of Pentacles', significado: {es: 'Trabajo en equipo, maestría, colaboración', en: 'Teamwork, mastery, collaboration'}},
-            {numero: 67, es: '4 de Oros', en: 'Four of Pentacles', significado: {es: 'Avaricia, estabilidad, posesividad', en: 'Greed, stability, possessiveness'}},
-            {numero: 68, es: '5 de Oros', en: 'Five of Pentacles', significado: {es: 'Pérdida financiera, pobreza, aislamiento', en: 'Financial loss, poverty, isolation'}},
-            {numero: 69, es: '6 de Oros', en: 'Six of Pentacles', significado: {es: 'Generosidad, caridad, compartir', en: 'Generosity, charity, sharing'}},
-            {numero: 70, es: '7 de Oros', en: 'Seven of Pentacles', significado: {es: 'Paciencia, recompensa a largo plazo, inversión', en: 'Patience, long-term reward, investment'}},
-            {numero: 71, es: '8 de Oros', en: 'Eight of Pentacles', significado: {es: 'Dedicación, aprendizaje, artesanía', en: 'Dedication, learning, craftsmanship'}},
-            {numero: 72, es: '9 de Oros', en: 'Nine of Pentacles', significado: {es: 'Independencia financiera, lujo, autosuficiencia', en: 'Financial independence, luxury, self-sufficiency'}},
-            {numero: 73, es: '10 de Oros', en: 'Ten of Pentacles', significado: {es: 'Riqueza familiar, herencia, estabilidad', en: 'Family wealth, inheritance, stability'}},
-            {numero: 74, es: 'Sota de Oros', en: 'Page of Pentacles', significado: {es: 'Ambición, estudio, bases sólidas', en: 'Ambition, study, solid foundations'}},
-            {numero: 75, es: 'Caballero de Oros', en: 'Knight of Pentacles', significado: {es: 'Rutina, eficiencia, trabajo duro', en: 'Routine, efficiency, hard work'}},
-            {numero: 76, es: 'Reina de Oros', en: 'Queen of Pentacles', significado: {es: 'Seguridad doméstica, practicidad, abundancia', en: 'Domestic security, practicality, abundance'}},
-            {numero: 77, es: 'Rey de Oros', en: 'King of Pentacles', significado: {es: 'Éxito empresarial, seguridad, abundancia', en: 'Business success, security, abundance'}}
-        ];
-
-        // Listas internas de mapeo para construir los nombres de tus archivos tal cual los tenés
-        const nombresMayores = [
-            "loco", "mago", "sacerdotisa", "emperatriz", "emperador", "papa", "enamorados", 
-            "carro", "justicia", "ermitaño", "rueda-fortuna", "fuerza", "colgado", "muerte", 
-            "templanza", "diablo", "torre", "estrella", "luna", "sol", "juicio", "mundo"
-        ];
-
-        const nombresNumerosMenores = [
-            "as", "dos", "tres", "cuatro", "cinco", "seis", "siete", 
-            "ocho", "nueve", "diez", "sota", "caballo", "reina", "rey"
-        ];
-
-        function mostrarSeccion(seccionId) {
-            document.querySelectorAll('.secciones').forEach(sec => sec.classList.remove('active'));
-            const secActiva = document.getElementById('seccion-' + seccionId);
-            if(secActiva) secActiva.classList.add('active');
-            asegurarMusicaDeFondo();
+        function cambiarIdioma(lang) {
+            idiomaActual = T[lang] ? lang : 'es';
+            document.getElementById('selector-idioma').value = idiomaActual;
+            document.getElementById('txt-lema').innerText = t('lema');
+            document.getElementById('txt-ads').innerText = t('ads');
+            document.querySelectorAll('[data-t]').forEach(el => {
+                const key = el.getAttribute('data-t');
+                if (T[idiomaActual] && T[idiomaActual][key] !== undefined) {
+                    el.innerText = T[idiomaActual][key];
+                }
+            });
+            document.querySelectorAll('[data-t-placeholder]').forEach(el => {
+                const key = el.getAttribute('data-t-placeholder');
+                if (T[idiomaActual] && T[idiomaActual][key] !== undefined) {
+                    el.placeholder = T[idiomaActual][key];
+                }
+            });
         }
 
-        function asegurarMusicaDeFondo() {
-            if (!musicaIniciada) {
-                const audio = document.getElementById('audio-ambiente');
-                if(audio) {
-                    audio.play().then(() => { musicaIniciada = true; }).catch(e => console.log("Audio en espera"));
-                }
+        // ========================
+        // NAVEGACIÓN
+        // ========================
+        function cambiarVista(idVista) {
+            document.querySelectorAll('.vista-seccion').forEach(v => v.classList.remove('activa'));
+            const vistaObjetivo = document.getElementById(idVista);
+            if (vistaObjetivo) vistaObjetivo.classList.add('activa');
+
+            const contenedor = document.getElementById('contenedor-global');
+            contenedor.classList.toggle('modo-consulta-activa', idVista !== 'pantalla-menu');
+
+            const zonaVolver = document.getElementById('zona-volver');
+            zonaVolver.innerHTML = idVista !== 'pantalla-menu'
+                ? `<button class="btn-volver" onclick="irAlMenu()">${t('volver')}</button>`
+                : '';
+        }
+
+        function irAlMenu() { cambiarVista('pantalla-menu'); }
+        function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
+        function abrirNumerologiaConfig() { cambiarVista('pantalla-numerologia-config'); }
+        function abrirAstrologiaConfig() { cambiarVista('pantalla-astrologia-config'); }
+        function abrirOraculoConfig() { cambiarVista('pantalla-oraculo-config'); }
+
+        function ajustarTipoTirada(tema) {
+            const cajaTirada = document.getElementById('caja-tipo-tirada');
+            const selectTipo = document.getElementById('tarot-tipo');
+            if (tema === 'sino') {
+                cajaTirada.style.display = 'none';
+                selectTipo.innerHTML = `<option value="sino1">${t('tirada1').replace('Consejo Directo','SÍ / NO').replace('Direct Advice','YES / NO').replace('Conselho Direto','SIM / NÃO').replace('Conseil Direct','OUI / NON').replace('Consiglio Diretto','SÌ / NO')}</option>`;
+            } else {
+                cajaTirada.style.display = 'block';
+                selectTipo.innerHTML = `<option value="1">${t('tirada1')}</option><option value="3" selected>${t('tirada3')}</option>`;
             }
         }
 
-        function cambiarIdioma(lang) {
-            idiomaActual = lang;
-            document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+        // ========================
+        // MAZO COMPLETO 78 CARTAS
+        // ========================
+        const mazoOficial78 = [{es:"El Loco",en:"The Fool",fr:"Le Mat",it:"Il Matto",pt:"O Louco",significado:{es:"Nuevos comienzos, saltos de fe, espontaneidad.",en:"New beginnings, leaps of faith, spontaneity.",fr:"Nouveaux départs, sauts de foi, spontanéité.",it:"Nuovi inizi, salti di fede, spontaneità.",pt:"Novos começos, saltos de fé, espontaneidade."},simbolo:"⟡"},
+            {es:"El Mago",en:"The Magician",fr:"Le Bateleur",it:"Il Mago",pt:"O Mago",significado:{es:"Poder de manifestación, habilidad, recursos.",en:"Power of manifestation, skill, resources.",fr:"Pouvoir de manifestation, compétence, ressources.",it:"Potere di manifestazione, abilità, risorse.",pt:"Poder de manifestação, habilidade, recursos."},simbolo:"∞"},
+            {es:"La Sacerdotisa",en:"The High Priestess",fr:"La Papesse",it:"La Papessa",pt:"A Sacerdotisa",significado:{es:"Intuición, misterio, subconsciente sagrado.",en:"Intuition, mystery, sacred subconscious.",fr:"Intuition, mystère, subconscient sacré.",it:"Intuizione, mistero, subconscio sacro.",pt:"Intuição, mistério, subconsciente sagrado."},simbolo:"☽"},
+            {es:"La Emperatriz",en:"The Empress",fr:"L'Impératrice",it:"L'Imperatrice",pt:"A Imperatriz",significado:{es:"Abundancia, naturaleza, fertilidad, creación.",en:"Abundance, nature, fertility, creation.",fr:"Abondance, nature, fertilité, création.",it:"Abbondanza, natura, fertilità, creazione.",pt:"Abundância, natureza, fertilidade, criação."},simbolo:"♁"},
+            {es:"El Emperador",en:"The Emperor",fr:"L'Empereur",it:"L'Imperatore",pt:"O Imperador",significado:{es:"Estructura, autoridad, bases firmes.",en:"Structure, authority, firm foundations.",fr:"Structure, autorité, fondations solides.",it:"Struttura, autorità, basi solide.",pt:"Estrutura, autoridade, bases firmes."},simbolo:"♔"},
+            {es:"El Hierofante",en:"The Hierophant",fr:"Le Pape",it:"Il Papa",pt:"O Hierofante",significado:{es:"Tradición, sabiduría, guía espiritual.",en:"Tradition, wisdom, spiritual guidance.",fr:"Tradition, sagesse, guidance spirituelle.",it:"Tradizione, saggezza, guida spirituale.",pt:"Tradição, sabedoria, guia espiritual."},simbolo:"✟"},
+            {es:"Los Enamorados",en:"The Lovers",fr:"L'Amoureux",it:"Gli Amanti",pt:"Os Enamorados",significado:{es:"Elecciones del corazón, armonía, uniones.",en:"Heart's choices, harmony, unions.",fr:"Choix du cœur, harmonie, unions.",it:"Scelte del cuore, armonia, unioni.",pt:"Escolhas do coração, harmonia, uniões."},simbolo:"❤"},
+            {es:"El Carro",en:"The Chariot",fr:"Le Chariot",it:"Il Carro",pt:"O Carro",significado:{es:"Determinación, victoria, control de fuerzas.",en:"Determination, victory, control of forces.",fr:"Détermination, victoire, contrôle des forces.",it:"Determinazione, vittoria, controllo delle forze.",pt:"Determinação, vitória, controle de forças."},simbolo:"⚔"},
+            {es:"La Justicia",en:"Justice",fr:"La Justice",it:"La Giustizia",pt:"A Justiça",significado:{es:"Verdad, causa y efecto, equilibrio.",en:"Truth, cause and effect, balance.",fr:"Vérité, cause et effet, équilibre.",it:"Verità, causa ed effetto, equilibrio.",pt:"Verdade, causa e efeito, equilíbrio."},simbolo:"⚖"},
+            {es:"El Ermitaño",en:"The Hermit",fr:"L'Ermite",it:"L'Eremita",pt:"O Eremita",significado:{es:"Introspección, retiro voluntario, luz interior.",en:"Introspection, voluntary retreat, inner light.",fr:"Introspection, retraite volontaire, lumière intérieure.",it:"Introspezione, ritiro volontario, luce interiore.",pt:"Introspecção, retiro voluntário, luz interior."},simbolo:"☄"},
+            {es:"La Rueda de la Fortuna",en:"Wheel of Fortune",fr:"La Roue de Fortune",it:"La Ruota della Fortuna",pt:"A Roda da Fortuna",significado:{es:"Cambios de destino, ciclos, giros del destino.",en:"Changes of destiny, cycles, turns of fate.",fr:"Changements de destin, cycles, tours du destin.",it:"Cambiamenti di destino, cicli, giri del destino.",pt:"Mudanças de destino, ciclos, voltas do destino."},simbolo:"☸"},
+            {es:"La Fuerza",en:"Strength",fr:"La Force",it:"La Forza",pt:"A Força",significado:{es:"Valor interno, compasión, dominar pasiones.",en:"Inner courage, compassion, taming passions.",fr:"Courage intérieur, compassion, maîtriser les passions.",it:"Coraggio interiore, compassione, domare le passioni.",pt:"Coragem interior, compaixão, domar paixões."},simbolo:"∞"},
+            {es:"El Colgado",en:"The Hanged Man",fr:"Le Pendu",it:"L'Appeso",pt:"O Enforcado",significado:{es:"Nueva perspectiva, pausa necesaria, sacrificio.",en:"New perspective, necessary pause, sacrifice.",fr:"Nouvelle perspective, pause nécessaire, sacrifice.",it:"Nuova prospettiva, pausa necessaria, sacrificio.",pt:"Nova perspectiva, pausa necessária, sacrifício."},simbolo:"☤"},
+            {es:"La Muerte",en:"Death",fr:"La Mort",it:"La Morte",pt:"A Morte",significado:{es:"Transformación profunda, finales que traen renacer.",en:"Profound transformation, endings that bring rebirth.",fr:"Transformation profonde, fins qui apportent renaissance.",it:"Trasformazione profonda, fini che portano rinascita.",pt:"Transformação profunda, fins que trazem renascimento."},simbolo:"☠"},
+            {es:"La Templanza",en:"Temperance",fr:"Tempérance",it:"La Temperanza",pt:"A Temperança",significado:{es:"Alquimia, paciencia, moderación, balance.",en:"Alchemy, patience, moderation, balance.",fr:"Alchimie, patience, modération, équilibre.",it:"Alchimia, pazienza, moderazione, equilibrio.",pt:"Alquimia, paciência, moderação, equilíbrio."},simbolo:"⚗"},
+            {es:"El Diablo",en:"The Devil",fr:"Le Diable",it:"Il Diavolo",pt:"O Diabo",significado:{es:"Ataduras materiales, pasiones ocultas, sombras.",en:"Material bonds, hidden passions, shadows.",fr:"Liens matériels, passions cachées, ombres.",it:"Legami materiali, passioni nascoste, ombre.",pt:"Laços materiais, paixões ocultas, sombras."},simbolo:"⛧"},
+            {es:"La Torre",en:"The Tower",fr:"La Maison Dieu",it:"La Torre",pt:"A Torre",significado:{es:"Ruptura de estructuras falsas, revelación repentina.",en:"Breaking of false structures, sudden revelation.",fr:"Rupture de fausses structures, révélation soudaine.",it:"Rottura di false strutture, rivelazione improvvisa.",pt:"Ruptura de estruturas falsas, revelação repentina."},simbolo:"⚡"},
+            {es:"La Estrella",en:"The Star",fr:"L'Étoile",it:"La Stella",pt:"A Estrela",significado:{es:"Esperanza, sanación espiritual, renovación.",en:"Hope, spiritual healing, renewal.",fr:"Espoir, guérison spirituelle, renouveau.",it:"Speranza, guarigione spirituale, rinnovamento.",pt:"Esperança, cura espiritual, renovação."},simbolo:"✦"},
+            {es:"La Luna",en:"The Moon",fr:"La Lune",it:"La Luna",pt:"A Lua",significado:{es:"Ilusiones, miedos escondidos, intuición profunda.",en:"Illusions, hidden fears, deep intuition.",fr:"Illusions, peurs cachées, intuition profonde.",it:"Illusioni, paure nascoste, intuizione profonda.",pt:"Ilusões, medos ocultos, intuição profunda."},simbolo:"☾"},
+            {es:"El Sol",en:"The Sun",fr:"Le Soleil",it:"Il Sole",pt:"O Sol",significado:{es:"Claridad absoluta, éxito, vitalidad, alegría.",en:"Absolute clarity, success, vitality, joy.",fr:"Clarté absolue, succès, vitalité, joie.",it:"Chiarezza assoluta, successo, vitalità, gioia.",pt:"Clareza absoluta, sucesso, vitalidade, alegria."},simbolo:"☀"},
+            {es:"El Juicio",en:"Judgement",fr:"Le Jugement",it:"Il Giudizio",pt:"O Julgamento",significado:{es:"Llamado interno, absolución, despertar a tu verdad.",en:"Inner calling, absolution, awakening to your truth.",fr:"Appel intérieur, absolution, éveil à ta vérité.",it:"Chiamata interiore, assoluzione, risveglio alla tua verità.",pt:"Chamado interior, absolvição, despertar para sua verdade."},simbolo:"♱"},
+            {es:"El Mundo",en:"The World",fr:"Le Monde",it:"Il Mondo",pt:"O Mundo",significado:{es:"Cierre de ciclos con éxito, plenitud.",en:"Successful cycle completion, fulfillment.",fr:"Fin de cycle réussie, plénitude.",it:"Chiusura di ciclo con successo, pienezza.",pt:"Fechamento de ciclo com sucesso, plenitude."},simbolo:"◉"},
+            {es:"As de Bastos",en:"Ace of Wands",fr:"As de Bâton",it:"Asso di Bastoni",pt:"Ás de Paus",significado:{es:"Chispa creativa, pasión inicial, nueva oportunidad.",en:"Creative spark, initial passion, new opportunity.",fr:"Étincelle créative, passion initiale, nouvelle opportunité.",it:"Scintilla creativa, passione iniziale, nuova opportunità.",pt:"Faísca criativa, paixão inicial, nova oportunidade."},simbolo:"B1"},
+            {es:"Dos de Bastos",en:"Two of Wands",fr:"Deux de Bâton",it:"Due di Bastoni",pt:"Dois de Paus",significado:{es:"Planificación futura, mirar horizontes.",en:"Future planning, looking at horizons.",fr:"Planification future, regarder les horizons.",it:"Pianificazione futura, guardare gli orizzonti.",pt:"Planejamento futuro, olhar horizontes."},simbolo:"B2"},
+            {es:"Tres de Bastos",en:"Three of Wands",fr:"Trois de Bâton",it:"Tre di Bastoni",pt:"Três de Paus",significado:{es:"Expansión, barcos llegando, frutos del esfuerzo.",en:"Expansion, ships arriving, fruits of effort.",fr:"Expansion, navires arrivants, fruits de l'effort.",it:"Espansione, navi in arrivo, frutti dello sforzo.",pt:"Expansão, navios chegando, frutos do esforço."},simbolo:"B3"},
+            {es:"Cuatro de Bastos",en:"Four of Wands",fr:"Quatre de Bâton",it:"Quattro di Bastoni",pt:"Quatro de Paus",significado:{es:"Celebración, hogar armónico, estabilidad.",en:"Celebration, harmonious home, stability.",fr:"Célébration, foyer harmonieux, stabilité.",it:"Celebrazione, casa armoniosa, stabilità.",pt:"Celebração, lar harmonioso, estabilidade."},simbolo:"B4"},
+            {es:"Cinco de Bastos",en:"Five of Wands",fr:"Cinq de Bâton",it:"Cinque di Bastoni",pt:"Cinco de Paus",significado:{es:"Competencia, tensiones menores, caos creativo.",en:"Competition, minor tensions, creative chaos.",fr:"Compétition, tensions mineures, chaos créatif.",it:"Competizione, tensioni minori, caos creativo.",pt:"Competição, tensões menores, caos criativo."},simbolo:"B5"},
+            {es:"Seis de Bastos",en:"Six of Wands",fr:"Six de Bâton",it:"Sei di Bastoni",pt:"Seis de Paus",significado:{es:"Reconocimiento público, victoria, aplausos.",en:"Public recognition, victory, applause.",fr:"Reconnaissance publique, victoire, applaudissements.",it:"Riconoscimento pubblico, vittoria, applausi.",pt:"Reconhecimento público, vitória, aplausos."},simbolo:"B6"},
+            {es:"Siete de Bastos",en:"Seven of Wands",fr:"Sept de Bâton",it:"Sette di Bastoni",pt:"Sete de Paus",significado:{es:"Defensa de principios, sostener posición.",en:"Defense of principles, standing your ground.",fr:"Défense des principes, tenir sa position.",it:"Difesa dei principi, mantenere la posizione.",pt:"Defesa de princípios, manter posição."},simbolo:"B7"},
+            {es:"Ocho de Bastos",en:"Eight of Wands",fr:"Huit de Bâton",it:"Otto di Bastoni",pt:"Oito de Paus",significado:{es:"Velocidad, noticias rápidas, movimiento.",en:"Speed, rapid news, movement.",fr:"Vitesse, nouvelles rapides, mouvement.",it:"Velocità, notizie rapide, movimento.",pt:"Velocidade, notícias rápidas, movimento."},simbolo:"B8"},
+            {es:"Nueve de Bastos",en:"Nine of Wands",fr:"Neuf de Bâton",it:"Nove di Bastoni",pt:"Nove de Paus",significado:{es:"Último esfuerzo, resiliencia, guardia en alto.",en:"Last effort, resilience, guard up.",fr:"Dernier effort, résilience, garde haute.",it:"Ultimo sforzo, resilienza, guardia alta.",pt:"Último esforço, resiliência, guarda alta."},simbolo:"B9"},
+            {es:"Diez de Bastos",en:"Ten of Wands",fr:"Dix de Bâton",it:"Dieci di Bastoni",pt:"Dez de Paus",significado:{es:"Carga pesada, exceso de responsabilidades.",en:"Heavy load, excess of responsibilities.",fr:"Charge lourde, excès de responsabilités.",it:"Carico pesante, eccesso di responsabilità.",pt:"Carga pesada, excesso de responsabilidades."},simbolo:"B10"},
+            {es:"Sota de Bastos",en:"Page of Wands",fr:"Valet de Bâton",it:"Fante di Bastoni",pt:"Valete de Paus",significado:{es:"Mensajero entusiasta, ganas de explorar.",en:"Enthusiastic messenger, desire to explore.",fr:"Messager enthousiaste, envie d'explorer.",it:"Messaggero entusiasta, voglia di esplorare.",pt:"Mensageiro entusiasmado, vontade de explorar."},simbolo:"BS"},
+            {es:"Caballero de Bastos",en:"Knight of Wands",fr:"Cavalier de Bâton",it:"Cavaliere di Bastoni",pt:"Cavaleiro de Paus",significado:{es:"Acción impetuosa, mudanzas, avance apasionado.",en:"Impetuous action, moves, passionate advance.",fr:"Action impétueuse, déménagements, avance passionnée.",it:"Azione impulsiva, traslochi, avanzamento appassionato.",pt:"Ação impetuosa, mudanças, avanço apaixonado."},simbolo:"BC"},
+            {es:"Reina de Bastos",en:"Queen of Wands",fr:"Reine de Bâton",it:"Regina di Bastoni",pt:"Rainha de Paus",significado:{es:"Magnetismo, confianza, fuego social.",en:"Magnetism, confidence, social fire.",fr:"Magnétisme, confiance, feu social.",it:"Magnetismo, fiducia, fuoco sociale.",pt:"Magnetismo, confiança, fogo social."},simbolo:"BR"},
+            {es:"Rey de Bastos",en:"King of Wands",fr:"Roi de Bâton",it:"Re di Bastoni",pt:"Rei de Paus",significado:{es:"Liderazgo absoluto, visión ejecutiva.",en:"Absolute leadership, executive vision.",fr:"Leadership absolu, vision exécutive.",it:"Leadership assoluto, visione esecutiva.",pt:"Liderança absoluta, visão executiva."},simbolo:"BK"},
+            {es:"As de Copas",en:"Ace of Cups",fr:"As de Coupe",it:"Asso di Coppe",pt:"Ás de Copas",significado:{es:"Amor puro desbordante, despertar emocional.",en:"Overflowing pure love, emotional awakening.",fr:"Amour pur débordant, éveil émotionnel.",it:"Amore puro traboccante, risveglio emotivo.",pt:"Amor puro transbordante, despertar emocional."},simbolo:"C1"},
+            {es:"Dos de Copas",en:"Two of Cups",fr:"Deux de Coupe",it:"Due di Coppe",pt:"Dois de Copas",significado:{es:"Conexión recíproca, romance, alma gemela.",en:"Reciprocal connection, romance, soulmate.",fr:"Connexion réciproque, romance, âme sœur.",it:"Connessione reciproca, romanticismo, anima gemella.",pt:"Conexão recíproca, romance, alma gêmea."},simbolo:"C2"},
+            {es:"Tres de Copas",en:"Three of Cups",fr:"Trois de Coupe",it:"Tre di Coppe",pt:"Três de Copas",significado:{es:"Brindis familiar, amistad verdadera.",en:"Family toast, true friendship.",fr:"Toast familial, véritable amitié.",it:"Brindisi familiare, vera amicizia.",pt:"Brinde familiar, amizade verdadeira."},simbolo:"C3"},
+            {es:"Cuatro de Copas",en:"Four of Cups",fr:"Quatre de Coupe",it:"Quattro di Coppe",pt:"Quatro de Copas",significado:{es:"Apatía, aburrimiento, ignorar oportunidades.",en:"Apathy, boredom, ignoring opportunities.",fr:"Apathie, ennui, ignorer les opportunités.",it:"Apatia, noia, ignorare le opportunità.",pt:"Apatia, tédio, ignorar oportunidades."},simbolo:"C4"},
+            {es:"Cinco de Copas",en:"Five of Cups",fr:"Cinq de Coupe",it:"Cinque di Coppe",pt:"Cinco de Copas",significado:{es:"Lamento por lo perdido, desilusión.",en:"Lament for what's lost, disillusionment.",fr:"Lamentation pour le perdu, désillusion.",it:"Lamento per ciò che è perso, disillusione.",pt:"Lamentação pelo perdido, desilusão."},simbolo:"C5"},
+            {es:"Seis de Copas",en:"Six of Cups",fr:"Six de Coupe",it:"Sei di Coppe",pt:"Seis de Copas",significado:{es:"Nostalgia sana, recuerdos de infancia.",en:"Healthy nostalgia, childhood memories.",fr:"Nostalgie saine, souvenirs d'enfance.",it:"Nostalgia sana, ricordi d'infanzia.",pt:"Nostalgia saudável, memórias de infância."},simbolo:"C6"},
+            {es:"Siete de Copas",en:"Seven of Cups",fr:"Sept de Coupe",it:"Sette di Coppe",pt:"Sete de Copas",significado:{es:"Fantasías, exceso de opciones, ilusiones.",en:"Fantasies, excess of options, illusions.",fr:"Fantaisies, excès d'options, illusions.",it:"Fantasie, eccesso di opzioni, illusioni.",pt:"Fantasias, excesso de opções, ilusões."},simbolo:"C7"},
+            {es:"Ocho de Copas",en:"Eight of Cups",fr:"Huit de Coupe",it:"Otto di Coppe",pt:"Oito de Copas",significado:{es:"Abandono voluntario de lo que ya no nutre.",en:"Voluntary abandonment of what no longer nourishes.",fr:"Abandon volontaire de ce qui ne nourrit plus.",it:"Abbandono volontario di ciò che non nutre più.",pt:"Abandono voluntário do que não nutre mais."},simbolo:"C8"},
+            {es:"Nueve de Copas",en:"Nine of Cups",fr:"Neuf de Coupe",it:"Nove di Coppe",pt:"Nove de Copas",significado:{es:"Deseo concedido, satisfacción personal.",en:"Wish granted, personal satisfaction.",fr:"Souhait exaucé, satisfaction personnelle.",it:"Desiderio esaudito, soddisfazione personale.",pt:"Desejo realizado, satisfação pessoal."},simbolo:"C9"},
+            {es:"Diez de Copas",en:"Ten of Cups",fr:"Dix de Coupe",it:"Dieci di Coppe",pt:"Dez de Copas",significado:{es:"Dicha familiar absoluta, amor consolidado.",en:"Absolute family bliss, consolidated love.",fr:"Bonheur familial absolu, amour consolidé.",it:"Famiglia felice assoluta, amore consolidato.",pt:"Felicidade familiar absoluta, amor consolidado."},simbolo:"C10"},
+            {es:"Sota de Copas",en:"Page of Cups",fr:"Valet de Coupe",it:"Fante di Coppe",pt:"Valete de Copas",significado:{es:"Sensibilidad artística, noticias afectivas.",en:"Artistic sensitivity, affective news.",fr:"Sensibilité artistique, nouvelles affectives.",it:"Sensibilità artistica, notizie affettive.",pt:"Sensibilidade artística, notícias afetivas."},simbolo:"CS"},
+            {es:"Caballero de Copas",en:"Knight of Cups",fr:"Cavalier de Coupe",it:"Cavaliere di Coppe",pt:"Cavaleiro de Copas",significado:{es:"Portador del romance, propuesta sincera.",en:"Bearer of romance, sincere proposal.",fr:"Porteur de romance, proposition sincère.",it:"Portatore di romanticismo, proposta sincera.",pt:"Portador do romance, proposta sincera."},simbolo:"CC"},
+            {es:"Reina de Copas",en:"Queen of Cups",fr:"Reine de Coupe",it:"Regina di Coppe",pt:"Rainha de Copas",significado:{es:"Empatía total, madre intuitiva, refugio.",en:"Total empathy, intuitive mother, refuge.",fr:"Empathie totale, mère intuitive, refuge.",it:"Empatia totale, madre intuitiva, rifugio.",pt:"Empatia total, mãe intuitiva, refúgio."},simbolo:"CR"},
+            {es:"Rey de Copas",en:"King of Cups",fr:"Roi de Coupe",it:"Re di Coppe",pt:"Rei de Copas",significado:{es:"Maestría emocional, templanza ante crisis.",en:"Emotional mastery, temperance in crisis.",fr:"Maîtrise émotionnelle, tempérance en crise.",it:"Padronanza emotiva, temperanza in crisi.",pt:"Mestria emocional, temperança em crise."},simbolo:"CK"},
+            {es:"As de Espadas",en:"Ace of Swords",fr:"As d'Épée",it:"Asso di Spade",pt:"Ás de Espadas",significado:{es:"Claridad mental, verdad cruda, gran avance.",en:"Mental clarity, raw truth, major breakthrough.",fr:"Clarté mentale, vérité brute, grande percée.",it:"Chiarezza mentale, verità cruda, grande svolta.",pt:"Clareza mental, verdade crua, grande avanço."},simbolo:"E1"},
+            {es:"Dos de Espadas",en:"Two of Swords",fr:"Deux d'Épée",it:"Due di Spade",pt:"Dois de Espadas",significado:{es:"Callejón sin salida mental, indecisión.",en:"Mental dead end, indecision.",fr:"Impasse mentale, indécision.",it:"Vicolo cieco mentale, indecisione.",pt:"Beco sem saída mental, indecisão."},simbolo:"E2"},
+            {es:"Tres de Espadas",en:"Three of Swords",fr:"Trois d'Épée",it:"Tre di Spade",pt:"Três de Espadas",significado:{es:"Dolor del corazón, traición asumida.",en:"Heart pain, assumed betrayal.",fr:"Douleur du cœur, trahison assumée.",it:"Dolore del cuore, tradimento assunto.",pt:"Dor do coração, traição assumida."},simbolo:"E3"},
+            {es:"Cuatro de Espadas",en:"Four of Swords",fr:"Quatre d'Épée",it:"Quattro di Spade",pt:"Quatro de Espadas",significado:{es:"Descanso mental obligatorio, meditación.",en:"Mandatory mental rest, meditation.",fr:"Repos mental obligatoire, méditation.",it:"Riposo mentale obbligatorio, meditazione.",pt:"Descanso mental obrigatório, meditação."},simbolo:"E4"},
+            {es:"Cinco de Espadas",en:"Five of Swords",fr:"Cinq d'Épée",it:"Cinque di Spade",pt:"Cinco de Espadas",significado:{es:"Victoria pírrica, discusiones donde todos pierden.",en:"Pyrrhic victory, arguments where all lose.",fr:"Victoire à la Pyrrhus, disputes où tous perdent.",it:"Vittoria Pirrica, discussioni dove tutti perdono.",pt:"Vitória de Pirro, discussões onde todos perdem."},simbolo:"E5"},
+            {es:"Seis de Espadas",en:"Six of Swords",fr:"Six d'Épée",it:"Sei di Spade",pt:"Seis de Espadas",significado:{es:"Viaje hacia aguas tranquilas, transición.",en:"Journey to calmer waters, transition.",fr:"Voyage vers des eaux calmes, transition.",it:"Viaggio verso acque più calme, transizione.",pt:"Jornada para águas mais calmas, transição."},simbolo:"E6"},
+            {es:"Siete de Espadas",en:"Seven of Swords",fr:"Sept d'Épée",it:"Sette di Spade",pt:"Sete de Espadas",significado:{es:"Estrategia oculta, astucia, evitar confrontación.",en:"Hidden strategy, cunning, avoiding confrontation.",fr:"Stratégie cachée, ruse, éviter la confrontation.",it:"Strategia nascosta, astuzia, evitare confronto.",pt:"Estratégia oculta, astúcia, evitar confronto."},simbolo:"E7"},
+            {es:"Ocho de Espadas",en:"Eight of Swords",fr:"Huit d'Épée",it:"Otto di Spade",pt:"Oito de Espadas",significado:{es:"Prisión mental autoimpuesta, parálisis.",en:"Self-imposed mental prison, paralysis.",fr:"Prison mentale auto-imposée, paralysie.",it:"Prigione mentale autoimposta, paralisi.",pt:"Prisão mental autoimposta, paralisia."},simbolo:"E8"},
+            {es:"Nueve de Espadas",en:"Nine of Swords",fr:"Neuf d'Épée",it:"Nove di Spade",pt:"Nove de Espadas",significado:{es:"Ansiedad, insomnio, pesadillas.",en:"Anxiety, insomnia, nightmares.",fr:"Anxiété, insomnie, cauchemars.",it:"Ansia, insonnia, incubi.",pt:"Ansiedade, insônia, pesadelos."},simbolo:"E9"},
+            {es:"Diez de Espadas",en:"Ten of Swords",fr:"Dix d'Épée",it:"Dieci di Spade",pt:"Dez de Espadas",significado:{es:"Final absoluto del dolor, tocar fondo.",en:"Absolute end of pain, hitting bottom.",fr:"Fin absolue de la douleur, toucher le fond.",it:"Fine assoluta del dolore, toccare il fondo.",pt:"Fim absoluto da dor, tocar fundo."},simbolo:"E10"},
+            {es:"Sota de Espadas",en:"Page of Swords",fr:"Valet d'Épée",it:"Fante di Spade",pt:"Valete de Espadas",significado:{es:"Vigilancia, mente analítica, verdades incómodas.",en:"Vigilance, analytical mind, uncomfortable truths.",fr:"Vigilance, esprit analytique, vérités inconfortables.",it:"Vigilanza, mente analitica, verità scomode.",pt:"Vigilância, mente analítica, verdades incômodas."},simbolo:"ES"},
+            {es:"Caballero de Espadas",en:"Knight of Swords",fr:"Cavalier d'Épée",it:"Cavaliere di Spade",pt:"Cavaleiro de Espadas",significado:{es:"Defensa feroz de ideas, verdades directas.",en:"Fierce defense of ideas, direct truths.",fr:"Défense féroce des idées, vérités directes.",it:"Difesa feroce delle idee, verità dirette.",pt:"Defesa feroz de ideias, verdades diretas."},simbolo:"EC"},
+            {es:"Reina de Espadas",en:"Queen of Swords",fr:"Reine d'Épée",it:"Regina di Spade",pt:"Rainha de Espadas",significado:{es:"Independencia intelectual, discernimiento agudo.",en:"Intellectual independence, sharp discernment.",fr:"Indépendance intellectuelle, discernement aigu.",it:"Indipendenza intellettuale, discernimento acuto.",pt:"Independência intelectual, discernimento agudo."},simbolo:"ER"},
+            {es:"Rey de Espadas",en:"King of Swords",fr:"Roi d'Épée",it:"Re di Spade",pt:"Rei de Espadas",significado:{es:"Juicio justo y analítico, autoridad de verdad.",en:"Fair and analytical judgment, truth authority.",fr:"Jugement juste et analytique, autorité de vérité.",it:"Giudizio giusto e analitico, autorità di verità.",pt:"Julgamento justo e analítico, autoridade de verdade."},simbolo:"EK"},
+            {es:"As de Oros",en:"Ace of Pentacles",fr:"As de Denier",it:"Asso di Denari",pt:"Ás de Ouros",significado:{es:"Semilla de abundancia, inicio financiero sólido.",en:"Seed of abundance, solid financial start.",fr:"Graine d'abondance, début financier solide.",it:"Seme di abbondanza, inizio finanziario solido.",pt:"Semente de abundância, início financeiro sólido."},simbolo:"O1"},
+            {es:"Dos de Oros",en:"Two of Pentacles",fr:"Deux de Denier",it:"Due di Denari",pt:"Dois de Ouros",significado:{es:"Malabarismo financiero, adaptación a cambios.",en:"Financial juggling, adaptation to changes.",fr:"Jonglerie financière, adaptation aux changements.",it:"Giocoleria finanziaria, adattamento ai cambiamenti.",pt:"Malabarismo financeiro, adaptação a mudanças."},simbolo:"O2"},
+            {es:"Tres de Oros",en:"Three of Pentacles",fr:"Trois de Denier",it:"Tre di Denari",pt:"Três de Ouros",significado:{es:"Trabajo en equipo, maestría artesanal.",en:"Teamwork, craft mastery.",fr:"Travail d'équipe, maîtrise artisanale.",it:"Lavoro di squadra, maestria artigianale.",pt:"Trabalho em equipe, maestria artesanal."},simbolo:"O3"},
+            {es:"Cuatro de Oros",en:"Four of Pentacles",fr:"Quatre de Denier",it:"Quattro di Denari",pt:"Quatro de Ouros",significado:{es:"Avaricia, apego al dinero por miedo.",en:"Avarice, attachment to money out of fear.",fr:"Avidité, attachement à l'argent par peur.",it:"Avarizia, attaccamento al denaro per paura.",pt:"Avareza, apego ao dinheiro por medo."},simbolo:"O4"},
+            {es:"Cinco de Oros",en:"Five of Pentacles",fr:"Cinq de Denier",it:"Cinque di Denari",pt:"Cinco de Ouros",significado:{es:"Pobreza temporal, desamparo, ignorar ayuda.",en:"Temporary poverty, helplessness, ignoring help.",fr:"Pauvreté temporaire, impuissance, ignorer l'aide.",it:"Povertà temporanea, impotenza, ignorare l'aiuto.",pt:"Pobreza temporária, desamparo, ignorar ajuda."},simbolo:"O5"},
+            {es:"Seis de Oros",en:"Six of Pentacles",fr:"Six de Denier",it:"Sei di Denari",pt:"Seis de Ouros",significado:{es:"Generosidad recíproca, dar y recibir equilibrado.",en:"Reciprocal generosity, balanced giving and receiving.",fr:"Générosité réciproque, donner et recevoir équilibré.",it:"Generosità reciproca, dare e ricevere equilibrato.",pt:"Generosidade recíproca, dar e receber equilibrado."},simbolo:"O6"},
+            {es:"Siete de Oros",en:"Seven of Pentacles",fr:"Sept de Denier",it:"Sette di Denari",pt:"Sete de Ouros",significado:{es:"Paciencia ante la cosecha, evaluar crecimiento.",en:"Patience before harvest, evaluating growth.",fr:"Patience avant la récolte, évaluer la croissance.",it:"Pazienza prima del raccolto, valutare la crescita.",pt:"Paciência antes da colheita, avaliar crescimento."},simbolo:"O7"},
+            {es:"Ocho de Oros",en:"Eight of Pentacles",fr:"Huit de Denier",it:"Otto di Denari",pt:"Oito de Ouros",significado:{es:"Dedicación absoluta al oficio, pulir detalles.",en:"Absolute dedication to craft, polishing details.",fr:"Dédication absolue au métier, polir les détails.",it:"Dedizione assoluta al mestiere, lucidare i dettagli.",pt:"Dedicação absoluta ao ofício, polir detalhes."},simbolo:"O8"},
+            {es:"Nueve de Oros",en:"Nine of Pentacles",fr:"Neuf de Denier",it:"Nove di Denari",pt:"Nove de Ouros",significado:{es:"Independencia material, disfrutar lujos logrados.",en:"Material independence, enjoying achieved luxuries.",fr:"Indépendance matérielle, profiter des luxes atteints.",it:"Indipendenza materiale, godere dei lussi raggiunti.",pt:"Independência material, desfrutar luxos conquistados."},simbolo:"O9"},
+            {es:"Diez de Oros",en:"Ten of Pentacles",fr:"Dix de Denier",it:"Dieci di Denari",pt:"Dez de Ouros",significado:{es:"Legado familiar, estabilidad a largo plazo.",en:"Family legacy, long-term stability.",fr:"Héritage familial, stabilité à long terme.",it:"Eredità familiare, stabilità a lungo termine.",pt:"Legado familiar, estabilidade a longo prazo."},simbolo:"O10"},
+            {es:"Sota de Oros",en:"Page of Pentacles",fr:"Valet de Denier",it:"Fante di Denari",pt:"Valete de Ouros",significado:{es:"Estudiante aplicado, nueva idea de negocio.",en:"Applied student, new business idea.",fr:"Étudiant appliqué, nouvelle idée d'affaires.",it:"Studente applicato, nuova idea di business.",pt:"Estudante aplicado, nova ideia de negócio."},simbolo:"OS"},
+            {es:"Caballero de Oros",en:"Knight of Pentacles",fr:"Cavalier de Denier",it:"Cavaliere di Denari",pt:"Cavaleiro de Ouros",significado:{es:"Avance lento pero seguro, constancia.",en:"Slow but steady advance, constancy.",fr:"Avance lent mais sûr, constance.",it:"Avanzamento lento ma sicuro, costanza.",pt:"Avanço lento mas seguro, constância."},simbolo:"OC"},
+            {es:"Reina de Oros",en:"Queen of Pentacles",fr:"Reine de Denier",it:"Regina di Denari",pt:"Rainha de Ouros",significado:{es:"Nutrición terrenal, prosperidad práctica.",en:"Earthly nourishment, practical prosperity.",fr:"Nourriture terrestre, prospérité pratique.",it:"Nutrimento terreno, prosperità pratica.",pt:"Nutrição terrena, prosperidade prática."},simbolo:"OR"},
+            {es:"Rey de Oros",en:"King of Pentacles",fr:"Roi de Denier",it:"Re di Denari",pt:"Rei de Ouros",significado:{es:"Éxito financiero absoluto, dominio de la materia.",en:"Absolute financial success, mastery of matter.",fr:"Succès financier absolu, maîtrise de la matière.",it:"Successo finanziario assoluto, padronanza della materia.",pt:"Sucesso financeiro absoluto, domínio da matéria."},simbolo:"OK"}];
 
-            document.querySelectorAll('[data-t]').forEach(el => {
-                const clave = el.getAttribute('data-t');
-                if(traducciones[lang] && traducciones[lang][clave]) {
-                    el.innerText = traducciones[lang][clave];
+        // ========================
+        // TAROT RITUAL
+        // ========================
+        function comenzarRitualTarot() {
+            sonarCuenco();
+            const tipo = document.getElementById('tarot-tipo').value;
+            cartasRequeridas = (tipo === '1' || tipo === 'sino1') ? 1 : 3;
+
+            document.getElementById('txt-instruccion-dinamica').innerText =
+                cartasRequeridas === 1 ? t('elegirUna') : t('elegir');
+
+            cartasSeleccionadasIndices = [];
+            mazoMezcladoConPosicion = [];
+            ritualEnProceso = false;
+
+            let mazo78 = mazoOficial78.map(c => ({ original: c, invertida: Math.random() > 0.45 }));
+            mazo78.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazo78;
+
+            const contenedor = document.getElementById('altar-abanicos-completo');
+            contenedor.innerHTML = '';
+
+            const totalFilas = 6;
+            const cartasPorFila = 13;
+
+            for (let f = 0; f < totalFilas; f++) {
+                let divFila = document.createElement('div');
+                divFila.className = 'abanico-fila';
+
+                for (let i = 0; i < cartasPorFila; i++) {
+                    let idx = f * cartasPorFila + i;
+                    let divCard = document.createElement('div');
+                    divCard.className = 'carta-tarot-real';
+
+                    let posRelativa = i - (cartasPorFila - 1) / 2;
+                    let esCelular = window.innerWidth < 600;
+                    let mGiro = esCelular ? 3.5 : 4.0;
+                    let mX = esCelular ? 16 : 32;
+
+                    let rotacion = posRelativa * mGiro;
+                    let traslX = posRelativa * mX;
+                    let traslY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.5 : 0.6);
+
+                    divCard.style.transform = `translateX(${traslX}px) translateY(${traslY}px) rotate(${rotacion}deg)`;
+                    divCard.style.zIndex = i;
+
+                    divCard.onclick = () => seleccionarCartaDelAbanico(idx, divCard);
+                    divFila.appendChild(divCard);
                 }
-            });
+                contenedor.appendChild(divFila);
+            }
+            cambiarVista('pantalla-tarot-tablero');
         }
 
-        // FUNCIÓN CORREGIDA CON TUS REGLAS DE ARCHIVOS EXACTAS
-        function leerTarot() {
-            const cantidad = document.getElementById('tarot-cartas').value;
-            const resultadoDiv = document.getElementById('resultado-tarot');
-            
-            let mezcladas = [...cartasTarot].sort(() => 0.5 - Math.random());
-            let seleccionadas = mezcladas.slice(0, cantidad);
-            
-            let html = '<div class="cartas-container">';
-            
-            seleccionadas.forEach(carta => {
-                let rutaImagen = '';
+        function seleccionarCartaDelAbanico(idx, elementoHTML) {
+            if (ritualEnProceso || elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
 
-                // 1. ARCANOS MAYORES (0 al 21) -> Formato: XX_nombre.webp
-                if (carta.numero <= 21) {
-                    let prefijo = String(carta.numero).padStart(2, '0');
-                    let nombreArchivo = nombresMayores[carta.numero];
-                    rutaImagen = `${prefijo}_${nombreArchivo}.webp`;
-                } 
-                // 2. ARCANOS MENORES (22 al 77) -> Formato: palo/XX_numero_de_palo.webp
-                else {
-                    let palo = '';
-                    let indiceRelativo = 0;
+            ritualEnProceso = true;
+            sonarCuenco();
+            elementoHTML.classList.add('elegida-ritual');
 
-                    if (carta.numero >= 22 && carta.numero <= 35) {
-                        palo = 'bastos';
-                        indiceRelativo = carta.numero - 22;
-                    } else if (carta.numero >= 36 && carta.numero <= 49) {
-                        palo = 'copas';
-                        indiceRelativo = carta.numero - 36;
-                    } else if (carta.numero >= 50 && carta.numero <= 63) {
-                        palo = 'espadas';
-                        indiceRelativo = carta.numero - 50;
-                    } else if (carta.numero >= 64 && carta.numero <= 77) {
-                        palo = 'oros';
-                        indiceRelativo = carta.numero - 64;
-                    }
-
-                    let numeroDosDigitos = String(indiceRelativo + 1).padStart(2, '0');
-                    let textoNumero = nombresNumerosMenores[indiceRelativo];
-                    
-                    rutaImagen = `${palo}/${numeroDosDigitos}_${textoNumero}_de_${palo}.webp`;
+            setTimeout(() => {
+                cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
+                ritualEnProceso = false;
+                if (cartasSeleccionadasIndices.length === cartasRequeridas) {
+                    setTimeout(revelarTiradaFinal, 400);
                 }
+            }, 600);
+        }
 
-                let nombreCarta = carta[idiomaActual] || carta['es'];
-                let significadoCarta = carta.significado[idiomaActual] || carta.significado['es'];
+        function revelarTiradaFinal() {
+            const cajaRevelada = document.getElementById('caja-cartas-reveladas');
+            const cajaTexto = document.getElementById('texto-interpretacion');
+            cajaRevelada.innerHTML = '';
 
-                html += `
-                <div class="carta-revelada">
-                    <img src="${rutaImagen}" alt="${nombreCarta}">
-                    <div class="nombre">${nombreCarta}</div>
-                    <div class="significado">${significadoCarta}</div>
-                </div>`;
+            let parrafos = "";
+            let esSiNo = document.getElementById('tarot-tema').value === 'sino';
+            let contadoresSi = 0;
+
+            cartasSeleccionadasIndices.forEach((cartaData, i) => {
+                let cardObj = cartaData.original;
+                let nombreIdioma = cardObj[idiomaActual];
+                let estadoPosicion = cartaData.invertida ? t('invertida') : "";
+
+                let divC = document.createElement('div');
+                divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
+                divC.style.animationDelay = `${i * 0.2}s`;
+                
+                // Add symbol if it exists
+                let simboloHTML = '';
+                if (cardObj.simbolo) {
+                    simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
+                }
+                
+                divC.innerHTML = simboloHTML + `<div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>`;
+                cajaRevelada.appendChild(divC);
+
+                if (!cartaData.invertida) contadoresSi++;
+
+                let significado = cardObj.significado[idiomaActual] || cardObj.significado.es;
+                parrafos += `<p><strong>\u2726 Arcano ${i + 1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
+                parrafos += `<strong>${t('interpretacion')}:</strong> ${significado}</p>`;
             });
-            
-            html += '</div>';
-            resultadoDiv.innerHTML = html;
+
+            if (esSiNo) {
+                let respuesta = contadoresSi >= (cartasRequeridas / 2) ? t('si') : t('no');
+                parrafos = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuesta}</h3>` + parrafos;
+            }
+
+            // Combined reading synthesis
+            if (cartasRequeridas === 3) {
+                parrafos += `<h3>${t('sintesisTirada')}</h3><p>${t('sintesis3Cartas')}</p>`;
+            } else if (cartasRequeridas === 1 && !esSiNo) {
+                parrafos += `<h3>${t('sintesisTirada')}</h3><p>${t('sintesis1Carta')}</p>`;
+            }
+
+            cajaTexto.innerHTML = parrafos;
+            document.getElementById('txt-titulo-resultado').innerText = t('dictamen');
+            cambiarVista('pantalla-tarot-resultado');
         }
 
-        function limpiarTarot() {
-            document.getElementById('tarot-nombre').value = '';
-            document.getElementById('tarot-pregunta').value = '';
-            document.getElementById('resultado-tarot').innerHTML = '';
+        // ========================
+        // NUMEROLOGIA
+        // ========================
+        const valoresLetras = {
+            vocales: {a:1,e:5,i:9,o:6,u:3},
+            consonantes: {b:2,c:3,d:4,f:6,g:7,h:8,j:1,k:2,l:3,m:4,n:5,p:7,q:8,r:9,s:1,t:2,v:4,w:5,x:6,y:7,z:8}
+        };
+
+        function calcularNumerosNombre(nombre) {
+            const vocales = valoresLetras.vocales;
+            const consonantes = valoresLetras.consonantes;
+            let sumaTotal = 0, sumaVocales = 0, sumaConsonantes = 0;
+            const limpio = nombre.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z]/g, '');
+
+            for (const letra of limpio) {
+                if (consonantes[letra]) { sumaTotal += consonantes[letra]; sumaConsonantes += consonantes[letra]; }
+                else if (vocales[letra]) { sumaTotal += vocales[letra]; sumaVocales += vocales[letra]; }
+            }
+
+            return {
+                destino: reducirNumero(sumaTotal, true),
+                alma: reducirNumero(sumaVocales, true),
+                personalidad: reducirNumero(sumaConsonantes, true)
+            };
         }
 
-        function calcularCarta() {
-            const nombre = document.getElementById('astro-nombre').value || "Buscador";
-            const resultadoDiv = document.getElementById('resultado-astrologia');
-            const signos = ["Aries", "Tauro", "Géminis", "Cáncer", "Leo", "Virgo", "Libra", "Escorpio", "Sagitario", "Capricornio", "Acuario", "Piscis"];
-            const sol = signos[Math.floor(Math.random() * 12)];
-            const luna = signos[Math.floor(Math.random() * 12)];
-            const asc = signos[Math.floor(Math.random() * 12)];
+        function calcularNumerosFecha(fecha) {
+            const [year, month, day] = fecha.split('-').map(Number);
+            return {
+                caminoVida: reducirNumero(reducirNumero(year, false) + reducirNumero(month, false) + reducirNumero(day, false), true),
+                diaNacimiento: reducirNumero(day, false),
+                numeroPersonalAno: calcularNumeroPersonalAno(year, month, day)
+            };
+        }
 
-            resultadoDiv.innerHTML = `
-                <div class="resultado">
-                    <h3>Carta Astral de ${nombre}</h3>
-                    <div class="astrologia-resultado">
-                        <div class="signo-box"><div class="simbolo-signo">☀️</div><div><strong>Sol:</strong> ${sol}</div></div>
-                        <div class="signo-box"><div class="simbolo-signo">🌙</div><div><strong>Luna:</strong> ${luna}</div></div>
-                        <div class="signo-box"><div class="simbolo-signo">🌅</div><div><strong>Ascendente:</strong> ${asc}</div></div>
-                    </div>
-                </div>`;
+        function calcularNumeroPersonalAno(year, month, day) {
+            const hoy = new Date();
+            let anoActual = hoy.getFullYear();
+            let suma = reducirNumero(anoActual, false) + reducirNumero(month, false) + reducirNumero(day, false);
+            return reducirNumero(suma, true);
+        }
+
+        function calcularEnergiaDelDia() {
+            const hoy = new Date();
+            let suma = reducirNumero(hoy.getFullYear(), false) + reducirNumero(hoy.getMonth() + 1, false) + reducirNumero(hoy.getDate(), false);
+            return reducirNumero(suma, true);
+        }
+
+        function reducirNumero(num, mantenerMaestros) {
+            if (mantenerMaestros && (num === 11 || num === 22 || num === 33)) return num;
+            while (num > 9) {
+                num = String(num).split('').reduce((a, b) => a + parseInt(b), 0);
+                if (mantenerMaestros && (num === 11 || num === 22 || num === 33)) break;
+            }
+            return num;
+        }
+
+        function obtenerSignificadoNumero(num) {
+            const s = {
+                1: {es:"Liderazgo, independencia, pionero.",en:"Leadership, independence, pioneer.",fr:"Leadership, indépendance, pionnier.",it:"Leadership, indipendenza, pioniere.",pt:"Liderança, independência, pioneiro."},
+                2: {es:"Armonía, cooperación, sensibilidad.",en:"Harmony, cooperation, sensitivity.",fr:"Harmonie, coopération, sensibilité.",it:"Armonia, cooperazione, sensibilità.",pt:"Harmonia, cooperação, sensibilidade."},
+                3: {es:"Creatividad, expresión, optimismo.",en:"Creativity, expression, optimism.",fr:"Créativité, expression, optimisme.",it:"Creatività, espressione, ottimismo.",pt:"Criatividade, expressão, otimismo."},
+                4: {es:"Estabilidad, trabajo, disciplina.",en:"Stability, work, discipline.",fr:"Stabilité, travail, discipline.",it:"Stabilità, lavoro, disciplina.",pt:"Estabilidade, trabalho, disciplina."},
+                5: {es:"Libertad, cambio, aventura.",en:"Freedom, change, adventure.",fr:"Liberté, changement, aventure.",it:"Libertà, cambiamento, avventura.",pt:"Liberdade, mudança, aventura."},
+                6: {es:"Amor, familia, responsabilidad.",en:"Love, family, responsibility.",fr:"Amour, famille, responsabilité.",it:"Amore, famiglia, responsabilità.",pt:"Amor, família, responsabilidade."},
+                7: {es:"Espiritualidad, análisis, sabiduría.",en:"Spirituality, analysis, wisdom.",fr:"Spiritualité, analyse, sagesse.",it:"Spiritualità, analisi, saggezza.",pt:"Espiritualidade, análise, sabedoria."},
+                8: {es:"Éxito material, poder, ambición.",en:"Material success, power, ambition.",fr:"Succès matériel, pouvoir, ambition.",it:"Successo materiale, potere, ambizione.",pt:"Sucesso material, poder, ambição."},
+                9: {es:"Humanitarismo, completitud, sabiduría.",en:"Humanitarianism, completion, wisdom.",fr:"Humanitarisme, complétude, sagesse.",it:"Umanitarismo, completezza, saggezza.",pt:"Humanitarismo, completude, sabedoria."},
+                11: {es:"Maestro: Iluminación espiritual, intuición elevada.",en:"Master: Spiritual illumination, elevated intuition.",fr:"Maître: Illumination spirituelle, intuition élevée.",it:"Maestro: Illuminazione spirituale, intuizione elevata.",pt:"Mestre: Iluminação espiritual, intuição elevada."},
+                22: {es:"Maestro Constructor: Manifestación de grandes visiones.",en:"Master Builder: Manifesting grand visions.",fr:"Maître Bâtisseur: Manifester de grandes visions.",it:"Maestro Costruttore: Manifestare grandi visioni.",pt:"Mestre Construtor: Manifestar grandes visões."},
+                33: {es:"Maestro Sanador: Amor incondicional, enseñanza.",en:"Master Healer: Unconditional love, teaching.",fr:"Maître Guérisseur: Amour inconditionnel, enseignement.",it:"Maestro Guaritore: Amore incondizionato, insegnamento.",pt:"Mestre Curador: Amor incondicional, ensino."}
+            };
+            return s[num]?.[idiomaActual] || s[reducirNumero(num, false)]?.[idiomaActual] || "";
         }
 
         function calcularNumerologia() {
-            const nombre = document.getElementById('numero-nombre').value || "Buscador";
-            const resultadoDiv = document.getElementById('resultado-numerologia');
-            const numVida = Math.floor(Math.random() * 9) + 1;
-            const numDestino = Math.floor(Math.random() * 9) + 1;
+            sonarCuenco();
+            const nombre = document.getElementById('num-nombre').value;
+            const fecha = document.getElementById('num-fecha').value;
 
-            resultadoDiv.innerHTML = `
-                <div class="resultado">
-                    <h3>Análisis Numerológico de ${nombre}</h3>
-                    <div class="numerologia-resultado">
-                        <div class="numero-box"><div class="numero">${numVida}</div><div>Camino de Vida</div></div>
-                        <div class="numero-box"><div class="numero">${numDestino}</div><div>Número de Destino</div></div>
-                    </div>
-                </div>`;
+            if (!nombre || !fecha) { alert(t('completaCampos')); return; }
+
+            const numeros = calcularNumerosNombre(nombre);
+            const fechaNums = calcularNumerosFecha(fecha);
+            const energiaDia = calcularEnergiaDelDia();
+
+            const resultadosDiv = document.getElementById('num-resultados');
+            resultadosDiv.innerHTML = '';
+
+            agregarResultadoNumerico(resultadosDiv, fechaNums.caminoVida, t('caminoVida'), obtenerSignificadoNumero(fechaNums.caminoVida));
+            agregarResultadoNumerico(resultadosDiv, numeros.destino, t('destino'), obtenerSignificadoNumero(numeros.destino));
+            agregarResultadoNumerico(resultadosDiv, numeros.alma, t('alma'), obtenerSignificadoNumero(numeros.alma));
+            agregarResultadoNumerico(resultadosDiv, numeros.personalidad, t('personalidad'), obtenerSignificadoNumero(numeros.personalidad));
+            agregarResultadoNumerico(resultadosDiv, fechaNums.numeroPersonalAno, t('numeroPersonalAno'), obtenerSignificadoNumero(fechaNums.numeroPersonalAno));
+            agregarResultadoNumerico(resultadosDiv, energiaDia, t('energiaDia'), obtenerSignificadoNumero(energiaDia));
+
+            const interpretacionDiv = document.getElementById('num-interpretacion');
+            interpretacionDiv.innerHTML = generarInterpretacionNumerologica(numeros, fechaNums, energiaDia);
+            cambiarVista('pantalla-numerologia-resultado');
         }
 
-        function consultarOraculo() {
-            const nombre = document.getElementById('oraculo-nombre').value || "Buscador";
-            const resultadoDiv = document.getElementById('resultado-oraculo');
-            const respuestas = ["Sí, definitivamente", "El universo te pide paciencia", "No es el momento adecuado", "Mira en tu interior para hallar la respuesta", "Grandes cambios se aproximan"];
-            const res = respuestas[Math.floor(Math.random() * respuestas.length)];
-
-            resultadoDiv.innerHTML = `
-                <div class="resultado">
-                    <h3>Oráculo para ${nombre}</h3>
-                    <p style="margin: 10px 0;"><strong>Respuesta:</strong> ${res}</p>
-                </div>`;
+        function agregarResultadoNumerico(contenedor, numero, titulo, significado) {
+            const div = document.createElement('div');
+            div.className = 'num-item';
+            div.innerHTML = `<div class="num-carta">${numero}</div><h3>${titulo}</h3><p>${significado}</p>`;
+            contenedor.appendChild(div);
         }
+
+        function generarInterpretacionNumerologica(numeros, fechaNums, energiaDia) {
+            return `<h3>${t('interpPersonal')}</h3>
+            <p><strong>${t('tuCaminoVida')} (${fechaNums.caminoVida}):</strong> ${obtenerSignificadoNumero(fechaNums.caminoVida)}</p>
+            <p><strong>${t('tuDestino')} (${numeros.destino}):</strong> ${obtenerSignificadoNumero(numeros.destino)}</p>
+            <p><strong>${t('tuAlmaAnhela')} (${numeros.alma}):</strong> ${obtenerSignificadoNumero(numeros.alma)}</p>
+            <p><strong>${t('tuPersonalidad')} (${numeros.personalidad}):</strong> ${obtenerSignificadoNumero(numeros.personalidad)}</p>
+            <p><strong>${t('numeroPersonalAno')} (${fechaNums.numeroPersonalAno}):</strong> ${obtenerSignificadoNumero(fechaNums.numeroPersonalAno)}</p>
+            <p><strong>${t('tuEnergiaDia')} (${energiaDia}):</strong> ${obtenerSignificadoNumero(energiaDia)}</p>`;
+        }
+
+        // ========================
+        // ASTROLOGIA
+        // ========================
+        const signosZodiaco = [
+            {nombre:{es:"Aries",en:"Aries",fr:"Bélier",it:"Ariete",pt:"Áries"},elemento:"fuego"},
+            {nombre:{es:"Tauro",en:"Taurus",fr:"Taureau",it:"Toro",pt:"Touro"},elemento:"tierra"},
+            {nombre:{es:"Géminis",en:"Gemini",fr:"Gémeaux",it:"Gemelli",pt:"Gêmeos"},elemento:"aire"},
+            {nombre:{es:"Cáncer",en:"Cancer",fr:"Cancer",it:"Cancro",pt:"Câncer"},elemento:"agua"},
+            {nombre:{es:"Leo",en:"Leo",fr:"Lion",it:"Leone",pt:"Leão"},elemento:"fuego"},
+            {nombre:{es:"Virgo",en:"Virgo",fr:"Vierge",it:"Vergine",pt:"Virgem"},elemento:"tierra"},
+            {nombre:{es:"Libra",en:"Libra",fr:"Balance",it:"Bilancia",pt:"Libra"},elemento:"aire"},
+            {nombre:{es:"Escorpio",en:"Scorpio",fr:"Scorpion",it:"Scorpione",pt:"Escorpião"},elemento:"agua"},
+            {nombre:{es:"Sagitario",en:"Sagittarius",fr:"Sagittaire",it:"Sagittario",pt:"Sagitário"},elemento:"fuego"},
+            {nombre:{es:"Capricornio",en:"Capricorn",fr:"Capricorne",it:"Capricorno",pt:"Capricórnio"},elemento:"tierra"},
+            {nombre:{es:"Acuario",en:"Aquarius",fr:"Verseau",it:"Acquario",pt:"Aquário"},elemento:"aire"},
+            {nombre:{es:"Piscis",en:"Pisces",fr:"Poissons",it:"Pesci",pt:"Peixes"},elemento:"agua"}
+        ];
+
+        function calcularCartaNatal() {
+            sonarCuenco();
+            const fecha = document.getElementById('ast-fecha').value;
+            const hora = document.getElementById('ast-hora').value;
+            const nombre = document.getElementById('ast-nombre').value;
+
+            if (!fecha || !nombre) { alert(t('completaCampos')); return; }
+
+            const fechaObj = new Date(fecha + 'T' + (hora || '12:00'));
+            const datosCarta = calcularSignosCartaNatal(fechaObj);
+
+            const resultadosDiv = document.getElementById('ast-resultados');
+            resultadosDiv.innerHTML = '';
+
+            agregarResultadoAstrologico(resultadosDiv, '\u2600\uFE0F', datosCarta.signoSolar.nombre[idiomaActual], t('signoSolar'), obtenerDescripcionElemento(datosCarta.signoSolar.elemento));
+            agregarResultadoAstrologico(resultadosDiv, '\uD83C\uDF19', datosCarta.signoLunar.nombre[idiomaActual], t('signoLunar'), obtenerDescripcionElemento(datosCarta.signoLunar.elemento));
+            agregarResultadoAstrologico(resultadosDiv, '\u2B06\uFE0F', datosCarta.ascendente.nombre[idiomaActual], t('ascendente'), obtenerDescripcionElemento(datosCarta.ascendente.elemento));
+            agregarResultadoAstrologico(resultadosDiv, '\u263F', datosCarta.mercurio.nombre[idiomaActual], 'Mercury', t('mercurioDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2640', datosCarta.venus.nombre[idiomaActual], 'Venus', t('venusDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2642', datosCarta.marte.nombre[idiomaActual], 'Mars', t('marteDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2643', datosCarta.jupiter.nombre[idiomaActual], 'Jupiter', t('jupiterDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2644', datosCarta.saturno.nombre[idiomaActual], 'Saturn', t('saturnoDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2645', datosCarta.urano.nombre[idiomaActual], 'Uranus', t('uranoDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2646', datosCarta.neptuno.nombre[idiomaActual], 'Neptune', t('neptunoDesc'));
+            agregarResultadoAstrologico(resultadosDiv, '\u2647', datosCarta.pluton.nombre[idiomaActual], 'Pluto', t('plutonDesc'));
+
+            document.getElementById('ast-interpretacion').innerHTML = generarInterpretacionAstral(datosCarta);
+            cambiarVista('pantalla-astrologia-resultado');
+        }
+
+        function agregarResultadoAstrologico(contenedor, simbolo, nombre, titulo, descripcion) {
+            const div = document.createElement('div');
+            div.className = 'num-item';
+            div.innerHTML = `<div class="num-carta" style="font-size:2rem;">${simbolo}</div><h3>${titulo}</h3><p style="color:#d4af37; font-weight:bold; font-size:1.3rem;">${nombre}</p><p>${descripcion}</p>`;
+            contenedor.appendChild(div);
+        }
+
+        function calcularSignosCartaNatal(fecha, hora) {
+            const signosZodiaco = ["Aries", "Taurus", "Gemini", "Cancer", "Leo", "Virgo", "Libra", "Scorpio", "Sagittarius", "Capricorn", "Aquarius", "Pisces"];
+            const mes = fecha.getMonth() + 1;
+            const dia = fecha.getDate();
+            const hora_num = hora || 12;
+            
+            // Solar sign
+            const signoSolar = calcularSignoPorFecha(mes, dia);
+            const solarIdx = signosZodiaco.findIndex(s => s === signoSolar.split(' ')[0] || s.toLowerCase().includes(signoSolar.toLowerCase()));
+            const solarIdxFinal = solarIdx >= 0 ? solarIdx : 0;
+            
+            // Moon sign: improved using day of year
+            const dayOfYear = Math.floor((fecha - new Date(fecha.getFullYear(), 0, 0)) / 86400000);
+            const moonSignIdx = Math.floor((dayOfYear * 13.37 + Math.floor(fecha.getFullYear() % 19) * 7) % 12);
+            
+            // Rising sign: approximate based on hour (each 2 hours = 1 sign)
+            const hourOffset = Math.floor((hora_num + 6) / 2);
+            const ascIdx = (solarIdxFinal + hourOffset) % 12;
+            
+            // Inner planets
+            const mercurio = signosZodiaco[(solarIdxFinal + (mes % 2 === 0 ? 0 : 1)) % 12];
+            const venus = signosZodiaco[(solarIdxFinal + 2 + (mes % 3)) % 12];
+            const marte = signosZodiaco[(solarIdxFinal + 5 + Math.floor(dia / 10)) % 12];
+            
+            // Outer planets (long-term cycles, using safe modulo)
+            const sm = (n) => ((n % 12) + 12) % 12;
+            const jupiter = signosZodiaco[sm(fecha.getFullYear() + 5)];
+            const saturno = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1920) / 2.5 + 5))];
+            const urano = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1927) / 7 + 7))];
+            const neptuno = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1860) / 14 + 8))];
+            const pluton = signosZodiaco[sm(Math.floor((fecha.getFullYear() - 1882) / 20 + 9))];
+            
+            return {
+                signoSolar: signoSolar,
+                signoLunar: signosZodiaco[moonSignIdx],
+                ascendente: signosZodiaco[ascIdx],
+                mercurio: mercurio,
+                venus: venus,
+                marte: marte,
+                jupiter: jupiter,
+                saturno: saturno,
+                urano: urano,
+                neptuno: neptuno,
+                pluton: pluton
+            };
+        }
+
+        function calcularSignoPorFecha(mes, dia) {
+            const rangos = [
+                {m:1,d1:1,d2:19,s:9},{m:1,d1:20,d2:31,s:10},
+                {m:2,d1:1,d2:18,s:10},{m:2,d1:19,d2:29,s:11},
+                {m:3,d1:1,d2:20,s:11},{m:3,d1:21,d2:31,s:0},
+                {m:4,d1:1,d2:19,s:0},{m:4,d1:20,d2:30,s:1},
+                {m:5,d1:1,d2:20,s:1},{m:5,d1:21,d2:31,s:2},
+                {m:6,d1:1,d2:20,s:2},{m:6,d1:21,d2:30,s:3},
+                {m:7,d1:1,d2:22,s:3},{m:7,d1:23,d2:31,s:4},
+                {m:8,d1:1,d2:22,s:4},{m:8,d1:23,d2:31,s:5},
+                {m:9,d1:1,d2:22,s:5},{m:9,d1:23,d2:30,s:6},
+                {m:10,d1:1,d2:22,s:6},{m:10,d1:23,d2:31,s:7},
+                {m:11,d1:1,d2:21,s:7},{m:11,d1:22,d2:30,s:8},
+                {m:12,d1:1,d2:21,s:8},{m:12,d1:22,d2:31,s:9}
+            ];
+            for (const r of rangos) {
+                if (mes === r.m && dia >= r.d1 && dia <= r.d2) return signosZodiaco[r.s];
+            }
+            return signosZodiaco[0];
+        }
+
+        function obtenerDescripcionElemento(elemento) {
+            return t(elemento) || '';
+        }
+
+        function generarInterpretacionAstral(datosCarta) {
+            return `<h3>${t('perfilAstrologico')}</h3>
+            <p><strong>\u2600\uFE0F ${t('solEn')} ${datosCarta.signoSolar.nombre[idiomaActual]}:</strong> ${t('solDesc')}</p>
+            <p><strong>\uD83C\uDF19 ${t('lunaEn')} ${datosCarta.signoLunar.nombre[idiomaActual]}:</strong> ${t('lunaDesc')}</p>
+            <p><strong>\u2B06\uFE0F ${t('ascendenteTxt')} ${datosCarta.ascendente.nombre[idiomaActual]}:</strong> ${t('ascDesc')}</p>
+            <p><strong>\u263F ${t('mercurioEn')} ${datosCarta.mercurio.nombre[idiomaActual]}:</strong> ${t('mercurioDesc')}</p>
+            <p><strong>\u2640 ${t('venusEn')} ${datosCarta.venus.nombre[idiomaActual]}:</strong> ${t('venusDesc')}</p>
+            <p><strong>\u2642 ${t('marteEn')} ${datosCarta.marte.nombre[idiomaActual]}:</strong> ${t('marteDesc')}</p>
+            <p><strong>\u2643 ${t('jupiterEn')} ${datosCarta.jupiter.nombre[idiomaActual]}:</strong> ${t('jupiterDesc')}</p>
+            <p><strong>\u2644 ${t('saturnoEn')} ${datosCarta.saturno.nombre[idiomaActual]}:</strong> ${t('saturnoDesc')}</p>
+            <p><strong>\u2645 ${t('uranoEn')} ${datosCarta.urano.nombre[idiomaActual]}:</strong> ${t('uranoDesc')}</p>
+            <p><strong>\u2646 ${t('neptunoEn')} ${datosCarta.neptuno.nombre[idiomaActual]}:</strong> ${t('neptunoDesc')}</p>
+            <p><strong>\u2647 ${t('plutonEn')} ${datosCarta.pluton.nombre[idiomaActual]}:</strong> ${t('plutonDesc')}</p>`;
+        }
+
+        // ========================
+        // ORÁCULO - Consulta Unificada
+        // ========================
+        function realizarConsultaOraculo() {
+            const nombre = document.getElementById('orc-nombre').value;
+            const fecha = document.getElementById('orc-fecha').value;
+            const hora = document.getElementById('orc-hora').value;
+            const lugar = document.getElementById('orc-lugar').value;
+
+            if (!nombre || !fecha || !hora || !lugar) { alert(t('completaCampos')); return; }
+
+            // Store oracle data for use after card selection
+            window._oraculoData = {
+                nombre, fecha, hora, lugar,
+                numeros: calcularNumerosNombre(nombre),
+                fechaNums: calcularNumerosFecha(fecha),
+                energiaDia: calcularEnergiaDelDia(),
+                datosCarta: calcularSignosCartaNatal(new Date(fecha + 'T' + (hora || '12:00')))
+            };
+
+            // Build a mini card fan for the oracle (client chooses 1 card)
+            oraculoCartaSeleccionada = null;
+            let mazo78 = mazoOficial78.map(c => ({ original: c, invertida: Math.random() > 0.45 }));
+            mazo78.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazo78;
+
+            document.getElementById('txt-oraculo-instruccion').innerText = t('elegirOraculo');
+
+            const contenedor = document.getElementById('altar-oraculo-abanicos');
+            contenedor.innerHTML = '';
+
+            // Show 3 rows of 13 cards for the oracle selection
+            const totalFilas = 3;
+            const cartasPorFila = 13;
+
+            for (let f = 0; f < totalFilas; f++) {
+                let divFila = document.createElement('div');
+                divFila.className = 'abanico-fila';
+
+                for (let i = 0; i < cartasPorFila; i++) {
+                    let idx = f * cartasPorFila + i;
+                    let divCard = document.createElement('div');
+                    divCard.className = 'carta-tarot-real';
+
+                    let posRelativa = i - (cartasPorFila - 1) / 2;
+                    let esCelular = window.innerWidth < 600;
+                    let mGiro = esCelular ? 3.5 : 4.0;
+                    let mX = esCelular ? 16 : 32;
+
+                    let rotacion = posRelativa * mGiro;
+                    let traslX = posRelativa * mX;
+                    let traslY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.5 : 0.6);
+
+                    divCard.style.transform = `translateX(${traslX}px) translateY(${traslY}px) rotate(${rotacion}deg)`;
+                    divCard.style.zIndex = i;
+
+                    divCard.onclick = () => seleccionarCartaOraculo(idx, divCard);
+                    divFila.appendChild(divCard);
+                }
+                contenedor.appendChild(divFila);
+            }
+            cambiarVista('pantalla-oraculo-tablero');
+        }
+
+        function seleccionarCartaOraculo(idx, elementoHTML) {
+            if (oraculoCartaSeleccionada || elementoHTML.classList.contains('elegida-ritual')) return;
+
+            sonarCuenco();
+            elementoHTML.classList.add('elegida-ritual');
+            oraculoCartaSeleccionada = mazoMezcladoConPosicion[idx];
+
+            setTimeout(() => { revelarOraculo(); }, 800);
+        }
+
+        function revelarOraculo() {
+            const data = window._oraculoData;
+            if (!data) return;
+
+            const { numeros, fechaNums, energiaDia, datosCarta, pregunta } = data;
+
+            // Show the chosen card
+            const cartasDiv = document.getElementById('orc-cartas');
+            cartasDiv.innerHTML = '';
+
+            let cardObj = oraculoCartaSeleccionada.original;
+            let nombreIdioma = cardObj[idiomaActual];
+            let estadoPosicion = oraculoCartaSeleccionada.invertida ? t('invertida') : '';
+
+            const divC = document.createElement('div');
+            divC.className = `carta-revelada ${oraculoCartaSeleccionada.invertida ? 'invertida' : ''}`;
+
+            // Add symbol if it exists
+            let simboloHTML = '';
+            if (cardObj.simbolo) {
+                simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
+            }
+
+            divC.innerHTML = simboloHTML + `<div class="nombre-c">${nombreIdioma}${estadoPosicion}</div>`;
+            cartasDiv.appendChild(divC);
+
+            // Generate unified interpretation
+            let html = `<h3 style="text-align:center; font-size:1.6rem; margin-bottom:25px;">${t('oraculoResTitulo')}</h3>`;
+
+            if (pregunta) {
+                html += `<p style="text-align:center; font-style:italic; color:#c4b5fd; margin-bottom:20px;">"${pregunta}"</p>`;
+            }
+
+            // Tarot card
+            html += `<h3>\uD83C\uDCCF ${t('cartasRevelan')}</h3>`;
+            let significado = cardObj.significado[idiomaActual] || cardObj.significado.es;
+            html += `<p><strong>\u2726 ${nombreIdioma} ${estadoPosicion}</strong><br>${significado}</p>`;
+
+            // Numerology (personal + daily)
+            html += `<h3>\uD83D\uDD22 ${t('vibracionNumerica')}</h3>`;
+            html += `<p><strong>${t('caminoVida')} ${fechaNums.caminoVida}</strong>: ${obtenerSignificadoNumero(fechaNums.caminoVida)}</p>`;
+            html += `<p><strong>${t('destino')} ${numeros.destino}</strong>: ${obtenerSignificadoNumero(numeros.destino)}</p>`;
+            html += `<p><strong>${t('numeroPersonalAno')} ${fechaNums.numeroPersonalAno}</strong>: ${obtenerSignificadoNumero(fechaNums.numeroPersonalAno)}</p>`;
+            html += `<p><strong>${t('energiaDia')} ${energiaDia}</strong>: ${obtenerSignificadoNumero(energiaDia)}</p>`;
+
+            // Astrology
+            html += `<h3>\uD83C\uDF0C ${t('influenciasCelestiales')}</h3>`;
+            html += `<p><strong>\u2600\uFE0F ${t('solEn')} ${datosCarta.signoSolar.nombre[idiomaActual]}</strong>: ${t('solDesc')}</p>`;
+            html += `<p><strong>\uD83C\uDF19 ${t('lunaEn')} ${datosCarta.signoLunar.nombre[idiomaActual]}</strong>: ${t('lunaDesc')}</p>`;
+            html += `<p><strong>\u2B06\uFE0F ${t('ascendenteTxt')} ${datosCarta.ascendente.nombre[idiomaActual]}</strong>: ${t('ascDesc')}</p>`;
+
+            // Synthesis - the unified message for the client
+            html += `<h3>\u2728 ${t('sintesisOraculo')}</h3>`;
+            html += `<p>${t('sintesisTexto')}</p>`;
+
+            // Personalized guidance based on card + numbers + astrology
+            html += generarGuiaPersonalizada(cardObj, fechaNums, datosCarta, energiaDia);
+
+            document.getElementById('orc-interpretacion').innerHTML = html;
+            cambiarVista('pantalla-oraculo-resultado');
+            sonarCuenco();
+        }
+
+        function generarGuiaPersonalizada(cardObj, fechaNums, datosCarta, energiaDia) {
+            const esInvertida = oraculoCartaSeleccionada.invertida;
+            const elemento = datosCarta.signoSolar.elemento;
+
+            const guias = {
+                fuego: {
+                    es: "Tu fuego interior es tu mayor fortaleza. Esta carta te invita a canalizar esa pasión con dirección y propósito. La acción impulsiva puede ser tu aliada si la acompañas de conciencia.",
+                    en: "Your inner fire is your greatest strength. This card invites you to channel that passion with direction and purpose. Impulsive action can be your ally if accompanied by awareness.",
+                    fr: "Ton feu intérieur est ta plus grande force. Cette carte t'invite à canaliser cette passion avec direction et but. L'action impulsive peut être ton alliée si elle est accompagnée de conscience.",
+                    it: "Il tuo fuoco interiore è la tua più grande forza. Questa carta ti invita a canalizzare quella passione con direzione e scopo. L'azione impulsiva può essere tua alleata se accompagnata da consapevolezza.",
+                    pt: "Seu fogo interior é sua maior força. Esta carta te convida a canalizar essa paixão com direção e propósito. A ação impulsiva pode ser sua aliada se acompanhada de consciência."
+                },
+                tierra: {
+                    es: "La tierra te pide paciencia y constancia. Esta carta confirma que tus esfuerzos están dando frutos, aunque no siempre sea visible. Confía en el proceso y sigue construyendo.",
+                    en: "The earth asks you for patience and constancy. This card confirms your efforts are bearing fruit, even if not always visible. Trust the process and keep building.",
+                    fr: "La terre te demande patience et constance. Cette carte confirme que tes efforts portent leurs fruits, même si ce n'est pas toujours visible. Fais confiance au processus et continue de construire.",
+                    it: "La terra ti chiede pazienza e costanza. Questa carta conferma che i tuoi sforzi stanno dando frutti, anche se non sempre visibile. Fidati del processo e continua a costruire.",
+                    pt: "A terra te pede paciência e constância. Esta carta confirma que seus esforços estão dando frutos, mesmo que nem sempre seja visível. Confie no processo e continue construindo."
+                },
+                aire: {
+                    es: "Tu mente es tu herramienta más poderosa. Esta carta te sugiere que la claridad vendrá a través de la comunicación honesta y el pensamiento libre. No reprimas tus ideas.",
+                    en: "Your mind is your most powerful tool. This card suggests clarity will come through honest communication and free thinking. Don't suppress your ideas.",
+                    fr: "Ton esprit est ton outil le plus puissant. Cette carte suggère que la clarté viendra à travers la communication honnête et la pensée libre. Ne réprime pas tes idées.",
+                    it: "La tua mente è il tuo strumento più potente. Questa carta suggerisce che la chiarezza arriverà attraverso la comunicazione onesta e il pensiero libero. Non reprimere le tue idee.",
+                    pt: "Sua mente é sua ferramenta mais poderosa. Esta carta sugere que a clareza virá através da comunicação honesta e do pensamento livre. Não reprima suas ideias."
+                },
+                agua: {
+                    es: "Tus emociones son tu brújula interna. Esta carta te recuerda que honrar lo que sientes no es debilidad sino sabiduría. Fluye con tus emociones, no contra ellas.",
+                    en: "Your emotions are your inner compass. This card reminds you that honoring what you feel is not weakness but wisdom. Flow with your emotions, not against them.",
+                    fr: "Tes émotions sont ta boussole intérieure. Cette carte te rappelle qu'honorer ce que tu ressens n'est pas une faiblesse mais une sagesse. Fluis avec tes émotions, pas contre elles.",
+                    it: "Le tue emozioni sono la tua bussola interiore. Questa carta ti ricorda che onorare ciò che senti non è debolezza ma saggezza. Fluisco con le tue emozioni, non contro di esse.",
+                    pt: "Suas emoções são sua bússola interna. Esta carta te lembra que honrar o que sente não é fraqueza mas sabedoria. Flua com suas emoções, não contra elas."
+                }
+            };
+
+            let guia = guias[elemento]?.[idiomaActual] || guias[elemento]?.es || '';
+
+            if (esInvertida) {
+                guia += ' ' + ({
+                    es: "La carta invertida te pide reflexionar: quizás hay un bloqueo interno que necesita ser liberado antes de avanzar.",
+                    en: "The reversed card asks you to reflect: perhaps there is an internal block that needs to be released before moving forward.",
+                    fr: " La carte renversée te demande de réfléchir: peut-être y a-t-il un blocage interne qui doit être libéré avant d'avancer.",
+                    it: " La carta rovesciata ti chiede di riflettere: forse c'è un blocco interno che deve essere liberato prima di andare avanti.",
+                    pt: " A carta invertida te pede reflexão: talvez haja um bloqueio interno que precise ser liberado antes de avançar."
+                }[idiomaActual] || '');
+            }
+
+            return `<h3>${t('mensajeOraculo')}</h3><p>${guia}</p>`;
+        }
+
+        // ========================
+        // INICIALIZACIÓN
+        // ========================
+        const devLang = (navigator.language || navigator.userLanguage || '').slice(0, 2);
+        cambiarIdioma(T[devLang] ? devLang : 'es');
+
+        document.body.addEventListener('click', function() { asegurarMusicaDeFondo(); }, { once: true });
     </script>
 </body>
 </html>
