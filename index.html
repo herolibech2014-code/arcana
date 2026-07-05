@@ -570,12 +570,14 @@
                     </select>
                 </div>
                 <div class="selector-caja" id="caja-tipo-tirada">
-                    <label data-t="lblTirada">Despliegue energético:</label>
-                    <select id="tarot-tipo">
-                        <option value="1" data-t="tirada1">Una Carta (Consejo Directo)</option>
-                        <option value="3" selected data-t="tirada3">Tres Cartas (Línea del Tiempo)</option>
-                    </select>
-                </div>
+    <label data-t="lblTirada">Despliegue energético:</label>
+    <select id="tarot-tipo">
+        <option value="1" data-t="tirada1">Una Carta (SÍ / NO Directo)</option>
+        <option value="2" data-t="tirada2">Dos Cartas (SÍ / NO con Matices)</option>
+        <option value="3" selected data-t="tirada3">Tres Cartas (Pasado, Presente y Futuro)</option>
+        <option value="10" data-t="tiradaCruz">Cruz Celta (Lectura Completa)</option>
+    </select>
+</div>
                 
             </div>
             <button class="btn-volver" onclick="comenzarRitualTarot()" style="margin-top:25px; font-size:1.4rem; padding:15px;" data-t="btnConsultar">IR A LA CONSULTA</button>
