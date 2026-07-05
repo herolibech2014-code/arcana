@@ -1406,7 +1406,20 @@
             parrafos += `<p>El mensaje conjunto de tus cartas revela un panorama claro. La combinación de `;
             
             // Unimos los nombres de las cartas dinámicamente en una sola frase
-            let nombresCombinados = significadosParaS
+            let nombresCombinados = significadosParaSintesis.map(c => `${c.nombre} (${c.posicion || 'Derecha'})`).join(', ');
+            parrafos += `<strong>${nombresCombinados}</strong> sugiere que te encontrás en un momento propicio para asimilar estas energías. `;
+            
+            // Generamos una pequeña síntesis combinando los puntos clave
+            parrafos += `Donde principalmente debes conectar el consejo de: ${significadosParaSintesis[0].texto} `;
+            if (significadosParaSintesis.length > 1) {
+                parrafos += `apoyándote o complementándolo con la vibración de las siguientes revelaciones: ${significadosParaSintesis.slice(1).map(c => c.texto).join(' ')}`;
+            }
+            parrafos += `</p>`;
+
+            cajaTexto.innerHTML = parrafos;
+            document.getElementById('txt-titulo-resultado').innerText = t('dictamen');
+            cambiarVista('pantalla-tarot-resultado');
+        }
         // ========================
         // NUMEROLOGIA
         // ========================
