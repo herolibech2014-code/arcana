@@ -1349,11 +1349,13 @@
             let parrafos = "";
             let esSiNo = document.getElementById('tarot-tema').value === 'sino';
             let contadoresSi = 0;
+            
+            // Creamos una lista para ir guardando los significados individuales de esta tirada
+            let significadosParaSintesis = [];
 
             cartasSeleccionadasIndices.forEach((cartaData, i) => {
                 let cardObj = cartaData.original;
                 
-                // Corrección especial para La Muerte por si quedó el código anterior
                 let nombreIdioma = cardObj.nombre || cardObj.name || "La Muerte";
                 let estadoPosicion = cartaData.invertida ? t('invertida') : "";
 
@@ -1361,25 +1363,36 @@
                 divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
                 divC.style.animationDelay = `${i * 0.2}s`;
                 
-                // Si está invertida, le aplicamos un giro de 180 grados a la imagen para que salga de cabeza
                 let estiloGiro = cartaData.invertida ? 'transform: rotate(180deg);' : '';
                 
-                // Creamos la imagen aplicando el giro si corresponde
-                let imagenHTML = `<img src="${cardObj.img}" alt="${nombreIdioma}" class="img-carta-revelada" style="max-width: 100%; height: auto; display: block; margin: 0 auto 10px; border-radius: 8px; ${estiloGiro}">`;
+                let imagenHTML = `<img src="${cardObj.img}" alt="${nombreIdioma}" class="img-carta-revelada" style="max-width: 100%; height: auto; display: block; margin: 0 auto 5px; border-radius: 8px; ${estiroGiro}">`;
                 
                 let simboloHTML = '';
                 if (cardObj.simbolo) {
                     simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
                 }
                 
-                // Achicamos la tipografía con font-size inline para que ninguna palabra se escape del contenedor
-                divC.innerHTML = imagenHTML + simboloHTML + `<div class="nombre-c" style="font-size: 0.95rem; line-height: 1.2; word-wrap: break-word; overflow: hidden;">${nombreIdioma} ${estadoPosicion}</div>`;
+                // TIPOGRAFÍA MÁS CHICA Y AJUSTE DE MARGENES:
+                // Reducimos a 0.8rem, centramos bien el texto y le damos un respiro (padding) 
+                // para que no choque con el marco negro interno de la carta.
+                divC.innerHTML = imagenHTML + simboloHTML + `<div class="nombre-c" style="font-size: 0.8rem; line-height: 1.1; word-wrap: break-word; white-space: normal; padding: 4px 2px; text-align: center; color: #fff; width: 100%; box-sizing: border-box;">${nombreIdioma}<br><span style="font-size: 0.7rem; color: #d4af37;">${estadoPosicion}</span></div>`;
                 cajaRevelada.appendChild(divC);
 
                 if (!cartaData.invertida) contadoresSi++;
 
+                // Buscar el significado correspondiente según la posición de la carta
+                let textoSignificado = "";
+                if (cardObj.significados) {
+                    textoSignificado = cartaData.invertida ? cardObj.significados.invertida : cardObj.significados.derecha;
+                } else {
+                    textoSignificado = "Energía general de la carta.";
+                }
+                
+                // Guardamos el significado en nuestra lista para usarlo en la conclusión final
+                significadosParaSintesis.push({ nombre: nombreIdioma, posicion: estadoPosicion, texto: textoSignificado });
+
                 parrafos += `<p><strong>✦ Arcano ${i + 1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
-                parrafos += `<strong>${t('interpretacion')}:</strong> El universo te invita a reflexionar sobre la energía de esta carta en tu consulta.</p>`;
+                parrafos += `<strong>${t('interpretacion')}:</strong> ${textoSignificado}</p>`;
             });
 
             if (esSiNo) {
@@ -1387,17 +1400,13 @@
                 parrafos = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuesta}</h3>` + parrafos;
             }
 
-            if (cartasRequeridas === 3) {
-                parrafos += `<h3>${t('sintesisTirada')}</h3><p>${t('sintesis3Cartas')}</p>`;
-            } else if (cartasRequeridas === 1 && !esSiNo) {
-                parrafos += `<h3>${t('sintesisTirada')}</h3><p>${t('sintesis1Carta')}</p>`;
-            }
-
-            cajaTexto.innerHTML = parrafos;
-            document.getElementById('txt-titulo-resultado').innerText = t('dictamen');
-            cambiarVista('pantalla-tarot-resultado');
-        }
-
+            // CONCLUSIÓN TOTAL DE LA TIRADA (INTEGRACIÓN)
+            parrafos += `<hr style="border: 0; border-top: 1px solid #d4af37; margin: 20px 0;">`;
+            parrafos += `<h3 style="color:#d4af37; font-size:1.4rem; margin-bottom:10px;">✦ Conclusión Final de tu Tirada</h3>`;
+            parrafos += `<p>El mensaje conjunto de tus cartas revela un panorama claro. La combinación de `;
+            
+            // Unimos los nombres de las cartas dinámicamente en una sola frase
+            let nombresCombinados = significadosParaS
         // ========================
         // NUMEROLOGIA
         // ========================
