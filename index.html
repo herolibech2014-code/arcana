@@ -1269,203 +1269,149 @@
         // TAROT RITUAL
         // ========================
         function comenzarRitualTarot() {
-            const selector = document.getElementById('tarot-tipo');
-            cartasRequeridas = parseInt(selector.value) || 3;
-            cartasSeleccionadasIndices = [];
-            
-            document.getElementById('pantalla-tarot-config').classList.remove('activa');
-            mostrarPantalla('pantalla-tarot-tablero');
-            
-            const altar = document.getElementById('altar-abanicos-completo');
-            altar.innerHTML = '';
             sonarCuenco();
+            const tipo = document.getElementById('tarot-tipo').value;
+            cartasRequeridas = (tipo === '1' || tipo === 'sino1') ? 1 : 3;
 
-            // Mezclamos las 78 cartas guardando si salen al derecho o invertidas
+            document.getElementById('txt-instruccion-dinamica').innerText =
+                cartasRequeridas === 1 ? t('elegirUna') : t('elegir');
+
+            cartasSeleccionadasIndices = [];
             mazoMezcladoConPosicion = [];
-            const indices = Array.from({length: 78}, (_, i) => i);
-            indices.sort(() => Math.random() - 0.5);
+            ritualEnProceso = false;
 
-            // Creamos 3 filas de abanicos en el altar para que quepan bien las cartas
-            for (let f = 0; f < 3; f++) {
-                const filaHtml = document.createElement('div');
-                filaHtml.className = 'abanico-fila';
-                altar.appendChild(filaHtml);
-            }
+            let mazo78 = mazoOficial78.map(c => ({ original: c, invertida: Math.random() > 0.45 }));
+            mazo78.sort(() => Math.random() - 0.5);
+            mazoMezcladoConPosicion = mazo78;
 
-            const filas = altar.getElementsByClassName('abanico-fila');
-            
-            indices.forEach((idCarta, i) => {
-                const esInvertida = Math.random() > 0.5;
-                mazoMezcladoConPosicion.push({ id: idCarta, invertida: esInvertida });
+            const contenedor = document.getElementById('altar-abanicos-completo');
+            contenedor.innerHTML = '';
 
-                const elemento = document.createElement('div');
-                elemento.className = 'carta-tarot-real';
-                
-                // Distribución visual circular en el abanico
-                const cartasPorFila = 26;
-                const filaDestino = Math.floor(i / cartasPorFila);
-                const indiceEnFila = i % cartasPorFila;
-                const angulo = -35 + (indiceEnFila * (70 / (cartasPorFila - 1)));
-                const despliegueX = (indiceEnFila * 14) - (cartasPorFila * 7);
+            const totalFilas = 6;
+            const cartasPorFila = 13;
 
-                elemento.style.transform = `translateX(${despliegueX}px) rotate(${angulo}deg)`;
-                elemento.style.zIndex = i;
+            for (let f = 0; f < totalFilas; f++) {
+                let divFila = document.createElement('div');
+                divFila.className = 'abanico-fila';
 
-                elemento.onclick = () => seleccionarCartaTarot(i, elemento);
-                
-                if (filas[filaDestino]) {
-                    filas[filaDestino].appendChild(elemento);
+                for (let i = 0; i < cartasPorFila; i++) {
+                    let idx = f * cartasPorFila + i;
+                    let divCard = document.createElement('div');
+                    divCard.className = 'carta-tarot-real';
+
+                    let posRelativa = i - (cartasPorFila - 1) / 2;
+                    let esCelular = window.innerWidth < 600;
+                    let mGiro = esCelular ? 3.5 : 4.0;
+                    let mX = esCelular ? 16 : 32;
+
+                    let rotacion = posRelativa * mGiro;
+                    let traslX = posRelativa * mX;
+                    let traslY = Math.abs(posRelativa) * Math.abs(posRelativa) * (esCelular ? 0.5 : 0.6);
+
+                    divCard.style.transform = `translateX(${traslX}px) translateY(${traslY}px) rotate(${rotacion}deg)`;
+                    divCard.style.zIndex = i;
+
+                    divCard.onclick = () => seleccionarCartaDelAbanico(idx, divCard);
+                    divFila.appendChild(divCard);
                 }
-            });
-
-            const instruccion = document.getElementById('txt-instruccion-dinamica');
-            if (instruccion) {
-                instruccion.innerText = `${t('elegir')} (0 / ${cartasRequeridas})`;
+                contenedor.appendChild(divFila);
             }
+            cambiarVista('pantalla-tarot-tablero');
         }
 
-        function seleccionarCartaTarot(indiceMazo, elementoHtml) {
-            if (cartasSeleccionadasIndices.length >= cartasRequeridas) return;
-            if (cartasSeleccionadasIndices.includes(indiceMazo)) return;
+        function seleccionarCartaDelAbanico(idx, elementoHTML) {
+            if (ritualEnProceso || elementoHTML.classList.contains('elegida-ritual') || cartasSeleccionadasIndices.length >= cartasRequeridas) return;
 
-            cartasSeleccionadasIndices.push(indiceMazo);
-            elementoHtml.classList.add('elegida-ritual');
+            ritualEnProceso = true;
+            sonarCuenco();
+            elementoHTML.classList.add('elegida-ritual');
 
-            const instruccion = document.getElementById('txt-instruccion-dinamica');
-            if (instruccion) {
-                instruccion.innerText = `${t('elegir')} (${cartasSeleccionadasIndices.length} / ${cartasRequeridas})`;
-            }
-
-            if (cartasSeleccionadasIndices.length === cartasRequeridas) {
-                setTimeout(mostrarResultadoTarot, 800);
-            }
+            setTimeout(() => {
+                cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
+                ritualEnProceso = false;
+                if (cartasSeleccionadasIndices.length === cartasRequeridas) {
+                    setTimeout(revelarTiradaFinal, 400);
+                }
+            }, 600);
         }
 
-        function mostrarResultadoTarot() {
-            mostrarPantalla('pantalla-tarot-resultado');
-            const cajaCartas = document.getElementById('caja-cartas-reveladas');
+       function revelarTiradaFinal() {
+            const cajaRevelada = document.getElementById('caja-cartas-reveladas');
             const cajaTexto = document.getElementById('texto-interpretacion');
+            cajaRevelada.innerHTML = '';
 
-            cajaCartas.innerHTML = '';
-            let htmlInterpretacion = '';
+            let parrafos = "";
+            let esSiNo = document.getElementById('tarot-tema').value === 'sino';
+            let contadoresSi = 0;
+            
+            // Lista para guardar los significados individuales
+            let significadosParaSintesis = [];
 
-            // 1. CASO DE UNA CARTA
-            if (cartasRequeridas === 1) {
-                const info = mazoMezcladoConPosicion[cartasSeleccionadasIndices[0]];
-                const c = mazoOficial78[info.id];
-                const orientacion = info.invertida ? 'invertida' : 'derecha';
-                const textoSignificado = c.significados[orientacion][idiomaActual] || c.significados[orientacion].es;
+            cartasSeleccionadasIndices.forEach((cartaData, i) => {
+                let cardObj = cartaData.original;
                 
-                let veredicto = idiomaActual === 'es' ? "SÍ" : "YES";
-                if (info.invertida) {
-                    veredicto = idiomaActual === 'es' ? "NO" : "NO";
-                } else if ([13, 15, 16, 53, 59, 60, 69].includes(c.id)) {
-                    veredicto = idiomaActual === 'es' ? "NO" : "NO";
+                let nombreIdioma = cardObj.nombre || cardObj.name || "La Muerte";
+                let estadoPosicion = cartaData.invertida ? t('invertida') : "";
+
+                let divC = document.createElement('div');
+                divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
+                divC.style.animationDelay = `${i * 0.2}s`;
+                
+                // CORREGIDO: estiloGiro bien escrito para que no se tilde
+                let estiloGiro = cartaData.invertida ? 'transform: rotate(180deg);' : '';
+                
+                // Armamos la imagen con el giro físico si la carta está invertida
+                let imagenHTML = `<img src="${cardObj.img}" alt="${nombreIdioma}" class="img-carta-revelada" style="max-width: 100%; height: auto; display: block; margin: 0 auto 5px; border-radius: 8px; ${estiloGiro}">`;
+                
+                let simboloHTML = '';
+                if (cardObj.simbolo) {
+                    simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
                 }
-
-                htmlInterpretacion = `
-                    <div style="margin-bottom: 20px; border-bottom: 2px dashed rgba(212,175,55,0.3); padding-bottom: 15px; text-align: center;">
-                        <h2 style="color: var(--oro); font-size: 2rem;">${veredicto}</h2>
-                    </div>
-                    <p><strong>${c.nombre[idiomaActual] || c.nombre.es}${info.invertida ? t('invertida') : ''}:</strong> ${textoSignificado}</p>
-                `;
-            } 
-            // 2. CASO DE DOS CARTAS
-            else if (cartasRequeridas === 2) {
-                const info1 = mazoMezcladoConPosicion[cartasSeleccionadasIndices[0]];
-                const info2 = mazoMezcladoConPosicion[cartasSeleccionadasIndices[1]];
-                const c1 = mazoOficial78[info1.id];
-                const c2 = mazoOficial78[info2.id];
                 
-                const o1 = info1.invertida ? 'invertida' : 'derecha';
-                const o2 = info2.invertida ? 'invertida' : 'derecha';
+                // Tipografía reducida a 0.8rem y padding especial para evitar el marco negro interno
+                divC.innerHTML = imagenHTML + simboloHTML + `<div class="nombre-c" style="font-size: 0.8rem; line-height: 1.1; word-wrap: break-word; white-space: normal; padding: 4px 2px; text-align: center; color: #fff; width: 100%; box-sizing: border-box;">${nombreIdioma}<br><span style="font-size: 0.7rem; color: #d4af37;">${estadoPosicion}</span></div>`;
+                cajaRevelada.appendChild(divC);
 
-                let puntosSi = 0;
-                if (!info1.invertida) puntosSi++;
-                if (!info2.invertida) puntosSi++;
+                if (!cartaData.invertida) contadoresSi++;
 
-                let veredictoConjunto = "SÍ";
-                if (puntosSi === 0) veredictoConjunto = "NO";
-                if (puntosSi === 1) veredictoConjunto = "INDEFINIDO / EQUILIBRADO";
-
-                htmlInterpretacion = `
-                    <div style="margin-bottom: 20px; border-bottom: 2px dashed rgba(212,175,55,0.3); padding-bottom: 15px; text-align: center;">
-                        <h2 style="color: var(--oro); font-size: 1.8rem;">DICTAMEN: ${veredictoConjunto}</h2>
-                    </div>
-                    <p><strong>Carta 1 - ${c1.nombre[idiomaActual] || c1.nombre.es}${info1.invertida ? t('invertida') : ''}:</strong> ${c1.significados[o1][idiomaActual] || c1.significados[o1].es}</p>
-                    <p><strong>Carta 2 - ${c2.nombre[idiomaActual] || c2.nombre.es}${info2.invertida ? t('invertida') : ''}:</strong> ${c2.significados[o2][idiomaActual] || c2.significados[o2].es}</p>
-                `;
-            }
-            // 3. CASO DE TRES CARTAS
-            else if (cartasRequeridas === 3) {
-                const tiempos = {
-                    es: ["PASADO", "PRESENTE", "FUTURO"],
-                    en: ["PAST", "PRESENT", "FUTURE"],
-                    pt: ["PASSADO", "PRESENTE", "FUTURO"],
-                    fr: ["PASSÉ", "PRÉSENT", "FUTURE"],
-                    it: ["PASSATO", "PRESENTE", "FUTURO"]
-                };
-                const listaTiempos = tiempos[idiomaActual] || tiempos.es;
-
-                cartasSeleccionadasIndices.forEach((idxMazo, i) => {
-                    const info = mazoMezcladoConPosicion[idxMazo];
-                    const c = mazoOficial78[info.id];
-                    const orientacion = info.invertida ? 'invertida' : 'derecha';
-                    htmlInterpretacion += `<p><strong>${listaTiempos[i]} - ${c.nombre[idiomaActual] || c.nombre.es}${info.invertida ? t('invertida') : ''}:</strong> ${c.significados[orientacion][idiomaActual] || c.significados[orientacion].es}</p>`;
-                });
-
-                htmlInterpretacion += `
-                    <hr style="border: 1px solid rgba(212,175,55,0.2); margin: 20px 0;">
-                    <h3>${t('sintesisTirada')}</h3>
-                    <p>${t('sintesis3Cartas')}</p>
-                `;
-            } 
-            // 4. CASO DE LA CRUZ CELTA (10 CARTAS)
-            else if (cartasRequeridas === 10) {
-                const posicionesCelta = [
-                    "1. Estado Actual (El momento presente)",
-                    "2. El Desafío (Obstáculo inmediato)",
-                    "3. La Raíz (Origen inconsciente o pasado lejano)",
-                    "4. Pasado Reciente (Influencias que se van)",
-                    "5. La Corona (Metas y pensamientos conscientes)",
-                    "6. Futuro Inmediato (Lo próximo que llegará)",
-                    "7. El Consultante (Cómo se posiciona ante esto)",
-                    "8. El Entorno (Influencia de amigos, familia o trabajo)",
-                    "9. Esperanzas y Temores (Deseos ocultos y miedos)",
-                    "10. Resultado Final (Desenlace del camino)"
-                ];
-
-                htmlInterpretacion = `<h2 style="color:var(--oro); font-size:1.6rem; margin-bottom:20px; text-align:center;">Cruz Celta</h2>`;
-                cartasSeleccionadasIndices.forEach((idxMazo, i) => {
-                    const info = mazoMezcladoConPosicion[idxMazo];
-                    const c = mazoOficial78[info.id];
-                    const orientacion = info.invertida ? 'invertida' : 'derecha';
-                    htmlInterpretacion += `
-                        <div style="margin-bottom: 15px; border-left: 3px solid var(--oro); padding-left: 10px;">
-                            <span style="color: var(--oro); font-weight: bold; display: block; font-size:1rem;">${posicionesCelta[i]}</span>
-                            <strong>${c.nombre[idiomaActual] || c.nombre.es}${info.invertida ? t('invertida') : ''}:</strong> ${c.significados[orientacion][idiomaActual] || c.significados[orientacion].es}
-                        </div>
-                    `;
-                });
-            }
-
-            // Pintar los rectángulos visuales de las cartas reveladas
-            cartasSeleccionadasIndices.forEach(idxMazo => {
-                const info = mazoMezcladoConPosicion[idxMazo];
-                const c = mazoOficial78[info.id];
+                // Buscamos el significado correcto según la posición
+                let textoSignificado = "";
+                if (cardObj.significados) {
+                    textoSignificado = cartaData.invertida ? cardObj.significados.invertida : cardObj.significados.derecha;
+                } else {
+                    textoSignificado = "Energía general de la carta.";
+                }
                 
-                const elementoHtml = document.createElement('div');
-                elementoHtml.className = `carta-revelada ${info.invertida ? 'invertida' : ''}`;
-                
-                // Usamos el símbolo místico o arcano que ya tiene tu código mapeado
-                elementoHtml.innerHTML = `
-                    <div class="carta-simbolo">&#x1F49C;</div>
-                    <div class="nombre-c">${c.nombre[idiomaActual] || c.nombre.es}</div>
-                `;
-                cajaCartas.appendChild(elementoHtml);
+                significadosParaSintesis.push({ nombre: nombreIdioma, posicion: estadoPosicion, texto: textoSignificado });
+
+                parrafos += `<p><strong>✦ Arcano ${i + 1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
+                parrafos += `<strong>${t('interpretacion')}:</strong> ${textoSignificado}</p>`;
             });
 
-            cajaTexto.innerHTML = htmlInterpretacion;
+            if (esSiNo) {
+                let respuesta = contadoresSi >= (cartasRequeridas / 2) ? t('si') : t('no');
+                parrafos = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuesta}</h3>` + parrafos;
+            }
+
+            // Integración total y conclusión de la tirada
+            parrafos += `<hr style="border: 0; border-top: 1px solid #d4af37; margin: 20px 0;">`;
+            parrafos += `<h3 style="color:#d4af37; font-size:1.4rem; margin-bottom:10px;">✦ Conclusión Final de tu Tirada</h3>`;
+            parrafos += `<p>El mensaje conjunto de tus cartas revela un panorama claro. La combinación de `;
+            
+            let nombresCombinados = significadosParaSintesis.map(c => `${c.nombre} (${c.posicion || 'Derecha'})`).join(', ');
+            parrafos += `<strong>${nombresCombinados}</strong> sugiere que te encontrás en un momento propicio para asimilar estas energías. `;
+            
+            if (significadosParaSintesis.length > 0) {
+                parrafos += `Donde principalmente debes conectar el consejo de: "${significadosParaSintesis[0].texto}" `;
+                if (significadosParaSintesis.length > 1) {
+                    parrafos += `apoyándote o complementándolo con la vibración de las siguientes revelaciones: ${significadosParaSintesis.slice(1).map(c => `"${c.texto}"`).join(' ')}`;
+                }
+            }
+            parrafos += `</p>`;
+
+            cajaTexto.innerHTML = parrafos;
+            document.getElementById('txt-titulo-resultado').innerText = t('dictamen');
+            cambiarVista('pantalla-tarot-resultado');
         }
         // ========================
         // NUMEROLOGIA
