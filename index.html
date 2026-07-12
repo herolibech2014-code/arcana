@@ -1327,89 +1327,118 @@
                 cartasSeleccionadasIndices.push(mazoMezcladoConPosicion[idx]);
                 ritualEnProceso = false;
                 if (cartasSeleccionadasIndices.length === cartasRequeridas) {
-                    setTimeout(revelarTiradaFinal, 400);
-                }
-            }, 600);
+    let parrafos = '';
+
+    // 1. LECTURA DE 1 CARTA: SÍ / NO DIRECTO (Sin aclaraciones)
+    if (cartasRequeridas === 1) {
+        const info = mazoMezcladoConPosicion[cartasSeleccionadasIndices[0]];
+        const c = mazoOficial78[info.id];
+        const orientacion = info.invertida ? 'invertida' : 'derecha';
+        const textoSignificado = c.significados[orientacion][idiomaActual] || c.significados[orientacion].es;
+        
+        // Tarot Real: Si sale invertida, o es una carta de ruptura/bloqueo (Muerte, Torre, Diablo), tira hacia el NO
+        let veredicto = "SÍ";
+        if (info.invertida || [13, 15, 16].includes(c.id)) {
+            veredicto = "NO";
         }
 
-       function revelarTiradaFinal() {
-            const cajaRevelada = document.getElementById('caja-cartas-reveladas');
-            const cajaTexto = document.getElementById('texto-interpretacion');
-            cajaRevelada.innerHTML = '';
+        parrafos = `
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: var(--oro); font-size: 2.5rem; letter-spacing: 2px;">${veredicto}</h2>
+            </div>
+            <p><strong>${c.nombre[idiomaActual] || c.nombre.es} (${orientacion}):</strong> ${textoSignificado}</p>
+        `;
+    } 
+    // 2. LECTURA DE 2 CARTAS: CONJUNCIÓN REAL SÍ / NO (Sin pro/contra, evaluación conjunta pura)
+    else if (cartasRequeridas === 2) {
+        const info1 = mazoMezcladoConPosicion[cartasSeleccionadasIndices[0]];
+        const info2 = mazoMezcladoConPosicion[cartasSeleccionadasIndices[1]];
+        const c1 = mazoOficial78[info1.id];
+        const c2 = mazoOficial78[info2.id];
+        const o1 = info1.invertida ? 'invertida' : 'derecha';
+        const o2 = info2.invertida ? 'invertida' : 'derecha';
 
-            let parrafos = "";
-            let esSiNo = document.getElementById('tarot-tema').value === 'sino';
-            let contadoresSi = 0;
-            
-            // Lista para guardar los significados individuales
-            let significadosParaSintesis = [];
+        // Lógica de Tarot Real: Evaluamos las dignidades y pesos elementales combinados
+        let malas = 0;
+        if (info1.invertida || [13, 15, 16].includes(c1.id)) malas++;
+        if (info2.invertida || [13, 15, 16].includes(c2.id)) malas++;
 
-            cartasSeleccionadasIndices.forEach((cartaData, i) => {
-                let cardObj = cartaData.original;
-                
-                let nombreIdioma = cardObj.nombre || cardObj.name || "La Muerte";
-                let estadoPosicion = cartaData.invertida ? t('invertida') : "";
+        let veredicto = "SÍ";
+        let lecturaConjunta = "";
 
-                let divC = document.createElement('div');
-                divC.className = `carta-revelada ${cartaData.invertida ? 'invertida' : ''}`;
-                divC.style.animationDelay = `${i * 0.2}s`;
-                
-                // CORREGIDO: estiloGiro bien escrito para que no se tilde
-                let estiloGiro = cartaData.invertida ? 'transform: rotate(180deg);' : '';
-                
-                // Armamos la imagen con el giro físico si la carta está invertida
-                let imagenHTML = `<img src="${cardObj.img}" alt="${nombreIdioma}" class="img-carta-revelada" style="max-width: 100%; height: auto; display: block; margin: 0 auto 5px; border-radius: 8px; ${estiloGiro}">`;
-                
-                let simboloHTML = '';
-                if (cardObj.simbolo) {
-                    simboloHTML = `<div class="carta-simbolo">${cardObj.simbolo}</div>`;
-                }
-                
-                // Tipografía reducida a 0.8rem y padding especial para evitar el marco negro interno
-                divC.innerHTML = imagenHTML + simboloHTML + `<div class="nombre-c" style="font-size: 0.8rem; line-height: 1.1; word-wrap: break-word; white-space: normal; padding: 4px 2px; text-align: center; color: #fff; width: 100%; box-sizing: border-box;">${nombreIdioma}<br><span style="font-size: 0.7rem; color: #d4af37;">${estadoPosicion}</span></div>`;
-                cajaRevelada.appendChild(divC);
-
-                if (!cartaData.invertida) contadoresSi++;
-
-                // Buscamos el significado correcto según la posición
-                let textoSignificado = "";
-                if (cardObj.significados) {
-                    textoSignificado = cartaData.invertida ? cardObj.significados.invertida : cardObj.significados.derecha;
-                } else {
-                    textoSignificado = "Energía general de la carta.";
-                }
-                
-                significadosParaSintesis.push({ nombre: nombreIdioma, posicion: estadoPosicion, texto: textoSignificado });
-
-                parrafos += `<p><strong>✦ Arcano ${i + 1}: ${nombreIdioma} ${estadoPosicion}</strong><br>`;
-                parrafos += `<strong>${t('interpretacion')}:</strong> ${textoSignificado}</p>`;
-            });
-
-            if (esSiNo) {
-                let respuesta = contadoresSi >= (cartasRequeridas / 2) ? t('si') : t('no');
-                parrafos = `<h3 style="color:#d4af37; text-align:center; font-size:1.6rem; margin-bottom:15px;">${respuesta}</h3>` + parrafos;
-            }
-
-            // Integración total y conclusión de la tirada
-            parrafos += `<hr style="border: 0; border-top: 1px solid #d4af37; margin: 20px 0;">`;
-            parrafos += `<h3 style="color:#d4af37; font-size:1.4rem; margin-bottom:10px;">✦ Conclusión Final de tu Tirada</h3>`;
-            parrafos += `<p>El mensaje conjunto de tus cartas revela un panorama claro. La combinación de `;
-            
-            let nombresCombinados = significadosParaSintesis.map(c => `${c.nombre} (${c.posicion || 'Derecha'})`).join(', ');
-            parrafos += `<strong>${nombresCombinados}</strong> sugiere que te encontrás en un momento propicio para asimilar estas energías. `;
-            
-            if (significadosParaSintesis.length > 0) {
-                parrafos += `Donde principalmente debes conectar el consejo de: "${significadosParaSintesis[0].texto}" `;
-                if (significadosParaSintesis.length > 1) {
-                    parrafos += `apoyándote o complementándolo con la vibración de las siguientes revelaciones: ${significadosParaSintesis.slice(1).map(c => `"${c.texto}"`).join(' ')}`;
-                }
-            }
-            parrafos += `</p>`;
-
-            cajaTexto.innerHTML = parrafos;
-            document.getElementById('txt-titulo-resultado').innerText = t('dictamen');
-            cambiarVista('pantalla-tarot-resultado');
+        if (malas === 0) {
+            veredicto = "SÍ";
+            lecturaConjunta = `Las energías de ${c1.nombre[idiomaActual] || c1.nombre.es} y ${c2.nombre[idiomaActual] || c2.nombre.es} fluyen en perfecta armonía. Las fuerzas se potencian mutuamente, despejando cualquier duda para un resultado favorable.`;
+        } else if (malas === 2) {
+            veredicto = "NO";
+            lecturaConjunta = `La combinación de ambas cartas revela un bloqueo severo o una advertencia contundente. Las tensiones e interferencias se profundizan entre sí, indicando una respuesta negativa o inviable bajo las condiciones actuales.`;
+        } else {
+            veredicto = "INDEFINIDO";
+            lecturaConjunta = `Existe un conflicto directo de fuerzas entre ${c1.nombre[idiomaActual] || c1.nombre.es} y ${c2.nombre[idiomaActual] || c2.nombre.es}. Mientras una energía empuja hacia adelante, la otra genera resistencia, estancando la resolución de la consulta.`;
         }
+
+        parrafos = `
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 style="color: var(--oro); font-size: 2.5rem; letter-spacing: 2px;">${veredicto}</h2>
+            </div>
+            <p style="margin-bottom: 12px;"><strong>Carta 1: ${c1.nombre[idiomaActual] || c1.nombre.es} (${o1})</strong></p>
+            <p style="margin-bottom: 20px;"><strong>Carta 2: ${c2.nombre[idiomaActual] || c2.nombre.es} (${o2})</strong></p>
+            <hr style="border: 1px dashed rgba(212,175,55,0.3); margin: 15px 0;">
+            <p style="font-size: 1.1rem; line-height: 1.6; font-style: italic; color: #e0e0e0;"><strong>Lectura Conjunta:</strong> ${lecturaConjunta}</p>
+        `;
+    }
+    // 3. LECTURA DE 3 CARTAS: LÍNEA TEMPORAL TRADICIONAL
+    else if (cartasRequeridas === 3) {
+        cartasSeleccionadasIndices.forEach((idxMazo, i) => {
+            const info = mazoMezcladoConPosicion[idxMazo];
+            const c = mazoOficial78[info.id];
+            const orientacion = info.invertida ? 'invertida' : 'derecha';
+            
+            let etiquetaTiempo = '';
+            if (i === 0) etiquetaTiempo = t('pasado');
+            if (i === 1) etiquetaTiempo = t('presente');
+            if (i === 2) etiquetaTiempo = t('futuro');
+            
+            const textoSignificado = c.significados[orientacion][idiomaActual] || c.significados[orientacion].es;
+            parrafos += `<p style="margin-bottom: 15px;"><strong>${etiquetaTiempo} - ${c.nombre[idiomaActual] || c.nombre.es} (${orientacion}):</strong> ${textoSignificado}</p>`;
+        });
+    } 
+    // 4. LECTURA DE LA CRUZ CELTA: 10 CARTAS POR POSICIÓN TRADICIONAL
+    else if (cartasRequeridas === 10) {
+        const posicionesCelta = [
+            "1. El Estado Actual (Situación presente del consultante)",
+            "2. El Desafío (Obstáculo inmediato o fuerza que se cruza)",
+            "3. La Raíz (Pasado lejano, cimientos o base del problema)",
+            "4. El Pasado Reciente (Sucesos que acaban de ocurrir y aún resuenan)",
+            "5. La Corona (Metas conscientes, lo que se busca alcanzar)",
+            "6. El Futuro Inmediato (La próxima fase que está por ocurrir)",
+            "7. El Consultante (Actitud interna y postura de la persona)",
+            "8. El Entorno (Influencias externas, familia, amigos o trabajo)",
+            "9. Esperanzas y Temores (Deseos profundos frente a miedos inconscientes)",
+            "10. El Resultado Final (Resolución del problema si las fuerzas siguen igual)"
+        ];
+
+        cartasSeleccionadasIndices.forEach((idxMazo, i) => {
+            const info = mazoMezcladoConPosicion[idxMazo];
+            const c = mazoOficial78[info.id];
+            const orientacion = info.invertida ? 'invertida' : 'derecha';
+            const textoSignificado = c.significados[orientacion][idiomaActual] || c.significados[orientacion].es;
+            
+            parrafos += `
+                <div style="margin-bottom: 20px; border-left: 3px solid var(--oro); padding-left: 12px; line-height: 1.5;">
+                    <span style="color: var(--oro); font-weight: bold; display: block; font-size:1.05rem; margin-bottom: 4px;">${posicionesCelta[i]}</span>
+                    <span style="font-size: 1.05rem;"><strong>${c.nombre[idiomaActual] || c.nombre.es} (${orientacion}):</strong> ${textoSignificado}</span>
+                </div>
+            `;
+        });
+    }
+
+    // Se inyecta el contenido y se cambia de pantalla de forma segura usando tus variables originales
+    const cajaTexto = document.getElementById('texto-interpretacion');
+    cajaTexto.innerHTML = parrafos;
+    document.getElementById('txt-titulo-resultado').innerText = t('dictamen');
+    cambiarVista('pantalla-tarot-resultado');
+}
         // ========================
         // NUMEROLOGIA
         // ========================
