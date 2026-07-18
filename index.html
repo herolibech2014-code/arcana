@@ -789,6 +789,7 @@
         <!-- ASTROLOGIA RESULTADO -->
         <div id="pantalla-astrologia-resultado" class="vista-seccion">
             <div class="instruccion-directa" id="txt-titulo-astro-resultado" data-t="astroResTitulo">Tu Carta Astral</div>
+            <div id="ast-carta-svg" style="text-align:center; margin:15px 0;"></div>
             <div class="num-grila" id="ast-resultados"></div>
             <div class="caja-interpretacion" id="ast-interpretacion" style="margin-top:25px;"></div>
             <!-- ADSENSE: después de la lectura, antes de "Nueva Consulta" -->
@@ -2625,6 +2626,8 @@
                 return;
             }
 
+            document.getElementById('ast-carta-svg').innerHTML = generarSVGCartaNatal(datosNatal);
+
             const resultadosDiv = document.getElementById('ast-resultados');
             resultadosDiv.innerHTML = '';
             const ordenNatal = ['Sun','Moon','Ascendant','Mercury','Venus','Mars','Jupiter','Saturn','Uranus','Neptune','Pluto'];
@@ -2657,6 +2660,84 @@
             }
 
             cambiarVista('pantalla-astrologia-resultado');
+        }
+
+        // Símbolos astrológicos reales (Unicode)
+        const simbolosZodiaco = ['♈','♉','♊','♋','♌','♍','♎','♏','♐','♑','♒','♓'];
+        const simbolosCuerposSVG = { Sun:'☉', Moon:'☽', Mercury:'☿', Venus:'♀', Mars:'♂', Jupiter:'♃', Saturn:'♄', Uranus:'♅', Neptune:'♆', Pluto:'♇' };
+        const colorAspectoSVG = { conjuncion: '#d4af37', sextil: '#5fb3d9', cuadratura: '#e05252', trigono: '#4caf7d', oposicion: '#e05252' };
+
+        // Convierte un grado eclíptico absoluto a coordenadas de pantalla, con el Ascendente
+        // siempre ubicado a la izquierda (9 en punto) y avanzando en sentido antihorario —
+        // la disposición estándar de cualquier rueda de carta natal.
+        function posicionEnRueda(gradoEclip, ascGrado, radio, cx, cy) {
+            const theta = (180 + (gradoEclip - ascGrado)) * Math.PI / 180;
+            return { x: cx + radio * Math.cos(theta), y: cy - radio * Math.sin(theta) };
+        }
+
+        function generarSVGCartaNatal(datos) {
+            const cx = 250, cy = 250;
+            const rZodiaco = 230, rZodiacoIn = 195, rCasas = 195, rPlanetas = 155, rAspectos = 120;
+            const ascGrado = datos.Ascendant.idx * 30 + datos.Ascendant.gradoEnSigno;
+
+            let svg = `<svg viewBox="0 0 500 500" style="width:100%; max-width:420px; height:auto;" xmlns="http://www.w3.org/2000/svg">`;
+
+            // Círculos de referencia
+            svg += `<circle cx="${cx}" cy="${cy}" r="${rZodiaco}" fill="none" stroke="#d4af37" stroke-width="1.5" opacity="0.6"/>`;
+            svg += `<circle cx="${cx}" cy="${cy}" r="${rZodiacoIn}" fill="none" stroke="#d4af37" stroke-width="1" opacity="0.4"/>`;
+            svg += `<circle cx="${cx}" cy="${cy}" r="${rAspectos}" fill="none" stroke="#7c3aed" stroke-width="1" opacity="0.25"/>`;
+
+            // 12 divisiones del zodiaco (cada 30°, en grados absolutos: Aries=0°) + símbolo del signo
+            for (let i = 0; i < 12; i++) {
+                const gradoLinea = i * 30;
+                const p1 = posicionEnRueda(gradoLinea, ascGrado, rZodiacoIn, cx, cy);
+                const p2 = posicionEnRueda(gradoLinea, ascGrado, rZodiaco, cx, cy);
+                svg += `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="#d4af37" stroke-width="1" opacity="0.5"/>`;
+                const pSimbolo = posicionEnRueda(gradoLinea + 15, ascGrado, (rZodiaco + rZodiacoIn) / 2, cx, cy);
+                svg += `<text x="${pSimbolo.x.toFixed(1)}" y="${pSimbolo.y.toFixed(1)}" fill="#f0d875" font-size="16" text-anchor="middle" dominant-baseline="middle">${simbolosZodiaco[i]}</text>`;
+            }
+
+            // 12 casas (sistema de Casas Iguales, ya usado en toda la app) + número de casa
+            for (let n = 0; n < 12; n++) {
+                const gradoCasa = ascGrado + n * 30;
+                const p1 = posicionEnRueda(gradoCasa, ascGrado, 0, cx, cy);
+                const p2 = posicionEnRueda(gradoCasa, ascGrado, rCasas, cx, cy);
+                const esEje = (n === 0 || n === 3 || n === 6 || n === 9); // Asc / IC / Desc / MC: líneas más marcadas
+                svg += `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="#c4b5fd" stroke-width="${esEje ? 1.6 : 0.8}" opacity="${esEje ? 0.8 : 0.4}"/>`;
+                const pNum = posicionEnRueda(gradoCasa + 15, ascGrado, rCasas - 18, cx, cy);
+                svg += `<text x="${pNum.x.toFixed(1)}" y="${pNum.y.toFixed(1)}" fill="#c4b5fd" font-size="10" text-anchor="middle" dominant-baseline="middle" opacity="0.8">${n + 1}</text>`;
+            }
+
+            // Líneas de aspectos entre planetas (según los aspectos reales detectados)
+            const cuerpos = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
+            for (let i = 0; i < cuerpos.length; i++) {
+                for (let j = i + 1; j < cuerpos.length; j++) {
+                    const g1 = datos[cuerpos[i]].idx * 30 + datos[cuerpos[i]].gradoEnSigno;
+                    const g2 = datos[cuerpos[j]].idx * 30 + datos[cuerpos[j]].gradoEnSigno;
+                    const aspecto = detectarAspecto(g1, g2);
+                    if (aspecto) {
+                        const p1 = posicionEnRueda(g1, ascGrado, rAspectos, cx, cy);
+                        const p2 = posicionEnRueda(g2, ascGrado, rAspectos, cx, cy);
+                        const dashado = (aspecto === 'oposicion' || aspecto === 'cuadratura') ? '4,3' : 'none';
+                        svg += `<line x1="${p1.x.toFixed(1)}" y1="${p1.y.toFixed(1)}" x2="${p2.x.toFixed(1)}" y2="${p2.y.toFixed(1)}" stroke="${colorAspectoSVG[aspecto]}" stroke-width="1" opacity="0.55" stroke-dasharray="${dashado}"/>`;
+                    }
+                }
+            }
+
+            // Planetas, ubicados en su grado real
+            cuerpos.forEach(cuerpo => {
+                const g = datos[cuerpo].idx * 30 + datos[cuerpo].gradoEnSigno;
+                const p = posicionEnRueda(g, ascGrado, rPlanetas, cx, cy);
+                svg += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="11" fill="#1a0f2e" stroke="#d4af37" stroke-width="1"/>`;
+                svg += `<text x="${p.x.toFixed(1)}" y="${p.y.toFixed(1)}" fill="#f0d875" font-size="13" text-anchor="middle" dominant-baseline="middle">${simbolosCuerposSVG[cuerpo]}</text>`;
+            });
+
+            // Marca del Ascendente
+            const pAsc = posicionEnRueda(ascGrado, ascGrado, rZodiaco + 14, cx, cy);
+            svg += `<text x="${pAsc.x.toFixed(1)}" y="${pAsc.y.toFixed(1)}" fill="#d4af37" font-size="11" font-weight="bold" text-anchor="middle" dominant-baseline="middle">AC</text>`;
+
+            svg += `</svg>`;
+            return svg;
         }
 
         function generarInterpretacionAstral(nombre, datos) {
