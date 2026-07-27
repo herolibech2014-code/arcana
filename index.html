@@ -1506,6 +1506,12 @@
             zonaVolver.innerHTML = idVista !== 'pantalla-menu'
                 ? `<button class="btn-volver" onclick="irAlMenu()">${t('volver')}</button>`
                 : '';
+
+            // El selector de idioma solo tiene sentido en la pantalla de inicio: adentro de cada
+            // sección no traduce el contenido ya generado (lecturas, interpretaciones, etc.), así
+            // que mostrarlo ahí solo genera confusión.
+            const controlIdioma = document.querySelector('.lang-ctrl');
+            if (controlIdioma) controlIdioma.style.display = (idVista === 'pantalla-menu') ? '' : 'none';
         }
 
         function irAlMenu() { cambiarVista('pantalla-menu'); }
