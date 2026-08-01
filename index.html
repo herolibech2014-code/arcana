@@ -230,6 +230,20 @@
         .activa { display: flex; }
 
        /* MENU PRINCIPAL CHICO */
+        .intro-contenido {
+            max-width: 640px;
+            margin: 0 auto 25px;
+            padding: 0 15px;
+            text-align: left;
+        }
+        .intro-contenido p {
+            color: #c4b5fd;
+            font-family: sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.7;
+            margin-bottom: 14px;
+        }
+
         .menu-contenedor {
             display: flex;
             flex-direction: column;
@@ -720,6 +734,10 @@
 
         <!-- MENU PRINCIPAL -->
         <div id="pantalla-menu" class="vista-seccion activa">
+            <div class="intro-contenido">
+                <p data-t="introParrafo1">Arcana es un espacio gratuito de autoconocimiento y adivinación online, con cuatro herramientas basadas en tradiciones reales: el Tarot de 78 cartas (arcanos mayores y menores), la Numerología Pitagórica (tu nombre y fecha de nacimiento traducidos a números), la Astrología (tu carta natal calculada con la posición real de los planetas en el momento y lugar de tu nacimiento) y un Oráculo que combina las tres disciplinas en una sola lectura.</p>
+                <p data-t="introParrafo2">Elegí una de las cuatro secciones de abajo para empezar. Todas las lecturas de Tarot, el Perfil Numerológico completo, la Compatibilidad y la Carta Natal son gratuitas; solo la Consulta de fecha a elección en Astrología tiene un costo simbólico de USD $2.</p>
+            </div>
             <div class="menu-contenedor">
                 <div class="menu-card" onclick="abrirTarotConfig()">
                     <div class="card-titulo">&#x1F52E; <span data-t="menuTarot">Tarot</span></div>
@@ -1081,6 +1099,8 @@
                 ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE",
                 volver: "\u2190 Volver",
                 menuTarot: "Tarot", menuTarotDesc: "Las 78 cartas desplegadas. Revela tu pasado, presente y futuro.",
+                introParrafo1: "Arcana es un espacio gratuito de autoconocimiento y adivinación online, con cuatro herramientas basadas en tradiciones reales: el Tarot de 78 cartas (arcanos mayores y menores), la Numerología Pitagórica (tu nombre y fecha de nacimiento traducidos a números), la Astrología (tu carta natal calculada con la posición real de los planetas en el momento y lugar de tu nacimiento) y un Oráculo que combina las tres disciplinas en una sola lectura.",
+                introParrafo2: "Elegí una de las cuatro secciones de abajo para empezar. Todas las lecturas de Tarot, el Perfil Numerológico completo, la Compatibilidad y la Carta Natal son gratuitas; solo la Consulta de fecha a elección en Astrología tiene un costo simbólico de USD $2.",
                 menuAstro: "Astrología", menuAstroDesc: "Tu carta natal, tránsitos planetarios y revolución solar.",
                 menuNum: "Numerología", menuNumDesc: "Vibración oculta de tu nombre y fecha de nacimiento.",
                 menuOraculo: "Oráculo", menuOraculoDesc: "Consulta unificada: numerología, astrología y tarot juntos.",
@@ -1158,6 +1178,8 @@
                 ads: "RESERVED SPACE FOR GOOGLE ADSENSE",
                 volver: "\u2190 Back",
                 menuTarot: "Tarot", menuTarotDesc: "The 78 cards laid out. Reveal your past, present and future.",
+                introParrafo1: "Arcana is a free online space for self-knowledge and divination, with four tools based on real traditions: the 78-card Tarot (major and minor arcana), Pythagorean Numerology (your name and birth date translated into numbers), Astrology (your birth chart calculated with the real position of the planets at the time and place of your birth), and an Oracle that combines all three disciplines into a single reading.",
+                introParrafo2: "Choose one of the four sections below to get started. All Tarot readings, the Complete Numerological Profile, Compatibility, and the Birth Chart are free; only the Chosen Date Reading in Astrology has a symbolic cost of USD $2.",
                 menuAstro: "Astrology", menuAstroDesc: "Your birth chart, planetary transits and solar revolution.",
                 menuNum: "Numerology", menuNumDesc: "Hidden vibration of your name and date of birth.",
                 menuOraculo: "Oracle", menuOraculoDesc: "Unified reading: numerology, astrology and tarot combined.",
@@ -1235,6 +1257,8 @@
                 ads: "ESPAÇO RESERVADO PARA GOOGLE ADSENSE",
                 volver: "\u2190 Voltar",
                 menuTarot: "Tarot", menuTarotDesc: "As 78 cartas desdobradas. Revele seu passado, presente e futuro.",
+                introParrafo1: "Arcana é um espaço gratuito de autoconhecimento e adivinhação online, com quatro ferramentas baseadas em tradições reais: o Tarô de 78 cartas (arcanos maiores e menores), a Numerologia Pitagórica (seu nome e data de nascimento traduzidos em números), a Astrologia (seu mapa astral calculado com a posição real dos planetas no momento e local do seu nascimento) e um Oráculo que combina as três disciplinas em uma única leitura.",
+                introParrafo2: "Escolha uma das quatro seções abaixo para começar. Todas as leituras de Tarô, o Perfil Numerológico completo, a Compatibilidade e o Mapa Astral são gratuitos; apenas a Consulta de Data Escolhida em Astrologia tem um custo simbólico de USD $2.",
                 menuAstro: "Astrologia", menuAstroDesc: "Seu mapa natal, trânsitos planetários e revolução solar.",
                 menuNum: "Numerologia", menuNumDesc: "Vibração oculta do seu nome e data de nascimento.",
                 menuOraculo: "Oráculo", menuOraculoDesc: "Consulta unificada: numerologia, astrologia e tarot juntos.",
@@ -1312,6 +1336,8 @@
                 ads: "ESPACE RÉSERVÉ POUR GOOGLE ADSENSE",
                 volver: "\u2190 Retour",
                 menuTarot: "Tarot", menuTarotDesc: "Les 78 cartes déployées. Révèle ton passé, présent et futur.",
+                introParrafo1: "Arcana est un espace gratuit de connaissance de soi et de divination en ligne, avec quatre outils basés sur des traditions réelles : le Tarot de 78 cartes (arcanes majeurs et mineurs), la Numérologie Pythagoricienne (ton nom et ta date de naissance traduits en nombres), l'Astrologie (ton thème natal calculé avec la position réelle des planètes au moment et au lieu de ta naissance), et un Oracle qui combine les trois disciplines en une seule lecture.",
+                introParrafo2: "Choisis l'une des quatre sections ci-dessous pour commencer. Toutes les lectures de Tarot, le Profil Numérologique complet, la Compatibilité et le Thème Natal sont gratuits ; seule la Consultation d'une Date Choisie en Astrologie a un coût symbolique de 2 USD.",
                 menuAstro: "Astrologie", menuAstroDesc: "Ton thème natal, transits planétaires et révolution solaire.",
                 menuNum: "Numérologie", menuNumDesc: "Vibration cachée de ton nom et date de naissance.",
                 menuOraculo: "Oracle", menuOraculoDesc: "Consultation unifiée : numérologie, astrologie et tarot réunis.",
@@ -1389,6 +1415,8 @@
                 ads: "SPAZIO PUBBLICITARIO GOOGLE ADSENSE",
                 volver: "\u2190 Indietro",
                 menuTarot: "Tarot", menuTarotDesc: "Le 78 carte dispiegate. Rivela il tuo passato, presente e futuro.",
+                introParrafo1: "Arcana è uno spazio gratuito di autoconoscenza e divinazione online, con quattro strumenti basati su tradizioni reali: i Tarocchi di 78 carte (arcani maggiori e minori), la Numerologia Pitagorica (il tuo nome e data di nascita tradotti in numeri), l'Astrologia (il tuo tema natale calcolato con la posizione reale dei pianeti nel momento e luogo della tua nascita) e un Oracolo che combina le tre discipline in un'unica lettura.",
+                introParrafo2: "Scegli una delle quattro sezioni qui sotto per iniziare. Tutte le letture dei Tarocchi, il Profilo Numerologico completo, la Compatibilità e il Tema Natale sono gratuiti; solo la Consultazione di una Data Scelta in Astrologia ha un costo simbolico di USD $2.",
                 menuAstro: "Astrologia", menuAstroDesc: "Il tuo tema natale, transiti planetari e rivoluzione solare.",
                 menuNum: "Numerologia", menuNumDesc: "Vibrazione nascosta del tuo nome e data di nascita.",
                 menuOraculo: "Oracolo", menuOraculoDesc: "Consultazione unificata: numerologia, astrologia e tarot insieme.",
@@ -1895,7 +1923,169 @@
         };
 
         // Tabla de tablas: agrega acá futuros idiomas (pt, it) siguiendo el mismo patrón
-        const textosCartaPorIdioma = { en: textosCartaEn, fr: textosCartaFr };
+        const textosCartaIt = {
+            1: { nombre: "Il Matto", derecha: "Nuovi inizi, avventura, libertà, fare un atto di fede.", invertida: "Sconsideratezza, imprudenza, decisioni affrettate, blocchi." },
+            2: { nombre: "Il Mago", derecha: "Potere di manifestazione, iniziativa, talento, risorse disponibili.", invertida: "Manipolazione, talenti inespressi, mancanza di concentrazione o inganno." },
+            3: { nombre: "La Papessa", derecha: "Intuizione, mistero, saggezza interiore, pazienza e segreti.", invertida: "Superficialità, segreti nascosti dannosi, ignorare la propria voce interiore." },
+            4: { nombre: "L'Imperatrice", derecha: "Abbondanza, creatività, fertilità, natura e cura.", invertida: "Blocco creativo, dipendenza affettiva, soffocamento o infertilità." },
+            5: { nombre: "L'Imperatore", derecha: "Struttura, stabilità, autorità, protezione e disciplina.", invertida: "Tirannia, rigidità estrema, mancanza di controllo o abuso di potere." },
+            6: { nombre: "Il Papa", derecha: "Tradizione, guida spirituale, insegnamento, fede e conformità.", invertida: "Ribellione, dogmatismo, infrangere le regole, percorsi non convenzionali." },
+            7: { nombre: "Gli Innamorati", derecha: "Amore, allineamento dei valori, decisioni importanti, armonia.", invertida: "Squilibrio, scelte sbagliate, discordia nelle relazioni." },
+            8: { nombre: "Il Carro", derecha: "Successo, controllo, determinazione, vittoria e forza di volontà.", invertida: "Mancanza di direzione, perdita di controllo, aggressività o stagnazione." },
+            9: { nombre: "La Giustizia", derecha: "Equilibrio, verità, causa ed effetto, onestà e questioni legali.", invertida: "Ingiustizia, disonestà, parzialità o complicazioni legali." },
+            10: { nombre: "L'Eremita", derecha: "Introspezione, solitudine scelta, saggezza e guida interiore.", invertida: "Isolamento, solitudine amara, rifiutare l'aiuto, imprudenza." },
+            11: { nombre: "La Ruota della Fortuna", derecha: "Cambiamento inevitabile, cicli, destino, fortuna o svolte.", invertida: "Sfortuna, resistenza al cambiamento, rompere un ciclo negativo." },
+            12: { nombre: "La Forza", derecha: "Coraggio, forza interiore, compassione, pazienza e padronanza di sé.", invertida: "Debolezza, insicurezza, rabbia incontrollata o mancanza di fede." },
+            13: { nombre: "L'Appeso", derecha: "Sacrificio volontario, nuova prospettiva, pausa e lasciar andare.", invertida: "Stagnazione, resistenza, indecisione o sacrificio inutile." },
+            14: { nombre: "La Morte", derecha: "Fine di un ciclo, trasformazione profonda, rinascita necessaria.", invertida: "Paura del cambiamento, stagnazione cronica, resistenza a lasciar andare." },
+            15: { nombre: "La Temperanza", derecha: "Moderazione, equilibrio, pazienza, alchimia e pace.", invertida: "Squilibrio, eccesso, mancanza di armonia o impazienza." },
+            16: { nombre: "Il Diavolo", derecha: "Schiavitù, dipendenza, materialismo, tentazione e paure nascoste.", invertida: "Liberazione dalle catene, superare le paure, distacco." },
+            17: { nombre: "La Torre", derecha: "Cambiamento improvviso, rivelazione scioccante, crollo delle illusioni.", invertida: "Crisi evitata, paura del disastro, ricostruzione dolorosa." },
+            18: { nombre: "La Stella", derecha: "Speranza, fede, rinnovamento spirituale, guarigione e chiarezza.", invertida: "Scoraggiamento, mancanza di fede, disperazione o blocchi creativi." },
+            19: { nombre: "La Luna", derecha: "Illusione, paure, intuizione, sogni e verità nascoste.", invertida: "Liberazione dalla paura, segreti rivelati, chiarezza mentale." },
+            20: { nombre: "Il Sole", derecha: "Successo, felicità, vitalità, ottimismo e verità.", invertida: "Felicità offuscata, eccesso di ottimismo, piccoli ritardi." },
+            21: { nombre: "Il Giudizio", derecha: "Risveglio, autovalutazione, redenzione, una chiamata importante.", invertida: "Mancanza di autoanalisi, dubbi paralizzanti, ignorare la chiamata." },
+            22: { nombre: "Il Mondo", derecha: "Compimento assoluto, successo totale, viaggi, integrazione.", invertida: "Obiettivi incompiuti, frustrazione per i ritardi, mancanza di chiusura." },
+            23: { nombre: "Asso di Bastoni", derecha: "Ispirazione, nuova energia, entusiasmo, potenziale creativo.", invertida: "Mancanza di direzione, ritardi, blocchi creativi, passione che svanisce." },
+            24: { nombre: "Due di Bastoni", derecha: "Pianificazione, decisioni sul futuro, scoperta, progresso.", invertida: "Mancanza di pianificazione, paura del cambiamento, restare nella propria zona di comfort." },
+            25: { nombre: "Tre di Bastoni", derecha: "Espansione, sguardo al futuro, opportunità di affari, lungimiranza.", invertida: "Piani frustrati, risultati ritardati, delusione." },
+            26: { nombre: "Quattro di Bastoni", derecha: "Celebrazione, armonia familiare, gioia, stabilità.", invertida: "Tensione familiare, mancanza di armonia, instabilità in casa." },
+            27: { nombre: "Cinque di Bastoni", derecha: "Competizione, conflitti, disaccordi, rivalità sana.", invertida: "Evitare i conflitti, fine di una disputa, caos o lotte distruttive." },
+            28: { nombre: "Sei di Bastoni", derecha: "Successo, vittoria, riconoscimento pubblico, progresso.", invertida: "Mancanza di riconoscimento, castelli in aria, fallimento temporaneo." },
+            29: { nombre: "Sette di Bastoni", derecha: "Difesa, perseveranza, tenere duro contro l'opposizione.", invertida: "Sentirsi sopraffatti, arrendersi, mancanza di fiducia." },
+            30: { nombre: "Otto di Bastoni", derecha: "Movimento rapido, notizie improvvise, viaggio, azione.", invertida: "Ritardi frustranti, decisioni impulsive, caos." },
+            31: { nombre: "Nove di Bastoni", derecha: "Resilienza, ultima resistenza, cauto ma fermo.", invertida: "Esaurimento estremo, debolezza, paranoia, arrendersi vicino al traguardo." },
+            32: { nombre: "Dieci di Bastoni", derecha: "Peso gravoso, responsabilità eccessiva, stress.", invertida: "Delegare compiti, crollare sotto pressione, liberarsi di pesi inutili." },
+            33: { nombre: "Fante di Bastoni", derecha: "Esplorazione, entusiasmo di imparare, notizie fresche, una scintilla.", invertida: "Cattive notizie, mancanza di obiettivi, indecisione o immaturità." },
+            34: { nombre: "Cavaliere di Bastoni", derecha: "Azione appassionata, avventura, impulsività, magnetismo.", invertida: "Aggressività, impazienza, progetti abbandonati a metà strada." },
+            35: { nombre: "Regina di Bastoni", derecha: "Fiducia, vitalità, coraggio, indipendenza, calore.", invertida: "Gelosia, manipolazione, cattivo carattere o insicurezza nascosta." },
+            36: { nombre: "Re di Bastoni", derecha: "Leadership, visione a lungo termine, imprenditorialità, onore.", invertida: "Impulsività tirannica, rigidità, aspettative irrealistiche." },
+            37: { nombre: "Asso di Coppe", derecha: "Amore traboccante, nuova intimità, risveglio emotivo, intuizione.", invertida: "Blocco emotivo, amor proprio trascurato, delusione amorosa." },
+            38: { nombre: "Due di Coppe", derecha: "Connessione reciproca, romanticismo, partnership armoniosa, riconciliazione.", invertida: "Mancanza di armonia, rottura, squilibrio nelle relazioni." },
+            39: { nombre: "Tre di Coppe", derecha: "Celebrazione, amicizia, comunità, supporto reciproco.", invertida: "Eccesso, pettegolezzi, isolamento dalla propria cerchia di amici." },
+            40: { nombre: "Quattro di Coppe", derecha: "Apatia, insoddisfazione, introspezione, ignorare le opportunità.", invertida: "Accettare nuove opzioni, risveglio dall'apatia." },
+            41: { nombre: "Cinque di Coppe", derecha: "Perdita, rimpianto, tristezza incentrata sul passato.", invertida: "Superare il dolore, accettazione, guardare al futuro." },
+            42: { nombre: "Sei di Coppe", derecha: "Nostalgia sana, ricordi d'infanzia, riconnessione.", invertida: "Rimanere bloccati nel passato, aggrapparsi a vecchie illusioni." },
+            43: { nombre: "Sette di Coppe", derecha: "Opzioni multiple, fantasie, mancanza di concentrazione, illusione.", invertida: "Chiarezza, scelta realistica, mettere i piedi per terra." },
+            44: { nombre: "Otto di Coppe", derecha: "Allontanarsi, cercare qualcosa di più grande, distacco.", invertida: "Paura di lasciar andare, stagnazione emotiva, tornare a ciò che fa male." },
+            45: { nombre: "Nove di Coppe", derecha: "Soddisfazione, desideri esauditi, gioia, comfort.", invertida: "Insoddisfazione materiale, eccesso, vuoto interiore." },
+            46: { nombre: "Dieci di Coppe", derecha: "Felicità familiare duratura, allineamento emotivo, benedizioni.", invertida: "Conflitto familiare, matrimoni o partnership tese." },
+            47: { nombre: "Fante di Coppe", derecha: "Sensibilità, messaggi affettuosi, intuizione, creatività nascente.", invertida: "Immaturità emotiva, blocchi creativi, capricci." },
+            48: { nombre: "Cavaliere di Coppe", derecha: "Idealismo, proposte romantiche, seguire il proprio cuore.", invertida: "Sbalzi d'umore, false promesse, disillusione rapida." },
+            49: { nombre: "Regina di Coppe", derecha: "Empatia profonda, compassione, ascoltare la propria intuizione.", invertida: "Dipendenza affettiva, manipolazione emotiva, esaurimento." },
+            50: { nombre: "Re di Coppe", derecha: "Controllo emotivo, maturità, saggezza emotiva, sostegno generoso.", invertida: "Instabilità, freddezza calcolatrice o volatilità emotiva." },
+            51: { nombre: "Asso di Spade", derecha: "Chiarezza mentale, svolta, verità, trionfo intellettuale.", invertida: "Confusione, bugie, uso distruttivo dell'intelletto." },
+            52: { nombre: "Due di Spade", derecha: "Indecisione, un vicolo cieco, essere ciechi alla realtà.", invertida: "Viene presa una decisione, la verità viene rivelata, fine della stagnazione." },
+            53: { nombre: "Tre di Spade", derecha: "Crepacuore, disillusione, separazione, ferita emotiva.", invertida: "Guarire dal dolore, perdono, superare il lutto." },
+            54: { nombre: "Quattro di Spade", derecha: "Riposo necessario, meditazione, recupero, una tregua.", invertida: "Esaurimento cronico, tornare all'azione troppo presto." },
+            55: { nombre: "Cinque di Spade", derecha: "Vittoria vuota, battaglie distruttive, risentimento.", invertida: "Fine delle ostilità, desiderio di riconciliazione, risentimento persistente." },
+            56: { nombre: "Sei di Spade", derecha: "Transizione verso acque più calme, un viaggio necessario, lasciarsi le cose alle spalle.", invertida: "Resistenza al cambiamento, pesante bagaglio emotivo, ritardi." },
+            57: { nombre: "Sette di Spade", derecha: "Strategia silenziosa, inganno, agire da soli, evitare il confronto.", invertida: "La verità viene a galla, rimpianto, una confessione necessaria." },
+            58: { nombre: "Otto di Spade", derecha: "Intrappolati nei propri pensieri, paralisi per paura.", invertida: "Liberazione mentale, nuove prospettive, lasciar andare le paure." },
+            59: { nombre: "Nove di Spade", derecha: "Ansia profonda, insonnia, incubi, senso di colpa esagerato.", invertida: "Luce alla fine del tunnel, imparare a gestire l'ansia." },
+            60: { nombre: "Dieci di Spade", derecha: "Toccare il fondo, tradimento, una fine brutale.", invertida: "Rinascita dopo una crisi, guarigione lenta, fine del dolore." },
+            61: { nombre: "Fante di Spade", derecha: "Curiosità intellettuale, vigilanza, comunicazione diretta.", invertida: "Falsi pettegolezzi, aggressività verbale, cinismo." },
+            62: { nombre: "Cavaliere di Spade", derecha: "Azione logica e impulsiva, difendere le proprie idee, determinazione estrema.", invertida: "Fanatismo, imprudenza verbale, agire senza guardare." },
+            63: { nombre: "Regina di Spade", derecha: "Intelletto acuto, onestà brutale, confini chiari, perspicacia.", invertida: "Freddezza calcolatrice, crudeltà verbale, profonda amarezza." },
+            64: { nombre: "Re di Spade", derecha: "Verità oggettiva, autorità intellettuale, giustizia imparziale.", invertida: "Manipolazione mentale, tirannia nascosta, giudizi di parte." },
+            65: { nombre: "Asso di Denari", derecha: "Nuova opportunità finanziaria, abbondanza materiale, prosperità.", invertida: "Investimento perso, avidità, ritardi finanziari o sfortuna." },
+            66: { nombre: "Due di Denari", derecha: "Bilanciare le priorità, adattabilità, destreggiarsi con le finanze.", invertida: "Mancanza di organizzazione, debiti crescenti, stress legato alle priorità." },
+            67: { nombre: "Tre di Denari", derecha: "Lavoro di squadra, collaborazione professionale, abilità valorizzata.", invertida: "Mancanza di cooperazione, scontri di ego sul lavoro, sforzi mal indirizzati." },
+            68: { nombre: "Quattro di Denari", derecha: "Stabilità finanziaria, possessività, resistenza al cambiamento.", invertida: "Spese eccessive, disfarsi di beni, insicurezza finanziaria." },
+            69: { nombre: "Cinque di Denari", derecha: "Difficoltà materiali, sentirsi isolati, scarsità.", invertida: "Fine di un periodo difficile, ripresa finanziaria, aiuto ricevuto." },
+            70: { nombre: "Sei di Denari", derecha: "Generosità equilibrata, dare e ricevere, carità equa.", invertida: "Abuso di fiducia, debiti in sospeso, generosità interessata." },
+            71: { nombre: "Sette di Denari", derecha: "Pazienza, valutare il raccolto, i frutti dello sforzo quotidiano.", invertida: "Frustrazione per i ritardi, mancanza di costanza, cattivi investimenti." },
+            72: { nombre: "Otto di Denari", derecha: "Maestria, dedizione al lavoro, perfezionamento dei dettagli, apprendimento.", invertida: "Mancanza di ambizione, lavoro monotono, perfezionismo paralizzante." },
+            73: { nombre: "Nove di Denari", derecha: "Autosufficienza, successo materiale goduto, raffinatezza.", invertida: "Insicurezza finanziaria nascosta, spese eccessive, superficialità." },
+            74: { nombre: "Dieci di Denari", derecha: "Eredità familiare, ricchezza duratura, stabilità generazionale.", invertida: "Perdita di eredità, dispute familiari per il denaro, rovina." },
+            75: { nombre: "Fante di Denari", derecha: "Un nuovo obiettivo pratico, opportunità di studiare, ambizione realistica.", invertida: "Mancanza di costanza, pigrizia, obiettivi irrealistici o perdite." },
+            76: { nombre: "Cavaliere di Denari", derecha: "Routine efficiente, affidabilità estrema, duro lavoro, pazienza.", invertida: "Ossessione per il controllo, noia totale, avarizia estrema." },
+            77: { nombre: "Regina di Denari", derecha: "Sicurezza pratica, ospitalità, progetti nutritivi, abbondanza.", invertida: "Squilibrio tra lavoro e casa, materialismo eccessivo, gelosia." },
+            78: { nombre: "Re di Denari", derecha: "Successo negli affari, stabilità materiale assoluta, disciplina.", invertida: "Corruzione finanziaria, avidità incontrollata, materialismo vuoto." }
+        };
+
+        const textosCartaPt = {
+            1: { nombre: "O Louco", derecha: "Novos começos, aventura, liberdade, dar um salto de fé.", invertida: "Irresponsabilidade, imprudência, decisões precipitadas, bloqueios." },
+            2: { nombre: "O Mago", derecha: "Poder de manifestação, iniciativa, talento, recursos disponíveis.", invertida: "Manipulação, talentos desperdiçados, falta de foco ou enganos." },
+            3: { nombre: "A Sacerdotisa", derecha: "Intuição, mistério, sabedoria interior, paciência e segredos.", invertida: "Superficialidade, segredos ocultos prejudiciais, ignorar a voz interior." },
+            4: { nombre: "A Imperatriz", derecha: "Abundância, criatividade, fertilidade, natureza e cuidado.", invertida: "Bloqueio criativo, dependência emocional, sufocamento ou infertilidade." },
+            5: { nombre: "O Imperador", derecha: "Estrutura, estabilidade, autoridade, proteção e disciplina.", invertida: "Tirania, rigidez extrema, falta de controle ou abuso de poder." },
+            6: { nombre: "O Papa", derecha: "Tradição, orientação espiritual, ensino, fé e conformidade.", invertida: "Rebelião, dogmatismo, quebrar as regras, caminhos não convencionais." },
+            7: { nombre: "Os Enamorados", derecha: "Amor, alinhamento de valores, decisões importantes, harmonia.", invertida: "Desequilíbrio, más escolhas, discórdia nos relacionamentos." },
+            8: { nombre: "O Carro", derecha: "Sucesso, controle, determinação, vitória e força de vontade.", invertida: "Falta de direção, perda de controle, agressividade ou estagnação." },
+            9: { nombre: "A Justiça", derecha: "Equilíbrio, verdade, causa e efeito, honestidade e questões legais.", invertida: "Injustiça, desonestidade, parcialidade ou complicações legais." },
+            10: { nombre: "O Eremita", derecha: "Introspecção, solidão escolhida, sabedoria e orientação interior.", invertida: "Isolamento, solidão amarga, recusar ajuda, imprudência." },
+            11: { nombre: "A Roda da Fortuna", derecha: "Mudança inevitável, ciclos, destino, sorte ou reviravoltas.", invertida: "Azar, resistência à mudança, romper um ciclo negativo." },
+            12: { nombre: "A Força", derecha: "Coragem, força interior, compaixão, paciência e autodomínio.", invertida: "Fraqueza, insegurança, raiva descontrolada ou falta de fé." },
+            13: { nombre: "O Enforcado", derecha: "Sacrifício voluntário, nova perspectiva, pausa e deixar ir.", invertida: "Estagnação, resistência, indecisão ou sacrifício inútil." },
+            14: { nombre: "A Morte", derecha: "Fim de um ciclo, transformação profunda, renascimento necessário.", invertida: "Medo da mudança, estagnação crônica, resistência a deixar ir." },
+            15: { nombre: "A Temperança", derecha: "Moderação, equilíbrio, paciência, alquimia e paz.", invertida: "Desequilíbrio, excesso, falta de harmonia ou impaciência." },
+            16: { nombre: "O Diabo", derecha: "Escravidão, dependência, materialismo, tentação e medos ocultos.", invertida: "Libertação das correntes, superar medos, desapego." },
+            17: { nombre: "A Torre", derecha: "Mudança súbita, revelação chocante, colapso das ilusões.", invertida: "Crise evitada, medo do desastre, reconstrução dolorosa." },
+            18: { nombre: "A Estrela", derecha: "Esperança, fé, renovação espiritual, cura e clareza.", invertida: "Desânimo, falta de fé, desespero ou bloqueios criativos." },
+            19: { nombre: "A Lua", derecha: "Ilusão, medos, intuição, sonhos e verdades ocultas.", invertida: "Libertação do medo, segredos revelados, clareza mental." },
+            20: { nombre: "O Sol", derecha: "Sucesso, felicidade, vitalidade, otimismo e verdade.", invertida: "Felicidade nublada, excesso de otimismo, pequenos atrasos." },
+            21: { nombre: "O Julgamento", derecha: "Despertar, autoavaliação, redenção, um chamado importante.", invertida: "Falta de autorreflexão, dúvidas paralisantes, ignorar o chamado." },
+            22: { nombre: "O Mundo", derecha: "Realização absoluta, sucesso total, viagens, integração.", invertida: "Objetivos inacabados, frustração por atrasos, falta de encerramento." },
+            23: { nombre: "Ás de Paus", derecha: "Inspiração, nova energia, entusiasmo, potencial criativo.", invertida: "Falta de direção, atrasos, bloqueios criativos, paixão que se apaga." },
+            24: { nombre: "Dois de Paus", derecha: "Planejamento, decisões sobre o futuro, descoberta, progresso.", invertida: "Falta de planejamento, medo da mudança, permanecer na zona de conforto." },
+            25: { nombre: "Três de Paus", derecha: "Expansão, olhar para o futuro, oportunidades de negócios, visão.", invertida: "Planos frustrados, resultados atrasados, decepção." },
+            26: { nombre: "Quatro de Paus", derecha: "Celebração, harmonia no lar, alegria, estabilidade.", invertida: "Tensão familiar, falta de harmonia, instabilidade em casa." },
+            27: { nombre: "Cinco de Paus", derecha: "Competição, conflitos, desacordos, rivalidade saudável.", invertida: "Evitar conflitos, fim de uma disputa, caos ou brigas destrutivas." },
+            28: { nombre: "Seis de Paus", derecha: "Sucesso, vitória, reconhecimento público, progresso.", invertida: "Falta de reconhecimento, castelos no ar, fracasso temporário." },
+            29: { nombre: "Sete de Paus", derecha: "Defesa, perseverança, manter-se firme contra a oposição.", invertida: "Sentir-se sobrecarregado, desistir, falta de confiança." },
+            30: { nombre: "Oito de Paus", derecha: "Movimento rápido, notícias repentinas, viagem, ação.", invertida: "Atrasos frustrantes, decisões impulsivas, caos." },
+            31: { nombre: "Nove de Paus", derecha: "Resiliência, última resistência, cauteloso mas firme.", invertida: "Exaustão extrema, fraqueza, paranoia, desistir perto do fim." },
+            32: { nombre: "Dez de Paus", derecha: "Fardo pesado, responsabilidade excessiva, estresse.", invertida: "Delegar tarefas, entrar em colapso sob pressão, livrar-se de cargas desnecessárias." },
+            33: { nombre: "Pajem de Paus", derecha: "Exploração, entusiasmo por aprender, notícias novas, uma centelha.", invertida: "Más notícias, falta de objetivos, indecisão ou imaturidade." },
+            34: { nombre: "Cavaleiro de Paus", derecha: "Ação apaixonada, aventura, impulsividade, magnetismo.", invertida: "Agressividade, impaciência, projetos abandonados no meio do caminho." },
+            35: { nombre: "Rainha de Paus", derecha: "Confiança, vitalidade, coragem, independência, calor.", invertida: "Ciúme, manipulação, mau humor ou insegurança oculta." },
+            36: { nombre: "Rei de Paus", derecha: "Liderança, visão de longo prazo, empreendedorismo, honra.", invertida: "Impulsividade tirânica, rigidez, expectativas irreais." },
+            37: { nombre: "Ás de Copas", derecha: "Amor transbordante, nova intimidade, despertar emocional, intuição.", invertida: "Bloqueio emocional, autoestima negligenciada, decepção amorosa." },
+            38: { nombre: "Dois de Copas", derecha: "Conexão mútua, romance, parceria harmoniosa, reconciliação.", invertida: "Falta de harmonia, rompimento, desequilíbrio nos relacionamentos." },
+            39: { nombre: "Três de Copas", derecha: "Celebração, amizade, comunidade, apoio mútuo.", invertida: "Excesso, fofocas, isolamento do seu círculo de amigos." },
+            40: { nombre: "Quatro de Copas", derecha: "Apatia, descontentamento, introspecção, ignorar oportunidades.", invertida: "Aceitar novas opções, despertar da apatia." },
+            41: { nombre: "Cinco de Copas", derecha: "Perda, arrependimento, tristeza focada no passado.", invertida: "Superar o luto, aceitação, olhar para o futuro." },
+            42: { nombre: "Seis de Copas", derecha: "Nostalgia saudável, memórias de infância, reconexão.", invertida: "Ficar preso no passado, apegar-se a velhas ilusões." },
+            43: { nombre: "Sete de Copas", derecha: "Múltiplas opções, fantasias, falta de foco, ilusão.", invertida: "Clareza, escolha realista, colocar os pés no chão." },
+            44: { nombre: "Oito de Copas", derecha: "Afastar-se, buscar algo maior, desapego.", invertida: "Medo de deixar ir, estagnação emocional, voltar ao que machuca." },
+            45: { nombre: "Nove de Copas", derecha: "Satisfação, desejos realizados, alegria, conforto.", invertida: "Insatisfação material, excesso, vazio interior." },
+            46: { nombre: "Dez de Copas", derecha: "Felicidade familiar duradoura, alinhamento emocional, bênçãos.", invertida: "Conflito familiar, casamentos ou parcerias tensas." },
+            47: { nombre: "Pajem de Copas", derecha: "Sensibilidade, mensagens afetuosas, intuição, criatividade nascente.", invertida: "Imaturidade emocional, bloqueios criativos, birras." },
+            48: { nombre: "Cavaleiro de Copas", derecha: "Idealismo, propostas românticas, seguir o coração.", invertida: "Mudanças de humor, falsas promessas, desilusão rápida." },
+            49: { nombre: "Rainha de Copas", derecha: "Empatia profunda, compaixão, ouvir sua intuição.", invertida: "Dependência emocional, manipulação emocional, esgotamento." },
+            50: { nombre: "Rei de Copas", derecha: "Controle emocional, maturidade, sabedoria emocional, apoio generoso.", invertida: "Instabilidade, frieza calculista ou volatilidade emocional." },
+            51: { nombre: "Ás de Espadas", derecha: "Clareza mental, avanço, verdade, triunfo intelectual.", invertida: "Confusão, mentiras, uso destrutivo do intelecto." },
+            52: { nombre: "Dois de Espadas", derecha: "Indecisão, um beco sem saída, estar cego à realidade.", invertida: "Uma decisão é tomada, a verdade é revelada, fim da estagnação." },
+            53: { nombre: "Três de Espadas", derecha: "Coração partido, desilusão, separação, ferida emocional.", invertida: "Curar-se da dor, perdão, superar o luto." },
+            54: { nombre: "Quatro de Espadas", derecha: "Descanso necessário, meditação, recuperação, uma trégua.", invertida: "Exaustão crônica, voltar à ação cedo demais." },
+            55: { nombre: "Cinco de Espadas", derecha: "Vitória vazia, batalhas destrutivas, ressentimento.", invertida: "Fim das hostilidades, desejo de reconciliação, ressentimento persistente." },
+            56: { nombre: "Seis de Espadas", derecha: "Transição para águas mais calmas, uma viagem necessária, deixar coisas para trás.", invertida: "Resistência à mudança, bagagem emocional pesada, atrasos." },
+            57: { nombre: "Sete de Espadas", derecha: "Estratégia silenciosa, engano, agir sozinho, evitar confronto.", invertida: "A verdade vem à tona, arrependimento, uma confissão necessária." },
+            58: { nombre: "Oito de Espadas", derecha: "Preso nos próprios pensamentos, paralisia pelo medo.", invertida: "Libertação mental, novas perspectivas, deixar ir os medos." },
+            59: { nombre: "Nove de Espadas", derecha: "Ansiedade profunda, insônia, pesadelos, culpa exagerada.", invertida: "Luz no fim do túnel, aprender a gerenciar a ansiedade." },
+            60: { nombre: "Dez de Espadas", derecha: "Tocar o fundo do poço, traição, um final drástico.", invertida: "Renascimento após uma crise, recuperação lenta, fim da dor." },
+            61: { nombre: "Pajem de Espadas", derecha: "Curiosidade intelectual, vigilância, comunicação direta.", invertida: "Fofocas falsas, agressividade verbal, cinismo." },
+            62: { nombre: "Cavaleiro de Espadas", derecha: "Ação lógica e impulsiva, defender ideias, determinação extrema.", invertida: "Fanatismo, imprudência verbal, avançar sem olhar." },
+            63: { nombre: "Rainha de Espadas", derecha: "Intelecto afiado, honestidade brutal, limites claros, perspicácia.", invertida: "Frieza calculista, crueldade verbal, amargura profunda." },
+            64: { nombre: "Rei de Espadas", derecha: "Verdade objetiva, autoridade intelectual, justiça imparcial.", invertida: "Manipulação mental, tirania oculta, julgamentos tendenciosos." },
+            65: { nombre: "Ás de Ouros", derecha: "Nova oportunidade financeira, abundância material, prosperidade.", invertida: "Investimento perdido, ganância, atrasos financeiros ou azar." },
+            66: { nombre: "Dois de Ouros", derecha: "Equilibrar prioridades, adaptabilidade, fazer malabarismos com as finanças.", invertida: "Falta de organização, dívidas crescentes, estresse com prioridades." },
+            67: { nombre: "Três de Ouros", derecha: "Trabalho em equipe, colaboração profissional, habilidade valorizada.", invertida: "Falta de cooperação, conflitos de ego no trabalho, esforços mal direcionados." },
+            68: { nombre: "Quatro de Ouros", derecha: "Estabilidade financeira, possessividade, resistência à mudança.", invertida: "Gastos excessivos, desfazer-se de posses, insegurança financeira." },
+            69: { nombre: "Cinco de Ouros", derecha: "Dificuldades materiais, sentir-se isolado, escassez.", invertida: "Fim de um período difícil, recuperação financeira, ajuda recebida." },
+            70: { nombre: "Seis de Ouros", derecha: "Generosidade equilibrada, dar e receber, caridade justa.", invertida: "Abuso de confiança, dívidas pendentes, generosidade interesseira." },
+            71: { nombre: "Sete de Ouros", derecha: "Paciência, avaliar a colheita, os frutos do esforço diário.", invertida: "Frustração por atrasos, falta de perseverança, maus investimentos." },
+            72: { nombre: "Oito de Ouros", derecha: "Maestria, dedicação ao trabalho, aperfeiçoamento dos detalhes, aprendizado.", invertida: "Falta de ambição, trabalho monótono, perfeccionismo paralisante." },
+            73: { nombre: "Nove de Ouros", derecha: "Autossuficiência, sucesso material apreciado, refinamento.", invertida: "Insegurança financeira oculta, gastos excessivos, superficialidade." },
+            74: { nombre: "Dez de Ouros", derecha: "Legado familiar, riqueza duradoura, estabilidade geracional.", invertida: "Perda de herança, disputas familiares por dinheiro, ruína." },
+            75: { nombre: "Pajem de Ouros", derecha: "Um novo objetivo prático, oportunidade de estudar, ambição realista.", invertida: "Falta de perseverança, preguiça, objetivos irreais ou perdas." },
+            76: { nombre: "Cavaleiro de Ouros", derecha: "Rotina eficiente, confiabilidade extrema, trabalho árduo, paciência.", invertida: "Obsessão pelo controle, tédio total, avareza extrema." },
+            77: { nombre: "Rainha de Ouros", derecha: "Segurança prática, hospitalidade, projetos nutritivos, abundância.", invertida: "Desequilíbrio entre trabalho e casa, materialismo excessivo, ciúme." },
+            78: { nombre: "Rei de Ouros", derecha: "Sucesso nos negócios, estabilidade material absoluta, disciplina.", invertida: "Corrupção financeira, ganância descontrolada, materialismo vazio." }
+        };
+
+        const textosCartaPorIdioma = { en: textosCartaEn, fr: textosCartaFr, it: textosCartaIt, pt: textosCartaPt };
 
         // Devuelve el nombre de la carta en el idioma actual (con reserva en español si aún no está traducido)
         function nombreCartaLocalizado(cardObj) {
@@ -1998,7 +2188,9 @@
        function generarExplicacionSiNo(cartas, puntaje, respuestaKey) {
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
-            let nombresCombinados = cartas.map(c => `${c.nombre}${c.posicion ? ' ' + c.posicion.trim() : ''}`).join(cartas.length > 1 ? (esEn ? ' and ' : esFr ? ' et ' : ' y ') : '');
+            const esIt = idiomaActual === 'it';
+            const esPt = idiomaActual === 'pt';
+            let nombresCombinados = cartas.map(c => `${c.nombre}${c.posicion ? ' ' + c.posicion.trim() : ''}`).join(cartas.length > 1 ? (esEn ? ' and ' : esFr ? ' et ' : esIt ? ' e ' : esPt ? ' e ' : ' y ') : '');
             let base = "";
             if (esEn) {
                 if (cartas.length === 1) {
@@ -2026,6 +2218,32 @@
                     else base += "montrent des énergies opposées ou conditionnelles entre elles : le message est AMBIGU, la balance peut encore pencher d'un côté ou de l'autre selon tes prochaines décisions.";
                 }
                 base += " Souviens-toi que le tarot indique des tendances énergétiques, pas des certitudes absolues : le dernier mot t'appartient toujours.";
+            } else if (esIt) {
+                if (cartas.length === 1) {
+                    base = `La carta <strong>${nombresCombinados}</strong> `;
+                    if (respuestaKey === 'si') base += "porta un'energia favorevole e aperta: la tendenza dell'oracolo pende verso il SÌ.";
+                    else if (respuestaKey === 'no') base += "porta un'energia di blocco, chiusura o avvertimento: la tendenza dell'oracolo pende verso il NO.";
+                    else base += "è una carta condizionale, il cui esito dipende da fattori ancora in movimento: la risposta è AMBIGUA in questo momento.";
+                } else {
+                    base = `Le carte <strong>${nombresCombinados}</strong> `;
+                    if (respuestaKey === 'si') base += "si rafforzano a vicenda nella stessa direzione favorevole: insieme confermano una tendenza verso il SÌ.";
+                    else if (respuestaKey === 'no') base += "si rafforzano a vicenda nella stessa direzione restrittiva: insieme confermano una tendenza verso il NO.";
+                    else base += "mostrano energie opposte o condizionali tra loro: il messaggio è AMBIGUO, la bilancia può ancora pendere da un lato o dall'altro secondo le tue prossime decisioni.";
+                }
+                base += " Ricorda che i tarocchi indicano tendenze energetiche, non certezze assolute: l'ultima parola spetta sempre a te.";
+            } else if (esPt) {
+                if (cartas.length === 1) {
+                    base = `A carta <strong>${nombresCombinados}</strong> `;
+                    if (respuestaKey === 'si') base += "traz uma energia favorável e de abertura: a tendência do oráculo se inclina para o SIM.";
+                    else if (respuestaKey === 'no') base += "traz uma energia de freio, encerramento ou aviso: a tendência do oráculo se inclina para o NÃO.";
+                    else base += "é uma carta condicional, cujo desfecho depende de fatores ainda em movimento: a resposta é AMBÍGUA neste momento.";
+                } else {
+                    base = `As cartas <strong>${nombresCombinados}</strong> `;
+                    if (respuestaKey === 'si') base += "se reforçam mutuamente na mesma direção favorável: juntas confirmam uma tendência para o SIM.";
+                    else if (respuestaKey === 'no') base += "se reforçam mutuamente na mesma direção restritiva: juntas confirmam uma tendência para o NÃO.";
+                    else base += "mostram energias opostas ou condicionais entre si: a mensagem é AMBÍGUA, a balança ainda pode se inclinar segundo suas próximas decisões.";
+                }
+                base += " Lembre-se de que o tarô aponta tendências energéticas, não certezas absolutas: a última palavra é sempre sua.";
             } else {
                 if (cartas.length === 1) {
                     base = `La carta <strong>${nombresCombinados}</strong> `;
@@ -2047,6 +2265,7 @@
             if (cartas.length < 3) return t('sintesis1Carta');
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
+            const esIt = idiomaActual === 'it';
             let nombresCombinados = cartas.map(c => `${c.nombre}${c.posicion ? ' (' + c.posicion.trim() + ')' : ''}`).join(', ');
             let invertidas = cartas.filter(c => c.invertida).length;
             if (esEn) {
@@ -2065,6 +2284,22 @@
                         : "une énergie mixte, avec des passages qui coulent et d'autres qui demandent de l'attention");
                 return `${t('sintesis3Cartas')} La séquence précise que tu as choisie —<strong>${nombresCombinados}</strong>— reflète ${tono}. Dans le Passé, ${cartas[0].nombre} indique : « ${cartas[0].texto} » Dans le Présent, ${cartas[1].nombre} montre : « ${cartas[1].texto} » Et comme Futur, ${cartas[2].nombre} projette : « ${cartas[2].texto} » C'est le fil qui relie d'où tu viens, où tu te trouves, et vers où tu te diriges.`;
             }
+            if (esIt) {
+                let tono = invertidas === 0
+                    ? "un'energia prevalentemente fluida e consapevole"
+                    : (invertidas === cartas.length
+                        ? "un'energia marcatamente interiore, con blocchi o lezioni che richiedono revisione"
+                        : "un'energia mista, con tratti che scorrono e tratti che richiedono attenzione");
+                return `${t('sintesis3Cartas')} La sequenza precisa che hai scelto —<strong>${nombresCombinados}</strong>— riflette ${tono}. Nel Passato, ${cartas[0].nombre} indica: "${cartas[0].texto}" Nel Presente, ${cartas[1].nombre} mostra: "${cartas[1].texto}" E come Futuro, ${cartas[2].nombre} proietta: "${cartas[2].texto}" È il filo che collega da dove vieni, dove ti trovi ora e verso dove sei diretto.`;
+            }
+            if (idiomaActual === 'pt') {
+                let tono = invertidas === 0
+                    ? "uma energia predominantemente fluida e consciente"
+                    : (invertidas === cartas.length
+                        ? "uma energia marcadamente interna, com bloqueios ou aprendizados que pedem revisão"
+                        : "uma energia mista, com trechos que fluem e trechos que requerem atenção");
+                return `${t('sintesis3Cartas')} A sequência concreta que você escolheu —<strong>${nombresCombinados}</strong>— reflete ${tono}. No Passado, ${cartas[0].nombre} indica: "${cartas[0].texto}" No Presente, ${cartas[1].nombre} indica: "${cartas[1].texto}" E como Futuro, ${cartas[2].nombre} projeta: "${cartas[2].texto}" É o fio que conecta de onde você vem, onde está agora e para onde está indo.`;
+            }
             let tono = invertidas === 0
                 ? "una energía predominantemente fluida y consciente"
                 : (invertidas === cartas.length
@@ -2077,12 +2312,19 @@
             if (cartas.length < 10) return '';
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
+            const esIt = idiomaActual === 'it';
             const presente = cartas[0], desafio = cartas[1], corona = cartas[4], resultado = cartas[9];
             if (esEn) {
                 return `This Celtic Cross starts with <strong>${presente.nombre}</strong> in the Present, crossed by <strong>${desafio.nombre}</strong> as the immediate Challenge. Throughout the spread, the energy moves toward <strong>${corona.nombre}</strong> as the best possible outcome, and the Final Outcome —<strong>${resultado.nombre}${resultado.posicion ? ' ' + resultado.posicion.trim() : ''}</strong>— indicates that ${resultado.texto.charAt(0).toLowerCase() + resultado.texto.slice(1)} This is the direction the spread as a whole is pointing to if current energies continue on their course; it's always in your hands to reinforce what's favorable and transform what isn't.`;
             }
             if (esFr) {
                 return `Cette Croix Celtique part de <strong>${presente.nombre}</strong> dans le Présent, traversée par <strong>${desafio.nombre}</strong> comme Défi immédiat. Tout au long du tirage, l'énergie se dirige vers <strong>${corona.nombre}</strong> comme meilleur résultat possible, et le Résultat Final —<strong>${resultado.nombre}${resultado.posicion ? ' ' + resultado.posicion.trim() : ''}</strong>— indique que ${resultado.texto.charAt(0).toLowerCase() + resultado.texto.slice(1)} C'est la direction vers laquelle pointe l'ensemble du tirage si les énergies actuelles poursuivent leur cours ; il est toujours entre tes mains de renforcer ce qui est favorable et de transformer ce qui ne l'est pas.`;
+            }
+            if (esIt) {
+                return `Questa Croce Celtica parte da <strong>${presente.nombre}</strong> nel Presente, attraversata da <strong>${desafio.nombre}</strong> come Sfida immediata. Lungo tutta la stesa, l'energia si dirige verso <strong>${corona.nombre}</strong> come miglior risultato possibile, e il Risultato Finale —<strong>${resultado.nombre}${resultado.posicion ? ' ' + resultado.posicion.trim() : ''}</strong>— indica che ${resultado.texto.charAt(0).toLowerCase() + resultado.texto.slice(1)} Questa è la direzione verso cui punta l'insieme della stesa se le energie attuali continuano il loro corso; sta sempre nelle tue mani rafforzare ciò che è favorevole e trasformare ciò che non lo è.`;
+            }
+            if (idiomaActual === 'pt') {
+                return `Esta Cruz Celta parte de <strong>${presente.nombre}</strong> no Presente, atravessada por <strong>${desafio.nombre}</strong> como Desafio imediato. Ao longo da tiragem, a energia se dirige para <strong>${corona.nombre}</strong> como melhor resultado possível, e o Resultado Final —<strong>${resultado.nombre}${resultado.posicion ? ' ' + resultado.posicion.trim() : ''}</strong>— indica que ${resultado.texto.charAt(0).toLowerCase() + resultado.texto.slice(1)} Este é o rumo para o qual aponta o conjunto da tiragem se as energias atuais continuarem seu curso; está sempre em suas mãos reforçar o que é favorável e transformar o que não é.`;
             }
             return `Esta Cruz Celta parte de <strong>${presente.nombre}</strong> en el Presente, atravesada por <strong>${desafio.nombre}</strong> como Desafío inmediato. A lo largo del recorrido, la energía se dirige hacia <strong>${corona.nombre}</strong> como mejor resultado posible, y el Resultado Final —<strong>${resultado.nombre}${resultado.posicion ? ' ' + resultado.posicion.trim() : ''}</strong>— señala que ${resultado.texto.charAt(0).toLowerCase() + resultado.texto.slice(1)} Este es el desenlace hacia el que apunta el conjunto de la tirada si las energías actuales continúan su curso; siempre está en tus manos reforzar lo favorable y transformar lo que no lo es.`;
         }
@@ -2267,16 +2509,16 @@
         // Enmarca el significado esencial del número según el ROL numerológico que cumple
         // (Camino de Vida, Destino, Alma, Personalidad, Día Personal, etc.)
         const rolPrefijosNumerologia = {
-            caminoVida: {es:"Marca la lección central de tu existencia: ",en:"It marks the central lesson of your existence: ",fr:"Il marque la leçon centrale de ton existence : "},
-            destino: {es:"Señala el talento que viniste a desplegar y tu propósito de vida: ",en:"It points to the talent you came to develop and your life purpose: ",fr:"Il indique le talent que tu es venu déployer et ton but dans la vie : "},
-            alma: {es:"Revela lo que tu corazón anhela en secreto, tu motivación más íntima: ",en:"It reveals what your heart secretly longs for, your most intimate motivation: ",fr:"Il révèle ce que ton cœur désire en secret, ta motivation la plus intime : "},
-            personalidad: {es:"Es la cara que mostrás al mundo, tu primera impresión: ",en:"It's the face you show the world, your first impression: ",fr:"C'est le visage que tu montres au monde, ta première impression : "},
-            diaNacimiento: {es:"Aporta un don adicional con el que naciste: ",en:"It brings an extra gift you were born with: ",fr:"Il apporte un don supplémentaire avec lequel tu es né(e) : "},
-            madurez: {es:"Indica hacia dónde madura tu camino en la segunda mitad de la vida, tu realización final: ",en:"It shows where your path matures in the second half of life, your ultimate fulfillment: ",fr:"Il indique où ton chemin mûrit dans la seconde moitié de la vie, ton accomplissement final : "},
-            anoPersonal: {es:"Marca el ciclo anual que estás transitando: ",en:"It marks the yearly cycle you're going through: ",fr:"Il marque le cycle annuel que tu traverses : "},
-            mesPersonal: {es:"Matiza ese ciclo anual en el mes en curso: ",en:"It adds nuance to that yearly cycle within the current month: ",fr:"Il nuance ce cycle annuel dans le mois en cours : "},
-            diaPersonal: {es:"Es la energía particular que esta fecha trae para vos: ",en:"It's the particular energy this date brings for you: ",fr:"C'est l'énergie particulière que cette date t'apporte : "},
-            diaUniversal: {es:"Es la energía general de este día, que rige por igual a todo el mundo: ",en:"It's the general energy of this day, which governs everyone equally: ",fr:"C'est l'énergie générale de ce jour, qui régit également tout le monde : "}
+            caminoVida: {es:"Marca la lección central de tu existencia: ",en:"It marks the central lesson of your existence: ",fr:"Il marque la leçon centrale de ton existence : ",it:"Segna la lezione centrale della tua esistenza: ",pt:"Marca a lição central da sua existência: "},
+            destino: {es:"Señala el talento que viniste a desplegar y tu propósito de vida: ",en:"It points to the talent you came to develop and your life purpose: ",fr:"Il indique le talent que tu es venu déployer et ton but dans la vie : ",it:"Indica il talento che sei venuto a sviluppare e il tuo scopo di vita: ",pt:"Aponta o talento que você veio desenvolver e seu propósito de vida: "},
+            alma: {es:"Revela lo que tu corazón anhela en secreto, tu motivación más íntima: ",en:"It reveals what your heart secretly longs for, your most intimate motivation: ",fr:"Il révèle ce que ton cœur désire en secret, ta motivation la plus intime : ",it:"Rivela ciò che il tuo cuore desidera in segreto, la tua motivazione più intima: ",pt:"Revela o que seu coração deseja em segredo, sua motivação mais íntima: "},
+            personalidad: {es:"Es la cara que mostrás al mundo, tu primera impresión: ",en:"It's the face you show the world, your first impression: ",fr:"C'est le visage que tu montres au monde, ta première impression : ",it:"È il volto che mostri al mondo, la tua prima impressione: ",pt:"É o rosto que você mostra ao mundo, sua primeira impressão: "},
+            diaNacimiento: {es:"Aporta un don adicional con el que naciste: ",en:"It brings an extra gift you were born with: ",fr:"Il apporte un don supplémentaire avec lequel tu es né(e) : ",it:"Porta un dono aggiuntivo con cui sei nato/a: ",pt:"Traz um dom adicional com o qual você nasceu: "},
+            madurez: {es:"Indica hacia dónde madura tu camino en la segunda mitad de la vida, tu realización final: ",en:"It shows where your path matures in the second half of life, your ultimate fulfillment: ",fr:"Il indique où ton chemin mûrit dans la seconde moitié de la vie, ton accomplissement final : ",it:"Indica dove matura il tuo cammino nella seconda metà della vita, la tua realizzazione finale: ",pt:"Indica para onde amadurece seu caminho na segunda metade da vida, sua realização final: "},
+            anoPersonal: {es:"Marca el ciclo anual que estás transitando: ",en:"It marks the yearly cycle you're going through: ",fr:"Il marque le cycle annuel que tu traverses : ",it:"Segna il ciclo annuale che stai attraversando: ",pt:"Marca o ciclo anual que você está atravessando: "},
+            mesPersonal: {es:"Matiza ese ciclo anual en el mes en curso: ",en:"It adds nuance to that yearly cycle within the current month: ",fr:"Il nuance ce cycle annuel dans le mois en cours : ",it:"Sfuma quel ciclo annuale nel mese in corso: ",pt:"Nuança esse ciclo anual no mês em curso: "},
+            diaPersonal: {es:"Es la energía particular que esta fecha trae para vos: ",en:"It's the particular energy this date brings for you: ",fr:"C'est l'énergie particulière que cette date t'apporte : ",it:"È l'energia particolare che questa data porta per te: ",pt:"É a energia particular que esta data traz para você: "},
+            diaUniversal: {es:"Es la energía general de este día, que rige por igual a todo el mundo: ",en:"It's the general energy of this day, which governs everyone equally: ",fr:"C'est l'énergie générale de ce jour, qui régit également tout le monde : ",it:"È l'energia generale di questo giorno, che governa allo stesso modo tutti nel mondo: ",pt:"É a energia geral deste dia, que rege igualmente a todo o mundo: "}
         };
         function obtenerSignificadoPorRol(numero, rol) {
             const entry = rolPrefijosNumerologia[rol];
@@ -2406,6 +2648,26 @@
                 <p><strong>${t('numMadurez')} (${numMadurez}):</strong> ${obtenerSignificadoPorRol(numMadurez, 'madurez')}</p>
                 <p>Dans l'ensemble, ${primerNombre}, ton Chemin de Vie (${fechaNums.caminoVida}) est la leçon qui traverse toute ton existence, tandis que ton Destin (${numeros.destino}) est le talent concret avec lequel tu la mets en pratique. Ton Nombre d'Âme (${numeros.alma}) est la boussole intime qui te dit ce qui te comble vraiment, et ta Personnalité (${numeros.personalidad}) est la façon dont le monde te perçoit avant de te connaître en profondeur. Tout ce parcours converge, avec la maturité, vers le nombre ${numMadurez} : c'est là que tend ton accomplissement le plus complet.</p>`;
             }
+            if (idiomaActual === 'it') {
+                return `<h3>${t('interpPersonal')}</h3>
+                <p><strong>${t('caminoVida')} (${fechaNums.caminoVida}):</strong> ${obtenerSignificadoPorRol(fechaNums.caminoVida, 'caminoVida')}</p>
+                <p><strong>${t('destino')} (${numeros.destino}):</strong> ${obtenerSignificadoPorRol(numeros.destino, 'destino')}</p>
+                <p><strong>${t('alma')} (${numeros.alma}):</strong> ${obtenerSignificadoPorRol(numeros.alma, 'alma')}</p>
+                <p><strong>${t('personalidad')} (${numeros.personalidad}):</strong> ${obtenerSignificadoPorRol(numeros.personalidad, 'personalidad')}</p>
+                <p><strong>${t('diaNacimiento')} (${fechaNums.diaNacimiento}):</strong> ${obtenerSignificadoPorRol(fechaNums.diaNacimiento, 'diaNacimiento')}</p>
+                <p><strong>${t('numMadurez')} (${numMadurez}):</strong> ${obtenerSignificadoPorRol(numMadurez, 'madurez')}</p>
+                <p>Nel complesso, ${primerNombre}, il tuo Cammino di Vita (${fechaNums.caminoVida}) è la lezione che attraversa tutta la tua esistenza, mentre il tuo Destino (${numeros.destino}) è il talento concreto con cui lo metti in pratica. Il tuo Numero dell'Anima (${numeros.alma}) è la bussola intima che ti dice cosa ti riempie davvero, e la tua Personalità (${numeros.personalidad}) è il modo in cui il mondo ti percepisce prima di conoscerti in profondità. Tutto questo percorso converge, con la maturità, nel numero ${numMadurez}: è lì che tende la tua realizzazione più piena.</p>`;
+            }
+            if (idiomaActual === 'pt') {
+                return `<h3>${t('interpPersonal')}</h3>
+                <p><strong>${t('caminoVida')} (${fechaNums.caminoVida}):</strong> ${obtenerSignificadoPorRol(fechaNums.caminoVida, 'caminoVida')}</p>
+                <p><strong>${t('destino')} (${numeros.destino}):</strong> ${obtenerSignificadoPorRol(numeros.destino, 'destino')}</p>
+                <p><strong>${t('alma')} (${numeros.alma}):</strong> ${obtenerSignificadoPorRol(numeros.alma, 'alma')}</p>
+                <p><strong>${t('personalidad')} (${numeros.personalidad}):</strong> ${obtenerSignificadoPorRol(numeros.personalidad, 'personalidad')}</p>
+                <p><strong>${t('diaNacimiento')} (${fechaNums.diaNacimiento}):</strong> ${obtenerSignificadoPorRol(fechaNums.diaNacimiento, 'diaNacimiento')}</p>
+                <p><strong>${t('numMadurez')} (${numMadurez}):</strong> ${obtenerSignificadoPorRol(numMadurez, 'madurez')}</p>
+                <p>Em conjunto, ${primerNombre}, seu Caminho de Vida (${fechaNums.caminoVida}) é a lição que atravessa toda a sua existência, enquanto seu Destino (${numeros.destino}) é o talento concreto com o qual você o coloca em prática. Seu Número da Alma (${numeros.alma}) é a bússola íntima que diz o que realmente te preenche, e sua Personalidade (${numeros.personalidad}) é o modo como o mundo te percebe antes de te conhecer em profundidade. Todo esse percurso converge, com a maturidade, no número ${numMadurez}: é para lá que tende sua realização mais plena.</p>`;
+            }
             return `<h3>${t('interpPersonal')}</h3>
             <p><strong>${t('caminoVida')} (${fechaNums.caminoVida}):</strong> ${obtenerSignificadoPorRol(fechaNums.caminoVida, 'caminoVida')}</p>
             <p><strong>${t('destino')} (${numeros.destino}):</strong> ${obtenerSignificadoPorRol(numeros.destino, 'destino')}</p>
@@ -2420,7 +2682,9 @@
             const [y, m, d] = fechaStr.split('-').map(Number);
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
-            const fechaLegible = new Date(y, m - 1, d).toLocaleDateString(esEn ? 'en-US' : esFr ? 'fr-FR' : (idiomaActual === 'es' ? 'es-AR' : idiomaActual), { day: 'numeric', month: 'long', year: 'numeric' });
+            const esIt = idiomaActual === 'it';
+            const esPt = idiomaActual === 'pt';
+            const fechaLegible = new Date(y, m - 1, d).toLocaleDateString(esEn ? 'en-US' : esFr ? 'fr-FR' : esIt ? 'it-IT' : esPt ? 'pt-BR' : (idiomaActual === 'es' ? 'es-AR' : idiomaActual), { day: 'numeric', month: 'long', year: 'numeric' });
             const nivel = nivelCompatibilidad(caminoVida, diaPersonal);
             let combinacion;
             if (esEn) {
@@ -2443,6 +2707,26 @@
                 <p><strong>${t('diaUniversal')} (${diaUniversal}):</strong> ${obtenerSignificadoPorRol(diaUniversal, 'diaUniversal')}</p>
                 <p>Pour ${primerNombre}, l'énergie du ${diaPersonal} en ce jour ${combinacion}. Ce calcul combine ta date de naissance avec la date choisie, donc tu peux répéter cette consultation pour aujourd'hui ou pour n'importe quelle date future que tu veux explorer — le résultat changera selon le jour choisi.</p>`;
             }
+            if (esIt) {
+                if (nivel === 'igual' || nivel === 'alta') combinacion = `si combina in modo fluido e favorevole con il tuo Cammino di Vita (${caminoVida})`;
+                else if (nivel === 'baja') combinacion = `entra in una certa tensione con il tuo Cammino di Vita (${caminoVida}), il che può sentirsi come un giorno che richiede più sforzo consapevole`;
+                else combinacion = `convive in modo neutro con il tuo Cammino di Vita (${caminoVida}), senza grandi attriti né uno slancio particolare`;
+
+                return `<h3>${t('interpPersonal')}: ${fechaLegible}</h3>
+                <p><strong>${t('diaPersonal')} (${diaPersonal}):</strong> ${obtenerSignificadoPorRol(diaPersonal, 'diaPersonal')}</p>
+                <p><strong>${t('diaUniversal')} (${diaUniversal}):</strong> ${obtenerSignificadoPorRol(diaUniversal, 'diaUniversal')}</p>
+                <p>Per ${primerNombre}, l'energia del ${diaPersonal} in questo giorno ${combinacion}. Questo calcolo combina la tua data di nascita con la data scelta, quindi puoi ripetere questa consultazione per oggi o per qualsiasi data futura che vuoi esplorare — il risultato cambierà a seconda del giorno scelto.</p>`;
+            }
+            if (esPt) {
+                if (nivel === 'igual' || nivel === 'alta') combinacion = `se combina de forma fluida e favorável com o seu Caminho de Vida (${caminoVida})`;
+                else if (nivel === 'baja') combinacion = `entra em certa tensão com o seu Caminho de Vida (${caminoVida}), o que pode se sentir como um dia que pede mais esforço consciente`;
+                else combinacion = `convive de forma neutra com o seu Caminho de Vida (${caminoVida}), sem grandes atritos nem um impulso especial`;
+
+                return `<h3>${t('interpPersonal')}: ${fechaLegible}</h3>
+                <p><strong>${t('diaPersonal')} (${diaPersonal}):</strong> ${obtenerSignificadoPorRol(diaPersonal, 'diaPersonal')}</p>
+                <p><strong>${t('diaUniversal')} (${diaUniversal}):</strong> ${obtenerSignificadoPorRol(diaUniversal, 'diaUniversal')}</p>
+                <p>Para ${primerNombre}, a energia do ${diaPersonal} neste dia ${combinacion}. Este cálculo combina sua data de nascimento com a data escolhida, então você pode repetir esta consulta para hoje ou para qualquer data futura que queira explorar — o resultado vai mudar de acordo com o dia escolhido.</p>`;
+            }
             if (nivel === 'igual' || nivel === 'alta') combinacion = `se combina de forma fluida y favorable con tu Camino de Vida (${caminoVida})`;
             else if (nivel === 'baja') combinacion = `entra en cierta tensión con tu Camino de Vida (${caminoVida}), lo que puede sentirse como un día que pide más esfuerzo consciente`;
             else combinacion = `convive de forma neutra con tu Camino de Vida (${caminoVida}), sin grandes fricciones ni un impulso especial`;
@@ -2458,6 +2742,7 @@
             const nivelDestino = nivelCompatibilidad(num1.destino, num2.destino);
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
+            const esIt = idiomaActual === 'it';
 
             let textoVida, textoDestino;
             if (esEn) {
@@ -2480,6 +2765,26 @@
                 else if (nivelDestino === 'alta') textoDestino = `Leurs Nombres de Destin (${num1.destino} et ${num2.destino}) se complètent bien dans les talents et les objectifs que chacun apporte au lien.`;
                 else if (nivelDestino === 'media') textoDestino = `Leurs Nombres de Destin (${num1.destino} et ${num2.destino}) répondent à des objectifs différents, qui peuvent s'enrichir mutuellement avec de l'ouverture.`;
                 else textoDestino = `Leurs Nombres de Destin (${num1.destino} et ${num2.destino}) répondent à des objectifs de vie assez différents : c'est un point à travailler consciemment.`;
+            } else if (esIt) {
+                if (nivelVida === 'igual') textoVida = `Condividono lo stesso Cammino di Vita (${cv1}), il che crea una comprensione istantanea tra loro, anche se può anche ripetere le stesse sfide di crescita in entrambi.`;
+                else if (nivelVida === 'alta') textoVida = `I Cammini di Vita ${cv1} (${nombre1}) e ${cv2} (${nombre2}) si rafforzano naturalmente: c'è un'energia di fondo compatibile e complementare.`;
+                else if (nivelVida === 'media') textoVida = `I Cammini di Vita ${cv1} (${nombre1}) e ${cv2} (${nombre2}) convivono con alti e bassi: richiedono una comunicazione consapevole per non scontrarsi sulle loro differenze.`;
+                else textoVida = `I Cammini di Vita ${cv1} (${nombre1}) e ${cv2} (${nombre2}) rappresentano lezioni di vita piuttosto diverse, il che può essere una sfida di crescita importante se non affrontata con rispetto per le reciproche differenze.`;
+
+                if (nivelDestino === 'igual') textoDestino = `Inoltre, condividono lo stesso Numero di Destino (${num1.destino}), quindi perseguono propositi di vita molto simili.`;
+                else if (nivelDestino === 'alta') textoDestino = `I loro Numeri di Destino (${num1.destino} e ${num2.destino}) si completano bene nei talenti e propositi che ciascuno porta al legame.`;
+                else if (nivelDestino === 'media') textoDestino = `I loro Numeri di Destino (${num1.destino} e ${num2.destino}) rispondono a propositi diversi, che possono arricchirsi a vicenda con apertura.`;
+                else textoDestino = `I loro Numeri di Destino (${num1.destino} e ${num2.destino}) rispondono a obiettivi di vita piuttosto diversi: è un punto su cui lavorare consapevolmente.`;
+            } else if (idiomaActual === 'pt') {
+                if (nivelVida === 'igual') textoVida = `Compartilham o mesmo Caminho de Vida (${cv1}), o que gera uma compreensão instantânea entre ambos, embora também possa repetir os mesmos desafios de crescimento em ambos.`;
+                else if (nivelVida === 'alta') textoVida = `Os Caminhos de Vida ${cv1} (${nombre1}) e ${cv2} (${nombre2}) se potencializam naturalmente: há uma energia de fundo compatível e complementar.`;
+                else if (nivelVida === 'media') textoVida = `Os Caminhos de Vida ${cv1} (${nombre1}) e ${cv2} (${nombre2}) convivem com altos e baixos: pedem uma comunicação consciente para não chocar em suas diferenças.`;
+                else textoVida = `Os Caminhos de Vida ${cv1} (${nombre1}) e ${cv2} (${nombre2}) representam lições de vida bastante distintas, o que pode ser um desafio de crescimento importante se não for trabalhado com respeito pelas diferenças.`;
+
+                if (nivelDestino === 'igual') textoDestino = `Além disso, compartilham o mesmo Número de Destino (${num1.destino}), portanto perseguem propósitos de vida muito semelhantes.`;
+                else if (nivelDestino === 'alta') textoDestino = `Seus Números de Destino (${num1.destino} e ${num2.destino}) se complementam bem nos talentos e propósitos que cada um traz ao vínculo.`;
+                else if (nivelDestino === 'media') textoDestino = `Seus Números de Destino (${num1.destino} e ${num2.destino}) respondem a propósitos distintos, que podem se enriquecer mutuamente com abertura.`;
+                else textoDestino = `Seus Números de Destino (${num1.destino} e ${num2.destino}) respondem a objetivos de vida bem diferentes: é um ponto para trabalhar conscientemente.`;
             } else {
                 if (nivelVida === 'igual') textoVida = `Comparten el mismo Camino de Vida (${cv1}), lo que genera una comprensión instantánea entre ambos, aunque también puede repetir los mismos desafíos de crecimiento en los dos.`;
                 else if (nivelVida === 'alta') textoVida = `Los Caminos de Vida ${cv1} (${nombre1}) y ${cv2} (${nombre2}) se potencian naturalmente: hay una energía de fondo compatible y complementaria.`;
@@ -2504,12 +2809,26 @@
                 <p>${textoDestino}</p>
                 <p>Remember that compatibility numerology describes underlying energetic tendencies, not a fixed destiny: the bond is built day by day through both people's choices.</p>`;
             }
+            if (esIt) {
+                return `<h3 style="color:#d4af37; text-align:center;">${tituloVeredicto}</h3>
+                <h3>${t('interpPersonal')}: ${nombre1} &amp; ${nombre2}</h3>
+                <p>${textoVida}</p>
+                <p>${textoDestino}</p>
+                <p>Ricorda che la numerologia della compatibilità descrive tendenze energetiche di fondo, non un destino fisso: il legame si costruisce giorno dopo giorno attraverso le scelte di entrambe le persone.</p>`;
+            }
             if (esFr) {
                 return `<h3 style="color:#d4af37; text-align:center;">${tituloVeredicto}</h3>
                 <h3>${t('interpPersonal')}: ${nombre1} &amp; ${nombre2}</h3>
                 <p>${textoVida}</p>
                 <p>${textoDestino}</p>
                 <p>Souviens-toi que la numérologie de compatibilité décrit des tendances énergétiques de fond, pas un destin figé : le lien se construit jour après jour à travers les choix des deux personnes.</p>`;
+            }
+            if (idiomaActual === 'pt') {
+                return `<h3 style="color:#d4af37; text-align:center;">${tituloVeredicto}</h3>
+                <h3>${t('interpPersonal')}: ${nombre1} &amp; ${nombre2}</h3>
+                <p>${textoVida}</p>
+                <p>${textoDestino}</p>
+                <p>Lembre-se de que a numerologia de compatibilidade descreve tendências energéticas de fundo, não um destino fixo: o vínculo se constrói dia a dia com as escolhas de ambas as pessoas.</p>`;
             }
             return `<h3 style="color:#d4af37; text-align:center;">${tituloVeredicto}</h3>
             <h3>${t('interpPersonal')}: ${nombre1} &amp; ${nombre2}</h3>
@@ -2794,42 +3113,42 @@
         }
 
         const significadoAspecto = {
-            conjuncion: {es:"fusiona sus energías con la tuya, intensificando ese punto de tu carta natal",en:"fuses its energy with yours, intensifying that point of your birth chart",fr:"fusionne son énergie avec la tienne, intensifiant ce point de ton thème natal"},
-            sextil: {es:"abre una oportunidad armónica y fácil de aprovechar si ponés algo de intención",en:"opens a harmonious opportunity that's easy to take advantage of if you add some intention",fr:"ouvre une opportunité harmonieuse, facile à saisir si tu y mets un peu d'intention"},
-            cuadratura: {es:"genera fricción y tensión constructiva, que empuja a la acción y al ajuste",en:"creates friction and constructive tension that pushes you toward action and adjustment",fr:"crée une friction et une tension constructive, qui pousse à l'action et à l'ajustement"},
-            trigono: {es:"fluye con facilidad, aportando comodidad y talento natural en ese punto",en:"flows with ease, bringing comfort and natural talent to that point",fr:"coule avec aisance, apportant confort et talent naturel à ce point"},
-            oposicion: {es:"tensiona una polaridad que pide equilibrio consciente entre dos fuerzas",en:"strains a polarity that calls for conscious balance between two forces",fr:"tend une polarité qui appelle un équilibre conscient entre deux forces"}
+            conjuncion: {es:"fusiona sus energías con la tuya, intensificando ese punto de tu carta natal",en:"fuses its energy with yours, intensifying that point of your birth chart",fr:"fusionne son énergie avec la tienne, intensifiant ce point de ton thème natal",it:"fonde la sua energia con la tua, intensificando quel punto del tuo tema natale",pt:"funde sua energia com a sua, intensificando esse ponto do seu mapa astral"},
+            sextil: {es:"abre una oportunidad armónica y fácil de aprovechar si ponés algo de intención",en:"opens a harmonious opportunity that's easy to take advantage of if you add some intention",fr:"ouvre une opportunité harmonieuse, facile à saisir si tu y mets un peu d'intention",it:"apre un'opportunità armoniosa e facile da cogliere se ci metti un po' di intenzione",pt:"abre uma oportunidade harmoniosa e fácil de aproveitar se você colocar um pouco de intenção"},
+            cuadratura: {es:"genera fricción y tensión constructiva, que empuja a la acción y al ajuste",en:"creates friction and constructive tension that pushes you toward action and adjustment",fr:"crée une friction et une tension constructive, qui pousse à l'action et à l'ajustement",it:"genera attrito e tensione costruttiva, che spinge all'azione e all'aggiustamento",pt:"gera atrito e tensão construtiva, que impulsiona a ação e o ajuste"},
+            trigono: {es:"fluye con facilidad, aportando comodidad y talento natural en ese punto",en:"flows with ease, bringing comfort and natural talent to that point",fr:"coule avec aisance, apportant confort et talent naturel à ce point",it:"scorre con facilità, portando comodità e talento naturale in quel punto",pt:"flui com facilidade, trazendo conforto e talento natural nesse ponto"},
+            oposicion: {es:"tensiona una polaridad que pide equilibrio consciente entre dos fuerzas",en:"strains a polarity that calls for conscious balance between two forces",fr:"tend une polarité qui appelle un équilibre conscient entre deux forces",it:"tende una polarità che richiede un equilibrio consapevole tra due forze",pt:"tensiona uma polaridade que pede equilíbrio consciente entre duas forças"}
         };
 
         // Arquetipo real de cada planeta (lo que gobierna en la carta)
         const arquetipoPlaneta = {
-            Sun: {es:"Tu Sol representa tu identidad esencial, tu voluntad y tu vitalidad.",en:"Your Sun represents your core identity, your will and your vitality.",fr:"Ton Soleil représente ton identité essentielle, ta volonté et ta vitalité."},
-            Moon: {es:"Tu Luna representa tu mundo emocional, tus necesidades instintivas y tu forma de buscar contención.",en:"Your Moon represents your emotional world, your instinctive needs and how you seek comfort.",fr:"Ta Lune représente ton monde émotionnel, tes besoins instinctifs et ta façon de chercher du réconfort."},
-            Mercury: {es:"Tu Mercurio representa tu mente, tu forma de razonar y de comunicarte.",en:"Your Mercury represents your mind, how you reason and communicate.",fr:"Ton Mercure représente ton esprit, ta façon de raisonner et de communiquer."},
-            Venus: {es:"Tu Venus representa cómo amás, qué valorás y dónde encontrás placer y belleza.",en:"Your Venus represents how you love, what you value, and where you find pleasure and beauty.",fr:"Ta Vénus représente comment tu aimes, ce que tu valorises, et où tu trouves plaisir et beauté."},
-            Mars: {es:"Tu Marte representa tu forma de actuar, tu deseo y cómo afirmás tu voluntad.",en:"Your Mars represents how you act, your drive, and how you assert your will.",fr:"Ton Mars représente ta façon d'agir, ton désir, et comment tu affirmes ta volonté."},
-            Jupiter: {es:"Tu Júpiter representa hacia dónde buscás expandirte, crecer y encontrarle sentido a la vida.",en:"Your Jupiter represents where you seek to expand, grow, and find meaning in life.",fr:"Ton Jupiter représente où tu cherches à t'épanouir, grandir et trouver un sens à la vie."},
-            Saturn: {es:"Tu Saturno representa tu estructura interna, tu disciplina y las lecciones que te exigen responsabilidad.",en:"Your Saturn represents your inner structure, discipline, and the lessons that demand responsibility from you.",fr:"Ton Saturne représente ta structure intérieure, ta discipline et les leçons qui exigent de la responsabilité."},
-            Uranus: {es:"Tu Urano representa tu necesidad de libertad, originalidad y ruptura con lo establecido.",en:"Your Uranus represents your need for freedom, originality, and breaking away from the established order.",fr:"Ton Uranus représente ton besoin de liberté, d'originalité et de rupture avec l'ordre établi."},
-            Neptune: {es:"Tu Neptuno representa tu sensibilidad espiritual, artística e imaginativa.",en:"Your Neptune represents your spiritual, artistic, and imaginative sensitivity.",fr:"Ton Neptune représente ta sensibilité spirituelle, artistique et imaginative."},
-            Pluto: {es:"Tu Plutón representa tus procesos de transformación profunda y tu relación con el poder.",en:"Your Pluto represents your deep transformation processes and your relationship with power.",fr:"Ton Pluton représente tes processus de transformation profonde et ta relation avec le pouvoir."},
-            Ascendant: {es:"Tu Ascendente es la máscara con la que te presentás al mundo y tu primera impresión.",en:"Your Ascendant is the mask you present to the world and your first impression.",fr:"Ton Ascendant est le masque que tu présentes au monde et ta première impression."}
+            Sun: {es:"Tu Sol representa tu identidad esencial, tu voluntad y tu vitalidad.",en:"Your Sun represents your core identity, your will and your vitality.",fr:"Ton Soleil représente ton identité essentielle, ta volonté et ta vitalité.",it:"Il tuo Sole rappresenta la tua identità essenziale, la tua volontà e la tua vitalità.",pt:"Seu Sol representa sua identidade essencial, sua vontade e sua vitalidade."},
+            Moon: {es:"Tu Luna representa tu mundo emocional, tus necesidades instintivas y tu forma de buscar contención.",en:"Your Moon represents your emotional world, your instinctive needs and how you seek comfort.",fr:"Ta Lune représente ton monde émotionnel, tes besoins instinctifs et ta façon de chercher du réconfort.",it:"La tua Luna rappresenta il tuo mondo emotivo, i tuoi bisogni istintivi e il tuo modo di cercare conforto.",pt:"Sua Lua representa seu mundo emocional, suas necessidades instintivas e sua forma de buscar acolhimento."},
+            Mercury: {es:"Tu Mercurio representa tu mente, tu forma de razonar y de comunicarte.",en:"Your Mercury represents your mind, how you reason and communicate.",fr:"Ton Mercure représente ton esprit, ta façon de raisonner et de communiquer.",it:"Il tuo Mercurio rappresenta la tua mente, il tuo modo di ragionare e comunicare.",pt:"Seu Mercúrio representa sua mente, sua forma de raciocinar e se comunicar."},
+            Venus: {es:"Tu Venus representa cómo amás, qué valorás y dónde encontrás placer y belleza.",en:"Your Venus represents how you love, what you value, and where you find pleasure and beauty.",fr:"Ta Vénus représente comment tu aimes, ce que tu valorises, et où tu trouves plaisir et beauté.",it:"La tua Venere rappresenta come ami, cosa valorizzi e dove trovi piacere e bellezza.",pt:"Sua Vênus representa como você ama, o que valoriza e onde encontra prazer e beleza."},
+            Mars: {es:"Tu Marte representa tu forma de actuar, tu deseo y cómo afirmás tu voluntad.",en:"Your Mars represents how you act, your drive, and how you assert your will.",fr:"Ton Mars représente ta façon d'agir, ton désir, et comment tu affirmes ta volonté.",it:"Il tuo Marte rappresenta il tuo modo di agire, il tuo desiderio e come affermi la tua volontà.",pt:"Seu Marte representa sua forma de agir, seu desejo e como você afirma sua vontade."},
+            Jupiter: {es:"Tu Júpiter representa hacia dónde buscás expandirte, crecer y encontrarle sentido a la vida.",en:"Your Jupiter represents where you seek to expand, grow, and find meaning in life.",fr:"Ton Jupiter représente où tu cherches à t'épanouir, grandir et trouver un sens à la vie.",it:"Il tuo Giove rappresenta dove cerchi di espanderti, crescere e trovare un senso alla vita.",pt:"Seu Júpiter representa para onde você busca se expandir, crescer e encontrar sentido na vida."},
+            Saturn: {es:"Tu Saturno representa tu estructura interna, tu disciplina y las lecciones que te exigen responsabilidad.",en:"Your Saturn represents your inner structure, discipline, and the lessons that demand responsibility from you.",fr:"Ton Saturne représente ta structure intérieure, ta discipline et les leçons qui exigent de la responsabilité.",it:"Il tuo Saturno rappresenta la tua struttura interiore, la tua disciplina e le lezioni che richiedono responsabilità.",pt:"Seu Saturno representa sua estrutura interna, sua disciplina e as lições que exigem responsabilidade."},
+            Uranus: {es:"Tu Urano representa tu necesidad de libertad, originalidad y ruptura con lo establecido.",en:"Your Uranus represents your need for freedom, originality, and breaking away from the established order.",fr:"Ton Uranus représente ton besoin de liberté, d'originalité et de rupture avec l'ordre établi.",it:"Il tuo Urano rappresenta il tuo bisogno di libertà, originalità e rottura con l'ordine stabilito.",pt:"Seu Urano representa sua necessidade de liberdade, originalidade e ruptura com o estabelecido."},
+            Neptune: {es:"Tu Neptuno representa tu sensibilidad espiritual, artística e imaginativa.",en:"Your Neptune represents your spiritual, artistic, and imaginative sensitivity.",fr:"Ton Neptune représente ta sensibilité spirituelle, artistique et imaginative.",it:"Il tuo Nettuno rappresenta la tua sensibilità spirituale, artistica e immaginativa.",pt:"Seu Netuno representa sua sensibilidade espiritual, artística e imaginativa."},
+            Pluto: {es:"Tu Plutón representa tus procesos de transformación profunda y tu relación con el poder.",en:"Your Pluto represents your deep transformation processes and your relationship with power.",fr:"Ton Pluton représente tes processus de transformation profonde et ta relation avec le pouvoir.",it:"Il tuo Plutone rappresenta i tuoi processi di trasformazione profonda e il tuo rapporto con il potere.",pt:"Seu Plutão representa seus processos de transformação profunda e sua relação com o poder."},
+            Ascendant: {es:"Tu Ascendente es la máscara con la que te presentás al mundo y tu primera impresión.",en:"Your Ascendant is the mask you present to the world and your first impression.",fr:"Ton Ascendant est le masque que tu présentes au monde et ta première impression.",it:"Il tuo Ascendente è la maschera con cui ti presenti al mondo e la tua prima impressione.",pt:"Seu Ascendente é a máscara com a qual você se apresenta ao mundo e sua primeira impressão."}
         };
 
         // Significado real de las 12 casas astrológicas
         const significadoCasas = {
-            1: {es:"Casa I — Identidad: tu personalidad, tu cuerpo y cómo te presentás ante los demás.",en:"House I — Identity: your personality, your body, and how you present yourself to others.",fr:"Maison I — Identité : ta personnalité, ton corps et comment tu te présentes aux autres."},
-            2: {es:"Casa II — Recursos: tus valores, tu relación con el dinero y tu autoestima.",en:"House II — Resources: your values, your relationship with money, and your self-worth.",fr:"Maison II — Ressources : tes valeurs, ta relation à l'argent et ton estime de toi."},
-            3: {es:"Casa III — Comunicación: tu forma de pensar, hermanos, estudios cercanos y el entorno inmediato.",en:"House III — Communication: how you think, siblings, nearby studies, and your immediate environment.",fr:"Maison III — Communication : ta façon de penser, la fratrie, les études proches et l'environnement immédiat."},
-            4: {es:"Casa IV — Raíces: tu hogar, tu familia de origen y tus cimientos emocionales.",en:"House IV — Roots: your home, your family of origin, and your emotional foundations.",fr:"Maison IV — Racines : ton foyer, ta famille d'origine et tes fondations émotionnelles."},
-            5: {es:"Casa V — Creatividad: el romance, el placer, los hijos y la expresión creativa.",en:"House V — Creativity: romance, pleasure, children, and creative expression.",fr:"Maison V — Créativité : la romance, le plaisir, les enfants et l'expression créative."},
-            6: {es:"Casa VI — Trabajo y salud: la rutina diaria, el servicio y el cuidado del cuerpo.",en:"House VI — Work and health: daily routine, service, and taking care of the body.",fr:"Maison VI — Travail et santé : la routine quotidienne, le service et le soin du corps."},
-            7: {es:"Casa VII — Vínculos: el matrimonio, la sociedad y las relaciones uno a uno.",en:"House VII — Partnerships: marriage, business partnerships, and one-on-one relationships.",fr:"Maison VII — Relations : le mariage, les associations et les relations à deux."},
-            8: {es:"Casa VIII — Transformación: la intimidad, los recursos compartidos y los procesos profundos.",en:"House VIII — Transformation: intimacy, shared resources, and deep processes.",fr:"Maison VIII — Transformation : l'intimité, les ressources partagées et les processus profonds."},
-            9: {es:"Casa IX — Expansión: los viajes, la filosofía, los estudios superiores y las creencias.",en:"House IX — Expansion: travel, philosophy, higher education, and beliefs.",fr:"Maison IX — Expansion : les voyages, la philosophie, les études supérieures et les croyances."},
-            10: {es:"Casa X — Vocación: la carrera, la imagen pública y tu lugar en el mundo.",en:"House X — Vocation: career, public image, and your place in the world.",fr:"Maison X — Vocation : la carrière, l'image publique et ta place dans le monde."},
-            11: {es:"Casa XI — Comunidad: los amigos, los grupos y los proyectos a futuro.",en:"House XI — Community: friends, groups, and future projects.",fr:"Maison XI — Communauté : les amis, les groupes et les projets d'avenir."},
-            12: {es:"Casa XII — Interior: el inconsciente, la espiritualidad y lo que trasciende lo individual.",en:"House XII — Inner world: the unconscious, spirituality, and what transcends the individual.",fr:"Maison XII — Intériorité : l'inconscient, la spiritualité et ce qui transcende l'individu."}
+            1: {es:"Casa I — Identidad: tu personalidad, tu cuerpo y cómo te presentás ante los demás.",en:"House I — Identity: your personality, your body, and how you present yourself to others.",fr:"Maison I — Identité : ta personnalité, ton corps et comment tu te présentes aux autres.",it:"Casa I — Identità: la tua personalità, il tuo corpo e come ti presenti agli altri.",pt:"Casa I — Identidade: sua personalidade, seu corpo e como você se apresenta aos outros."},
+            2: {es:"Casa II — Recursos: tus valores, tu relación con el dinero y tu autoestima.",en:"House II — Resources: your values, your relationship with money, and your self-worth.",fr:"Maison II — Ressources : tes valeurs, ta relation à l'argent et ton estime de toi.",it:"Casa II — Risorse: i tuoi valori, il tuo rapporto con il denaro e la tua autostima.",pt:"Casa II — Recursos: seus valores, sua relação com o dinheiro e sua autoestima."},
+            3: {es:"Casa III — Comunicación: tu forma de pensar, hermanos, estudios cercanos y el entorno inmediato.",en:"House III — Communication: how you think, siblings, nearby studies, and your immediate environment.",fr:"Maison III — Communication : ta façon de penser, la fratrie, les études proches et l'environnement immédiat.",it:"Casa III — Comunicazione: il tuo modo di pensare, i fratelli, gli studi vicini e l'ambiente immediato.",pt:"Casa III — Comunicação: sua forma de pensar, irmãos, estudos próximos e o ambiente imediato."},
+            4: {es:"Casa IV — Raíces: tu hogar, tu familia de origen y tus cimientos emocionales.",en:"House IV — Roots: your home, your family of origin, and your emotional foundations.",fr:"Maison IV — Racines : ton foyer, ta famille d'origine et tes fondations émotionnelles.",it:"Casa IV — Radici: la tua casa, la tua famiglia d'origine e le tue fondamenta emotive.",pt:"Casa IV — Raízes: seu lar, sua família de origem e suas bases emocionais."},
+            5: {es:"Casa V — Creatividad: el romance, el placer, los hijos y la expresión creativa.",en:"House V — Creativity: romance, pleasure, children, and creative expression.",fr:"Maison V — Créativité : la romance, le plaisir, les enfants et l'expression créative.",it:"Casa V — Creatività: la romance, il piacere, i figli e l'espressione creativa.",pt:"Casa V — Criatividade: o romance, o prazer, os filhos e a expressão criativa."},
+            6: {es:"Casa VI — Trabajo y salud: la rutina diaria, el servicio y el cuidado del cuerpo.",en:"House VI — Work and health: daily routine, service, and taking care of the body.",fr:"Maison VI — Travail et santé : la routine quotidienne, le service et le soin du corps.",it:"Casa VI — Lavoro e salute: la routine quotidiana, il servizio e la cura del corpo.",pt:"Casa VI — Trabalho e saúde: a rotina diária, o serviço e o cuidado com o corpo."},
+            7: {es:"Casa VII — Vínculos: el matrimonio, la sociedad y las relaciones uno a uno.",en:"House VII — Partnerships: marriage, business partnerships, and one-on-one relationships.",fr:"Maison VII — Relations : le mariage, les associations et les relations à deux.",it:"Casa VII — Relazioni: il matrimonio, le società e i rapporti uno a uno.",pt:"Casa VII — Vínculos: o casamento, as sociedades e os relacionamentos a dois."},
+            8: {es:"Casa VIII — Transformación: la intimidad, los recursos compartidos y los procesos profundos.",en:"House VIII — Transformation: intimacy, shared resources, and deep processes.",fr:"Maison VIII — Transformation : l'intimité, les ressources partagées et les processus profonds.",it:"Casa VIII — Trasformazione: l'intimità, le risorse condivise e i processi profondi.",pt:"Casa VIII — Transformação: a intimidade, os recursos compartilhados e os processos profundos."},
+            9: {es:"Casa IX — Expansión: los viajes, la filosofía, los estudios superiores y las creencias.",en:"House IX — Expansion: travel, philosophy, higher education, and beliefs.",fr:"Maison IX — Expansion : les voyages, la philosophie, les études supérieures et les croyances.",it:"Casa IX — Espansione: i viaggi, la filosofia, gli studi superiori e le credenze.",pt:"Casa IX — Expansão: as viagens, a filosofia, os estudos superiores e as crenças."},
+            10: {es:"Casa X — Vocación: la carrera, la imagen pública y tu lugar en el mundo.",en:"House X — Vocation: career, public image, and your place in the world.",fr:"Maison X — Vocation : la carrière, l'image publique et ta place dans le monde.",it:"Casa X — Vocazione: la carriera, l'immagine pubblica e il tuo posto nel mondo.",pt:"Casa X — Vocação: a carreira, a imagem pública e seu lugar no mundo."},
+            11: {es:"Casa XI — Comunidad: los amigos, los grupos y los proyectos a futuro.",en:"House XI — Community: friends, groups, and future projects.",fr:"Maison XI — Communauté : les amis, les groupes et les projets d'avenir.",it:"Casa XI — Comunità: gli amici, i gruppi e i progetti futuri.",pt:"Casa XI — Comunidade: os amigos, os grupos e os projetos futuros."},
+            12: {es:"Casa XII — Interior: el inconsciente, la espiritualidad y lo que trasciende lo individual.",en:"House XII — Inner world: the unconscious, spirituality, and what transcends the individual.",fr:"Maison XII — Intériorité : l'inconscient, la spiritualité et ce qui transcende l'individu.",it:"Casa XII — Interiorità: l'inconscio, la spiritualità e ciò che trascende l'individuo.",pt:"Casa XII — Interior: o inconsciente, a espiritualidade e o que transcende o individual."}
         };
 
         function tAspecto(nombreAsp) {
@@ -2848,7 +3167,7 @@
             const nombreSigno = posicion.signo.nombre[idiomaActual];
             const estilo = posicion.signo.estilo[idiomaActual];
             const arquetipo = tArquetipo(cuerpo);
-            const conector = idiomaActual === 'en' ? `In ${nombreSigno} that energy becomes` : idiomaActual === 'fr' ? `En ${nombreSigno} cette énergie devient` : `En ${nombreSigno} esa energía se vuelve`;
+            const conector = idiomaActual === 'en' ? `In ${nombreSigno} that energy becomes` : idiomaActual === 'fr' ? `En ${nombreSigno} cette énergie devient` : idiomaActual === 'it' ? `In ${nombreSigno} questa energia diventa` : idiomaActual === 'pt' ? `Em ${nombreSigno} essa energia se torna` : `En ${nombreSigno} esa energía se vuelve`;
             return `${arquetipo} ${conector} ${estilo}.`;
         }
 
@@ -3139,6 +3458,14 @@
                 return `<h3>Synthèse de ton Thème Natal</h3>
                 <p>${nombre}, ton Soleil en ${datos.Sun.signo.nombre[idiomaActual]} marque ton identité centrale, tandis que ta Lune en ${datos.Moon.signo.nombre[idiomaActual]} révèle comment tu traites tes émotions intérieurement. Ton Ascendant en ${datos.Ascendant.signo.nombre[idiomaActual]} est la porte d'entrée : l'énergie que tu montres avant que les gens te connaissent en profondeur. Ces trois points —Soleil, Lune et Ascendant— sont la colonne vertébrale de ton thème, et le reste des planètes nuance comment tu penses, aimes, agis et grandis à partir de cette base.</p>`;
             }
+            if (idiomaActual === 'it') {
+                return `<h3>Sintesi del Tuo Tema Natale</h3>
+                <p>${nombre}, il tuo Sole in ${datos.Sun.signo.nombre[idiomaActual]} segna la tua identità centrale, mentre la tua Luna in ${datos.Moon.signo.nombre[idiomaActual]} rivela come elabori le tue emozioni internamente. Il tuo Ascendente in ${datos.Ascendant.signo.nombre[idiomaActual]} è la porta d'ingresso: l'energia che mostri prima che le persone ti conoscano in profondità. Questi tre punti —Sole, Luna e Ascendente— sono la colonna vertebrale del tuo tema, e il resto dei pianeti sfuma come pensi, ami, agisci e cresci a partire da questa base.</p>`;
+            }
+            if (idiomaActual === 'pt') {
+                return `<h3>Síntese do Seu Mapa Astral</h3>
+                <p>${nombre}, seu Sol em ${datos.Sun.signo.nombre[idiomaActual]} marca sua identidade central, enquanto sua Lua em ${datos.Moon.signo.nombre[idiomaActual]} revela como você processa suas emoções por dentro. Seu Ascendente em ${datos.Ascendant.signo.nombre[idiomaActual]} é a porta de entrada: a energia que você mostra antes que as pessoas te conheçam em profundidade. Esses três pontos —Sol, Lua e Ascendente— são a coluna vertebral do seu mapa, e o resto dos planetas nuança como você pensa, ama, age e cresce a partir dessa base.</p>`;
+            }
             return `<h3>Síntesis de tu Carta Natal</h3>
             <p>${nombre}, tu Sol en ${datos.Sun.signo.nombre[idiomaActual]} marca tu identidad central, mientras que tu Luna en ${datos.Moon.signo.nombre[idiomaActual]} revela cómo procesás tus emociones por dentro. Tu Ascendente en ${datos.Ascendant.signo.nombre[idiomaActual]} es la puerta de entrada: la energía que mostrás antes de que te conozcan en profundidad. Estos tres puntos —Sol, Luna y Ascendente— son la columna vertebral de tu carta, y el resto de los planetas matiza cómo pensás, amás, actuás y creces a partir de esa base.</p>`;
         }
@@ -3149,11 +3476,17 @@
             const lunaNatalGrado = datosNatal.Moon.idx * 30 + datosNatal.Moon.gradoEnSigno;
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
+            const esIt = idiomaActual === 'it';
+            const esPt = idiomaActual === 'pt';
 
             let html = esEn
                 ? `<h3>${t('perfilAstrologico')} — Transits for ${fechaConsultaStr}</h3><p>These are the real positions of the planets in the sky for the chosen date, and how they aspect your Birth Chart:</p>`
                 : esFr
                 ? `<h3>${t('perfilAstrologico')} — Transits pour le ${fechaConsultaStr}</h3><p>Voici les positions réelles des planètes dans le ciel pour la date choisie, et comment elles aspectent ton Thème Natal :</p>`
+                : esIt
+                ? `<h3>${t('perfilAstrologico')} — Transiti per il ${fechaConsultaStr}</h3><p>Queste sono le posizioni reali dei pianeti nel cielo per la data scelta, e come aspettano il tuo Tema Natale:</p>`
+                : esPt
+                ? `<h3>${t('perfilAstrologico')} — Trânsitos para ${fechaConsultaStr}</h3><p>Estas são as posições reais dos planetas no céu para a data escolhida, e como aspectam seu Mapa Astral:</p>`
                 : `<h3>${t('perfilAstrologico')} — Tránsitos para el ${fechaConsultaStr}</h3><p>Estas son las posiciones reales de los planetas en el cielo para la fecha elegida, y cómo aspectan tu Carta Natal:</p>`;
 
             const cuerposTransito = ['Sun', 'Moon', 'Mercury', 'Venus', 'Mars', 'Jupiter', 'Saturn', 'Uranus', 'Neptune', 'Pluto'];
@@ -3170,53 +3503,81 @@
                     ? `<p><strong>${simbolosCuerpos[cuerpo]} ${nombrePlaneta} transiting through ${pos.signo.nombre[idiomaActual]}</strong><br>${tArquetipo(cuerpo)} Right now it expresses itself in a ${pos.signo.estilo[idiomaActual]} way, activating your ${nombreCasa}</p>`
                     : esFr
                     ? `<p><strong>${simbolosCuerpos[cuerpo]} ${nombrePlaneta} en transit dans ${pos.signo.nombre[idiomaActual]}</strong><br>${tArquetipo(cuerpo)} En ce moment elle s'exprime de façon ${pos.signo.estilo[idiomaActual]}, activant ta ${nombreCasa}</p>`
+                    : esIt
+                    ? `<p><strong>${simbolosCuerpos[cuerpo]} ${nombrePlaneta} in transito in ${pos.signo.nombre[idiomaActual]}</strong><br>${tArquetipo(cuerpo)} In questo momento si esprime in modo ${pos.signo.estilo[idiomaActual]}, attivando la tua ${nombreCasa}</p>`
+                    : esPt
+                    ? `<p><strong>${simbolosCuerpos[cuerpo]} ${nombrePlaneta} em trânsito por ${pos.signo.nombre[idiomaActual]}</strong><br>${tArquetipo(cuerpo)} Neste momento se expressa de forma ${pos.signo.estilo[idiomaActual]}, ativando sua ${nombreCasa}</p>`
                     : `<p><strong>${simbolosCuerpos[cuerpo]} ${nombrePlaneta} en tránsito por ${pos.signo.nombre[idiomaActual]}</strong><br>${tArquetipo(cuerpo)} En este momento se expresa de forma ${pos.signo.estilo[idiomaActual]}, activando tu ${nombreCasa}</p>`;
 
                 const aspectoSol = detectarAspecto(gradoAbs, solNatalGrado);
                 const aspectoLuna = detectarAspecto(gradoAbs, lunaNatalGrado);
                 if (aspectoSol) {
-                    aspectosEncontrados.push({ cuerpo, nombrePlaneta, aspecto: aspectoSol, contra: esEn ? 'Sun' : esFr ? 'Soleil' : 'Sol' });
+                    aspectosEncontrados.push({ cuerpo, nombrePlaneta, aspecto: aspectoSol, contra: esEn ? 'Sun' : esFr ? 'Soleil' : esIt ? 'Sole' : esPt ? 'Sol' : 'Sol' });
                     html += esEn
                         ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forms a ${nombreAspecto[aspectoSol][idiomaActual]} with your natal Sun: ${nombrePlaneta} ${tAspecto(aspectoSol)}.</p>`
                         : esFr
                         ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forme un(e) ${nombreAspecto[aspectoSol][idiomaActual]} avec ton Soleil natal : ${nombrePlaneta} ${tAspecto(aspectoSol)}.</p>`
+                        : esIt
+                        ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forma ${nombreAspecto[aspectoSol][idiomaActual]} con il tuo Sole natale: ${nombrePlaneta} ${tAspecto(aspectoSol)}.</p>`
+                        : esPt
+                        ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forma ${nombreAspecto[aspectoSol][idiomaActual]} com seu Sol natal: ${nombrePlaneta} ${tAspecto(aspectoSol)}.</p>`
                         : `<p style="margin-left:15px; color:#c4b5fd;">↳ Forma ${nombreAspecto[aspectoSol][idiomaActual]} con tu Sol natal: ${nombrePlaneta} ${tAspecto(aspectoSol)}.</p>`;
                 }
                 if (aspectoLuna) {
-                    aspectosEncontrados.push({ cuerpo, nombrePlaneta, aspecto: aspectoLuna, contra: esEn ? 'Moon' : esFr ? 'Lune' : 'Luna' });
+                    aspectosEncontrados.push({ cuerpo, nombrePlaneta, aspecto: aspectoLuna, contra: esEn ? 'Moon' : esFr ? 'Lune' : esIt ? 'Luna' : esPt ? 'Lua' : 'Luna' });
                     html += esEn
                         ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forms a ${nombreAspecto[aspectoLuna][idiomaActual]} with your natal Moon: ${nombrePlaneta} ${tAspecto(aspectoLuna)}.</p>`
                         : esFr
                         ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forme un(e) ${nombreAspecto[aspectoLuna][idiomaActual]} avec ta Lune natale : ${nombrePlaneta} ${tAspecto(aspectoLuna)}.</p>`
+                        : esIt
+                        ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forma ${nombreAspecto[aspectoLuna][idiomaActual]} con la tua Luna natale: ${nombrePlaneta} ${tAspecto(aspectoLuna)}.</p>`
+                        : esPt
+                        ? `<p style="margin-left:15px; color:#c4b5fd;">↳ Forma ${nombreAspecto[aspectoLuna][idiomaActual]} com sua Lua natal: ${nombrePlaneta} ${tAspecto(aspectoLuna)}.</p>`
                         : `<p style="margin-left:15px; color:#c4b5fd;">↳ Forma ${nombreAspecto[aspectoLuna][idiomaActual]} con tu Luna natal: ${nombrePlaneta} ${tAspecto(aspectoLuna)}.</p>`;
                 }
             });
 
-            html += esEn ? `<h3 style="margin-top:20px;">Synthesis for ${nombre} on this date</h3>` : esFr ? `<h3 style="margin-top:20px;">Synthèse pour ${nombre} à cette date</h3>` : `<h3 style="margin-top:20px;">Síntesis para ${nombre} en esta fecha</h3>`;
+            html += esEn ? `<h3 style="margin-top:20px;">Synthesis for ${nombre} on this date</h3>` : esFr ? `<h3 style="margin-top:20px;">Synthèse pour ${nombre} à cette date</h3>` : esIt ? `<h3 style="margin-top:20px;">Sintesi per ${nombre} in questa data</h3>` : esPt ? `<h3 style="margin-top:20px;">Síntese para ${nombre} nesta data</h3>` : `<h3 style="margin-top:20px;">Síntesis para ${nombre} en esta fecha</h3>`;
             if (aspectosEncontrados.length > 0) {
                 const frasesAspectos = aspectosEncontrados.map(a =>
                     esEn
                         ? `<strong>${a.nombrePlaneta}</strong> in ${nombreAspecto[a.aspecto][idiomaActual]} with your natal ${a.contra} (${tAspecto(a.aspecto)})`
                         : esFr
                         ? `<strong>${a.nombrePlaneta}</strong> en ${nombreAspecto[a.aspecto][idiomaActual]} avec ton ${a.contra} natal (${tAspecto(a.aspecto)})`
+                        : esIt
+                        ? `<strong>${a.nombrePlaneta}</strong> in ${nombreAspecto[a.aspecto][idiomaActual]} con il tuo ${a.contra} natale (${tAspecto(a.aspecto)})`
+                        : esPt
+                        ? `<strong>${a.nombrePlaneta}</strong> em ${nombreAspecto[a.aspecto][idiomaActual]} com seu ${a.contra} natal (${tAspecto(a.aspecto)})`
                         : `<strong>${a.nombrePlaneta}</strong> en ${nombreAspecto[a.aspecto][idiomaActual]} con tu ${a.contra} natal (${tAspecto(a.aspecto)})`
                 ).join('; ');
                 html += esEn
                     ? `<p>The most relevant point of this date for ${nombre} is: ${frasesAspectos}. Outside of these specific aspects, the rest of the transiting planets are simply lighting up different areas (houses) of your chart, as detailed above, without as direct a friction or drive as the one described.</p>`
                     : esFr
                     ? `<p>Le point le plus pertinent de cette date pour ${nombre} est : ${frasesAspectos}. En dehors de ces aspects précis, le reste des planètes en transit illumine simplement différentes zones (maisons) de ton thème, comme détaillé ci-dessus, sans friction ou élan aussi direct que celui décrit.</p>`
+                    : esIt
+                    ? `<p>Il punto più rilevante di questa data per ${nombre} è: ${frasesAspectos}. Al di fuori di questi aspetti puntuali, il resto dei pianeti in transito illumina semplicemente diverse aree (case) del tuo tema, come dettagliato sopra, senza un attrito o impulso così diretto come quello descritto.</p>`
+                    : esPt
+                    ? `<p>O ponto mais relevante desta data para ${nombre} é: ${frasesAspectos}. Fora desses aspectos pontuais, o resto dos planetas em trânsito simplesmente vai iluminando diferentes áreas (casas) do seu mapa, como detalhado acima, sem um atrito ou impulso tão direto quanto o descrito.</p>`
                     : `<p>El punto más relevante de esta fecha para ${nombre} es: ${frasesAspectos}. Fuera de estos aspectos puntuales, el resto de los planetas en tránsito simplemente van iluminando distintas áreas (casas) de tu carta, como se detalla arriba, sin una fricción o impulso tan directo como el que describimos.</p>`;
             } else {
                 html += esEn
                     ? `<p>For ${fechaConsultaStr} there are no exact aspects between the transiting planets and your natal Sun or Moon (beyond the usual orb of a few degrees): it's a relatively neutral period in that specific sense. Even so, each planet keeps lighting up a different house of your birth chart —check the detail for each one above— and those areas of life are the most active for you right now, even without an exact trigger.</p>`
                     : esFr
                     ? `<p>Pour le ${fechaConsultaStr} il n'y a pas d'aspects exacts entre les planètes en transit et ton Soleil ou ta Lune natale (au-delà de l'orbe habituel de quelques degrés) : c'est une période relativement neutre dans ce sens précis. Malgré tout, chaque planète continue d'illuminer une maison différente de ton thème natal —consulte le détail de chacune ci-dessus— et ces domaines de vie sont les plus actifs pour toi en ce moment, même sans déclencheur exact.</p>`
+                    : esIt
+                    ? `<p>Per il ${fechaConsultaStr} non ci sono aspetti esatti tra i pianeti in transito e il tuo Sole o Luna natale (oltre all'orbita abituale di pochi gradi): è un periodo relativamente neutro in quel senso specifico. Anche così, ogni pianeta continua a illuminare una casa diversa del tuo tema natale —controlla il dettaglio di ciascuno sopra— e quelle aree di vita sono le più attive per te in questo momento, anche senza un innesco esatto.</p>`
+                    : esPt
+                    ? `<p>Para ${fechaConsultaStr} não há aspectos exatos entre os planetas em trânsito e seu Sol ou Lua natal (além do orbe habitual de poucos graus): é um período relativamente neutro nesse sentido pontual. Mesmo assim, cada planeta continua iluminando uma casa diferente do seu mapa astral —confira o detalhe de cada um acima— e essas áreas de vida são as mais ativas para você neste momento, mesmo sem um gatilho exato.</p>`
                     : `<p>Para el ${fechaConsultaStr} no hay aspectos exactos entre los planetas en tránsito y tu Sol o Luna natal (sin contar el orbe habitual de unos pocos grados): es un período relativamente neutro en ese sentido puntual. Aun así, cada planeta sigue iluminando una casa distinta de tu carta natal —revisá el detalle de cada uno arriba— y esas áreas de vida son las que están más activas para vos en este momento, aunque sin un detonante exacto.</p>`;
             }
             html += esEn
                 ? `<p>You can repeat this reading for today or for any future date you'd like to explore.</p>`
                 : esFr
                 ? `<p>Tu peux répéter cette consultation pour aujourd'hui ou pour toute date future que tu souhaites explorer.</p>`
+                : esIt
+                ? `<p>Puoi ripetere questa consultazione per oggi o per qualsiasi data futura che desideri esplorare.</p>`
+                : esPt
+                ? `<p>Você pode repetir esta consulta para hoje ou para qualquer data futura que queira explorar.</p>`
                 : `<p>Podés repetir esta consulta para hoy o para cualquier fecha futura que quieras explorar.</p>`;
             return html;
         }
@@ -3365,6 +3726,8 @@
             const nombreCarta = nombreCartaLocalizado(cardObj);
             const esEn = idiomaActual === 'en';
             const esFr = idiomaActual === 'fr';
+            const esIt = idiomaActual === 'it';
+            const esPt = idiomaActual === 'pt';
             const polaridad = polaridadFinalCarta(cardObj.id, invertida); // 'si' | 'no' | 'a'
 
             // Tema dominante de la carta: primera palabra/frase clave de su significado (varía carta por carta)
@@ -3406,6 +3769,10 @@
                 ? (naturalezaCV === 'activa' ? 'active' : naturalezaCV === 'reflexiva' ? 'reflective' : 'master')
                 : esFr
                 ? (naturalezaCV === 'activa' ? 'actif' : naturalezaCV === 'reflexiva' ? 'réflexif' : 'maître')
+                : esIt
+                ? (naturalezaCV === 'activa' ? 'attivo' : naturalezaCV === 'reflexiva' ? 'riflessivo' : 'maestro')
+                : esPt
+                ? (naturalezaCV === 'activa' ? 'ativo' : naturalezaCV === 'reflexiva' ? 'reflexivo' : 'mestre')
                 : (naturalezaCV === 'activa' ? 'activa' : naturalezaCV === 'reflexiva' ? 'reflexiva' : 'maestra');
 
             let cruce;
@@ -3427,6 +3794,24 @@
                 else if (concordancia === 'coinciden_freno') cruce = `Ici, les signes disponibles s'accordent, mais vers la prudence : ${listaFactores} penchent tous vers la pause, la révision ou l'attente avant d'agir. Quand plusieurs lectures s'accordent pour ralentir, ça vaut généralement la peine d'écouter.`;
                 else if (concordancia === 'mixta') cruce = `Ici, les signes tirent dans des directions différentes : ${listaFactores} ne s'accordent pas tous entre eux. Ce n'est pas mauvais signe en soi — cela signifie généralement que la réponse dépend plus de tes propres choix maintenant que d'une impulsion claire et unique de l'univers.`;
                 else cruce = `${listaFactores} se combinent aujourd'hui de façon ouverte et indéfinie : pris ensemble, il n'y a pas de signal assez clair pointant fortement dans une direction, donc c'est plutôt un moment pour observer que pour forcer une décision.`;
+            } else if (esIt) {
+                const partesFactor = [`la carta ${nombreCarta}${invertida ? ' (rovesciata)' : ''} (${polaridad === 'si' ? 'favorevole' : polaridad === 'no' ? 'restrittiva' : 'condizionale'})`,
+                    `il tuo Cammino di Vita ${nombreCV} (${fechaNums.caminoVida})`];
+                if (datosCarta) partesFactor.push(`la tua Luna in ${signoLuna} (un elemento ${elementoLuna === 'fuego' || elementoLuna === 'aire' ? 'più attivo' : 'più ricettivo'})`);
+                const listaFactores = partesFactor.join(', ');
+                if (concordancia === 'coinciden') cruce = `Qui i segnali disponibili concordano: ${listaFactores} si inclinano tutti verso la stessa energia attiva, di andare avanti. Quando le letture che abbiamo potuto confrontare sono d'accordo, vale la pena prestarci vera attenzione.`;
+                else if (concordancia === 'coinciden_freno') cruce = `Qui i segnali disponibili concordano, ma verso la cautela: ${listaFactores} si inclinano tutti verso il fermarsi, rivedere o aspettare prima di agire. Quando più di una lettura concorda nel rallentare, generalmente conviene ascoltare.`;
+                else if (concordancia === 'mixta') cruce = `Qui i segnali tirano in direzioni diverse: ${listaFactores} non concordano tra loro. Questo non è necessariamente negativo — di solito significa che la risposta dipende più dalle tue scelte in questo momento che da una spinta chiara e unica dell'universo.`;
+                else cruce = `${listaFactores} si combinano oggi in modo aperto e indefinito: nel complesso non c'è un segnale abbastanza chiaro che punti con forza in una direzione, quindi è più un momento per osservare che per forzare una decisione.`;
+            } else if (esPt) {
+                const partesFactor = [`a carta ${nombreCarta}${invertida ? ' (invertida)' : ''} (${polaridad === 'si' ? 'favorável' : polaridad === 'no' ? 'restritiva' : 'condicional'})`,
+                    `seu Caminho de Vida ${nombreCV} (${fechaNums.caminoVida})`];
+                if (datosCarta) partesFactor.push(`sua Lua em ${signoLuna} (um elemento ${elementoLuna === 'fuego' || elementoLuna === 'aire' ? 'mais ativo' : 'mais receptivo'})`);
+                const listaFactores = partesFactor.join(', ');
+                if (concordancia === 'coinciden') cruce = `Aqui os sinais disponíveis concordam: ${listaFactores} se inclinam todos para a mesma energia ativa, de avançar. Quando as leituras que pudemos comparar estão de acordo, vale a pena prestar atenção real.`;
+                else if (concordancia === 'coinciden_freno') cruce = `Aqui os sinais disponíveis concordam, mas para a cautela: ${listaFactores} se inclinam todos para pausar, revisar ou esperar antes de agir. Quando mais de uma leitura concorda em desacelerar, geralmente vale a pena escutar.`;
+                else if (concordancia === 'mixta') cruce = `Aqui os sinais puxam para lados distintos: ${listaFactores} não concordam entre si. Isso não é necessariamente ruim — geralmente significa que a resposta depende mais das suas próprias decisões agora do que de um empurrão claro e único do universo.`;
+                else cruce = `${listaFactores} se combinam hoje de forma aberta e indefinida: em conjunto não há um sinal claro o suficiente em um único sentido, então é mais um momento para observar do que para forçar uma decisão.`;
             } else {
                 const partesFactor = [`la carta ${nombreCarta}${invertida ? ' (invertida)' : ''} (${polaridad === 'si' ? 'favorable' : polaridad === 'no' ? 'restrictiva' : 'condicional'})`,
                     `tu Camino de Vida ${nombreCV} (${fechaNums.caminoVida})`];
@@ -3443,6 +3828,12 @@
             }
             if (esFr) {
                 return `<p>Pour ${primerNombre}, la carte du jour est <strong>${nombreCarta}${invertida ? t('invertida') : ''}</strong>, centrée sur ${temaCarta.toLowerCase()}. ${cruce} Quand la carte, ta numérologie et ton thème natal sont lus ensemble ainsi, le but n'est pas de prédire un futur figé, mais de te montrer vers où pointent plusieurs signes à la fois — prends ceci comme un élément pour ton propre jugement, pas comme un verdict.</p>`;
+            }
+            if (esIt) {
+                return `<p>Per ${primerNombre}, la carta di oggi è <strong>${nombreCarta}${invertida ? t('invertida') : ''}</strong>, centrata su ${temaCarta.toLowerCase()}. ${cruce} Quando la carta, la tua numerologia e il tuo tema natale vengono letti insieme così, l'obiettivo non è predire un futuro fisso, ma mostrarti verso dove puntano più segnali contemporaneamente — prendilo come uno spunto per il tuo giudizio, non come un verdetto.</p>`;
+            }
+            if (esPt) {
+                return `<p>Para ${primerNombre}, a carta de hoje é <strong>${nombreCarta}${invertida ? t('invertida') : ''}</strong>, centrada em ${temaCarta.toLowerCase()}. ${cruce} Quando a carta, sua numerologia e seu mapa astral são lidos juntos assim, o objetivo não é prever um futuro fixo, mas mostrar para onde apontam vários sinais ao mesmo tempo — use isso como um insumo para seu próprio julgamento, não como um veredito.</p>`;
             }
             return `<p>Para ${primerNombre}, la carta de hoy es <strong>${nombreCarta}${invertida ? t('invertida') : ''}</strong>, centrada en ${temaCarta.toLowerCase()}. ${cruce} Cuando se leen juntos la carta, tu numerología y tu carta astral, el objetivo no es predecir un futuro fijo, sino mostrarte hacia dónde apuntan varias señales a la vez — tomalo como un insumo para tu propio criterio, no como un veredicto.</p>`;
         }
