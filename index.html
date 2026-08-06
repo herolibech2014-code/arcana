@@ -1550,14 +1550,29 @@
                 text: t('textoCompartir'),
                 url: window.location.href
             };
-            if (navigator.share) {
-                navigator.share(datosCompartir).catch(() => {});
-            } else {
-                navigator.clipboard.writeText(datosCompartir.url).then(() => {
-                    alert(t('linkCopiado'));
-                }).catch(() => {
+            try {
+                if (navigator.share) {
+                    navigator.share(datosCompartir).catch((err) => {
+                        console.warn('No se pudo compartir:', err);
+                    });
+                    return;
+                }
+            } catch (err) {
+                console.warn('navigator.share falló, usando alternativa:', err);
+            }
+            // Alternativa: copiar el link al portapapeles
+            try {
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(datosCompartir.url).then(() => {
+                        alert(t('linkCopiado'));
+                    }).catch(() => {
+                        prompt(t('linkCopiado'), datosCompartir.url);
+                    });
+                } else {
                     prompt(t('linkCopiado'), datosCompartir.url);
-                });
+                }
+            } catch (err) {
+                prompt(t('linkCopiado'), datosCompartir.url);
             }
         }
 
