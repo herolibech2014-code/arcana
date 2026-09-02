@@ -57,11 +57,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Cinzel+Decorative:wght@400;700;900&display=swap" rel="stylesheet">
 
-    <!-- Google AdSense -->
-    <!-- ⚠️ Reemplazá ca-pub-3760080444114245 por tu propio ID de editor de AdSense (lo obtenés en tu cuenta
-         adsense.google.com, sección "Cuenta"). El sitio no va a mostrar anuncios reales hasta que pongas tu ID
-         real y Google apruebe el sitio. -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3760080444114245" crossorigin="anonymous"></script>
+    <!-- Adsterra -->
+    <!-- ⚠️ Acá va, si Adsterra te pide un script en el <head>, el código que te dé tu cuenta.
+         Pasame el código real y lo agrego yo directamente. -->
 
     <style>
         :root {
@@ -196,20 +194,6 @@
             font-size: 1.4rem;
             letter-spacing: 6px;
         }
-
-        .btn-compartir {
-            margin-top: 14px;
-            background: transparent;
-            border: 1px solid var(--oro);
-            color: var(--oro);
-            padding: 8px 18px;
-            border-radius: 30px;
-            font-family: sans-serif;
-            font-size: 0.85rem;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        .btn-compartir:hover { background: rgba(212, 175, 55, 0.15); }
 
         /* INSTRUCCIONES */
         .instruccion-directa {
@@ -729,7 +713,6 @@
                 <img src="./fondo-arcana.jpg" alt="Arcana Crystal Ball" onerror="console.error('No se pudo cargar fondo-arcana.jpg — revisá que el archivo esté en la raíz del sitio publicado.')"></div>
             <h1 class="marca-titulo">ARCANA</h1>
             <div class="lema" id="txt-lema">El universo responde</div>
-            <button class="btn-compartir" onclick="compartirArcana()" data-t="btnCompartir">&#x1F517; Compartir</button>
         </div>
 
         <!-- MENU PRINCIPAL -->
@@ -760,8 +743,16 @@
             <!-- ADSENSE: Bottom of main menu -->
             <!-- ⚠️ Reemplazá ca-pub-3760080444114245 y data-ad-slot="XXXXXXXXXX" por tus datos reales de AdSense -->
             <div class="ads-box" id="txt-ads">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3760080444114245" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <script>
+                  atOptions = {
+                    'key' : 'ae83ebd713bdfc72e2c71e989cb54776',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/ae83ebd713bdfc72e2c71e989cb54776/invoke.js"></script>
             </div>
         </div>
 
@@ -819,8 +810,16 @@
             <div class="caja-interpretacion" id="texto-interpretacion"></div>
             <!-- ADSENSE: después de la lectura, antes de "Nueva Consulta" -->
             <div class="ads-box">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3760080444114245" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <script>
+                  atOptions = {
+                    'key' : 'ae83ebd713bdfc72e2c71e989cb54776',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/ae83ebd713bdfc72e2c71e989cb54776/invoke.js"></script>
             </div>
             <button class="btn-volver" onclick="abrirTarotConfig()" style="padding:10px 20px; font-size:1.1rem; margin-top:20px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
@@ -915,8 +914,16 @@
             <div class="caja-interpretacion" id="ast-interpretacion" style="margin-top:25px;"></div>
             <!-- ADSENSE: después de la lectura, antes de "Nueva Consulta" -->
             <div class="ads-box">
-                <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-3760080444114245" data-ad-slot="XXXXXXXXXX" data-ad-format="auto" data-full-width-responsive="true"></ins>
-                <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+                <script>
+                  atOptions = {
+                    'key' : 'ae83ebd713bdfc72e2c71e989cb54776',
+                    'format' : 'iframe',
+                    'height' : 250,
+                    'width' : 300,
+                    'params' : {}
+                  };
+                </script>
+                <script src="https://www.highrevenueformat.com/ae83ebd713bdfc72e2c71e989cb54776/invoke.js"></script>
             </div>
             <button class="btn-volver" onclick="abrirAstrologiaConfig()" style="padding:10px 20px; font-size:1.1rem; margin-top:20px;" data-t="btnNuevaConsulta">NUEVA CONSULTA</button>
         </div>
@@ -1094,7 +1101,6 @@
         const T = {
             es: {
                 lema: "El universo responde",
-                btnCompartir: "Compartir", textoCompartir: "Descubrí tu tarot, numerología y carta astral gratis en Arcana ✨", linkCopiado: "Enlace copiado. ¡Compartilo con quien quieras!",
                 paywallTitulo: "Consulta Premium", paywallTextoNum: "La Energía de la fecha a elegir es una consulta premium. Hacé el pago único de USD $2 para ver tu resultado.", paywallTextoAst: "La Consulta de fecha a elección es una consulta premium. Hacé el pago único de USD $2 para ver tu resultado.", btnPagarPaypal: "Pagar con PayPal (USD $2)", btnYaPague: "Ya pagué, mostrar mi lectura", btnCancelar: "Cancelar",
                 ads: "ESPACIO RESERVADO PARA GOOGLE ADSENSE",
                 volver: "\u2190 Volver",
@@ -1173,7 +1179,6 @@
             },
             en: {
                 lema: "The universe answers",
-                btnCompartir: "Share", textoCompartir: "Discover your free tarot, numerology and birth chart on Arcana ✨", linkCopiado: "Link copied. Share it with anyone!",
                 paywallTitulo: "Premium Reading", paywallTextoNum: "Energy of a Chosen Date is a premium reading. Make a one-time payment of USD $2 to see your result.", paywallTextoAst: "The Chosen Date Reading is a premium reading. Make a one-time payment of USD $2 to see your result.", btnPagarPaypal: "Pay with PayPal (USD $2)", btnYaPague: "I already paid, show my reading", btnCancelar: "Cancel",
                 ads: "RESERVED SPACE FOR GOOGLE ADSENSE",
                 volver: "\u2190 Back",
@@ -1252,7 +1257,6 @@
             },
             pt: {
                 lema: "O universo responde",
-                btnCompartir: "Compartilhar", textoCompartir: "Descubra seu tarot, numerologia e mapa astral grátis no Arcana ✨", linkCopiado: "Link copiado. Compartilhe com quem quiser!",
                 paywallTitulo: "Consulta Premium", paywallTextoNum: "Energia de uma Data Escolhida é uma consulta premium. Faça o pagamento único de USD $2 para ver seu resultado.", paywallTextoAst: "A Consulta de Data Escolhida é uma consulta premium. Faça o pagamento único de USD $2 para ver seu resultado.", btnPagarPaypal: "Pagar com PayPal (USD $2)", btnYaPague: "Já paguei, mostrar minha leitura", btnCancelar: "Cancelar",
                 ads: "ESPAÇO RESERVADO PARA GOOGLE ADSENSE",
                 volver: "\u2190 Voltar",
@@ -1331,7 +1335,6 @@
             },
             fr: {
                 lema: "L'univers répond",
-                btnCompartir: "Partager", textoCompartir: "Découvrez votre tarot, numérologie et thème astral gratuits sur Arcana ✨", linkCopiado: "Lien copié. Partagez-le avec qui vous voulez !",
                 paywallTitulo: "Consultation Premium", paywallTextoNum: "L'Énergie d'une Date Choisie est une consultation premium. Faites le paiement unique de 2 USD pour voir votre résultat.", paywallTextoAst: "La Consultation d'une Date Choisie est une consultation premium. Faites le paiement unique de 2 USD pour voir votre résultat.", btnPagarPaypal: "Payer avec PayPal (2 USD)", btnYaPague: "J'ai déjà payé, afficher ma lecture", btnCancelar: "Annuler",
                 ads: "ESPACE RÉSERVÉ POUR GOOGLE ADSENSE",
                 volver: "\u2190 Retour",
@@ -1410,7 +1413,6 @@
             },
             it: {
                 lema: "L'universo risponde",
-                btnCompartir: "Condividi", textoCompartir: "Scopri i tuoi tarocchi, numerologia e tema natale gratis su Arcana ✨", linkCopiado: "Link copiato. Condividilo con chi vuoi!",
                 paywallTitulo: "Consultazione Premium", paywallTextoNum: "Energia di una Data Scelta è una consultazione premium. Effettua il pagamento unico di USD $2 per vedere il tuo risultato.", paywallTextoAst: "La Consultazione di una Data Scelta è una consultazione premium. Effettua il pagamento unico di USD $2 per vedere il tuo risultato.", btnPagarPaypal: "Paga con PayPal (USD $2)", btnYaPague: "Ho già pagato, mostra la mia lettura", btnCancelar: "Annulla",
                 ads: "SPAZIO PUBBLICITARIO GOOGLE ADSENSE",
                 volver: "\u2190 Indietro",
@@ -1544,37 +1546,6 @@
 
         function irAlMenu() { cambiarVista('pantalla-menu'); }
         function abrirTarotConfig() { cambiarVista('pantalla-tarot-config'); }
-        function compartirArcana() {
-            const datosCompartir = {
-                title: 'Arcana — El Universo Responde',
-                text: t('textoCompartir'),
-                url: window.location.href
-            };
-            try {
-                if (navigator.share) {
-                    navigator.share(datosCompartir).catch((err) => {
-                        console.warn('No se pudo compartir:', err);
-                    });
-                    return;
-                }
-            } catch (err) {
-                console.warn('navigator.share falló, usando alternativa:', err);
-            }
-            // Alternativa: copiar el link al portapapeles
-            try {
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(datosCompartir.url).then(() => {
-                        alert(t('linkCopiado'));
-                    }).catch(() => {
-                        prompt(t('linkCopiado'), datosCompartir.url);
-                    });
-                } else {
-                    prompt(t('linkCopiado'), datosCompartir.url);
-                }
-            } catch (err) {
-                prompt(t('linkCopiado'), datosCompartir.url);
-            }
-        }
 
         function abrirNumerologiaConfig() {
             cambiarVista('pantalla-numerologia-config');
